@@ -1,0 +1,66 @@
+/* ── Google Fonts ─────────────────────────────────────────────────────────── */
+/* Tiro Bangla – regular (wght 400) + italic */
+/* ABeeZee     – regular (wght 400) + italic */
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&family=ABeeZee:ital@0;1&display=swap');
+
+/* ── System font declarations ─────────────────────────────────────────────── */
+/* Explicitly declare Times New Roman and Arial as local system fonts so the
+   publish validator knows these are intentional system-font references and
+   does not flag them as "missing". */
+
+@font-face {
+  font-family: 'Times New Roman';
+  src: local('Times New Roman'),
+       local('TimesNewRoman'),
+       local('Times New Roman PS MT');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Times New Roman';
+  src: local('Times New Roman Bold'),
+       local('TimesNewRoman-Bold'),
+       local('Times New Roman PS MT Bold');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Times New Roman';
+  src: local('Times New Roman Italic'),
+       local('TimesNewRoman-Italic');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arial';
+  src: local('Arial'),
+       local('Arial MT');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arial';
+  src: local('Arial Bold'),
+       local('Arial-BoldMT'),
+       local('Arial MT Bold');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arial';
+  src: local('Arial Italic'),
+       local('Arial-ItalicMT');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
