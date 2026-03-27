@@ -1,5 +1,7 @@
 node_modules
 dist
+bianca-deploy.zip
+ftp-upload
 .env
 .env.local
 .env.*.local

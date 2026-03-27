@@ -38,4 +38,10 @@ export default defineConfig({
 
   // File types to support raw imports. Never add .css, .tsx, or .ts files to this.
   assetsInclude: ['**/*.svg', '**/*.csv'],
+
+  // Don't copy public/ to dist – images are imported via figma plugin and bundled in assets/
+  // Saves ~34MB and speeds up FTP/uploads
+  build: {
+    copyPublicDir: false,
+  },
 })
