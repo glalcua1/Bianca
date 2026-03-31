@@ -2,7 +2,8 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import MacBookPro from "../../imports/MacBookPro141-2-335";
 
 const DESIGN_W = 1512;
-const DESIGN_H = 4500;
+/** Taller canvas: room for Men’s section below Modern Essentials / Occasion / Bridal columns */
+const DESIGN_H = 5280;
 
 function useDesignScale() {
   const [scale, setScale] = useState(1);
