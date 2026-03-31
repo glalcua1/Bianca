@@ -14,27 +14,27 @@ const ringImageUrls = import.meta.glob<string>(
   { eager: true, import: "default" }
 );
 
-function itemsFromFolderImages(
-  urls: Record<string, string>,
-  label: string,
-  basePrice: number,
-  priceStep: number
-): { name: string; price: number; image: string }[] {
-  return Object.entries(urls)
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([path, url], i) => {
-      const file = path.split("/").pop() ?? "";
-      const base = file.replace(/\.[^.]+$/, "").replace(/_/g, " ");
-      return {
-        name: base || `${label} ${i + 1}`,
-        price: basePrice + i * priceStep,
-        image: url,
-      };
-    });
-}
+/** Fixed order: filename in public/Rings → display name */
+const RING_CATALOG: { file: string; name: string }[] = [
+  { file: "IMG_5298.jpg", name: "The Aurelia Trinity Ring" },
+  { file: "IMG_5299.jpg", name: "The Verona Duality Ring" },
+  { file: "IMG_5302.jpg", name: "The Celestia Harmony Ring" },
+  { file: "Women_ring.png", name: "Rosé Embrace Ring" },
+];
 
-function getRingItems() {
-  return itemsFromFolderImages(ringImageUrls, "Ring", 98500, 15000);
+function getRingItems(): { name: string; price: number; image: string }[] {
+  const urlByFile = new Map<string, string>();
+  for (const [path, url] of Object.entries(ringImageUrls)) {
+    const file = path.split("/").pop() ?? "";
+    urlByFile.set(file, url);
+  }
+  const basePrice = 98500;
+  const priceStep = 15000;
+  return RING_CATALOG.flatMap(({ file, name }, i) => {
+    const image = urlByFile.get(file);
+    if (!image) return [];
+    return [{ name, price: basePrice + i * priceStep, image }];
+  });
 }
 
 const categories = [
