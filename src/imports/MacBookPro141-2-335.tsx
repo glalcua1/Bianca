@@ -1011,7 +1011,9 @@ function Link2() {
 }
 
 function Frame5() {
-  return <div className="absolute bg-[#1d3c34] h-[619px] left-[81px] top-[4594px] w-[1373px]" />;
+  return (
+    <div className="absolute z-[1] bg-[#1d3c34] h-[619px] left-[81px] top-[4194px] w-[1373px]" />
+  );
 }
 
 function Container13() {
@@ -1577,7 +1579,7 @@ function ClipPathGroup5() {
 
 function Frame() {
   return (
-    <div className="absolute content-stretch flex items-start left-[244px] top-[4938px] w-[176.533px]" data-name="Frame">
+    <div className="absolute z-[4] content-stretch flex items-start left-[244px] top-[4538px] w-[176.533px]" data-name="Frame">
       <ClipPathGroup5 />
     </div>
   );
@@ -2044,7 +2046,7 @@ export default function MacBookPro() {
   return (
     <div className="bg-white relative size-full" data-name="MacBook Pro 14' - 1">
       <Frame1 />
-      <div className="absolute bg-white border-[#1d3c34] border-[0.4px] border-solid h-[971px] left-[58px] rounded-[20px] top-[3416px] w-[1360px]" />
+      <div className="absolute z-[3] bg-white border-[#1d3c34] border-[0.4px] border-solid h-[971px] left-[58px] rounded-[20px] top-[3016px] w-[1360px]" />
       <Frame2 />
       <Group47 />
       <Group48 />
@@ -2052,16 +2054,19 @@ export default function MacBookPro() {
       <LinkBlock />
       <Link1 />
       <Link2 />
-      <div className="absolute left-0 top-[2488px] z-[6] w-[1512px] overflow-visible">
+      <div className="absolute left-0 top-[2560px] z-[1] w-[1512px] overflow-visible">
         <MensCollectionSection embedded />
       </div>
-      <div className="absolute flex h-[740.958px] items-center justify-center left-[460.24px] top-[4522.69px] w-[1006.987px]" style={{ "--transform-inner-width": "1200", "--transform-inner-height": "0" } as React.CSSProperties}>
+      <div
+        className="absolute z-0 flex h-[740.958px] items-center justify-center left-[460.24px] top-[4122.69px] w-[1006.987px]"
+        style={{ "--transform-inner-width": "1200", "--transform-inner-height": "0" } as React.CSSProperties}
+      >
         <div className="flex-none rotate-[5.64deg]">
           <div className="h-[650.968px] w-[947.589px]" style={{ backgroundImage: "linear-gradient(104.979deg, rgb(118, 109, 66) 2.7164%, rgb(220, 203, 123) 86.291%)" }} />
         </div>
       </div>
       <Frame5 />
-      <div className="-translate-y-1/2 absolute flex flex-col font-['ABeeZee:Regular',sans-serif] h-[503px] justify-center leading-[0] left-[515px] not-italic text-[#dccb7b] text-[16px] top-[4897.5px] tracking-[0.5px] w-[633px] whitespace-pre-wrap">
+      <div className="-translate-y-1/2 absolute z-[5] flex flex-col font-['ABeeZee:Regular',sans-serif] h-[503px] justify-center leading-[0] left-[515px] not-italic text-[#dccb7b] text-[16px] top-[4497.5px] tracking-[0.5px] w-[633px] whitespace-pre-wrap">
         <p className="font-['Arial:Regular',sans-serif] leading-[normal] mb-0 text-[#fffbeb]">Jewellery has always held a special place in the way a woman expresses herself. A thoughtfully chosen piece can elevate not only how she looks, but how she feels — confident, graceful, and unmistakably herself.</p>
         <p className="leading-[normal] mb-0">&nbsp;</p>
         <p className="font-['Arial:Regular',sans-serif] leading-[normal] mb-0 text-[#fffbeb]">My journey began with a deep interest in fashion styling and personal jewellery curation, where I worked closely with clients to create pieces that reflected their individuality and sense of elegance. Over time, this passion evolved into a vision: to create a brand that celebrates beauty while embracing the changing values of our time.</p>
@@ -2082,16 +2087,16 @@ export default function MacBookPro() {
         <p className="leading-[normal] mb-0">&nbsp;</p>
         <p className="font-['Arial:Regular',sans-serif] leading-[normal] text-[#fffbeb]"><span className="font-bold">Shweta Lal</span><br aria-hidden="true" />Founder, Bianca Diamonds</p>
       </div>
-      <div className="absolute h-[236px] left-[202px] rounded-[10px] top-[4736px] w-[229px]">
+      <div className="absolute z-[1] h-[236px] left-[202px] rounded-[10px] top-[4336px] w-[229px]">
         <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[10px]">
           <img alt="" className="absolute h-[124.34%] left-[2.09%] max-w-none top-[0.06%] w-[96.01%]" src={imgRectangle6} />
         </div>
       </div>
       <Group52 />
-      <div className="-translate-y-1/2 absolute flex flex-col font-['Times_New_Roman:Regular',sans-serif] justify-center leading-[0] left-[calc(50%-637px)] not-italic text-[#1d3c34] text-[33.2px] top-[3512px] tracking-[-0.1px] whitespace-nowrap">
+      <div className="-translate-y-1/2 absolute z-[3] flex flex-col font-['Times_New_Roman:Regular',sans-serif] justify-center leading-[0] left-[calc(50%-637px)] not-italic text-[#1d3c34] text-[33.2px] top-[3112px] tracking-[-0.1px] whitespace-nowrap">
         <p className="leading-[47.94px]">Bianca Diamonds</p>
       </div>
-      <div className="-translate-y-1/2 absolute flex flex-col font-['Times_New_Roman:Regular',sans-serif] h-[440px] justify-center leading-[0] left-[calc(50%-143px)] not-italic text-[#1d3c34] text-[24px] top-[3773px] w-[684px]">
+      <div className="-translate-y-1/2 absolute z-[3] flex flex-col font-['Times_New_Roman:Regular',sans-serif] h-[440px] justify-center leading-[0] left-[calc(50%-143px)] not-italic text-[#1d3c34] text-[24px] top-[3373px] w-[684px]">
         <p className="mb-[20px]">
           <span className="font-['Times_New_Roman:Bold',sans-serif] leading-[30px] not-italic">Bianca Diamonds represents a new era of diamond luxury</span>
           <span className="leading-[30px]">.</span>
@@ -2109,25 +2114,25 @@ export default function MacBookPro() {
         <p className="leading-[30px] mb-[20px]">Behind Bianca stands over 80 years of family jewellery expertise, built on trust, craftsmanship, and a deep understanding of diamonds.</p>
         <p className="leading-[30px]">Bianca Diamonds is where modern brilliance meets timeless luxury.</p>
       </div>
-      <div className="absolute h-[372px] left-[119px] top-[3564px] w-[407px]">
+      <div className="absolute z-[3] h-[372px] left-[119px] top-[3164px] w-[407px]">
         <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgRectangle11} />
       </div>
-      <div className="absolute h-[247px] left-[143px] top-[4056px] w-[231px]" data-name="Gemini_Generated_Image_n42rxan42rxan42r 1">
+      <div className="absolute z-[3] h-[247px] left-[143px] top-[3656px] w-[231px]" data-name="Gemini_Generated_Image_n42rxan42rxan42r 1">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img alt="" className="absolute h-[118.56%] left-[-20.52%] max-w-none top-[-11.87%] w-[127.01%]" src={imgGeminiGeneratedImageN42Rxan42Rxan42R1} />
         </div>
       </div>
-      <div className="absolute h-[127px] left-[369px] top-[4056px] w-[131px]" data-name="Gemini_Generated_Image_n42rxan42rxan42r 3">
+      <div className="absolute z-[3] h-[127px] left-[369px] top-[3656px] w-[131px]" data-name="Gemini_Generated_Image_n42rxan42rxan42r 3">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img alt="" className="absolute h-[117.77%] left-[-6.44%] max-w-none top-[-12.23%] w-[113.85%]" src={imgGeminiGeneratedImageN42Rxan42Rxan42R3} />
         </div>
       </div>
-      <div className="absolute h-[78px] left-[394px] top-[4194px] w-[81px]" data-name="Gemini_Generated_Image_n42rxan42rxan42r 2">
+      <div className="absolute z-[3] h-[78px] left-[394px] top-[3794px] w-[81px]" data-name="Gemini_Generated_Image_n42rxan42rxan42r 2">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img alt="" className="absolute h-[240.39%] left-[-121.16%] max-w-none top-[-120.11%] w-[232.38%]" src={imgGeminiGeneratedImageN42Rxan42Rxan42R2} />
         </div>
       </div>
-      <div className="absolute h-[273px] left-[613px] top-[4056px] w-[427px]" data-name="image 1">
+      <div className="absolute z-[3] h-[273px] left-[613px] top-[3656px] w-[427px]" data-name="image 1">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img alt="" className="absolute h-full left-[-13.59%] max-w-none top-0 w-[113.59%]" src={imgImage1} />
         </div>

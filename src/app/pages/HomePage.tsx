@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+import HomeSeoSection from "../components/HomeSeoSection";
 import MacBookPro from "../../imports/MacBookPro141-2-335";
 
 const DESIGN_W = 1512;
-/** Taller canvas: room for Men’s section below Modern Essentials / Occasion / Bridal columns */
+/** Scaled artboard height (design px at 1512 width) */
 const DESIGN_H = 5280;
 
 function useDesignScale() {
@@ -63,6 +64,7 @@ export default function HomePage() {
           <MacBookPro />
         </div>
       </div>
+      <HomeSeoSection />
     </>
   );
 }

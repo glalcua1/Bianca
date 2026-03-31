@@ -41,7 +41,7 @@ export default function MensCollectionSection({ embedded = false }: Props) {
   return (
     <section
       aria-labelledby="mens-collection-heading"
-      className="relative w-full overflow-hidden bg-[#f7f4ee]"
+      className={`relative w-full overflow-x-clip bg-[#f7f4ee] ${embedded ? "h-[420px]" : ""}`}
     >
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#dccb7b]/80 to-transparent"
@@ -57,28 +57,35 @@ export default function MensCollectionSection({ embedded = false }: Props) {
       />
 
       <div
-        className={`relative mx-auto max-w-6xl px-6 ${embedded ? "py-10 md:py-12" : "py-20 md:py-28"}`}
+        className={`relative mx-auto max-w-6xl px-6 ${embedded ? "py-4 pb-3 md:py-5 md:pb-4" : "py-20 md:py-28"}`}
       >
         <header
-          className={`text-center ${embedded ? "mb-8 md:mb-10" : "mb-12 md:mb-16"}`}
+          className={`text-center ${embedded ? "mb-3 md:mb-4" : "mb-12 md:mb-16"}`}
         >
-          <p className="mb-3 font-['Arial',sans-serif] text-[11px] uppercase tracking-[0.38em] text-[#1d3c34]/55 md:text-xs">
+          <p className="mb-1.5 font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.38em] text-[#1d3c34]/55 md:text-[11px]">
             Bianca · For Him
           </p>
           <h2
             id="mens-collection-heading"
-            className="font-['Times_New_Roman',serif] text-[clamp(1.75rem,4vw,2.75rem)] tracking-[0.14em] text-[#1d3c34]"
+            className={`font-['Times_New_Roman',serif] tracking-[0.14em] text-[#1d3c34] ${embedded ? "text-2xl md:text-3xl" : "text-[clamp(1.75rem,4vw,2.75rem)]"}`}
           >
             Men&apos;s
           </h2>
-          <p className="mx-auto mt-5 max-w-lg font-['Arial',sans-serif] text-sm leading-relaxed text-[#5a6b66] md:text-base">
-            Understated weight, precise lines, and the same lab-grown brilliance
-            — crafted for those who dress with intention.
-          </p>
+          {!embedded && (
+            <p className="mx-auto mt-5 max-w-lg font-['Arial',sans-serif] text-sm leading-relaxed text-[#5a6b66] md:text-base">
+              Understated weight, precise lines, and the same lab-grown brilliance
+              — crafted for those who dress with intention.
+            </p>
+          )}
+          {embedded && (
+            <p className="mx-auto mt-2 max-w-sm font-['Arial',sans-serif] text-xs leading-snug text-[#5a6b66] md:text-[13px]">
+              Refined lines, lab-grown brilliance.
+            </p>
+          )}
         </header>
 
         <div
-          className="group relative mx-auto max-w-4xl cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#dccb7b] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f4ee]"
+          className={`group relative mx-auto cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-[#dccb7b] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f4ee] ${embedded ? "max-w-[min(100%,320px)]" : "max-w-4xl"}`}
           onMouseEnter={() => prefersHover() && setActive(true)}
           onMouseLeave={() => prefersHover() && setActive(false)}
           onClick={() => {
@@ -102,21 +109,28 @@ export default function MensCollectionSection({ embedded = false }: Props) {
         >
           <div className="relative rounded-[2px] p-[1.5px] shadow-[0_28px_90px_rgba(29,60,52,0.14)] [background:linear-gradient(135deg,#e8dfbd_0%,#dccb7b_45%,#a89852_100%)]">
             <div className="relative overflow-hidden rounded-[1px] bg-[#1a332e]">
-              <div className="relative aspect-[4/5] w-full md:aspect-[16/10]">
+              {/*
+                Portrait frame + object-contain: full media visible; letterbox on #1a332e if aspect differs slightly.
+              */}
+              <div
+                className={
+                  embedded
+                    ? "relative mx-auto aspect-[3/4] w-full max-h-[min(300px,38vw)] md:max-h-[340px]"
+                    : "relative mx-auto aspect-[3/4] w-full md:aspect-[4/5]"
+                }
+              >
                 <img
                   src={menPoster}
                   alt="Men's fine jewellery — still"
-                  className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                    showMotion
-                      ? "scale-[1.02] opacity-0"
-                      : "scale-100 opacity-100"
+                  className={`absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    showMotion ? "opacity-0" : "opacity-100"
                   }`}
                   draggable={false}
                 />
                 <video
                   ref={videoRef}
                   src={menVideoUrl}
-                  className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  className={`absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
                     showMotion ? "opacity-100" : "opacity-0"
                   }`}
                   muted
