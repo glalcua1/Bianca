@@ -1,183 +1,94 @@
 import { Link } from "react-router";
+import { Instagram } from "lucide-react";
+import InstagramFeedSection from "../components/InstagramFeedSection";
 
-// Use existing project images for product photos (sections without a public/ folder glob)
-import img4 from "figma:asset/581d41c78850052909c92d619a846a456fb23495.png";
-import img5 from "figma:asset/200f28676d6a2eae898fcdcd9f13ebcd75250299.png";
-import img6 from "figma:asset/75d88e2bc003dea111ea5784491167b05e57ecdf.png";
-import img7 from "figma:asset/bcbf2ab8604eb3c4c44851f9e32172fab91932f2.png";
-import img8 from "figma:asset/5ba4358549f78481bb5595ef12a37c5f59d7d33d.png";
-import img9 from "figma:asset/791d0a8cf2d96d0d481c05ccdd58d68bc023a7a9.png";
-
-/** Bundled URLs from public/ (build uses copyPublicDir: false). */
-const ringImageUrls = import.meta.glob<string>(
-  "../../../public/Rings/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
-  { eager: true, import: "default" }
-);
-
-/** Fixed order: filename in public/Rings → display name */
-const RING_CATALOG: { file: string; name: string }[] = [
-  { file: "IMG_5298.jpg", name: "The Aurelia Trinity Ring" },
-  { file: "IMG_5299.jpg", name: "The Verona Duality Ring" },
-  { file: "IMG_5302.jpg", name: "The Celestia Harmony Ring" },
-  { file: "Women_ring.png", name: "Rosé Embrace Ring" },
-];
-
-function getRingItems(): { name: string; price: number; image: string }[] {
-  const urlByFile = new Map<string, string>();
-  for (const [path, url] of Object.entries(ringImageUrls)) {
-    const file = path.split("/").pop() ?? "";
-    urlByFile.set(file, url);
-  }
-  const basePrice = 98500;
-  const priceStep = 15000;
-  return RING_CATALOG.flatMap(({ file, name }, i) => {
-    const image = urlByFile.get(file);
-    if (!image) return [];
-    return [{ name, price: basePrice + i * priceStep, image }];
-  });
-}
-
-const categories = [
-  {
-    title: "Rings",
-    description: "Bands and solitaires crafted for a lifetime",
-    items: getRingItems(),
-  },
-  {
-    title: "Pendant Necklaces",
-    description: "Delicate chains with meaningful centrepieces",
-    items: [
-      { name: "Solitaire Pendant", price: 72000, image: img4 },
-      { name: "Tennis Pendant", price: 195000, image: img5 },
-      { name: "Vintage Locket", price: 126000, image: img6 },
-    ],
-  },
-  {
-    title: "Tennis Bracelets",
-    description: "Continuous brilliance for the wrist",
-    items: [
-      { name: "Classic Tennis", price: 245000, image: img7 },
-      { name: "Eternity Half-Bracelet", price: 168000, image: img8 },
-      { name: "Delicate Line Bracelet", price: 89000, image: img9 },
-    ],
-  },
-];
-
-function formatPrice(price: number) {
-  return new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    maximumFractionDigits: 0,
-  }).format(price);
-}
+const BIANCA_INSTAGRAM_URL =
+  "https://www.instagram.com/bianca.diamonds?igsh=M3didm9lb2pidXBi";
 
 export default function FineJewelleryPage() {
   return (
-    <div className="min-h-screen bg-[#fffbeb]">
-      {/* Hero */}
-      <section
-        className="relative flex flex-col items-center justify-center px-8 py-24 text-center"
-        style={{ backgroundColor: "#1d3c34" }}
+    <div className="min-h-screen bg-[#0f1f1b]">
+      {/* Hero — editorial */}
+      <header
+        className="relative overflow-hidden border-b border-[#dccb7b]/15"
+        style={{
+          background:
+            "linear-gradient(165deg, #1d3c34 0%, #152e28 45%, #1a332e 100%)",
+        }}
       >
-        <Link
-          to="/"
-          className="absolute left-8 top-8 font-['Times_New_Roman',serif] text-sm tracking-[1.5px] uppercase transition-opacity hover:opacity-80"
-          style={{ color: "#f9f9f9" }}
-        >
-          ← The House
-        </Link>
         <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: `radial-gradient(circle at 30% 50%, #dccb7b 0%, transparent 50%)`,
-          }}
+          className="pointer-events-none absolute -left-32 top-0 h-[420px] w-[420px] rounded-full bg-[#dccb7b]/[0.06] blur-3xl"
+          aria-hidden
         />
-        <h1
-          className="relative z-10 mb-4 font-['Times_New_Roman',serif] text-4xl tracking-[2px] md:text-5xl"
-          style={{ color: "#dccb7b" }}
-        >
-          Fine Jewellery
-        </h1>
-        <p
-          className="relative z-10 max-w-xl font-['Arial',sans-serif] text-lg leading-relaxed"
-          style={{ color: "#f9f9f9" }}
-        >
-          100% Certified Lab Grown Diamonds · BIS Hallmarked Gold
-        </p>
-      </section>
+        <div
+          className="pointer-events-none absolute -right-20 bottom-0 h-[320px] w-[320px] rounded-full bg-[#dccb7b]/[0.04] blur-3xl"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#dccb7b]/40 to-transparent"
+          aria-hidden
+        />
 
-      {/* Categories */}
-      <main className="mx-auto max-w-7xl px-6 py-16">
-        {categories.map((category, idx) => (
-          <section key={category.title} className="mb-24">
-            <div className="mb-12 border-b border-[#1d3c34]/20 pb-6">
-              <h2
-                className="font-['Times_New_Roman',serif] text-3xl tracking-[1.5px]"
-                style={{ color: "#1d3c34" }}
-              >
-                {category.title}
-              </h2>
-              <p
-                className="mt-2 font-['Arial',sans-serif] text-base"
-                style={{ color: "#5a6b66" }}
-              >
-                {category.description}
-              </p>
-            </div>
+        <div className="relative mx-auto max-w-4xl px-8 pb-20 pt-28 text-center md:pb-24 md:pt-32">
+          <Link
+            to="/"
+            className="absolute left-8 top-8 font-['Times_New_Roman',serif] text-xs tracking-[0.35em] uppercase text-[#f9f9f9]/80 transition-opacity hover:text-[#dccb7b]"
+          >
+            ← The House
+          </Link>
 
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {category.items.map((item) => (
-                <article
-                  key={item.name}
-                  className="group overflow-hidden rounded-lg bg-white shadow-[0_4px_24px_rgba(29,60,52,0.08)] transition-all duration-300 hover:shadow-[0_12px_40px_rgba(29,60,52,0.12)]"
-                >
-                  <div className="aspect-square overflow-hidden bg-[#f8f7f4]">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="border-t border-[#1d3c34]/10 px-6 py-5">
-                    <h3
-                      className="font-['Times_New_Roman',serif] text-lg tracking-[1px]"
-                      style={{ color: "#1d3c34" }}
-                    >
-                      {item.name}
-                    </h3>
-                    <p
-                      className="mt-2 font-['Arial',sans-serif] text-xl font-medium"
-                      style={{ color: "#dccb7b" }}
-                    >
-                      {formatPrice(item.price)}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-        ))}
-      </main>
+          <p className="mb-5 font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.45em] text-[#dccb7b]/90 md:text-[11px]">
+            Bianca Diamonds
+          </p>
+          <h1 className="mb-5 font-['Times_New_Roman',serif] text-[clamp(2rem,5vw,3.25rem)] font-normal leading-tight tracking-[0.08em] text-[#f9f9f9]">
+            Fine Jewellery
+          </h1>
+          <p className="mx-auto max-w-md font-['Arial',sans-serif] text-sm leading-relaxed text-[#f9f9f9]/75 md:text-[15px]">
+            Discover campaigns, craftsmanship, and new pieces — told through
+            our reels and stories on Instagram.
+          </p>
+          <a
+            href={BIANCA_INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-10 inline-flex items-center gap-2 border border-[#dccb7b]/40 bg-[#dccb7b]/5 px-6 py-2.5 font-['Arial',sans-serif] text-xs uppercase tracking-[0.2em] text-[#dccb7b] transition-colors hover:border-[#dccb7b]/70 hover:bg-[#dccb7b]/10"
+          >
+            <Instagram className="size-4 shrink-0 opacity-90" aria-hidden />
+            @bianca.diamonds
+          </a>
+        </div>
+      </header>
 
-      {/* Footer CTA */}
-      <section
-        className="px-8 py-16 text-center"
+      <InstagramFeedSection profileUrl={BIANCA_INSTAGRAM_URL} />
+
+      <footer
+        className="border-t border-[#dccb7b]/10 px-8 py-12 text-center"
         style={{ backgroundColor: "#1d3c34" }}
       >
-        <p
-          className="mb-6 font-['Arial',sans-serif] text-base"
-          style={{ color: "#f9f9f9" }}
-        >
-          Explore our full collection or book a consultation.
+        <p className="mb-6 font-['Arial',sans-serif] text-sm text-[#f9f9f9]/70">
+          Return to the house or follow the atelier online.
         </p>
-        <Link
-          to="/"
-          className="inline-block border border-[#dccb7b] px-8 py-3 font-['Times_New_Roman',serif] text-sm tracking-[2px] uppercase transition-colors hover:bg-[#dccb7b] hover:text-[#1d3c34]"
-          style={{ color: "#dccb7b" }}
-        >
-          Return Home
-        </Link>
-      </section>
+        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
+          <a
+            href={BIANCA_INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-['Arial',sans-serif] text-sm tracking-wide text-[#dccb7b] transition-opacity hover:opacity-90"
+          >
+            <Instagram className="size-5 shrink-0" aria-hidden />
+            Instagram
+          </a>
+          <span className="hidden text-[#dccb7b]/30 sm:inline" aria-hidden>
+            |
+          </span>
+          <Link
+            to="/"
+            className="inline-block border border-[#dccb7b]/50 px-8 py-2.5 font-['Times_New_Roman',serif] text-xs tracking-[0.25em] uppercase text-[#dccb7b] transition-colors hover:bg-[#dccb7b] hover:text-[#1d3c34]"
+          >
+            Return Home
+          </Link>
+        </div>
+      </footer>
     </div>
   );
 }
