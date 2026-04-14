@@ -4,7 +4,7 @@ import MacBookPro from "../../imports/MacBookPro141-2-335";
 
 const DESIGN_W = 1512;
 /** Scaled artboard height (design px at 1512 width) */
-const DESIGN_H = 5280;
+const DESIGN_H = 4860;
 
 function useDesignScale() {
   const [scale, setScale] = useState(1);
