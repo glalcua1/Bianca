@@ -26,7 +26,7 @@ function Group3() {
           <img alt="" className="absolute h-[185.39%] left-[-23.1%] max-w-none top-0 w-[140.41%]" src={imgGeminiGeneratedImageM82201M82201M8221} />
         </div>
       </div>
-      <div className="-translate-y-1/2 absolute flex flex-col font-['Tiro_Bangla:Regular',sans-serif] h-[109px] justify-center leading-[0] left-[174px] not-italic text-[#1d3c34] text-[40px] top-[651.5px] tracking-[1.5px] uppercase w-[508px]">
+      <div className="-translate-y-1/2 absolute flex flex-col font-['SangBleuOGSans-Light',sans-serif] h-[109px] justify-center leading-[0] left-[174px] not-italic text-[#1d3c34] text-[40px] top-[651.5px] tracking-[1.5px] uppercase w-[508px]">
         <p className="leading-[normal]">Modern Sparkle. Timeless Impact.</p>
       </div>
       <div className="-translate-y-1/2 absolute capitalize flex flex-col font-['Tiro_Bangla:Regular',sans-serif] h-[49px] justify-center leading-[0] left-[174px] not-italic text-[24px] text-black top-[743.5px] tracking-[1.5px] w-[564px]">
@@ -632,7 +632,7 @@ function Frame4() {
   return (
     <div className="absolute content-stretch flex gap-[85px] items-end left-[307px] top-[1154px]">
       <ClipPathGroup3 />
-      <div className="flex flex-col font-['Tiro_Bangla:Regular',sans-serif] h-[420px] justify-center leading-[normal] not-italic relative shrink-0 text-[#1d3c34] text-[27px] tracking-[1.5px] w-[471px] whitespace-pre-wrap">
+      <div className="flex flex-col font-['SangBleuOGSans-Light',sans-serif] h-[420px] justify-center leading-[normal] not-italic relative shrink-0 text-[#1d3c34] text-[27px] tracking-[1.5px] w-[471px] whitespace-pre-wrap">
         <p className="mb-0">She didn’t wait for a milestone.</p>
         <p className="mb-0">She made one.</p>
         <p className="mb-0">&nbsp;</p>
@@ -931,7 +931,7 @@ function Heading3Margin2() {
 function Container10() {
   return (
     <div className="absolute content-stretch flex flex-col items-center left-0 max-w-[350px] opacity-80 pl-[1.46px] pr-[1.47px] top-[-0.56px]" data-name="Container">
-      <div className="flex flex-col font-['Arial:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#383838] text-[14.6px] text-center tracking-[0.3px] w-[349px]">
+      <div className="flex flex-col font-['SangBleuOGSans-Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#383838] text-[14.6px] text-center tracking-[0.3px] w-[349px]">
         <p className="leading-[22.95px]">Explore timeless diamonds created to honor the beauty, promise, and joy of your wedding journey.</p>
       </div>
     </div>
@@ -2062,26 +2062,30 @@ export default function MacBookPro() {
         </div>
       </div>
       <Frame5 />
-      <div className="-translate-y-1/2 absolute z-[5] flex flex-col font-['ABeeZee:Regular',sans-serif] h-[503px] justify-center leading-[0] left-[515px] not-italic text-[#dccb7b] text-[16px] top-[4077.5px] tracking-[0.5px] w-[633px] whitespace-pre-wrap">
-        <p className="font-['Arial:Regular',sans-serif] leading-[normal] mb-0 text-[#fffbeb]">Jewellery has always held a special place in the way a woman expresses herself. A thoughtfully chosen piece can elevate not only how she looks, but how she feels — confident, graceful, and unmistakably herself.</p>
+      <div className="-translate-y-1/2 absolute z-[5] flex flex-col font-['SangBleuOGSans-Light',sans-serif] h-[503px] justify-center leading-[0] left-[515px] not-italic text-[#dccb7b] text-[16px] top-[4077.5px] tracking-[0.5px] w-[633px] whitespace-pre-wrap">
+        <p className="leading-[normal] mb-0 text-[#fffbeb]">Jewellery has always held a special place in the way a woman expresses herself. A thoughtfully chosen piece can elevate not only how she looks, but how she feels — confident, graceful, and unmistakably herself.</p>
         <p className="leading-[normal] mb-0">&nbsp;</p>
-        <p className="font-['Arial:Regular',sans-serif] leading-[normal] mb-0 text-[#fffbeb]">My journey began with a deep interest in fashion styling and personal jewellery curation, where I worked closely with clients to create pieces that reflected their individuality and sense of elegance. Over time, this passion evolved into a vision: to create a brand that celebrates beauty while embracing the changing values of our time.</p>
+        <p className="leading-[normal] mb-0 text-[#fffbeb]">My journey began with a deep interest in fashion styling and personal jewellery curation, where I worked closely with clients to create pieces that reflected their individuality and sense of elegance. Over time, this passion evolved into a vision: to create a brand that celebrates beauty while embracing the changing values of our time.</p>
         <p className="leading-[normal] mb-0">&nbsp;</p>
         <p className="mb-0">
-          <span className="font-['Arial:Regular',sans-serif] leading-[normal]">{`This vision became `}</span>
-          <span className="font-['Arial:Bold',sans-serif] leading-[normal]">Bianca Diamonds</span>
-          <span className="font-['Arial:Regular',sans-serif] leading-[normal]">.</span>
+          <span className="leading-[normal]">{`This vision became `}</span>
+          <span className="font-['SangBleuOGSans-Regular',sans-serif] leading-[normal]">Bianca Diamonds</span>
+          <span className="leading-[normal]">.</span>
         </p>
         <p className="leading-[normal] mb-0">&nbsp;</p>
-        <p className="font-['Arial:Regular',sans-serif] leading-[normal] mb-0 text-[#fffbeb]">At Bianca, we believe that luxury should evolve with the modern woman — intelligent, conscious, and confident in her choices. Through certified lab-grown diamonds, we bring the same extraordinary brilliance of traditional diamonds while embracing a more responsible and forward-looking approach to fine jewellery.</p>
+        <p className="leading-[normal] mb-0 text-[#fffbeb]">At Bianca, we believe that luxury should evolve with the modern woman — intelligent, conscious, and confident in her choices. Through certified lab-grown diamonds, we bring the same extraordinary brilliance of traditional diamonds while embracing a more responsible and forward-looking approach to fine jewellery.</p>
         <p className="leading-[normal] mb-0">&nbsp;</p>
-        <p className="font-['Arial:Regular',sans-serif] leading-[normal] mb-0">Our goal is to create pieces that women can wear not just for occasions, but as an expression of their identity and style. Bianca is more than jewellery.</p>
-        <p className="font-['Arial:Regular',sans-serif] leading-[normal] mb-0">
+        <p className="leading-[normal] mb-0">Our goal is to create pieces that women can wear not just for occasions, but as an expression of their identity and style. Bianca is more than jewellery.</p>
+        <p className="leading-[normal] mb-0">
           <br aria-hidden="true" />
           {` It is modern brilliance, thoughtfully chosen.`}
         </p>
         <p className="leading-[normal] mb-0">&nbsp;</p>
-        <p className="font-['Arial:Regular',sans-serif] leading-[normal] text-[#fffbeb]"><span className="font-bold">Shweta Lal</span><br aria-hidden="true" />Founder, Bianca Diamonds</p>
+        <p className="leading-[normal] text-[#fffbeb]">
+          <span className="font-['SangBleuOGSans-Regular',sans-serif]">Shweta Lal</span>
+          <br aria-hidden="true" />
+          Founder, Bianca Diamonds
+        </p>
       </div>
       <div className="absolute z-[1] h-[236px] left-[202px] rounded-[10px] top-[3916px] w-[229px]">
         <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[10px]">
@@ -2092,19 +2096,19 @@ export default function MacBookPro() {
       <div className="-translate-y-1/2 absolute z-[3] flex flex-col font-['Times_New_Roman:Regular',sans-serif] justify-center leading-[0] left-[calc(50%-637px)] not-italic text-[#1d3c34] text-[33.2px] top-[2692px] tracking-[-0.1px] whitespace-nowrap">
         <p className="leading-[47.94px]">Bianca Diamonds</p>
       </div>
-      <div className="-translate-y-1/2 absolute z-[3] flex flex-col font-['Times_New_Roman:Regular',sans-serif] h-[440px] justify-center leading-[0] left-[calc(50%-143px)] not-italic text-[#1d3c34] text-[24px] top-[2953px] w-[684px]">
+      <div className="-translate-y-1/2 absolute z-[3] flex flex-col font-['SangBleuOGSans-Light',sans-serif] h-[440px] justify-center leading-[0] left-[calc(50%-143px)] not-italic text-[#1d3c34] text-[24px] top-[2953px] w-[684px]">
         <p className="mb-[20px]">
-          <span className="font-['Times_New_Roman:Bold',sans-serif] leading-[30px] not-italic">Bianca Diamonds represents a new era of diamond luxury</span>
+          <span className="font-['SangBleuOGSans-Regular',sans-serif] leading-[30px] not-italic">Bianca Diamonds represents a new era of diamond luxury</span>
           <span className="leading-[30px]">.</span>
         </p>
         <p className="mb-[20px]">
           <span className="leading-[30px]">{`Created for the modern woman, Bianca brings together timeless elegance and conscious innovation through `}</span>
-          <span className="font-['Times_New_Roman:Bold',sans-serif] leading-[30px] not-italic">{`certified lab-grown diamonds `}</span>
+          <span className="font-['SangBleuOGSans-Regular',sans-serif] leading-[30px] not-italic">{`certified lab-grown diamonds `}</span>
           <span className="leading-[30px]">— real diamonds with the same brilliance and beauty as mined diamonds, created using advanced technology with a more thoughtful impact on the world.</span>
         </p>
         <p className="mb-[20px]">
           <span className="leading-[30px]">{`Each piece is crafted in `}</span>
-          <span className="font-['Times_New_Roman:Bold',sans-serif] leading-[30px] not-italic">BIS hallmarked gold</span>
+          <span className="font-['SangBleuOGSans-Regular',sans-serif] leading-[30px] not-italic">BIS hallmarked gold</span>
           <span className="leading-[30px]">{` and certified diamonds, designed to celebrate both everyday elegance and life’s most meaningful moments.`}</span>
         </p>
         <p className="leading-[30px] mb-[20px]">Behind Bianca stands over 80 years of family jewellery expertise, built on trust, craftsmanship, and a deep understanding of diamonds.</p>

@@ -3,6 +3,23 @@
 /* ABeeZee     – regular (wght 400) + italic */
 @import url('https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&family=ABeeZee:ital@0;1&display=swap');
 
+/* SangBleu OG Sans — local (public/Fonts/) */
+@font-face {
+  font-family: 'SangBleuOGSans-Light';
+  src: url('/Fonts/SangBleuOGSans-Light.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SangBleuOGSans-Regular';
+  src: url('/Fonts/SangBleuOGSans-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ── System font declarations ─────────────────────────────────────────────── */
 /* Explicitly declare Times New Roman and Arial as local system fonts so the
    publish validator knows these are intentional system-font references and
