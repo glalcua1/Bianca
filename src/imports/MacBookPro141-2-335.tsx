@@ -806,7 +806,7 @@ function Heading3Margin1() {
 function Container6() {
   return (
     <div className="absolute content-stretch flex flex-col items-center left-0 max-w-[350px] opacity-80 pl-[7.04px] pr-[7.03px] top-[-0.56px]" data-name="Container">
-      <div className="flex flex-col font-['Arial:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#383838] text-[14.6px] text-center tracking-[0.3px] w-[350px]">
+      <div className="flex flex-col font-['SangBleuOGSans-Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#383838] text-[14.6px] text-center tracking-[0.3px] w-[350px]">
         <p className="leading-[22.95px]">Explore statement diamonds crafted to elevate life’s most memorable celebrations with brilliance, beauty, and presence.</p>
       </div>
     </div>

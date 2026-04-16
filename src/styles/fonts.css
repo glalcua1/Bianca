@@ -6,7 +6,7 @@
 /* SangBleu OG Sans — local (public/Fonts/) */
 @font-face {
   font-family: 'SangBleuOGSans-Light';
-  src: url('/Fonts/SangBleuOGSans-Light.otf') format('opentype');
+  src: url('../assets/fonts/SangBleuOGSans-Light.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -14,7 +14,7 @@
 
 @font-face {
   font-family: 'SangBleuOGSans-Regular';
-  src: url('/Fonts/SangBleuOGSans-Regular.otf') format('opentype');
+  src: url('../assets/fonts/SangBleuOGSans-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
