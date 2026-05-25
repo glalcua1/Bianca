@@ -19,7 +19,7 @@ export default function CannesShowcase2026Page() {
   return (
     <main ref={pageRef} className="bg-[#faf8f5]">
       <div className="bg-[#1d3c34]">
-        <SiteNav activeItem="fine-jewellery" />
+        <SiteNav activeItem="cannes-collection" />
       </div>
       <CannesEditorialStory />
       <CannesJewelleryGallery />

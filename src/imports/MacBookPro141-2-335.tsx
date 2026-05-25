@@ -1081,24 +1081,31 @@ function Item1() {
   );
 }
 
-function LinkEngagementAndBridal() {
+function LinkCannesCollection() {
+  const activeItem = useNavActiveItem();
+  const isActive = activeItem === "cannes-collection";
+
   return (
-    <div className="h-full relative shrink-0" data-name="Link - Engagement and Bridal">
+    <Link
+      to="/fine-jewellery/cannes-2026"
+      className="h-full relative shrink-0 block"
+      data-name="Link - Cannes Collection"
+    >
       <div className="flex flex-col items-center size-full">
         <div className="content-stretch flex flex-col h-full items-center px-[20px] py-[5px] relative">
-          <div className="flex flex-col font-['Times_New_Roman:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#f9f9f9] text-[16px] text-center tracking-[1.5px] uppercase whitespace-nowrap">
-            <p className="leading-[normal]">Engagement and Bridal</p>
+          <div className={`flex flex-col font-['Times_New_Roman:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#f9f9f9] text-[16px] text-center tracking-[1.5px] uppercase whitespace-nowrap ${isActive ? "font-bold" : ""}`}>
+            <p className="leading-[normal]">Cannes Collection</p>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
 function Item2() {
   return (
     <div className="content-stretch flex h-full items-start mr-[-0.2px] relative shrink-0" data-name="Item">
-      <LinkEngagementAndBridal />
+      <LinkCannesCollection />
     </div>
   );
 }
