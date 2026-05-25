@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import svgPaths from "./svg-w8us36f4bi";
 import imgGeminiGeneratedImageM82201M82201M8221 from "figma:asset/db8ce4b6ba67f77b645c64a3e2fd3fcd1b7f2395.png";
 import imgHorizontalDivider from "figma:asset/8e308339b92f4428d34abe5c3dd0e7df843e4026.png";
@@ -13,6 +14,7 @@ import imgImage1 from "figma:asset/ffad195494173b3c37c4aa05d64af9f2620a7643.png"
 // imgRectangle8 / imgRectangle10 were only used for ring-mark sprite masks – replaced by RingMark
 import { imgRectangle, imgRectangle1, imgGroup, imgRectangle3, imgRectangle4, imgRectangle7, imgGroup1, imgRectangle9, imgGroup2 } from "./svg-nywou";
 import { Link } from "react-router";
+import { useNavActiveItem } from "../app/context/NavActiveContext";
 import Group6Logo from "./Group6";
 import { RingMark } from "./RingMark";
 import Hw25PromoBridal2H2JpgVideo from "./Hw25PromoBridal2H2Jpg";
@@ -761,10 +763,10 @@ function Container1() {
 
 function LinkBlock() {
   return (
-    <div className="absolute content-stretch flex flex-col gap-[40px] items-start left-[58px] right-[1010.67px] top-[1824px]" data-name="Link">
+    <Link to="/fine-jewellery#collections" className="absolute content-stretch flex flex-col gap-[40px] items-start left-[58px] right-[1010.67px] top-[1824px]" data-name="Link">
       <Container />
       <Container1 />
-    </div>
+    </Link>
   );
 }
 
@@ -877,10 +879,10 @@ function Container5() {
 
 function Link1() {
   return (
-    <div className="absolute content-stretch flex flex-col gap-[40px] items-start left-[516.33px] right-[552.33px] top-[1824px]" data-name="Link">
+    <Link to="/fine-jewellery#collections" className="absolute content-stretch flex flex-col gap-[40px] items-start left-[516.33px] right-[552.33px] top-[1824px]" data-name="Link">
       <Container4 />
       <Container5 />
-    </div>
+    </Link>
   );
 }
 
@@ -1002,10 +1004,10 @@ function Container9() {
 
 function Link2() {
   return (
-    <div className="absolute content-stretch flex flex-col gap-[40px] items-start left-[974.67px] right-[94px] top-[1824px]" data-name="Link">
+    <Link to="/fine-jewellery#collections" className="absolute content-stretch flex flex-col gap-[40px] items-start left-[974.67px] right-[94px] top-[1824px]" data-name="Link">
       <Container8 />
       <Container9 />
-    </div>
+    </Link>
   );
 }
 
@@ -1030,16 +1032,19 @@ function Container12() {
 }
 
 function LinkTheHouse() {
+  const activeItem = useNavActiveItem();
+  const isActive = activeItem === "the-house";
+
   return (
-    <div className="h-full relative shrink-0" data-name="Link - The House">
+    <Link to="/" className="h-full relative shrink-0 block" data-name="Link - The House">
       <div className="flex flex-col items-center size-full">
         <div className="content-stretch flex flex-col h-full items-center px-[20px] py-[5px] relative">
-          <div className="flex flex-col font-['Times_New_Roman:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-center text-white tracking-[1.5px] uppercase whitespace-nowrap">
+          <div className={`flex flex-col font-['Times_New_Roman:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-center text-white tracking-[1.5px] uppercase whitespace-nowrap ${isActive ? "font-bold" : ""}`}>
             <p className="leading-[normal]">The House</p>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -1052,11 +1057,14 @@ function Item() {
 }
 
 function LinkFineJewelry() {
+  const activeItem = useNavActiveItem();
+  const isActive = activeItem === "fine-jewellery";
+
   return (
     <Link to="/fine-jewellery" className="h-full relative shrink-0 block" data-name="Link - Fine Jewelry">
       <div className="flex flex-col items-center size-full">
         <div className="content-stretch flex flex-col h-full items-center px-[20px] py-[5px] relative">
-          <div className="flex flex-col font-['Times_New_Roman:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#f9f9f9] text-[16px] text-center tracking-[1.5px] uppercase whitespace-nowrap">
+          <div className={`flex flex-col font-['Times_New_Roman:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#f9f9f9] text-[16px] text-center tracking-[1.5px] uppercase whitespace-nowrap ${isActive ? "font-bold" : ""}`}>
             <p className="leading-[normal]">Fine Jewelry</p>
           </div>
         </div>
@@ -2037,6 +2045,16 @@ function Group52() {
       <Group53 />
       <Frame />
       <Frame3 />
+    </div>
+  );
+}
+
+/** Logo + nav chrome from the homepage Figma artboard (1512px design width). */
+export function HomepageHeaderChrome() {
+  return (
+    <div className="relative bg-[#1d3c34]" style={{ width: 1512, height: 130 }}>
+      <Frame3 />
+      <Group53 />
     </div>
   );
 }

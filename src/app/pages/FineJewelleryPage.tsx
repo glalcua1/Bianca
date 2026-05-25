@@ -1,63 +1,173 @@
+import { useEffect } from "react";
 import { Link } from "react-router";
 import { Instagram } from "lucide-react";
 import InstagramFeedSection from "../components/InstagramFeedSection";
+import FineJewelleryCollections from "../components/FineJewelleryCollections";
+import SiteNav from "../components/SiteNav";
+import FineJewelleryHero from "../components/FineJewelleryHero";
+import {
+  FINE_JEWELLERY_CATEGORIES,
+  SHOWCASE_PIECES,
+} from "../data/fineJewelleryCollections";
 
 const BIANCA_INSTAGRAM_URL =
   "https://www.instagram.com/bianca.diamonds?igsh=M3didm9lb2pidXBi";
 
+const CRAFT_VALUES = [
+  {
+    title: "IGI Certified",
+    description:
+      "Every stone is independently graded for cut, colour, clarity, and carat weight.",
+  },
+  {
+    title: "Lab-Grown Brilliance",
+    description:
+      "The same optical and physical properties as mined diamonds — with a lighter footprint.",
+  },
+  {
+    title: "Bespoke Design",
+    description:
+      "Personal fittings, custom creations, and styling guidance from our atelier team.",
+  },
+];
+
 export default function FineJewelleryPage() {
+  useEffect(() => {
+    document.title = "Fine Jewellery | Bianca Diamonds";
+    return () => {
+      document.title = "Bianca Diamonds | Lab-Grown Diamond Fine Jewellery";
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen bg-[#0f1f1b]">
-      {/* Hero — editorial */}
-      <header
-        className="relative overflow-hidden border-b border-[#dccb7b]/15"
-        style={{
-          background:
-            "linear-gradient(165deg, #1d3c34 0%, #152e28 45%, #1a332e 100%)",
-        }}
+    <div className="min-h-screen bg-[#faf8f5]">
+      <div className="bg-[#1d3c34]">
+        <SiteNav activeItem="fine-jewellery" />
+        <FineJewelleryHero />
+      </div>
+
+      <section
+        aria-labelledby="intro-heading"
+        className="border-b border-[#1d3c34]/10 bg-[#f4f0e6] px-6 py-14 md:px-10 md:py-20"
       >
-        <div
-          className="pointer-events-none absolute -left-32 top-0 h-[420px] w-[420px] rounded-full bg-[#dccb7b]/[0.06] blur-3xl"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute -right-20 bottom-0 h-[320px] w-[320px] rounded-full bg-[#dccb7b]/[0.04] blur-3xl"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#dccb7b]/40 to-transparent"
-          aria-hidden
-        />
-
-        <div className="relative mx-auto max-w-4xl px-8 pb-20 pt-28 text-center md:pb-24 md:pt-32">
-          <Link
-            to="/"
-            className="absolute left-8 top-8 font-['Times_New_Roman',serif] text-xs tracking-[0.35em] uppercase text-[#f9f9f9]/80 transition-opacity hover:text-[#dccb7b]"
-          >
-            ← The House
-          </Link>
-
-          <p className="mb-5 font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.45em] text-[#dccb7b]/90 md:text-[11px]">
-            Bianca Diamonds
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 id="intro-heading" className="sr-only">
+            About Bianca fine jewellery
+          </h2>
+          <p className="font-['Times_New_Roman',serif] text-[clamp(1.25rem,3vw,1.65rem)] leading-snug tracking-[0.04em] text-[#1d3c34]">
+            A new era of fine jewellery — certified brilliance, transparent
+            pricing, and handcrafted designs for every moment.
           </p>
-          <h1 className="mb-5 font-['Times_New_Roman',serif] text-[clamp(2rem,5vw,3.25rem)] font-normal leading-tight tracking-[0.08em] text-[#f9f9f9]">
-            Fine Jewellery
-          </h1>
-          <p className="mx-auto max-w-md font-['Arial',sans-serif] text-sm leading-relaxed text-[#f9f9f9]/75 md:text-[15px]">
-            Discover campaigns, craftsmanship, and new pieces — told through
-            our reels and stories on Instagram.
+          <p className="mt-6 font-['Arial',sans-serif] text-sm leading-[1.75] text-[#5a6b66] md:text-[15px]">
+            From solitaire pendants and tennis bracelets to engagement rings and
+            wedding bands, each piece is responsibly sourced and made to suit
+            the rhythm of your life. Explore our collections below, or connect
+            with us for a personalised fitting and custom design.
           </p>
-          <a
-            href={BIANCA_INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-10 inline-flex items-center gap-2 border border-[#dccb7b]/40 bg-[#dccb7b]/5 px-6 py-2.5 font-['Arial',sans-serif] text-xs uppercase tracking-[0.2em] text-[#dccb7b] transition-colors hover:border-[#dccb7b]/70 hover:bg-[#dccb7b]/10"
-          >
-            <Instagram className="size-4 shrink-0 opacity-90" aria-hidden />
-            @bianca.diamonds
-          </a>
         </div>
-      </header>
+      </section>
+
+      <FineJewelleryCollections />
+
+      <section
+        id="categories"
+        aria-labelledby="categories-heading"
+        className="border-t border-[#1d3c34]/10 bg-[#1d3c34] px-6 py-16 md:px-10 md:py-24"
+      >
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 text-center md:mb-16">
+            <p className="mb-4 font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.5em] text-[#dccb7b]/80 md:text-[11px]">
+              Shop by category
+            </p>
+            <h2
+              id="categories-heading"
+              className="font-['Times_New_Roman',serif] text-[clamp(1.75rem,4vw,2.75rem)] tracking-[0.08em] text-[#f9f9f9]"
+            >
+              Every Form of Brilliance
+            </h2>
+          </div>
+
+          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
+            {FINE_JEWELLERY_CATEGORIES.map((category) => (
+              <li
+                key={category.title}
+                className="group border border-[#dccb7b]/20 bg-[#dccb7b]/[0.04] p-6 transition duration-300 hover:border-[#dccb7b]/45 hover:bg-[#dccb7b]/[0.08] md:p-7"
+              >
+                <h3 className="font-['Times_New_Roman',serif] text-lg tracking-[0.06em] text-[#f9f9f9]">
+                  {category.title}
+                </h3>
+                <p className="mt-3 font-['Arial',sans-serif] text-sm leading-relaxed text-[#f9f9f9]/65">
+                  {category.description}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section
+        id="showcase"
+        aria-labelledby="showcase-heading"
+        className="border-t border-[#1d3c34]/10 bg-[#faf8f5] px-6 py-16 md:px-10 md:py-24"
+      >
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 text-center md:mb-16">
+            <p className="mb-4 font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.5em] text-[#766d42] md:text-[11px]">
+              From the atelier
+            </p>
+            <h2
+              id="showcase-heading"
+              className="font-['Times_New_Roman',serif] text-[clamp(1.75rem,4vw,2.75rem)] tracking-[0.08em] text-[#1d3c34]"
+            >
+              Selected Pieces
+            </h2>
+          </div>
+
+          <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5 lg:gap-6">
+            {SHOWCASE_PIECES.map((piece, index) => (
+              <li
+                key={piece.src}
+                className={index === 0 ? "col-span-2 row-span-2 md:col-span-1 md:row-span-1" : ""}
+              >
+                <div className="relative aspect-[4/5] overflow-hidden bg-[#f4f0e6] ring-1 ring-[#1d3c34]/10 md:aspect-square">
+                  <img
+                    src={piece.src}
+                    alt={piece.alt}
+                    className="size-full object-cover transition duration-700 hover:scale-[1.03]"
+                    loading="lazy"
+                  />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="craft-heading"
+        className="border-t border-[#1d3c34]/10 bg-[#f4f0e6] px-6 py-16 md:px-10 md:py-20"
+      >
+        <div className="mx-auto max-w-5xl">
+          <h2
+            id="craft-heading"
+            className="mb-12 text-center font-['Times_New_Roman',serif] text-[clamp(1.5rem,3.5vw,2.25rem)] tracking-[0.08em] text-[#1d3c34] md:mb-14"
+          >
+            The Bianca Promise
+          </h2>
+          <ul className="grid gap-10 md:grid-cols-3 md:gap-8">
+            {CRAFT_VALUES.map((value) => (
+              <li key={value.title} className="text-center">
+                <h3 className="font-['Times_New_Roman',serif] text-xl tracking-[0.06em] text-[#1d3c34]">
+                  {value.title}
+                </h3>
+                <p className="mx-auto mt-3 max-w-xs font-['Arial',sans-serif] text-sm leading-relaxed text-[#5a6b66]">
+                  {value.description}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       <InstagramFeedSection profileUrl={BIANCA_INSTAGRAM_URL} />
 

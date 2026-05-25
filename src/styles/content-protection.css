@@ -1,0 +1,17 @@
+.protected-media {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.protected-media__asset {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+@media print {
+  .protected-media,
+  [data-protected-media] {
+    visibility: hidden !important;
+  }
+}
