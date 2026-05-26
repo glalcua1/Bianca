@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router";
 import Group6Logo from "../../imports/Group6";
+import ProtectedImage from "./protection/ProtectedImage";
 
 const DESIGN_W = 1512;
 const CARD_TOP = 93;
@@ -83,9 +84,10 @@ export default function FineJewelleryHero() {
               data-name="Hero portrait frame"
             >
               <div className="absolute inset-0 flex items-end justify-center px-8 pb-6 pt-10">
-                <img
+                <ProtectedImage
+                  wrapperClassName="max-h-full max-w-full"
                   alt="Bianca Diamonds fine jewellery — Cannes Film Festival 2026"
-                  className="pointer-events-none max-h-full max-w-full object-contain"
+                  className="max-h-full max-w-full object-contain"
                   src={CANNES_HERO_IMAGE}
                 />
               </div>

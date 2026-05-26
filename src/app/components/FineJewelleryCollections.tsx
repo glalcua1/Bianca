@@ -1,5 +1,6 @@
 import { ChevronRight } from "lucide-react";
 import { FINE_JEWELLERY_COLLECTIONS } from "../data/fineJewelleryCollections";
+import ProtectedImage from "./protection/ProtectedImage";
 
 export default function FineJewelleryCollections() {
   return (
@@ -29,7 +30,8 @@ export default function FineJewelleryCollections() {
           {FINE_JEWELLERY_COLLECTIONS.map((collection) => (
             <li key={collection.id} className="group flex flex-col">
               <div className="relative aspect-square overflow-hidden bg-[#f4f0e6] ring-1 ring-[#1d3c34]/10 transition duration-500 group-hover:ring-[#dccb7b]/50">
-                <img
+                <ProtectedImage
+                  wrapperClassName="size-full"
                   src={collection.image}
                   alt={collection.imageAlt}
                   className={`size-full transition duration-700 ease-out group-hover:scale-[1.03] ${collection.imageClassName ?? "object-cover"}`}

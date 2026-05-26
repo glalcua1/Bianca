@@ -3,6 +3,7 @@ import path from 'path'
 import fs from 'fs'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+import { consultationApiPlugin } from './server/vite-consultation-api-plugin.js'
 
 /** Public subfolders referenced by URL paths (not figma:asset imports). */
 const PUBLIC_URL_DIRS = ['Cannes', 'Rings', 'Mens'] as const
@@ -41,6 +42,21 @@ function copyPublicUrlDirsPlugin() {
           fs.cpSync(src, dest, { recursive: true })
         }
       }
+
+      // Apache/cPanel SPA fallback for FTP deployments (refresh on deep links).
+      fs.writeFileSync(
+        path.join(outDir, '.htaccess'),
+        `<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !^/api/
+  RewriteRule . /index.html [L]
+</IfModule>
+`,
+      )
     },
   }
 }
@@ -50,6 +66,7 @@ export default defineConfig({
   plugins: [
     figmaAssetPlugin(),
     copyPublicUrlDirsPlugin(),
+    consultationApiPlugin(),
     // The React and Tailwind plugins are both required for Make, even if
     // Tailwind is not being actively used – do not remove them
     react(),

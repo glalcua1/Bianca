@@ -5,6 +5,7 @@ import InstagramFeedSection from "../components/InstagramFeedSection";
 import FineJewelleryCollections from "../components/FineJewelleryCollections";
 import SiteNav from "../components/SiteNav";
 import FineJewelleryHero from "../components/FineJewelleryHero";
+import ProtectedImage from "../components/protection/ProtectedImage";
 import {
   FINE_JEWELLERY_CATEGORIES,
   SHOWCASE_PIECES,
@@ -40,7 +41,7 @@ export default function FineJewelleryPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#faf8f5]">
+    <div className="min-h-screen bg-[#faf8f5]" data-protected-page>
       <div className="bg-[#1d3c34]">
         <SiteNav activeItem="fine-jewellery" />
         <FineJewelleryHero />
@@ -130,7 +131,8 @@ export default function FineJewelleryPage() {
                 className={index === 0 ? "col-span-2 row-span-2 md:col-span-1 md:row-span-1" : ""}
               >
                 <div className="relative aspect-[4/5] overflow-hidden bg-[#f4f0e6] ring-1 ring-[#1d3c34]/10 md:aspect-square">
-                  <img
+                  <ProtectedImage
+                    wrapperClassName="size-full"
                     src={piece.src}
                     alt={piece.alt}
                     className="size-full object-cover transition duration-700 hover:scale-[1.03]"

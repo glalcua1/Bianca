@@ -1,4 +1,6 @@
 import type { ImgHTMLAttributes } from "react";
+import { isAppleMobile } from "../../lib/isAppleMobile";
+import ProtectedCanvasImage from "./ProtectedCanvasImage";
 
 type Props = ImgHTMLAttributes<HTMLImageElement> & {
   wrapperClassName?: string;
@@ -14,6 +16,17 @@ export default function ProtectedImage({
   alt,
   ...props
 }: Props) {
+  if (isAppleMobile()) {
+    return (
+      <ProtectedCanvasImage
+        wrapperClassName={wrapperClassName}
+        className={className}
+        alt={alt}
+        {...props}
+      />
+    );
+  }
+
   return (
     <div
       data-protected-media

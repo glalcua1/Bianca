@@ -1,5 +1,7 @@
 node_modules
 dist
+database/*.db
+database/*.db-*
 bianca-deploy.zip
 ftp-upload
 .env

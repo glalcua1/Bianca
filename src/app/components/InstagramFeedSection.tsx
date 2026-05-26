@@ -1,6 +1,7 @@
 import { useEffect, useId, useState } from "react";
 import { Instagram } from "lucide-react";
 import { INSTAGRAM_EMBED_FALLBACK_URLS } from "../data/instagramEmbedFallbacks";
+import ProtectedImage from "./protection/ProtectedImage";
 
 declare global {
   interface Window {
@@ -145,7 +146,8 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
                     className="group relative block overflow-hidden rounded-sm bg-[#1d3c34]/[0.04] shadow-[0_24px_60px_rgba(29,60,52,0.12)] ring-1 ring-[#1d3c34]/10 transition duration-500 hover:shadow-[0_32px_80px_rgba(29,60,52,0.18)] hover:ring-[#dccb7b]/45"
                   >
                     {thumb ? (
-                      <img
+                      <ProtectedImage
+                        wrapperClassName="w-full"
                         src={thumb}
                         alt=""
                         className="aspect-[4/5] w-full object-cover transition duration-700 ease-out group-hover:scale-[1.04]"

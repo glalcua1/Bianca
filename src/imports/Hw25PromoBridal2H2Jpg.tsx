@@ -1,4 +1,5 @@
 import occasionImage from 'figma:asset/791d0a8cf2d96d0d481c05ccdd58d68bc023a7a9.png';
+import ProtectedImage from "../app/components/protection/ProtectedImage";
 
 export default function Hw25PromoBridal2H2Jpg() {
   return (
@@ -15,7 +16,8 @@ export default function Hw25PromoBridal2H2Jpg() {
         overflow: "hidden",
       }}
     >
-      <img
+      <ProtectedImage
+        wrapperClassName="flex items-center justify-center"
         src={occasionImage}
         alt="Occasion Elegance – diamond rings"
         style={{

@@ -18,6 +18,7 @@ import { useNavActiveItem } from "../app/context/NavActiveContext";
 import Group6Logo from "./Group6";
 import { RingMark } from "./RingMark";
 import Hw25PromoBridal2H2JpgVideo from "./Hw25PromoBridal2H2Jpg";
+import ProtectedImage from "../app/components/protection/ProtectedImage";
 
 function Group3() {
   return (
@@ -25,7 +26,7 @@ function Group3() {
       <div className="absolute bg-gradient-to-r border-[#1d3c34] border-[0.4px] border-solid from-[#edefed] h-[693px] left-[39px] rounded-[20px] to-[90.865%] to-white top-[203px] via-[48.077%] via-white w-[1434px]" />
       <div className="absolute h-[663px] left-[798px] top-[232px] w-[656px]" data-name="Gemini_Generated_Image_m82201m82201m822 1">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img alt="" className="absolute h-[185.39%] left-[-23.1%] max-w-none top-0 w-[140.41%]" src={imgGeminiGeneratedImageM82201M82201M8221} />
+          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[185.39%] left-[-23.1%] max-w-none top-0 w-[140.41%]" src={imgGeminiGeneratedImageM82201M82201M8221} />
         </div>
       </div>
       <div className="-translate-y-1/2 absolute flex flex-col font-['SangBleuOGSans-Light',sans-serif] h-[109px] justify-center leading-[0] left-[174px] not-italic text-[#1d3c34] text-[40px] top-[651.5px] tracking-[1.5px] uppercase w-[508px]">
@@ -53,7 +54,7 @@ function _OldGroup7_UNUSED() {
     <div className="absolute contents inset-[37.93%_72.45%_56.83%_25.41%]" data-name="Group">
       <div className="absolute inset-[37.93%_72.45%_56.83%_25.41%] mask-position-[-210.256px_-63.302px,_0.026px_0.271px]" data-name="Rectangle" style={{ maskImage: `url('${imgRectangle}'), url('${imgRectangle1}')` }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle2} />
+          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle2} />
         </div>
       </div>
     </div>
@@ -551,7 +552,7 @@ function Group47() {
   return (
     <div className="absolute contents left-[456px] top-[1013px]">
       <div className="absolute h-px left-[456px] top-[1020px] w-[644px]" data-name="Horizontal Divider">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgHorizontalDivider} />
+        <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgHorizontalDivider} />
       </div>
       <IconRosetteSvg />
     </div>
@@ -579,7 +580,7 @@ function Group48() {
   return (
     <div className="absolute contents left-[456px] top-[1701px]">
       <div className="absolute h-px left-[456px] top-[1708px] w-[644px]" data-name="Horizontal Divider">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgHorizontalDivider} />
+        <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgHorizontalDivider} />
       </div>
       <IconRosetteSvg1 />
     </div>
@@ -591,7 +592,7 @@ function Group51() {
     <div className="col-1 grid-cols-[max-content] grid-rows-[max-content] inline-grid ml-0 mt-0 place-items-start relative row-1" data-name="Group">
       <div className="col-1 h-[455.46px] mask-position-[0px_35.865px,_0px_35.865px] ml-0 mt-0 relative rounded-[20px] row-1 w-[315.447px]" data-name="Rectangle" style={{ maskImage: `url('${imgRectangle3}'), url('${imgRectangle4}')` }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[20px]">
-          <img alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle5} />
+          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute left-0 max-w-none size-full top-0" src={imgRectangle5} />
         </div>
       </div>
     </div>
@@ -650,7 +651,7 @@ function Frame4() {
 function Hw25PromoBridal2H1Jpg() {
   return (
     <div className="max-w-[443.3299865722656px] relative self-stretch shrink-0 w-[443px]" data-name="hw25_promo_bridal_2h_1.jpg">
-      <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgHw25PromoBridal2H1Jpg} />
+      <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgHw25PromoBridal2H1Jpg} />
     </div>
   );
 }
@@ -890,7 +891,7 @@ function Hw25PromoBridal2H3Jpg() {
   return (
     <div className="max-w-[443.3299865722656px] relative self-stretch shrink-0 w-[443px]" data-name="hw25_promo_bridal_2h_3.jpg">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <img alt="" className="absolute h-[146%] left-0 max-w-none top-[-37.58%] w-full" src={imgHw25PromoBridal2H3Jpg} />
+        <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[146%] left-0 max-w-none top-[-37.58%] w-full" src={imgHw25PromoBridal2H3Jpg} />
       </div>
     </div>
   );
@@ -2114,7 +2115,7 @@ export default function MacBookPro() {
       </div>
       <div className="absolute z-[1] h-[236px] left-[202px] rounded-[10px] top-[3916px] w-[229px]">
         <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[10px]">
-          <img alt="" className="absolute h-[124.34%] left-[2.09%] max-w-none top-[0.06%] w-[96.01%]" src={imgRectangle6} />
+          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[124.34%] left-[2.09%] max-w-none top-[0.06%] w-[96.01%]" src={imgRectangle6} />
         </div>
       </div>
       <Group52 />
@@ -2140,26 +2141,26 @@ export default function MacBookPro() {
         <p className="leading-[30px]">Bianca Diamonds is where modern brilliance meets timeless luxury.</p>
       </div>
       <div className="absolute z-[3] h-[372px] left-[119px] top-[2744px] w-[407px]">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgRectangle11} />
+        <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgRectangle11} />
       </div>
       <div className="absolute z-[3] h-[247px] left-[143px] top-[3236px] w-[231px]" data-name="Gemini_Generated_Image_n42rxan42rxan42r 1">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img alt="" className="absolute h-[118.56%] left-[-20.52%] max-w-none top-[-11.87%] w-[127.01%]" src={imgGeminiGeneratedImageN42Rxan42Rxan42R1} />
+          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[118.56%] left-[-20.52%] max-w-none top-[-11.87%] w-[127.01%]" src={imgGeminiGeneratedImageN42Rxan42Rxan42R1} />
         </div>
       </div>
       <div className="absolute z-[3] h-[127px] left-[369px] top-[3236px] w-[131px]" data-name="Gemini_Generated_Image_n42rxan42rxan42r 3">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img alt="" className="absolute h-[117.77%] left-[-6.44%] max-w-none top-[-12.23%] w-[113.85%]" src={imgGeminiGeneratedImageN42Rxan42Rxan42R3} />
+          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[117.77%] left-[-6.44%] max-w-none top-[-12.23%] w-[113.85%]" src={imgGeminiGeneratedImageN42Rxan42Rxan42R3} />
         </div>
       </div>
       <div className="absolute z-[3] h-[78px] left-[394px] top-[3374px] w-[81px]" data-name="Gemini_Generated_Image_n42rxan42rxan42r 2">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img alt="" className="absolute h-[240.39%] left-[-121.16%] max-w-none top-[-120.11%] w-[232.38%]" src={imgGeminiGeneratedImageN42Rxan42Rxan42R2} />
+          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[240.39%] left-[-121.16%] max-w-none top-[-120.11%] w-[232.38%]" src={imgGeminiGeneratedImageN42Rxan42Rxan42R2} />
         </div>
       </div>
       <div className="absolute z-[3] h-[273px] left-[613px] top-[3236px] w-[427px]" data-name="image 1">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img alt="" className="absolute h-full left-[-13.59%] max-w-none top-0 w-[113.59%]" src={imgImage1} />
+          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-full left-[-13.59%] max-w-none top-0 w-[113.59%]" src={imgImage1} />
         </div>
       </div>
     </div>

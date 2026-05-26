@@ -1,4 +1,5 @@
 import { forwardRef, type ReactNode, type VideoHTMLAttributes } from "react";
+import { isAppleMobile } from "../../lib/isAppleMobile";
 
 type Props = VideoHTMLAttributes<HTMLVideoElement> & {
   wrapperClassName?: string;
@@ -38,6 +39,9 @@ const ProtectedVideo = forwardRef<HTMLVideoElement, Props>(function ProtectedVid
       />
       {controlsOverlay ? (
         <div className="pointer-events-none absolute inset-0 z-20">{controlsOverlay}</div>
+      ) : null}
+      {isAppleMobile() ? (
+        <div className="ios-media-watermark absolute inset-0 z-[21] touch-none" aria-hidden />
       ) : null}
     </div>
   );

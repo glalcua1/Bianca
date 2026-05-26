@@ -47,6 +47,7 @@ export default function HomePage() {
           height: `${scrollH}px`,
           overflow: "hidden",
         }}
+        data-protected-page
         ref={containerRef}
       >
         <div

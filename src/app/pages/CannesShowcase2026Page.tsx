@@ -1,6 +1,4 @@
-import { useRef } from "react";
 import { usePageMeta } from "../hooks/usePageMeta";
-import { useContentProtection } from "../hooks/useContentProtection";
 import SiteNav from "../components/SiteNav";
 import CannesEditorialStory from "../components/cannes/CannesEditorialStory";
 import CannesJewelleryGallery from "../components/cannes/CannesJewelleryGallery";
@@ -13,11 +11,9 @@ import { CANNES_SEO } from "../data/cannesShowcase2026";
 
 export default function CannesShowcase2026Page() {
   usePageMeta(CANNES_SEO.title, CANNES_SEO.description);
-  const pageRef = useRef<HTMLElement>(null);
-  useContentProtection(pageRef);
 
   return (
-    <main ref={pageRef} className="bg-[#faf8f5]">
+    <main className="bg-[#faf8f5]" data-protected-page>
       <div className="bg-[#1d3c34]">
         <SiteNav activeItem="cannes-collection" />
       </div>

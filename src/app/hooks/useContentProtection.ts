@@ -1,41 +1,124 @@
-import { useEffect, type RefObject } from "react";
+import { useEffect, useRef } from "react";
 
-function isProtectedTarget(target: EventTarget | null) {
-  return target instanceof Element && Boolean(target.closest("[data-protected-media]"));
+const MEDIA_SELECTOR =
+  "img, video, picture, canvas, [data-protected-media], [data-protected-media] *";
+
+function isMediaTarget(target: EventTarget | null) {
+  return target instanceof Element && Boolean(target.closest(MEDIA_SELECTOR));
 }
 
-export function useContentProtection(scopeRef: RefObject<HTMLElement | null>) {
+function isMacScreenshotShortcut(event: KeyboardEvent) {
+  if (!event.metaKey || !event.shiftKey) return false;
+  const key = event.key;
+  return key === "3" || key === "4" || key === "5" || key === "Digit3" || key === "Digit4" || key === "Digit5";
+}
+
+type Options = {
+  onCaptureAttempt?: () => void;
+};
+
+export function useContentProtection({ onCaptureAttempt }: Options = {}) {
+  const onCaptureAttemptRef = useRef(onCaptureAttempt);
+  onCaptureAttemptRef.current = onCaptureAttempt;
+
   useEffect(() => {
-    const scope = scopeRef.current;
-    if (!scope) return;
+    const triggerShield = () => {
+      onCaptureAttemptRef.current?.();
+    };
 
     const blockContextMenu = (event: MouseEvent) => {
-      if (isProtectedTarget(event.target)) {
+      if (isMediaTarget(event.target)) {
         event.preventDefault();
       }
     };
 
     const blockDragStart = (event: DragEvent) => {
-      if (isProtectedTarget(event.target)) {
+      if (isMediaTarget(event.target)) {
         event.preventDefault();
       }
     };
 
-    const blockSaveShortcut = (event: KeyboardEvent) => {
-      if (!(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== "s") {
+    const blockSelectStart = (event: Event) => {
+      if (isMediaTarget(event.target)) {
+        event.preventDefault();
+      }
+    };
+
+    const blockCopy = (event: ClipboardEvent) => {
+      const selection = document.getSelection();
+      if (!selection || selection.isCollapsed) return;
+
+      const anchor = selection.anchorNode;
+      const focus = selection.focusNode;
+      const touchesMedia =
+        (anchor instanceof Element && anchor.closest(MEDIA_SELECTOR)) ||
+        (focus instanceof Element && focus.closest(MEDIA_SELECTOR)) ||
+        (anchor?.parentElement && anchor.parentElement.closest(MEDIA_SELECTOR)) ||
+        (focus?.parentElement && focus.parentElement.closest(MEDIA_SELECTOR));
+
+      if (touchesMedia) {
+        event.preventDefault();
+      }
+    };
+
+    const blockKeyboardShortcuts = (event: KeyboardEvent) => {
+      const key = event.key.toLowerCase();
+      const mod = event.metaKey || event.ctrlKey;
+
+      if (mod && (key === "s" || key === "p" || key === "u")) {
+        event.preventDefault();
+        triggerShield();
         return;
       }
-      event.preventDefault();
+
+      if (key === "printscreen") {
+        event.preventDefault();
+        triggerShield();
+        return;
+      }
+
+      if (isMacScreenshotShortcut(event)) {
+        event.preventDefault();
+        triggerShield();
+      }
     };
 
-    scope.addEventListener("contextmenu", blockContextMenu);
-    scope.addEventListener("dragstart", blockDragStart);
-    document.addEventListener("keydown", blockSaveShortcut);
+    const blockGesture = (event: Event) => {
+      if (isMediaTarget(event.target)) {
+        event.preventDefault();
+      }
+    };
+
+    const blockBeforePrint = (event: Event) => {
+      event.preventDefault();
+      triggerShield();
+    };
+
+    document.addEventListener("contextmenu", blockContextMenu);
+    document.addEventListener("dragstart", blockDragStart);
+    document.addEventListener("selectstart", blockSelectStart);
+    document.addEventListener("copy", blockCopy);
+    document.addEventListener("cut", blockCopy);
+    document.addEventListener("keydown", blockKeyboardShortcuts);
+    document.addEventListener("keyup", blockKeyboardShortcuts);
+    document.addEventListener("gesturestart", blockGesture);
+    document.addEventListener("gesturechange", blockGesture);
+    window.addEventListener("beforeprint", blockBeforePrint);
+
+    document.documentElement.classList.add("content-protection-active");
 
     return () => {
-      scope.removeEventListener("contextmenu", blockContextMenu);
-      scope.removeEventListener("dragstart", blockDragStart);
-      document.removeEventListener("keydown", blockSaveShortcut);
+      document.removeEventListener("contextmenu", blockContextMenu);
+      document.removeEventListener("dragstart", blockDragStart);
+      document.removeEventListener("selectstart", blockSelectStart);
+      document.removeEventListener("copy", blockCopy);
+      document.removeEventListener("cut", blockCopy);
+      document.removeEventListener("keydown", blockKeyboardShortcuts);
+      document.removeEventListener("keyup", blockKeyboardShortcuts);
+      document.removeEventListener("gesturestart", blockGesture);
+      document.removeEventListener("gesturechange", blockGesture);
+      window.removeEventListener("beforeprint", blockBeforePrint);
+      document.documentElement.classList.remove("content-protection-active");
     };
-  }, [scopeRef]);
+  }, []);
 }
