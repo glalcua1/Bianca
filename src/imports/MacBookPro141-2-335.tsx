@@ -23,7 +23,7 @@ import ProtectedImage from "../app/components/protection/ProtectedImage";
 function Group3() {
   return (
     <div className="absolute contents left-[39px] top-[203px]">
-      <div className="absolute bg-gradient-to-r border-[#1d3c34] border-[0.4px] border-solid from-[#edefed] h-[693px] left-[39px] rounded-[20px] to-[90.865%] to-[#faf8f5] top-[203px] via-[48.077%] via-[#faf8f5] w-[1434px]" />
+      <div className="absolute bg-gradient-to-r border-[#1d3c34] border-[0.4px] border-solid from-[#edefed] h-[693px] left-[39px] rounded-[20px] to-[90.865%] to-white top-[203px] via-[48.077%] via-white w-[1434px]" />
       <div className="absolute h-[663px] left-[798px] top-[232px] w-[656px]" data-name="Gemini_Generated_Image_m82201m82201m822 1">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[185.39%] left-[-23.1%] max-w-none top-0 w-[140.41%]" src={imgGeminiGeneratedImageM82201M82201M8221} />
