@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import HomeSeoSection from "../components/HomeSeoSection";
+import SiteNav from "../components/SiteNav";
 import MacBookPro from "../../imports/MacBookPro141-2-335";
 
 const DESIGN_W = 1512;
@@ -32,6 +33,7 @@ export default function HomePage() {
 
   return (
     <>
+      <SiteNav activeItem="the-house" />
       <div
         style={{
           position: "relative",
@@ -54,7 +56,7 @@ export default function HomePage() {
             willChange: "transform",
           }}
         >
-          <MacBookPro />
+          <MacBookPro hideHeader />
         </div>
       </div>
       <HomeSeoSection />

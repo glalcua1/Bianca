@@ -2067,7 +2067,22 @@ export function HomepageHeaderChrome() {
   );
 }
 
-export default function MacBookPro() {
+/** Gold wordmark for responsive SiteNav (scaled from Figma header). */
+export function BiancaHeaderLogo() {
+  return (
+    <div className="relative h-[32px] w-[92px] lg:h-[52px] lg:w-[155px]">
+      <div className="absolute left-0 top-1/2 origin-left -translate-y-1/2 scale-[0.58] lg:scale-[0.9]">
+        <ClipPathGroup8 />
+      </div>
+    </div>
+  );
+}
+
+type MacBookProProps = {
+  hideHeader?: boolean;
+};
+
+export default function MacBookPro({ hideHeader = false }: MacBookProProps) {
   return (
     <div className="bg-[#faf8f5] relative size-full" data-name="MacBook Pro 14' - 1">
       <Frame1 />
@@ -2118,7 +2133,7 @@ export default function MacBookPro() {
           <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[124.34%] left-[2.09%] max-w-none top-[0.06%] w-[96.01%]" src={imgRectangle6} />
         </div>
       </div>
-      <Group52 />
+      {!hideHeader ? <Group52 /> : null}
       <div className="-translate-y-1/2 absolute z-[3] flex flex-col font-editorial justify-center leading-[0] left-[calc(50%-637px)] not-italic text-[#1d3c34] text-[33.2px] top-[2692px] tracking-[-0.1px] whitespace-nowrap">
         <p className="leading-[47.94px]">Bianca Diamonds</p>
       </div>
