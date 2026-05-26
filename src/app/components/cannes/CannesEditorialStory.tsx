@@ -33,8 +33,8 @@ export default function CannesEditorialStory() {
             A Moment of Global Elegance
           </h2>
           <p className="mx-auto mt-5 max-w-xl font-['Arial',sans-serif] text-sm leading-relaxed text-[#f9f9f9]/55 md:text-[15px]">
-            Day one at Cannes — where a young Indian maison met the
-            world&apos;s most celebrated red carpet.
+            At Cannes — where a young Indian founder met the world&apos;s most
+            celebrated red carpet.
           </p>
         </EditorialReveal>
 
@@ -45,7 +45,7 @@ export default function CannesEditorialStory() {
           >
             <CannesEditorialReel
               src={reelSrc}
-              label="Cannes — Day One Reel"
+              label="Cannes — Editorial Reel"
               ariaLabel={CANNES_EDITORIAL.primaryVideoAlt}
             />
           </EditorialReveal>

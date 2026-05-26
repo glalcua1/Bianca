@@ -134,7 +134,7 @@ export const CANNES_CRAFT_VALUES = [
 export const CANNES_EDITORIAL = {
   primaryVideo: "/Cannes/day-1-reel.mp4",
   primaryVideoAlt:
-    "Bianca Diamonds at Cannes Film Festival 2026 — day one editorial film",
+    "Bianca Diamonds at Cannes Film Festival 2026 — editorial film",
   manyaPortrait: "/Cannes/Model_neck1.png",
   manyaVideo: "/Cannes/B_Cannes.mp4",
   manyaAlt:
