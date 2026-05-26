@@ -2,6 +2,23 @@
 
 :root {
   --font-size: 16px;
+  /* Bianca brand surfaces */
+  --bianca-forest: #1d3c34;
+  --bianca-cream: #faf8f5;
+  --bianca-parchment: #f4f0e6;
+  --bianca-gold: #766d42;
+  --bianca-gold-light: #dccb7b;
+  /* Readable text — light backgrounds (cream / parchment / white) */
+  --text-on-cream: #1d3c34;
+  --text-on-cream-body: #3a4f49;
+  --text-on-cream-muted: #52635e;
+  --text-on-cream-subtle: #647670;
+  --text-gold-on-cream: #6b5f3a;
+  /* Readable text — dark forest backgrounds */
+  --text-on-forest: #f7f5f0;
+  --text-on-forest-body: #dcdad4;
+  --text-on-forest-muted: #c5c3bc;
+  --text-gold-on-forest: #e8d896;
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
   --card: #ffffff;
@@ -79,6 +96,25 @@
 }
 
 @theme inline {
+  --font-display: 'SangBleuOGSans-Light', ui-sans-serif, sans-serif;
+  --font-body: 'SangBleuOGSans-Light', ui-sans-serif, sans-serif;
+  --font-emphasis: 'SangBleuOGSans-Regular', ui-sans-serif, sans-serif;
+  --font-editorial: 'Times New Roman', Times, ui-serif, serif;
+  --font-tagline: 'Tiro Bangla', 'Times New Roman', ui-serif, serif;
+  --color-bianca-forest: var(--bianca-forest);
+  --color-bianca-cream: var(--bianca-cream);
+  --color-bianca-parchment: var(--bianca-parchment);
+  --color-bianca-gold: var(--bianca-gold);
+  --color-bianca-gold-light: var(--bianca-gold-light);
+  --color-on-cream: var(--text-on-cream);
+  --color-on-cream-body: var(--text-on-cream-body);
+  --color-on-cream-muted: var(--text-on-cream-muted);
+  --color-on-cream-subtle: var(--text-on-cream-subtle);
+  --color-gold-on-cream: var(--text-gold-on-cream);
+  --color-on-forest: var(--text-on-forest);
+  --color-on-forest-body: var(--text-on-forest-body);
+  --color-on-forest-muted: var(--text-on-forest-muted);
+  --color-gold-on-forest: var(--text-gold-on-forest);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

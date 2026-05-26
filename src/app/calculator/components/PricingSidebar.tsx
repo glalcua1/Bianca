@@ -22,12 +22,12 @@ function PriceRow({
 }) {
   return (
     <div
-      className={`flex items-center justify-between py-2 ${muted ? "text-[#717182]" : ""}`}
+      className={`flex items-center justify-between py-2 ${muted ? "text-on-cream-muted" : ""}`}
     >
-      <span className="font-['Arial',sans-serif] text-xs uppercase tracking-wider">
+      <span className="font-body text-xs uppercase tracking-wider">
         {label}
       </span>
-      <span className="font-['Times_New_Roman',serif] text-sm">{value}</span>
+      <span className="font-editorial text-sm">{value}</span>
     </div>
   );
 }
@@ -53,13 +53,13 @@ export default function PricingSidebar() {
         className="space-y-4"
       >
         <LuxuryCard variant="hero">
-          <p className="font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.35em] text-[#8B7355]">
+          <p className="font-body text-[10px] uppercase tracking-[0.35em] text-gold-on-cream">
             Pricing Summary
           </p>
-          <h3 className="mt-1 font-['Times_New_Roman',serif] text-xl text-[#1a1a1a]">
+          <h3 className="mt-1 font-editorial text-xl text-bianca-forest">
             {design.name}
           </h3>
-          <p className="text-xs text-[#717182]">
+          <p className="text-xs text-on-cream-muted">
             {design.category} · {design.goldPurity}
           </p>
 
@@ -95,10 +95,10 @@ export default function PricingSidebar() {
 
         {!isCustomer && (
           <LuxuryCard>
-            <p className="mb-1 text-[10px] uppercase tracking-widest text-[#717182]">
+            <p className="mb-1 text-[10px] uppercase tracking-widest text-on-cream-muted">
               Total Cost Price
             </p>
-            <p className="font-['Times_New_Roman',serif] text-2xl text-[#1a1a1a]">
+            <p className="font-editorial text-2xl text-bianca-forest">
               {formatCurrency(result.costPrice)}
             </p>
           </LuxuryCard>
@@ -106,10 +106,10 @@ export default function PricingSidebar() {
 
         {!isCustomer && (
           <LuxuryCard>
-            <p className="mb-1 text-[10px] uppercase tracking-widest text-[#717182]">
+            <p className="mb-1 text-[10px] uppercase tracking-widest text-on-cream-muted">
               Selling Price
             </p>
-            <p className="font-['Times_New_Roman',serif] text-2xl text-[#1a1a1a]">
+            <p className="font-editorial text-2xl text-bianca-forest">
               {formatCurrency(result.sellingPrice)}
             </p>
             <p className="mt-1 text-xs text-emerald-700">
@@ -119,14 +119,14 @@ export default function PricingSidebar() {
         )}
 
         <LuxuryCard variant="accent">
-          <p className="mb-1 text-[10px] uppercase tracking-[0.35em] text-[#dccb7b]/80">
+          <p className="mb-1 text-[10px] uppercase tracking-[0.35em] text-gold-on-forest">
             {isCustomer ? "Your Estimate" : "Final Customer Price"}
           </p>
           <motion.p
             key={result.finalPrice}
             initial={{ scale: 0.98 }}
             animate={{ scale: 1 }}
-            className="font-['Times_New_Roman',serif] text-3xl text-white"
+            className="font-editorial text-3xl text-white"
           >
             {formatCurrency(result.finalPrice)}
           </motion.p>
@@ -134,7 +134,7 @@ export default function PricingSidebar() {
 
         {chartData.length > 0 && !isCustomer && (
           <LuxuryCard>
-            <p className="mb-3 text-[10px] uppercase tracking-widest text-[#717182]">
+            <p className="mb-3 text-[10px] uppercase tracking-widest text-on-cream-muted">
               Price Breakdown
             </p>
             <div className="h-[180px]">
@@ -169,7 +169,7 @@ export default function PricingSidebar() {
               {chartData.map((d) => (
                 <span
                   key={d.name}
-                  className="inline-flex items-center gap-1 text-[10px] text-[#717182]"
+                  className="inline-flex items-center gap-1 text-[10px] text-on-cream-muted"
                 >
                   <span
                     className="h-2 w-2 rounded-full"

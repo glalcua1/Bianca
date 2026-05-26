@@ -20,7 +20,7 @@ export default function QuoteModeToggle() {
           className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm transition ${
             state.quoteMode === id
               ? "bg-[#1d3c34] text-white"
-              : "text-[#717182] hover:bg-[#faf8f5]"
+              : "text-on-cream-muted hover:bg-[#faf8f5]"
           }`}
         >
           <Icon className="h-4 w-4" />

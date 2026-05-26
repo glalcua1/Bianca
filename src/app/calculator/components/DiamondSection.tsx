@@ -68,7 +68,7 @@ export default function DiamondSection() {
           }
           className="rounded border-[#C9A962] text-[#C9A962] focus:ring-[#C9A962]"
         />
-        <span className="font-['Arial',sans-serif] text-sm text-[#1a1a1a]">
+        <span className="font-body text-sm text-bianca-forest">
           Override Auto Diamond Cost
         </span>
       </label>
@@ -96,15 +96,15 @@ export default function DiamondSection() {
       )}
 
       <LuxuryCard className="mt-4 flex items-center justify-between">
-        <span className="font-['Arial',sans-serif] text-xs uppercase tracking-widest text-[#717182]">
+        <span className="font-body text-xs uppercase tracking-widest text-on-cream-muted">
           Diamond Cost
         </span>
-        <span className="font-['Times_New_Roman',serif] text-xl text-[#1a1a1a]">
+        <span className="font-editorial text-xl text-bianca-forest">
           {formatCurrency(result.diamondCost)}
         </span>
       </LuxuryCard>
       {!diamond.overrideCost && diamond.caratWeight > 0 && (
-        <p className="mt-2 text-xs text-[#999]">
+        <p className="mt-2 text-xs text-on-cream-subtle">
           {diamond.caratWeight} ct × {formatCurrency(diamond.ratePerCarat)} ={" "}
           {formatCurrency(autoCost)}
         </p>

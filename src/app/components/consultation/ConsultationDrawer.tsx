@@ -85,14 +85,14 @@ export default function ConsultationDrawer({
           className="fixed inset-y-0 right-0 z-50 flex w-full max-w-md flex-col bg-[#faf8f5] shadow-2xl outline-none"
         >
           <div className="flex items-center justify-between border-b border-[#1d3c34]/10 px-6 py-5">
-            <Drawer.Title className="font-['Times_New_Roman',serif] text-lg tracking-[0.12em] uppercase text-[#1d3c34]">
+            <Drawer.Title className="font-editorial text-lg tracking-[0.12em] uppercase text-[#1d3c34]">
               Private Consultation
             </Drawer.Title>
             <Drawer.Close asChild>
               <button
                 type="button"
                 aria-label="Close consultation form"
-                className="rounded-full p-2 text-[#1d3c34]/60 transition-colors hover:bg-[#1d3c34]/5 hover:text-[#1d3c34]"
+                className="rounded-full p-2 text-on-cream-muted transition-colors hover:bg-[#1d3c34]/5 hover:text-bianca-forest"
               >
                 <X className="size-5" />
               </button>
@@ -102,17 +102,17 @@ export default function ConsultationDrawer({
           <div className="flex-1 overflow-y-auto px-6 py-8">
             {submitted ? (
               <div className="flex h-full flex-col justify-center text-center">
-                <p className="font-['Times_New_Roman',serif] text-2xl tracking-[0.06em] text-[#1d3c34]">
+                <p className="font-editorial text-2xl tracking-[0.06em] text-[#1d3c34]">
                   Thank you
                 </p>
-                <p className="mt-5 font-['Arial',sans-serif] text-sm leading-relaxed text-[#1d3c34]/75">
+                <p className="mt-5 text-house-body text-on-cream-body">
                   Someone from Bianca Diamonds will call you shortly to confirm
                   your private consultation slot.
                 </p>
                 <Drawer.Close asChild>
                   <button
                     type="button"
-                    className="mt-10 inline-flex justify-center border border-[#1d3c34]/35 px-10 py-3 font-['Times_New_Roman',serif] text-xs tracking-[0.25em] uppercase text-[#1d3c34] transition-colors duration-500 hover:border-[#1d3c34] hover:bg-[#1d3c34] hover:text-[#faf8f5]"
+                    className="mt-10 inline-flex justify-center border border-[#1d3c34]/35 px-10 py-3 text-house-cta text-[#1d3c34] transition-colors duration-500 hover:border-[#1d3c34] hover:bg-[#1d3c34] hover:text-[#faf8f5]"
                   >
                     Close
                   </button>
@@ -120,14 +120,14 @@ export default function ConsultationDrawer({
               </div>
             ) : (
               <>
-                <p className="font-['Arial',sans-serif] text-sm leading-relaxed text-[#1d3c34]/70">
+                <p className="text-house-body text-on-cream-body">
                   Share your details and our atelier team will reach out to
                   arrange a private consultation at your convenience.
                 </p>
 
                 <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
                   <label className="block">
-                    <span className="mb-2 block font-['Arial',sans-serif] text-[11px] uppercase tracking-[0.2em] text-[#1d3c34]/60">
+                    <span className="mb-2 block font-body text-[11px] uppercase tracking-[0.2em] text-on-cream-muted">
                       Full name
                     </span>
                     <input
@@ -142,13 +142,13 @@ export default function ConsultationDrawer({
                           clientName: event.target.value,
                         }))
                       }
-                      className="w-full border border-[#1d3c34]/15 bg-white px-4 py-3 font-['Arial',sans-serif] text-sm text-[#1d3c34] outline-none transition focus:border-[#1d3c34]/40 focus:ring-2 focus:ring-[#1d3c34]/10"
+                      className="w-full border border-[#1d3c34]/15 bg-white px-4 py-3 font-body text-sm text-[#1d3c34] outline-none transition focus:border-[#1d3c34]/40 focus:ring-2 focus:ring-[#1d3c34]/10"
                       placeholder="Your name"
                     />
                   </label>
 
                   <label className="block">
-                    <span className="mb-2 block font-['Arial',sans-serif] text-[11px] uppercase tracking-[0.2em] text-[#1d3c34]/60">
+                    <span className="mb-2 block font-body text-[11px] uppercase tracking-[0.2em] text-on-cream-muted">
                       Phone number
                     </span>
                     <input
@@ -163,13 +163,13 @@ export default function ConsultationDrawer({
                           phone: event.target.value,
                         }))
                       }
-                      className="w-full border border-[#1d3c34]/15 bg-white px-4 py-3 font-['Arial',sans-serif] text-sm text-[#1d3c34] outline-none transition focus:border-[#1d3c34]/40 focus:ring-2 focus:ring-[#1d3c34]/10"
+                      className="w-full border border-[#1d3c34]/15 bg-white px-4 py-3 font-body text-sm text-[#1d3c34] outline-none transition focus:border-[#1d3c34]/40 focus:ring-2 focus:ring-[#1d3c34]/10"
                       placeholder="+91 98765 43210"
                     />
                   </label>
 
                   <label className="block">
-                    <span className="mb-2 block font-['Arial',sans-serif] text-[11px] uppercase tracking-[0.2em] text-[#1d3c34]/60">
+                    <span className="mb-2 block font-body text-[11px] uppercase tracking-[0.2em] text-on-cream-muted">
                       City
                     </span>
                     <input
@@ -184,7 +184,7 @@ export default function ConsultationDrawer({
                           city: event.target.value,
                         }))
                       }
-                      className="w-full border border-[#1d3c34]/15 bg-white px-4 py-3 font-['Arial',sans-serif] text-sm text-[#1d3c34] outline-none transition focus:border-[#1d3c34]/40 focus:ring-2 focus:ring-[#1d3c34]/10"
+                      className="w-full border border-[#1d3c34]/15 bg-white px-4 py-3 font-body text-sm text-[#1d3c34] outline-none transition focus:border-[#1d3c34]/40 focus:ring-2 focus:ring-[#1d3c34]/10"
                       placeholder="Mumbai"
                     />
                   </label>
@@ -192,7 +192,7 @@ export default function ConsultationDrawer({
                   {error ? (
                     <p
                       role="alert"
-                      className="font-['Arial',sans-serif] text-sm text-red-700"
+                      className="font-body text-sm text-red-700"
                     >
                       {error}
                     </p>
@@ -201,7 +201,7 @@ export default function ConsultationDrawer({
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="inline-flex w-full justify-center border border-[#1d3c34] bg-[#1d3c34] px-10 py-3 font-['Times_New_Roman',serif] text-xs tracking-[0.25em] uppercase text-[#faf8f5] transition-colors duration-500 hover:bg-transparent hover:text-[#1d3c34] disabled:cursor-not-allowed disabled:opacity-60"
+                    className="inline-flex w-full justify-center border border-[#1d3c34] bg-[#1d3c34] px-10 py-3 text-house-cta text-[#faf8f5] transition-colors duration-500 hover:bg-transparent hover:text-bianca-forest disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {submitting ? "Submitting…" : "Request consultation"}
                   </button>

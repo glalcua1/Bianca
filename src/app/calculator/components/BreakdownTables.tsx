@@ -16,13 +16,13 @@ export default function BreakdownTables() {
     >
       <div className="space-y-8">
         <div>
-          <h3 className="mb-3 font-['Times_New_Roman',serif] text-sm tracking-wide">
+          <h3 className="mb-3 font-editorial text-sm tracking-wide">
             Gold Components
           </h3>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[400px] text-left text-sm">
               <thead>
-                <tr className="border-b border-black/10 text-[11px] uppercase tracking-widest text-[#717182]">
+                <tr className="border-b border-black/10 text-[11px] uppercase tracking-widest text-on-cream-muted">
                   <th className="pb-2 pr-4 font-normal">Component</th>
                   <th className="pb-2 pr-4 font-normal">Weight</th>
                   <th className="pb-2 font-normal text-right">Amount</th>
@@ -52,13 +52,13 @@ export default function BreakdownTables() {
 
         {result.stoneBreakdown.length > 0 && (
           <div>
-            <h3 className="mb-3 font-['Times_New_Roman',serif] text-sm tracking-wide">
+            <h3 className="mb-3 font-editorial text-sm tracking-wide">
               Gemstone Breakdown
             </h3>
             <div className="overflow-x-auto">
               <table className="w-full min-w-[500px] text-left text-sm">
                 <thead>
-                  <tr className="border-b border-black/10 text-[11px] uppercase tracking-widest text-[#717182]">
+                  <tr className="border-b border-black/10 text-[11px] uppercase tracking-widest text-on-cream-muted">
                     <th className="pb-2 pr-4 font-normal">Stone</th>
                     <th className="pb-2 pr-4 font-normal">Qty</th>
                     <th className="pb-2 pr-4 font-normal">Carat</th>

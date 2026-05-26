@@ -19,7 +19,7 @@ export default function DesignToolbar() {
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
-        <span className="flex items-center gap-1 text-[11px] uppercase tracking-widest text-[#717182]">
+        <span className="flex items-center gap-1 text-[11px] uppercase tracking-widest text-on-cream-muted">
           <Sparkles className="h-3 w-3" />
           Samples
         </span>
@@ -28,7 +28,7 @@ export default function DesignToolbar() {
             key={sample.name}
             type="button"
             onClick={() => dispatch({ type: "LOAD_SAMPLE", design: sample })}
-            className="rounded-full border border-[#C9A962]/30 px-3 py-1 text-xs text-[#8B7355] transition hover:border-[#C9A962] hover:bg-[#C9A962]/10"
+            className="rounded-full border border-[#C9A962]/30 px-3 py-1 text-xs text-gold-on-cream transition hover:border-[#C9A962] hover:bg-[#C9A962]/10"
           >
             {sample.name}
           </button>

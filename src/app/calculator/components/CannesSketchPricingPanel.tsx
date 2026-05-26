@@ -19,7 +19,7 @@ export default function CannesSketchPricingPanel() {
       badge={`${CANNES_SKETCH_PRICING.length} pieces`}
       defaultOpen
     >
-      <p className="mb-6 font-['Arial',sans-serif] text-sm leading-relaxed text-[#717182]">
+      <p className="mb-6 text-house-body text-on-cream-muted">
         Prices use default rates (18KT ₹6,850/g, diamonds ₹29,000/ct, 3% GST,
         20% markup). Gold weights and carats are atelier estimates from sketch
         annotations — refine in the calculator after loading any piece.
@@ -53,27 +53,27 @@ export default function CannesSketchPricingPanel() {
               </a>
 
               <div className="flex flex-1 flex-col p-4">
-                <h3 className="font-['Times_New_Roman',serif] text-base leading-snug text-[#1a1a1a]">
+                <h3 className="font-editorial text-base leading-snug text-bianca-forest">
                   {entry.design.name}
                 </h3>
-                <p className="mt-1 text-[11px] text-[#999]">{entry.sketchFile}</p>
+                <p className="mt-1 text-[11px] text-on-cream-subtle">{entry.sketchFile}</p>
 
                 <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
-                  <span className="text-[#717182]">Gold</span>
+                  <span className="text-on-cream-muted">Gold</span>
                   <span>{formatWeight(entry.result.totalGoldWeight)}</span>
                   {isInternal && (
                     <>
-                      <span className="text-[#717182]">Cost price</span>
+                      <span className="text-on-cream-muted">Cost price</span>
                       <span>{formatCurrency(entry.result.costPrice)}</span>
                     </>
                   )}
-                  <span className="text-[#717182]">Customer price</span>
+                  <span className="text-on-cream-muted">Customer price</span>
                   <span className="font-medium text-[#1d3c34]">
                     {formatCurrency(entry.result.finalPrice)}
                   </span>
                 </div>
 
-                <ul className="mt-3 space-y-0.5 text-[11px] text-[#999]">
+                <ul className="mt-3 space-y-0.5 text-[11px] text-on-cream-subtle">
                   {entry.notes.slice(0, 2).map((note) => (
                     <li key={note}>· {note}</li>
                   ))}
@@ -87,7 +87,7 @@ export default function CannesSketchPricingPanel() {
                       design: cloneDesign(entry.design, entry.design.name),
                     })
                   }
-                  className="mt-auto pt-4 text-left text-xs uppercase tracking-widest text-[#8B7355] transition hover:text-[#1d3c34]"
+                  className="mt-auto pt-4 text-left text-xs uppercase tracking-widest text-gold-on-cream transition hover:text-bianca-forest"
                 >
                   Load into calculator →
                 </button>
@@ -98,13 +98,13 @@ export default function CannesSketchPricingPanel() {
       </div>
 
       <LuxuryCard className="mt-6" variant="hero">
-        <p className="text-[10px] uppercase tracking-widest text-[#8B7355]">
+        <p className="text-[10px] uppercase tracking-widest text-gold-on-cream">
           Collection total (all 9 sketches)
         </p>
         <div className="mt-2 flex flex-wrap gap-8">
           <div>
-            <p className="text-xs text-[#717182]">Combined customer price</p>
-            <p className="font-['Times_New_Roman',serif] text-2xl text-[#1a1a1a]">
+            <p className="text-xs text-on-cream-muted">Combined customer price</p>
+            <p className="font-editorial text-2xl text-bianca-forest">
               {formatCurrency(
                 CANNES_SKETCH_PRICING.reduce(
                   (s, e) => s + e.result.finalPrice,
@@ -115,8 +115,8 @@ export default function CannesSketchPricingPanel() {
           </div>
           {isInternal && (
             <div>
-              <p className="text-xs text-[#717182]">Combined cost price</p>
-              <p className="font-['Times_New_Roman',serif] text-xl text-[#1a1a1a]">
+              <p className="text-xs text-on-cream-muted">Combined cost price</p>
+              <p className="font-editorial text-xl text-bianca-forest">
                 {formatCurrency(
                   CANNES_SKETCH_PRICING.reduce(
                     (s, e) => s + e.result.costPrice,

@@ -24,11 +24,11 @@ export default function CannesJewelleryGallery() {
           <EditorialEyebrow className="mb-5">The Showcase</EditorialEyebrow>
           <h2
             id="cannes-jewels-heading"
-            className="font-['Times_New_Roman',serif] text-[clamp(1.75rem,4vw,2.75rem)] tracking-[0.06em] text-[#1d3c34]"
+            className="font-editorial text-[clamp(1.75rem,4vw,2.75rem)] tracking-[0.06em] text-[#1d3c34]"
           >
             Jewels Seen at Cannes
           </h2>
-          <p className="mx-auto mt-5 max-w-lg font-['Arial',sans-serif] text-sm leading-relaxed text-[#5a6b66] md:text-[15px]">
+          <p className="mx-auto mt-5 max-w-lg text-house-body text-on-cream-body">
             {total} pieces — each composed for the red carpet and crafted for
             a lifetime beyond it.
           </p>
@@ -72,25 +72,25 @@ export default function CannesJewelleryGallery() {
                       }`}
                     >
                       <p
-                        className="font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.5em] text-[#766d42]/80"
+                        className="text-house-eyebrow text-gold-on-cream"
                         aria-hidden
                       >
                         {formatPieceIndex(index, total)}
                       </p>
-                      <p className="mt-3 font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.45em] text-[#766d42]">
+                      <p className="mt-3 font-body text-[10px] uppercase tracking-[0.45em] text-gold-on-cream">
                         {piece.collection}
                       </p>
-                      <h3 className="mt-3 font-['Times_New_Roman',serif] text-[clamp(1.4rem,2.8vw,1.85rem)] leading-[1.2] tracking-[0.05em] text-[#1d3c34]">
+                      <h3 className="mt-3 font-editorial text-[clamp(1.4rem,2.8vw,1.85rem)] leading-[1.2] tracking-[0.05em] text-[#1d3c34]">
                         {piece.type}
                       </h3>
-                      <p className="mt-3 font-['Arial',sans-serif] text-[11px] uppercase tracking-[0.28em] text-[#1d3c34]/40">
+                      <p className="mt-3 font-body text-[11px] uppercase tracking-[0.28em] text-on-cream-subtle">
                         {piece.inspiration}
                       </p>
                       <div
                         className="my-7 h-px w-10 bg-[#1d3c34]/12"
                         aria-hidden
                       />
-                      <p className="max-w-md font-['Arial',sans-serif] text-sm leading-[1.85] text-[#5a6b66] md:text-[15px]">
+                      <p className="max-w-md text-house-body text-on-cream-body">
                         {piece.description}
                       </p>
                     </div>
@@ -102,7 +102,7 @@ export default function CannesJewelleryGallery() {
         </ul>
 
         <EditorialReveal className="mt-20 border-t border-[#1d3c34]/10 pt-14 md:mt-28 md:pt-20" delay={100}>
-          <p className="mb-8 text-center font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.45em] text-[#766d42] md:mb-10">
+          <p className="mb-8 text-center font-body text-[10px] uppercase tracking-[0.45em] text-gold-on-cream md:mb-10">
             The Collection
           </p>
           <ul className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5 lg:gap-6">
@@ -118,7 +118,7 @@ export default function CannesJewelleryGallery() {
                       loading="lazy"
                     />
                   </div>
-                  <figcaption className="mt-3 text-center font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.32em] text-[#1d3c34]/45">
+                  <figcaption className="mt-3 text-center font-body text-[10px] uppercase tracking-[0.32em] text-on-cream-muted">
                     {item.label}
                   </figcaption>
                 </figure>

@@ -63,7 +63,7 @@ export default function CannesEditorialReel({ src, label, ariaLabel }: Props) {
               type="button"
               onClick={togglePlayback}
               aria-label={isPlaying ? "Pause video" : "Play video"}
-              className="pointer-events-auto absolute bottom-14 right-4 inline-flex size-10 items-center justify-center rounded-full border border-[#f9f9f9]/25 bg-[#0f1f1b]/55 text-[#f9f9f9]/90 backdrop-blur-sm transition-colors duration-300 hover:border-[#dccb7b]/50 hover:text-[#dccb7b]"
+              className="pointer-events-auto absolute bottom-14 right-4 inline-flex size-10 items-center justify-center rounded-full border border-[#f9f9f9]/25 bg-[#0f1f1b]/55 text-on-forest backdrop-blur-sm transition-colors duration-300 hover:border-[#dccb7b]/50 hover:text-[#dccb7b]"
             >
               {isPlaying ? (
                 <Pause className="size-4" strokeWidth={1.25} fill="currentColor" />
@@ -77,7 +77,7 @@ export default function CannesEditorialReel({ src, label, ariaLabel }: Props) {
           className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0f1f1b]/80 via-[#0f1f1b]/20 to-transparent px-5 pb-5 pt-16"
           aria-hidden
         >
-          <p className="font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.45em] text-[#dccb7b]/90">
+          <p className="font-body text-[10px] uppercase tracking-[0.45em] text-gold-on-forest">
             {label}
           </p>
         </div>

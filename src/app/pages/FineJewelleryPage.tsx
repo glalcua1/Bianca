@@ -55,11 +55,11 @@ export default function FineJewelleryPage() {
           <h2 id="intro-heading" className="sr-only">
             About Bianca fine jewellery
           </h2>
-          <p className="font-['Times_New_Roman',serif] text-[clamp(1.25rem,3vw,1.65rem)] leading-snug tracking-[0.04em] text-[#1d3c34]">
+          <p className="font-editorial text-[clamp(1.25rem,3vw,1.65rem)] leading-snug tracking-[0.04em] text-[#1d3c34]">
             A new era of fine jewellery — certified brilliance, transparent
             pricing, and handcrafted designs for every moment.
           </p>
-          <p className="mt-6 font-['Arial',sans-serif] text-sm leading-[1.75] text-[#5a6b66] md:text-[15px]">
+          <p className="mt-6 text-house-body text-on-cream-body">
             From solitaire pendants and tennis bracelets to engagement rings and
             wedding bands, each piece is responsibly sourced and made to suit
             the rhythm of your life. Explore our collections below, or connect
@@ -77,12 +77,12 @@ export default function FineJewelleryPage() {
       >
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center md:mb-16">
-            <p className="mb-4 font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.5em] text-[#dccb7b]/80 md:text-[11px]">
+            <p className="mb-4 text-house-eyebrow text-gold-on-forest">
               Shop by category
             </p>
             <h2
               id="categories-heading"
-              className="font-['Times_New_Roman',serif] text-[clamp(1.75rem,4vw,2.75rem)] tracking-[0.08em] text-[#f9f9f9]"
+              className="font-editorial text-[clamp(1.75rem,4vw,2.75rem)] tracking-[0.08em] text-[#f9f9f9]"
             >
               Every Form of Brilliance
             </h2>
@@ -94,10 +94,10 @@ export default function FineJewelleryPage() {
                 key={category.title}
                 className="group border border-[#dccb7b]/20 bg-[#dccb7b]/[0.04] p-6 transition duration-300 hover:border-[#dccb7b]/45 hover:bg-[#dccb7b]/[0.08] md:p-7"
               >
-                <h3 className="font-['Times_New_Roman',serif] text-lg tracking-[0.06em] text-[#f9f9f9]">
+                <h3 className="font-editorial text-lg tracking-[0.06em] text-[#f9f9f9]">
                   {category.title}
                 </h3>
-                <p className="mt-3 font-['Arial',sans-serif] text-sm leading-relaxed text-[#f9f9f9]/65">
+                <p className="mt-3 text-house-body text-on-forest-body">
                   {category.description}
                 </p>
               </li>
@@ -113,12 +113,12 @@ export default function FineJewelleryPage() {
       >
         <div className="mx-auto max-w-6xl">
           <div className="mb-12 text-center md:mb-16">
-            <p className="mb-4 font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.5em] text-[#766d42] md:text-[11px]">
+            <p className="mb-4 text-house-eyebrow text-gold-on-cream">
               From the atelier
             </p>
             <h2
               id="showcase-heading"
-              className="font-['Times_New_Roman',serif] text-[clamp(1.75rem,4vw,2.75rem)] tracking-[0.08em] text-[#1d3c34]"
+              className="font-editorial text-[clamp(1.75rem,4vw,2.75rem)] tracking-[0.08em] text-[#1d3c34]"
             >
               Selected Pieces
             </h2>
@@ -152,17 +152,17 @@ export default function FineJewelleryPage() {
         <div className="mx-auto max-w-5xl">
           <h2
             id="craft-heading"
-            className="mb-12 text-center font-['Times_New_Roman',serif] text-[clamp(1.5rem,3.5vw,2.25rem)] tracking-[0.08em] text-[#1d3c34] md:mb-14"
+            className="mb-12 text-center font-editorial text-[clamp(1.5rem,3.5vw,2.25rem)] tracking-[0.08em] text-[#1d3c34] md:mb-14"
           >
             The Bianca Promise
           </h2>
           <ul className="grid gap-10 md:grid-cols-3 md:gap-8">
             {CRAFT_VALUES.map((value) => (
               <li key={value.title} className="text-center">
-                <h3 className="font-['Times_New_Roman',serif] text-xl tracking-[0.06em] text-[#1d3c34]">
+                <h3 className="font-editorial text-xl tracking-[0.06em] text-[#1d3c34]">
                   {value.title}
                 </h3>
-                <p className="mx-auto mt-3 max-w-xs font-['Arial',sans-serif] text-sm leading-relaxed text-[#5a6b66]">
+                <p className="mx-auto mt-3 max-w-xs text-house-body text-on-cream-body">
                   {value.description}
                 </p>
               </li>
@@ -177,7 +177,7 @@ export default function FineJewelleryPage() {
         className="border-t border-[#dccb7b]/10 px-8 py-12 text-center"
         style={{ backgroundColor: "#1d3c34" }}
       >
-        <p className="mb-6 font-['Arial',sans-serif] text-sm text-[#f9f9f9]/70">
+        <p className="mb-6 font-body text-sm text-on-forest-muted">
           Return to the house or follow the atelier online.
         </p>
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
@@ -185,7 +185,7 @@ export default function FineJewelleryPage() {
             href={BIANCA_INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-['Arial',sans-serif] text-sm tracking-wide text-[#dccb7b] transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2 font-body text-sm tracking-wide text-gold-on-forest transition-opacity hover:opacity-90"
           >
             <Instagram className="size-5 shrink-0" aria-hidden />
             Instagram
@@ -195,7 +195,7 @@ export default function FineJewelleryPage() {
           </span>
           <Link
             to="/"
-            className="inline-block border border-[#dccb7b]/50 px-8 py-2.5 font-['Times_New_Roman',serif] text-xs tracking-[0.25em] uppercase text-[#dccb7b] transition-colors hover:bg-[#dccb7b] hover:text-[#1d3c34]"
+            className="inline-block border border-[#dccb7b]/50 px-8 py-2.5 text-house-cta text-gold-on-forest transition-colors hover:bg-[#dccb7b] hover:text-bianca-forest"
           >
             Return Home
           </Link>

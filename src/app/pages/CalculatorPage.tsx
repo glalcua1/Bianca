@@ -38,13 +38,13 @@ function CalculatorContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <p className="mb-2 font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.5em] text-[#8B7355]">
+            <p className="mb-2 text-house-eyebrow text-gold-on-cream">
               Bianca Diamonds · Atelier Tools
             </p>
-            <h1 className="font-['Times_New_Roman',serif] text-[clamp(1.75rem,4vw,2.5rem)] tracking-wide text-[#1a1a1a]">
+            <h1 className="text-house-title text-[clamp(1.75rem,4vw,2.5rem)] text-bianca-forest">
               Jewellery Pricing Calculator
             </h1>
-            <p className="mt-3 max-w-2xl font-['Arial',sans-serif] text-sm leading-relaxed text-[#717182] md:text-[15px]">
+            <p className="mt-3 max-w-2xl text-house-body text-on-cream-muted">
               Real-time bespoke pricing for gold, diamonds, and precious stones.
               Configure designs dynamically, compare variants, and generate
               customer quotations.
@@ -81,7 +81,7 @@ function CalculatorContent() {
       </main>
 
       <footer className="border-t border-black/5 bg-white px-6 py-8 text-center">
-        <p className="font-['Arial',sans-serif] text-[11px] uppercase tracking-[0.3em] text-[#999]">
+        <p className="text-house-caption tracking-[0.3em] text-on-cream-subtle">
           Bianca Diamonds · Internal Pricing Tool · Delhi
         </p>
       </footer>

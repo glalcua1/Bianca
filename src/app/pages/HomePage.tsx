@@ -32,14 +32,6 @@ export default function HomePage() {
 
   return (
     <>
-      <style>{`
-        *, *::before, *::after { box-sizing: border-box; }
-        html, body, #root { margin: 0; padding: 0; overscroll-behavior: none; }
-        [class*="Tiro_Bangla"] { font-family: 'Tiro Bangla', 'Times New Roman', serif !important; }
-        [class*="Times_New_Roman"] { font-family: 'Times New Roman', Times, serif !important; }
-        [class*="Arial"] { font-family: Arial, Helvetica, sans-serif !important; }
-        [class*="ABeeZee"] { font-family: 'ABeeZee', sans-serif !important; }
-      `}</style>
       <div
         style={{
           position: "relative",

@@ -1,0 +1,129 @@
+/* ── Bianca Diamonds — The House typography system ─────────────────────────
+   Display & body: SangBleu OG Sans
+   Editorial titles & CTAs: Times New Roman
+   Taglines & poetic subheads: Tiro Bangla
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Figma-export class compatibility (arbitrary font-* utilities from imports) */
+[class*="SangBleuOGSans-Regular"] {
+  font-family: 'SangBleuOGSans-Regular', ui-sans-serif, sans-serif !important;
+}
+
+[class*="SangBleuOGSans-Light"],
+[class*="SangBleuOGSans"]:not([class*="Regular"]) {
+  font-family: 'SangBleuOGSans-Light', ui-sans-serif, sans-serif !important;
+}
+
+[class*="Tiro_Bangla"],
+[class*="Tiro Bangla"] {
+  font-family: 'Tiro Bangla', 'Times New Roman', ui-serif, serif !important;
+}
+
+[class*="Times_New_Roman"],
+[class*="Times New Roman"] {
+  font-family: 'Times New Roman', Times, ui-serif, serif !important;
+}
+
+[class*="Arial"] {
+  font-family: 'SangBleuOGSans-Light', ui-sans-serif, sans-serif !important;
+}
+
+[class*="ABeeZee"] {
+  font-family: 'ABeeZee', ui-sans-serif, sans-serif !important;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+  }
+}
+
+@layer utilities {
+  /* Small caps labels — collection names, section markers */
+  .text-house-eyebrow {
+    font-family: var(--font-body);
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--text-gold-on-cream);
+  }
+
+  @media (min-width: 768px) {
+    .text-house-eyebrow {
+      font-size: 11px;
+    }
+  }
+
+  /* Hero & display headlines */
+  .text-house-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Editorial section titles */
+  .text-house-title {
+    font-family: var(--font-editorial);
+    letter-spacing: 0.06em;
+  }
+
+  /* Long-form body copy */
+  .text-house-body {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    line-height: 1.75;
+    letter-spacing: 0.02em;
+  }
+
+  @media (min-width: 768px) {
+    .text-house-body {
+      font-size: 15px;
+    }
+  }
+
+  /* Poetic subheads & hero taglines */
+  .text-house-tagline {
+    font-family: var(--font-tagline);
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+  }
+
+  /* Navigation links & luxury CTAs */
+  .text-house-cta {
+    font-family: var(--font-editorial);
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+
+  /* Form labels & micro UI */
+  .text-house-caption {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-on-cream-muted);
+  }
+
+  /* Inline emphasis within editorial body */
+  .text-house-emphasis {
+    font-family: var(--font-emphasis);
+  }
+}

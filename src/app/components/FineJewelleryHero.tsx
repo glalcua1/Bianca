@@ -39,12 +39,7 @@ export default function FineJewelleryHero() {
   }, [compute]);
 
   return (
-    <>
-      <style>{`
-        [class*="SangBleuOGSans"] { font-family: 'SangBleuOGSans-Light', sans-serif !important; }
-        [class*="Tiro_Bangla"] { font-family: 'Tiro Bangla', 'Times New Roman', serif !important; }
-      `}</style>
-      <div
+    <div
         className="relative z-10 w-full overflow-hidden bg-[#1d3c34]"
         style={{ height: `${height}px` }}
       >
@@ -102,7 +97,7 @@ export default function FineJewelleryHero() {
             </div>
 
             <div
-              className="absolute w-[560px] font-['SangBleuOGSans-Light',sans-serif] text-[32px] uppercase leading-[1.22] tracking-[1.5px] text-[#1d3c34]"
+              className="absolute w-[560px] text-house-display text-[32px] leading-[1.22] tracking-[1.5px] text-[#1d3c34]"
               style={{ left: CONTENT_LEFT, top: 475 }}
             >
               <h1 className="m-0 font-normal leading-[normal]">
@@ -111,7 +106,7 @@ export default function FineJewelleryHero() {
             </div>
 
             <div
-              className="absolute w-[560px] font-['Tiro_Bangla:Regular',serif] text-[21px] leading-[1.5] tracking-[0.5px] text-black"
+              className="absolute w-[560px] text-house-tagline text-[21px] text-on-cream-body"
               style={{ left: CONTENT_LEFT, top: 595 }}
             >
               <p className="m-0">
@@ -122,7 +117,7 @@ export default function FineJewelleryHero() {
 
             <Link
               to="/fine-jewellery/cannes-2026"
-              className="absolute font-['Times_New_Roman',serif] text-[15px] uppercase tracking-[0.8px] text-[#766d42] transition-opacity hover:opacity-75"
+              className="absolute font-editorial text-[15px] uppercase tracking-[0.8px] text-gold-on-cream transition-opacity hover:opacity-75"
               style={{ left: CONTENT_LEFT, top: 715 }}
             >
               Read the Story →
@@ -130,6 +125,5 @@ export default function FineJewelleryHero() {
           </div>
         </div>
       </div>
-    </>
   );
 }

@@ -427,7 +427,7 @@ export default function Group6() {
   return (
     <div className="relative size-full">
       <Group />
-      <div className="-translate-y-1/2 absolute flex flex-col font-['Tiro_Bangla:Regular',sans-serif] justify-center leading-[0] left-[282px] not-italic text-[12px] text-black top-[165px] tracking-[1.5px] whitespace-nowrap">
+      <div className="-translate-y-1/2 absolute flex flex-col font-tagline justify-center leading-[0] left-[282px] not-italic text-[12px] text-black top-[165px] tracking-[1.5px] whitespace-nowrap">
         <p className="leading-[normal]">TM</p>
       </div>
     </div>

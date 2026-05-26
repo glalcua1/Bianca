@@ -11,16 +11,16 @@ export default function FineJewelleryCollections() {
     >
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 text-center md:mb-16">
-          <p className="mb-4 font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.5em] text-[#766d42] md:text-[11px]">
+          <p className="mb-4 text-house-eyebrow text-gold-on-cream">
             Curated for you
           </p>
           <h2
             id="collections-heading"
-            className="font-['Times_New_Roman',serif] text-[clamp(1.75rem,4vw,2.75rem)] tracking-[0.08em] text-[#1d3c34]"
+            className="font-editorial text-[clamp(1.75rem,4vw,2.75rem)] tracking-[0.08em] text-[#1d3c34]"
           >
             Our Collections
           </h2>
-          <p className="mx-auto mt-4 max-w-xl font-['Arial',sans-serif] text-sm leading-relaxed text-[#5a6b66] md:text-[15px]">
+          <p className="mx-auto mt-4 max-w-xl text-house-body text-on-cream-body">
             Three distinct worlds of diamond jewellery — each crafted with IGI-certified
             lab-grown stones and the same attention to detail as the house itself.
           </p>
@@ -39,13 +39,13 @@ export default function FineJewelleryCollections() {
                 />
               </div>
               <div className="flex flex-1 flex-col pt-8 text-center">
-                <h3 className="font-['Times_New_Roman',serif] text-2xl tracking-[0.04em] text-[#1d3c34] md:text-[1.65rem]">
+                <h3 className="font-editorial text-2xl tracking-[0.04em] text-[#1d3c34] md:text-[1.65rem]">
                   {collection.title}
                 </h3>
-                <p className="mx-auto mt-4 max-w-[280px] flex-1 font-['Arial',sans-serif] text-sm leading-relaxed text-[#5a6b66]">
+                <p className="mx-auto mt-4 max-w-[280px] flex-1 text-house-body text-on-cream-body">
                   {collection.description}
                 </p>
-                <span className="mt-6 inline-flex items-center justify-center gap-1.5 font-['Times_New_Roman',serif] text-xs uppercase tracking-[0.25em] text-[#766d42] transition group-hover:text-[#1d3c34]">
+                <span className="mt-6 inline-flex items-center justify-center gap-1.5 text-house-cta text-gold-on-cream transition group-hover:text-bianca-forest">
                   Explore
                   <ChevronRight className="size-3.5 opacity-70" aria-hidden />
                 </span>

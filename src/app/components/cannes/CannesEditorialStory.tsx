@@ -28,11 +28,11 @@ export default function CannesEditorialStory() {
           </EditorialEyebrow>
           <h2
             id="cannes-story-heading"
-            className="font-['Times_New_Roman',serif] text-[clamp(2rem,4.5vw,3.25rem)] font-normal leading-[1.12] tracking-[0.06em] text-[#f9f9f9]"
+            className="font-editorial text-[clamp(2rem,4.5vw,3.25rem)] font-normal leading-[1.12] tracking-[0.06em] text-[#f9f9f9]"
           >
             A Moment of Global Elegance
           </h2>
-          <p className="mx-auto mt-5 max-w-xl font-['Arial',sans-serif] text-sm leading-relaxed text-[#f9f9f9]/55 md:text-[15px]">
+          <p className="mx-auto mt-5 max-w-xl text-house-body text-on-forest-body">
             At Cannes — where a young Indian founder met the world&apos;s most
             celebrated red carpet.
           </p>
@@ -55,7 +55,7 @@ export default function CannesEditorialStory() {
             className="lg:col-span-7 lg:flex lg:items-center lg:pl-2 xl:pl-6"
           >
             <div className="max-w-xl">
-            <p className="font-['Times_New_Roman',serif] text-[clamp(1.2rem,2.2vw,1.55rem)] leading-[1.5] tracking-[0.03em] text-[#f9f9f9]">
+            <p className="font-editorial text-[clamp(1.2rem,2.2vw,1.55rem)] leading-[1.5] tracking-[0.03em] text-[#f9f9f9]">
               In an industry where heritage is often measured in decades,
               Bianca Diamonds arrived with something rarer still: the clarity
               of a young luxury house devoted to the rigour of fine jewellery
@@ -64,7 +64,7 @@ export default function CannesEditorialStory() {
 
             <div className="my-8 h-px w-14 bg-[#dccb7b]/40" aria-hidden />
 
-            <div className="space-y-5 font-['Arial',sans-serif] text-sm leading-[1.85] text-[#f9f9f9]/68 md:text-[15px]">
+            <div className="space-y-5 text-house-body text-on-forest-body">
               <p>
                 On the Croisette, beneath the flash of premiere lights, our
                 pieces did not announce themselves. They completed a silhouette
@@ -80,7 +80,7 @@ export default function CannesEditorialStory() {
             </div>
 
             <blockquote className="mt-10 border-l border-[#dccb7b]/50 pl-6 md:pl-8">
-              <p className="font-['Times_New_Roman',serif] text-[clamp(1.05rem,1.8vw,1.25rem)] italic leading-[1.55] tracking-[0.03em] text-[#dccb7b]/95">
+              <p className="font-editorial text-[clamp(1.05rem,1.8vw,1.25rem)] italic leading-[1.55] tracking-[0.03em] text-gold-on-forest">
                 &ldquo;Each piece was chosen with editorial intent — not to
                 overwhelm the red carpet, but to inhabit it.&rdquo;
               </p>
@@ -95,10 +95,10 @@ export default function CannesEditorialStory() {
               <EditorialEyebrow tone="gold" className="mb-5">
                 From the Sketchbook
               </EditorialEyebrow>
-              <h3 className="font-['Times_New_Roman',serif] text-[clamp(1.4rem,2.8vw,2rem)] tracking-[0.06em] text-[#f9f9f9]">
+              <h3 className="font-editorial text-[clamp(1.4rem,2.8vw,2rem)] tracking-[0.06em] text-[#f9f9f9]">
                 Where Design Begins
               </h3>
-              <p className="mx-auto mt-4 max-w-lg font-['Arial',sans-serif] text-sm leading-relaxed text-[#f9f9f9]/55 md:text-[15px]">
+              <p className="mx-auto mt-4 max-w-lg text-house-body text-on-forest-body">
                 Hand-drawn studies from the atelier — the first whisper of a
                 silhouette before stone meets gold.
               </p>

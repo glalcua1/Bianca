@@ -14,6 +14,7 @@ export default function Hw25PromoBridal2H2Jpg() {
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden",
+        backgroundColor: "#ffffff",
       }}
     >
       <ProtectedImage

@@ -23,16 +23,16 @@ import ProtectedImage from "../app/components/protection/ProtectedImage";
 function Group3() {
   return (
     <div className="absolute contents left-[39px] top-[203px]">
-      <div className="absolute bg-gradient-to-r border-[#1d3c34] border-[0.4px] border-solid from-[#edefed] h-[693px] left-[39px] rounded-[20px] to-[90.865%] to-white top-[203px] via-[48.077%] via-white w-[1434px]" />
+      <div className="absolute bg-gradient-to-r border-[#1d3c34] border-[0.4px] border-solid from-[#edefed] h-[693px] left-[39px] rounded-[20px] to-[90.865%] to-[#faf8f5] top-[203px] via-[48.077%] via-[#faf8f5] w-[1434px]" />
       <div className="absolute h-[663px] left-[798px] top-[232px] w-[656px]" data-name="Gemini_Generated_Image_m82201m82201m822 1">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[185.39%] left-[-23.1%] max-w-none top-0 w-[140.41%]" src={imgGeminiGeneratedImageM82201M82201M8221} />
         </div>
       </div>
-      <div className="-translate-y-1/2 absolute flex flex-col font-['SangBleuOGSans-Light',sans-serif] h-[109px] justify-center leading-[0] left-[174px] not-italic text-[#1d3c34] text-[40px] top-[651.5px] tracking-[1.5px] uppercase w-[508px]">
+      <div className="-translate-y-1/2 absolute flex flex-col font-display h-[109px] justify-center leading-[0] left-[174px] not-italic text-[#1d3c34] text-[40px] top-[651.5px] tracking-[1.5px] uppercase w-[508px]">
         <p className="leading-[normal]">Modern Sparkle. Timeless Impact.</p>
       </div>
-      <div className="-translate-y-1/2 absolute capitalize flex flex-col font-['Tiro_Bangla:Regular',sans-serif] h-[49px] justify-center leading-[0] left-[174px] not-italic text-[24px] text-black top-[743.5px] tracking-[1.5px] w-[564px]">
+      <div className="-translate-y-1/2 absolute capitalize flex flex-col font-tagline h-[49px] justify-center leading-[0] left-[174px] not-italic text-[24px] text-on-cream-body top-[743.5px] tracking-[1.5px] w-[564px]">
         <p className="leading-[normal]">100% Certified Lab Grown Diamonds</p>
       </div>
     </div>
@@ -635,7 +635,7 @@ function Frame4() {
   return (
     <div className="absolute content-stretch flex gap-[85px] items-end left-[307px] top-[1154px]">
       <ClipPathGroup3 />
-      <div className="flex flex-col font-['SangBleuOGSans-Light',sans-serif] h-[420px] justify-center leading-[normal] not-italic relative shrink-0 text-[#1d3c34] text-[27px] tracking-[1.5px] w-[471px] whitespace-pre-wrap">
+      <div className="flex flex-col font-display h-[420px] justify-center leading-[normal] not-italic relative shrink-0 text-[#1d3c34] text-[27px] tracking-[1.5px] w-[471px] whitespace-pre-wrap">
         <p className="mb-0">She didn’t wait for a milestone.</p>
         <p className="mb-0">She made one.</p>
         <p className="mb-0">&nbsp;</p>
@@ -675,7 +675,7 @@ function Container() {
 function Heading() {
   return (
     <div className="absolute content-stretch flex flex-col h-[58px] items-center left-[0.33px] max-w-[350px] pl-[43.95px] pr-[43.96px] top-[-0.33px]" data-name="Heading 3">
-      <div className="flex flex-col font-['Times_New_Roman:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#1d3c34] text-[33.2px] text-center tracking-[-0.1px] whitespace-nowrap">
+      <div className="flex flex-col font-editorial justify-center leading-[0] not-italic relative shrink-0 text-[#1d3c34] text-[33.2px] text-center tracking-[-0.1px] whitespace-nowrap">
         <p className="leading-[47.94px]">Modern Essentials</p>
       </div>
     </div>
@@ -693,7 +693,7 @@ function Heading3Margin() {
 function Container2() {
   return (
     <div className="absolute content-stretch flex flex-col items-center left-0 max-w-[350px] opacity-80 pl-[4.2px] pr-[4.21px] top-[-0.56px]" data-name="Container">
-      <div className="flex flex-col font-['Arial:Regular',sans-serif] h-[52px] justify-center leading-[0] not-italic relative shrink-0 text-[#383838] text-[14.5px] text-center tracking-[0.3px] w-[351px]">
+      <div className="flex flex-col font-body h-[52px] justify-center leading-[0] not-italic relative shrink-0 text-on-cream-body text-[14.5px] text-center tracking-[0.3px] w-[351px]">
         <p className="leading-[22.95px]">Discover diamonds designed for modern living — effortless pieces that bring refined sparkle to every moment of your day</p>
       </div>
     </div>
@@ -744,7 +744,7 @@ function Image() {
 function Container3() {
   return (
     <div className="h-[25.05px] relative shrink-0 w-[85.61px]" data-name="Container">
-      <div className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-['Times_New_Roman:Regular',sans-serif] h-[26px] justify-center leading-[0] left-[calc(50%-5.9px)] not-italic text-[#766d42] text-[15px] text-center top-[calc(50%-0.02px)] tracking-[0.8px] uppercase w-[73.81px]">
+      <div className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-editorial h-[26px] justify-center leading-[0] left-[calc(50%-5.9px)] not-italic text-gold-on-cream text-[15px] text-center top-[calc(50%-0.02px)] tracking-[0.8px] uppercase w-[73.81px]">
         <p className="leading-[25px]">EXPLORE</p>
       </div>
       <Image />
@@ -791,7 +791,7 @@ function Container4() {
 function Heading1() {
   return (
     <div className="content-stretch flex flex-col items-center max-w-[350px] relative shrink-0" data-name="Heading 3">
-      <div className="flex flex-col font-['Times_New_Roman:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#1d3c34] text-[32.9px] text-center tracking-[-0.1px] whitespace-nowrap">
+      <div className="flex flex-col font-editorial justify-center leading-[0] not-italic relative shrink-0 text-[#1d3c34] text-[32.9px] text-center tracking-[-0.1px] whitespace-nowrap">
         <p className="leading-[47.94px]">Occasion Elegance</p>
       </div>
     </div>
@@ -809,7 +809,7 @@ function Heading3Margin1() {
 function Container6() {
   return (
     <div className="absolute content-stretch flex flex-col items-center left-0 max-w-[350px] opacity-80 pl-[7.04px] pr-[7.03px] top-[-0.56px]" data-name="Container">
-      <div className="flex flex-col font-['SangBleuOGSans-Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#383838] text-[14.6px] text-center tracking-[0.3px] w-[350px]">
+      <div className="flex flex-col font-emphasis justify-center leading-[0] not-italic relative shrink-0 text-on-cream-body text-[14.6px] text-center tracking-[0.3px] w-[350px]">
         <p className="leading-[22.95px]">Explore statement diamonds crafted to elevate life’s most memorable celebrations with brilliance, beauty, and presence.</p>
       </div>
     </div>
@@ -860,7 +860,7 @@ function Image1() {
 function Container7() {
   return (
     <div className="h-[25.05px] relative shrink-0 w-[85.61px]" data-name="Container">
-      <div className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-['Times_New_Roman:Regular',sans-serif] h-[26px] justify-center leading-[0] left-[calc(50%-5.9px)] not-italic text-[#766d42] text-[15px] text-center top-[calc(50%-0.02px)] tracking-[0.8px] uppercase w-[73.81px]">
+      <div className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-editorial h-[26px] justify-center leading-[0] left-[calc(50%-5.9px)] not-italic text-gold-on-cream text-[15px] text-center top-[calc(50%-0.02px)] tracking-[0.8px] uppercase w-[73.81px]">
         <p className="leading-[25px]">EXPLORE</p>
       </div>
       <Image1 />
@@ -916,7 +916,7 @@ function Container8() {
 function Heading2() {
   return (
     <div className="content-stretch flex flex-col items-center max-w-[350px] relative shrink-0" data-name="Heading 3">
-      <div className="flex flex-col font-['Times_New_Roman:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#1d3c34] text-[32.5px] text-center tracking-[-0.1px] whitespace-nowrap">
+      <div className="flex flex-col font-editorial justify-center leading-[0] not-italic relative shrink-0 text-[#1d3c34] text-[32.5px] text-center tracking-[-0.1px] whitespace-nowrap">
         <p className="leading-[47.94px]">The Bridal Edit</p>
       </div>
     </div>
@@ -934,7 +934,7 @@ function Heading3Margin2() {
 function Container10() {
   return (
     <div className="absolute content-stretch flex flex-col items-center left-0 max-w-[350px] opacity-80 pl-[1.46px] pr-[1.47px] top-[-0.56px]" data-name="Container">
-      <div className="flex flex-col font-['SangBleuOGSans-Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#383838] text-[14.6px] text-center tracking-[0.3px] w-[349px]">
+      <div className="flex flex-col font-emphasis justify-center leading-[0] not-italic relative shrink-0 text-on-cream-body text-[14.6px] text-center tracking-[0.3px] w-[349px]">
         <p className="leading-[22.95px]">Explore timeless diamonds created to honor the beauty, promise, and joy of your wedding journey.</p>
       </div>
     </div>
@@ -985,7 +985,7 @@ function Image2() {
 function Container11() {
   return (
     <div className="h-[25.05px] relative shrink-0 w-[85.61px]" data-name="Container">
-      <div className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-['Times_New_Roman:Regular',sans-serif] h-[26px] justify-center leading-[0] left-[calc(50%-5.9px)] not-italic text-[#766d42] text-[15px] text-center top-[calc(50%-0.02px)] tracking-[0.8px] uppercase w-[73.81px]">
+      <div className="-translate-x-1/2 -translate-y-1/2 absolute flex flex-col font-editorial h-[26px] justify-center leading-[0] left-[calc(50%-5.9px)] not-italic text-gold-on-cream text-[15px] text-center top-[calc(50%-0.02px)] tracking-[0.8px] uppercase w-[73.81px]">
         <p className="leading-[25px]">EXPLORE</p>
       </div>
       <Image2 />
@@ -1040,7 +1040,7 @@ function LinkTheHouse() {
     <Link to="/" className="h-full relative shrink-0 block" data-name="Link - The House">
       <div className="flex flex-col items-center size-full">
         <div className="content-stretch flex flex-col h-full items-center px-[20px] py-[5px] relative">
-          <div className={`flex flex-col font-['Times_New_Roman:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-center text-white tracking-[1.5px] uppercase whitespace-nowrap ${isActive ? "font-bold" : ""}`}>
+          <div className={`flex flex-col font-editorial justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-center text-white tracking-[1.5px] uppercase whitespace-nowrap ${isActive ? "font-bold" : ""}`}>
             <p className="leading-[normal]">The House</p>
           </div>
         </div>
@@ -1065,7 +1065,7 @@ function LinkFineJewelry() {
     <Link to="/fine-jewellery" className="h-full relative shrink-0 block" data-name="Link - Fine Jewelry">
       <div className="flex flex-col items-center size-full">
         <div className="content-stretch flex flex-col h-full items-center px-[20px] py-[5px] relative">
-          <div className={`flex flex-col font-['Times_New_Roman:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#f9f9f9] text-[16px] text-center tracking-[1.5px] uppercase whitespace-nowrap ${isActive ? "font-bold" : ""}`}>
+          <div className={`flex flex-col font-editorial justify-center leading-[0] not-italic relative shrink-0 text-[#f9f9f9] text-[16px] text-center tracking-[1.5px] uppercase whitespace-nowrap ${isActive ? "font-bold" : ""}`}>
             <p className="leading-[normal]">Fine Jewelry</p>
           </div>
         </div>
@@ -1094,7 +1094,7 @@ function LinkCannesCollection() {
     >
       <div className="flex flex-col items-center size-full">
         <div className="content-stretch flex flex-col h-full items-center px-[20px] py-[5px] relative">
-          <div className={`flex flex-col font-['Times_New_Roman:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#f9f9f9] text-[16px] text-center tracking-[1.5px] uppercase whitespace-nowrap ${isActive ? "font-bold" : ""}`}>
+          <div className={`flex flex-col font-editorial justify-center leading-[0] not-italic relative shrink-0 text-[#f9f9f9] text-[16px] text-center tracking-[1.5px] uppercase whitespace-nowrap ${isActive ? "font-bold" : ""}`}>
             <p className="leading-[normal]">Cannes Collection</p>
           </div>
         </div>
@@ -1116,7 +1116,7 @@ function LinkServices() {
     <div className="h-full relative shrink-0" data-name="Link - Services">
       <div className="flex flex-col items-center size-full">
         <div className="content-stretch flex flex-col h-full items-center px-[20px] py-[5px] relative">
-          <div className="flex flex-col font-['Times_New_Roman:Regular',sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[#f9f9f9] text-[16px] text-center tracking-[1.5px] uppercase whitespace-nowrap">
+          <div className="flex flex-col font-editorial justify-center leading-[0] not-italic relative shrink-0 text-[#f9f9f9] text-[16px] text-center tracking-[1.5px] uppercase whitespace-nowrap">
             <p className="leading-[normal]">Services</p>
           </div>
         </div>
@@ -2069,7 +2069,7 @@ export function HomepageHeaderChrome() {
 
 export default function MacBookPro() {
   return (
-    <div className="bg-white relative size-full" data-name="MacBook Pro 14' - 1">
+    <div className="bg-[#faf8f5] relative size-full" data-name="MacBook Pro 14' - 1">
       <Frame1 />
       <div className="absolute z-[3] bg-white border-[#1d3c34] border-[0.4px] border-solid h-[971px] left-[58px] rounded-[20px] top-[2596px] w-[1360px]" />
       <Frame2 />
@@ -2088,14 +2088,14 @@ export default function MacBookPro() {
         </div>
       </div>
       <Frame5 />
-      <div className="-translate-y-1/2 absolute z-[5] flex flex-col font-['SangBleuOGSans-Light',sans-serif] h-[503px] justify-center leading-[0] left-[515px] not-italic text-[#dccb7b] text-[16px] top-[4077.5px] tracking-[0.5px] w-[633px] whitespace-pre-wrap">
+      <div className="-translate-y-1/2 absolute z-[5] flex flex-col font-display h-[503px] justify-center leading-[0] left-[515px] not-italic text-[#dccb7b] text-[16px] top-[4077.5px] tracking-[0.5px] w-[633px] whitespace-pre-wrap">
         <p className="leading-[normal] mb-0 text-[#fffbeb]">Jewellery has always held a special place in the way a woman expresses herself. A thoughtfully chosen piece can elevate not only how she looks, but how she feels — confident, graceful, and unmistakably herself.</p>
         <p className="leading-[normal] mb-0">&nbsp;</p>
         <p className="leading-[normal] mb-0 text-[#fffbeb]">My journey began with a deep interest in fashion styling and personal jewellery curation, where I worked closely with clients to create pieces that reflected their individuality and sense of elegance. Over time, this passion evolved into a vision: to create a brand that celebrates beauty while embracing the changing values of our time.</p>
         <p className="leading-[normal] mb-0">&nbsp;</p>
         <p className="mb-0">
           <span className="leading-[normal]">{`This vision became `}</span>
-          <span className="font-['SangBleuOGSans-Regular',sans-serif] leading-[normal]">Bianca Diamonds</span>
+          <span className="font-emphasis leading-[normal]">Bianca Diamonds</span>
           <span className="leading-[normal]">.</span>
         </p>
         <p className="leading-[normal] mb-0">&nbsp;</p>
@@ -2108,7 +2108,7 @@ export default function MacBookPro() {
         </p>
         <p className="leading-[normal] mb-0">&nbsp;</p>
         <p className="leading-[normal] text-[#fffbeb]">
-          <span className="font-['SangBleuOGSans-Regular',sans-serif]">Shweta Lal</span>
+          <span className="font-emphasis">Shweta Lal</span>
           <br aria-hidden="true" />
           Founder, Bianca Diamonds
         </p>
@@ -2119,26 +2119,26 @@ export default function MacBookPro() {
         </div>
       </div>
       <Group52 />
-      <div className="-translate-y-1/2 absolute z-[3] flex flex-col font-['Times_New_Roman:Regular',sans-serif] justify-center leading-[0] left-[calc(50%-637px)] not-italic text-[#1d3c34] text-[33.2px] top-[2692px] tracking-[-0.1px] whitespace-nowrap">
+      <div className="-translate-y-1/2 absolute z-[3] flex flex-col font-editorial justify-center leading-[0] left-[calc(50%-637px)] not-italic text-[#1d3c34] text-[33.2px] top-[2692px] tracking-[-0.1px] whitespace-nowrap">
         <p className="leading-[47.94px]">Bianca Diamonds</p>
       </div>
-      <div className="-translate-y-1/2 absolute z-[3] flex flex-col font-['SangBleuOGSans-Light',sans-serif] h-[440px] justify-center leading-[0] left-[calc(50%-143px)] not-italic text-[#1d3c34] text-[24px] top-[2953px] w-[684px]">
-        <p className="mb-[20px]">
-          <span className="font-['SangBleuOGSans-Regular',sans-serif] leading-[30px] not-italic">Bianca Diamonds represents a new era of diamond luxury</span>
-          <span className="leading-[30px]">.</span>
-        </p>
-        <p className="mb-[20px]">
-          <span className="leading-[30px]">{`Created for the modern woman, Bianca brings together timeless elegance and conscious innovation through `}</span>
-          <span className="font-['SangBleuOGSans-Regular',sans-serif] leading-[30px] not-italic">{`certified lab-grown diamonds `}</span>
-          <span className="leading-[30px]">— real diamonds with the same brilliance and beauty as mined diamonds, created using advanced technology with a more thoughtful impact on the world.</span>
-        </p>
-        <p className="mb-[20px]">
-          <span className="leading-[30px]">{`Each piece is crafted in `}</span>
-          <span className="font-['SangBleuOGSans-Regular',sans-serif] leading-[30px] not-italic">BIS hallmarked gold</span>
-          <span className="leading-[30px]">{` and certified diamonds, designed to celebrate both everyday elegance and life’s most meaningful moments.`}</span>
-        </p>
-        <p className="leading-[30px] mb-[20px]">Behind Bianca stands over 80 years of family jewellery expertise, built on trust, craftsmanship, and a deep understanding of diamonds.</p>
-        <p className="leading-[30px]">Bianca Diamonds is where modern brilliance meets timeless luxury.</p>
+      <div className="-translate-y-1/2 absolute z-[3] left-[calc(50%-143px)] top-[2953px] w-[684px] font-display not-italic text-[#1d3c34]">
+        <div className="flex flex-col gap-7 text-[18px] leading-[27px]">
+          <p className="text-[24px] leading-[30px]">
+            <span className="font-emphasis not-italic">Bianca Diamonds represents a new era of diamond luxury</span>.
+          </p>
+          <p>
+            Created for the modern woman, Bianca brings together timeless elegance and conscious innovation through{" "}
+            <span className="font-emphasis not-italic">certified lab-grown diamonds</span> — real diamonds with the same brilliance and beauty as mined diamonds, created using advanced technology with a more thoughtful impact on the world.
+          </p>
+          <p>
+            Each piece is crafted in <span className="font-emphasis not-italic">BIS hallmarked gold</span> and certified diamonds, designed to celebrate both everyday elegance and life&apos;s most meaningful moments.
+          </p>
+          <p>
+            Behind Bianca stands over 80 years of family jewellery expertise, built on trust, craftsmanship, and a deep understanding of diamonds.
+          </p>
+          <p>Bianca Diamonds is where modern brilliance meets timeless luxury.</p>
+        </div>
       </div>
       <div className="absolute z-[3] h-[372px] left-[119px] top-[2744px] w-[407px]">
         <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgRectangle11} />

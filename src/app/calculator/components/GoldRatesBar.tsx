@@ -17,11 +17,11 @@ export default function GoldRatesBar() {
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <TrendingUp className="h-4 w-4 text-[#C9A962]" />
-          <h2 className="font-['Times_New_Roman',serif] text-base tracking-wide text-[#1a1a1a]">
+          <h2 className="font-editorial text-base tracking-wide text-bianca-forest">
             Today&apos;s Gold Rate — Delhi
           </h2>
           {goldRates.loading && (
-            <span className="animate-pulse text-xs text-[#8B7355]">Loading…</span>
+            <span className="animate-pulse text-xs text-gold-on-cream">Loading…</span>
           )}
         </div>
         <div className="flex flex-wrap items-center gap-2">
@@ -37,7 +37,7 @@ export default function GoldRatesBar() {
             {goldRates.source}
           </span>
           {goldRates.lastUpdated && (
-            <span className="text-[11px] text-[#999]">
+            <span className="text-[11px] text-on-cream-subtle">
               Updated {new Date(goldRates.lastUpdated).toLocaleString("en-IN")}
             </span>
           )}
@@ -50,7 +50,7 @@ export default function GoldRatesBar() {
               });
               refreshGoldRates();
             }}
-            className="inline-flex items-center gap-1 rounded-lg border border-[#C9A962]/40 px-3 py-1.5 text-xs text-[#8B7355] transition hover:bg-[#C9A962]/10"
+            className="inline-flex items-center gap-1 rounded-lg border border-[#C9A962]/40 px-3 py-1.5 text-xs text-gold-on-cream transition hover:bg-[#C9A962]/10"
           >
             <RefreshCw className={`h-3 w-3 ${goldRates.loading ? "animate-spin" : ""}`} />
             Refresh
@@ -83,7 +83,7 @@ export default function GoldRatesBar() {
         />
       </div>
 
-      <p className="mt-3 font-['Arial',sans-serif] text-xs text-[#717182]">
+      <p className="mt-3 font-body text-xs text-on-cream-muted">
         Live reference: 18KT {formatCurrency(goldRates.rate18KT)}/g · 14KT{" "}
         {formatCurrency(goldRates.rate14KT)}/g
       </p>

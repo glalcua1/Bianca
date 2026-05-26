@@ -15,7 +15,7 @@ export default function ChargesSection() {
     >
       <div className="space-y-6">
         <div>
-          <p className="mb-3 font-['Arial',sans-serif] text-[11px] uppercase tracking-widest text-[#717182]">
+          <p className="mb-3 font-body text-[11px] uppercase tracking-widest text-on-cream-muted">
             Making Charges
           </p>
           <div className="flex flex-wrap gap-4">
@@ -73,14 +73,14 @@ export default function ChargesSection() {
               }
             />
           </div>
-          <p className="mt-2 text-xs text-[#999]">
+          <p className="mt-2 text-xs text-on-cream-subtle">
             Applied: {formatCurrency(result.makingChargesAmount)}
           </p>
         </div>
 
         <div className="border-t border-black/5 pt-6">
           <div className="flex items-center justify-between">
-            <p className="font-['Arial',sans-serif] text-[11px] uppercase tracking-widest text-[#717182]">
+            <p className="font-body text-[11px] uppercase tracking-widest text-on-cream-muted">
               GST
             </p>
             <label className="flex items-center gap-2">
@@ -122,7 +122,7 @@ export default function ChargesSection() {
         {isInternal && (
           <>
             <div className="border-t border-black/5 pt-6">
-              <p className="mb-3 font-['Arial',sans-serif] text-[11px] uppercase tracking-widest text-[#717182]">
+              <p className="mb-3 font-body text-[11px] uppercase tracking-widest text-on-cream-muted">
                 Markup & Selling Price
               </p>
               <div className="flex flex-wrap gap-4">
@@ -175,7 +175,7 @@ export default function ChargesSection() {
             </div>
 
             <div className="border-t border-black/5 pt-6">
-              <p className="mb-3 font-['Arial',sans-serif] text-[11px] uppercase tracking-widest text-[#717182]">
+              <p className="mb-3 font-body text-[11px] uppercase tracking-widest text-on-cream-muted">
                 Discount
               </p>
               <div className="flex flex-wrap gap-4">

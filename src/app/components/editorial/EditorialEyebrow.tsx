@@ -5,9 +5,9 @@ type Props = {
 };
 
 const toneClasses = {
-  light: "text-[#f9f9f9]/70",
-  dark: "text-[#766d42]",
-  gold: "text-[#dccb7b]/90",
+  light: "text-on-forest-muted",
+  dark: "text-gold-on-cream",
+  gold: "text-gold-on-forest",
 };
 
 export default function EditorialEyebrow({
@@ -17,7 +17,7 @@ export default function EditorialEyebrow({
 }: Props) {
   return (
     <p
-      className={`font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.5em] md:text-[11px] ${toneClasses[tone]} ${className}`}
+      className={`text-house-eyebrow ${toneClasses[tone]} ${className}`}
     >
       {children}
     </p>

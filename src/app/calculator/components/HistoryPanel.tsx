@@ -16,7 +16,7 @@ export default function HistoryPanel() {
       badge={history.length ? `${history.length}` : undefined}
     >
       {history.length === 0 ? (
-        <p className="py-4 text-center text-sm text-[#999]">
+        <p className="py-4 text-center text-sm text-on-cream-subtle">
           No history yet. Save a calculation to track recent quotes.
         </p>
       ) : (
@@ -27,8 +27,8 @@ export default function HistoryPanel() {
               className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-black/5 px-4 py-3"
             >
               <div>
-                <p className="font-['Times_New_Roman',serif]">{entry.name}</p>
-                <p className="flex items-center gap-1 text-xs text-[#717182]">
+                <p className="font-editorial">{entry.name}</p>
+                <p className="flex items-center gap-1 text-xs text-on-cream-muted">
                   <Clock className="h-3 w-3" />
                   {new Date(entry.savedAt).toLocaleString("en-IN")} ·{" "}
                   {formatCurrency(entry.result.finalPrice)}
@@ -50,7 +50,7 @@ export default function HistoryPanel() {
                       design: cloneDesign(entry.design),
                     })
                   }
-                  className="rounded p-1.5 text-[#8B7355] hover:bg-[#C9A962]/10"
+                  className="rounded p-1.5 text-gold-on-cream hover:bg-[#C9A962]/10"
                   title="Duplicate"
                 >
                   <Copy className="h-3.5 w-3.5" />

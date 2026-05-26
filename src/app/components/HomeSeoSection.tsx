@@ -14,7 +14,7 @@ export default function HomeSeoSection() {
         >
           About Bianca Diamonds — lab-grown diamond jewellery
         </h2>
-        <div className="space-y-5 font-['Arial',sans-serif] text-sm leading-[1.75] text-[#5a6b66] md:text-[15px]">
+        <div className="space-y-5 text-house-body text-on-cream-body">
           <p>
             Discover a new era of fine jewellery with ethically crafted,
             lab-grown diamonds. At Bianca Diamonds, we create elegant, timeless

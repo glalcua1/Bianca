@@ -28,17 +28,17 @@ export default function CollapsibleSection({
       >
         <div>
           <div className="flex items-center gap-3">
-            <h2 className="font-['Times_New_Roman',serif] text-lg tracking-wide text-[#1a1a1a]">
+            <h2 className="font-editorial text-lg tracking-wide text-bianca-forest">
               {title}
             </h2>
             {badge && (
-              <span className="rounded-full bg-[#C9A962]/15 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-[#8B7355]">
+              <span className="rounded-full bg-[#C9A962]/15 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-gold-on-cream">
                 {badge}
               </span>
             )}
           </div>
           {subtitle && (
-            <p className="mt-0.5 font-['Arial',sans-serif] text-xs text-[#717182]">
+            <p className="mt-0.5 font-body text-xs text-on-cream-muted">
               {subtitle}
             </p>
           )}
@@ -47,7 +47,7 @@ export default function CollapsibleSection({
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <ChevronDown className="h-4 w-4 text-[#8B7355]" />
+          <ChevronDown className="h-4 w-4 text-gold-on-cream" />
         </motion.span>
       </button>
       <AnimatePresence initial={false}>

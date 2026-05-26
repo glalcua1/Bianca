@@ -23,7 +23,7 @@ export default function JewelleryDetailsSection() {
           placeholder="e.g. 3 Layer Necklace"
         />
         <label className="block">
-          <span className="mb-1.5 block font-['Arial',sans-serif] text-[11px] uppercase tracking-widest text-[#717182]">
+          <span className="mb-1.5 block font-body text-[11px] uppercase tracking-widest text-on-cream-muted">
             Category
           </span>
           <select
@@ -34,7 +34,7 @@ export default function JewelleryDetailsSection() {
                 patch: { category: e.target.value as typeof design.category },
               })
             }
-            className="w-full rounded-lg border border-black/10 bg-[#faf8f5] px-3 py-2.5 font-['Arial',sans-serif] text-sm outline-none focus:border-[#C9A962] focus:ring-2 focus:ring-[#C9A962]/20"
+            className="w-full rounded-lg border border-black/10 bg-[#faf8f5] px-3 py-2.5 font-body text-sm outline-none focus:border-[#C9A962] focus:ring-2 focus:ring-[#C9A962]/20"
           >
             {JEWELLERY_CATEGORIES.map((c) => (
               <option key={c} value={c}>
@@ -44,7 +44,7 @@ export default function JewelleryDetailsSection() {
           </select>
         </label>
         <label className="block">
-          <span className="mb-1.5 block font-['Arial',sans-serif] text-[11px] uppercase tracking-widest text-[#717182]">
+          <span className="mb-1.5 block font-body text-[11px] uppercase tracking-widest text-on-cream-muted">
             Gold Purity
           </span>
           <select
@@ -55,7 +55,7 @@ export default function JewelleryDetailsSection() {
                 patch: { goldPurity: e.target.value as "18KT" | "14KT" },
               })
             }
-            className="w-full rounded-lg border border-black/10 bg-[#faf8f5] px-3 py-2.5 font-['Arial',sans-serif] text-sm outline-none focus:border-[#C9A962] focus:ring-2 focus:ring-[#C9A962]/20"
+            className="w-full rounded-lg border border-black/10 bg-[#faf8f5] px-3 py-2.5 font-body text-sm outline-none focus:border-[#C9A962] focus:ring-2 focus:ring-[#C9A962]/20"
           >
             <option value="18KT">18KT</option>
             <option value="14KT">14KT</option>

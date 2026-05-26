@@ -40,7 +40,7 @@ export default function VariantPanel() {
       </div>
 
       {variants.length === 0 ? (
-        <p className="py-4 text-center text-sm text-[#999]">
+        <p className="py-4 text-center text-sm text-on-cream-subtle">
           No saved variants yet. Save your current design to compare options.
         </p>
       ) : (
@@ -66,9 +66,9 @@ export default function VariantPanel() {
                         name: e.target.value,
                       })
                     }
-                    className="bg-transparent font-['Times_New_Roman',serif] text-base outline-none"
+                    className="bg-transparent font-editorial text-base outline-none"
                   />
-                  <p className="text-xs text-[#717182]">
+                  <p className="text-xs text-on-cream-muted">
                     {formatCurrency(vResult.finalPrice)}
                   </p>
                 </div>
@@ -85,7 +85,7 @@ export default function VariantPanel() {
                     onClick={() =>
                       dispatch({ type: "DUPLICATE_VARIANT", variantId: v.id })
                     }
-                    className="rounded p-1.5 text-[#8B7355] hover:bg-[#C9A962]/10"
+                    className="rounded p-1.5 text-gold-on-cream hover:bg-[#C9A962]/10"
                     title="Duplicate"
                   >
                     <Copy className="h-3.5 w-3.5" />
@@ -97,8 +97,8 @@ export default function VariantPanel() {
                     }
                     className={`rounded px-2 py-1 text-xs ${
                       compareVariantIds[0] === v.id
-                        ? "bg-[#C9A962]/20 text-[#8B7355]"
-                        : "text-[#717182] hover:bg-black/5"
+                        ? "bg-[#C9A962]/20 text-gold-on-cream"
+                        : "text-on-cream-muted hover:bg-black/5"
                     }`}
                   >
                     A
@@ -110,8 +110,8 @@ export default function VariantPanel() {
                     }
                     className={`rounded px-2 py-1 text-xs ${
                       compareVariantIds[1] === v.id
-                        ? "bg-[#C9A962]/20 text-[#8B7355]"
-                        : "text-[#717182] hover:bg-black/5"
+                        ? "bg-[#C9A962]/20 text-gold-on-cream"
+                        : "text-on-cream-muted hover:bg-black/5"
                     }`}
                   >
                     B
@@ -134,20 +134,20 @@ export default function VariantPanel() {
 
       {compareA && compareB && resultA && resultB && (
         <LuxuryCard className="mt-6" variant="hero">
-          <div className="mb-3 flex items-center gap-2 text-[#8B7355]">
+          <div className="mb-3 flex items-center gap-2 text-gold-on-cream">
             <GitCompare className="h-4 w-4" />
             <span className="text-xs uppercase tracking-widest">Compare</span>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <p className="text-sm font-medium">{compareA.name}</p>
-              <p className="font-['Times_New_Roman',serif] text-xl">
+              <p className="font-editorial text-xl">
                 {formatCurrency(resultA.finalPrice)}
               </p>
             </div>
             <div>
               <p className="text-sm font-medium">{compareB.name}</p>
-              <p className="font-['Times_New_Roman',serif] text-xl">
+              <p className="font-editorial text-xl">
                 {formatCurrency(resultB.finalPrice)}
               </p>
             </div>
@@ -168,7 +168,7 @@ export default function VariantPanel() {
         </LuxuryCard>
       )}
 
-      <p className="mt-3 text-xs text-[#999]">
+      <p className="mt-3 text-xs text-on-cream-subtle">
         Current design: {formatCurrency(result.finalPrice)}
       </p>
     </CollapsibleSection>

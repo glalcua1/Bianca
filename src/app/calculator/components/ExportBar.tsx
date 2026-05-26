@@ -19,7 +19,7 @@ export default function ExportBar() {
         onClick={persistDesign}
         className="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-4 py-2 text-sm transition hover:border-[#C9A962]/40 hover:bg-[#faf8f5]"
       >
-        <Save className="h-4 w-4 text-[#8B7355]" />
+        <Save className="h-4 w-4 text-gold-on-cream" />
         Save to History
       </button>
       <button
@@ -27,7 +27,7 @@ export default function ExportBar() {
         onClick={() => exportPdfQuote(design, result, isCustomer)}
         className="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-4 py-2 text-sm transition hover:border-[#C9A962]/40 hover:bg-[#faf8f5]"
       >
-        <FileText className="h-4 w-4 text-[#8B7355]" />
+        <FileText className="h-4 w-4 text-gold-on-cream" />
         PDF Quote
       </button>
       <button
@@ -37,7 +37,7 @@ export default function ExportBar() {
         }
         className="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-4 py-2 text-sm transition hover:border-[#C9A962]/40 hover:bg-[#faf8f5]"
       >
-        <MessageCircle className="h-4 w-4 text-[#8B7355]" />
+        <MessageCircle className="h-4 w-4 text-gold-on-cream" />
         WhatsApp
       </button>
       <button
@@ -45,7 +45,7 @@ export default function ExportBar() {
         onClick={() => printQuote(design, result, isCustomer)}
         className="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-4 py-2 text-sm transition hover:border-[#C9A962]/40 hover:bg-[#faf8f5]"
       >
-        <Printer className="h-4 w-4 text-[#8B7355]" />
+        <Printer className="h-4 w-4 text-gold-on-cream" />
         Print
       </button>
     </div>

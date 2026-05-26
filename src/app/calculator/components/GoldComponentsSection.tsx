@@ -96,7 +96,7 @@ export default function GoldComponentsSection() {
               <button
                 type="button"
                 onClick={() => duplicateComponent(comp)}
-                className="rounded-lg p-2 text-[#8B7355] transition hover:bg-[#C9A962]/10"
+                className="rounded-lg p-2 text-gold-on-cream transition hover:bg-[#C9A962]/10"
                 title="Duplicate"
               >
                 <Copy className="h-4 w-4" />
@@ -117,7 +117,7 @@ export default function GoldComponentsSection() {
       <button
         type="button"
         onClick={addComponent}
-        className="mt-4 inline-flex items-center gap-2 rounded-lg border border-dashed border-[#C9A962]/50 px-4 py-2.5 text-sm text-[#8B7355] transition hover:border-[#C9A962] hover:bg-[#C9A962]/5"
+        className="mt-4 inline-flex items-center gap-2 rounded-lg border border-dashed border-[#C9A962]/50 px-4 py-2.5 text-sm text-gold-on-cream transition hover:border-[#C9A962] hover:bg-[#C9A962]/5"
       >
         <Plus className="h-4 w-4" />
         Add Component

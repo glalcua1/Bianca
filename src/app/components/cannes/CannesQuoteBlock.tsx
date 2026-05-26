@@ -8,13 +8,13 @@ export default function CannesQuoteBlock() {
     >
       <EditorialReveal>
         <blockquote className="mx-auto max-w-4xl text-center">
-          <p className="font-['Times_New_Roman',serif] text-[clamp(1.5rem,3.5vw,2.35rem)] italic leading-[1.45] tracking-[0.04em] text-[#1d3c34]">
+          <p className="font-editorial text-[clamp(1.5rem,3.5vw,2.35rem)] italic leading-[1.45] tracking-[0.04em] text-[#1d3c34]">
             &ldquo;In just months, Bianca Diamonds stepped onto one of the
             world&apos;s most iconic stages.&rdquo;
           </p>
           <footer className="mt-10">
             <cite className="not-italic">
-              <span className="font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.45em] text-[#766d42]">
+              <span className="text-house-eyebrow tracking-[0.45em] text-gold-on-cream">
                 Bianca Diamonds — Cannes Film Festival 2026
               </span>
             </cite>

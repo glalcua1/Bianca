@@ -13,11 +13,11 @@ export default function CannesCraftsmanship() {
           <EditorialEyebrow className="mb-5">The Atelier</EditorialEyebrow>
           <h2
             id="cannes-craft-heading"
-            className="font-['Times_New_Roman',serif] text-[clamp(1.75rem,4vw,2.75rem)] tracking-[0.06em] text-[#1d3c34]"
+            className="font-editorial text-[clamp(1.75rem,4vw,2.75rem)] tracking-[0.06em] text-[#1d3c34]"
           >
             The Art Behind Every Sparkle
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl font-['Arial',sans-serif] text-sm leading-relaxed text-[#5a6b66] md:text-[15px]">
+          <p className="mx-auto mt-5 max-w-2xl text-house-body text-on-cream-body">
             What the world saw at Cannes is the result of countless hours at
             the bench — where science, ethics, and Indian artisan tradition
             converge.
@@ -33,10 +33,10 @@ export default function CannesCraftsmanship() {
                     className="mx-auto mb-6 flex h-px w-10 bg-[#1d3c34]/20 md:mx-0"
                     aria-hidden
                   />
-                  <h3 className="font-['Times_New_Roman',serif] text-xl tracking-[0.06em] text-[#1d3c34] md:text-[1.35rem]">
+                  <h3 className="font-editorial text-xl tracking-[0.06em] text-[#1d3c34] md:text-[1.35rem]">
                     {value.title}
                   </h3>
-                  <p className="mt-4 font-['Arial',sans-serif] text-sm leading-[1.85] text-[#5a6b66] md:text-[15px]">
+                  <p className="mt-4 text-house-body text-on-cream-body">
                     {value.description}
                   </p>
                 </div>

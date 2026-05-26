@@ -15,12 +15,12 @@ export default function CannesManyaSpotlight() {
             <EditorialEyebrow className="mb-5">On the Croisette</EditorialEyebrow>
             <h2
               id="cannes-motion-heading"
-              className="font-['Times_New_Roman',serif] text-[clamp(1.65rem,3.2vw,2.35rem)] leading-[1.2] tracking-[0.06em] text-[#1d3c34]"
+              className="font-editorial text-[clamp(1.65rem,3.2vw,2.35rem)] leading-[1.2] tracking-[0.06em] text-[#1d3c34]"
             >
               Cannes in Motion
             </h2>
             <div className="my-7 h-px w-12 bg-[#766d42]/30" aria-hidden />
-            <div className="max-w-md space-y-5 font-['Arial',sans-serif] text-sm leading-[1.85] text-[#5a6b66] md:text-[15px]">
+            <div className="max-w-md space-y-5 text-house-body text-on-cream-body">
               <p>
                 Bianca Diamonds arrived on the Cannes red carpet with the kind
                 of ease that cannot be styled into existence — only understood.

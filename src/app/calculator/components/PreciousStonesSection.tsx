@@ -55,7 +55,7 @@ export default function PreciousStonesSection() {
       badge={formatCurrency(result.preciousStoneCost)}
     >
       {stones.length === 0 ? (
-        <p className="py-6 text-center font-['Arial',sans-serif] text-sm text-[#999]">
+        <p className="py-6 text-center font-body text-sm text-on-cream-subtle">
           No gemstones added. Click below to add stones.
         </p>
       ) : (
@@ -69,7 +69,7 @@ export default function PreciousStonesSection() {
               >
                 <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
                   <label className="block">
-                    <span className="mb-1.5 block font-['Arial',sans-serif] text-[11px] uppercase tracking-widest text-[#717182]">
+                    <span className="mb-1.5 block font-body text-[11px] uppercase tracking-widest text-on-cream-muted">
                       Stone Type
                     </span>
                     <select
@@ -157,7 +157,7 @@ export default function PreciousStonesSection() {
                       className="max-w-[180px]"
                     />
                   ) : (
-                    <span className="font-['Times_New_Roman',serif] text-lg">
+                    <span className="font-editorial text-lg">
                       {formatCurrency(cost)}
                     </span>
                   )}
@@ -175,7 +175,7 @@ export default function PreciousStonesSection() {
                           },
                         })
                       }
-                      className="rounded-lg p-2 text-[#8B7355] hover:bg-[#C9A962]/10"
+                      className="rounded-lg p-2 text-gold-on-cream hover:bg-[#C9A962]/10"
                     >
                       <Copy className="h-4 w-4" />
                     </button>
@@ -203,7 +203,7 @@ export default function PreciousStonesSection() {
       <button
         type="button"
         onClick={addStone}
-        className="mt-4 inline-flex items-center gap-2 rounded-lg border border-dashed border-[#C9A962]/50 px-4 py-2.5 text-sm text-[#8B7355] transition hover:border-[#C9A962] hover:bg-[#C9A962]/5"
+        className="mt-4 inline-flex items-center gap-2 rounded-lg border border-dashed border-[#C9A962]/50 px-4 py-2.5 text-sm text-gold-on-cream transition hover:border-[#C9A962] hover:bg-[#C9A962]/5"
       >
         <Plus className="h-4 w-4" />
         Add Stone

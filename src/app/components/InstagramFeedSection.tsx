@@ -107,16 +107,16 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
 
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-14 text-center md:mb-20">
-          <p className="mb-4 font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.5em] text-[#1d3c34]/55 md:text-[11px]">
+          <p className="mb-4 text-house-eyebrow text-on-cream-muted">
             Social
           </p>
           <h2
             id={headingId}
-            className="font-['Times_New_Roman',serif] text-[clamp(1.75rem,4vw,2.75rem)] tracking-[0.12em] text-[#1d3c34]"
+            className="font-editorial text-[clamp(1.75rem,4vw,2.75rem)] tracking-[0.12em] text-[#1d3c34]"
           >
             The Gallery
           </h2>
-          <p className="mx-auto mt-4 max-w-lg font-['Arial',sans-serif] text-sm leading-relaxed text-[#5a6b66] md:text-[15px]">
+          <p className="mx-auto mt-4 max-w-lg text-house-body text-on-cream-body">
             A curated view of reels, campaigns, and moments from the Bianca
             studio — tap any frame to open on Instagram.
           </p>
@@ -163,7 +163,7 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
                     )}
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1d3c34]/55 via-[#1d3c34]/10 to-transparent opacity-90 transition group-hover:from-[#1d3c34]/65" />
                     <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
-                      <span className="inline-block border border-[#f9f9f9]/25 bg-[#1d3c34]/40 px-3 py-1 font-['Arial',sans-serif] text-[10px] uppercase tracking-[0.35em] text-[#f9f9f9] backdrop-blur-sm">
+                      <span className="inline-block border border-[#f9f9f9]/25 bg-[#1d3c34]/40 px-3 py-1 font-body text-[10px] uppercase tracking-[0.35em] text-[#f9f9f9] backdrop-blur-sm">
                         {labelForType(m.media_type)}
                       </span>
                     </div>
@@ -205,10 +205,10 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
             <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full border border-[#dccb7b]/40 bg-[#1d3c34]/[0.03]">
               <Instagram className="size-7 text-[#1d3c34]/50" aria-hidden />
             </div>
-            <p className="font-['Times_New_Roman',serif] text-xl tracking-[0.06em] text-[#1d3c34]">
+            <p className="font-editorial text-xl tracking-[0.06em] text-[#1d3c34]">
               Follow the atelier
             </p>
-            <p className="mt-3 font-['Arial',sans-serif] text-sm leading-relaxed text-[#5a6b66]">
+            <p className="mt-3 text-house-body text-on-cream-body">
               Our latest reels and stories will appear here as soon as the
               gallery is connected — until then, visit us on Instagram.
             </p>
@@ -216,7 +216,7 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
               href={profileUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 border-b border-[#1d3c34]/30 pb-0.5 font-['Arial',sans-serif] text-sm font-medium tracking-wide text-[#1d3c34] transition hover:border-[#dccb7b] hover:text-[#766d42]"
+              className="mt-8 inline-flex items-center gap-2 border-b border-[#1d3c34]/30 pb-0.5 font-body text-sm font-medium tracking-wide text-[#1d3c34] transition hover:border-[#dccb7b] hover:text-gold-on-cream"
             >
               <Instagram className="size-4 shrink-0" aria-hidden />
               Open Instagram
