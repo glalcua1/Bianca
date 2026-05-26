@@ -46,7 +46,7 @@ export const FINE_JEWELLERY_COLLECTIONS: FineJewelleryCollection[] = [
       "Timeless diamonds created to honour the beauty, promise, and joy of your wedding journey.",
     image: imgBridalEdit,
     imageAlt: "The Bridal Edit — wedding and bridal diamond jewellery",
-    imageClassName: "object-cover object-top scale-110",
+    imageClassName: "object-cover object-[center_22%]",
   },
 ];
 

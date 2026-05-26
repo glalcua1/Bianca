@@ -147,10 +147,10 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
                   >
                     {thumb ? (
                       <ProtectedImage
-                        wrapperClassName="w-full"
+                        wrapperClassName="relative aspect-[4/5] w-full overflow-hidden"
                         src={thumb}
                         alt=""
-                        className="aspect-[4/5] w-full object-cover transition duration-700 ease-out group-hover:scale-[1.04]"
+                        className="size-full object-cover object-center transition duration-700 ease-out group-hover:scale-[1.04]"
                         loading="lazy"
                       />
                     ) : (
