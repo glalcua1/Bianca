@@ -10,6 +10,8 @@ type Props = {
   "data-name"?: string;
   /** Scale frame to container width (for grids). Default: fixed atelier size. */
   fluid?: boolean;
+  /** Black image well — for dark-background product photography (e.g. necklaces). */
+  darkImageWell?: boolean;
 };
 
 export default function CollectionPhotoFrame({
@@ -17,7 +19,9 @@ export default function CollectionPhotoFrame({
   alt,
   "data-name": dataName,
   fluid = false,
+  darkImageWell = false,
 }: Props) {
+  const imageWellBg = darkImageWell ? "bg-black" : "bg-[#faf8f5]";
   return (
     <div
       className={`relative ${fluid ? "w-full" : "shrink-0"}`}
@@ -34,7 +38,7 @@ export default function CollectionPhotoFrame({
         <div className="flex min-h-0 flex-1 flex-col border border-[#766d42]/30 bg-[#faf8f5] p-[3px]">
           {/* White mount — padding creates visible mat on all four sides */}
           <div className="flex min-h-0 flex-1 flex-col border border-[#1d3c34]/12 bg-white p-[24px] shadow-[inset_0_0_0_1px_rgba(220,203,123,0.22)]">
-            <div className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden bg-[#faf8f5]">
+            <div className={`relative flex min-h-0 flex-1 items-center justify-center overflow-hidden ${imageWellBg}`}>
               <ProtectedImage
                 wrapperClassName="relative h-full w-full"
                 src={src}

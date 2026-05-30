@@ -134,14 +134,14 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "Evenly spaced round brilliants along a fine chain — the house signature of proportion, balance, and everyday refinement.",
   },
   {
-    id: "neck-maison-solitaire",
+    id: "neck-maison-rubis",
     category: "necklaces",
-    productCode: "BD-NK-005",
-    image: "/necklace/Neck5.png",
-    alt: "Maison Solitaire — solitaire pendant necklace",
-    title: "Maison Solitaire",
+    productCode: "BD-NK-007",
+    image: "/necklace/Neck7.png",
+    alt: "Maison Rubis — ruby and diamond fringe necklace with matching earrings",
+    title: "Maison Rubis",
     description:
-      "One exceptional centre stone, four-prong set and left to speak for itself — the purest expression of certified diamond beauty.",
+      "A cushion-cut ruby crowned in diamonds, with cascading pear and marquise drops — matched with chandelier earrings for an unmistakable statement of house high jewellery.",
   },
   {
     id: "neck-grace-eternelle",

@@ -121,6 +121,7 @@ export default function FineJewelleryAtelier({
               <li key={piece.id} className="flex flex-col items-center">
                 <CollectionPhotoFrame
                   fluid
+                  darkImageWell={piece.category === "necklaces"}
                   src={piece.image}
                   alt={piece.alt}
                   data-name={piece.id}
