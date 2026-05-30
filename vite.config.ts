@@ -6,7 +6,16 @@ import react from '@vitejs/plugin-react'
 import { consultationApiPlugin } from './server/vite-consultation-api-plugin.js'
 
 /** Public subfolders referenced by URL paths (not figma:asset imports). */
-const PUBLIC_URL_DIRS = ['Cannes', 'Rings', 'Mens'] as const
+const PUBLIC_URL_DIRS = ['Cannes', 'Rings', 'Mens', 'necklace'] as const
+
+/** Root-level public files referenced by URL (not figma:asset imports). */
+const PUBLIC_ROOT_FILES = [
+  'BD_watermark.png',
+  'Bianca_girl.png',
+  'Earrings_2.png',
+  'IMG_7293.PNG',
+  'Necklace.png',
+] as const
 
 // Resolve Figma asset imports (figma:asset/*) to images in public folder
 function figmaAssetPlugin() {
@@ -40,6 +49,14 @@ function copyPublicUrlDirsPlugin() {
         const dest = path.join(outDir, dir)
         if (fs.existsSync(src)) {
           fs.cpSync(src, dest, { recursive: true })
+        }
+      }
+
+      for (const file of PUBLIC_ROOT_FILES) {
+        const src = path.join(publicDir, file)
+        const dest = path.join(outDir, file)
+        if (fs.existsSync(src)) {
+          fs.copyFileSync(src, dest)
         }
       }
 

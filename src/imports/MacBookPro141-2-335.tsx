@@ -1,15 +1,12 @@
 import { useContext } from "react";
 import svgPaths from "./svg-w8us36f4bi";
-import imgGeminiGeneratedImageM82201M82201M8221 from "figma:asset/db8ce4b6ba67f77b645c64a3e2fd3fcd1b7f2395.png";
 import imgHorizontalDivider from "figma:asset/8e308339b92f4428d34abe5c3dd0e7df843e4026.png";
 import imgRectangle5 from "figma:asset/519e1d40f496bfb11e0ff406ebc67a130f0aed16.png";
-import imgHw25PromoBridal2H1Jpg from "figma:asset/afa9671f19943983683b5212bd4e0ff5a61cc775.png";
-import imgHw25PromoBridal2H3Jpg from "figma:asset/581d41c78850052909c92d619a846a456fb23495.png";
 import imgRectangle6 from "figma:asset/bcbf2ab8604eb3c4c44851f9e32172fab91932f2.png";
 import imgRectangle11 from "figma:asset/5ba4358549f78481bb5595ef12a37c5f59d7d33d.png";
-import imgGeminiGeneratedImageN42Rxan42Rxan42R1 from "figma:asset/200f28676d6a2eae898fcdcd9f13ebcd75250299.png";
-import imgGeminiGeneratedImageN42Rxan42Rxan42R3 from "figma:asset/75d88e2bc003dea111ea5784491167b05e57ecdf.png";
-import imgGeminiGeneratedImageN42Rxan42Rxan42R2 from "figma:asset/e5c39fcf4ff37608e7feb29dff2a18144e8108fe.png";
+import imgPackagingBox from "figma:asset/200f28676d6a2eae898fcdcd9f13ebcd75250299.png";
+import imgPackagingBag from "figma:asset/75d88e2bc003dea111ea5784491167b05e57ecdf.png";
+import imgPackagingPouch from "figma:asset/e5c39fcf4ff37608e7feb29dff2a18144e8108fe.png";
 import imgImage1 from "figma:asset/ffad195494173b3c37c4aa05d64af9f2620a7643.png";
 // imgRectangle8 / imgRectangle10 were only used for ring-mark sprite masks – replaced by RingMark
 import { imgRectangle, imgRectangle1, imgGroup, imgRectangle3, imgRectangle4, imgRectangle7, imgGroup1, imgRectangle9, imgGroup2 } from "./svg-nywou";
@@ -19,14 +16,15 @@ import Group6Logo from "./Group6";
 import { RingMark } from "./RingMark";
 import Hw25PromoBridal2H2JpgVideo from "./Hw25PromoBridal2H2Jpg";
 import ProtectedImage from "../app/components/protection/ProtectedImage";
+import CollectionPhotoFrame, { COLLECTION_FRAME_HEIGHT } from "../app/components/CollectionPhotoFrame";
 
 function Group3() {
   return (
     <div className="absolute contents left-[39px] top-[203px]">
       <div className="absolute bg-gradient-to-r border-[#1d3c34] border-[0.4px] border-solid from-[#edefed] h-[693px] left-[39px] rounded-[20px] to-[90.865%] to-white top-[203px] via-[48.077%] via-white w-[1434px]" />
-      <div className="absolute h-[663px] left-[798px] top-[232px] w-[656px]" data-name="Gemini_Generated_Image_m82201m82201m822 1">
+      <div className="absolute h-[663px] left-[798px] top-[232px] w-[656px]" data-name="hero-editorial-image">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[185.39%] left-[-23.1%] max-w-none top-0 w-[140.41%]" src={imgGeminiGeneratedImageM82201M82201M8221} />
+          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[185.39%] left-[-23.1%] max-w-none top-0 w-[140.41%]" src="/Bianca_girl.png" />
         </div>
       </div>
       <div className="-translate-y-1/2 absolute flex flex-col font-display h-[109px] justify-center leading-[0] left-[174px] not-italic text-[#1d3c34] text-[40px] top-[651.5px] tracking-[1.5px] uppercase w-[508px]">
@@ -650,15 +648,17 @@ function Frame4() {
 
 function Hw25PromoBridal2H1Jpg() {
   return (
-    <div className="max-w-[443.3299865722656px] relative self-stretch shrink-0 w-[443px]" data-name="hw25_promo_bridal_2h_1.jpg">
-      <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgHw25PromoBridal2H1Jpg} />
-    </div>
+    <CollectionPhotoFrame
+      data-name="hw25_promo_bridal_2h_1.jpg"
+      src="/Earrings_2.png"
+      alt="Modern Essentials – diamond earrings"
+    />
   );
 }
 
 function Picture() {
   return (
-    <div className="content-stretch flex h-[443.33px] items-start justify-center relative shrink-0" data-name="Picture">
+    <div className="content-stretch flex items-center justify-center relative shrink-0" style={{ height: COLLECTION_FRAME_HEIGHT }} data-name="Picture">
       <Hw25PromoBridal2H1Jpg />
     </div>
   );
@@ -773,8 +773,8 @@ function LinkBlock() {
 
 function Picture1() {
   return (
-    <div className="content-stretch flex h-[443.33px] items-center justify-center relative shrink-0" data-name="Picture">
-      {/* Occasion Elegance – image centered within matching 443.33px container */}
+    <div className="content-stretch flex items-center justify-center relative shrink-0" style={{ height: COLLECTION_FRAME_HEIGHT }} data-name="Picture">
+      {/* Occasion Elegance – framed collection image */}
       <Hw25PromoBridal2H2JpgVideo />
     </div>
   );
@@ -889,17 +889,17 @@ function Link1() {
 
 function Hw25PromoBridal2H3Jpg() {
   return (
-    <div className="max-w-[443.3299865722656px] relative self-stretch shrink-0 w-[443px]" data-name="hw25_promo_bridal_2h_3.jpg">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[146%] left-0 max-w-none top-[-37.58%] w-full" src={imgHw25PromoBridal2H3Jpg} />
-      </div>
-    </div>
+    <CollectionPhotoFrame
+      data-name="hw25_promo_bridal_2h_3.jpg"
+      src="/Necklace.png"
+      alt="The Bridal Edit – diamond necklace"
+    />
   );
 }
 
 function Picture2() {
   return (
-    <div className="content-stretch flex h-[443.33px] items-start justify-center relative shrink-0" data-name="Picture">
+    <div className="content-stretch flex items-center justify-center relative shrink-0" style={{ height: COLLECTION_FRAME_HEIGHT }} data-name="Picture">
       <Hw25PromoBridal2H3Jpg />
     </div>
   );
@@ -2143,19 +2143,19 @@ export default function MacBookPro() {
       <div className="absolute z-[3] h-[372px] left-[119px] top-[2744px] w-[407px]">
         <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgRectangle11} />
       </div>
-      <div className="absolute z-[3] h-[247px] left-[143px] top-[3236px] w-[231px]" data-name="Gemini_Generated_Image_n42rxan42rxan42r 1">
+      <div className="absolute z-[3] h-[247px] left-[143px] top-[3236px] w-[231px]" data-name="packaging-box">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[118.56%] left-[-20.52%] max-w-none top-[-11.87%] w-[127.01%]" src={imgGeminiGeneratedImageN42Rxan42Rxan42R1} />
+          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[118.56%] left-[-20.52%] max-w-none top-[-11.87%] w-[127.01%]" src={imgPackagingBox} />
         </div>
       </div>
-      <div className="absolute z-[3] h-[127px] left-[369px] top-[3236px] w-[131px]" data-name="Gemini_Generated_Image_n42rxan42rxan42r 3">
+      <div className="absolute z-[3] h-[127px] left-[369px] top-[3236px] w-[131px]" data-name="packaging-bag">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[117.77%] left-[-6.44%] max-w-none top-[-12.23%] w-[113.85%]" src={imgGeminiGeneratedImageN42Rxan42Rxan42R3} />
+          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[117.77%] left-[-6.44%] max-w-none top-[-12.23%] w-[113.85%]" src={imgPackagingBag} />
         </div>
       </div>
-      <div className="absolute z-[3] h-[78px] left-[394px] top-[3374px] w-[81px]" data-name="Gemini_Generated_Image_n42rxan42rxan42r 2">
+      <div className="absolute z-[3] h-[78px] left-[394px] top-[3374px] w-[81px]" data-name="packaging-pouch">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[240.39%] left-[-121.16%] max-w-none top-[-120.11%] w-[232.38%]" src={imgGeminiGeneratedImageN42Rxan42Rxan42R2} />
+          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[240.39%] left-[-121.16%] max-w-none top-[-120.11%] w-[232.38%]" src={imgPackagingPouch} />
         </div>
       </div>
       <div className="absolute z-[3] h-[273px] left-[613px] top-[3236px] w-[427px]" data-name="image 1">
