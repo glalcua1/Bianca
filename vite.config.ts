@@ -11,7 +11,8 @@ const PUBLIC_URL_DIRS = ['Cannes', 'Rings', 'Mens', 'necklace'] as const
 /** Root-level public files referenced by URL (not figma:asset imports). */
 const PUBLIC_ROOT_FILES = [
   'BD_watermark.png',
-  'Bianca_girl.png',
+  'Bianca_girl2.jpg',
+  'founder.jpg',
   'Earrings_2.png',
   'IMG_7293.PNG',
   'Necklace.png',

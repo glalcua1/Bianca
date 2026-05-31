@@ -2,7 +2,6 @@ import { useContext } from "react";
 import svgPaths from "./svg-w8us36f4bi";
 import imgHorizontalDivider from "figma:asset/8e308339b92f4428d34abe5c3dd0e7df843e4026.png";
 import imgRectangle5 from "figma:asset/519e1d40f496bfb11e0ff406ebc67a130f0aed16.png";
-import imgRectangle6 from "figma:asset/bcbf2ab8604eb3c4c44851f9e32172fab91932f2.png";
 import imgRectangle11 from "figma:asset/5ba4358549f78481bb5595ef12a37c5f59d7d33d.png";
 import imgPackagingBox from "figma:asset/200f28676d6a2eae898fcdcd9f13ebcd75250299.png";
 import imgPackagingBag from "figma:asset/75d88e2bc003dea111ea5784491167b05e57ecdf.png";
@@ -18,13 +17,29 @@ import Hw25PromoBridal2H2JpgVideo from "./Hw25PromoBridal2H2Jpg";
 import ProtectedImage from "../app/components/protection/ProtectedImage";
 import CollectionPhotoFrame, { COLLECTION_FRAME_HEIGHT } from "../app/components/CollectionPhotoFrame";
 
+/** Hero white card — heights trimmed 20px from bottom of editorial portrait */
+const HERO_CARD_HEIGHT = 673;
+const HERO_IMAGE_HEIGHT = 643;
+
 function Group3() {
   return (
     <div className="absolute contents left-[39px] top-[203px]">
-      <div className="absolute bg-gradient-to-r border-[#1d3c34] border-[0.4px] border-solid from-[#edefed] h-[693px] left-[39px] rounded-[20px] to-[90.865%] to-white top-[203px] via-[48.077%] via-white w-[1434px]" />
-      <div className="absolute h-[663px] left-[798px] top-[232px] w-[656px]" data-name="hero-editorial-image">
+      <div
+        className="absolute bg-gradient-to-r border-[#1d3c34] border-[0.4px] border-solid from-[#edefed] left-[39px] rounded-[20px] to-[90.865%] to-white top-[203px] via-[48.077%] via-white w-[1434px]"
+        style={{ height: HERO_CARD_HEIGHT }}
+      />
+      <div
+        className="absolute left-[798px] top-[232px] w-[656px]"
+        style={{ height: HERO_IMAGE_HEIGHT }}
+        data-name="hero-editorial-image"
+      >
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[185.39%] left-[-23.1%] max-w-none top-0 w-[140.41%]" src="/Bianca_girl.png" />
+          <ProtectedImage
+            wrapperClassName="absolute inset-0 size-full"
+            alt="Bianca Diamonds — lab-grown diamond fine jewellery"
+            className="absolute h-[185.39%] left-[-23.1%] max-w-none top-0 w-[140.41%]"
+            src="/Bianca_girl2.jpg"
+          />
         </div>
       </div>
       <div className="-translate-y-1/2 absolute flex flex-col font-display h-[109px] justify-center leading-[0] left-[174px] not-italic text-[#1d3c34] text-[40px] top-[651.5px] tracking-[1.5px] uppercase w-[508px]">
@@ -498,9 +513,6 @@ function Group() {
 }
 
 function Group6() {
-  // Renders the Figma-imported hero logo at the same position as the original design.
-  // Container (304×245 px) is derived by back-calculating from:
-  //   Frame1 TM position (456, 459) minus Group6Logo-internal TM offset (282, 165) = (174, 294).
   return (
     <div className="absolute left-[174px] top-[294px] w-[304px] h-[245px]">
       <Group6Logo />
@@ -519,7 +531,10 @@ function Group9() {
 
 function Frame1() {
   return (
-    <div className="absolute bg-[#1d3c34] h-[942px] left-0 top-0 w-[1512px]">
+    <div
+      className="absolute bg-[#1d3c34] left-0 top-0 w-[1512px]"
+      style={{ height: 942 - 20 }}
+    >
       <Group9 />
     </div>
   );
@@ -2051,7 +2066,6 @@ function Group52() {
   return (
     <div className="absolute contents left-[39px] top-[38.29px]">
       <Group53 />
-      <Frame />
       <Frame3 />
     </div>
   );
@@ -2126,9 +2140,14 @@ export default function MacBookPro() {
           Founder, Bianca Diamonds
         </p>
       </div>
-      <div className="absolute z-[1] h-[236px] left-[202px] rounded-[10px] top-[3916px] w-[229px]">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[10px]">
-          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[124.34%] left-[2.09%] max-w-none top-[0.06%] w-[96.01%]" src={imgRectangle6} />
+      <div className="absolute z-[1] h-[360px] left-[202px] rounded-[12px] top-[3916px] w-[248px]">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[12px] shadow-[0_12px_40px_rgba(0,0,0,0.28)]">
+          <ProtectedImage
+            wrapperClassName="absolute inset-0 size-full"
+            alt="Shweta Lal, Founder of Bianca Diamonds"
+            className="absolute inset-0 size-full object-cover object-top"
+            src="/founder.jpg"
+          />
         </div>
       </div>
       <Group52 />

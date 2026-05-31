@@ -40,10 +40,10 @@ export default function HomePageMobile() {
 
           <div className="relative mt-6 w-full overflow-hidden rounded-[12px] bg-[#faf8f5]">
             <ProtectedImage
-              wrapperClassName="relative block w-full"
-              src="/Bianca_girl.png"
+              wrapperClassName="relative block w-full overflow-hidden"
+              src="/Bianca_girl2.jpg"
               alt="Bianca Diamonds — lab-grown diamond fine jewellery"
-              className="mx-auto block h-auto w-full max-h-[min(72vh,520px)] object-contain object-[center_12%]"
+              className="mx-auto block h-auto w-full max-h-[min(72vh,500px)] object-contain object-top"
             />
           </div>
 

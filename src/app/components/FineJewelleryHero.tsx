@@ -18,7 +18,6 @@ const DESIGN_H = CARD_BOTTOM + BOTTOM_SPACING;
 const CONTENT_LEFT = 174;
 const CONTENT_WIDTH = 508;
 const CANNES_HERO_IMAGE = "/Cannes/Model_neck1.png";
-
 /** Right-side editorial frame — inset within the white card */
 const IMAGE_PANEL = {
   left: 819,

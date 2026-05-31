@@ -1,4 +1,3 @@
-import imgRectangle6 from "figma:asset/bcbf2ab8604eb3c4c44851f9e32172fab91932f2.png";
 import imgRectangle11 from "figma:asset/5ba4358549f78481bb5595ef12a37c5f59d7d33d.png";
 import imgPackagingBox from "figma:asset/200f28676d6a2eae898fcdcd9f13ebcd75250299.png";
 import imgPackagingBag from "figma:asset/75d88e2bc003dea111ea5784491167b05e57ecdf.png";
@@ -159,12 +158,15 @@ export default function HomeBiancaStoryMobile() {
             Founder&apos;s note
           </h2>
 
-          <div className="relative mx-auto aspect-[229/236] w-[min(72%,229px)] overflow-hidden rounded-[10px]">
+          <div
+            className="relative mx-auto w-[min(78%,248px)] max-w-[280px] overflow-hidden rounded-[12px] shadow-[0_12px_40px_rgba(0,0,0,0.28)]"
+            style={{ height: 360 }}
+          >
             <ProtectedImage
               wrapperClassName="absolute inset-0 size-full"
-              src={imgRectangle6}
+              src="/founder.jpg"
               alt="Shweta Lal, Founder of Bianca Diamonds"
-              className="size-full object-cover object-center"
+              className="size-full object-cover object-top"
             />
           </div>
 
