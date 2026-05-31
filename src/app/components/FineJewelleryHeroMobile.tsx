@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import Group6Logo from "../../imports/Group6";
+import { BiancaHouseLogo } from "./BiancaLogo";
 import ProtectedImage from "./protection/ProtectedImage";
 
 const CANNES_HERO_IMAGE = "/Cannes/Model_neck1.png";
@@ -8,9 +8,7 @@ export default function FineJewelleryHeroMobile() {
   return (
     <section className="bg-[#1d3c34] px-4 pb-10 pt-2">
       <div className="mx-auto max-w-lg rounded-[16px] border border-[#1d3c34]/40 bg-gradient-to-b from-[#edefed] via-white to-white p-5">
-        <div className="relative mx-auto h-[52px] w-[min(72%,220px)]">
-          <Group6Logo />
-        </div>
+        <BiancaHouseLogo maxWidth={200} className="mx-auto" />
 
         <p className="mt-6 text-center text-house-eyebrow text-gold-on-cream">
           Cannes Film Festival · 2026
@@ -25,11 +23,11 @@ export default function FineJewelleryHeroMobile() {
           the world&apos;s most celebrated red carpet.
         </p>
 
-        <div className="relative mx-auto mt-6 aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[12px] bg-black">
+        <div className="relative mx-auto mt-6 w-full max-w-sm overflow-hidden rounded-[12px] bg-black">
           <ProtectedImage
-            wrapperClassName="absolute inset-0 flex items-end justify-center p-4"
+            wrapperClassName="relative block w-full"
             alt="Bianca Diamonds fine jewellery — Cannes Film Festival 2026"
-            className="max-h-full max-w-full object-contain"
+            className="mx-auto block h-auto w-full max-h-[min(70vh,480px)] object-contain object-bottom"
             src={CANNES_HERO_IMAGE}
           />
         </div>

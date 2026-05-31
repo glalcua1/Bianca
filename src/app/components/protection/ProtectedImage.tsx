@@ -1,4 +1,5 @@
 import type { ImgHTMLAttributes } from "react";
+import { useMediaMinWidth } from "../../hooks/useMediaMinWidth";
 import { isAppleMobile } from "../../lib/isAppleMobile";
 import ProtectedCanvasImage from "./ProtectedCanvasImage";
 
@@ -16,7 +17,10 @@ export default function ProtectedImage({
   alt,
   ...props
 }: Props) {
-  if (isAppleMobile()) {
+  const isDesktop = useMediaMinWidth();
+  const useCanvasProtection = isAppleMobile() && isDesktop;
+
+  if (useCanvasProtection) {
     return (
       <ProtectedCanvasImage
         wrapperClassName={wrapperClassName}

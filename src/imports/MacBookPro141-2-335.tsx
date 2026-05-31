@@ -2067,6 +2067,19 @@ export function HomepageHeaderChrome() {
   );
 }
 
+/** Gold wordmark from homepage header chrome (Frame3) — 176.533×142.347 design px. */
+export function HeaderNavLogo() {
+  return (
+    <div
+      className="relative shrink-0"
+      style={{ width: 176.533, height: 142.347 }}
+      data-name="Header nav logo"
+    >
+      <ClipPathGroup8 />
+    </div>
+  );
+}
+
 export default function MacBookPro() {
   return (
     <div className="bg-[#faf8f5] relative size-full" data-name="MacBook Pro 14' - 1">

@@ -119,13 +119,15 @@ export default function FineJewelleryAtelier({
           <ul className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
             {filteredPieces.map((piece) => (
               <li key={piece.id} className="flex flex-col items-center">
-                <CollectionPhotoFrame
-                  fluid
-                  darkImageWell={piece.category === "necklaces"}
-                  src={piece.image}
-                  alt={piece.alt}
-                  data-name={piece.id}
-                />
+                <div className="w-full max-w-[443px] md:max-w-none">
+                  <CollectionPhotoFrame
+                    fluid
+                    darkImageWell={piece.category === "necklaces"}
+                    src={piece.image}
+                    alt={piece.alt}
+                    data-name={piece.id}
+                  />
+                </div>
                 <div className="mt-8 w-full max-w-[22rem] text-center">
                   <p className="text-[10px] uppercase tracking-[0.22em] text-gold-on-cream">
                     {FINE_JEWELLERY_CATEGORIES.find(

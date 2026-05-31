@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import Group6Logo from "../../imports/Group6";
+import { BiancaForestNavLogo } from "./BiancaLogo";
 import {
   NavActiveProvider,
   type NavActiveItem,
@@ -33,11 +33,11 @@ export default function MobileSiteNav({ activeItem }: Props) {
         <div className="flex items-center justify-between gap-4">
           <Link
             to="/"
-            className="relative block h-12 w-[140px] shrink-0"
+            className="relative block shrink-0"
             aria-label="Bianca Diamonds — home"
             onClick={() => setOpen(false)}
           >
-            <Group6Logo />
+            <BiancaForestNavLogo maxWidth={132} />
           </Link>
           <button
             type="button"

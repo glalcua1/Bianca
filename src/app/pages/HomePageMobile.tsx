@@ -2,7 +2,8 @@ import { Link } from "react-router";
 import CollectionPhotoFrame from "../components/CollectionPhotoFrame";
 import MobileSiteNav from "../components/MobileSiteNav";
 import ProtectedImage from "../components/protection/ProtectedImage";
-import Group6Logo from "../../imports/Group6";
+import { BiancaHouseLogo } from "../components/BiancaLogo";
+import HomeBiancaStoryMobile from "../components/HomeBiancaStoryMobile";
 
 const COLLECTIONS = [
   {
@@ -35,16 +36,14 @@ export default function HomePageMobile() {
 
       <section className="bg-[#1d3c34] px-4 pb-10 pt-2">
         <div className="mx-auto max-w-lg rounded-[16px] border border-[#1d3c34]/40 bg-gradient-to-b from-[#edefed] via-white to-white p-5 shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
-          <div className="relative mx-auto h-[52px] w-[min(72%,220px)]">
-            <Group6Logo />
-          </div>
+          <BiancaHouseLogo maxWidth={200} className="mx-auto" />
 
-          <div className="relative mt-6 aspect-[4/5] w-full overflow-hidden rounded-[12px] bg-[#faf8f5]">
+          <div className="relative mt-6 w-full overflow-hidden rounded-[12px] bg-[#faf8f5]">
             <ProtectedImage
-              wrapperClassName="absolute inset-0"
+              wrapperClassName="relative block w-full"
               src="/Bianca_girl.png"
               alt="Bianca Diamonds — lab-grown diamond fine jewellery"
-              className="size-full object-contain object-center"
+              className="mx-auto block h-auto w-full max-h-[min(72vh,520px)] object-contain object-[center_12%]"
             />
           </div>
 
@@ -78,12 +77,14 @@ export default function HomePageMobile() {
                 to="/fine-jewellery#collections"
                 className="flex flex-col items-center"
               >
-                <CollectionPhotoFrame
-                  fluid
-                  src={collection.image}
-                  alt={collection.alt}
-                  data-name={collection.title}
-                />
+                <div className="w-full max-w-[443px]">
+                  <CollectionPhotoFrame
+                    fluid
+                    src={collection.image}
+                    alt={collection.alt}
+                    data-name={collection.title}
+                  />
+                </div>
                 <h3 className="mt-6 font-editorial text-xl tracking-[0.04em] text-[#1d3c34]">
                   {collection.title}
                 </h3>
@@ -120,32 +121,7 @@ export default function HomePageMobile() {
         </div>
       </section>
 
-      <section className="px-4 py-12">
-        <div className="mx-auto max-w-lg">
-          <h2 className="font-editorial text-[clamp(1.5rem,5vw,2rem)] tracking-[0.04em] text-[#1d3c34]">
-            Bianca Diamonds
-          </h2>
-          <div className="relative mt-6 aspect-[4/3] w-full overflow-hidden rounded-[10px]">
-            <ProtectedImage
-              wrapperClassName="absolute inset-0"
-              src="/Bianca_girl.png"
-              alt=""
-              className="size-full object-cover object-center"
-            />
-          </div>
-          <p className="mt-6 text-house-body leading-relaxed text-on-cream-body">
-            Bianca Diamonds represents a new era of diamond luxury — certified
-            lab-grown brilliance, BIS hallmarked gold, and over 80 years of
-            family jewellery expertise.
-          </p>
-          <Link
-            to="/fine-jewellery"
-            className="mt-8 inline-block border border-[#766d42]/50 bg-[#f4f0e6] px-6 py-2.5 text-house-cta text-[#1d3c34]"
-          >
-            Explore Fine Jewellery
-          </Link>
-        </div>
-      </section>
+      <HomeBiancaStoryMobile />
     </div>
   );
 }

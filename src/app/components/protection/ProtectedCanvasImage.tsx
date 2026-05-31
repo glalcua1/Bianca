@@ -17,12 +17,15 @@ function drawImageToCanvas(
   canvas: HTMLCanvasElement,
   image: HTMLImageElement,
   objectFit: "cover" | "contain",
+  cssWidth: number,
+  cssHeight: number,
 ) {
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
 
-  const { width, height } = canvas;
-  ctx.clearRect(0, 0, width, height);
+  ctx.clearRect(0, 0, cssWidth, cssHeight);
+  const width = cssWidth;
+  const height = cssHeight;
 
   const scale =
     objectFit === "contain"
@@ -61,12 +64,22 @@ export default function ProtectedCanvasImage({
 
     const render = () => {
       const rect = wrapper.getBoundingClientRect();
-      const width = Math.max(1, Math.round(rect.width));
-      const height = Math.max(1, Math.round(rect.height));
-      canvas.width = width;
-      canvas.height = height;
+      const cssWidth = Math.max(1, Math.round(rect.width));
+      const cssHeight = Math.max(1, Math.round(rect.height));
+      const dpr = Math.min(window.devicePixelRatio || 1, 3);
+
+      canvas.width = cssWidth * dpr;
+      canvas.height = cssHeight * dpr;
+      canvas.style.width = `${cssWidth}px`;
+      canvas.style.height = `${cssHeight}px`;
+
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+
       if (image.complete && image.naturalWidth > 0) {
-        drawImageToCanvas(canvas, image, objectFit);
+        drawImageToCanvas(canvas, image, objectFit, cssWidth, cssHeight);
       }
     };
 
