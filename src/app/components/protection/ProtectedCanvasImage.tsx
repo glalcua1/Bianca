@@ -35,24 +35,6 @@ function drawImageToCanvas(
   const offsetY = (height - drawHeight) / 2;
 
   ctx.drawImage(image, offsetX, offsetY, drawWidth, drawHeight);
-
-  ctx.save();
-  ctx.globalAlpha = 0.14;
-  ctx.translate(width / 2, height / 2);
-  ctx.rotate(-Math.PI / 6);
-  ctx.fillStyle = "#1d3c34";
-  ctx.font = "600 11px Arial, sans-serif";
-  ctx.textAlign = "center";
-
-  const label = "BIANCA DIAMONDS";
-  const stepX = 140;
-  const stepY = 48;
-  for (let y = -height; y < height; y += stepY) {
-    for (let x = -width; x < width; x += stepX) {
-      ctx.fillText(label, x, y);
-    }
-  }
-  ctx.restore();
 }
 
 export default function ProtectedCanvasImage({
@@ -140,7 +122,10 @@ export default function ProtectedCanvasImage({
         onContextMenu={blockInteraction}
         onDragStart={blockInteraction}
       />
-      <div className="ios-media-watermark absolute inset-0 z-[11] touch-none" aria-hidden />
+      <div
+        className="ios-media-watermark absolute inset-0 z-[11] hidden touch-none md:block"
+        aria-hidden
+      />
     </div>
   );
 }

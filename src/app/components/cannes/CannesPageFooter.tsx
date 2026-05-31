@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { Instagram } from "lucide-react";
 import { BIANCA_INSTAGRAM_URL } from "../../data/cannesShowcase2026";
+import SiteCopyright from "../SiteCopyright";
 
 export default function CannesPageFooter() {
   return (
@@ -37,6 +38,7 @@ export default function CannesPageFooter() {
           The House
         </Link>
       </div>
+      <SiteCopyright className="mt-8 text-on-forest-muted" />
     </footer>
   );
 }

@@ -10,7 +10,7 @@ export default function BrandImageWatermark({ className = "" }: Props) {
       alt=""
       aria-hidden
       draggable={false}
-      className={`pointer-events-none absolute bottom-3 right-3 z-[6] h-auto w-[clamp(48px,20%,76px)] select-none opacity-95 md:bottom-4 md:right-4 md:w-[clamp(52px,18%,84px)] ${className}`}
+      className={`pointer-events-none absolute bottom-3 right-3 z-[6] hidden h-auto w-[clamp(48px,20%,76px)] select-none opacity-95 md:block md:bottom-4 md:right-4 md:w-[clamp(52px,18%,84px)] ${className}`}
     />
   );
 }

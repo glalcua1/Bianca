@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { HomepageHeaderChrome } from "../../imports/MacBookPro141-2-335";
+import { useMediaMinWidth } from "../hooks/useMediaMinWidth";
+import MobileSiteNav from "./MobileSiteNav";
 import {
   NavActiveProvider,
   type NavActiveItem,
@@ -15,6 +17,7 @@ type Props = {
 };
 
 export default function SiteNav({ activeItem }: Props) {
+  const isDesktop = useMediaMinWidth();
   const [scale, setScale] = useState(1);
   const [height, setHeight] = useState(DESIGN_H);
 
@@ -25,10 +28,15 @@ export default function SiteNav({ activeItem }: Props) {
   }, []);
 
   useEffect(() => {
+    if (!isDesktop) return;
     compute();
     window.addEventListener("resize", compute);
     return () => window.removeEventListener("resize", compute);
-  }, [compute]);
+  }, [compute, isDesktop]);
+
+  if (!isDesktop) {
+    return <MobileSiteNav activeItem={activeItem} />;
+  }
 
   return (
     <NavActiveProvider value={activeItem}>

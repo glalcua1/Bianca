@@ -3,3 +3,14 @@
 @import './theme.css';
 @import './typography.css';
 @import './content-protection.css';
+
+@media (max-width: 767px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  #root {
+    overflow-x: hidden;
+  }
+}

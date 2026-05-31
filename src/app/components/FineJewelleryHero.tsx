@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router";
 import Group6Logo from "../../imports/Group6";
+import { useMediaMinWidth } from "../hooks/useMediaMinWidth";
+import FineJewelleryHeroMobile from "./FineJewelleryHeroMobile";
 import ProtectedImage from "./protection/ProtectedImage";
 import BrandImageWatermark from "./BrandImageWatermark";
 
@@ -26,6 +28,7 @@ const IMAGE_PANEL = {
 };
 
 export default function FineJewelleryHero() {
+  const isDesktop = useMediaMinWidth();
   const [scale, setScale] = useState(1);
   const [height, setHeight] = useState(DESIGN_H);
 
@@ -36,10 +39,15 @@ export default function FineJewelleryHero() {
   }, []);
 
   useEffect(() => {
+    if (!isDesktop) return;
     compute();
     window.addEventListener("resize", compute);
     return () => window.removeEventListener("resize", compute);
-  }, [compute]);
+  }, [compute, isDesktop]);
+
+  if (!isDesktop) {
+    return <FineJewelleryHeroMobile />;
+  }
 
   return (
     <div

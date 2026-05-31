@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { Instagram } from "lucide-react";
 import InstagramFeedSection from "../components/InstagramFeedSection";
+import SiteCopyright from "../components/SiteCopyright";
 import SiteNav from "../components/SiteNav";
 import FineJewelleryHero from "../components/FineJewelleryHero";
 import FineJewelleryAtelier from "../components/FineJewelleryAtelier";
@@ -157,6 +158,7 @@ export default function FineJewelleryPage() {
             Return Home
           </Link>
         </div>
+        <SiteCopyright className="mt-8 text-on-forest-muted" />
       </footer>
     </div>
   );
