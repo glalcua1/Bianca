@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import HomeSeoSection from "../components/HomeSeoSection";
 import SiteFooter from "../components/SiteFooter";
 import InstagramFeedSection from "../components/InstagramFeedSection";
 import { useMediaMinWidth } from "../hooks/useMediaMinWidth";
@@ -71,7 +70,6 @@ export default function HomePage() {
     <>
       {isDesktop ? <DesktopHomeArtboard /> : <HomePageMobile />}
       <InstagramFeedSection profileUrl={BIANCA_INSTAGRAM_URL} />
-      <HomeSeoSection />
       <SiteFooter />
     </>
   );
