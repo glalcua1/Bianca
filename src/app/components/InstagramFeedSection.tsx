@@ -3,6 +3,7 @@ import { Instagram } from "lucide-react";
 import { parseInstagramUsername } from "../utils/instagramUsername";
 import { proxyInstagramImageUrl } from "../utils/instagramImageProxy";
 import { INSTAGRAM_EMBED_FALLBACK_URLS } from "../data/instagramEmbedFallbacks";
+import { INSTAGRAM_GALLERY_FALLBACK } from "../data/instagramGalleryFallback";
 
 declare global {
   interface Window {
@@ -25,6 +26,11 @@ function pickThumbnail(m: InstagramMediaItem): string | undefined {
     return m.children.data[0].media_url;
   }
   return m.thumbnail_url || m.media_url;
+}
+
+function galleryImageSrc(thumb: string): string {
+  if (thumb.startsWith("/media/")) return thumb;
+  return proxyInstagramImageUrl(thumb);
 }
 
 function labelForType(mediaType: string): string {
@@ -58,11 +64,15 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
       .then((data: { media?: InstagramMediaItem[] }) => {
         if (cancelled) return;
         const items = Array.isArray(data.media) ? data.media : [];
-        setApiMedia(items.slice(0, GALLERY_MAX_ITEMS));
+        if (items.length > 0) {
+          setApiMedia(items.slice(0, GALLERY_MAX_ITEMS));
+          return;
+        }
+        setApiMedia(INSTAGRAM_GALLERY_FALLBACK.slice(0, GALLERY_MAX_ITEMS));
       })
       .catch(() => {
         if (cancelled) return;
-        setApiMedia([]);
+        setApiMedia(INSTAGRAM_GALLERY_FALLBACK.slice(0, GALLERY_MAX_ITEMS));
       });
     return () => {
       cancelled = true;
@@ -161,7 +171,7 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
                     {thumb ? (
                       <div className="relative aspect-square w-full overflow-hidden">
                         <img
-                          src={proxyInstagramImageUrl(thumb)}
+                          src={galleryImageSrc(thumb)}
                           alt=""
                           loading="lazy"
                           decoding="async"

@@ -24,6 +24,10 @@ export default async function handler(req, res) {
 
   try {
     const result = await handleInstagramFeedRequest(req.query ?? {});
+    res.setHeader(
+      "Cache-Control",
+      "public, s-maxage=3600, stale-while-revalidate=86400"
+    );
     res.status(result.status).json(result.body);
   } catch {
     res.status(200).json({ media: [], configured: false, error: "handler_error" });

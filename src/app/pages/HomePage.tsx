@@ -70,9 +70,7 @@ export default function HomePage() {
   return (
     <>
       {isDesktop ? <DesktopHomeArtboard /> : <HomePageMobile />}
-      {!isDesktop ? (
-        <InstagramFeedSection profileUrl={BIANCA_INSTAGRAM_URL} />
-      ) : null}
+      <InstagramFeedSection profileUrl={BIANCA_INSTAGRAM_URL} />
       <HomeSeoSection />
       <SiteFooter />
     </>

@@ -1,7 +1,22 @@
 import https from "https";
+import { INSTAGRAM_GALLERY_FALLBACK } from "./instagram-gallery-fallback.js";
 
 const IG_APP_ID = "936619743392459";
 const IG_USER_AGENT = "Instagram 219.0.0.12.117 Android";
+const PROFILE_CACHE_TTL_MS = 60 * 60 * 1000;
+
+/** @type {{ key: string, media: object[], expiresAt: number } | null} */
+let profileCache = null;
+
+function fallbackMedia(limit) {
+  return INSTAGRAM_GALLERY_FALLBACK.slice(0, limit).map((item) => ({
+    id: item.id,
+    media_type: item.media_type,
+    media_url: item.localImage,
+    thumbnail_url: item.localImage,
+    permalink: item.permalink,
+  }));
+}
 
 /**
  * Node fetch sends Sec-Fetch-* headers Instagram rejects; use https directly.
@@ -164,9 +179,26 @@ export async function handleInstagramFeedRequest(query = {}) {
     }
   }
 
+  const cacheKey = `${username}:${limit}`;
+  if (profileCache?.key === cacheKey && profileCache.expiresAt > Date.now()) {
+    return {
+      status: 200,
+      body: {
+        media: profileCache.media,
+        configured: Boolean(token),
+        source: "profile-cache",
+      },
+    };
+  }
+
   try {
     const media = await fetchInstagramGallery(username, limit);
     if (media.length > 0) {
+      profileCache = {
+        key: cacheKey,
+        media,
+        expiresAt: Date.now() + PROFILE_CACHE_TTL_MS,
+      };
       return {
         status: 200,
         body: { media, configured: Boolean(token), source: "profile" },
@@ -174,20 +206,26 @@ export async function handleInstagramFeedRequest(query = {}) {
     }
   } catch (error) {
     const message = error instanceof Error ? error.message : "profile_error";
+    const media = fallbackMedia(limit);
     return {
       status: 200,
       body: {
-        media: [],
+        media,
         configured: Boolean(token),
-        source: "profile",
+        source: media.length > 0 ? "fallback" : "profile",
         error: message,
       },
     };
   }
 
+  const media = fallbackMedia(limit);
   return {
     status: 200,
-    body: { media: [], configured: Boolean(token), source: "none" },
+    body: {
+      media,
+      configured: Boolean(token),
+      source: media.length > 0 ? "fallback" : "none",
+    },
   };
 }
 
