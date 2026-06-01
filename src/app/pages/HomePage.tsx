@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import HomeSeoSection from "../components/HomeSeoSection";
-import SiteCopyright from "../components/SiteCopyright";
+import SiteFooter from "../components/SiteFooter";
 import { useMediaMinWidth } from "../hooks/useMediaMinWidth";
 import HomePageMobile from "./HomePageMobile";
 import MacBookPro from "../../imports/MacBookPro141-2-335";
@@ -69,9 +69,7 @@ export default function HomePage() {
     <>
       {isDesktop ? <DesktopHomeArtboard /> : <HomePageMobile />}
       <HomeSeoSection />
-      <footer className="border-t border-[#1d3c34]/10 bg-[#faf8f5] px-8 py-8 text-center">
-        <SiteCopyright />
-      </footer>
+      <SiteFooter />
     </>
   );
 }

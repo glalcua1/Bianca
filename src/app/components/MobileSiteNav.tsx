@@ -5,21 +5,7 @@ import {
   NavActiveProvider,
   type NavActiveItem,
 } from "../context/NavActiveContext";
-
-const NAV_ITEMS: {
-  id: NavActiveItem;
-  label: string;
-  to: string;
-}[] = [
-  { id: "the-house", label: "The House", to: "/" },
-  { id: "fine-jewellery", label: "Fine Jewelry", to: "/fine-jewellery" },
-  {
-    id: "cannes-collection",
-    label: "Cannes Collection",
-    to: "/fine-jewellery/cannes-2026",
-  },
-  { id: "media", label: "Media", to: "/media" },
-];
+import { SITE_NAV_ITEMS } from "../data/siteContact";
 
 type Props = {
   activeItem?: NavActiveItem;
@@ -70,7 +56,7 @@ export default function MobileSiteNav({ activeItem }: Props) {
           aria-hidden={!open}
         >
           <ul className="mt-4 space-y-1 border-t border-[#766d42]/40 pt-4">
-            {NAV_ITEMS.map((item) => {
+            {SITE_NAV_ITEMS.map((item) => {
               const isActive = activeItem === item.id;
               return (
                 <li key={item.id}>

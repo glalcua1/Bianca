@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { motion } from "motion/react";
 import SiteNav from "../components/SiteNav";
-import SiteCopyright from "../components/SiteCopyright";
+import SiteFooter from "../components/SiteFooter";
 import { CalculatorProvider } from "../calculator/context/CalculatorContext";
 import GoldRatesBar from "../calculator/components/GoldRatesBar";
 import DesignToolbar from "../calculator/components/DesignToolbar";
@@ -81,12 +81,7 @@ function CalculatorContent() {
         </div>
       </main>
 
-      <footer className="border-t border-black/5 bg-white px-6 py-8 text-center">
-        <p className="text-house-caption tracking-[0.3em] text-on-cream-subtle">
-          Bianca Diamonds · Internal Pricing Tool · Delhi
-        </p>
-        <SiteCopyright className="mt-4 text-on-cream-subtle" />
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

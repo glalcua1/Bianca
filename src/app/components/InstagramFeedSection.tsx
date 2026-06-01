@@ -1,7 +1,8 @@
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 import { Instagram } from "lucide-react";
+import { parseInstagramUsername } from "../utils/instagramUsername";
+import { proxyInstagramImageUrl } from "../utils/instagramImageProxy";
 import { INSTAGRAM_EMBED_FALLBACK_URLS } from "../data/instagramEmbedFallbacks";
-import ProtectedImage from "./protection/ProtectedImage";
 
 declare global {
   interface Window {
@@ -32,6 +33,8 @@ function labelForType(mediaType: string): string {
   return "Post";
 }
 
+const GALLERY_MAX_ITEMS = 6;
+
 type Props = {
   profileUrl: string;
 };
@@ -39,14 +42,23 @@ type Props = {
 export default function InstagramFeedSection({ profileUrl }: Props) {
   const headingId = useId();
   const [apiMedia, setApiMedia] = useState<InstagramMediaItem[] | null>(null);
+  const username = useMemo(
+    () => parseInstagramUsername(profileUrl),
+    [profileUrl]
+  );
 
   useEffect(() => {
     let cancelled = false;
-    fetch("/api/instagram-feed")
+    const params = new URLSearchParams({
+      username,
+      limit: String(GALLERY_MAX_ITEMS),
+    });
+    fetch(`/api/instagram-feed?${params}`)
       .then((r) => r.json())
       .then((data: { media?: InstagramMediaItem[] }) => {
         if (cancelled) return;
-        setApiMedia(Array.isArray(data.media) ? data.media : []);
+        const items = Array.isArray(data.media) ? data.media : [];
+        setApiMedia(items.slice(0, GALLERY_MAX_ITEMS));
       })
       .catch(() => {
         if (cancelled) return;
@@ -55,7 +67,7 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [username]);
 
   useEffect(() => {
     if (apiMedia === null) return;
@@ -123,19 +135,19 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
         </div>
 
         {apiMedia === null && (
-          <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-6">
-            {Array.from({ length: 8 }).map((_, i) => (
+          <ul className="mx-auto grid max-w-xl grid-cols-3 gap-2.5 sm:max-w-2xl sm:gap-3 md:gap-3.5">
+            {Array.from({ length: GALLERY_MAX_ITEMS }).map((_, i) => (
               <li
                 key={i}
-                className="aspect-[4/5] animate-pulse rounded-sm bg-[#1d3c34]/[0.08] ring-1 ring-[#1d3c34]/[0.06]"
+                className="aspect-square animate-pulse rounded-sm bg-[#1d3c34]/[0.08] ring-1 ring-[#1d3c34]/[0.06]"
               />
             ))}
           </ul>
         )}
 
         {showApiGrid && (
-          <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
-            {apiMedia!.map((m) => {
+          <ul className="mx-auto grid max-w-xl grid-cols-3 gap-2.5 sm:max-w-2xl sm:gap-3 md:gap-3.5">
+            {apiMedia!.slice(0, GALLERY_MAX_ITEMS).map((m) => {
               const thumb = pickThumbnail(m);
               return (
                 <li key={m.id}>
@@ -143,27 +155,30 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
                     href={m.permalink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative block overflow-hidden rounded-sm bg-[#1d3c34]/[0.04] shadow-[0_24px_60px_rgba(29,60,52,0.12)] ring-1 ring-[#1d3c34]/10 transition duration-500 hover:shadow-[0_32px_80px_rgba(29,60,52,0.18)] hover:ring-[#dccb7b]/45"
+                    className="group relative block overflow-hidden rounded-sm bg-[#1d3c34]/[0.04] shadow-[0_8px_24px_rgba(29,60,52,0.1)] ring-1 ring-[#1d3c34]/10 transition duration-500 hover:shadow-[0_12px_32px_rgba(29,60,52,0.14)] hover:ring-[#dccb7b]/45"
                   >
                     {thumb ? (
-                      <ProtectedImage
-                        wrapperClassName="relative aspect-[4/5] w-full overflow-hidden"
-                        src={thumb}
-                        alt=""
-                        className="size-full object-cover object-center transition duration-700 ease-out group-hover:scale-[1.04]"
-                        loading="lazy"
-                      />
+                      <div className="relative aspect-square w-full overflow-hidden">
+                        <img
+                          src={proxyInstagramImageUrl(thumb)}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          referrerPolicy="no-referrer"
+                          className="size-full object-cover object-center transition duration-700 ease-out group-hover:scale-[1.04]"
+                        />
+                      </div>
                     ) : (
-                      <div className="flex aspect-[4/5] w-full items-center justify-center bg-[#e8e0d0]">
+                      <div className="flex aspect-square w-full items-center justify-center bg-[#e8e0d0]">
                         <Instagram
-                          className="size-12 text-[#1d3c34]/25"
+                          className="size-8 text-[#1d3c34]/25"
                           aria-hidden
                         />
                       </div>
                     )}
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1d3c34]/55 via-[#1d3c34]/10 to-transparent opacity-90 transition group-hover:from-[#1d3c34]/65" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
-                      <span className="inline-block border border-[#f9f9f9]/25 bg-[#1d3c34]/40 px-3 py-1 font-body text-[10px] uppercase tracking-[0.35em] text-[#f9f9f9] backdrop-blur-sm">
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1d3c34]/50 via-transparent to-transparent opacity-85 transition group-hover:from-[#1d3c34]/60" />
+                    <div className="absolute bottom-0 left-0 right-0 p-1.5 sm:p-2">
+                      <span className="inline-block border border-[#f9f9f9]/25 bg-[#1d3c34]/40 px-1.5 py-px font-body text-[8px] uppercase tracking-[0.28em] text-[#f9f9f9] backdrop-blur-sm sm:text-[9px]">
                         {labelForType(m.media_type)}
                       </span>
                     </div>
@@ -172,6 +187,21 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
               );
             })}
           </ul>
+        )}
+
+        {showApiGrid && (
+          <p className="mt-10 text-center">
+            <a
+              href={profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border-b border-[#1d3c34]/30 pb-0.5 font-body text-sm tracking-wide text-[#1d3c34] transition hover:border-[#dccb7b]"
+            >
+              <Instagram className="size-4 shrink-0" aria-hidden />
+              @{username} on Instagram
+              <span className="sr-only"> (opens in new tab)</span>
+            </a>
+          </p>
         )}
 
         {showEmbeds && (

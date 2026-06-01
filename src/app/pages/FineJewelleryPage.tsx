@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
-import { Instagram } from "lucide-react";
 import InstagramFeedSection from "../components/InstagramFeedSection";
-import SiteCopyright from "../components/SiteCopyright";
+import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
 import FineJewelleryHero from "../components/FineJewelleryHero";
 import FineJewelleryAtelier from "../components/FineJewelleryAtelier";
 import type { JewelleryCategoryId } from "../data/fineJewelleryCollections";
-
-const BIANCA_INSTAGRAM_URL =
-  "https://www.instagram.com/bianca.diamonds?igsh=M3didm9lb2pidXBi";
+import { BIANCA_INSTAGRAM_URL } from "../data/siteContact";
 
 const CRAFT_VALUES = [
   {
@@ -131,35 +127,7 @@ export default function FineJewelleryPage() {
 
       <InstagramFeedSection profileUrl={BIANCA_INSTAGRAM_URL} />
 
-      <footer
-        className="border-t border-[#dccb7b]/10 px-8 py-12 text-center"
-        style={{ backgroundColor: "#1d3c34" }}
-      >
-        <p className="mb-6 font-body text-sm text-on-forest-muted">
-          Return to the house or follow the atelier online.
-        </p>
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
-          <a
-            href={BIANCA_INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-body text-sm tracking-wide text-gold-on-forest transition-opacity hover:opacity-90"
-          >
-            <Instagram className="size-5 shrink-0" aria-hidden />
-            Instagram
-          </a>
-          <span className="hidden text-[#dccb7b]/30 sm:inline" aria-hidden>
-            |
-          </span>
-          <Link
-            to="/"
-            className="inline-block border border-[#dccb7b]/50 px-8 py-2.5 text-house-cta text-gold-on-forest transition-colors hover:bg-[#dccb7b] hover:text-bianca-forest"
-          >
-            Return Home
-          </Link>
-        </div>
-        <SiteCopyright className="mt-8 text-on-forest-muted" />
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

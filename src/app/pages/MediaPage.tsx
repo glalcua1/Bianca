@@ -1,17 +1,16 @@
-import { Link } from "react-router";
-import { Instagram } from "lucide-react";
 import SiteNav from "../components/SiteNav";
-import SiteCopyright from "../components/SiteCopyright";
+import SiteFooter from "../components/SiteFooter";
 import EditorialEyebrow from "../components/editorial/EditorialEyebrow";
 import EditorialReveal from "../components/editorial/EditorialReveal";
 import MediaPressCard from "../components/media/MediaPressCard";
+import InstagramFeedSection from "../components/InstagramFeedSection";
 import { usePageMeta } from "../hooks/usePageMeta";
 import {
   MEDIA_BRAND_STATEMENT,
   MEDIA_PRESS_ITEMS,
   MEDIA_SEO,
 } from "../data/mediaCoverage";
-import { BIANCA_INSTAGRAM_URL } from "../data/cannesShowcase2026";
+import { BIANCA_INSTAGRAM_URL } from "../data/siteContact";
 
 export default function MediaPage() {
   usePageMeta(MEDIA_SEO.title, MEDIA_SEO.description);
@@ -102,41 +101,9 @@ export default function MediaPage() {
         </div>
       </section>
 
-      <footer className="border-t border-[#1d3c34]/10 bg-[#1d3c34] px-8 py-12 text-center">
-        <p className="mb-6 font-body text-sm text-on-forest-muted">
-          Explore the atelier collection or follow Bianca Diamonds online.
-        </p>
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
-          <a
-            href={BIANCA_INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-body text-sm tracking-wide text-on-forest-muted transition-opacity hover:text-[#f9f9f9]"
-          >
-            <Instagram className="size-5 shrink-0" aria-hidden />
-            Instagram
-          </a>
-          <span className="hidden text-[#f9f9f9]/20 sm:inline" aria-hidden>
-            |
-          </span>
-          <Link
-            to="/fine-jewellery/cannes-2026"
-            className="font-body text-sm tracking-wide text-on-forest-muted transition-opacity hover:text-[#f9f9f9]"
-          >
-            Cannes Collection
-          </Link>
-          <span className="hidden text-[#f9f9f9]/20 sm:inline" aria-hidden>
-            |
-          </span>
-          <Link
-            to="/fine-jewellery"
-            className="inline-block border border-[#f9f9f9]/25 px-8 py-2.5 text-house-cta text-on-forest transition-colors hover:border-[#f9f9f9]/60 hover:text-[#f9f9f9]"
-          >
-            Fine Jewellery
-          </Link>
-        </div>
-        <SiteCopyright className="mt-8 text-on-forest-muted" />
-      </footer>
+      <InstagramFeedSection profileUrl={BIANCA_INSTAGRAM_URL} />
+
+      <SiteFooter />
     </main>
   );
 }

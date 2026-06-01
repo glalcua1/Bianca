@@ -6,7 +6,7 @@ import CannesManyaSpotlight from "../components/cannes/CannesManyaSpotlight";
 import CannesCraftsmanship from "../components/cannes/CannesCraftsmanship";
 import CannesQuoteBlock from "../components/cannes/CannesQuoteBlock";
 import CannesCtaSection from "../components/cannes/CannesCtaSection";
-import CannesPageFooter from "../components/cannes/CannesPageFooter";
+import SiteFooter from "../components/SiteFooter";
 import { CANNES_SEO } from "../data/cannesShowcase2026";
 
 export default function CannesShowcase2026Page() {
@@ -23,7 +23,7 @@ export default function CannesShowcase2026Page() {
       <CannesCraftsmanship />
       <CannesQuoteBlock />
       <CannesCtaSection />
-      <CannesPageFooter />
+      <SiteFooter />
     </main>
   );
 }

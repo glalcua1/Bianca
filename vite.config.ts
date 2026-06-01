@@ -4,6 +4,7 @@ import fs from 'fs'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { consultationApiPlugin } from './server/vite-consultation-api-plugin.js'
+import { instagramApiPlugin } from './server/vite-instagram-api-plugin.js'
 
 /** Public subfolders referenced by URL paths (not figma:asset imports). */
 const PUBLIC_URL_DIRS = ['Cannes', 'Rings', 'Mens', 'necklace', 'media'] as const
@@ -86,6 +87,7 @@ export default defineConfig({
     figmaAssetPlugin(),
     copyPublicUrlDirsPlugin(),
     consultationApiPlugin(),
+    instagramApiPlugin(),
     // The React and Tailwind plugins are both required for Make, even if
     // Tailwind is not being actively used – do not remove them
     react(),

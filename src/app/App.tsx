@@ -5,6 +5,8 @@ import FineJewelleryPage from "./pages/FineJewelleryPage";
 import CannesShowcase2026Page from "./pages/CannesShowcase2026Page";
 import MediaPage from "./pages/MediaPage";
 import CalculatorPage from "./pages/CalculatorPage";
+import LabGrownDiamondFaqPage from "./pages/LabGrownDiamondFaqPage";
+import ContactPage from "./pages/ContactPage";
 
 export default function App() {
   return (
@@ -19,6 +21,11 @@ export default function App() {
         <Route path="/fine-jewellery" element={<FineJewelleryPage />} />
         <Route path="/media" element={<MediaPage />} />
         <Route path="/calculator" element={<CalculatorPage />} />
+        <Route
+          path="/lab-grown-diamond-faq"
+          element={<LabGrownDiamondFaqPage />}
+        />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </BrowserRouter>
     </ContentProtectionProvider>

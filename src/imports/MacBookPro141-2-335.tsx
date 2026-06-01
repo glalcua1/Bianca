@@ -665,8 +665,8 @@ function Hw25PromoBridal2H1Jpg() {
   return (
     <CollectionPhotoFrame
       data-name="hw25_promo_bridal_2h_1.jpg"
-      src="/Earrings_2.png"
-      alt="Modern Essentials – diamond earrings"
+      src="/Rings/IMG_5302.jpg"
+      alt="Modern Essentials – diamond ring"
     />
   );
 }

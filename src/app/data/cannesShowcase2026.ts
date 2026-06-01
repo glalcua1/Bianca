@@ -185,5 +185,4 @@ export const CANNES_SKETCHES: CannesSketch[] = [
   },
 ];
 
-export const BIANCA_INSTAGRAM_URL =
-  "https://www.instagram.com/bianca.diamonds?igsh=M3didm9lb2pidXBi";
+export { BIANCA_INSTAGRAM_URL } from "./siteContact";
