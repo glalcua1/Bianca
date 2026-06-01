@@ -4,45 +4,108 @@ export const MEDIA_SEO = {
     "Press and editorial coverage celebrating Bianca Diamonds — India's women-led lab-grown diamond jewellery house on the global stage.",
 };
 
+export type MediaPressImage = {
+  src: string;
+  alt: string;
+  caption?: string;
+  /** Carousel slide frame — defaults to portrait */
+  frame?: "portrait" | "wide" | "square";
+  /** Centre the slide within the gilt card (wide article screenshots) */
+  centerInCard?: boolean;
+};
+
+export type MediaPressLink = {
+  href: string;
+  label: string;
+};
+
 export type MediaPressItem = {
   id: string;
   eyebrow: string;
   title: string;
   body: string;
-  image: string;
-  imageAlt: string;
-  href: string;
-  linkLabel: string;
+  /** Carousel slides — original first, then alternate views */
+  images: MediaPressImage[];
   source: string;
   date?: string;
+  primaryLink: MediaPressLink;
+  secondaryLink?: MediaPressLink;
+  /** Centre the image carousel within the press card column */
+  centerCarousel?: boolean;
 };
 
 export const MEDIA_PRESS_ITEMS: MediaPressItem[] = [
   {
-    id: "manya-instagram",
+    id: "news-india-11-manya",
     eyebrow: "News India 11 · Instagram",
     title: "Manya on the World Stage",
     body: "Manya adorned exquisite jewellery by Bianca Diamonds, a woman-led startup just three months old. Her appearance provided the emerging brand with valuable international exposure, highlighting the rise of women-driven entrepreneurship on global platforms.",
-    image: "/media/manya-instagram.jpg",
-    imageAlt:
-      "Manya wearing Bianca Diamonds lab-grown diamond jewellery — News India 11 Instagram post",
-    href: "https://www.instagram.com/news_india_11/p/DY9Wi9YkSKq/",
-    linkLabel: "View on Instagram",
+    images: [
+      {
+        src: "/media/manya-instagram.jpg",
+        alt: "Manya wearing Bianca Diamonds lab-grown diamond jewellery — News India 11",
+        caption: "Original post",
+        frame: "portrait",
+      },
+    ],
     source: "News India 11",
     date: "2026",
+    primaryLink: {
+      href: "https://www.instagram.com/news_india_11/p/DY9Wi9YkSKq/",
+      label: "View on Instagram",
+    },
+  },
+  {
+    id: "ipopdiaries-cannes",
+    eyebrow: "iPop Diaries · Instagram",
+    title: "Cannes Red Carpet — Editorial Feature",
+    body: "iPop Diaries spotlighted Bianca Diamonds on the Cannes red carpet — framing the house's high jewellery against premiere lights and global press. A distinct editorial voice celebrating Indian luxury on one of the world's most watched stages.",
+    images: [
+      {
+        src: "/media/ipop.jpg",
+        alt: "Manya in Bianca Diamonds at Cannes — iPop Diaries editorial feature",
+        caption: "Carousel feature",
+        frame: "portrait",
+      },
+    ],
+    source: "iPop Diaries",
+    date: "2026",
+    primaryLink: {
+      href: "https://www.instagram.com/ipopdiaries/p/DYpRgAqia4L/?img_index=3",
+      label: "View on Instagram",
+    },
   },
   {
     id: "hindustan-cannes",
     eyebrow: "Live Hindustan · Press",
     title: "Cannes 2026 — A Journey of Inspiration",
     body: "Moradabad's Shweta Lal brought her startup Bianca Diamonds to the Cannes Film Festival 2026 red carpet within just three months — with actress Manya Pathak presenting the house's diamond necklaces, earrings, and bracelets to global acclaim. The coverage celebrates women-led Indian luxury and lab-grown brilliance reaching an international audience.",
-    image: "/media/hindustan-cannes-2026.jpg",
-    imageAlt:
-      "Live Hindustan feature on Shweta Lal and Bianca Diamonds at Cannes 2026",
-    href: "https://livehindustan.com/uttar-pradesh/moradabad/story-shweta-lal-s-diamond-jewelry-shines-at-cannes-2026-a-journey-of-inspiration-201779865299861.html",
-    linkLabel: "Read full article on Live Hindustan",
+    images: [
+      {
+        src: "/media/hindustan-cannes-2026.jpg",
+        alt: "Live Hindustan article on Shweta Lal and Bianca Diamonds at Cannes 2026",
+        caption: "Live Hindustan article",
+        frame: "wide",
+        centerInCard: true,
+      },
+      {
+        src: "/media/hindustan.JPG",
+        alt: "Live Hindustan coverage — Shweta Lal and Bianca Diamonds at Cannes 2026",
+        caption: "Live Hindustan — full coverage",
+        frame: "wide",
+      },
+    ],
+    centerCarousel: true,
     source: "Live Hindustan",
     date: "27 May 2026",
+    primaryLink: {
+      href: "https://livehindustan.com/uttar-pradesh/moradabad/story-shweta-lal-s-diamond-jewelry-shines-at-cannes-2026-a-journey-of-inspiration-201779865299861.html",
+      label: "Read full article on Live Hindustan",
+    },
+    secondaryLink: {
+      href: "https://www.instagram.com/bianca.diamonds/p/DY2BvywAfdl/",
+      label: "View on @bianca.diamonds",
+    },
   },
 ];
 

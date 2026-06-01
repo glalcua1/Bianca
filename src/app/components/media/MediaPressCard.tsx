@@ -1,7 +1,7 @@
 import { ExternalLink } from "lucide-react";
 import EditorialEyebrow from "../editorial/EditorialEyebrow";
 import EditorialReveal from "../editorial/EditorialReveal";
-import ProtectedImage from "../protection/ProtectedImage";
+import MediaPressCarousel from "./MediaPressCarousel";
 import type { MediaPressItem } from "../../data/mediaCoverage";
 
 type Props = {
@@ -21,25 +21,24 @@ export default function MediaPressCard({ item, reversed = false }: Props) {
         }`}
       >
         <EditorialReveal className={reversed ? "lg:order-2" : ""}>
-          <div className="relative overflow-hidden rounded-sm bg-[#1d3c34] shadow-[0_20px_50px_rgba(29,60,52,0.12)] ring-1 ring-[#766d42]/25">
-            <div className="absolute inset-x-0 top-0 z-10 h-px bg-[#dccb7b]/40" aria-hidden />
-            <ProtectedImage
-              src={item.image}
-              alt={item.imageAlt}
-              className={`w-full object-cover ${
-                item.id === "hindustan-cannes"
-                  ? "aspect-[16/9]"
-                  : "aspect-square max-h-[min(520px,80vw)] object-center"
-              }`}
-            />
-          </div>
+          <MediaPressCarousel
+            images={item.images}
+            label={item.source}
+            centerCarousel={item.centerCarousel}
+          />
         </EditorialReveal>
 
         <EditorialReveal delay={120} className={reversed ? "lg:order-1" : ""}>
           <EditorialEyebrow className="mb-4">{item.eyebrow}</EditorialEyebrow>
           <p className="mb-3 text-[11px] uppercase tracking-[0.18em] text-gold-on-cream">
-            Source · {item.source}
-            {item.date ? ` · ${item.date}` : ""}
+            Source ·{" "}
+            <span className="font-semibold text-[#dccb7b]">{item.source}</span>
+            {item.date ? (
+              <>
+                {" "}
+                · <span className="text-gold-on-cream">{item.date}</span>
+              </>
+            ) : null}
           </p>
           <h2
             id={`${item.id}-heading`}
@@ -51,15 +50,28 @@ export default function MediaPressCard({ item, reversed = false }: Props) {
           <p className="max-w-lg text-house-body leading-relaxed text-on-cream-body">
             {item.body}
           </p>
-          <a
-            href={item.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2 border border-[#766d42]/40 bg-[#f4f0e6] px-6 py-3 text-house-cta text-[#1d3c34] transition hover:border-[#766d42]/70 hover:bg-[#f4f0e6]/80"
-          >
-            {item.linkLabel}
-            <ExternalLink className="size-4 shrink-0 opacity-70" aria-hidden />
-          </a>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a
+              href={item.primaryLink.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 border border-[#766d42]/40 bg-[#f4f0e6] px-6 py-3 text-house-cta text-[#1d3c34] transition hover:border-[#766d42]/70 hover:bg-[#f4f0e6]/80"
+            >
+              {item.primaryLink.label}
+              <ExternalLink className="size-4 shrink-0 opacity-70" aria-hidden />
+            </a>
+            {item.secondaryLink ? (
+              <a
+                href={item.secondaryLink.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 border border-[#1d3c34]/15 bg-white px-6 py-3 text-house-cta text-[#1d3c34] transition hover:border-[#766d42]/40 hover:bg-[#faf8f5]"
+              >
+                {item.secondaryLink.label}
+                <ExternalLink className="size-4 shrink-0 opacity-70" aria-hidden />
+              </a>
+            ) : null}
+          </div>
         </EditorialReveal>
       </div>
     </article>
