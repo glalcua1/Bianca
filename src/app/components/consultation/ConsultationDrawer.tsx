@@ -1,10 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Drawer } from "vaul";
 import { X } from "lucide-react";
-import {
-  buildConsultationWhatsAppUrl,
-  BIANCA_WHATSAPP_NUMBER,
-} from "../../data/siteContact";
+import { buildConsultationWhatsAppUrl } from "../../data/siteContact";
 
 type Props = {
   open: boolean;
@@ -250,7 +247,7 @@ export default function ConsultationDrawer({
                   </button>
 
                   <p className="text-center font-body text-[11px] leading-relaxed text-on-cream-muted">
-                    Requests go to WhatsApp +91 {BIANCA_WHATSAPP_NUMBER.slice(2)}
+                    Requests go to WhatsApp
                   </p>
                 </form>
               </>
