@@ -3,6 +3,7 @@ import ContentProtectionProvider from "./components/protection/ContentProtection
 import HomePage from "./pages/HomePage";
 import FineJewelleryPage from "./pages/FineJewelleryPage";
 import CannesShowcase2026Page from "./pages/CannesShowcase2026Page";
+import MediaPage from "./pages/MediaPage";
 import CalculatorPage from "./pages/CalculatorPage";
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
           element={<CannesShowcase2026Page />}
         />
         <Route path="/fine-jewellery" element={<FineJewelleryPage />} />
+        <Route path="/media" element={<MediaPage />} />
         <Route path="/calculator" element={<CalculatorPage />} />
       </Routes>
     </BrowserRouter>

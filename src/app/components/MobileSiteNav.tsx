@@ -18,6 +18,7 @@ const NAV_ITEMS: {
     label: "Cannes Collection",
     to: "/fine-jewellery/cannes-2026",
   },
+  { id: "media", label: "Media", to: "/media" },
 ];
 
 type Props = {

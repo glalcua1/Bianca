@@ -4,7 +4,7 @@ export type NavActiveItem =
   | "the-house"
   | "fine-jewellery"
   | "cannes-collection"
-  | "services";
+  | "media";
 
 const NavActiveContext = createContext<NavActiveItem | undefined>(undefined);
 

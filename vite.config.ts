@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react'
 import { consultationApiPlugin } from './server/vite-consultation-api-plugin.js'
 
 /** Public subfolders referenced by URL paths (not figma:asset imports). */
-const PUBLIC_URL_DIRS = ['Cannes', 'Rings', 'Mens', 'necklace'] as const
+const PUBLIC_URL_DIRS = ['Cannes', 'Rings', 'Mens', 'necklace', 'media'] as const
 
 /** Root-level public files referenced by URL (not figma:asset imports). */
 const PUBLIC_ROOT_FILES = [

@@ -1126,24 +1126,27 @@ function Item2() {
   );
 }
 
-function LinkServices() {
+function LinkMedia() {
+  const activeItem = useNavActiveItem();
+  const isActive = activeItem === "media";
+
   return (
-    <div className="h-full relative shrink-0" data-name="Link - Services">
+    <Link to="/media" className="h-full relative shrink-0 block" data-name="Link - Media">
       <div className="flex flex-col items-center size-full">
         <div className="content-stretch flex flex-col h-full items-center px-[20px] py-[5px] relative">
-          <div className="flex flex-col font-editorial justify-center leading-[0] not-italic relative shrink-0 text-[#f9f9f9] text-[16px] text-center tracking-[1.5px] uppercase whitespace-nowrap">
-            <p className="leading-[normal]">Services</p>
+          <div className={`flex flex-col font-editorial justify-center leading-[0] not-italic relative shrink-0 text-[#f9f9f9] text-[16px] text-center tracking-[1.5px] uppercase whitespace-nowrap ${isActive ? "font-bold" : ""}`}>
+            <p className="leading-[normal]">Media</p>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
 function Item3() {
   return (
     <div className="content-stretch flex h-full items-start mr-[-0.2px] relative shrink-0" data-name="Item">
-      <LinkServices />
+      <LinkMedia />
     </div>
   );
 }
