@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import CollectionPhotoFrame from "./CollectionPhotoFrame";
 import {
   ATELIER_PIECES,
@@ -15,6 +15,21 @@ export default function FineJewelleryAtelier({
   activeCategory,
   onCategoryChange,
 }: Props) {
+  const tabsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = tabsRef.current;
+    if (!container) return;
+
+    if (activeCategory === "all") {
+      container.scrollTo({ left: 0, behavior: "smooth" });
+      return;
+    }
+
+    const activeTab = container.querySelector<HTMLElement>('[aria-selected="true"]');
+    activeTab?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+  }, [activeCategory]);
+
   const filteredPieces = useMemo(
     () =>
       activeCategory === "all"
@@ -52,8 +67,9 @@ export default function FineJewelleryAtelier({
         </div>
 
         <div
+          ref={tabsRef}
           id="categories"
-          className="mb-12 flex flex-nowrap items-center justify-center gap-2 overflow-x-auto pb-1 md:mb-14 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="-mx-6 mb-12 flex flex-nowrap items-center justify-start gap-2 overflow-x-auto px-6 pb-1 md:mx-0 md:mb-14 md:justify-center md:px-0 [-ms-overflow-style:none] [scrollbar-width:none] [scroll-padding-inline:24px] [&::-webkit-scrollbar]:hidden"
           role="tablist"
           aria-label="Jewellery categories"
         >
