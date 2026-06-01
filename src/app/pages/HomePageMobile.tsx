@@ -35,7 +35,7 @@ export default function HomePageMobile() {
       <MobileSiteNav activeItem="the-house" />
 
       <section className="bg-[#1d3c34] px-4 pb-10 pt-2">
-        <div className="mx-auto max-w-lg rounded-[16px] border border-[#1d3c34]/40 bg-gradient-to-b from-[#edefed] via-white to-white p-5 shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
+        <div className="mx-auto max-w-lg rounded-[16px] border border-[#1d3c34]/40 bg-white p-5 shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
           <BiancaHouseLogo maxWidth={200} className="mx-auto" />
 
           <div className="relative mt-6 w-full overflow-hidden rounded-[12px] bg-[#faf8f5]">
