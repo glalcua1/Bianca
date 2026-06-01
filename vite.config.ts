@@ -13,6 +13,7 @@ const PUBLIC_ROOT_FILES = [
   'BD_watermark.png',
   'Bianca_girl2.jpg',
   'founder.jpg',
+  'Earrings.png',
   'Earrings_2.png',
   'IMG_7293.PNG',
   'Necklace.png',

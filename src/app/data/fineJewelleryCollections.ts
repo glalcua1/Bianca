@@ -91,8 +91,71 @@ export const FINE_JEWELLERY_CATEGORIES: FineJewelleryCategory[] = [
   },
 ];
 
-/** Add new pieces here — include productCode (BD-XX-###) and category. */
+/**
+ * Atelier showcase order: under "All", earrings and rings precede necklaces.
+ * Category tabs filter this list without re-sorting.
+ */
 export const ATELIER_PIECES: AtelierPiece[] = [
+  {
+    id: "ear-petale-lumiere",
+    category: "earrings",
+    productCode: "BD-ER-001",
+    image: "/Earrings.png",
+    alt: "Pétale Lumière — lab-grown diamond drop earrings",
+    title: "Pétale Lumière",
+    description:
+      "Graduated pear and marquise drops trace the jawline in a soft cascade of IGI-certified brilliants — movement, light, and evening poise in perfect proportion.",
+  },
+  {
+    id: "ear-chandelier-maison",
+    category: "earrings",
+    productCode: "BD-ER-002",
+    image: "/Earrings_2.png",
+    alt: "Chandelier Maison — statement diamond earrings",
+    title: "Chandelier Maison",
+    description:
+      "A sculptural chandelier silhouette with layered pavé and baguette accents — high-jewellery presence composed for celebrations, galas, and the house's most luminous moments.",
+  },
+  {
+    id: "ring-solitaire-classique",
+    category: "rings",
+    productCode: "BD-RG-001",
+    image: "/Rings/IMG_5298.jpg",
+    alt: "Solitaire Classique — lab-grown diamond ring",
+    title: "Solitaire Classique",
+    description:
+      "A timeless round brilliant in a refined four-prong setting — the essential expression of commitment, crafted for the modern hand.",
+  },
+  {
+    id: "ring-pave-band",
+    category: "rings",
+    productCode: "BD-RG-002",
+    image: "/Rings/IMG_5299.jpg",
+    alt: "Pavé Band — diamond ring detail",
+    title: "Pavé Band",
+    description:
+      "Micro-set stones trace the band in continuous fire — designed to stack, pair, or stand alone with quiet confidence.",
+  },
+  {
+    id: "ring-atelier-portrait",
+    category: "rings",
+    productCode: "BD-RG-003",
+    image: "/Rings/IMG_5302.jpg",
+    alt: "Atelier Portrait — diamond ring worn on hand",
+    title: "Atelier Portrait",
+    description:
+      "Sculptural proportions and a elevated centre stone — a ring composed for presence, from proposal to every day after.",
+  },
+  {
+    id: "ring-maison-embrace",
+    category: "rings",
+    productCode: "BD-RG-004",
+    image: "/Rings/Women_ring.png",
+    alt: "Maison Embrace — women's diamond ring",
+    title: "Maison Embrace",
+    description:
+      "An elegant silhouette with a certified centre brilliant — feminine, assured, and made to be worn without occasion.",
+  },
   {
     id: "neck-lumiere-cascade",
     category: "necklaces",
@@ -134,16 +197,6 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "Evenly spaced round brilliants along a fine chain — the house signature of proportion, balance, and everyday refinement.",
   },
   {
-    id: "neck-maison-rubis",
-    category: "necklaces",
-    productCode: "BD-NK-007",
-    image: "/necklace/Neck7.png",
-    alt: "Maison Rubis — ruby and diamond fringe necklace with matching earrings",
-    title: "Maison Rubis",
-    description:
-      "A cushion-cut ruby crowned in diamonds, with cascading pear and marquise drops — matched with chandelier earrings for an unmistakable statement of house high jewellery.",
-  },
-  {
     id: "neck-grace-eternelle",
     category: "necklaces",
     productCode: "BD-NK-006",
@@ -154,44 +207,34 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "A halo of pavé diamonds encircling a radiant centre — soft luminosity designed to rest beautifully against the collarbone.",
   },
   {
-    id: "ring-solitaire-classique",
-    category: "rings",
-    productCode: "BD-RG-001",
-    image: "/Rings/IMG_5298.jpg",
-    alt: "Solitaire Classique — lab-grown diamond ring",
-    title: "Solitaire Classique",
+    id: "neck-maison-rubis",
+    category: "necklaces",
+    productCode: "BD-NK-007",
+    image: "/necklace/Neck7.png",
+    alt: "Maison Rubis — ruby and diamond fringe necklace with matching earrings",
+    title: "Maison Rubis",
     description:
-      "A timeless round brilliant in a refined four-prong setting — the essential expression of commitment, crafted for the modern hand.",
+      "A cushion-cut ruby crowned in diamonds, with cascading pear and marquise drops — matched with chandelier earrings for an unmistakable statement of house high jewellery.",
   },
   {
-    id: "ring-pave-band",
-    category: "rings",
-    productCode: "BD-RG-002",
-    image: "/Rings/IMG_5299.jpg",
-    alt: "Pavé Band — diamond ring detail",
-    title: "Pavé Band",
+    id: "neck-jardin-serein",
+    category: "necklaces",
+    productCode: "BD-NK-008",
+    image: "/necklace/Nacklace9.png",
+    alt: "Jardin Serein — floral diamond collar necklace",
+    title: "Jardin Serein",
     description:
-      "Micro-set stones trace the band in continuous fire — designed to stack, pair, or stand alone with quiet confidence.",
+      "Floral motifs in pavé and baguette stones bloom along a sculpted collar — botanical grace rendered in IGI-certified brilliants for the woman who wears art at the throat.",
   },
   {
-    id: "ring-atelier-portrait",
-    category: "rings",
-    productCode: "BD-RG-003",
-    image: "/Rings/IMG_5302.jpg",
-    alt: "Atelier Portrait — diamond ring worn on hand",
-    title: "Atelier Portrait",
+    id: "neck-aurora-plume",
+    category: "necklaces",
+    productCode: "BD-NK-009",
+    image: "/necklace/Necklace10.png",
+    alt: "Aurora Plume — feathered diamond fringe necklace",
+    title: "Aurora Plume",
     description:
-      "Sculptural proportions and a elevated centre stone — a ring composed for presence, from proposal to every day after.",
-  },
-  {
-    id: "ring-maison-embrace",
-    category: "rings",
-    productCode: "BD-RG-004",
-    image: "/Rings/Women_ring.png",
-    alt: "Maison Embrace — women's diamond ring",
-    title: "Maison Embrace",
-    description:
-      "An elegant silhouette with a certified centre brilliant — feminine, assured, and made to be worn without occasion.",
+      "Layered plumes of pear and marquise drops fan outward from a diamond-set centre — movement, depth, and gala-ready luminosity in a single atelier composition.",
   },
   {
     id: "for-him-signet-line",
