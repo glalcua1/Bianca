@@ -35,7 +35,7 @@ export default function MediaPage() {
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-house-body text-on-forest-body">
             A luxury media archive celebrating the house — lab-grown brilliance,
-            women-led craft, and milestones from Moradabad to Cannes and beyond.
+            women-led craft, and milestones from Delhi to Cannes and beyond.
           </p>
         </div>
       </header>
