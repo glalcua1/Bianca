@@ -1,6 +1,10 @@
 import { useState, type FormEvent } from "react";
 import { Drawer } from "vaul";
 import { X } from "lucide-react";
+import {
+  buildConsultationWhatsAppUrl,
+  BIANCA_WHATSAPP_NUMBER,
+} from "../../data/siteContact";
 
 type Props = {
   open: boolean;
@@ -29,12 +33,14 @@ export default function ConsultationDrawer({
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [whatsappUrl, setWhatsappUrl] = useState<string | null>(null);
 
   function resetDrawer() {
     setForm(initialForm);
     setError(null);
     setSubmitted(false);
     setSubmitting(false);
+    setWhatsappUrl(null);
   }
 
   function handleOpenChange(nextOpen: boolean) {
@@ -44,31 +50,56 @@ export default function ConsultationDrawer({
     onOpenChange(nextOpen);
   }
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError(null);
     setSubmitting(true);
 
-    try {
-      const response = await fetch("/api/consultation-leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, sourcePage }),
-      });
+    const name = form.clientName.trim();
+    const phone = form.phone.trim();
+    const city = form.city.trim();
 
-      const data = (await response.json()) as { ok?: boolean; error?: string };
-
-      if (!response.ok || !data.ok) {
-        setError(data.error ?? "Something went wrong. Please try again.");
-        return;
-      }
-
-      setSubmitted(true);
-    } catch {
-      setError("Unable to reach the server. Please try again.");
-    } finally {
+    if (name.length < 2) {
+      setError("Please enter your full name.");
       setSubmitting(false);
+      return;
     }
+
+    if (!/^[\d\s+\-().]{7,20}$/.test(phone)) {
+      setError("Please enter a valid phone number.");
+      setSubmitting(false);
+      return;
+    }
+
+    if (city.length < 2) {
+      setError("Please enter your city.");
+      setSubmitting(false);
+      return;
+    }
+
+    const url = buildConsultationWhatsAppUrl({
+      clientName: name,
+      phone,
+      city,
+      sourcePage,
+    });
+
+    setWhatsappUrl(url);
+
+    // Log locally in dev when the API is available — production uses WhatsApp.
+    fetch("/api/consultation-leads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ clientName: name, phone, city, sourcePage }),
+    }).catch(() => {});
+
+    const opened = window.open(url, "_blank", "noopener,noreferrer");
+    if (!opened) {
+      window.location.assign(url);
+    }
+
+    setSubmitted(true);
+    setSubmitting(false);
   }
 
   return (
@@ -103,16 +134,28 @@ export default function ConsultationDrawer({
             {submitted ? (
               <div className="flex h-full flex-col justify-center text-center">
                 <p className="font-editorial text-2xl tracking-[0.06em] text-[#1d3c34]">
-                  Thank you
+                  Almost done
                 </p>
                 <p className="mt-5 text-house-body text-on-cream-body">
-                  Someone from Bianca Diamonds will call you shortly to confirm
-                  your private consultation slot.
+                  WhatsApp should have opened with your details. Tap{" "}
+                  <strong className="font-normal text-[#1d3c34]">Send</strong>{" "}
+                  in the chat to confirm your private consultation — our
+                  atelier team will reply on WhatsApp shortly.
                 </p>
+                {whatsappUrl ? (
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-8 inline-flex justify-center border border-[#1d3c34]/35 px-10 py-3 text-house-cta text-[#1d3c34] transition-colors duration-500 hover:border-[#1d3c34] hover:bg-[#1d3c34] hover:text-[#faf8f5]"
+                  >
+                    Open WhatsApp again
+                  </a>
+                ) : null}
                 <Drawer.Close asChild>
                   <button
                     type="button"
-                    className="mt-10 inline-flex justify-center border border-[#1d3c34]/35 px-10 py-3 text-house-cta text-[#1d3c34] transition-colors duration-500 hover:border-[#1d3c34] hover:bg-[#1d3c34] hover:text-[#faf8f5]"
+                    className="mt-4 inline-flex justify-center px-10 py-3 text-house-body text-on-cream-muted transition hover:text-[#1d3c34]"
                   >
                     Close
                   </button>
@@ -121,8 +164,8 @@ export default function ConsultationDrawer({
             ) : (
               <>
                 <p className="text-house-body text-on-cream-body">
-                  Share your details and our atelier team will reach out to
-                  arrange a private consultation at your convenience.
+                  Share your details and we&apos;ll open WhatsApp so you can
+                  send your consultation request directly to our atelier team.
                 </p>
 
                 <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -203,8 +246,12 @@ export default function ConsultationDrawer({
                     disabled={submitting}
                     className="inline-flex w-full justify-center border border-[#1d3c34] bg-[#1d3c34] px-10 py-3 text-house-cta text-[#faf8f5] transition-colors duration-500 hover:bg-transparent hover:text-bianca-forest disabled:cursor-not-allowed disabled:text-on-cream-muted"
                   >
-                    {submitting ? "Submitting…" : "Request consultation"}
+                    {submitting ? "Opening WhatsApp…" : "Continue on WhatsApp"}
                   </button>
+
+                  <p className="text-center font-body text-[11px] leading-relaxed text-on-cream-muted">
+                    Requests go to WhatsApp +91 {BIANCA_WHATSAPP_NUMBER.slice(2)}
+                  </p>
                 </form>
               </>
             )}

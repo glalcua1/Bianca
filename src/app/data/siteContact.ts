@@ -5,6 +5,27 @@ export const BIANCA_INSTAGRAM_URL =
 
 export const BIANCA_EMAIL = "bianca.labdiamonds@gmail.com";
 
+/** WhatsApp Business — consultation requests (no + or spaces for wa.me). */
+export const BIANCA_WHATSAPP_NUMBER = "918130495257";
+
+export function buildConsultationWhatsAppUrl(lead: {
+  clientName: string;
+  phone: string;
+  city: string;
+  sourcePage: string;
+}) {
+  const text = [
+    "New consultation request — Bianca Diamonds",
+    "",
+    `Name: ${lead.clientName}`,
+    `Phone: ${lead.phone}`,
+    `City: ${lead.city}`,
+    `Page: ${lead.sourcePage}`,
+  ].join("\n");
+
+  return `https://wa.me/${BIANCA_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+}
+
 export const SITE_NAV_ITEMS: {
   id: NavActiveItem;
   label: string;
