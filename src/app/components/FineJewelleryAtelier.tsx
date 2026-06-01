@@ -122,7 +122,8 @@ export default function FineJewelleryAtelier({
                 <div className="w-full max-w-[443px] md:max-w-none">
                   <CollectionPhotoFrame
                     fluid
-                    darkImageWell={piece.category === "necklaces"}
+                    darkImageWell={piece.category === "necklaces" && !piece.imageWellColor}
+                    imageWellColor={piece.imageWellColor}
                     src={piece.image}
                     alt={piece.alt}
                     data-name={piece.id}

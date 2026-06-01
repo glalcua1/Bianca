@@ -31,6 +31,8 @@ export type AtelierPiece = {
   alt: string;
   title: string;
   description: string;
+  /** Match product photography backdrop instead of default black/cream well */
+  imageWellColor?: string;
 };
 
 export const FINE_JEWELLERY_COLLECTIONS: FineJewelleryCollection[] = [
@@ -116,6 +118,16 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "A sculptural chandelier silhouette with layered pavé and baguette accents — high-jewellery presence composed for celebrations, galas, and the house's most luminous moments.",
   },
   {
+    id: "ear-aile-saphir",
+    category: "earrings",
+    productCode: "BD-ER-003",
+    image: "/Earrings4.png",
+    alt: "Aile Saphir — cushion sapphire and marquise diamond drop earrings",
+    title: "Aile Saphir",
+    description:
+      "Cushion-cut sapphires crowned with round brilliants, finished in marquise diamond wings — a mirrored pair composed for evening light and unapologetic colour.",
+  },
+  {
     id: "ring-solitaire-classique",
     category: "rings",
     productCode: "BD-RG-001",
@@ -154,6 +166,37 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Maison Embrace",
     description:
       "An elegant silhouette with a certified centre brilliant — feminine, assured, and made to be worn without occasion.",
+  },
+  {
+    id: "brace-feuille-douce",
+    category: "bracelets",
+    productCode: "BD-BR-001",
+    image: "/Bracelet2.png",
+    alt: "Feuille Douce — marquise diamond bangle bracelets",
+    title: "Feuille Douce",
+    description:
+      "Twin yellow-gold bangles set with marquise diamonds in a laurel-leaf motif — layered wrist brilliance with sculptural, house-refined proportion.",
+  },
+  {
+    id: "neck-halo-emeraude",
+    category: "necklaces",
+    productCode: "BD-NK-010",
+    image: "/necklace_s.png",
+    imageWellColor: "#cbb79f",
+    alt: "Halo Émeraude — emerald-cut diamond pendant with pavé halo",
+    title: "Halo Émeraude",
+    description:
+      "An emerald-cut centre brilliant encircled by a pavé halo on a delicate cable chain — precision geometry and warm gold, distilled to a single luminous point.",
+  },
+  {
+    id: "neck-saphir-majeste",
+    category: "necklaces",
+    productCode: "BD-NK-011",
+    image: "/Necklace_s1.png",
+    alt: "Saphir Majesté — sapphire and diamond collar necklace",
+    title: "Saphir Majesté",
+    description:
+      "Cushion and oval sapphires framed in double diamond halos, joined by marquise floral motifs — a collar of depth, colour, and high-jewellery composition.",
   },
   {
     id: "neck-lumiere-cascade",
