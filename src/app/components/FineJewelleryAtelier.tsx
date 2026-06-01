@@ -33,9 +33,9 @@ export default function FineJewelleryAtelier({
     <section
       id="showcase"
       aria-labelledby="showcase-heading"
-      className="border-t border-[#1d3c34]/10 bg-[#faf8f5] px-6 py-16 md:px-10 md:py-24"
+      className="overflow-x-hidden border-t border-[#1d3c34]/10 bg-[#faf8f5] px-6 py-16 md:px-10 md:py-24"
     >
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto w-full min-w-0 max-w-6xl">
         <div className="mb-10 text-center md:mb-12">
           <p className="mb-4 text-house-eyebrow text-gold-on-cream">
             From the atelier
@@ -116,10 +116,10 @@ export default function FineJewelleryAtelier({
             for availability or select another category above.
           </p>
         ) : (
-          <ul className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
+          <ul className="grid w-full min-w-0 gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
             {filteredPieces.map((piece) => (
-              <li key={piece.id} className="flex flex-col items-center [content-visibility:auto] [contain-intrinsic-size:auto_600px]">
-                <div className="w-full max-w-[443px] md:max-w-none">
+              <li key={piece.id} className="flex w-full min-w-0 flex-col items-center">
+                <div className="mx-auto w-full min-w-0 max-w-[443px] md:max-w-none">
                   <CollectionPhotoFrame
                     fluid
                     darkImageWell={piece.category === "necklaces" && !piece.imageWellColor}

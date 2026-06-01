@@ -31,10 +31,10 @@ export default function CollectionPhotoFrame({
       : "bg-[#faf8f5]";
   return (
     <div
-      className={`relative ${fluid ? "w-full" : "shrink-0"}`}
+      className={`relative w-full max-w-full min-w-0 ${fluid ? "" : "shrink-0"}`}
       style={
         fluid
-          ? { aspectRatio: `${FRAME_WIDTH} / ${FRAME_HEIGHT}` }
+          ? { aspectRatio: `${FRAME_WIDTH} / ${FRAME_HEIGHT}`, width: "100%" }
           : { width: FRAME_WIDTH, height: FRAME_HEIGHT }
       }
       data-name={dataName}
@@ -46,16 +46,16 @@ export default function CollectionPhotoFrame({
           {/* White mount — padding creates visible mat on all four sides */}
           <div className="flex min-h-0 flex-1 flex-col border border-[#1d3c34]/12 bg-white p-4 shadow-[inset_0_0_0_1px_rgba(220,203,123,0.22)] md:p-[24px]">
             <div
-              className={`relative flex min-h-0 flex-1 items-center justify-center overflow-hidden ${imageWellBg}`}
+              className={`relative flex min-h-0 flex-1 overflow-hidden ${imageWellBg}`}
               style={imageWellColor ? { backgroundColor: imageWellColor } : undefined}
             >
               <ProtectedImage
-                wrapperClassName="relative h-full w-full"
+                wrapperClassName="absolute inset-0 flex items-center justify-center"
                 src={src}
                 alt={alt}
                 loading="lazy"
                 decoding="async"
-                className="h-full w-full object-contain object-center"
+                className="max-h-full max-w-full object-contain object-center"
               />
               <BrandImageWatermark />
             </div>
