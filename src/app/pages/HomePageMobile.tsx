@@ -10,8 +10,8 @@ const COLLECTIONS = [
     title: "Modern Essentials",
     description:
       "Discover diamonds designed for modern living — effortless pieces that bring refined sparkle to every moment of your day.",
-    image: "/Earrings_2.png",
-    alt: "Modern Essentials – diamond earrings",
+    image: "/Rings/IMG_5302.jpg",
+    alt: "Modern Essentials – diamond ring",
   },
   {
     title: "Occasion Elegance",

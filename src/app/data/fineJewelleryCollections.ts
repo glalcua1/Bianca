@@ -1,4 +1,3 @@
-import imgModernEssentials from "figma:asset/afa9671f19943983683b5212bd4e0ff5a61cc775.png";
 import imgOccasionElegance from "figma:asset/791d0a8cf2d96d0d481c05ccdd58d68bc023a7a9.png";
 import imgBridalEdit from "figma:asset/581d41c78850052909c92d619a846a456fb23495.png";
 
@@ -40,8 +39,8 @@ export const FINE_JEWELLERY_COLLECTIONS: FineJewelleryCollection[] = [
     title: "Modern Essentials",
     description:
       "Discover diamonds designed for modern living — effortless pieces that bring refined sparkle to every moment of your day.",
-    image: imgModernEssentials,
-    imageAlt: "Modern Essentials — everyday diamond jewellery",
+    image: "/Rings/IMG_5302.jpg",
+    imageAlt: "Modern Essentials — diamond ring",
   },
   {
     id: "occasion-elegance",
