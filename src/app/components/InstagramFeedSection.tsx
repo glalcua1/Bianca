@@ -100,6 +100,7 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
     <section
       className="relative overflow-hidden px-5 py-16 md:px-10 md:py-24"
       aria-labelledby={headingId}
+      data-protection-exempt
       style={{
         background:
           "linear-gradient(180deg, #f4f0e6 0%, #ebe4d4 38%, #e5dcc8 100%)",
@@ -165,6 +166,7 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
                           loading="lazy"
                           decoding="async"
                           referrerPolicy="no-referrer"
+                          data-protection-exempt
                           className="size-full object-cover object-center transition duration-700 ease-out group-hover:scale-[1.04]"
                         />
                       </div>

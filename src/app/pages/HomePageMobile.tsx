@@ -47,10 +47,10 @@ export default function HomePageMobile() {
             />
           </div>
 
-          <h1 className="mt-6 text-house-display text-[clamp(1.35rem,5.5vw,1.75rem)] uppercase leading-snug tracking-[0.08em] text-[#1d3c34]">
+          <h1 className="mt-6 text-center text-house-display text-[clamp(1.35rem,5.5vw,1.75rem)] uppercase leading-snug tracking-[0.08em] text-[#1d3c34]">
             Modern Sparkle. Timeless Impact.
           </h1>
-          <p className="mt-3 text-house-tagline text-[clamp(1rem,4vw,1.125rem)] capitalize tracking-[0.06em] text-on-cream-body">
+          <p className="mt-3 text-center text-house-tagline text-[clamp(1rem,4vw,1.125rem)] capitalize tracking-[0.06em] text-on-cream-body">
             100% Certified Lab Grown Diamonds
           </p>
         </div>

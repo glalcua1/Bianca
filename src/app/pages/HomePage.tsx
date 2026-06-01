@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import HomeSeoSection from "../components/HomeSeoSection";
 import SiteFooter from "../components/SiteFooter";
+import InstagramFeedSection from "../components/InstagramFeedSection";
 import { useMediaMinWidth } from "../hooks/useMediaMinWidth";
 import HomePageMobile from "./HomePageMobile";
 import MacBookPro from "../../imports/MacBookPro141-2-335";
+import { BIANCA_INSTAGRAM_URL } from "../data/siteContact";
 
 const DESIGN_W = 1512;
 /** Scaled artboard height (design px at 1512 width) */
@@ -68,6 +70,9 @@ export default function HomePage() {
   return (
     <>
       {isDesktop ? <DesktopHomeArtboard /> : <HomePageMobile />}
+      {!isDesktop ? (
+        <InstagramFeedSection profileUrl={BIANCA_INSTAGRAM_URL} />
+      ) : null}
       <HomeSeoSection />
       <SiteFooter />
     </>
