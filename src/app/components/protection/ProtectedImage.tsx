@@ -1,78 +1,40 @@
 import type { ImgHTMLAttributes } from "react";
-import { useMediaMinWidth } from "../../hooks/useMediaMinWidth";
-import { isAppleMobile } from "../../lib/isAppleMobile";
-import ProtectedCanvasImage from "./ProtectedCanvasImage";
 
 type Props = ImgHTMLAttributes<HTMLImageElement> & {
   wrapperClassName?: string;
+  /** Above-the-fold hero images — defaults to lazy for everything else */
+  priority?: boolean;
 };
 
-function blockInteraction(event: React.SyntheticEvent) {
-  event.preventDefault();
-}
-
-function stripProtectionClasses(className: string) {
-  return className
-    .replace(/\bpointer-events-none\b/g, "")
-    .replace(/\bselect-none\b/g, "")
-    .replace(/\btouch-none\b/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
+/**
+ * Single <img> element — desktop protection is handled by content-protection CSS
+ * and useContentProtection hooks. Avoids mobile double-render and canvas overhead.
+ */
 export default function ProtectedImage({
   wrapperClassName = "",
   className = "",
   alt,
+  priority = false,
+  loading,
+  decoding = "async",
+  draggable = false,
   ...props
 }: Props) {
-  const isDesktop = useMediaMinWidth();
-  const useCanvasProtection = isAppleMobile() && isDesktop;
-
-  if (!isDesktop) {
-    const mobileClassName = stripProtectionClasses(className);
-
-    if (wrapperClassName) {
-      return (
-        <div className={wrapperClassName}>
-          <img {...props} alt={alt} className={mobileClassName} />
-        </div>
-      );
-    }
-
-    return <img {...props} alt={alt} className={mobileClassName} />;
-  }
-
-  if (useCanvasProtection) {
-    return (
-      <ProtectedCanvasImage
-        wrapperClassName={wrapperClassName}
-        className={className}
-        alt={alt}
-        {...props}
-      />
-    );
-  }
-
-  return (
-    <div
-      data-protected-media
-      className={`protected-media relative select-none ${wrapperClassName}`}
-      onContextMenu={blockInteraction}
-      onDragStart={blockInteraction}
-    >
-      <img
-        {...props}
-        alt={alt}
-        draggable={false}
-        className={`protected-media__asset pointer-events-none select-none ${className}`}
-      />
-      <div
-        className="protected-media__shield absolute inset-0 z-10"
-        aria-hidden
-        onContextMenu={blockInteraction}
-        onDragStart={blockInteraction}
-      />
-    </div>
+  const img = (
+    <img
+      {...props}
+      alt={alt}
+      loading={loading ?? (priority ? "eager" : "lazy")}
+      decoding={decoding}
+      draggable={draggable}
+      fetchPriority={priority ? "high" : undefined}
+      className={className}
+    />
   );
+
+  if (wrapperClassName) {
+    return <div className={wrapperClassName}>{img}</div>;
+  }
+
+  return img;
 }

@@ -26,6 +26,7 @@ export default function FineJewelleryHeroMobile() {
 
         <div className="relative mx-auto mt-6 w-full max-w-sm overflow-hidden rounded-[12px] bg-black">
           <ProtectedImage
+            priority
             wrapperClassName="relative block w-full"
             alt="Bianca Diamonds fine jewellery — Cannes Film Festival 2026"
             className="mx-auto block h-auto w-full max-h-[min(70vh,480px)] object-contain object-bottom"

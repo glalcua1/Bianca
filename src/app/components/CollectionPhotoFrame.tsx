@@ -53,7 +53,9 @@ export default function CollectionPhotoFrame({
                 wrapperClassName="relative h-full w-full"
                 src={src}
                 alt={alt}
-                className="h-full w-full object-contain object-center pointer-events-none"
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-contain object-center"
               />
               <BrandImageWatermark />
             </div>

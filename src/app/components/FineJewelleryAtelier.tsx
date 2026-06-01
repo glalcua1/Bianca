@@ -118,7 +118,7 @@ export default function FineJewelleryAtelier({
         ) : (
           <ul className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
             {filteredPieces.map((piece) => (
-              <li key={piece.id} className="flex flex-col items-center">
+              <li key={piece.id} className="flex flex-col items-center [content-visibility:auto] [contain-intrinsic-size:auto_600px]">
                 <div className="w-full max-w-[443px] md:max-w-none">
                   <CollectionPhotoFrame
                     fluid

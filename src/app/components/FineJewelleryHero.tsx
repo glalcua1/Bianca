@@ -90,6 +90,7 @@ export default function FineJewelleryHero() {
           >
             <div className="absolute inset-0 flex items-end justify-center overflow-hidden px-8 pb-6 pt-10">
               <ProtectedImage
+                priority
                 wrapperClassName="relative max-h-full max-w-full"
                 alt="Bianca Diamonds fine jewellery — Cannes Film Festival 2026"
                 className="max-h-full max-w-full object-contain"
