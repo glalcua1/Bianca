@@ -1,64 +1,87 @@
 import { useEffect } from "react";
-import { isAppleMobile } from "../lib/isAppleMobile";
+import { DESKTOP_MEDIA_QUERY } from "./useMediaMinWidth";
 
 /**
- * iOS-specific privacy layer. Mobile Safari cannot block OS screenshots while
- * the page is visible, but we can hide/blur content when the app backgrounds
- * and keep a persistent watermark over protected media.
+ * Desktop-only privacy layer for iOS Safari. Mobile viewports are unrestricted
+ * so users can scroll, zoom, and save images normally.
  */
 export function useIOSPrivacyScreen(onCaptureAttempt?: () => void) {
   useEffect(() => {
-    if (!isAppleMobile()) return;
+    const mq = window.matchMedia(DESKTOP_MEDIA_QUERY);
+    let teardown: (() => void) | undefined;
 
-    document.documentElement.classList.add("ios-privacy-active");
+    const activate = () => {
+      document.documentElement.classList.add("ios-privacy-active");
 
-    let hideTimer: number | undefined;
+      let hideTimer: number | undefined;
 
-    const showPrivacyOverlay = () => {
-      document.documentElement.classList.add("ios-privacy-overlay-visible");
-      onCaptureAttempt?.();
-    };
+      const showPrivacyOverlay = () => {
+        document.documentElement.classList.add("ios-privacy-overlay-visible");
+        onCaptureAttempt?.();
+      };
 
-    const hidePrivacyOverlay = () => {
-      window.clearTimeout(hideTimer);
-      hideTimer = window.setTimeout(() => {
-        document.documentElement.classList.remove("ios-privacy-overlay-visible");
-      }, 80);
-    };
+      const hidePrivacyOverlay = () => {
+        window.clearTimeout(hideTimer);
+        hideTimer = window.setTimeout(() => {
+          document.documentElement.classList.remove("ios-privacy-overlay-visible");
+        }, 80);
+      };
 
-    const handleVisibility = () => {
-      if (document.visibilityState === "hidden") {
+      const handleVisibility = () => {
+        if (document.visibilityState === "hidden") {
+          showPrivacyOverlay();
+          return;
+        }
+        hidePrivacyOverlay();
+      };
+
+      const handlePageHide = () => {
         showPrivacyOverlay();
-        return;
-      }
-      hidePrivacyOverlay();
+      };
+
+      const handleBlur = () => {
+        showPrivacyOverlay();
+      };
+
+      const handleFocus = () => {
+        hidePrivacyOverlay();
+      };
+
+      document.addEventListener("visibilitychange", handleVisibility);
+      window.addEventListener("pagehide", handlePageHide);
+      window.addEventListener("blur", handleBlur);
+      window.addEventListener("focus", handleFocus);
+
+      return () => {
+        window.clearTimeout(hideTimer);
+        document.documentElement.classList.remove("ios-privacy-active");
+        document.documentElement.classList.remove("ios-privacy-overlay-visible");
+        document.removeEventListener("visibilitychange", handleVisibility);
+        window.removeEventListener("pagehide", handlePageHide);
+        window.removeEventListener("blur", handleBlur);
+        window.removeEventListener("focus", handleFocus);
+      };
     };
 
-    const handlePageHide = () => {
-      showPrivacyOverlay();
-    };
-
-    const handleBlur = () => {
-      showPrivacyOverlay();
-    };
-
-    const handleFocus = () => {
-      hidePrivacyOverlay();
-    };
-
-    document.addEventListener("visibilitychange", handleVisibility);
-    window.addEventListener("pagehide", handlePageHide);
-    window.addEventListener("blur", handleBlur);
-    window.addEventListener("focus", handleFocus);
-
-    return () => {
-      window.clearTimeout(hideTimer);
+    const sync = () => {
+      teardown?.();
+      teardown = undefined;
       document.documentElement.classList.remove("ios-privacy-active");
       document.documentElement.classList.remove("ios-privacy-overlay-visible");
-      document.removeEventListener("visibilitychange", handleVisibility);
-      window.removeEventListener("pagehide", handlePageHide);
-      window.removeEventListener("blur", handleBlur);
-      window.removeEventListener("focus", handleFocus);
+
+      if (mq.matches) {
+        teardown = activate();
+      }
+    };
+
+    sync();
+    mq.addEventListener("change", sync);
+
+    return () => {
+      mq.removeEventListener("change", sync);
+      teardown?.();
+      document.documentElement.classList.remove("ios-privacy-active");
+      document.documentElement.classList.remove("ios-privacy-overlay-visible");
     };
   }, [onCaptureAttempt]);
 }

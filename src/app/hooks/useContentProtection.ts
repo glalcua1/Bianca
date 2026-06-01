@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { DESKTOP_MEDIA_QUERY } from "./useMediaMinWidth";
 
 const MEDIA_SELECTOR =
   "img, video, picture, canvas, [data-protected-media], [data-protected-media] *";
@@ -22,102 +23,126 @@ export function useContentProtection({ onCaptureAttempt }: Options = {}) {
   onCaptureAttemptRef.current = onCaptureAttempt;
 
   useEffect(() => {
-    const triggerShield = () => {
-      onCaptureAttemptRef.current?.();
-    };
+    const mq = window.matchMedia(DESKTOP_MEDIA_QUERY);
+    let teardown: (() => void) | undefined;
 
-    const blockContextMenu = (event: MouseEvent) => {
-      if (isMediaTarget(event.target)) {
-        event.preventDefault();
-      }
-    };
+    const activate = () => {
+      const triggerShield = () => {
+        onCaptureAttemptRef.current?.();
+      };
 
-    const blockDragStart = (event: DragEvent) => {
-      if (isMediaTarget(event.target)) {
-        event.preventDefault();
-      }
-    };
+      const blockContextMenu = (event: MouseEvent) => {
+        if (isMediaTarget(event.target)) {
+          event.preventDefault();
+        }
+      };
 
-    const blockSelectStart = (event: Event) => {
-      if (isMediaTarget(event.target)) {
-        event.preventDefault();
-      }
-    };
+      const blockDragStart = (event: DragEvent) => {
+        if (isMediaTarget(event.target)) {
+          event.preventDefault();
+        }
+      };
 
-    const blockCopy = (event: ClipboardEvent) => {
-      const selection = document.getSelection();
-      if (!selection || selection.isCollapsed) return;
+      const blockSelectStart = (event: Event) => {
+        if (isMediaTarget(event.target)) {
+          event.preventDefault();
+        }
+      };
 
-      const anchor = selection.anchorNode;
-      const focus = selection.focusNode;
-      const touchesMedia =
-        (anchor instanceof Element && anchor.closest(MEDIA_SELECTOR)) ||
-        (focus instanceof Element && focus.closest(MEDIA_SELECTOR)) ||
-        (anchor?.parentElement && anchor.parentElement.closest(MEDIA_SELECTOR)) ||
-        (focus?.parentElement && focus.parentElement.closest(MEDIA_SELECTOR));
+      const blockCopy = (event: ClipboardEvent) => {
+        const selection = document.getSelection();
+        if (!selection || selection.isCollapsed) return;
 
-      if (touchesMedia) {
-        event.preventDefault();
-      }
-    };
+        const anchor = selection.anchorNode;
+        const focus = selection.focusNode;
+        const touchesMedia =
+          (anchor instanceof Element && anchor.closest(MEDIA_SELECTOR)) ||
+          (focus instanceof Element && focus.closest(MEDIA_SELECTOR)) ||
+          (anchor?.parentElement && anchor.parentElement.closest(MEDIA_SELECTOR)) ||
+          (focus?.parentElement && focus.parentElement.closest(MEDIA_SELECTOR));
 
-    const blockKeyboardShortcuts = (event: KeyboardEvent) => {
-      const key = event.key.toLowerCase();
-      const mod = event.metaKey || event.ctrlKey;
+        if (touchesMedia) {
+          event.preventDefault();
+        }
+      };
 
-      if (mod && (key === "s" || key === "p" || key === "u")) {
+      const blockKeyboardShortcuts = (event: KeyboardEvent) => {
+        const key = event.key.toLowerCase();
+        const mod = event.metaKey || event.ctrlKey;
+
+        if (mod && (key === "s" || key === "p" || key === "u")) {
+          event.preventDefault();
+          triggerShield();
+          return;
+        }
+
+        if (key === "printscreen") {
+          event.preventDefault();
+          triggerShield();
+          return;
+        }
+
+        if (isMacScreenshotShortcut(event)) {
+          event.preventDefault();
+          triggerShield();
+        }
+      };
+
+      const blockGesture = (event: Event) => {
+        if (isMediaTarget(event.target)) {
+          event.preventDefault();
+        }
+      };
+
+      const blockBeforePrint = (event: Event) => {
         event.preventDefault();
         triggerShield();
-        return;
-      }
+      };
 
-      if (key === "printscreen") {
-        event.preventDefault();
-        triggerShield();
-        return;
-      }
+      document.addEventListener("contextmenu", blockContextMenu);
+      document.addEventListener("dragstart", blockDragStart);
+      document.addEventListener("selectstart", blockSelectStart);
+      document.addEventListener("copy", blockCopy);
+      document.addEventListener("cut", blockCopy);
+      document.addEventListener("keydown", blockKeyboardShortcuts);
+      document.addEventListener("keyup", blockKeyboardShortcuts);
+      document.addEventListener("gesturestart", blockGesture);
+      document.addEventListener("gesturechange", blockGesture);
+      window.addEventListener("beforeprint", blockBeforePrint);
 
-      if (isMacScreenshotShortcut(event)) {
-        event.preventDefault();
-        triggerShield();
+      document.documentElement.classList.add("content-protection-active");
+
+      return () => {
+        document.removeEventListener("contextmenu", blockContextMenu);
+        document.removeEventListener("dragstart", blockDragStart);
+        document.removeEventListener("selectstart", blockSelectStart);
+        document.removeEventListener("copy", blockCopy);
+        document.removeEventListener("cut", blockCopy);
+        document.removeEventListener("keydown", blockKeyboardShortcuts);
+        document.removeEventListener("keyup", blockKeyboardShortcuts);
+        document.removeEventListener("gesturestart", blockGesture);
+        document.removeEventListener("gesturechange", blockGesture);
+        window.removeEventListener("beforeprint", blockBeforePrint);
+        document.documentElement.classList.remove("content-protection-active");
+      };
+    };
+
+    const sync = () => {
+      teardown?.();
+      teardown = undefined;
+      document.documentElement.classList.remove("content-protection-active");
+
+      if (mq.matches) {
+        teardown = activate();
       }
     };
 
-    const blockGesture = (event: Event) => {
-      if (isMediaTarget(event.target)) {
-        event.preventDefault();
-      }
-    };
-
-    const blockBeforePrint = (event: Event) => {
-      event.preventDefault();
-      triggerShield();
-    };
-
-    document.addEventListener("contextmenu", blockContextMenu);
-    document.addEventListener("dragstart", blockDragStart);
-    document.addEventListener("selectstart", blockSelectStart);
-    document.addEventListener("copy", blockCopy);
-    document.addEventListener("cut", blockCopy);
-    document.addEventListener("keydown", blockKeyboardShortcuts);
-    document.addEventListener("keyup", blockKeyboardShortcuts);
-    document.addEventListener("gesturestart", blockGesture);
-    document.addEventListener("gesturechange", blockGesture);
-    window.addEventListener("beforeprint", blockBeforePrint);
-
-    document.documentElement.classList.add("content-protection-active");
+    sync();
+    mq.addEventListener("change", sync);
 
     return () => {
-      document.removeEventListener("contextmenu", blockContextMenu);
-      document.removeEventListener("dragstart", blockDragStart);
-      document.removeEventListener("selectstart", blockSelectStart);
-      document.removeEventListener("copy", blockCopy);
-      document.removeEventListener("cut", blockCopy);
-      document.removeEventListener("keydown", blockKeyboardShortcuts);
-      document.removeEventListener("keyup", blockKeyboardShortcuts);
-      document.removeEventListener("gesturestart", blockGesture);
-      document.removeEventListener("gesturechange", blockGesture);
-      window.removeEventListener("beforeprint", blockBeforePrint);
+      mq.removeEventListener("change", sync);
+      teardown?.();
       document.documentElement.classList.remove("content-protection-active");
     };
   }, []);

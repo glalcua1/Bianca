@@ -1,4 +1,5 @@
 import { forwardRef, type ReactNode, type VideoHTMLAttributes } from "react";
+import { useMediaMinWidth } from "../../hooks/useMediaMinWidth";
 import { isAppleMobile } from "../../lib/isAppleMobile";
 
 type Props = VideoHTMLAttributes<HTMLVideoElement> & {
@@ -14,6 +15,21 @@ const ProtectedVideo = forwardRef<HTMLVideoElement, Props>(function ProtectedVid
   { wrapperClassName = "", className = "", controlsOverlay, ...props },
   ref,
 ) {
+  const isDesktop = useMediaMinWidth();
+
+  if (!isDesktop) {
+    if (wrapperClassName || controlsOverlay) {
+      return (
+        <div className={`relative size-full ${wrapperClassName}`}>
+          <video {...props} ref={ref} className={`size-full ${className}`} />
+          {controlsOverlay ? <div className="absolute inset-0 z-20">{controlsOverlay}</div> : null}
+        </div>
+      );
+    }
+
+    return <video {...props} ref={ref} className={className} />;
+  }
+
   return (
     <div
       data-protected-media

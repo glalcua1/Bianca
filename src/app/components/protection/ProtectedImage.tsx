@@ -11,6 +11,15 @@ function blockInteraction(event: React.SyntheticEvent) {
   event.preventDefault();
 }
 
+function stripProtectionClasses(className: string) {
+  return className
+    .replace(/\bpointer-events-none\b/g, "")
+    .replace(/\bselect-none\b/g, "")
+    .replace(/\btouch-none\b/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 export default function ProtectedImage({
   wrapperClassName = "",
   className = "",
@@ -19,6 +28,20 @@ export default function ProtectedImage({
 }: Props) {
   const isDesktop = useMediaMinWidth();
   const useCanvasProtection = isAppleMobile() && isDesktop;
+
+  if (!isDesktop) {
+    const mobileClassName = stripProtectionClasses(className);
+
+    if (wrapperClassName) {
+      return (
+        <div className={wrapperClassName}>
+          <img {...props} alt={alt} className={mobileClassName} />
+        </div>
+      );
+    }
+
+    return <img {...props} alt={alt} className={mobileClassName} />;
+  }
 
   if (useCanvasProtection) {
     return (

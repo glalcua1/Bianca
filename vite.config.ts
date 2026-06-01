@@ -9,16 +9,33 @@ import { instagramApiPlugin } from './server/vite-instagram-api-plugin.js'
 /** Public subfolders referenced by URL paths (not figma:asset imports). */
 const PUBLIC_URL_DIRS = ['Cannes', 'Rings', 'Mens', 'necklace', 'media'] as const
 
-/** Root-level public files referenced by URL (not figma:asset imports). */
-const PUBLIC_ROOT_FILES = [
-  'BD_watermark.png',
-  'Bianca_girl2.jpg',
-  'founder.jpg',
-  'Earrings.png',
-  'Earrings_2.png',
-  'IMG_7293.PNG',
-  'Necklace.png',
-] as const
+const ROOT_MEDIA_EXTENSIONS = new Set([
+  '.png',
+  '.jpg',
+  '.jpeg',
+  '.webp',
+  '.gif',
+  '.svg',
+  '.PNG',
+  '.JPG',
+  '.JPEG',
+  '.WEBP',
+  '.mp4',
+  '.webm',
+])
+
+/** All root-level media in public/ — avoids manual whitelist drift on Vercel. */
+function getPublicRootMediaFiles(publicDir: string): string[] {
+  if (!fs.existsSync(publicDir)) return []
+
+  return fs.readdirSync(publicDir).filter((name) => {
+    const fullPath = path.join(publicDir, name)
+    return (
+      fs.statSync(fullPath).isFile() &&
+      ROOT_MEDIA_EXTENSIONS.has(path.extname(name))
+    )
+  })
+}
 
 // Resolve Figma asset imports (figma:asset/*) to images in public folder
 function figmaAssetPlugin() {
@@ -55,12 +72,10 @@ function copyPublicUrlDirsPlugin() {
         }
       }
 
-      for (const file of PUBLIC_ROOT_FILES) {
+      for (const file of getPublicRootMediaFiles(publicDir)) {
         const src = path.join(publicDir, file)
         const dest = path.join(outDir, file)
-        if (fs.existsSync(src)) {
-          fs.copyFileSync(src, dest)
-        }
+        fs.copyFileSync(src, dest)
       }
 
       // Apache/cPanel SPA fallback for FTP deployments (refresh on deep links).
