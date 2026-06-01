@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import ContentProtectionProvider from "./components/protection/ContentProtectionProvider";
+import ScrollToTop from "./components/ScrollToTop";
 import HomePage from "./pages/HomePage";
 import FineJewelleryPage from "./pages/FineJewelleryPage";
 import CannesShowcase2026Page from "./pages/CannesShowcase2026Page";
@@ -12,6 +13,7 @@ export default function App() {
   return (
     <ContentProtectionProvider>
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
