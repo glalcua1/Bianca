@@ -79,7 +79,7 @@ export const MEDIA_PRESS_ITEMS: MediaPressItem[] = [
     id: "hindustan-cannes",
     eyebrow: "Live Hindustan · Press",
     title: "Cannes 2026 — A Journey of Inspiration",
-    body: "Moradabad's Shweta Lal brought her startup Bianca Diamonds to the Cannes Film Festival 2026 red carpet within just three months — with actress Manya Pathak presenting the house's diamond necklaces, earrings, and bracelets to global acclaim. The coverage celebrates women-led Indian luxury and lab-grown brilliance reaching an international audience.",
+    body: "Shweta Lal brought her startup Bianca Diamonds to the Cannes Film Festival 2026 red carpet within just three months — with actress Manya Pathak presenting the house's diamond necklaces, earrings, and bracelets to global acclaim. The coverage celebrates women-led Indian luxury and lab-grown brilliance reaching an international audience.",
     images: [
       {
         src: "/media/hindustan-cannes-2026.jpg",
@@ -122,7 +122,7 @@ export const MEDIA_BRAND_STATEMENT = {
     {
       title: "Women-Led Luxury",
       description:
-        "Founded and led from Moradabad to Cannes — proof that modern Indian maisons belong on the world stage.",
+        "Founded and led from Delhi to Cannes — proof that modern Indian maisons belong on the world stage.",
     },
     {
       title: "Global Recognition",
