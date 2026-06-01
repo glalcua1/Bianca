@@ -77,7 +77,7 @@ export default function PreciousStonesSection() {
                       onChange={(e) =>
                         onTypeChange(stone.id, e.target.value as StoneType)
                       }
-                      className="w-full rounded-lg border border-black/10 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#C9A962]"
+                      className="w-full rounded-lg border border-black/10 bg-white px-3 py-2.5 text-sm outline-none focus:border-gold-accent"
                     >
                       {STONE_TYPES.map((t) => (
                         <option key={t} value={t}>
@@ -139,7 +139,7 @@ export default function PreciousStonesSection() {
                       onChange={(e) =>
                         updateStone(stone.id, { overrideCost: e.target.checked })
                       }
-                      className="rounded border-[#C9A962] text-[#C9A962]"
+                      className="rounded border-gold-accent text-gold-accent"
                     />
                     <span className="text-sm">Override Stone Cost</span>
                   </label>
@@ -175,7 +175,7 @@ export default function PreciousStonesSection() {
                           },
                         })
                       }
-                      className="rounded-lg p-2 text-gold-on-cream hover:bg-[#C9A962]/10"
+                      className="rounded-lg p-2 text-gold-on-cream hover:bg-gold-accent/10"
                     >
                       <Copy className="h-4 w-4" />
                     </button>
@@ -189,7 +189,7 @@ export default function PreciousStonesSection() {
                           },
                         })
                       }
-                      className="rounded-lg p-2 text-red-400 hover:bg-red-50"
+                      className="rounded-lg p-2 text-red-700 hover:bg-red-50"
                     >
                       <Trash2 className="h-4 w-4" />
                     </button>
@@ -203,7 +203,7 @@ export default function PreciousStonesSection() {
       <button
         type="button"
         onClick={addStone}
-        className="mt-4 inline-flex items-center gap-2 rounded-lg border border-dashed border-[#C9A962]/50 px-4 py-2.5 text-sm text-gold-on-cream transition hover:border-[#C9A962] hover:bg-[#C9A962]/5"
+        className="mt-4 inline-flex items-center gap-2 rounded-lg border border-dashed border-gold-accent/50 px-4 py-2.5 text-sm text-gold-on-cream transition hover:border-gold-accent hover:bg-gold-accent/5"
       >
         <Plus className="h-4 w-4" />
         Add Stone

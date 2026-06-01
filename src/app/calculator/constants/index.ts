@@ -77,9 +77,9 @@ export const DEFAULT_DISCOUNT: DiscountConfig = {
 };
 
 export const CHART_COLORS = {
-  gold: "#C9A962",
+  gold: "#7a6530",
   diamond: "#1a1a1a",
   stones: "#1d3c34",
   making: "#8B7355",
-  gst: "#717182",
+  gst: "#5c5c68",
 };

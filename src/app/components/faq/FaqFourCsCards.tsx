@@ -25,7 +25,7 @@ export default function FaqFourCsCards({ cards }: Props) {
             <EditorialReveal delay={i * 70}>
               <article className="group h-full border border-[#766d42]/20 bg-[#faf8f5] px-6 py-10 text-center transition-all duration-500 hover:border-[#766d42]/45 hover:shadow-[inset_0_0_0_1px_rgba(220,203,123,0.2)]">
                 <Icon
-                  className="mx-auto size-7 text-[#766d42] transition-transform duration-500 group-hover:scale-110"
+                  className="mx-auto size-7 text-gold-on-cream transition-transform duration-500 group-hover:scale-110"
                   strokeWidth={1.15}
                   aria-hidden
                 />

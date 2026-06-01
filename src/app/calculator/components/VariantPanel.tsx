@@ -76,7 +76,7 @@ export default function VariantPanel() {
                   <button
                     type="button"
                     onClick={() => dispatch({ type: "LOAD_VARIANT", variantId: v.id })}
-                    className="rounded px-2 py-1 text-xs text-[#1d3c34] hover:bg-[#C9A962]/10"
+                    className="rounded px-2 py-1 text-xs text-[#1d3c34] hover:bg-gold-accent/10"
                   >
                     Load
                   </button>
@@ -85,7 +85,7 @@ export default function VariantPanel() {
                     onClick={() =>
                       dispatch({ type: "DUPLICATE_VARIANT", variantId: v.id })
                     }
-                    className="rounded p-1.5 text-gold-on-cream hover:bg-[#C9A962]/10"
+                    className="rounded p-1.5 text-gold-on-cream hover:bg-gold-accent/10"
                     title="Duplicate"
                   >
                     <Copy className="h-3.5 w-3.5" />
@@ -97,7 +97,7 @@ export default function VariantPanel() {
                     }
                     className={`rounded px-2 py-1 text-xs ${
                       compareVariantIds[0] === v.id
-                        ? "bg-[#C9A962]/20 text-gold-on-cream"
+                        ? "bg-gold-accent/20 text-gold-on-cream"
                         : "text-on-cream-muted hover:bg-black/5"
                     }`}
                   >
@@ -110,7 +110,7 @@ export default function VariantPanel() {
                     }
                     className={`rounded px-2 py-1 text-xs ${
                       compareVariantIds[1] === v.id
-                        ? "bg-[#C9A962]/20 text-gold-on-cream"
+                        ? "bg-gold-accent/20 text-gold-on-cream"
                         : "text-on-cream-muted hover:bg-black/5"
                     }`}
                   >
@@ -121,7 +121,7 @@ export default function VariantPanel() {
                     onClick={() =>
                       dispatch({ type: "DELETE_VARIANT", variantId: v.id })
                     }
-                    className="rounded p-1.5 text-red-400 hover:bg-red-50"
+                    className="rounded p-1.5 text-red-700 hover:bg-red-50"
                   >
                     <Trash2 className="h-3.5 w-3.5" />
                   </button>
@@ -153,7 +153,7 @@ export default function VariantPanel() {
             </div>
           </div>
           {priceDiff !== null && (
-            <p className="mt-3 border-t border-[#C9A962]/20 pt-3 text-sm">
+            <p className="mt-3 border-t border-gold-accent/20 pt-3 text-sm">
               Difference:{" "}
               <span
                 className={

@@ -201,7 +201,7 @@ export default function ConsultationDrawer({
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="inline-flex w-full justify-center border border-[#1d3c34] bg-[#1d3c34] px-10 py-3 text-house-cta text-[#faf8f5] transition-colors duration-500 hover:bg-transparent hover:text-bianca-forest disabled:cursor-not-allowed disabled:opacity-60"
+                    className="inline-flex w-full justify-center border border-[#1d3c34] bg-[#1d3c34] px-10 py-3 text-house-cta text-[#faf8f5] transition-colors duration-500 hover:bg-transparent hover:text-bianca-forest disabled:cursor-not-allowed disabled:text-on-cream-muted"
                   >
                     {submitting ? "Submitting…" : "Request consultation"}
                   </button>

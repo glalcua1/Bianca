@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router";
-import Group6Logo from "../../imports/Group6";
 import { useMediaMinWidth } from "../hooks/useMediaMinWidth";
 import FineJewelleryHeroMobile from "./FineJewelleryHeroMobile";
 import ProtectedImage from "./protection/ProtectedImage";
@@ -18,6 +17,9 @@ const DESIGN_H = CARD_BOTTOM + BOTTOM_SPACING;
 const CONTENT_LEFT = 174;
 const CONTENT_WIDTH = 508;
 const CANNES_HERO_IMAGE = "/Cannes/Model_neck1.png";
+const HERO_FOREST_BG = "#1d3c34";
+/** Darker than page fill so the left of the gradient stroke reads on forest */
+const HERO_STROKE_GREEN = "#071410";
 /** Right-side editorial frame — inset within the white card */
 const IMAGE_PANEL = {
   left: 819,
@@ -67,7 +69,7 @@ export default function FineJewelleryHero() {
       >
         <div className="relative bg-[#1d3c34]" style={{ width: DESIGN_W, height: DESIGN_H }}>
           <div
-            className="absolute rounded-[20px] border-[0.4px] border-solid border-[#1d3c34] bg-gradient-to-r from-[#edefed] via-white to-white"
+            className={`absolute rounded-[20px] border border-solid border-transparent [background:linear-gradient(${HERO_FOREST_BG},${HERO_FOREST_BG})_padding-box,linear-gradient(to_right,${HERO_STROKE_GREEN},#766d42,#dccb7b)_border-box]`}
             style={{
               left: CARD_LEFT,
               top: CARD_TOP,
@@ -107,24 +109,22 @@ export default function FineJewelleryHero() {
               height: CARD_HEIGHT,
             }}
           >
-            <div className="relative h-[245px] w-[304px] shrink-0">
-              <Group6Logo />
-            </div>
+            <p className="m-0 text-house-eyebrow text-gold-on-forest">
+              Cannes Film Festival · 2026
+            </p>
 
-            <p className="mt-10 text-house-eyebrow">Cannes Film Festival · 2026</p>
-
-            <h1 className="m-0 mt-6 max-w-[508px] text-house-display text-[36px] leading-[1.2] tracking-[1.2px] text-[#1d3c34]">
+            <h1 className="m-0 mt-6 max-w-[508px] text-house-display text-[36px] leading-[1.2] tracking-[1.2px] text-on-forest">
               Exclusive Jewellery Showcase
             </h1>
 
-            <p className="m-0 mt-7 max-w-[508px] text-house-tagline text-[24px] leading-[1.45] tracking-[0.04em] text-on-cream-body">
+            <p className="m-0 mt-7 max-w-[508px] text-house-tagline text-[24px] leading-[1.45] tracking-[0.04em] text-on-forest-body">
               A cinematic editorial on Bianca Diamonds&apos; debut at Cannes — on
               the world&apos;s most celebrated red carpet.
             </p>
 
             <Link
               to="/fine-jewellery/cannes-2026"
-              className="mt-9 w-fit font-editorial text-[15px] uppercase tracking-[0.8px] text-gold-on-cream transition-opacity hover:opacity-75"
+              className="mt-9 w-fit font-editorial text-[15px] uppercase tracking-[0.8px] text-gold-on-forest transition-colors hover:text-on-forest"
             >
               Discover the Collection →
             </Link>

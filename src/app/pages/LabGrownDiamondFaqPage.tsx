@@ -141,7 +141,7 @@ export default function LabGrownDiamondFaqPage() {
                   rel="noopener noreferrer"
                   className="group inline-flex flex-col items-center border border-[#766d42]/25 px-8 py-5 transition-colors hover:border-[#766d42]/50 hover:bg-[#f4f0e6]/80"
                 >
-                  <span className="font-editorial text-lg tracking-[0.12em] uppercase text-[#1d3c34] group-hover:text-[#766d42]">
+                  <span className="font-editorial text-lg tracking-[0.12em] uppercase text-[#1d3c34] group-hover:text-gold-on-cream">
                     {lab.name}
                   </span>
                   <span className="mt-1 text-[11px] uppercase tracking-[0.16em] text-on-cream-muted">

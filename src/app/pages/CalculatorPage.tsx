@@ -32,7 +32,7 @@ function CalculatorContent() {
         <SiteNav />
       </div>
 
-      <header className="border-b border-[#C9A962]/20 bg-white px-6 py-10 md:px-10">
+      <header className="border-b border-gold-accent/20 bg-white px-6 py-10 md:px-10">
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 12 }}

@@ -61,7 +61,7 @@ export default function ContactPage() {
             href={`mailto:${BIANCA_EMAIL}`}
             className="inline-flex w-full items-center justify-center gap-2.5 border border-[#766d42]/30 bg-[#f4f0e6]/50 px-8 py-3.5 font-body text-sm text-[#1d3c34] transition hover:border-[#766d42]/50"
           >
-            <Mail className="size-4 text-[#766d42]" aria-hidden />
+            <Mail className="size-4 text-gold-on-cream" aria-hidden />
             {BIANCA_EMAIL}
           </a>
 
@@ -71,7 +71,7 @@ export default function ContactPage() {
             rel="noopener noreferrer"
             className="inline-flex w-full items-center justify-center gap-2.5 border border-[#766d42]/30 px-8 py-3.5 font-editorial text-[13px] uppercase tracking-[0.12em] text-[#1d3c34] transition hover:border-[#766d42]/50"
           >
-            <Instagram className="size-4 text-[#766d42]" aria-hidden />
+            <Instagram className="size-4 text-gold-on-cream" aria-hidden />
             Instagram
             <span className="sr-only"> (opens in new tab)</span>
           </a>

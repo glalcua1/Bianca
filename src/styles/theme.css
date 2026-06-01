@@ -8,17 +8,19 @@
   --bianca-parchment: #f4f0e6;
   --bianca-gold: #766d42;
   --bianca-gold-light: #dccb7b;
-  /* Readable text — light backgrounds (cream / parchment / white) */
+  /* Readable text — light backgrounds (cream / parchment / white) — WCAG AA 4.5:1+ */
   --text-on-cream: #1d3c34;
   --text-on-cream-body: #3a4f49;
-  --text-on-cream-muted: #52635e;
-  --text-on-cream-subtle: #647670;
-  --text-gold-on-cream: #6b5f3a;
-  /* Readable text — dark forest backgrounds */
+  --text-on-cream-muted: #4a5c56;
+  --text-on-cream-subtle: #455650;
+  --text-gold-on-cream: #524a28;
+  /* Calculator accents, focus rings, chart gold (replaces #C9A962) */
+  --text-gold-accent: #7a6530;
+  /* Readable text — dark forest backgrounds — WCAG AA 4.5:1+ */
   --text-on-forest: #f7f5f0;
-  --text-on-forest-body: #dcdad4;
-  --text-on-forest-muted: #c5c3bc;
-  --text-gold-on-forest: #e8d896;
+  --text-on-forest-body: #e8e6e0;
+  --text-on-forest-muted: #d8d6cf;
+  --text-gold-on-forest: #f0e6b8;
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
   --card: #ffffff;
@@ -30,7 +32,7 @@
   --secondary: oklch(0.95 0.0058 264.53);
   --secondary-foreground: #030213;
   --muted: #ececf0;
-  --muted-foreground: #717182;
+  --muted-foreground: #5c5c68;
   --accent: #e9ebef;
   --accent-foreground: #030213;
   --destructive: #d4183d;
@@ -111,6 +113,7 @@
   --color-on-cream-muted: var(--text-on-cream-muted);
   --color-on-cream-subtle: var(--text-on-cream-subtle);
   --color-gold-on-cream: var(--text-gold-on-cream);
+  --color-gold-accent: var(--text-gold-accent);
   --color-on-forest: var(--text-on-forest);
   --color-on-forest-body: var(--text-on-forest-body);
   --color-on-forest-muted: var(--text-on-forest-muted);

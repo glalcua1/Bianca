@@ -51,8 +51,8 @@ export default function SiteFooter() {
                       to={item.to}
                       className={`block font-editorial text-[13px] uppercase tracking-[0.14em] transition-colors md:text-[14px] md:tracking-[0.16em] ${
                         isActive
-                          ? "text-[#dccb7b]"
-                          : "text-[#f9f9f9]/85 hover:text-[#f9f9f9]"
+                          ? "text-gold-on-forest"
+                          : "text-on-forest-body hover:text-on-forest"
                       }`}
                     >
                       {item.label}
@@ -64,7 +64,7 @@ export default function SiteFooter() {
                 <button
                   type="button"
                   onClick={() => setFaqOpen(true)}
-                  className="block w-full font-editorial text-[13px] uppercase tracking-[0.14em] text-[#f9f9f9]/85 transition-colors hover:text-[#f9f9f9] md:text-[14px] md:tracking-[0.16em]"
+                  className="block w-full font-editorial text-[13px] uppercase tracking-[0.14em] text-on-forest-body transition-colors hover:text-on-forest md:text-[14px] md:tracking-[0.16em]"
                 >
                   Lab-Grown Diamond FAQs
                 </button>

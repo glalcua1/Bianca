@@ -32,7 +32,7 @@ export default function MediaPressCard({ item, reversed = false }: Props) {
           <EditorialEyebrow className="mb-4">{item.eyebrow}</EditorialEyebrow>
           <p className="mb-3 text-[11px] uppercase tracking-[0.18em] text-gold-on-cream">
             Source ·{" "}
-            <span className="font-semibold text-[#dccb7b]">{item.source}</span>
+            <span className="font-semibold text-gold-on-cream">{item.source}</span>
             {item.date ? (
               <>
                 {" "}
@@ -58,7 +58,7 @@ export default function MediaPressCard({ item, reversed = false }: Props) {
               className="inline-flex items-center justify-center gap-2 border border-[#766d42]/40 bg-[#f4f0e6] px-6 py-3 text-house-cta text-[#1d3c34] transition hover:border-[#766d42]/70 hover:bg-[#f4f0e6]/80"
             >
               {item.primaryLink.label}
-              <ExternalLink className="size-4 shrink-0 opacity-70" aria-hidden />
+              <ExternalLink className="size-4 shrink-0 text-on-cream-muted" aria-hidden />
             </a>
             {item.secondaryLink ? (
               <a
@@ -68,7 +68,7 @@ export default function MediaPressCard({ item, reversed = false }: Props) {
                 className="inline-flex items-center justify-center gap-2 border border-[#1d3c34]/15 bg-white px-6 py-3 text-house-cta text-[#1d3c34] transition hover:border-[#766d42]/40 hover:bg-[#faf8f5]"
               >
                 {item.secondaryLink.label}
-                <ExternalLink className="size-4 shrink-0 opacity-70" aria-hidden />
+                <ExternalLink className="size-4 shrink-0 text-on-cream-muted" aria-hidden />
               </a>
             ) : null}
           </div>

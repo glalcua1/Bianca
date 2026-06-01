@@ -183,7 +183,7 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
                     ) : (
                       <div className="flex aspect-square w-full items-center justify-center bg-[#e8e0d0]">
                         <Instagram
-                          className="size-8 text-[#1d3c34]/25"
+                          className="size-8 text-on-cream-subtle"
                           aria-hidden
                         />
                       </div>
@@ -245,7 +245,7 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
         {showPlaceholder && (
           <div className="mx-auto max-w-lg rounded-sm border border-[#1d3c34]/15 bg-[#faf8f3]/90 p-10 text-center shadow-[0_20px_50px_rgba(29,60,52,0.08)] backdrop-blur-sm md:p-14">
             <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full border border-[#dccb7b]/40 bg-[#1d3c34]/[0.03]">
-              <Instagram className="size-7 text-[#1d3c34]/50" aria-hidden />
+              <Instagram className="size-7 text-on-cream-muted" aria-hidden />
             </div>
             <p className="font-editorial text-xl tracking-[0.06em] text-[#1d3c34]">
               Follow the atelier

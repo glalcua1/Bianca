@@ -70,7 +70,7 @@ export function printQuote(
       <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Times New Roman', serif; color: #1a1a1a; padding: 48px; background: #fff; }
-        .header { text-align: center; border-bottom: 2px solid #C9A962; padding-bottom: 24px; margin-bottom: 32px; }
+        .header { text-align: center; border-bottom: 2px solid #7a6530; padding-bottom: 24px; margin-bottom: 32px; }
         .logo { font-size: 28px; letter-spacing: 0.3em; text-transform: uppercase; color: #1d3c34; }
         .subtitle { font-size: 12px; letter-spacing: 0.4em; color: #8B7355; margin-top: 8px; }
         h1 { font-size: 22px; font-weight: normal; margin: 24px 0 8px; }
@@ -78,7 +78,7 @@ export function printQuote(
         table { width: 100%; border-collapse: collapse; margin: 24px 0; }
         td { padding: 12px 0; border-bottom: 1px solid #eee; font-size: 14px; }
         td:last-child { text-align: right; }
-        .total { font-size: 24px; text-align: center; margin: 40px 0; padding: 24px; border: 1px solid #C9A962; }
+        .total { font-size: 24px; text-align: center; margin: 40px 0; padding: 24px; border: 1px solid #7a6530; }
         .total span { display: block; font-size: 12px; letter-spacing: 0.2em; color: #8B7355; margin-bottom: 8px; }
         .footer { text-align: center; font-size: 11px; color: #999; margin-top: 48px; letter-spacing: 0.1em; }
         @media print { body { padding: 24px; } }

@@ -32,7 +32,7 @@ export default function CollapsibleSection({
               {title}
             </h2>
             {badge && (
-              <span className="rounded-full bg-[#C9A962]/15 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-gold-on-cream">
+              <span className="rounded-full bg-gold-accent/15 px-2.5 py-0.5 text-[10px] uppercase tracking-widest text-gold-on-cream">
                 {badge}
               </span>
             )}

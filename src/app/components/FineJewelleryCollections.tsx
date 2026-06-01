@@ -47,7 +47,7 @@ export default function FineJewelleryCollections() {
                 </p>
                 <span className="mt-6 inline-flex items-center justify-center gap-1.5 text-house-cta text-gold-on-cream transition group-hover:text-bianca-forest">
                   Explore
-                  <ChevronRight className="size-3.5 opacity-70" aria-hidden />
+                  <ChevronRight className="size-3.5 text-gold-on-cream" aria-hidden />
                 </span>
               </div>
             </li>

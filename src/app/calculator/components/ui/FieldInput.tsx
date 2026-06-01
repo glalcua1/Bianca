@@ -14,7 +14,7 @@ export default function FieldInput({ label, hint, className, ...props }: Props) 
       </span>
       <input
         className={clsx(
-          "w-full rounded-lg border border-black/10 bg-[#faf8f5] px-3 py-2.5 font-body text-sm text-bianca-forest outline-none transition focus:border-[#C9A962] focus:ring-2 focus:ring-[#C9A962]/20",
+          "w-full rounded-lg border border-black/10 bg-[#faf8f5] px-3 py-2.5 font-body text-sm text-bianca-forest outline-none transition focus:border-gold-accent focus:ring-2 focus:ring-gold-accent/20",
           className,
         )}
         {...props}

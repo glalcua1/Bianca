@@ -170,7 +170,7 @@ export default function HomeBiancaStoryMobile() {
             />
           </div>
 
-          <div className="mt-10 space-y-5 font-display text-[16px] leading-[1.65] tracking-[0.5px] text-[#fffbeb]">
+          <div className="mt-10 space-y-5 font-display text-[16px] leading-[1.65] tracking-[0.5px] text-on-forest">
             <p>
               Jewellery has always held a special place in the way a woman
               expresses herself. A thoughtfully chosen piece can elevate not only

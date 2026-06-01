@@ -28,7 +28,7 @@ export default function DesignToolbar() {
             key={sample.name}
             type="button"
             onClick={() => dispatch({ type: "LOAD_SAMPLE", design: sample })}
-            className="rounded-full border border-[#C9A962]/30 px-3 py-1 text-xs text-gold-on-cream transition hover:border-[#C9A962] hover:bg-[#C9A962]/10"
+            className="rounded-full border border-gold-accent/30 px-3 py-1 text-xs text-gold-on-cream transition hover:border-gold-accent hover:bg-gold-accent/10"
           >
             {sample.name}
           </button>

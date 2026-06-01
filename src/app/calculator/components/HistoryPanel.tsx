@@ -38,7 +38,7 @@ export default function HistoryPanel() {
                 <button
                   type="button"
                   onClick={() => dispatch({ type: "LOAD_HISTORY", entryId: entry.id })}
-                  className="rounded px-2 py-1 text-xs text-[#1d3c34] hover:bg-[#C9A962]/10"
+                  className="rounded px-2 py-1 text-xs text-[#1d3c34] hover:bg-gold-accent/10"
                 >
                   Open
                 </button>
@@ -50,7 +50,7 @@ export default function HistoryPanel() {
                       design: cloneDesign(entry.design),
                     })
                   }
-                  className="rounded p-1.5 text-gold-on-cream hover:bg-[#C9A962]/10"
+                  className="rounded p-1.5 text-gold-on-cream hover:bg-gold-accent/10"
                   title="Duplicate"
                 >
                   <Copy className="h-3.5 w-3.5" />
@@ -60,7 +60,7 @@ export default function HistoryPanel() {
                   onClick={() =>
                     dispatch({ type: "DELETE_HISTORY", entryId: entry.id })
                   }
-                  className="rounded p-1.5 text-red-400 hover:bg-red-50"
+                  className="rounded p-1.5 text-red-700 hover:bg-red-50"
                 >
                   <Trash2 className="h-3.5 w-3.5" />
                 </button>

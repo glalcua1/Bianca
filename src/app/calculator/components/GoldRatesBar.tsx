@@ -12,11 +12,11 @@ export default function GoldRatesBar() {
     <motion.div
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
-      className="rounded-xl border border-[#C9A962]/30 bg-gradient-to-r from-[#faf8f5] via-white to-[#faf8f5] p-5 shadow-[0_4px_30px_rgba(201,169,98,0.12)]"
+      className="rounded-xl border border-gold-accent/30 bg-gradient-to-r from-[#faf8f5] via-white to-[#faf8f5] p-5 shadow-[0_4px_30px_rgba(201,169,98,0.12)]"
     >
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <TrendingUp className="h-4 w-4 text-[#C9A962]" />
+          <TrendingUp className="h-4 w-4 text-gold-accent" />
           <h2 className="font-editorial text-base tracking-wide text-bianca-forest">
             Today&apos;s Gold Rate — Delhi
           </h2>
@@ -50,7 +50,7 @@ export default function GoldRatesBar() {
               });
               refreshGoldRates();
             }}
-            className="inline-flex items-center gap-1 rounded-lg border border-[#C9A962]/40 px-3 py-1.5 text-xs text-gold-on-cream transition hover:bg-[#C9A962]/10"
+            className="inline-flex items-center gap-1 rounded-lg border border-gold-accent/40 px-3 py-1.5 text-xs text-gold-on-cream transition hover:bg-gold-accent/10"
           >
             <RefreshCw className={`h-3 w-3 ${goldRates.loading ? "animate-spin" : ""}`} />
             Refresh

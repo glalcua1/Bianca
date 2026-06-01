@@ -707,7 +707,7 @@ function Heading3Margin() {
 
 function Container2() {
   return (
-    <div className="absolute content-stretch flex flex-col items-center left-0 max-w-[350px] opacity-80 pl-[4.2px] pr-[4.21px] top-[-0.56px]" data-name="Container">
+    <div className="absolute content-stretch flex flex-col items-center left-0 max-w-[350px]  pl-[4.2px] pr-[4.21px] top-[-0.56px]" data-name="Container">
       <div className="flex flex-col font-body h-[52px] justify-center leading-[0] not-italic relative shrink-0 text-on-cream-body text-[14.5px] text-center tracking-[0.3px] w-[351px]">
         <p className="leading-[22.95px]">Discover diamonds designed for modern living — effortless pieces that bring refined sparkle to every moment of your day</p>
       </div>
@@ -823,7 +823,7 @@ function Heading3Margin1() {
 
 function Container6() {
   return (
-    <div className="absolute content-stretch flex flex-col items-center left-0 max-w-[350px] opacity-80 pl-[7.04px] pr-[7.03px] top-[-0.56px]" data-name="Container">
+    <div className="absolute content-stretch flex flex-col items-center left-0 max-w-[350px]  pl-[7.04px] pr-[7.03px] top-[-0.56px]" data-name="Container">
       <div className="flex flex-col font-emphasis justify-center leading-[0] not-italic relative shrink-0 text-on-cream-body text-[14.6px] text-center tracking-[0.3px] w-[350px]">
         <p className="leading-[22.95px]">Explore statement diamonds crafted to elevate life’s most memorable celebrations with brilliance, beauty, and presence.</p>
       </div>
@@ -948,7 +948,7 @@ function Heading3Margin2() {
 
 function Container10() {
   return (
-    <div className="absolute content-stretch flex flex-col items-center left-0 max-w-[350px] opacity-80 pl-[1.46px] pr-[1.47px] top-[-0.56px]" data-name="Container">
+    <div className="absolute content-stretch flex flex-col items-center left-0 max-w-[350px]  pl-[1.46px] pr-[1.47px] top-[-0.56px]" data-name="Container">
       <div className="flex flex-col font-emphasis justify-center leading-[0] not-italic relative shrink-0 text-on-cream-body text-[14.6px] text-center tracking-[0.3px] w-[349px]">
         <p className="leading-[22.95px]">Explore timeless diamonds created to honor the beauty, promise, and joy of your wedding journey.</p>
       </div>

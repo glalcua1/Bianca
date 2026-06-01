@@ -41,7 +41,7 @@ export default function FaqAccordion({
                 {item.question}
               </span>
               <ChevronDown
-                className="mt-1 size-4 shrink-0 text-[#766d42] transition-transform duration-300 group-data-[state=open]:rotate-180"
+                className="mt-1 size-4 shrink-0 text-gold-on-cream transition-transform duration-300 group-data-[state=open]:rotate-180"
                 aria-hidden
               />
             </Accordion.Trigger>
@@ -58,7 +58,7 @@ export default function FaqAccordion({
                   href={item.referenceUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center gap-1.5 font-body text-[12px] uppercase tracking-[0.14em] text-[#766d42] transition-colors hover:text-[#1d3c34]"
+                  className="mt-4 inline-flex items-center gap-1.5 font-body text-[12px] uppercase tracking-[0.14em] text-gold-on-cream transition-colors hover:text-[#1d3c34]"
                 >
                   {item.referenceLabel ?? "Trusted source"}
                   <ExternalLink className="size-3" aria-hidden />

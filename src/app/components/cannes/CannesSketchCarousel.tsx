@@ -79,7 +79,7 @@ export default function CannesSketchCarousel({ sketches }: Props) {
             onClick={scrollPrev}
             disabled={!canScrollPrev}
             aria-label="Previous sketch"
-            className="inline-flex size-10 items-center justify-center rounded-full border border-[#f9f9f9]/20 text-on-forest-muted transition-colors duration-300 hover:border-[#dccb7b]/50 hover:text-[#dccb7b] disabled:pointer-events-none disabled:opacity-30"
+            className="inline-flex size-10 items-center justify-center rounded-full border border-[#f9f9f9]/20 text-on-forest-muted transition-colors duration-300 hover:border-[#dccb7b]/50 hover:text-[#dccb7b] disabled:pointer-events-none disabled:text-on-forest-muted"
           >
             <ChevronLeft className="size-4" strokeWidth={1.25} />
           </button>
@@ -88,7 +88,7 @@ export default function CannesSketchCarousel({ sketches }: Props) {
             onClick={scrollNext}
             disabled={!canScrollNext}
             aria-label="Next sketch"
-            className="inline-flex size-10 items-center justify-center rounded-full border border-[#f9f9f9]/20 text-on-forest-muted transition-colors duration-300 hover:border-[#dccb7b]/50 hover:text-[#dccb7b] disabled:pointer-events-none disabled:opacity-30"
+            className="inline-flex size-10 items-center justify-center rounded-full border border-[#f9f9f9]/20 text-on-forest-muted transition-colors duration-300 hover:border-[#dccb7b]/50 hover:text-[#dccb7b] disabled:pointer-events-none disabled:text-on-forest-muted"
           >
             <ChevronRight className="size-4" strokeWidth={1.25} />
           </button>

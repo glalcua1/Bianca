@@ -17,7 +17,7 @@ export default function ExportBar() {
       <button
         type="button"
         onClick={persistDesign}
-        className="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-4 py-2 text-sm transition hover:border-[#C9A962]/40 hover:bg-[#faf8f5]"
+        className="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-4 py-2 text-sm transition hover:border-gold-accent/40 hover:bg-[#faf8f5]"
       >
         <Save className="h-4 w-4 text-gold-on-cream" />
         Save to History
@@ -25,7 +25,7 @@ export default function ExportBar() {
       <button
         type="button"
         onClick={() => exportPdfQuote(design, result, isCustomer)}
-        className="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-4 py-2 text-sm transition hover:border-[#C9A962]/40 hover:bg-[#faf8f5]"
+        className="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-4 py-2 text-sm transition hover:border-gold-accent/40 hover:bg-[#faf8f5]"
       >
         <FileText className="h-4 w-4 text-gold-on-cream" />
         PDF Quote
@@ -35,7 +35,7 @@ export default function ExportBar() {
         onClick={() =>
           openWhatsAppQuote(buildWhatsAppQuote(design, result, isCustomer))
         }
-        className="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-4 py-2 text-sm transition hover:border-[#C9A962]/40 hover:bg-[#faf8f5]"
+        className="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-4 py-2 text-sm transition hover:border-gold-accent/40 hover:bg-[#faf8f5]"
       >
         <MessageCircle className="h-4 w-4 text-gold-on-cream" />
         WhatsApp
@@ -43,7 +43,7 @@ export default function ExportBar() {
       <button
         type="button"
         onClick={() => printQuote(design, result, isCustomer)}
-        className="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-4 py-2 text-sm transition hover:border-[#C9A962]/40 hover:bg-[#faf8f5]"
+        className="inline-flex items-center gap-2 rounded-lg border border-black/10 bg-white px-4 py-2 text-sm transition hover:border-gold-accent/40 hover:bg-[#faf8f5]"
       >
         <Printer className="h-4 w-4 text-gold-on-cream" />
         Print

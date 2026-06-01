@@ -96,7 +96,7 @@ export default function GoldComponentsSection() {
               <button
                 type="button"
                 onClick={() => duplicateComponent(comp)}
-                className="rounded-lg p-2 text-gold-on-cream transition hover:bg-[#C9A962]/10"
+                className="rounded-lg p-2 text-gold-on-cream transition hover:bg-gold-accent/10"
                 title="Duplicate"
               >
                 <Copy className="h-4 w-4" />
@@ -105,7 +105,7 @@ export default function GoldComponentsSection() {
                 type="button"
                 onClick={() => deleteComponent(comp.id)}
                 disabled={components.length <= 1}
-                className="rounded-lg p-2 text-red-400 transition hover:bg-red-50 disabled:opacity-30"
+                className="rounded-lg p-2 text-red-700 transition hover:bg-red-50 disabled:text-on-cream-subtle"
                 title="Delete"
               >
                 <Trash2 className="h-4 w-4" />
@@ -117,7 +117,7 @@ export default function GoldComponentsSection() {
       <button
         type="button"
         onClick={addComponent}
-        className="mt-4 inline-flex items-center gap-2 rounded-lg border border-dashed border-[#C9A962]/50 px-4 py-2.5 text-sm text-gold-on-cream transition hover:border-[#C9A962] hover:bg-[#C9A962]/5"
+        className="mt-4 inline-flex items-center gap-2 rounded-lg border border-dashed border-gold-accent/50 px-4 py-2.5 text-sm text-gold-on-cream transition hover:border-gold-accent hover:bg-gold-accent/5"
       >
         <Plus className="h-4 w-4" />
         Add Component

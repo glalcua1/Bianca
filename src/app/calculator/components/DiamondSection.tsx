@@ -66,7 +66,7 @@ export default function DiamondSection() {
               },
             })
           }
-          className="rounded border-[#C9A962] text-[#C9A962] focus:ring-[#C9A962]"
+          className="rounded border-gold-accent text-gold-accent focus:ring-gold-accent"
         />
         <span className="font-body text-sm text-bianca-forest">
           Override Auto Diamond Cost

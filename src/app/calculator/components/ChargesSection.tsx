@@ -93,7 +93,7 @@ export default function ChargesSection() {
                     patch: { gst: { ...gst, enabled: e.target.checked } },
                   })
                 }
-                className="rounded border-[#C9A962] text-[#C9A962]"
+                className="rounded border-gold-accent text-gold-accent"
               />
               <span className="text-sm">Enable GST</span>
             </label>

@@ -37,7 +37,7 @@ export default function FaqTrustPillars({ pillars, compact = false }: Props) {
             }
           >
             <Icon
-              className={`mx-auto text-[#766d42] ${compact ? "size-4" : "size-6"}`}
+              className={`mx-auto text-gold-on-cream ${compact ? "size-4" : "size-6"}`}
               strokeWidth={1.25}
               aria-hidden
             />
