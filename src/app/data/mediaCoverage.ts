@@ -20,15 +20,15 @@ export type MediaPressItem = {
 export const MEDIA_PRESS_ITEMS: MediaPressItem[] = [
   {
     id: "manya-instagram",
-    eyebrow: "Instagram · Global Exposure",
+    eyebrow: "News India 11 · Instagram",
     title: "Manya on the World Stage",
     body: "Manya adorned exquisite jewellery by Bianca Diamonds, a woman-led startup just three months old. Her appearance provided the emerging brand with valuable international exposure, highlighting the rise of women-driven entrepreneurship on global platforms.",
     image: "/media/manya-instagram.jpg",
     imageAlt:
-      "Manya wearing Bianca Diamonds lab-grown diamond jewellery — Instagram post",
-    href: "https://www.instagram.com/p/DY9Wi9YkSKq/",
+      "Manya wearing Bianca Diamonds lab-grown diamond jewellery — News India 11 Instagram post",
+    href: "https://www.instagram.com/news_india_11/p/DY9Wi9YkSKq/",
     linkLabel: "View on Instagram",
-    source: "Instagram",
+    source: "News India 11",
     date: "2026",
   },
   {

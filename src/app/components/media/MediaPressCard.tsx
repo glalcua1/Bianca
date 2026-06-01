@@ -33,14 +33,14 @@ export default function MediaPressCard({ item, reversed = false }: Props) {
               }`}
             />
           </div>
-          <p className="mt-3 text-center text-[11px] uppercase tracking-[0.18em] text-gold-on-cream">
-            {item.source}
-            {item.date ? ` · ${item.date}` : ""}
-          </p>
         </EditorialReveal>
 
         <EditorialReveal delay={120} className={reversed ? "lg:order-1" : ""}>
           <EditorialEyebrow className="mb-4">{item.eyebrow}</EditorialEyebrow>
+          <p className="mb-3 text-[11px] uppercase tracking-[0.18em] text-gold-on-cream">
+            Source · {item.source}
+            {item.date ? ` · ${item.date}` : ""}
+          </p>
           <h2
             id={`${item.id}-heading`}
             className="font-editorial text-[clamp(1.5rem,3vw,2.1rem)] leading-[1.2] tracking-[0.05em] text-[#1d3c34]"
