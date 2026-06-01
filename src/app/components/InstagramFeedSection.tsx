@@ -43,9 +43,11 @@ const GALLERY_MAX_ITEMS = 6;
 
 type Props = {
   profileUrl: string;
+  /** Tighter top spacing — homepage artboard sits directly above gallery. */
+  compactTop?: boolean;
 };
 
-export default function InstagramFeedSection({ profileUrl }: Props) {
+export default function InstagramFeedSection({ profileUrl, compactTop = false }: Props) {
   const headingId = useId();
   const [apiMedia, setApiMedia] = useState<InstagramMediaItem[] | null>(null);
   const username = useMemo(
@@ -108,7 +110,9 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
 
   return (
     <section
-      className="relative overflow-hidden px-5 py-16 md:px-10 md:py-24"
+      className={`relative overflow-hidden px-5 py-16 md:px-10 md:pb-20 ${
+        compactTop ? "md:pt-10" : "md:pt-24"
+      }`}
       aria-labelledby={headingId}
       data-protection-exempt
       style={{
@@ -129,7 +133,7 @@ export default function InstagramFeedSection({ profileUrl }: Props) {
       />
 
       <div className="relative mx-auto max-w-6xl">
-        <div className="mb-14 text-center md:mb-20">
+        <div className={`text-center ${compactTop ? "mb-10 md:mb-12" : "mb-14 md:mb-20"}`}>
           <p className="mb-4 text-house-eyebrow text-on-cream-muted">
             Social
           </p>

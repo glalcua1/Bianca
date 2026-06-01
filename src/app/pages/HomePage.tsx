@@ -7,8 +7,8 @@ import MacBookPro from "../../imports/MacBookPro141-2-335";
 import { BIANCA_INSTAGRAM_URL } from "../data/siteContact";
 
 const DESIGN_W = 1512;
-/** Scaled artboard height (design px at 1512 width) */
-const DESIGN_H = 4860;
+/** Scaled artboard height — matches founder forest block bottom (3774 + 619). */
+const DESIGN_H = 4393;
 
 function useDesignScale() {
   const [scale, setScale] = useState(1);
@@ -69,7 +69,7 @@ export default function HomePage() {
   return (
     <>
       {isDesktop ? <DesktopHomeArtboard /> : <HomePageMobile />}
-      <InstagramFeedSection profileUrl={BIANCA_INSTAGRAM_URL} />
+      <InstagramFeedSection profileUrl={BIANCA_INSTAGRAM_URL} compactTop />
       <SiteFooter />
     </>
   );
