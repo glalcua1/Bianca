@@ -23,6 +23,8 @@ export type FineJewelleryCategory = {
   description: string;
 };
 
+export type BraceletKind = "tennis" | "bracelet";
+
 export type AtelierPiece = {
   id: string;
   category: JewelleryCategoryId;
@@ -31,9 +33,21 @@ export type AtelierPiece = {
   alt: string;
   title: string;
   description: string;
+  /** Tennis line vs bangle, cuff, and statement wrist pieces */
+  braceletKind?: BraceletKind;
   /** Match product photography backdrop instead of default black/cream well */
   imageWellColor?: string;
 };
+
+export function atelierPieceEyebrow(piece: AtelierPiece): string {
+  if (piece.category === "bracelets" && piece.braceletKind) {
+    return piece.braceletKind === "tennis" ? "Tennis Bracelet" : "Bracelet";
+  }
+  return (
+    FINE_JEWELLERY_CATEGORIES.find((c) => c.id === piece.category)?.title ??
+    piece.category
+  );
+}
 
 export const FINE_JEWELLERY_COLLECTIONS: FineJewelleryCollection[] = [
   {
@@ -83,7 +97,8 @@ export const FINE_JEWELLERY_CATEGORIES: FineJewelleryCategory[] = [
   {
     id: "bracelets",
     title: "Bracelets",
-    description: "Tennis styles and delicate cuffs for wrist-level sparkle.",
+    description:
+      "Bangles, cuffs, and statement wrist pieces — plus continuous-line tennis styles in round, marquise, and pear.",
   },
   {
     id: "for-him",
@@ -170,12 +185,61 @@ export const ATELIER_PIECES: AtelierPiece[] = [
   {
     id: "brace-feuille-douce",
     category: "bracelets",
+    braceletKind: "bracelet",
     productCode: "BD-BR-001",
     image: "/Bracelet2.png",
     alt: "Feuille Douce — marquise diamond bangle bracelets",
     title: "Feuille Douce",
     description:
       "Twin yellow-gold bangles set with marquise diamonds in a laurel-leaf motif — layered wrist brilliance with sculptural, house-refined proportion.",
+  },
+  {
+    id: "brace-jardin-floreal",
+    category: "bracelets",
+    braceletKind: "bracelet",
+    productCode: "BD-BR-004",
+    image: "/Bracelet/Bracelet3.png",
+    imageWellColor: "#0a0a0a",
+    alt: "Jardin Floréal — floral cluster diamond bracelet",
+    title: "Jardin Floréal",
+    description:
+      "Twin rows of marquise and round brilliants bloom in repeating floral clusters — a wide, flexible collar for the wrist with high-jewellery presence and continuous light.",
+  },
+  {
+    id: "brace-tennis-brilliant",
+    category: "bracelets",
+    braceletKind: "tennis",
+    productCode: "BD-BR-003",
+    image: "/Bracelet/necklace11.png",
+    imageWellColor: "#0a0a0a",
+    alt: "Tennis Brilliant — round diamond tennis bracelet",
+    title: "Tennis Brilliant",
+    description:
+      "A classic tennis line of round IGI-certified brilliants in four-prong settings — uninterrupted sparkle for the wrist, refined enough to wear alone or layered.",
+  },
+  {
+    id: "brace-tennis-marquise",
+    category: "bracelets",
+    braceletKind: "tennis",
+    productCode: "BD-BR-002",
+    image: "/Bracelet/necklace12.png",
+    imageWellColor: "#0a0a0a",
+    alt: "Tennis Marquise — marquise diamond tennis bracelet",
+    title: "Tennis Marquise",
+    description:
+      "Marquise brilliants set edge to edge in a continuous line — fluid fire around the wrist, composed to stack with the house's bangles and cuffs.",
+  },
+  {
+    id: "brace-tennis-poire",
+    category: "bracelets",
+    braceletKind: "tennis",
+    productCode: "BD-BR-005",
+    image: "/Bracelet/Bracelet4.png",
+    imageWellColor: "#0a0a0a",
+    alt: "Tennis Poire — three-row pear and round diamond tennis bracelet",
+    title: "Tennis Poire",
+    description:
+      "Three articulated rows of pear and round brilliants in a scalloped tennis line — wider wrist fire with the same fluid, stackable elegance as the house's classic tennis styles.",
   },
   {
     id: "neck-halo-emeraude",
@@ -277,6 +341,76 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Aurora Plume",
     description:
       "Layered plumes of pear and marquise drops fan outward from a diamond-set centre — movement, depth, and gala-ready luminosity in a single atelier composition.",
+  },
+  {
+    id: "neck-tennis-classique",
+    category: "necklaces",
+    productCode: "BD-NK-014",
+    image: "/necklace/Necklace13.png",
+    alt: "Tennis Classique — round brilliant tennis necklace",
+    title: "Tennis Classique",
+    description:
+      "A continuous collar of IGI-certified round brilliants in a refined four-prong line — timeless tennis brilliance, composed for the modern neckline.",
+  },
+  {
+    id: "neck-frange-poire",
+    category: "necklaces",
+    productCode: "BD-NK-015",
+    image: "/necklace/Necklace14.png",
+    alt: "Frange Poire — pear diamond fringe necklace",
+    title: "Frange Poire",
+    description:
+      "Graduated pear drops suspended from a pavé strand — a fringe of movement and light designed for gala evenings and red-carpet presence.",
+  },
+  {
+    id: "neck-double-fil-or",
+    category: "necklaces",
+    productCode: "BD-NK-016",
+    image: "/necklace/Necklace15.png",
+    alt: "Double Fil d'Or — gold and diamond multi-strand necklace",
+    title: "Double Fil d'Or",
+    description:
+      "Twin diamond strands framed in polished yellow gold, converging on a pear and round-brilliant cascade — layered luxury with architectural proportion.",
+  },
+  {
+    id: "neck-riviere-ovale",
+    category: "necklaces",
+    productCode: "BD-NK-017",
+    image: "/necklace/Necklace16.png",
+    alt: "Rivière Ovale — graduated oval diamond necklace",
+    title: "Rivière Ovale",
+    description:
+      "Oval brilliants graduate from centre to clasp in a continuous rivière — elongated fire and even luminosity around the collarbone.",
+  },
+  {
+    id: "neck-lariat-etoile",
+    category: "necklaces",
+    productCode: "BD-NK-018",
+    image: "/necklace/Necklace17.png",
+    alt: "Lariat Étoile — Y-necklace with pear diamond drop",
+    title: "Lariat Étoile",
+    description:
+      "Round brilliants ascend to a central star stone, finishing in a pear drop — a Y-shaped lariat composed for décolletage and evening drama.",
+  },
+  {
+    id: "neck-double-rangee",
+    category: "necklaces",
+    productCode: "BD-NK-019",
+    image: "/necklace/Necklace18.png",
+    alt: "Double Rangée — two-strand pear and marquise necklace",
+    title: "Double Rangée",
+    description:
+      "Twin rows of pear and marquise diamonds in warm gold — a double-strand collar with sculptural symmetry and layered wrist-level brilliance at the throat.",
+  },
+  {
+    id: "neck-maillon-eclat",
+    category: "necklaces",
+    productCode: "BD-NK-020",
+    image: "/necklace/Necklace19.png",
+    alt: "Maillon Éclat — halo link station necklace with drop",
+    title: "Maillon Éclat",
+    description:
+      "Pavé halo links trace the chain, centred on a graduated drop of round brilliants — station-set radiance with a softly articulated silhouette.",
   },
   {
     id: "for-him-signet-line",

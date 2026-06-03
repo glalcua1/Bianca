@@ -3,8 +3,47 @@ import CollectionPhotoFrame from "./CollectionPhotoFrame";
 import {
   ATELIER_PIECES,
   FINE_JEWELLERY_CATEGORIES,
+  atelierPieceEyebrow,
+  type AtelierPiece,
+  type BraceletKind,
   type JewelleryCategoryId,
 } from "../data/fineJewelleryCollections";
+
+const BRACELET_SECTIONS: { kind: BraceletKind; title: string }[] = [
+  { kind: "bracelet", title: "Bracelets" },
+  { kind: "tennis", title: "Tennis Bracelets" },
+];
+
+function renderPieceCard(piece: AtelierPiece) {
+  return (
+    <li key={piece.id} className="flex w-full min-w-0 flex-col items-center">
+      <div className="mx-auto w-full min-w-0 max-w-[443px] md:max-w-none">
+        <CollectionPhotoFrame
+          fluid
+          darkImageWell={piece.category === "necklaces" && !piece.imageWellColor}
+          imageWellColor={piece.imageWellColor}
+          src={piece.image}
+          alt={piece.alt}
+          data-name={piece.id}
+        />
+      </div>
+      <div className="mt-8 w-full max-w-[22rem] text-center">
+        <p className="text-[10px] uppercase tracking-[0.22em] text-gold-on-cream">
+          {atelierPieceEyebrow(piece)}
+        </p>
+        <h3 className="mt-3 font-editorial text-[1.35rem] tracking-[0.05em] text-[#1d3c34] md:text-2xl">
+          {piece.title}
+        </h3>
+        <p className="mt-3 text-house-body leading-relaxed text-on-cream-body">
+          {piece.description}
+        </p>
+        <p className="mt-4 text-[11px] uppercase tracking-[0.16em] text-gold-on-cream">
+          Product code: {piece.productCode}
+        </p>
+      </div>
+    </li>
+  );
+}
 
 type Props = {
   activeCategory: JewelleryCategoryId | "all";
@@ -131,38 +170,28 @@ export default function FineJewelleryAtelier({
             Pieces in this category are being prepared in the atelier. Enquire
             for availability or select another category above.
           </p>
+        ) : activeCategory === "bracelets" ? (
+          <div className="flex flex-col gap-16 md:gap-20">
+            {BRACELET_SECTIONS.map(({ kind, title }) => {
+              const sectionPieces = filteredPieces.filter(
+                (piece) => piece.braceletKind === kind,
+              );
+              if (sectionPieces.length === 0) return null;
+              return (
+                <div key={kind}>
+                  <h3 className="mb-10 text-center font-editorial text-[clamp(1.15rem,2.5vw,1.5rem)] tracking-[0.1em] text-[#1d3c34] md:mb-12">
+                    {title}
+                  </h3>
+                  <ul className="grid w-full min-w-0 gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
+                    {sectionPieces.map(renderPieceCard)}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
         ) : (
           <ul className="grid w-full min-w-0 gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
-            {filteredPieces.map((piece) => (
-              <li key={piece.id} className="flex w-full min-w-0 flex-col items-center">
-                <div className="mx-auto w-full min-w-0 max-w-[443px] md:max-w-none">
-                  <CollectionPhotoFrame
-                    fluid
-                    darkImageWell={piece.category === "necklaces" && !piece.imageWellColor}
-                    imageWellColor={piece.imageWellColor}
-                    src={piece.image}
-                    alt={piece.alt}
-                    data-name={piece.id}
-                  />
-                </div>
-                <div className="mt-8 w-full max-w-[22rem] text-center">
-                  <p className="text-[10px] uppercase tracking-[0.22em] text-gold-on-cream">
-                    {FINE_JEWELLERY_CATEGORIES.find(
-                      (c) => c.id === piece.category,
-                    )?.title ?? piece.category}
-                  </p>
-                  <h3 className="mt-3 font-editorial text-[1.35rem] tracking-[0.05em] text-[#1d3c34] md:text-2xl">
-                    {piece.title}
-                  </h3>
-                  <p className="mt-3 text-house-body leading-relaxed text-on-cream-body">
-                    {piece.description}
-                  </p>
-                  <p className="mt-4 text-[11px] uppercase tracking-[0.16em] text-gold-on-cream">
-                    Product code: {piece.productCode}
-                  </p>
-                </div>
-              </li>
-            ))}
+            {filteredPieces.map(renderPieceCard)}
           </ul>
         )}
       </div>
