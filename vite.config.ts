@@ -6,8 +6,15 @@ import react from '@vitejs/plugin-react'
 import { consultationApiPlugin } from './server/vite-consultation-api-plugin.js'
 import { instagramApiPlugin } from './server/vite-instagram-api-plugin.js'
 
-/** Public subfolders referenced by URL paths (not figma:asset imports). */
-const PUBLIC_URL_DIRS = ['Cannes', 'Rings', 'Mens', 'necklace', 'media'] as const
+/** First-level public/ subfolders copied into dist (copyPublicDir is off). */
+function getPublicSubdirectories(publicDir: string): string[] {
+  if (!fs.existsSync(publicDir)) return []
+
+  return fs.readdirSync(publicDir).filter((name) => {
+    const fullPath = path.join(publicDir, name)
+    return fs.statSync(fullPath).isDirectory()
+  })
+}
 
 const ROOT_MEDIA_EXTENSIONS = new Set([
   '.png',
@@ -64,7 +71,7 @@ function copyPublicUrlDirsPlugin() {
       outDir = path.resolve(config.root, config.build.outDir)
     },
     closeBundle() {
-      for (const dir of PUBLIC_URL_DIRS) {
+      for (const dir of getPublicSubdirectories(publicDir)) {
         const src = path.join(publicDir, dir)
         const dest = path.join(outDir, dir)
         if (fs.existsSync(src)) {
