@@ -12,14 +12,15 @@
 
   html,
   body {
-    overflow-x: hidden;
+    /* clip — not hidden — so position:sticky/fixed work in the atelier showcase */
+    overflow-x: clip;
     -webkit-overflow-scrolling: touch;
     touch-action: pan-x pan-y pinch-zoom;
     overscroll-behavior-y: auto;
   }
 
   #root {
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   img,

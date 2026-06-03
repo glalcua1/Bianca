@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import AtelierPieceLightbox from "./AtelierPieceLightbox";
 import AtelierSalonHint from "./AtelierSalonHint";
 import CollectionPhotoFrame from "./CollectionPhotoFrame";
+import { usePinnedFilters } from "../hooks/usePinnedFilters";
 import {
   ATELIER_PIECES,
   FINE_JEWELLERY_CATEGORIES,
@@ -71,21 +72,17 @@ export default function FineJewelleryAtelier({
 }: Props) {
   const tabsRef = useRef<HTMLDivElement>(null);
   const stickySentinelRef = useRef<HTMLDivElement>(null);
-  const [filtersStuck, setFiltersStuck] = useState(false);
+  const filtersBarRef = useRef<HTMLDivElement>(null);
+  const {
+    pinned: filtersPinned,
+    barHeight: filtersBarHeight,
+    isDesktop,
+  } = usePinnedFilters(stickySentinelRef, filtersBarRef);
+
+  const filtersGlass =
+    "border-b border-[#1d3c34]/10 bg-[#faf8f5]/92 py-3 shadow-[0_8px_32px_rgba(29,60,52,0.08)] backdrop-blur-md backdrop-saturate-150 supports-[backdrop-filter]:bg-[#faf8f5]/80";
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
-
-  useEffect(() => {
-    const sentinel = stickySentinelRef.current;
-    if (!sentinel) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setFiltersStuck(!entry.isIntersecting),
-      { threshold: 0 },
-    );
-    observer.observe(sentinel);
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     setLightboxOpen(false);
@@ -169,20 +166,30 @@ export default function FineJewelleryAtelier({
 
         <div
           ref={stickySentinelRef}
-          className="pointer-events-none h-0 w-full"
+          className="pointer-events-none h-px w-full"
           aria-hidden
         />
+        {filtersPinned && !isDesktop && filtersBarHeight > 0 && (
+          <div
+            className="mb-12"
+            style={{ height: filtersBarHeight }}
+            aria-hidden
+          />
+        )}
         <div
-          className={`sticky top-0 z-30 -mx-6 mb-12 transition-[background-color,box-shadow,border-color,backdrop-filter] duration-300 md:mx-0 md:mb-14 ${
-            filtersStuck
-              ? "border-b border-[#1d3c34]/10 bg-[#faf8f5]/80 py-3 shadow-[0_8px_32px_rgba(29,60,52,0.08)] backdrop-blur-md backdrop-saturate-150 supports-[backdrop-filter]:bg-[#faf8f5]/65"
-              : ""
+          ref={filtersBarRef}
+          className={`transition-[background-color,box-shadow,border-color,backdrop-filter] duration-300 ${
+            filtersPinned && !isDesktop
+              ? `fixed inset-x-0 top-0 z-50 px-6 ${filtersGlass}`
+              : filtersPinned && isDesktop
+                ? `sticky top-0 z-30 ${filtersGlass} mb-12 md:mb-14`
+                : "relative mb-12 md:mb-14"
           }`}
         >
           <div
             ref={tabsRef}
             id="categories"
-            className="flex flex-nowrap items-center justify-start gap-2 overflow-x-auto px-6 pb-1 md:justify-center md:px-0 [-ms-overflow-style:none] [scrollbar-width:none] [scroll-padding-inline:24px] [&::-webkit-scrollbar]:hidden"
+            className="mx-auto flex w-full max-w-6xl flex-nowrap items-center justify-start gap-2 overflow-x-auto px-0 pb-1 [-ms-overflow-style:none] [scroll-padding-inline:16px] [scrollbar-width:none] md:justify-center [&::-webkit-scrollbar]:hidden"
             role="tablist"
             aria-label="Jewellery categories"
           >

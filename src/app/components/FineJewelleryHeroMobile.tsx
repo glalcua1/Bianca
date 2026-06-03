@@ -7,7 +7,7 @@ const HERO_STROKE_GREEN = "#071410";
 
 export default function FineJewelleryHeroMobile() {
   return (
-    <section className="overflow-x-hidden bg-[#1d3c34] px-4 pb-10 pt-2">
+    <section className="overflow-x-clip bg-[#1d3c34] px-4 pb-10 pt-2">
       <div
         className={`mx-auto w-full max-w-lg rounded-[16px] border border-solid border-transparent p-5 [background:linear-gradient(${HERO_FOREST_BG},${HERO_FOREST_BG})_padding-box,linear-gradient(to_right,${HERO_STROKE_GREEN},#766d42,#dccb7b)_border-box]`}
       >
