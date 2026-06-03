@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import AtelierPieceLightbox from "./AtelierPieceLightbox";
 import CollectionPhotoFrame from "./CollectionPhotoFrame";
 import {
   ATELIER_PIECES,
@@ -14,10 +15,18 @@ const BRACELET_SECTIONS: { kind: BraceletKind; title: string }[] = [
   { kind: "tennis", title: "Tennis Bracelets" },
 ];
 
-function renderPieceCard(piece: AtelierPiece) {
+function renderPieceCard(
+  piece: AtelierPiece,
+  onOpenPiece: (piece: AtelierPiece) => void,
+) {
   return (
     <li key={piece.id} className="flex w-full min-w-0 flex-col items-center">
-      <div className="mx-auto w-full min-w-0 max-w-[443px] md:max-w-none">
+      <button
+        type="button"
+        onClick={() => onOpenPiece(piece)}
+        className="group relative mx-auto w-full min-w-0 max-w-[443px] cursor-zoom-in text-left outline-none transition duration-300 focus-visible:ring-2 focus-visible:ring-[#766d42]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f5] md:max-w-none"
+        aria-label={`View ${piece.title} — enlarged salon presentation`}
+      >
         <CollectionPhotoFrame
           fluid
           darkImageWell={piece.category === "necklaces" && !piece.imageWellColor}
@@ -26,7 +35,12 @@ function renderPieceCard(piece: AtelierPiece) {
           alt={piece.alt}
           data-name={piece.id}
         />
-      </div>
+        <span className="pointer-events-none absolute inset-x-0 bottom-3 flex justify-center opacity-80 transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 md:bottom-4 md:opacity-0 md:group-hover:opacity-100">
+          <span className="border border-[#766d42]/40 bg-[#f4f0e6]/95 px-3 py-1.5 text-[9px] uppercase tracking-[0.2em] text-[#1d3c34] shadow-sm backdrop-blur-[2px]">
+            View in salon
+          </span>
+        </span>
+      </button>
       <div className="mt-8 w-full max-w-[22rem] text-center">
         <p className="text-[10px] uppercase tracking-[0.22em] text-gold-on-cream">
           {atelierPieceEyebrow(piece)}
@@ -55,6 +69,12 @@ export default function FineJewelleryAtelier({
   onCategoryChange,
 }: Props) {
   const tabsRef = useRef<HTMLDivElement>(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  useEffect(() => {
+    setLightboxOpen(false);
+  }, [activeCategory]);
 
   useEffect(() => {
     const container = tabsRef.current;
@@ -76,6 +96,29 @@ export default function FineJewelleryAtelier({
         : ATELIER_PIECES.filter((piece) => piece.category === activeCategory),
     [activeCategory],
   );
+
+  /** Same order as the grid — used for prev/next in the salon viewer */
+  const lightboxPieces = useMemo(() => {
+    if (activeCategory === "bracelets") {
+      return BRACELET_SECTIONS.flatMap(({ kind }) =>
+        filteredPieces.filter((piece) => piece.braceletKind === kind),
+      );
+    }
+    return filteredPieces;
+  }, [activeCategory, filteredPieces]);
+
+  const openPiece = useCallback(
+    (piece: AtelierPiece) => {
+      const index = lightboxPieces.findIndex((p) => p.id === piece.id);
+      setLightboxIndex(index >= 0 ? index : 0);
+      setLightboxOpen(true);
+    },
+    [lightboxPieces],
+  );
+
+  const handleLightboxOpenChange = useCallback((open: boolean) => {
+    setLightboxOpen(open);
+  }, []);
 
   const activeLabel =
     activeCategory === "all"
@@ -183,7 +226,9 @@ export default function FineJewelleryAtelier({
                     {title}
                   </h3>
                   <ul className="grid w-full min-w-0 gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
-                    {sectionPieces.map(renderPieceCard)}
+                    {sectionPieces.map((piece) =>
+                      renderPieceCard(piece, openPiece),
+                    )}
                   </ul>
                 </div>
               );
@@ -191,10 +236,18 @@ export default function FineJewelleryAtelier({
           </div>
         ) : (
           <ul className="grid w-full min-w-0 gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
-            {filteredPieces.map(renderPieceCard)}
+            {filteredPieces.map((piece) => renderPieceCard(piece, openPiece))}
           </ul>
         )}
       </div>
+
+      <AtelierPieceLightbox
+        pieces={lightboxPieces}
+        activeIndex={lightboxIndex}
+        open={lightboxOpen}
+        onOpenChange={handleLightboxOpenChange}
+        onActiveIndexChange={setLightboxIndex}
+      />
     </section>
   );
 }

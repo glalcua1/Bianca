@@ -38,7 +38,7 @@ export default function HomePageMobile() {
         <div className="mx-auto max-w-lg rounded-[16px] border border-[#1d3c34]/40 bg-white p-5 shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
           <BiancaHouseLogo maxWidth={200} className="mx-auto" />
 
-          <div className="relative mt-6 w-full overflow-hidden rounded-[12px] bg-[#faf8f5]">
+          <div className="relative mt-6 w-full overflow-hidden rounded-[12px] bg-white">
             <ProtectedImage
               priority
               wrapperClassName="relative block w-full overflow-hidden"
