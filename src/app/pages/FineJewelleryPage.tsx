@@ -51,6 +51,7 @@ export default function FineJewelleryPage() {
       "rings",
       "earrings",
       "necklaces",
+      "pendants",
       "bracelets",
       "for-him",
     ];
@@ -67,7 +68,7 @@ export default function FineJewelleryPage() {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#faf8f5]" data-protected-page>
+    <div className="min-h-screen overflow-x-clip bg-[#faf8f5]" data-protected-page>
       <div className="bg-[#1d3c34]">
         <SiteNav activeItem="fine-jewellery" />
         <FineJewelleryHero />

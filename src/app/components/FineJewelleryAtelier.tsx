@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import AtelierPieceLightbox from "./AtelierPieceLightbox";
+import AtelierSalonHint from "./AtelierSalonHint";
 import CollectionPhotoFrame from "./CollectionPhotoFrame";
 import {
   ATELIER_PIECES,
@@ -69,8 +70,22 @@ export default function FineJewelleryAtelier({
   onCategoryChange,
 }: Props) {
   const tabsRef = useRef<HTMLDivElement>(null);
+  const stickySentinelRef = useRef<HTMLDivElement>(null);
+  const [filtersStuck, setFiltersStuck] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  useEffect(() => {
+    const sentinel = stickySentinelRef.current;
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setFiltersStuck(!entry.isIntersecting),
+      { threshold: 0 },
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     setLightboxOpen(false);
@@ -126,11 +141,15 @@ export default function FineJewelleryAtelier({
       : FINE_JEWELLERY_CATEGORIES.find((c) => c.id === activeCategory)?.title ??
         "";
 
+  const viewingCount = filteredPieces.length;
+  const pieceCountLabel =
+    viewingCount === 1 ? "1 piece" : `${viewingCount} pieces`;
+
   return (
     <section
       id="showcase"
       aria-labelledby="showcase-heading"
-      className="overflow-x-hidden border-t border-[#1d3c34]/10 bg-[#faf8f5] px-6 py-16 md:px-10 md:py-24"
+      className="border-t border-[#1d3c34]/10 bg-[#faf8f5] px-6 py-16 pb-[calc(5.5rem+env(safe-area-inset-bottom))] md:px-10 md:py-24 md:pb-[calc(6rem+env(safe-area-inset-bottom))]"
     >
       <div className="mx-auto w-full min-w-0 max-w-6xl">
         <div className="mb-10 text-center md:mb-12">
@@ -149,62 +168,77 @@ export default function FineJewelleryAtelier({
         </div>
 
         <div
-          ref={tabsRef}
-          id="categories"
-          className="-mx-6 mb-12 flex flex-nowrap items-center justify-start gap-2 overflow-x-auto px-6 pb-1 md:mx-0 md:mb-14 md:justify-center md:px-0 [-ms-overflow-style:none] [scrollbar-width:none] [scroll-padding-inline:24px] [&::-webkit-scrollbar]:hidden"
-          role="tablist"
-          aria-label="Jewellery categories"
+          ref={stickySentinelRef}
+          className="pointer-events-none h-0 w-full"
+          aria-hidden
+        />
+        <div
+          className={`sticky top-0 z-30 -mx-6 mb-12 transition-[background-color,box-shadow,border-color,backdrop-filter] duration-300 md:mx-0 md:mb-14 ${
+            filtersStuck
+              ? "border-b border-[#1d3c34]/10 bg-[#faf8f5]/80 py-3 shadow-[0_8px_32px_rgba(29,60,52,0.08)] backdrop-blur-md backdrop-saturate-150 supports-[backdrop-filter]:bg-[#faf8f5]/65"
+              : ""
+          }`}
         >
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeCategory === "all"}
-            onClick={() => onCategoryChange("all")}
-            className={`shrink-0 border px-4 py-2 transition duration-300 ${
-              activeCategory === "all"
-                ? "border-[#766d42]/50 bg-[#f4f0e6] shadow-[inset_0_0_0_1px_rgba(118,109,66,0.2)]"
-                : "border-[#1d3c34]/12 bg-white hover:border-[#766d42]/35 hover:bg-[#f4f0e6]/60"
-            }`}
+          <div
+            ref={tabsRef}
+            id="categories"
+            className="flex flex-nowrap items-center justify-start gap-2 overflow-x-auto px-6 pb-1 md:justify-center md:px-0 [-ms-overflow-style:none] [scrollbar-width:none] [scroll-padding-inline:24px] [&::-webkit-scrollbar]:hidden"
+            role="tablist"
+            aria-label="Jewellery categories"
           >
-            <span className="whitespace-nowrap font-editorial text-[13px] tracking-[0.08em] text-[#1d3c34]">
-              All
-            </span>
-          </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={activeCategory === "all"}
+              onClick={() => onCategoryChange("all")}
+              className={`shrink-0 border px-4 py-2 transition duration-300 ${
+                activeCategory === "all"
+                  ? "border-[#766d42]/50 bg-[#f4f0e6] shadow-[inset_0_0_0_1px_rgba(118,109,66,0.2)]"
+                  : "border-[#1d3c34]/12 bg-white hover:border-[#766d42]/35 hover:bg-[#f4f0e6]/60"
+              }`}
+            >
+              <span className="whitespace-nowrap font-editorial text-[13px] tracking-[0.08em] text-[#1d3c34]">
+                All
+              </span>
+            </button>
 
-          {FINE_JEWELLERY_CATEGORIES.map((category) => {
-            const isActive = activeCategory === category.id;
-            return (
-              <button
-                key={category.id}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                onClick={() => onCategoryChange(category.id)}
-                className={`shrink-0 border px-4 py-2 transition duration-300 ${
-                  isActive
-                    ? "border-[#766d42]/50 bg-[#f4f0e6] shadow-[inset_0_0_0_1px_rgba(118,109,66,0.2)]"
-                    : "border-[#1d3c34]/12 bg-white hover:border-[#766d42]/35 hover:bg-[#f4f0e6]/60"
-                }`}
-              >
-                <span className="whitespace-nowrap font-editorial text-[13px] tracking-[0.08em] text-[#1d3c34]">
-                  {category.title}
-                </span>
-              </button>
-            );
-          })}
+            {FINE_JEWELLERY_CATEGORIES.map((category) => {
+              const isActive = activeCategory === category.id;
+              return (
+                <button
+                  key={category.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => onCategoryChange(category.id)}
+                  className={`shrink-0 border px-4 py-2 transition duration-300 ${
+                    isActive
+                      ? "border-[#766d42]/50 bg-[#f4f0e6] shadow-[inset_0_0_0_1px_rgba(118,109,66,0.2)]"
+                      : "border-[#1d3c34]/12 bg-white hover:border-[#766d42]/35 hover:bg-[#f4f0e6]/60"
+                  }`}
+                >
+                  <span className="whitespace-nowrap font-editorial text-[13px] tracking-[0.08em] text-[#1d3c34]">
+                    {category.title}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {activeCategory !== "all" && (
-          <p className="mb-10 text-center text-house-body text-on-cream-muted">
-            Viewing {activeLabel.toLowerCase()}
-            {" · "}
-            <button
-              type="button"
-              onClick={() => onCategoryChange("all")}
-              className="text-gold-on-cream underline-offset-4 transition hover:underline"
-            >
-              Show all
-            </button>
+          <p
+            className="mb-10 text-center md:mb-12"
+            aria-live="polite"
+          >
+            <span className="font-editorial text-[clamp(1.05rem,2.8vw,1.35rem)] tracking-[0.08em] text-[#1d3c34]">
+              Viewing {activeLabel}
+            </span>
+            <span className="mt-1 block text-[11px] uppercase tracking-[0.18em] text-on-cream-muted">
+              <span className="tabular-nums text-[#524a28]">
+                {pieceCountLabel}
+              </span>
+            </span>
           </p>
         )}
 
@@ -248,6 +282,8 @@ export default function FineJewelleryAtelier({
         onOpenChange={handleLightboxOpenChange}
         onActiveIndexChange={setLightboxIndex}
       />
+
+      <AtelierSalonHint hidden={lightboxOpen} />
     </section>
   );
 }

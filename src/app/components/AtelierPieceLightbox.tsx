@@ -181,12 +181,12 @@ export default function AtelierPieceLightbox({
                     />
                     {enquiryLoading
                       ? "Opening WhatsApp…"
-                      : "Chat to know the price"}
+                      : "Send price enquiry on WhatsApp"}
                   </button>
                 </div>
                 <p className="mt-3 text-center text-[9px] leading-relaxed tracking-[0.04em] text-[#4a5c56]">
-                  Your piece details and reference image will be included in
-                  WhatsApp.
+                  On mobile, the product image is shared with your enquiry.
+                  All pieces message Bianca at +91 81304 95257.
                 </p>
               </footer>
             </div>
