@@ -54,9 +54,8 @@ export function buildAtelierPiecePriceWhatsAppUrl(
 }
 
 /**
- * Opens WhatsApp with piece details. On supported mobile browsers, shares the
- * product image as an attachment via the native share sheet; otherwise pre-fills
- * wa.me with code, description, and a public image URL.
+ * Opens WhatsApp to BIANCA_WHATSAPP_NUMBER with piece details and image URL.
+ * Always uses wa.me so the chat targets the atelier line, not a generic share sheet.
  */
 export async function openAtelierPiecePriceEnquiry(
   piece: AtelierPiece,
@@ -66,40 +65,6 @@ export async function openAtelierPiecePriceEnquiry(
     typeof window !== "undefined"
       ? window.location.origin
       : BIANCA_PUBLIC_ORIGIN;
-  const text = buildAtelierPiecePriceWhatsAppMessage(piece, {
-    origin,
-    sourcePage,
-  });
-  const imageUrl = absoluteAtelierImageUrl(piece.image, origin);
-
-  if (typeof navigator !== "undefined" && navigator.share) {
-    try {
-      const response = await fetch(imageUrl);
-      if (response.ok) {
-        const blob = await response.blob();
-        const extension =
-          piece.image.split(".").pop()?.split(/[?#]/)[0]?.toLowerCase() ??
-          "jpg";
-        const file = new File(
-          [blob],
-          `${piece.productCode}.${extension}`,
-          { type: blob.type || "image/jpeg" },
-        );
-
-        if (navigator.canShare?.({ files: [file], text })) {
-          await navigator.share({
-            files: [file],
-            text,
-            title: `Bianca Diamonds — ${piece.title}`,
-          });
-          return;
-        }
-      }
-    } catch {
-      // Fall through to wa.me
-    }
-  }
-
   const url = buildAtelierPiecePriceWhatsAppUrl(piece, { origin, sourcePage });
   window.open(url, "_blank", "noopener,noreferrer");
 }
