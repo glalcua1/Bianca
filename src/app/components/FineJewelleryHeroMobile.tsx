@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import ProtectedImage from "./protection/ProtectedImage";
 
-const CANNES_HERO_IMAGE = "/Cannes/Model_neck1.png";
+const CANNES_HERO_IMAGE = "/Cannes/Cannes_model.png";
 const HERO_FOREST_BG = "#1d3c34";
 const HERO_STROKE_GREEN = "#071410";
 

@@ -16,7 +16,7 @@ const DESIGN_H = CARD_BOTTOM + BOTTOM_SPACING;
 /** Align with The House hero copy — 135px inset from card inner edge */
 const CONTENT_LEFT = 174;
 const CONTENT_WIDTH = 508;
-const CANNES_HERO_IMAGE = "/Cannes/Model_neck1.png";
+const CANNES_HERO_IMAGE = "/Cannes/Cannes_model.png";
 const HERO_FOREST_BG = "#1d3c34";
 /** Darker than page fill so the left of the gradient stroke reads on forest */
 const HERO_STROKE_GREEN = "#071410";
