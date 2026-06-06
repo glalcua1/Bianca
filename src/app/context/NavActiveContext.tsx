@@ -3,6 +3,7 @@ import { createContext, useContext, type ReactNode } from "react";
 export type NavActiveItem =
   | "the-house"
   | "fine-jewellery"
+  | "bespoke-jewellery"
   | "cannes-collection"
   | "media";
 

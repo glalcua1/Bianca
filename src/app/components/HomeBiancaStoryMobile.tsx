@@ -5,6 +5,9 @@ import imgPackagingPouch from "figma:asset/e5c39fcf4ff37608e7feb29dff2a18144e810
 import imgImage1 from "figma:asset/ffad195494173b3c37c4aa05d64af9f2620a7643.png";
 import ProtectedImage from "./protection/ProtectedImage";
 
+const ORCHID_ACCENT =
+  "/elegant-white-orchid-with-delicate-details-showcasing-beauty-sophistication-perfect-home-decor-floral-arrangements.jpg";
+
 const BRAND_COPY = [
   {
     lead: true,
@@ -60,7 +63,7 @@ export default function HomeBiancaStoryMobile() {
         aria-labelledby="brand-story-heading"
         className="border-t border-[#1d3c34]/10 bg-[#faf8f5] px-4 py-12"
       >
-        <div className="mx-auto max-w-lg rounded-[20px] border border-[#1d3c34]/10 bg-white px-5 py-10 shadow-[0_8px_32px_rgba(29,60,52,0.06)]">
+        <div className="relative mx-auto max-w-lg overflow-hidden rounded-[20px] border border-[#1d3c34]/10 bg-white px-5 py-10 shadow-[0_8px_32px_rgba(29,60,52,0.06)]">
           <h2
             id="brand-story-heading"
             className="text-center font-editorial text-[clamp(1.65rem,5vw,2.075rem)] tracking-[-0.01em] text-[#1d3c34]"
@@ -134,6 +137,23 @@ export default function HomeBiancaStoryMobile() {
                 alt=""
                 className="size-full object-cover object-center"
               />
+              <div
+                className="pointer-events-none absolute inset-y-0 right-0 flex w-[44%] max-w-[156px] items-end justify-end pb-2 pr-2"
+                aria-hidden
+              >
+                <ProtectedImage
+                  wrapperClassName="block max-h-full w-full"
+                  src={ORCHID_ACCENT}
+                  alt=""
+                  className="max-h-full w-full object-contain object-right-bottom mix-blend-multiply"
+                  style={{
+                    WebkitMaskImage:
+                      "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.85) 22%, black 30%)",
+                    maskImage:
+                      "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.85) 22%, black 30%)",
+                  }}
+                />
+              </div>
             </div>
           </div>
         </div>

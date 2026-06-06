@@ -51,7 +51,7 @@ export default function MobileSiteNav({ activeItem }: Props) {
         <nav
           id="mobile-site-nav-menu"
           className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-out ${
-            open ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+            open ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
           }`}
           aria-hidden={!open}
         >

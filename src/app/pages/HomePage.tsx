@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import SiteFooter from "../components/SiteFooter";
 import InstagramFeedSection from "../components/InstagramFeedSection";
 import { useMediaMinWidth } from "../hooks/useMediaMinWidth";
+import { NavActiveProvider } from "../context/NavActiveContext";
 import HomePageMobile from "./HomePageMobile";
 import MacBookPro from "../../imports/MacBookPro141-2-335";
 import { BIANCA_INSTAGRAM_URL } from "../data/siteContact";
@@ -57,7 +58,9 @@ function DesktopHomeArtboard() {
           willChange: "transform",
         }}
       >
-        <MacBookPro />
+        <NavActiveProvider value="the-house">
+          <MacBookPro />
+        </NavActiveProvider>
       </div>
     </div>
   );

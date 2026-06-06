@@ -10,7 +10,7 @@ import imgImage1 from "figma:asset/ffad195494173b3c37c4aa05d64af9f2620a7643.png"
 // imgRectangle8 / imgRectangle10 were only used for ring-mark sprite masks – replaced by RingMark
 import { imgRectangle, imgRectangle1, imgGroup, imgRectangle3, imgRectangle4, imgRectangle7, imgGroup1, imgRectangle9, imgGroup2 } from "./svg-nywou";
 import { Link } from "react-router";
-import { useNavActiveItem } from "../app/context/NavActiveContext";
+import MainSiteNavLinks from "../app/components/MainSiteNavLinks";
 import Group6Logo from "./Group6";
 import { RingMark } from "./RingMark";
 import Hw25PromoBridal2H2JpgVideo from "./Hw25PromoBridal2H2Jpg";
@@ -1047,118 +1047,15 @@ function Container12() {
   );
 }
 
-function LinkTheHouse() {
-  const activeItem = useNavActiveItem();
-  const isActive = activeItem === "the-house";
-
-  return (
-    <Link to="/" className="h-full relative shrink-0 block" data-name="Link - The House">
-      <div className="flex flex-col items-center size-full">
-        <div className="content-stretch flex flex-col h-full items-center px-[20px] py-[5px] relative">
-          <div className={`flex flex-col font-editorial justify-center leading-[0] not-italic relative shrink-0 text-[16px] text-center text-white tracking-[1.5px] uppercase whitespace-nowrap ${isActive ? "font-bold" : ""}`}>
-            <p className="leading-[normal]">The House</p>
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
-function Item() {
-  return (
-    <div className="content-stretch flex h-full items-start mr-[-0.2px] relative shrink-0" data-name="Item">
-      <LinkTheHouse />
-    </div>
-  );
-}
-
-function LinkFineJewelry() {
-  const activeItem = useNavActiveItem();
-  const isActive = activeItem === "fine-jewellery";
-
-  return (
-    <Link to="/fine-jewellery" className="h-full relative shrink-0 block" data-name="Link - Fine Jewelry">
-      <div className="flex flex-col items-center size-full">
-        <div className="content-stretch flex flex-col h-full items-center px-[20px] py-[5px] relative">
-          <div className={`flex flex-col font-editorial justify-center leading-[0] not-italic relative shrink-0 text-[#f9f9f9] text-[16px] text-center tracking-[1.5px] uppercase whitespace-nowrap ${isActive ? "font-bold" : ""}`}>
-            <p className="leading-[normal]">Fine Jewelry</p>
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
-function Item1() {
-  return (
-    <div className="content-stretch flex h-full items-start mr-[-0.2px] relative shrink-0" data-name="Item">
-      <LinkFineJewelry />
-    </div>
-  );
-}
-
-function LinkCannesCollection() {
-  const activeItem = useNavActiveItem();
-  const isActive = activeItem === "cannes-collection";
-
-  return (
-    <Link
-      to="/fine-jewellery/cannes-2026"
-      className="h-full relative shrink-0 block"
-      data-name="Link - Cannes Collection"
-    >
-      <div className="flex flex-col items-center size-full">
-        <div className="content-stretch flex flex-col h-full items-center px-[20px] py-[5px] relative">
-          <div className={`flex flex-col font-editorial justify-center leading-[0] not-italic relative shrink-0 text-[#f9f9f9] text-[16px] text-center tracking-[1.5px] uppercase whitespace-nowrap ${isActive ? "font-bold" : ""}`}>
-            <p className="leading-[normal]">Cannes Collection</p>
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
-function Item2() {
-  return (
-    <div className="content-stretch flex h-full items-start mr-[-0.2px] relative shrink-0" data-name="Item">
-      <LinkCannesCollection />
-    </div>
-  );
-}
-
-function LinkMedia() {
-  const activeItem = useNavActiveItem();
-  const isActive = activeItem === "media";
-
-  return (
-    <Link to="/media" className="h-full relative shrink-0 block" data-name="Link - Media">
-      <div className="flex flex-col items-center size-full">
-        <div className="content-stretch flex flex-col h-full items-center px-[20px] py-[5px] relative">
-          <div className={`flex flex-col font-editorial justify-center leading-[0] not-italic relative shrink-0 text-[#f9f9f9] text-[16px] text-center tracking-[1.5px] uppercase whitespace-nowrap ${isActive ? "font-bold" : ""}`}>
-            <p className="leading-[normal]">Media</p>
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
-function Item3() {
-  return (
-    <div className="content-stretch flex h-full items-start mr-[-0.2px] relative shrink-0" data-name="Item">
-      <LinkMedia />
-    </div>
-  );
-}
-
 function NavList() {
   return (
-    <div className="absolute content-stretch flex h-[23px] items-start justify-center left-[238px] pr-[0.2px] right-[160.4px] top-[76px]" data-name="Nav → List">
-      <Item />
-      <Item1 />
-      <Item2 />
-      <Item3 />
-    </div>
+    <nav
+      aria-label="Main navigation"
+      className="absolute left-[180px] right-[100px] top-[76px] flex h-[23px] items-start justify-center"
+      data-name="Nav → List"
+    >
+      <MainSiteNavLinks compact />
+    </nav>
   );
 }
 
@@ -2196,6 +2093,30 @@ export default function MacBookPro() {
       <div className="absolute z-[3] h-[273px] left-[613px] top-[3236px] w-[427px]" data-name="image 1">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-full left-[-13.59%] max-w-none top-0 w-[113.59%]" src={imgImage1} />
+        </div>
+      </div>
+      <div
+        className="absolute z-[4] overflow-hidden rounded-[20px] pointer-events-none"
+        style={{ left: 58, top: 2596, width: 1360, height: 971 }}
+        aria-hidden
+        data-name="white-card-orchid-clip"
+      >
+        <div
+          className="absolute bottom-[40px] right-[40px] w-[236px]"
+          data-name="white-orchid-accent"
+        >
+          <ProtectedImage
+            src="/elegant-white-orchid-with-delicate-details-showcasing-beauty-sophistication-perfect-home-decor-floral-arrangements.jpg"
+            alt=""
+            wrapperClassName="block w-full"
+            className="w-full h-auto max-h-[300px] object-contain object-right-bottom mix-blend-multiply"
+            style={{
+              WebkitMaskImage:
+                "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.85) 24%, black 32%)",
+              maskImage:
+                "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.85) 24%, black 32%)",
+            }}
+          />
         </div>
       </div>
     </div>

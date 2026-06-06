@@ -105,6 +105,10 @@ function copyPublicUrlDirsPlugin() {
 
 export default defineConfig({
   base: '/',
+  server: {
+    port: 5173,
+    strictPort: true,
+  },
   plugins: [
     figmaAssetPlugin(),
     copyPublicUrlDirsPlugin(),

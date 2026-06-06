@@ -8,6 +8,7 @@ import MediaPage from "./pages/MediaPage";
 import CalculatorPage from "./pages/CalculatorPage";
 import LabGrownDiamondFaqPage from "./pages/LabGrownDiamondFaqPage";
 import ContactPage from "./pages/ContactPage";
+import BespokeJewelleryPage from "./pages/BespokeJewelleryPage";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           element={<CannesShowcase2026Page />}
         />
         <Route path="/fine-jewellery" element={<FineJewelleryPage />} />
+        <Route path="/bespoke-jewellery" element={<BespokeJewelleryPage />} />
         <Route path="/media" element={<MediaPage />} />
         <Route path="/calculator" element={<CalculatorPage />} />
         <Route
