@@ -50,6 +50,44 @@ export function atelierPieceEyebrow(piece: AtelierPiece): string {
   );
 }
 
+/** Matches CollectionPhotoFrame — cream/beige wells vs black product backdrops. */
+export function atelierPieceUsesDarkWell(piece: AtelierPiece): boolean {
+  if (piece.imageWellColor) {
+    return piece.imageWellColor.toLowerCase() === "#0a0a0a";
+  }
+  return piece.category === "necklaces";
+}
+
+/** Beige/cream photography first, black-background pieces after — stable within each group. */
+export function sortAtelierPiecesByWell(pieces: AtelierPiece[]): AtelierPiece[] {
+  const light: AtelierPiece[] = [];
+  const dark: AtelierPiece[] = [];
+  for (const piece of pieces) {
+    (atelierPieceUsesDarkWell(piece) ? dark : light).push(piece);
+  }
+  return [...light, ...dark];
+}
+
+/** For the All tab — sort by well within each category while preserving category order. */
+export function sortAllAtelierPiecesByWellPerCategory(
+  pieces: AtelierPiece[],
+): AtelierPiece[] {
+  const categoryOrder: JewelleryCategoryId[] = [];
+  const groups = new Map<JewelleryCategoryId, AtelierPiece[]>();
+
+  for (const piece of pieces) {
+    if (!groups.has(piece.category)) {
+      categoryOrder.push(piece.category);
+      groups.set(piece.category, []);
+    }
+    groups.get(piece.category)!.push(piece);
+  }
+
+  return categoryOrder.flatMap((category) =>
+    sortAtelierPiecesByWell(groups.get(category)!),
+  );
+}
+
 export const FINE_JEWELLERY_COLLECTIONS: FineJewelleryCollection[] = [
   {
     id: "modern-essentials",
@@ -151,24 +189,15 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "Cushion-cut sapphires crowned with round brilliants, finished in marquise diamond wings — a mirrored pair composed for evening light and unapologetic colour.",
   },
   {
-    id: "ring-solitaire-classique",
-    category: "rings",
-    productCode: "BD-K-RG-001",
-    image: "/Rings/IMG_5298.jpg",
-    alt: "Classic Solitaire — lab-grown diamond ring",
-    title: "Classic Solitaire",
+    id: "ear-emerald-halo-drop",
+    category: "earrings",
+    productCode: "BD-K-ER-004",
+    image: "/Earrings/ER_1.png",
+    imageWellColor: "#faf8f5",
+    alt: "Emerald Halo Drop — pear emerald and diamond drop earrings",
+    title: "Emerald Halo Drop",
     description:
-      "A timeless round brilliant in a refined four-prong setting — the essential expression of commitment, crafted for the modern hand.",
-  },
-  {
-    id: "ring-pave-band",
-    category: "rings",
-    productCode: "BD-K-RG-002",
-    image: "/Rings/IMG_5299.jpg",
-    alt: "Pave Band — diamond ring detail",
-    title: "Pave Band",
-    description:
-      "Micro-set stones trace the band in continuous fire — designed to stack, pair, or stand alone with quiet confidence.",
+      "Pear-shaped emeralds framed in round-brilliant halos on polished white-gold drops — regal colour and refined silhouette composed for evening and celebration.",
   },
   {
     id: "ring-atelier-portrait",
@@ -222,6 +251,17 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Emerald Sunburst",
     description:
       "An oval emerald centre radiates marquise and round diamond starbursts in white gold — bold cocktail-scale brilliance for evening and celebration.",
+  },
+  {
+    id: "ring-halo-split-lumiere",
+    category: "rings",
+    productCode: "BD-K-RG-008",
+    image: "/Rings/Ring3.png",
+    imageWellColor: "#faf8f5",
+    alt: "Halo Split Lumière — round diamond halo ring with split pavé shank",
+    title: "Halo Split Lumière",
+    description:
+      "A round brilliant crowned in a diamond halo on an open lattice basket, the split white-gold shank pavé-set to the shoulder — classic fire with architectural depth for the Kira line.",
   },
   {
     id: "ring-geometric-pear",
@@ -416,8 +456,8 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "bracelets",
     braceletKind: "tennis",
     productCode: "BD-K-BR-003",
-    image: "/Bracelet/necklace11.png",
-    imageWellColor: "#0a0a0a",
+    image: "/Bracelet/tennis1.png",
+    imageWellColor: "#faf8f5",
     alt: "Tennis Brilliant — round diamond tennis bracelet",
     title: "Tennis Brilliant",
     description:
@@ -460,24 +500,12 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "A continuous line of heart-cut IGI-certified brilliants in warm rose gold — romantic geometry and uninterrupted fire around the wrist.",
   },
   {
-    id: "brace-princesse-classique",
-    category: "bracelets",
-    braceletKind: "tennis",
-    productCode: "BD-K-BR-007",
-    image: "/Bracelet/ddi9foddi9foddi9.jpg",
-    imageWellColor: "#faf8f5",
-    alt: "Princess Classic — princess-cut diamond tennis bracelet",
-    title: "Princess Classic",
-    description:
-      "Square princess-cut diamonds in a seamless tennis line on white gold — crisp facets and even luminosity for the modern wrist.",
-  },
-  {
     id: "brace-princesse-rosee",
     category: "bracelets",
     braceletKind: "tennis",
     productCode: "BD-K-BR-008",
-    image: "/Bracelet/IMG_7367.JPG",
-    imageWellColor: "#0a0a0a",
+    image: "/Bracelet/BR1.png",
+    imageWellColor: "#faf8f5",
     alt: "Rose Princess — princess-cut diamond tennis bracelet in rose gold",
     title: "Rose Princess",
     description:
@@ -494,18 +522,6 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Butterfly Link",
     description:
       "Alternating pear and princess diamonds in rose gold form a continuous butterfly motif — sculptural links with gala-ready brilliance.",
-  },
-  {
-    id: "brace-quatre-rangees",
-    category: "bracelets",
-    braceletKind: "bracelet",
-    productCode: "BD-K-BR-010",
-    image: "/Bracelet/IMG_7372.JPG",
-    imageWellColor: "#0a0a0a",
-    alt: "Four Row — four-row emerald and round diamond bracelet",
-    title: "Four Row",
-    description:
-      "Four parallel rows of emerald and round brilliants in white gold — architectural width and continuous fire for statement evenings.",
   },
   {
     id: "brace-rosee-classique",
@@ -770,6 +786,42 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Sapphire Art Deco Line",
     description:
       "Square brilliants in an Art Deco line bordered by calibré sapphires on white gold — geometric links with vintage-inspired refinement and a secure box clasp.",
+  },
+  {
+    id: "brace-emerald-column-bangle",
+    category: "bracelets",
+    braceletKind: "bracelet",
+    productCode: "BD-K-BR-034",
+    image: "/Bracelet/IMG_7491.jpg",
+    imageWellColor: "#faf8f5",
+    alt: "Emerald Column Bangle — emerald-cut and baguette diamond bangle",
+    title: "Emerald Column Bangle",
+    description:
+      "A central emerald-cut brilliant anchors vertical columns of baguette and round diamonds in white gold — Art Deco geometry with cuff-scale presence and secure hinged closure.",
+  },
+  {
+    id: "brace-grand-emerald-bangle",
+    category: "bracelets",
+    braceletKind: "bracelet",
+    productCode: "BD-K-BR-035",
+    image: "/Bracelet/IMG_7492.jpg",
+    imageWellColor: "#faf8f5",
+    alt: "Grand Emerald Bangle — wide emerald and baguette diamond bangle",
+    title: "Grand Emerald Bangle",
+    description:
+      "A wide hinged bangle with a centre emerald-cut stone flanked by baguette lines and round-brilliant borders — architectural width and salon-composed brilliance.",
+  },
+  {
+    id: "brace-rose-woven-line",
+    category: "bracelets",
+    braceletKind: "bracelet",
+    productCode: "BD-K-BR-036",
+    image: "/Bracelet/IMG_7493.jpg",
+    imageWellColor: "#faf8f5",
+    alt: "Rose Woven Line — baguette diamond woven bracelet in rose gold",
+    title: "Rose Woven Line",
+    description:
+      "Interlocking baguette diamonds in a woven rose-gold line, bordered by round brilliants — fluid texture and warm luminosity composed for evening wear.",
   },
   {
     id: "neck-saphir-majeste",

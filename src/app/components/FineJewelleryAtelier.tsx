@@ -7,6 +7,8 @@ import {
   ATELIER_PIECES,
   FINE_JEWELLERY_CATEGORIES,
   atelierPieceEyebrow,
+  sortAllAtelierPiecesByWellPerCategory,
+  sortAtelierPiecesByWell,
   type AtelierPiece,
   type BraceletKind,
   type JewelleryCategoryId,
@@ -101,19 +103,28 @@ export default function FineJewelleryAtelier({
     activeTab?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
   }, [activeCategory]);
 
-  const filteredPieces = useMemo(
-    () =>
+  const filteredPieces = useMemo(() => {
+    const base =
       activeCategory === "all"
         ? ATELIER_PIECES
-        : ATELIER_PIECES.filter((piece) => piece.category === activeCategory),
-    [activeCategory],
-  );
+        : ATELIER_PIECES.filter((piece) => piece.category === activeCategory);
+
+    if (activeCategory === "all") {
+      return sortAllAtelierPiecesByWellPerCategory(base);
+    }
+    if (activeCategory === "bracelets") {
+      return base;
+    }
+    return sortAtelierPiecesByWell(base);
+  }, [activeCategory]);
 
   /** Same order as the grid — used for prev/next in the salon viewer */
   const lightboxPieces = useMemo(() => {
     if (activeCategory === "bracelets") {
       return BRACELET_SECTIONS.flatMap(({ kind }) =>
-        filteredPieces.filter((piece) => piece.braceletKind === kind),
+        sortAtelierPiecesByWell(
+          filteredPieces.filter((piece) => piece.braceletKind === kind),
+        ),
       );
     }
     return filteredPieces;
@@ -257,8 +268,8 @@ export default function FineJewelleryAtelier({
         ) : activeCategory === "bracelets" ? (
           <div className="flex flex-col gap-16 md:gap-20">
             {BRACELET_SECTIONS.map(({ kind, title }) => {
-              const sectionPieces = filteredPieces.filter(
-                (piece) => piece.braceletKind === kind,
+              const sectionPieces = sortAtelierPiecesByWell(
+                filteredPieces.filter((piece) => piece.braceletKind === kind),
               );
               if (sectionPieces.length === 0) return null;
               return (

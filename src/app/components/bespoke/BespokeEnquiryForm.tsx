@@ -147,7 +147,7 @@ export default function BespokeEnquiryForm({
   }
 
   return (
-    <EditorialReveal className="mx-auto max-w-2xl">
+    <EditorialReveal className="w-full">
       <form
         className="space-y-8 border border-[#766d42]/20 bg-[#faf8f5] p-8 shadow-[0_20px_60px_rgba(29,60,52,0.06)] md:p-12"
         onSubmit={handleSubmit}

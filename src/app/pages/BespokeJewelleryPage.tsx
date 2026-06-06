@@ -63,10 +63,10 @@ export default function BespokeJewelleryPage() {
               </div>
               <div className="absolute -bottom-6 -right-4 w-[55%] max-w-[220px] ring-1 ring-[#766d42]/25 shadow-[0_20px_50px_rgba(29,60,52,0.12)] md:-right-8">
                 <ProtectedImage
-                  src="/Cannes/Sketches/IMG_6829.PNG"
-                  alt="Hand-drawn jewellery design sketch"
+                  src="/Pendant/Necklace2c.jpg"
+                  alt="Bespoke pear diamond pendant necklace — Bianca Diamonds"
                   wrapperClassName="aspect-[4/5] w-full bg-[#faf8f5]"
-                  className="size-full object-cover"
+                  className="size-full object-cover object-center"
                 />
               </div>
               <BespokeButterflyMark
@@ -188,27 +188,36 @@ export default function BespokeJewelleryPage() {
       <section
         id="bespoke-enquiry"
         aria-labelledby="enquiry-heading"
-        className="relative border-t border-[#766d42]/15 bg-[#f4f0e6] px-6 py-24 md:px-10 md:py-32"
+        className="relative overflow-hidden border-t border-[#766d42]/15 bg-[#f4f0e6] px-6 py-24 md:px-10 md:py-32"
       >
-        <div
-          className="pointer-events-none absolute bottom-0 left-0 hidden w-48 opacity-30 md:block lg:w-64"
-          aria-hidden
-        >
-          <ProtectedImage
-            src="/vase-with-flowers-vase-with-words-orchid-it.jpg"
-            alt=""
-            wrapperClassName="aspect-[3/4] w-full"
-            className="size-full object-cover object-top"
+        <div className="relative mx-auto max-w-6xl">
+          <BespokeSectionHeader
+            id="enquiry-heading"
+            eyebrow="Begin"
+            title="Begin Your Bespoke Journey"
+            subtitle="Share your vision with our design team — every detail helps us craft a creation as unique as your story."
           />
-        </div>
-        <div className="relative">
-        <BespokeSectionHeader
-          eyebrow="Begin"
-          title="Begin Your Bespoke Journey"
-          subtitle="Share your vision with our design team — every detail helps us craft a creation as unique as your story."
-        />
 
-        <BespokeEnquiryForm sourcePage="bespoke-jewellery" />
+          <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:gap-16 xl:grid-cols-[420px_minmax(0,640px)] xl:justify-center xl:gap-20">
+            <EditorialReveal className="mx-auto w-full max-w-[320px] lg:sticky lg:top-24 lg:mx-0 lg:max-w-none">
+              <div className="pointer-events-none" aria-hidden>
+                <ProtectedImage
+                  src="/Sketch.png"
+                  alt=""
+                  wrapperClassName="block w-full"
+                  className="w-full h-auto object-contain drop-shadow-[0_28px_56px_rgba(29,60,52,0.11)]"
+                  loading="lazy"
+                />
+              </div>
+              <p className="mt-6 text-center font-editorial text-[13px] italic leading-relaxed tracking-[0.05em] text-[#1d3c34]/75 lg:text-left">
+                From first sketch to finished masterpiece.
+              </p>
+            </EditorialReveal>
+
+            <div className="min-w-0">
+              <BespokeEnquiryForm sourcePage="bespoke-jewellery" />
+            </div>
+          </div>
         </div>
       </section>
 
