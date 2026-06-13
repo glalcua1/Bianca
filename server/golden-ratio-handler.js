@@ -3,17 +3,26 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { loadEnv } from "vite";
 import { runGoldenRatioFallback } from "./golden-ratio-fallback.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(__dirname, "..");
 
-// Ensure .env / .env.local are available to Python subprocess and Gemini fallback
-Object.assign(
-  process.env,
-  loadEnv(process.env.NODE_ENV || "development", PROJECT_ROOT, ""),
-);
+/** Local dev only — Vercel injects env vars; avoid importing Vite in serverless bundles */
+function loadLocalEnvFiles() {
+  if (process.env.VERCEL) return;
+  for (const name of [".env.local", ".env"]) {
+    const envPath = path.join(PROJECT_ROOT, name);
+    if (!fs.existsSync(envPath)) continue;
+    for (const line of fs.readFileSync(envPath, "utf8").split("\n")) {
+      const match = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$/);
+      if (!match || process.env[match[1]]) continue;
+      process.env[match[1]] = match[2].trim().replace(/^["']|["']$/g, "");
+    }
+  }
+}
+
+loadLocalEnvFiles();
 const PYTHON_RUNNER = path.join(PROJECT_ROOT, "scripts", "run-golden-ratio.py");
 
 function resolvePublicImage(imageUrl) {
@@ -21,11 +30,14 @@ function resolvePublicImage(imageUrl) {
     return null;
   }
   const normalized = imageUrl.startsWith("/") ? imageUrl.slice(1) : imageUrl;
-  const absolute = path.join(PROJECT_ROOT, "public", normalized);
-  if (!absolute.startsWith(path.join(PROJECT_ROOT, "public"))) {
-    return null;
+  const roots = ["public", "dist"];
+  for (const root of roots) {
+    const base = path.join(PROJECT_ROOT, root);
+    const absolute = path.join(base, normalized);
+    if (!absolute.startsWith(base)) continue;
+    if (fs.existsSync(absolute)) return absolute;
   }
-  return fs.existsSync(absolute) ? absolute : null;
+  return null;
 }
 
 function runPythonAnalysis(payload) {
@@ -112,7 +124,9 @@ export async function handleGoldenRatioRequest(body) {
     productCode,
   };
 
-  let result = await runPythonAnalysis(payload);
+  let result = process.env.VERCEL
+    ? await runGoldenRatioFallback(payload)
+    : await runPythonAnalysis(payload);
 
   if (!result.ok) {
     result = await runGoldenRatioFallback(payload);
