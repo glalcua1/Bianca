@@ -129,6 +129,58 @@ export const BESPOKE_WHY_CARDS = [
 /** Full-bleed orchid editorial for the Why Bespoke section */
 export const BESPOKE_WHY_ORCHID_IMAGE = "/media/bespoke/orchid-studio-light.jpg";
 
+export type BespokeSalonPiece = {
+  id: string;
+  kind: "video" | "image";
+  src: string;
+  alt: string;
+  /** Editorial label — e.g. Salon film, Atelier study */
+  mediaEyebrow: string;
+  title: string;
+  subtitle: string;
+  reference: string;
+  gemstoneWeight: string;
+  goldWeight: string;
+  priceInr: number;
+};
+
+/** @deprecated Use BespokeSalonPiece */
+export type BespokeSalonFilm = BespokeSalonPiece;
+
+export const BESPOKE_SALON_PIECES: BespokeSalonPiece[] = [
+  {
+    id: "highlight-emerald-film",
+    kind: "video",
+    src: "/Rings/Green_ga.mp4",
+    alt: "Emerald bespoke ring — salon film in sculpted gold",
+    mediaEyebrow: "Salon film",
+    title: "Emerald Garden",
+    subtitle:
+      "Green gemstone in sculpted gold — movement revealing depth, colour, and the house's proportion on the hand.",
+    reference: "BD-G-RG-036",
+    gemstoneWeight: "1 ct centre gemstone",
+    goldWeight: "3.5 to 4 gm gold",
+    priceInr: 95_000,
+  },
+  {
+    id: "highlight-sapphire-study",
+    kind: "image",
+    src: "/Rings/Blue_new.png",
+    alt: "Sapphire bespoke ring — oval centre stone in white gold with pavé split shoulders",
+    mediaEyebrow: "Atelier study",
+    title: "Sapphire Lumière",
+    subtitle:
+      "Oval sapphire in a split-shank white-gold mount — pavé brilliance and milgrain tracing the shoulders.",
+    reference: "BD-G-RG-038",
+    gemstoneWeight: "1 ct centre gemstone",
+    goldWeight: "3.5 to 4 gm gold",
+    priceInr: 95_000,
+  },
+];
+
+/** @deprecated Use BESPOKE_SALON_PIECES */
+export const BESPOKE_SALON_FILMS = BESPOKE_SALON_PIECES;
+
 export type BespokeGalleryItem = {
   id: string;
   category: string;

@@ -13,6 +13,7 @@ const dataFile = path.join(root, 'src/app/data/fineJewelleryCollections.ts')
 const source = fs.readFileSync(dataFile, 'utf8')
 const imagePaths = [
   ...source.matchAll(/image:\s*"(\/[^"]+)"/g),
+  ...source.matchAll(/video:\s*"(\/[^"]+)"/g),
 ].map((m) => m[1])
 
 const missing = imagePaths.filter((urlPath) => {

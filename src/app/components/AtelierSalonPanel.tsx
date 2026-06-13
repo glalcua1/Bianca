@@ -2,8 +2,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { MessageCircle } from "lucide-react";
 import type { AtelierPiece } from "../data/fineJewelleryCollections";
 import { atelierPieceEyebrow } from "../data/fineJewelleryCollections";
-import { getRingQuote } from "../data/ringQuotes";
-import AtelierSalonCurrency from "./AtelierSalonCurrency";
+import { getRingQuote, formatRingPriceInr } from "../data/ringQuotes";
 import { buildCustomerRingDetails } from "../lib/ringQuoteCopy";
 
 type Props = {
@@ -61,6 +60,9 @@ export default function AtelierSalonPanel({
   const reduceMotion = useReducedMotion();
   const quote = piece.category === "rings" ? getRingQuote(piece.productCode) : undefined;
   const details = quote ? buildCustomerRingDetails(quote) : null;
+  const guidePriceInr = quote?.priceInr ?? piece.salonPriceInr;
+  const guidePriceLabel = guidePriceInr ? formatRingPriceInr(guidePriceInr) : null;
+  const hasFilmSpecs = Boolean(piece.gemstoneSpec || piece.goldSpec);
 
   const motionProps = reduceMotion
     ? { initial: false, animate: { opacity: 1, x: 0 }, exit: { opacity: 1, x: 0 } }
@@ -116,7 +118,6 @@ export default function AtelierSalonPanel({
                     <p className="mt-1.5 text-[8px] leading-relaxed tracking-[0.06em] text-on-cream-muted normal-case">
                       {details.priceGstNote}
                     </p>
-                    {quote ? <AtelierSalonCurrency priceInr={quote.priceInr} /> : null}
                   </div>
                 </div>
               </div>
@@ -138,15 +139,65 @@ export default function AtelierSalonPanel({
                   detail={details.goldKaratLine}
                 />
                 <SalonSpec
-                  label="Diamonds total"
+                  label={details.diamondsTotalLabel}
                   value={details.diamondsTotalLine}
                   detail={details.diamondsPiecesLine}
                 />
                 {details.centrePieceLine ? (
-                  <SalonSpec label="Centre piece" value={details.centrePieceLine} />
+                  <SalonSpec
+                    label={details.centrePieceLabel ?? "Centre piece"}
+                    value={details.centrePieceLine}
+                    detail={details.centrePieceDetail ?? undefined}
+                  />
                 ) : null}
               </div>
               <OrnamentalRule className="mt-6" />
+            </div>
+          </div>
+        ) : guidePriceLabel && hasFilmSpecs ? (
+          <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+            <div className="shrink-0 px-6 sm:px-8">
+              <div className="border border-[#766d42]/18 bg-white/50 px-4 py-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] sm:px-5 sm:py-4">
+                <div className="flex items-start justify-between gap-5">
+                  <div>
+                    <p className="text-[8px] uppercase tracking-[0.28em] text-gold-on-cream">
+                      Salon valuation
+                    </p>
+                    <p className="mt-2 text-[8px] uppercase tracking-[0.16em] text-on-cream-muted">
+                      Indicative guide
+                      <span className="mx-1.5 text-[#766d42]/35">·</span>
+                      Ref. {piece.productCode}
+                    </p>
+                  </div>
+                  <div className="shrink-0 text-right">
+                    <p className="font-editorial text-[1.2rem] leading-none tracking-[0.02em] text-bianca-forest sm:text-[1.3125rem]">
+                      <span className="tabular-nums">{guidePriceLabel}</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="atelier-lightbox-description"
+              className="min-h-0 flex-1 overflow-y-auto px-6 pt-5 pb-6 sm:px-8 sm:pt-6 sm:pb-7"
+            >
+              <OrnamentalRule />
+              <p className="mt-5 text-center text-[9px] uppercase tracking-[0.26em] text-gold-on-cream">
+                Composition
+              </p>
+              <div className="mt-5 border-t border-[#766d42]/18">
+                {piece.gemstoneSpec ? (
+                  <SalonSpec label="Centre stone" value={piece.gemstoneSpec} />
+                ) : null}
+                {piece.goldSpec ? (
+                  <SalonSpec label="Gold" value={piece.goldSpec} />
+                ) : null}
+              </div>
+              <OrnamentalRule className="mt-6" />
+              <p className="mt-6 font-editorial text-[1rem] leading-[1.7] text-on-cream-body sm:text-[1.0625rem]">
+                {piece.description}
+              </p>
             </div>
           </div>
         ) : (

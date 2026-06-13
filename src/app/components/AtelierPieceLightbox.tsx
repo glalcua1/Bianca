@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import AtelierSalonPanel from "./AtelierSalonPanel";
 import BrandImageWatermark from "./BrandImageWatermark";
 import ProtectedImage from "./protection/ProtectedImage";
+import SalonJewelVideo from "./SalonJewelVideo";
 import type { AtelierPiece } from "../data/fineJewelleryCollections";
 import { PHI_INV } from "../lib/goldenRatioLayout";
 import { consultationSourcePage } from "../data/siteContact";
@@ -135,16 +136,29 @@ export default function AtelierPieceLightbox({
                     {/* Gilt salon frame */}
                     <div className="flex min-h-0 flex-1 flex-col border border-[#766d42]/55 bg-[#f4f0e6] p-[3px] shadow-[inset_0_0_0_1px_rgba(220,203,123,0.15)]">
                       <div className="flex min-h-0 flex-1 border border-[#766d42]/25 bg-[#faf8f5] p-3 sm:p-4 md:p-5">
-                        <ProtectedImage
-                          key={piece.id}
-                          wrapperClassName="flex h-full min-h-[200px] w-full items-center justify-center"
-                          src={piece.image}
-                          alt={piece.alt}
-                          loading="eager"
-                          decoding="async"
-                          priority
-                          className="max-h-full max-w-full object-contain object-center transition-opacity duration-300 motion-reduce:transition-none"
-                        />
+                        {piece.video ? (
+                          <div className="relative h-full min-h-[200px] w-full overflow-hidden">
+                            <SalonJewelVideo
+                              key={piece.id}
+                              src={piece.video}
+                              ariaLabel={piece.alt}
+                              objectFit="cover"
+                              autoPlay={false}
+                              controlPosition="bottom-center"
+                            />
+                          </div>
+                        ) : (
+                          <ProtectedImage
+                            key={piece.id}
+                            wrapperClassName="flex h-full min-h-[200px] w-full items-center justify-center"
+                            src={piece.image}
+                            alt={piece.alt}
+                            loading="eager"
+                            decoding="async"
+                            priority
+                            className="max-h-full max-w-full object-contain object-center transition-opacity duration-300 motion-reduce:transition-none"
+                          />
+                        )}
                       </div>
                     </div>
                   </div>

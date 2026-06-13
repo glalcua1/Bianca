@@ -171,6 +171,22 @@ for (const [productCode, metal] of Object.entries(PRODUCT_METAL_OVERRIDES)) {
   if (quotes[productCode]) quotes[productCode].metal = metal;
 }
 
+/** Manual salon spec overrides — applied after workbook import */
+const PRODUCT_QUOTE_OVERRIDES = {
+  "BD-G-RG-032": {
+    priceInr: 85_000,
+    metalNetWeightG: 5,
+    diamondTotalCarat: 0,
+    diamondPieces: 0,
+    centreStone: "Emerald cut 5ct · red emerald",
+    colourStones: ["CSREDEMERALD"],
+  },
+};
+
+for (const [productCode, overrides] of Object.entries(PRODUCT_QUOTE_OVERRIDES)) {
+  if (quotes[productCode]) Object.assign(quotes[productCode], overrides);
+}
+
 const out = `/** Auto-generated from ring quote workbook — run \`node scripts/generate-ring-quotes.mjs\` to refresh */\n\nexport type RingQuote = {\n  styleCode: string;\n  priceInr: number;\n  metal: string;\n  metalNetWeightG: number;\n  diamondTotalCarat: number;\n  diamondPieces: number;\n  diamondClarity: string;\n  diamondColor: string;\n  diamondShapes: string;\n  centreStone: string | null;\n  ringSize: string | null;\n  colourStones: string[] | null;\n};\n\nexport const RING_QUOTES: Record<string, RingQuote> = ${JSON.stringify(quotes, null, 2)} as const;\n\n/** Atelier salon markup applied to workbook base prices */\nexport const SALON_MARKUP_INR = 25_000;\n\nexport function applySalonMarkup(basePriceInr: number): number {\n  return basePriceInr + SALON_MARKUP_INR;\n}\n\nexport function formatRingPriceInr(priceInr: number): string {\n  return new Intl.NumberFormat("en-IN", {\n    style: "currency",\n    currency: "INR",\n    maximumFractionDigits: 0,\n  }).format(priceInr);\n}\n\nexport function getRingQuote(productCode: string): RingQuote | undefined {\n  const base = RING_QUOTES[productCode];\n  if (!base) return undefined;\n  return { ...base, priceInr: applySalonMarkup(base.priceInr) };\n}\n`;
 
 fs.writeFileSync(path.join(ROOT, "src/app/data/ringQuotes.ts"), out);

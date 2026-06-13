@@ -358,18 +358,18 @@ export const RING_QUOTES: Record<string, RingQuote> = {
   },
   "BD-G-RG-032": {
     "styleCode": "A42906",
-    "priceInr": 55144,
+    "priceInr": 85000,
     "metal": "18K yellow gold",
-    "metalNetWeightG": 3.92,
-    "diamondTotalCarat": 0.292,
-    "diamondPieces": 10,
+    "metalNetWeightG": 5,
+    "diamondTotalCarat": 0,
+    "diamondPieces": 0,
     "diamondClarity": "+VS",
     "diamondColor": "EF",
     "diamondShapes": "Round brilliant",
-    "centreStone": "Round brilliant 0.207ct · +VS · EF · 6.5-7",
+    "centreStone": "Emerald cut 5ct · red emerald",
     "ringSize": null,
     "colourStones": [
-      "CSCUSPURPLE"
+      "CSREDEMERALD"
     ]
   },
   "BD-G-RG-033": {

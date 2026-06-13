@@ -11,6 +11,7 @@ import BespokeHero from "../components/bespoke/BespokeHero";
 import BespokeSectionHeader from "../components/bespoke/BespokeSectionHeader";
 import BespokeSalonPlate from "../components/bespoke/BespokeSalonPlate";
 import BespokeJourneyTimeline from "../components/bespoke/BespokeJourneyTimeline";
+import BespokeSalonFilms from "../components/bespoke/BespokeSalonFilms";
 import BespokeWhySection from "../components/bespoke/BespokeWhySection";
 import BespokeOrchidBackdrop from "../components/bespoke/BespokeOrchidBackdrop";
 import BespokeButterflyMark from "../components/bespoke/BespokeButterflyMark";
@@ -111,6 +112,8 @@ export default function BespokeJewelleryPage() {
       </section>
 
       <BespokeJourneyTimeline />
+
+      <BespokeSalonFilms />
 
       <BespokeWhySection />
 

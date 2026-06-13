@@ -20,7 +20,7 @@ export default function GoldenRatioPieceSelector({ selectedId, onSelect }: Props
   const [query, setQuery] = useState("");
 
   const pieces = useMemo(() => {
-    let list = ATELIER_PIECES;
+    let list = ATELIER_PIECES.filter((p) => !p.video);
     if (filter !== "all") {
       list = list.filter((p) => p.category === filter);
     }

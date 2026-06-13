@@ -55,6 +55,29 @@ function formatCentrePiece(centre: string): string {
   return gradingParts.length > 0 ? `${base}, ${gradingParts.join(", ")}` : base;
 }
 
+function parseCaratFromCentre(centre: string): number | null {
+  const match = centre.match(/(\d+\.?\d*)\s*ct\b/i);
+  return match ? Number(match[1]) : null;
+}
+
+/** Centre stone is a coloured gemstone (not a graded diamond line from the workbook). */
+function isGemstoneCentreRing(quote: RingQuote): boolean {
+  if (!quote.colourStones?.length || !quote.centreStone) return false;
+  return !/\+VS|\bVS1\b|\bVVS\b|\bSI\d/i.test(quote.centreStone);
+}
+
+function formatGemstoneCentre(centre: string): { weightLine: string; detailLine: string } {
+  const parts = centre.split("·").map((p) => p.trim());
+  const carat = parseCaratFromCentre(centre);
+  const weightLine = carat ? formatCaratWeight(carat) : formatCentrePiece(centre);
+  const shape = parts[0]?.replace(/(\d+\.?\d*)\s*ct\s*/i, "").trim() ?? "";
+  const gemName = parts[1] ?? "";
+  const detailLine = gemName
+    ? `${shape} · ${gemName}`.replace(/(\d+\.?\d*)ct/gi, "$1 carat")
+    : formatCentrePiece(centre);
+  return { weightLine, detailLine };
+}
+
 function formatDiamondsDetail(
   pieces: number,
   clarity: string,
@@ -76,9 +99,12 @@ export type CustomerRingDetails = {
   reference: string;
   goldWeightLine: string;
   goldKaratLine: string;
+  diamondsTotalLabel: string;
   diamondsTotalLine: string;
   diamondsPiecesLine: string;
+  centrePieceLabel: string | null;
   centrePieceLine: string | null;
+  centrePieceDetail: string | null;
   priceGstNote: string;
 };
 
@@ -88,6 +114,34 @@ export function buildCustomerRingDetails(quote: RingQuote): CustomerRingDetails 
 
   const goldWeightLine = `${quote.metalNetWeightG} g`;
   const goldKaratLine = formatGoldKarat(quote.metal);
+
+  if (isGemstoneCentreRing(quote) && quote.centreStone) {
+    const gemstone = formatGemstoneCentre(quote.centreStone);
+    const hasAccentDiamonds = quote.diamondTotalCarat > 0 && quote.diamondPieces > 0;
+
+    return {
+      priceLabel,
+      reference,
+      goldWeightLine,
+      goldKaratLine,
+      diamondsTotalLabel: "Centre stone",
+      diamondsTotalLine: gemstone.weightLine,
+      diamondsPiecesLine: gemstone.detailLine,
+      centrePieceLabel: hasAccentDiamonds ? "Accent diamonds" : null,
+      centrePieceLine: hasAccentDiamonds
+        ? formatCaratWeight(quote.diamondTotalCarat)
+        : null,
+      centrePieceDetail: hasAccentDiamonds
+        ? formatDiamondsDetail(
+            quote.diamondPieces,
+            quote.diamondClarity,
+            quote.diamondColor,
+          )
+        : null,
+      priceGstNote: "GST 3% extra · not included in price",
+    };
+  }
+
   const diamondsTotalLine = formatCaratWeight(quote.diamondTotalCarat);
   const diamondsPiecesLine = formatDiamondsDetail(
     quote.diamondPieces,
@@ -105,9 +159,12 @@ export function buildCustomerRingDetails(quote: RingQuote): CustomerRingDetails 
     reference,
     goldWeightLine,
     goldKaratLine,
+    diamondsTotalLabel: "Diamonds total",
     diamondsTotalLine,
     diamondsPiecesLine,
+    centrePieceLabel: centrePieceLine ? "Centre piece" : null,
     centrePieceLine,
+    centrePieceDetail: null,
     priceGstNote: "GST 3% extra · not included in price",
   };
 }

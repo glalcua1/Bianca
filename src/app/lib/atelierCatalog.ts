@@ -147,6 +147,9 @@ export function buildCatalogEntry(piece: AtelierPiece): AtelierCatalogEntry {
     if (quote.metal.includes("yellow")) tags.add("yellow-gold");
     if (quote.metal.includes("rose")) tags.add("rose-gold");
     if (quote.metal.includes("tri-tone") || quote.metal.includes("&")) tags.add("tri-tone");
+  } else if (piece.salonPriceInr) {
+    salonPriceInr = piece.salonPriceInr;
+    tags.add(ringPriceBand(salonPriceInr));
   }
 
   addStoneColourTags(tags, prose, quote);

@@ -24,7 +24,7 @@ import {
   type BraceletKind,
   type JewelleryCategoryId,
 } from "../data/fineJewelleryCollections";
-import { fetchExchangeRates } from "../lib/exchangeRates";
+import { getRingQuote } from "../data/ringQuotes";
 
 const BRACELET_SECTIONS: { kind: BraceletKind; title: string }[] = [
   { kind: "bracelet", title: "Bracelets" },
@@ -47,6 +47,7 @@ function renderPieceCard(
           fluid
           darkImageWell={piece.category === "necklaces" && !piece.imageWellColor}
           imageWellColor={piece.imageWellColor}
+          video={piece.video}
           src={piece.image}
           alt={piece.alt}
           data-name={piece.id}
@@ -69,12 +70,24 @@ function renderPieceCard(
         </p>
         <p className="mt-4 text-[11px] uppercase tracking-[0.16em] text-gold-on-cream">
           {piece.productCode}
-          {piece.category === "rings" && (
+          {piece.video ? (
+            <>
+              <span className="text-on-cream-muted"> · salon film</span>
+              {piece.salonPriceInr ? (
+                <span className="text-on-cream-muted"> · tap to view salon price</span>
+              ) : null}
+            </>
+          ) : piece.category === "rings" &&
+            (getRingQuote(piece.productCode) || piece.salonPriceInr) ? (
             <span className="text-on-cream-muted"> · tap to view salon price</span>
-          )}
+          ) : null}
         </p>
         {piece.category === "rings" && (
-          <AtelierPieceQuote productCode={piece.productCode} variant="teaser" />
+          <AtelierPieceQuote
+            productCode={piece.productCode}
+            variant="teaser"
+            priceInr={piece.salonPriceInr}
+          />
         )}
       </div>
     </li>
@@ -115,10 +128,6 @@ export default function FineJewelleryAtelier({
       map.set(piece.id, buildCatalogEntry(piece));
     }
     return map;
-  }, []);
-
-  useEffect(() => {
-    void fetchExchangeRates();
   }, []);
 
   useEffect(() => {
@@ -251,7 +260,7 @@ export default function FineJewelleryAtelier({
         className={`transition-[background-color,box-shadow,border-color,backdrop-filter,padding] duration-300 ${
           filtersPinned
             ? filtersPinned && !isDesktop
-              ? `fixed inset-x-0 top-0 z-50 ${filtersGlass}`
+              ? `fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top,0px)] ${filtersGlass}`
               : `sticky top-0 z-30 -mx-6 px-6 md:-mx-10 md:px-10 ${filtersGlass}`
             : "relative"
         } ${filtersPinned ? "py-3 md:py-3.5" : ""} mb-12 md:mb-14`}
@@ -260,7 +269,7 @@ export default function FineJewelleryAtelier({
           <div
             ref={tabsRef}
             id="categories"
-            className="flex flex-nowrap items-center justify-start gap-2 overflow-x-auto pb-2 [-ms-overflow-style:none] [scroll-padding-inline:0.5rem] [scrollbar-width:none] md:justify-center md:pb-2.5 [&::-webkit-scrollbar]:hidden"
+            className="flex flex-nowrap items-center justify-start gap-2 overflow-x-auto pb-2 [-ms-overflow-style:none] [scroll-padding-inline:1rem] [scrollbar-width:none] [touch-action:pan-x] md:justify-center md:pb-2.5 [&::-webkit-scrollbar]:hidden"
             role="tablist"
             aria-label="Jewellery categories"
           >
@@ -269,7 +278,7 @@ export default function FineJewelleryAtelier({
               role="tab"
               aria-selected={activeCategory === "all"}
               onClick={() => onCategoryChange("all")}
-              className={`shrink-0 border px-4 py-2 transition duration-300 ${
+              className={`shrink-0 border px-4 py-2.5 transition duration-300 sm:py-2 ${
                 activeCategory === "all"
                   ? "border-[#766d42]/50 bg-[#f4f0e6] shadow-[inset_0_0_0_1px_rgba(118,109,66,0.2)]"
                   : "border-[#1d3c34]/12 bg-white hover:border-[#766d42]/35 hover:bg-[#f4f0e6]/60"
@@ -289,7 +298,7 @@ export default function FineJewelleryAtelier({
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => onCategoryChange(category.id)}
-                  className={`shrink-0 border px-4 py-2 transition duration-300 ${
+                  className={`shrink-0 border px-4 py-2.5 transition duration-300 sm:py-2 ${
                     isActive
                       ? "border-[#766d42]/50 bg-[#f4f0e6] shadow-[inset_0_0_0_1px_rgba(118,109,66,0.2)]"
                       : "border-[#1d3c34]/12 bg-white hover:border-[#766d42]/35 hover:bg-[#f4f0e6]/60"

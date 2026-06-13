@@ -47,7 +47,7 @@ function FilterDropdown({
       <Popover.Trigger asChild>
         <button
           type="button"
-          className={`inline-flex min-w-0 items-center gap-1.5 border px-3 py-2 text-[10px] uppercase tracking-[0.14em] transition duration-200 ${
+          className={`inline-flex min-h-11 min-w-0 items-center gap-1.5 border px-3 py-2.5 text-[10px] uppercase tracking-[0.14em] transition duration-200 sm:min-h-0 sm:py-2 ${
             activeCount > 0
               ? "border-[#766d42]/55 bg-[#1d3c34] text-[#faf8f5]"
               : "border-[#766d42]/22 bg-white/70 text-[#524a28] hover:border-[#766d42]/40 hover:bg-[#f4f0e6]"
@@ -68,20 +68,21 @@ function FilterDropdown({
       <Popover.Portal>
         <Popover.Content
           sideOffset={6}
-          align="end"
-          className="z-[70] min-w-[11.5rem] border border-[#766d42]/22 bg-[#faf8f5] p-2 shadow-[0_12px_40px_rgba(29,60,52,0.12)] outline-none"
+          align="start"
+          collisionPadding={12}
+          className="z-[70] w-[min(18rem,calc(100vw-2rem))] border border-[#766d42]/22 bg-[#faf8f5] p-2 shadow-[0_12px_40px_rgba(29,60,52,0.12)] outline-none sm:w-auto sm:min-w-[11.5rem]"
         >
-          <ul className="max-h-52 overflow-y-auto">
+          <ul className="max-h-[min(16rem,50vh)] overflow-y-auto overscroll-contain">
             {group.options.map((option) => {
               const checked = selectedIds.includes(option.id);
               return (
                 <li key={option.id}>
-                  <label className="flex cursor-pointer items-center gap-2.5 px-2 py-1.5 text-[11px] tracking-[0.04em] text-[#1d3c34] transition hover:bg-[#f4f0e6]">
+                  <label className="flex min-h-11 cursor-pointer items-center gap-3 px-2 py-2 text-[12px] tracking-[0.04em] text-[#1d3c34] transition hover:bg-[#f4f0e6] sm:min-h-0 sm:gap-2.5 sm:py-1.5 sm:text-[11px]">
                     <input
                       type="checkbox"
                       checked={checked}
                       onChange={() => onToggle(option.id)}
-                      className="size-3.5 shrink-0 accent-[#1d3c34]"
+                      className="size-4 shrink-0 accent-[#1d3c34] sm:size-3.5"
                     />
                     <span>{option.label}</span>
                   </label>
@@ -129,10 +130,10 @@ export default function AtelierSalonFilters({
 
   return (
     <div className="border-t border-[#766d42]/15 pt-3 md:pt-3.5">
-      <div className="flex items-center gap-3 md:gap-5">
-        <div className="relative min-w-0 flex-1 md:max-w-[min(22rem,42%)] lg:max-w-[24rem]">
+      <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-3 md:gap-5">
+        <div className="relative min-w-0 w-full sm:flex-1 md:max-w-[min(22rem,42%)] lg:max-w-[24rem]">
           <Search
-            className="pointer-events-none absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-[#766d42]/55"
+            className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#766d42]/55 sm:size-3.5"
             strokeWidth={1.25}
             aria-hidden
           />
@@ -142,23 +143,23 @@ export default function AtelierSalonFilters({
             onChange={(event) => onSearchQueryChange(event.target.value)}
             placeholder={placeholder}
             aria-label="Search atelier pieces"
-            className="w-full border border-[#766d42]/22 bg-white/60 py-2 pl-9 pr-9 font-editorial text-[0.875rem] tracking-[0.02em] text-[#1d3c34] shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] outline-none transition duration-200 placeholder:text-[#766d42]/45 placeholder:italic focus:border-[#766d42]/45 focus:bg-white focus:ring-2 focus:ring-[#766d42]/12"
+            className="w-full border border-[#766d42]/22 bg-white/60 py-2.5 pl-10 pr-10 text-base tracking-[0.02em] text-[#1d3c34] shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] outline-none transition duration-200 placeholder:font-editorial placeholder:text-[#766d42]/45 placeholder:italic focus:border-[#766d42]/45 focus:bg-white focus:ring-2 focus:ring-[#766d42]/12 sm:py-2 sm:pl-9 sm:pr-9 sm:font-editorial sm:text-[0.875rem]"
           />
           {searchQuery ? (
             <button
               type="button"
               onClick={() => onSearchQueryChange("")}
-              className="absolute right-2 top-1/2 inline-flex size-7 -translate-y-1/2 items-center justify-center text-[#766d42]/60 transition hover:text-[#1d3c34]"
+              className="absolute right-1 top-1/2 inline-flex size-10 -translate-y-1/2 items-center justify-center text-[#766d42]/60 transition hover:text-[#1d3c34] sm:right-2 sm:size-7"
               aria-label="Clear search"
             >
-              <X className="size-3.5" strokeWidth={1.25} />
+              <X className="size-4 sm:size-3.5" strokeWidth={1.25} />
             </button>
           ) : null}
         </div>
 
         {filterGroups.length > 0 ? (
           <div
-            className="flex min-w-0 shrink-0 items-center justify-end gap-1.5 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] md:gap-2 [&::-webkit-scrollbar]:hidden"
+            className="flex min-w-0 w-full items-center gap-2 overflow-x-auto pb-0.5 [-ms-overflow-style:none] [scroll-padding-inline:0.25rem] [scrollbar-width:none] sm:w-auto sm:shrink-0 sm:justify-end sm:gap-1.5 sm:pb-0 md:gap-2 [&::-webkit-scrollbar]:hidden"
             aria-label="Salon filters"
           >
             {filterGroups.map((group) => (

@@ -38,6 +38,12 @@ export type AtelierPiece = {
   braceletKind?: BraceletKind;
   /** Match product photography backdrop instead of default black/cream well */
   imageWellColor?: string;
+  /** Salon film — loops in catalogue; typically without Excel pricing */
+  video?: string;
+  /** Fixed salon guide price when not in Excel catalogue */
+  salonPriceInr?: number;
+  gemstoneSpec?: string;
+  goldSpec?: string;
 };
 
 export function atelierPieceEyebrow(piece: AtelierPiece): string {
@@ -528,15 +534,15 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "A heart brilliant and an oval brilliant meet in bypass poise on a polished white-gold band — two silhouettes, one romantic gesture composed for proposal and celebration.",
   },
   {
-    id: "ring-purple-emerald-split",
+    id: "ring-red-emerald-split",
     category: "rings",
     productCode: "BD-G-RG-032",
     image: "/Rings/IMG_7571.jpg",
     imageWellColor: "#faf8f5",
-    alt: "Purple Emerald Split — emerald-cut purple gemstone ring with split shank in yellow gold",
-    title: "Purple Emerald Split",
+    alt: "Red Emerald Split — emerald-cut red gemstone ring with split shank in yellow gold",
+    title: "Red Emerald Split",
     description:
-      "An emerald-cut purple gemstone rises from a sculptural split yellow-gold shank — step-cut colour and architectural negative space composed as a modern salon statement.",
+      "An emerald-cut red gemstone rises from a sculptural split yellow-gold shank — step-cut colour and architectural negative space composed as a modern salon statement.",
   },
   {
     id: "ring-sapphire-marquise-halo",
@@ -570,6 +576,51 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Ruby Pear Marquise Burst",
     description:
       "A pear ruby meets an asymmetrical marquise and pear diamond burst, pavé swirls tracing the white-gold shank — sculptural drama and salon-scale fire for the statement hand.",
+  },
+  {
+    id: "ring-emerald-salon-film",
+    category: "rings",
+    productCode: "BD-G-RG-036",
+    image: "/Rings/Green_g.mp4",
+    video: "/Rings/Green_g.mp4",
+    imageWellColor: "#faf8f5",
+    alt: "Emerald Garden — green gemstone ring salon film",
+    title: "Emerald Garden",
+    gemstoneSpec: "1 ct centre gemstone",
+    goldSpec: "3.5 to 4 gm gold",
+    salonPriceInr: 95_000,
+    description:
+      "An emerald-toned centre stone (~1 ct) in 3.5 to 4 gm refined gold — captured in salon motion, the facets turning with light as the piece is composed for the hand.",
+  },
+  {
+    id: "ring-ruby-salon-film",
+    category: "rings",
+    productCode: "BD-G-RG-037",
+    image: "/Rings/Red_g.mp4",
+    video: "/Rings/Red_g.mp4",
+    imageWellColor: "#faf8f5",
+    alt: "Ruby Éclat — ruby ring salon film",
+    title: "Ruby Éclat",
+    gemstoneSpec: "1 ct centre gemstone",
+    goldSpec: "3.5 to 4 gm gold",
+    salonPriceInr: 95_000,
+    description:
+      "Deep ruby fire (~1 ct centre gemstone) held in 3.5 to 4 gm polished gold — a salon film revealing depth, colour, and the house's precision from every angle.",
+  },
+  {
+    id: "ring-sapphire-salon-film",
+    category: "rings",
+    productCode: "BD-G-RG-038",
+    image: "/Rings/Blue_W.mp4",
+    video: "/Rings/Blue_W.mp4",
+    imageWellColor: "#faf8f5",
+    alt: "Sapphire Lumière — blue sapphire ring salon film in white gold",
+    title: "Sapphire Lumière",
+    gemstoneSpec: "1 ct centre gemstone",
+    goldSpec: "3.5 to 4 gm gold",
+    salonPriceInr: 95_000,
+    description:
+      "A blue sapphire (~1 ct) radiant in 3.5 to 4 gm white gold — salon motion tracing the stone's fire and the continuous brilliance of the band.",
   },
   {
     id: "brace-feuille-douce",

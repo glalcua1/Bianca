@@ -1,5 +1,6 @@
 import ProtectedImage from "./protection/ProtectedImage";
 import BrandImageWatermark from "./BrandImageWatermark";
+import SalonJewelVideo from "./SalonJewelVideo";
 
 const FRAME_WIDTH = 443;
 const FRAME_HEIGHT = 508;
@@ -14,6 +15,10 @@ type Props = {
   darkImageWell?: boolean;
   /** Product-shot backdrop — overrides darkImageWell and cream default when set. */
   imageWellColor?: string;
+  /** When set, the well plays a looping salon film instead of a still image. */
+  video?: string;
+  /** Video fit inside the well — contain shows the full piece/card */
+  videoObjectFit?: "contain" | "cover";
 };
 
 export default function CollectionPhotoFrame({
@@ -23,6 +28,8 @@ export default function CollectionPhotoFrame({
   fluid = false,
   darkImageWell = false,
   imageWellColor,
+  video,
+  videoObjectFit = "cover",
 }: Props) {
   const imageWellBg = imageWellColor
     ? ""
@@ -49,14 +56,25 @@ export default function CollectionPhotoFrame({
               className={`relative flex min-h-0 flex-1 overflow-hidden ${imageWellBg}`}
               style={imageWellColor ? { backgroundColor: imageWellColor } : undefined}
             >
-              <ProtectedImage
-                wrapperClassName="absolute inset-0 flex items-center justify-center"
-                src={src}
-                alt={alt}
-                loading="lazy"
-                decoding="async"
-                className="max-h-full max-w-full object-contain object-center"
-              />
+              {video ? (
+                <div className="absolute inset-0 overflow-hidden">
+                  <SalonJewelVideo
+                    src={video}
+                    ariaLabel={alt}
+                    objectFit={videoObjectFit}
+                    autoPlay={false}
+                  />
+                </div>
+              ) : (
+                <ProtectedImage
+                  wrapperClassName="absolute inset-0 flex items-center justify-center"
+                  src={src}
+                  alt={alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="max-h-full max-w-full object-contain object-center"
+                />
+              )}
               <BrandImageWatermark />
             </div>
           </div>
