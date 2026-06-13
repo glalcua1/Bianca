@@ -9,6 +9,7 @@ import CalculatorPage from "./pages/CalculatorPage";
 import LabGrownDiamondFaqPage from "./pages/LabGrownDiamondFaqPage";
 import ContactPage from "./pages/ContactPage";
 import BespokeJewelleryPage from "./pages/BespokeJewelleryPage";
+import GoldenRatioEvaluationPage from "./pages/GoldenRatioEvaluationPage";
 
 export default function App() {
   return (
@@ -25,6 +26,10 @@ export default function App() {
         <Route path="/bespoke-jewellery" element={<BespokeJewelleryPage />} />
         <Route path="/media" element={<MediaPage />} />
         <Route path="/calculator" element={<CalculatorPage />} />
+        <Route
+          path="/golden-ratio-evaluation"
+          element={<GoldenRatioEvaluationPage />}
+        />
         <Route
           path="/lab-grown-diamond-faq"
           element={<LabGrownDiamondFaqPage />}

@@ -1,4 +1,5 @@
 node_modules
+.venv-golden-ratio
 dist
 database/*.db
 database/*.db-*
@@ -10,3 +11,5 @@ ftp-upload
 *.log
 .DS_Store
 .vercel
+__pycache__/
+*.pyc

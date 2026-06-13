@@ -1,8 +1,19 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import AtelierPieceLightbox from "./AtelierPieceLightbox";
+import AtelierPieceQuote from "./AtelierPieceQuote";
 import AtelierSalonHint from "./AtelierSalonHint";
+import AtelierSalonFilters from "./AtelierSalonFilters";
 import CollectionPhotoFrame from "./CollectionPhotoFrame";
 import { usePinnedFilters } from "../hooks/usePinnedFilters";
+import {
+  buildCatalogEntry,
+  clearSelectedFilters,
+  getFilterGroups,
+  hasActiveSalonFilters,
+  pieceMatchesFilters,
+  scoreNaturalLanguageSearch,
+  type SelectedAtelierFilters,
+} from "../lib/atelierCatalog";
 import {
   ATELIER_PIECES,
   FINE_JEWELLERY_CATEGORIES,
@@ -13,6 +24,7 @@ import {
   type BraceletKind,
   type JewelleryCategoryId,
 } from "../data/fineJewelleryCollections";
+import { fetchExchangeRates } from "../lib/exchangeRates";
 
 const BRACELET_SECTIONS: { kind: BraceletKind; title: string }[] = [
   { kind: "bracelet", title: "Bracelets" },
@@ -56,8 +68,14 @@ function renderPieceCard(
           {piece.description}
         </p>
         <p className="mt-4 text-[11px] uppercase tracking-[0.16em] text-gold-on-cream">
-          Product code: {piece.productCode}
+          {piece.productCode}
+          {piece.category === "rings" && (
+            <span className="text-on-cream-muted"> · tap to view salon price</span>
+          )}
         </p>
+        {piece.category === "rings" && (
+          <AtelierPieceQuote productCode={piece.productCode} variant="teaser" />
+        )}
       </div>
     </li>
   );
@@ -82,12 +100,31 @@ export default function FineJewelleryAtelier({
   } = usePinnedFilters(stickySentinelRef, filtersBarRef);
 
   const filtersGlass =
-    "border-b border-[#1d3c34]/10 bg-[#faf8f5]/92 py-3 shadow-[0_8px_32px_rgba(29,60,52,0.08)] backdrop-blur-md backdrop-saturate-150 supports-[backdrop-filter]:bg-[#faf8f5]/80";
+    "border-b border-[#766d42]/12 bg-[#faf8f5]/94 shadow-[0_10px_40px_rgba(29,60,52,0.07)] backdrop-blur-md backdrop-saturate-150 supports-[backdrop-filter]:bg-[#faf8f5]/82";
+  const salonBarShell = `mx-auto w-full max-w-6xl${
+    filtersPinned && !isDesktop ? " px-6 md:px-10" : ""
+  }`;
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedFilters, setSelectedFilters] = useState<SelectedAtelierFilters>({});
+
+  const catalogById = useMemo(() => {
+    const map = new Map<string, ReturnType<typeof buildCatalogEntry>>();
+    for (const piece of ATELIER_PIECES) {
+      map.set(piece.id, buildCatalogEntry(piece));
+    }
+    return map;
+  }, []);
+
+  useEffect(() => {
+    void fetchExchangeRates();
+  }, []);
 
   useEffect(() => {
     setLightboxOpen(false);
+    setSearchQuery("");
+    setSelectedFilters(clearSelectedFilters(getFilterGroups(activeCategory)));
   }, [activeCategory]);
 
   useEffect(() => {
@@ -103,7 +140,7 @@ export default function FineJewelleryAtelier({
     activeTab?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
   }, [activeCategory]);
 
-  const filteredPieces = useMemo(() => {
+  const categoryPieces = useMemo(() => {
     const base =
       activeCategory === "all"
         ? ATELIER_PIECES
@@ -117,6 +154,26 @@ export default function FineJewelleryAtelier({
     }
     return sortAtelierPiecesByWell(base);
   }, [activeCategory]);
+
+  const salonFiltersActive = hasActiveSalonFilters(searchQuery, selectedFilters);
+
+  const filteredPieces = useMemo(() => {
+    const query = searchQuery.trim();
+    const scored = categoryPieces
+      .map((piece) => {
+        const entry = catalogById.get(piece.id)!;
+        const matchesFilters = pieceMatchesFilters(entry, selectedFilters);
+        const searchScore = query ? scoreNaturalLanguageSearch(entry, query) : 1;
+        return { piece, matchesFilters, searchScore };
+      })
+      .filter((row) => row.matchesFilters && row.searchScore > 0);
+
+    if (query) {
+      scored.sort((a, b) => b.searchScore - a.searchScore);
+    }
+
+    return scored.map((row) => row.piece);
+  }, [categoryPieces, catalogById, searchQuery, selectedFilters]);
 
   /** Same order as the grid — used for prev/next in the salon viewer */
   const lightboxPieces = useMemo(() => {
@@ -150,6 +207,7 @@ export default function FineJewelleryAtelier({
         "";
 
   const viewingCount = filteredPieces.length;
+  const totalInCategory = categoryPieces.length;
   const pieceCountLabel =
     viewingCount === 1 ? "1 piece" : `${viewingCount} pieces`;
 
@@ -174,33 +232,35 @@ export default function FineJewelleryAtelier({
             Every form of brilliance — curate the collection by category.
           </p>
         </div>
+      </div>
 
+      <div
+        ref={stickySentinelRef}
+        className="pointer-events-none mx-auto h-px w-full max-w-6xl"
+        aria-hidden
+      />
+      {filtersPinned && !isDesktop && filtersBarHeight > 0 && (
         <div
-          ref={stickySentinelRef}
-          className="pointer-events-none h-px w-full"
+          className="mb-12"
+          style={{ height: filtersBarHeight }}
           aria-hidden
         />
-        {filtersPinned && !isDesktop && filtersBarHeight > 0 && (
-          <div
-            className="mb-12"
-            style={{ height: filtersBarHeight }}
-            aria-hidden
-          />
-        )}
-        <div
-          ref={filtersBarRef}
-          className={`transition-[background-color,box-shadow,border-color,backdrop-filter] duration-300 ${
-            filtersPinned && !isDesktop
-              ? `fixed inset-x-0 top-0 z-50 px-6 ${filtersGlass}`
-              : filtersPinned && isDesktop
-                ? `sticky top-0 z-30 ${filtersGlass} mb-12 md:mb-14`
-                : "relative mb-12 md:mb-14"
-          }`}
-        >
+      )}
+      <div
+        ref={filtersBarRef}
+        className={`transition-[background-color,box-shadow,border-color,backdrop-filter,padding] duration-300 ${
+          filtersPinned
+            ? filtersPinned && !isDesktop
+              ? `fixed inset-x-0 top-0 z-50 ${filtersGlass}`
+              : `sticky top-0 z-30 -mx-6 px-6 md:-mx-10 md:px-10 ${filtersGlass}`
+            : "relative"
+        } ${filtersPinned ? "py-3 md:py-3.5" : ""} mb-12 md:mb-14`}
+      >
+        <div className={salonBarShell}>
           <div
             ref={tabsRef}
             id="categories"
-            className="mx-auto flex w-full max-w-6xl flex-nowrap items-center justify-start gap-2 overflow-x-auto px-0 pb-1 [-ms-overflow-style:none] [scroll-padding-inline:16px] [scrollbar-width:none] md:justify-center [&::-webkit-scrollbar]:hidden"
+            className="flex flex-nowrap items-center justify-start gap-2 overflow-x-auto pb-2 [-ms-overflow-style:none] [scroll-padding-inline:0.5rem] [scrollbar-width:none] md:justify-center md:pb-2.5 [&::-webkit-scrollbar]:hidden"
             role="tablist"
             aria-label="Jewellery categories"
           >
@@ -242,9 +302,21 @@ export default function FineJewelleryAtelier({
               );
             })}
           </div>
-        </div>
 
-        {activeCategory !== "all" && (
+          <AtelierSalonFilters
+            category={activeCategory}
+            searchQuery={searchQuery}
+            onSearchQueryChange={setSearchQuery}
+            selectedFilters={selectedFilters}
+            onSelectedFiltersChange={setSelectedFilters}
+            resultCount={viewingCount}
+            totalCount={totalInCategory}
+          />
+        </div>
+      </div>
+
+      <div className="mx-auto w-full min-w-0 max-w-6xl">
+        {(activeCategory !== "all" || salonFiltersActive) && (
           <p
             className="mb-10 text-center md:mb-12"
             aria-live="polite"
@@ -261,10 +333,16 @@ export default function FineJewelleryAtelier({
         )}
 
         {filteredPieces.length === 0 ? (
-          <p className="mx-auto max-w-md text-center text-house-body text-on-cream-body">
-            Pieces in this category are being prepared in the atelier. Enquire
-            for availability or select another category above.
-          </p>
+          <div className="mx-auto max-w-md text-center">
+            <p className="font-editorial text-[1.125rem] tracking-[0.04em] text-[#1d3c34]">
+              No pieces match your salon search
+            </p>
+            <p className="mt-3 text-house-body text-on-cream-body">
+              {salonFiltersActive
+                ? "Try broader terms — e.g. “white gold”, “emerald”, or “evening” — or clear the filters above."
+                : "Pieces in this category are being prepared in the atelier. Enquire for availability or select another category above."}
+            </p>
+          </div>
         ) : activeCategory === "bracelets" ? (
           <div className="flex flex-col gap-16 md:gap-20">
             {BRACELET_SECTIONS.map(({ kind, title }) => {

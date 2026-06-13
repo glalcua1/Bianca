@@ -48,7 +48,13 @@ function CalculatorContent() {
             <p className="mt-3 max-w-2xl text-house-body text-on-cream-muted">
               Real-time bespoke pricing for gold, diamonds, and precious stones.
               Configure designs dynamically, compare variants, and generate
-              customer quotations.
+              customer quotations.{" "}
+              <a
+                href="/golden-ratio-evaluation"
+                className="text-gold-on-cream underline-offset-4 hover:underline"
+              >
+                Evaluate proportions against the golden ratio →
+              </a>
             </p>
           </motion.div>
 

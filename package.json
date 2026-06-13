@@ -6,6 +6,7 @@
   "scripts": {
     "build": "vite build && node scripts/verify-public-assets.mjs",
     "dev": "vite",
+    "setup:golden-ratio": "python3 -m venv .venv-golden-ratio && .venv-golden-ratio/bin/pip install -r scripts/golden_ratio/requirements.txt",
     "cap:sync": "npm run build && npx cap sync",
     "cap:ios": "npm run cap:sync && npx cap open ios"
   },
@@ -93,5 +94,8 @@
     "overrides": {
       "vite": "6.3.5"
     }
+  },
+  "optionalDependencies": {
+    "sharp": "^0.35.1"
   }
 }
