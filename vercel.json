@@ -3,10 +3,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "functions": {
-    "api/golden-ratio-analyze.js": {
-      "maxDuration": 60,
-      "excludeFiles": "{.venv-golden-ratio/**,scripts/golden_ratio/**}"
-    },
     "api/exchange-rates.js": {
       "maxDuration": 10
     }
