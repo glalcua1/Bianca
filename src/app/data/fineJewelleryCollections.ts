@@ -588,7 +588,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Emerald Garden",
     gemstoneSpec: "1 ct centre gemstone",
     goldSpec: "3.5 to 4 gm gold",
-    salonPriceInr: 95_000,
+    salonPriceInr: 98_000,
     description:
       "An emerald-toned centre stone (~1 ct) in 3.5 to 4 gm refined gold — captured in salon motion, the facets turning with light as the piece is composed for the hand.",
   },
@@ -603,7 +603,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Ruby Éclat",
     gemstoneSpec: "1 ct centre gemstone",
     goldSpec: "3.5 to 4 gm gold",
-    salonPriceInr: 95_000,
+    salonPriceInr: 98_000,
     description:
       "Deep ruby fire (~1 ct centre gemstone) held in 3.5 to 4 gm polished gold — a salon film revealing depth, colour, and the house's precision from every angle.",
   },
@@ -618,7 +618,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Sapphire Lumière",
     gemstoneSpec: "1 ct centre gemstone",
     goldSpec: "3.5 to 4 gm gold",
-    salonPriceInr: 95_000,
+    salonPriceInr: 98_000,
     description:
       "A blue sapphire (~1 ct) radiant in 3.5 to 4 gm white gold — salon motion tracing the stone's fire and the continuous brilliance of the band.",
   },

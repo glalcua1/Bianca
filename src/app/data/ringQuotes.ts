@@ -423,7 +423,7 @@ export const RING_QUOTES: Record<string, RingQuote> = {
 } as const;
 
 /** Atelier salon markup applied to workbook base prices */
-export const SALON_MARKUP_INR = 25_000;
+export const SALON_MARKUP_INR = 28_000;
 
 export function applySalonMarkup(basePriceInr: number): number {
   return basePriceInr + SALON_MARKUP_INR;

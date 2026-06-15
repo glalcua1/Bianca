@@ -160,7 +160,7 @@ export const BESPOKE_SALON_PIECES: BespokeSalonPiece[] = [
     reference: "BD-G-RG-036",
     gemstoneWeight: "1 ct centre gemstone",
     goldWeight: "3.5 to 4 gm gold",
-    priceInr: 95_000,
+    priceInr: 98_000,
   },
   {
     id: "highlight-sapphire-study",
@@ -174,7 +174,7 @@ export const BESPOKE_SALON_PIECES: BespokeSalonPiece[] = [
     reference: "BD-G-RG-038",
     gemstoneWeight: "1 ct centre gemstone",
     goldWeight: "4 to 5 gm gold",
-    priceInr: 185_000,
+    priceInr: 188_000,
   },
 ];
 
