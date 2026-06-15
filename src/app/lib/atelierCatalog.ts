@@ -1,4 +1,8 @@
 import type { AtelierPiece, JewelleryCategoryId } from "../data/fineJewelleryCollections";
+import {
+  getEarringQuote,
+  getParureQuotesForNecklace,
+} from "../data/necklaceQuotes";
 import { getRingQuote } from "../data/ringQuotes";
 
 export type AtelierFilterOption = {
@@ -138,28 +142,69 @@ export function buildCatalogEntry(piece: AtelierPiece): AtelierCatalogEntry {
   addKeywordTags(prose, tags);
 
   let salonPriceInr: number | null = null;
-  const quote = piece.category === "rings" ? getRingQuote(piece.productCode) : undefined;
-  if (quote) {
-    salonPriceInr = quote.priceInr;
+  const ringQuote =
+    piece.category === "rings" ? getRingQuote(piece.productCode) : undefined;
+  const parureQuotes =
+    piece.category === "necklaces"
+      ? getParureQuotesForNecklace(piece.productCode)
+      : undefined;
+  const earringQuote =
+    piece.category === "earrings"
+      ? getEarringQuote(piece.productCode)
+      : undefined;
+
+  if (ringQuote) {
+    salonPriceInr = ringQuote.priceInr;
     tags.add(ringPriceBand(salonPriceInr));
-    addKeywordTags(`${quote.metal} ${quote.diamondShapes} ${quote.centreStone ?? ""}`, tags);
-    if (quote.metal.includes("white")) tags.add("white-gold");
-    if (quote.metal.includes("yellow")) tags.add("yellow-gold");
-    if (quote.metal.includes("rose")) tags.add("rose-gold");
-    if (quote.metal.includes("tri-tone") || quote.metal.includes("&")) tags.add("tri-tone");
+    addKeywordTags(
+      `${ringQuote.metal} ${ringQuote.diamondShapes} ${ringQuote.centreStone ?? ""}`,
+      tags,
+    );
+    if (ringQuote.metal.includes("white")) tags.add("white-gold");
+    if (ringQuote.metal.includes("yellow")) tags.add("yellow-gold");
+    if (ringQuote.metal.includes("rose")) tags.add("rose-gold");
+    if (ringQuote.metal.includes("tri-tone") || ringQuote.metal.includes("&")) {
+      tags.add("tri-tone");
+    }
+  } else if (parureQuotes) {
+    salonPriceInr =
+      parureQuotes.necklace.priceInr + (parureQuotes.earrings?.priceInr ?? 0);
+    tags.add(ringPriceBand(salonPriceInr));
+    addKeywordTags(
+      `${parureQuotes.necklace.metal} ${parureQuotes.necklace.diamondShapes} ${parureQuotes.necklace.centreStone ?? ""}`,
+      tags,
+    );
+    if (parureQuotes.necklace.metal.includes("yellow")) tags.add("yellow-gold");
+    if (parureQuotes.earrings) tags.add("parure");
+  } else if (earringQuote) {
+    salonPriceInr = earringQuote.priceInr;
+    tags.add(ringPriceBand(salonPriceInr));
+    addKeywordTags(
+      `${earringQuote.metal} ${earringQuote.diamondShapes} ${earringQuote.centreStone ?? ""}`,
+      tags,
+    );
+    if (earringQuote.metal.includes("yellow")) tags.add("yellow-gold");
   } else if (piece.salonPriceInr) {
     salonPriceInr = piece.salonPriceInr;
     tags.add(ringPriceBand(salonPriceInr));
   }
 
-  addStoneColourTags(tags, prose, quote);
+  addStoneColourTags(tags, prose, ringQuote);
 
   const searchText = [
     prose,
-    quote?.metal,
-    quote?.diamondShapes,
-    quote?.centreStone,
-    quote?.styleCode,
+    ringQuote?.metal,
+    ringQuote?.diamondShapes,
+    ringQuote?.centreStone,
+    parureQuotes?.necklace.metal,
+    parureQuotes?.necklace.diamondShapes,
+    parureQuotes?.necklace.centreStone,
+    parureQuotes?.necklace.styleCode,
+    parureQuotes?.earrings?.styleCode,
+    earringQuote?.metal,
+    earringQuote?.diamondShapes,
+    earringQuote?.centreStone,
+    ringQuote?.styleCode,
     salonPriceInr ? `₹${salonPriceInr}` : null,
     [...tags].join(" "),
   ]

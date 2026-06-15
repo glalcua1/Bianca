@@ -2,7 +2,15 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { MessageCircle } from "lucide-react";
 import type { AtelierPiece } from "../data/fineJewelleryCollections";
 import { atelierPieceEyebrow } from "../data/fineJewelleryCollections";
+import {
+  getEarringQuote,
+  getParureQuotesForNecklace,
+} from "../data/necklaceQuotes";
 import { getRingQuote, formatRingPriceInr } from "../data/ringQuotes";
+import {
+  buildCustomerParureDetails,
+  type CustomerParureDetails,
+} from "../lib/necklaceQuoteCopy";
 import { buildCustomerRingDetails } from "../lib/ringQuoteCopy";
 
 type Props = {
@@ -52,15 +60,223 @@ function OrnamentalRule({ className = "" }: { className?: string }) {
   );
 }
 
+function SalonValuationStrip({
+  eyebrow,
+  biancaCode,
+  kiraReference,
+  priceLabel,
+  gstNote,
+}: {
+  eyebrow: string;
+  biancaCode: string | null;
+  kiraReference: string;
+  priceLabel: string;
+  gstNote: string;
+}) {
+  return (
+    <div className="border border-[#766d42]/18 bg-white/50 px-4 py-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] sm:px-5 sm:py-4">
+      <div className="flex items-start justify-between gap-5">
+        <div>
+          <p className="text-[8px] uppercase tracking-[0.28em] text-gold-on-cream">
+            {eyebrow}
+          </p>
+          <p className="mt-2 text-[8px] uppercase tracking-[0.16em] text-on-cream-muted">
+            Indicative guide
+            {biancaCode ? (
+              <>
+                <span className="mx-1.5 text-[#766d42]/35">·</span>
+                Bianca {biancaCode}
+              </>
+            ) : null}
+            <span className="mx-1.5 text-[#766d42]/35">·</span>
+            Kira {kiraReference}
+          </p>
+        </div>
+        <div className="shrink-0 text-right">
+          <p className="font-editorial text-[1.2rem] leading-none tracking-[0.02em] text-bianca-forest sm:text-[1.3125rem]">
+            <span className="tabular-nums">{priceLabel}</span>
+          </p>
+          <p className="mt-1.5 text-[8px] leading-relaxed tracking-[0.06em] text-on-cream-muted normal-case">
+            {gstNote}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ParureRegistryStrip({
+  biancaCode,
+  kiraNecklace,
+  kiraEarring,
+}: {
+  biancaCode: string;
+  kiraNecklace: string;
+  kiraEarring: string | null;
+}) {
+  return (
+    <div className="mb-3 border border-[#766d42]/22 bg-[#1d3c34]/[0.03] px-4 py-3 sm:px-5">
+      <p className="text-[8px] uppercase tracking-[0.28em] text-gold-on-cream">
+        House registry
+      </p>
+      <dl className="mt-2.5 space-y-1.5 text-[9px] uppercase tracking-[0.14em] text-on-cream-muted">
+        <div className="flex justify-between gap-4">
+          <dt>Bianca</dt>
+          <dd className="text-bianca-forest">{biancaCode}</dd>
+        </div>
+        <div className="flex justify-between gap-4">
+          <dt>Kira necklace</dt>
+          <dd className="text-bianca-forest">{kiraNecklace}</dd>
+        </div>
+        {kiraEarring ? (
+          <div className="flex justify-between gap-4">
+            <dt>Kira earrings</dt>
+            <dd className="text-bianca-forest">{kiraEarring}</dd>
+          </div>
+        ) : null}
+      </dl>
+    </div>
+  );
+}
+
+function CompositionBlock({ details }: { details: CustomerParureDetails }) {
+  return (
+    <>
+      <OrnamentalRule />
+      <p className="mt-5 text-center text-[9px] uppercase tracking-[0.26em] text-gold-on-cream">
+        {details.pieceLabel} · composition
+      </p>
+      <div className="mt-5 border-t border-[#766d42]/18">
+        <SalonSpec
+          label="Gold weight"
+          value={details.goldWeightLine}
+          detail={details.goldKaratLine}
+        />
+        <SalonSpec
+          label={details.diamondsTotalLabel}
+          value={details.diamondsTotalLine}
+          detail={details.diamondsPiecesLine}
+        />
+        {details.centrePieceLine ? (
+          <SalonSpec
+            label={details.centrePieceLabel ?? "Centre stone"}
+            value={details.centrePieceLine}
+          />
+        ) : null}
+      </div>
+    </>
+  );
+}
+
+function ParureSalonDetails({
+  biancaCode,
+  necklaceDetails,
+  earringDetails,
+}: {
+  biancaCode: string;
+  necklaceDetails: CustomerParureDetails;
+  earringDetails: CustomerParureDetails | null;
+}) {
+  return (
+    <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+      <div className="shrink-0 space-y-3 px-6 sm:px-8">
+        <ParureRegistryStrip
+          biancaCode={biancaCode}
+          kiraNecklace={necklaceDetails.reference}
+          kiraEarring={earringDetails?.reference ?? null}
+        />
+        <SalonValuationStrip
+          eyebrow="Necklace · salon valuation"
+          biancaCode={necklaceDetails.biancaCode}
+          kiraReference={necklaceDetails.reference}
+          priceLabel={necklaceDetails.priceLabel}
+          gstNote={necklaceDetails.priceGstNote}
+        />
+        {earringDetails ? (
+          <SalonValuationStrip
+            eyebrow="Earrings · salon valuation"
+            biancaCode={earringDetails.biancaCode}
+            kiraReference={earringDetails.reference}
+            priceLabel={earringDetails.priceLabel}
+            gstNote={earringDetails.priceGstNote}
+          />
+        ) : null}
+      </div>
+
+      <div
+        id="atelier-lightbox-description"
+        className="min-h-0 flex-1 overflow-y-auto px-6 pt-5 pb-6 sm:px-8 sm:pt-6 sm:pb-7"
+      >
+        <CompositionBlock details={necklaceDetails} />
+        {earringDetails ? (
+          <div className="mt-8">
+            <CompositionBlock details={earringDetails} />
+          </div>
+        ) : null}
+        <OrnamentalRule className="mt-6" />
+      </div>
+    </div>
+  );
+}
+
+function EarringSalonDetails({ details }: { details: CustomerParureDetails }) {
+  return (
+    <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+      <div className="shrink-0 px-6 sm:px-8">
+        <SalonValuationStrip
+          eyebrow="Earrings · salon valuation"
+          biancaCode={details.biancaCode}
+          kiraReference={details.reference}
+          priceLabel={details.priceLabel}
+          gstNote={details.priceGstNote}
+        />
+      </div>
+      <div
+        id="atelier-lightbox-description"
+        className="min-h-0 flex-1 overflow-y-auto px-6 pt-5 pb-6 sm:px-8 sm:pt-6 sm:pb-7"
+      >
+        <CompositionBlock details={details} />
+        <OrnamentalRule className="mt-6" />
+      </div>
+    </div>
+  );
+}
+
 export default function AtelierSalonPanel({
   piece,
   onEnquire,
   enquiryLoading,
 }: Props) {
   const reduceMotion = useReducedMotion();
-  const quote = piece.category === "rings" ? getRingQuote(piece.productCode) : undefined;
-  const details = quote ? buildCustomerRingDetails(quote) : null;
-  const guidePriceInr = quote?.priceInr ?? piece.salonPriceInr;
+  const ringQuote =
+    piece.category === "rings" ? getRingQuote(piece.productCode) : undefined;
+  const ringDetails = ringQuote ? buildCustomerRingDetails(ringQuote) : null;
+  const parureQuotes =
+    piece.category === "necklaces"
+      ? getParureQuotesForNecklace(piece.productCode)
+      : undefined;
+  const necklaceParureDetails = parureQuotes
+    ? buildCustomerParureDetails(
+        parureQuotes.necklace,
+        "Necklace",
+        piece.productCode,
+      )
+    : null;
+  const earringParureDetails = parureQuotes?.earrings
+    ? buildCustomerParureDetails(parureQuotes.earrings, "Earrings", null)
+    : null;
+  const earringQuote =
+    piece.category === "earrings"
+      ? getEarringQuote(piece.productCode)
+      : undefined;
+  const earringOnlyDetails = earringQuote
+    ? buildCustomerParureDetails(earringQuote, "Earrings")
+    : null;
+  const guidePriceInr =
+    ringQuote?.priceInr ??
+    parureQuotes?.necklace.priceInr ??
+    earringQuote?.priceInr ??
+    piece.salonPriceInr;
   const guidePriceLabel = guidePriceInr ? formatRingPriceInr(guidePriceInr) : null;
   const hasFilmSpecs = Boolean(piece.gemstoneSpec || piece.goldSpec);
 
@@ -82,7 +298,6 @@ export default function AtelierSalonPanel({
         aria-live="polite"
         aria-atomic="true"
       >
-        {/* Title */}
         <div className="shrink-0 px-6 pt-7 pb-5 sm:px-8 sm:pt-8">
           <p className="text-[9px] uppercase tracking-[0.28em] text-gold-on-cream">
             {atelierPieceEyebrow(piece)}
@@ -95,35 +310,17 @@ export default function AtelierSalonPanel({
           </p>
         </div>
 
-        {details ? (
+        {ringDetails ? (
           <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
-            {/* Salon valuation — discreet catalogue strip */}
             <div className="shrink-0 px-6 sm:px-8">
-              <div className="border border-[#766d42]/18 bg-white/50 px-4 py-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] sm:px-5 sm:py-4">
-                <div className="flex items-start justify-between gap-5">
-                  <div>
-                    <p className="text-[8px] uppercase tracking-[0.28em] text-gold-on-cream">
-                      Salon valuation
-                    </p>
-                    <p className="mt-2 text-[8px] uppercase tracking-[0.16em] text-on-cream-muted">
-                      Indicative guide
-                      <span className="mx-1.5 text-[#766d42]/35">·</span>
-                      Ref. {details.reference}
-                    </p>
-                  </div>
-                  <div className="shrink-0 text-right">
-                    <p className="font-editorial text-[1.2rem] leading-none tracking-[0.02em] text-bianca-forest sm:text-[1.3125rem]">
-                      <span className="tabular-nums">{details.priceLabel}</span>
-                    </p>
-                    <p className="mt-1.5 text-[8px] leading-relaxed tracking-[0.06em] text-on-cream-muted normal-case">
-                      {details.priceGstNote}
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <SalonValuationStrip
+                eyebrow="Salon valuation"
+                biancaCode={null}
+                kiraReference={ringDetails.reference}
+                priceLabel={ringDetails.priceLabel}
+                gstNote={ringDetails.priceGstNote}
+              />
             </div>
-
-            {/* Composition */}
             <div
               id="atelier-lightbox-description"
               className="min-h-0 flex-1 overflow-y-auto px-6 pt-5 pb-6 sm:px-8 sm:pt-6 sm:pb-7"
@@ -135,49 +332,44 @@ export default function AtelierSalonPanel({
               <div className="mt-5 border-t border-[#766d42]/18">
                 <SalonSpec
                   label="Gold weight"
-                  value={details.goldWeightLine}
-                  detail={details.goldKaratLine}
+                  value={ringDetails.goldWeightLine}
+                  detail={ringDetails.goldKaratLine}
                 />
                 <SalonSpec
-                  label={details.diamondsTotalLabel}
-                  value={details.diamondsTotalLine}
-                  detail={details.diamondsPiecesLine}
+                  label={ringDetails.diamondsTotalLabel}
+                  value={ringDetails.diamondsTotalLine}
+                  detail={ringDetails.diamondsPiecesLine}
                 />
-                {details.centrePieceLine ? (
+                {ringDetails.centrePieceLine ? (
                   <SalonSpec
-                    label={details.centrePieceLabel ?? "Centre piece"}
-                    value={details.centrePieceLine}
-                    detail={details.centrePieceDetail ?? undefined}
+                    label={ringDetails.centrePieceLabel ?? "Centre piece"}
+                    value={ringDetails.centrePieceLine}
+                    detail={ringDetails.centrePieceDetail ?? undefined}
                   />
                 ) : null}
               </div>
               <OrnamentalRule className="mt-6" />
             </div>
           </div>
+        ) : necklaceParureDetails ? (
+          <ParureSalonDetails
+            biancaCode={piece.productCode}
+            necklaceDetails={necklaceParureDetails}
+            earringDetails={earringParureDetails}
+          />
+        ) : earringOnlyDetails ? (
+          <EarringSalonDetails details={earringOnlyDetails} />
         ) : guidePriceLabel && hasFilmSpecs ? (
           <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
             <div className="shrink-0 px-6 sm:px-8">
-              <div className="border border-[#766d42]/18 bg-white/50 px-4 py-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] sm:px-5 sm:py-4">
-                <div className="flex items-start justify-between gap-5">
-                  <div>
-                    <p className="text-[8px] uppercase tracking-[0.28em] text-gold-on-cream">
-                      Salon valuation
-                    </p>
-                    <p className="mt-2 text-[8px] uppercase tracking-[0.16em] text-on-cream-muted">
-                      Indicative guide
-                      <span className="mx-1.5 text-[#766d42]/35">·</span>
-                      Ref. {piece.productCode}
-                    </p>
-                  </div>
-                  <div className="shrink-0 text-right">
-                    <p className="font-editorial text-[1.2rem] leading-none tracking-[0.02em] text-bianca-forest sm:text-[1.3125rem]">
-                      <span className="tabular-nums">{guidePriceLabel}</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <SalonValuationStrip
+                eyebrow="Salon valuation"
+                biancaCode={piece.productCode}
+                kiraReference={piece.productCode}
+                priceLabel={guidePriceLabel}
+                gstNote="GST 3% extra · not included in price"
+              />
             </div>
-
             <div
               id="atelier-lightbox-description"
               className="min-h-0 flex-1 overflow-y-auto px-6 pt-5 pb-6 sm:px-8 sm:pt-6 sm:pb-7"
@@ -212,7 +404,6 @@ export default function AtelierSalonPanel({
           </div>
         )}
 
-        {/* CTA */}
         <div className="shrink-0 border-t border-[#766d42]/15 bg-[#f4f0e6]/90 px-6 py-5 backdrop-blur-[1px] sm:px-8">
           <button
             type="button"

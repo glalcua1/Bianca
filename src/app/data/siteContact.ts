@@ -42,6 +42,12 @@ export const SITE_NAV_ITEMS: {
     to: "/bespoke-jewellery",
   },
   {
+    id: "butterfly-collection",
+    label: "Butterfly Collection",
+    desktopLabel: "Butterfly",
+    to: "/butterfly-collection",
+  },
+  {
     id: "cannes-collection",
     label: "Cannes Collection",
     desktopLabel: "Cannes",
@@ -55,6 +61,7 @@ export function consultationSourcePage(pathname: string): string {
   if (pathname.startsWith("/fine-jewellery/cannes-2026")) return "cannes-2026";
   if (pathname.startsWith("/fine-jewellery")) return "fine-jewellery";
   if (pathname.startsWith("/bespoke-jewellery")) return "bespoke-jewellery";
+  if (pathname.startsWith("/butterfly-collection")) return "butterfly-collection";
   if (pathname.startsWith("/media")) return "media";
   if (pathname.startsWith("/calculator")) return "calculator";
   if (pathname.startsWith("/golden-ratio-evaluation")) return "golden-ratio-evaluation";

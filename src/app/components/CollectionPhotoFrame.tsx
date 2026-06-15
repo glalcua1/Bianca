@@ -1,6 +1,7 @@
 import ProtectedImage from "./protection/ProtectedImage";
 import BrandImageWatermark from "./BrandImageWatermark";
 import SalonJewelVideo from "./SalonJewelVideo";
+import { ATELIER_IMAGE_SIZES } from "../lib/optimizedImage";
 
 const FRAME_WIDTH = 443;
 const FRAME_HEIGHT = 508;
@@ -70,6 +71,7 @@ export default function CollectionPhotoFrame({
                   wrapperClassName="absolute inset-0 flex items-center justify-center"
                   src={src}
                   alt={alt}
+                  sizes={ATELIER_IMAGE_SIZES}
                   loading="lazy"
                   decoding="async"
                   className="max-h-full max-w-full object-contain object-center"

@@ -173,8 +173,8 @@ export const BESPOKE_SALON_PIECES: BespokeSalonPiece[] = [
       "Oval sapphire in a split-shank white-gold mount — pavé brilliance and milgrain tracing the shoulders.",
     reference: "BD-G-RG-038",
     gemstoneWeight: "1 ct centre gemstone",
-    goldWeight: "3.5 to 4 gm gold",
-    priceInr: 95_000,
+    goldWeight: "4 to 5 gm gold",
+    priceInr: 185_000,
   },
 ];
 

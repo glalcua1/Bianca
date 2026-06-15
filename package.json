@@ -4,7 +4,10 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build": "vite build && node scripts/verify-public-assets.mjs",
+    "optimize:images": "node scripts/optimize-public-images.mjs",
+    "generate:ring-quotes": "node scripts/generate-ring-quotes.mjs",
+    "generate:necklace-quotes": "node scripts/generate-necklace-quotes.mjs",
+    "build": "node scripts/optimize-public-images.mjs && vite build && node scripts/verify-public-assets.mjs",
     "dev": "vite",
     "setup:golden-ratio": "python3 -m venv .venv-golden-ratio && .venv-golden-ratio/bin/pip install -r scripts/golden_ratio/requirements.txt",
     "cap:sync": "npm run build && npx cap sync",
@@ -77,6 +80,7 @@
   "devDependencies": {
     "@tailwindcss/vite": "4.1.12",
     "@vitejs/plugin-react": "4.7.0",
+    "sharp": "^0.35.1",
     "tailwindcss": "4.1.12",
     "vite": "6.3.5"
   },
@@ -84,8 +88,5 @@
     "overrides": {
       "vite": "6.3.5"
     }
-  },
-  "optionalDependencies": {
-    "sharp": "^0.35.1"
   }
 }

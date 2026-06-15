@@ -60,6 +60,8 @@ export default function BespokeJewelleryPage() {
                   alt="White orchids in glass vase — Bianca bespoke salon"
                   wrapperClassName="size-full"
                   className="size-full object-cover object-center"
+                  sizes="(max-width: 1024px) 90vw, 480px"
+                  loading="lazy"
                 />
               </div>
               <div className="absolute -bottom-6 -right-4 w-[55%] max-w-[220px] ring-1 ring-[#766d42]/25 shadow-[0_20px_50px_rgba(29,60,52,0.12)] md:-right-8">
@@ -209,6 +211,7 @@ export default function BespokeJewelleryPage() {
                   alt=""
                   wrapperClassName="block w-full"
                   className="w-full h-auto object-contain drop-shadow-[0_28px_56px_rgba(29,60,52,0.11)]"
+                  sizes="(max-width: 1024px) 80vw, 420px"
                   loading="lazy"
                 />
               </div>

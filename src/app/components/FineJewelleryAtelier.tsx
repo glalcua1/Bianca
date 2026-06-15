@@ -25,6 +25,22 @@ import {
   type JewelleryCategoryId,
 } from "../data/fineJewelleryCollections";
 import { getRingQuote } from "../data/ringQuotes";
+import {
+  getEarringQuote,
+  getParureQuotesForNecklace,
+} from "../data/necklaceQuotes";
+
+function pieceHasSalonQuote(piece: AtelierPiece): boolean {
+  if (piece.salonPriceInr) return true;
+  if (piece.category === "rings") return Boolean(getRingQuote(piece.productCode));
+  if (piece.category === "necklaces") {
+    return Boolean(getParureQuotesForNecklace(piece.productCode));
+  }
+  if (piece.category === "earrings") {
+    return Boolean(getEarringQuote(piece.productCode));
+  }
+  return false;
+}
 
 const BRACELET_SECTIONS: { kind: BraceletKind; title: string }[] = [
   { kind: "bracelet", title: "Bracelets" },
@@ -77,17 +93,15 @@ function renderPieceCard(
                 <span className="text-on-cream-muted"> · tap to view salon price</span>
               ) : null}
             </>
-          ) : piece.category === "rings" &&
-            (getRingQuote(piece.productCode) || piece.salonPriceInr) ? (
+          ) : pieceHasSalonQuote(piece) ? (
             <span className="text-on-cream-muted"> · tap to view salon price</span>
           ) : null}
         </p>
-        {piece.category === "rings" && (
-          <AtelierPieceQuote
-            productCode={piece.productCode}
-            variant="teaser"
-            priceInr={piece.salonPriceInr}
-          />
+        {(piece.category === "rings" ||
+          piece.category === "necklaces" ||
+          piece.category === "earrings") &&
+          pieceHasSalonQuote(piece) && (
+          <AtelierPieceQuote piece={piece} variant="teaser" />
         )}
       </div>
     </li>

@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import AtelierSalonPanel from "./AtelierSalonPanel";
 import BrandImageWatermark from "./BrandImageWatermark";
 import ProtectedImage from "./protection/ProtectedImage";
+import { ATELIER_IMAGE_SIZES } from "../lib/optimizedImage";
 import SalonJewelVideo from "./SalonJewelVideo";
 import type { AtelierPiece } from "../data/fineJewelleryCollections";
 import { PHI_INV } from "../lib/goldenRatioLayout";
@@ -153,6 +154,7 @@ export default function AtelierPieceLightbox({
                             wrapperClassName="flex h-full min-h-[200px] w-full items-center justify-center"
                             src={piece.image}
                             alt={piece.alt}
+                            sizes={ATELIER_IMAGE_SIZES}
                             loading="eager"
                             decoding="async"
                             priority

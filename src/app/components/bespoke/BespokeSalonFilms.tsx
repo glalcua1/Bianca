@@ -7,12 +7,11 @@ import {
   BESPOKE_SALON_PIECES,
   type BespokeSalonPiece,
 } from "../../data/bespokeJewellery";
+import { ATELIER_IMAGE_SIZES } from "../../lib/optimizedImage";
 import { formatRingPriceInr } from "../../data/ringQuotes";
 import {
   ATELIER_FRAME_ASPECT_RATIO,
-  PHI_INV,
   SALON_GOLDEN_GRID_COLUMNS,
-  SALON_PRICE_SECTION,
 } from "../../lib/goldenRatioLayout";
 
 function PieceThumbnail({
@@ -61,6 +60,7 @@ function PieceThumbnail({
                 alt=""
                 aria-hidden
                 wrapperClassName="absolute inset-0 flex items-center justify-center"
+                sizes={ATELIER_IMAGE_SIZES}
                 className="max-h-full max-w-full object-contain object-center"
               />
             )}
@@ -101,64 +101,59 @@ function PieceDetailPanel({
   index: number;
 }) {
   return (
-    <div className="flex min-h-0 flex-col justify-center lg:h-full">
-      <div className="shrink-0" style={{ flexBasis: `${(1 - PHI_INV) * 100}%` }}>
+    <article className="flex flex-col">
+      <header>
         <p className="text-[9px] uppercase tracking-[0.28em] text-[#dccb7b]/85">
           {piece.mediaEyebrow} · {String(index + 1).padStart(2, "0")} of{" "}
           {String(BESPOKE_SALON_PIECES.length).padStart(2, "0")}
         </p>
-        <h3 className="mt-4 font-editorial text-[clamp(1.5rem,2.8vw,2rem)] leading-[1.12] tracking-[0.04em] text-[#f9f9f9]">
+        <h3 className="mt-3 font-editorial text-[clamp(1.45rem,2.6vw,1.9rem)] leading-[1.14] tracking-[0.04em] text-[#f9f9f9]">
           {piece.title}
         </h3>
-        <p className="mt-4 text-house-body leading-relaxed text-on-forest-body">
+        <p className="mt-3 max-w-prose text-house-body leading-relaxed text-on-forest-body">
           {piece.subtitle}
         </p>
-      </div>
+      </header>
 
-      <div
-        className="mt-8 min-h-0 border-t border-[#766d42]/25 pt-6"
-        style={{ flexBasis: SALON_PRICE_SECTION }}
-      >
-        <dl className="space-y-4">
-          <div className="flex items-baseline justify-between gap-6">
-            <dt className="text-[9px] uppercase tracking-[0.22em] text-[#dccb7b]/70">
-              Centre stone
-            </dt>
-            <dd className="font-editorial text-[1rem] tracking-[0.02em] text-[#f9f9f9]">
-              {piece.gemstoneWeight}
-            </dd>
-          </div>
-          <div className="flex items-baseline justify-between gap-6">
-            <dt className="text-[9px] uppercase tracking-[0.22em] text-[#dccb7b]/70">
-              Gold
-            </dt>
-            <dd className="font-editorial text-[1rem] tracking-[0.02em] text-[#f9f9f9]">
-              {piece.goldWeight}
-            </dd>
-          </div>
-          <div className="flex items-baseline justify-between gap-6 border-t border-[#766d42]/20 pt-4">
-            <dt className="text-[9px] uppercase tracking-[0.22em] text-[#dccb7b]/70">
-              Salon guide
-            </dt>
-            <dd className="font-editorial text-[1.125rem] tabular-nums tracking-[0.02em] text-[#f9f9f9]">
-              {formatRingPriceInr(piece.priceInr)}
-            </dd>
-          </div>
-        </dl>
-      </div>
+      <dl className="mt-7 space-y-0 border border-[#766d42]/28 bg-[#243f38]/35 p-5 sm:p-6">
+        <div className="flex items-baseline justify-between gap-4 border-b border-[#766d42]/20 pb-3.5">
+          <dt className="text-[9px] uppercase tracking-[0.22em] text-[#dccb7b]/70">
+            Centre stone
+          </dt>
+          <dd className="text-right font-editorial text-[0.95rem] tracking-[0.02em] text-[#f9f9f9]">
+            {piece.gemstoneWeight}
+          </dd>
+        </div>
+        <div className="flex items-baseline justify-between gap-4 border-b border-[#766d42]/20 py-3.5">
+          <dt className="text-[9px] uppercase tracking-[0.22em] text-[#dccb7b]/70">
+            Gold
+          </dt>
+          <dd className="text-right font-editorial text-[0.95rem] tracking-[0.02em] text-[#f9f9f9]">
+            {piece.goldWeight}
+          </dd>
+        </div>
+        <div className="flex items-baseline justify-between gap-4 pt-3.5">
+          <dt className="text-[9px] uppercase tracking-[0.22em] text-[#dccb7b]/70">
+            Salon guide
+          </dt>
+          <dd className="text-right font-editorial text-[1.05rem] tabular-nums tracking-[0.02em] text-[#f9f9f9]">
+            {formatRingPriceInr(piece.priceInr)}
+          </dd>
+        </div>
+      </dl>
 
-      <div className="mt-6 shrink-0 lg:mt-8">
-        <p className="border-l border-[#dccb7b]/50 pl-5 text-house-body leading-relaxed text-on-forest-body">
+      <blockquote className="mt-6 border-l border-[#dccb7b]/45 pl-5">
+        <p className="text-house-body leading-relaxed text-on-forest-body">
           Available with your choice of{" "}
           <span className="text-[#f9f9f9]">lab-grown gemstones</span> or{" "}
           <span className="text-[#f9f9f9]">lab-grown diamonds</span> — composed
           to your specification in a private salon consultation.
         </p>
-        <p className="mt-6 text-[10px] uppercase tracking-[0.2em] text-[#dccb7b]/55">
-          Ref. {piece.reference}
-        </p>
-      </div>
-    </div>
+      </blockquote>
+      <p className="mt-5 text-[10px] uppercase tracking-[0.2em] text-[#dccb7b]/55">
+        Ref. {piece.reference}
+      </p>
+    </article>
   );
 }
 
@@ -191,62 +186,62 @@ export default function BespokeSalonFilms() {
           eyebrow="Featured Compositions"
           title="Where Craft Meets Light"
           subtitle="Two rings from the atelier — one captured in salon motion, one composed in still light. Select a piece to study stone, gold, and proportion."
+          className="mb-0 md:mb-0"
         />
 
-        <EditorialReveal className="mt-14 md:mt-16">
+        <EditorialReveal className="mt-10 md:mt-12">
           <div
-            className="grid grid-cols-1 items-stretch gap-10 max-lg:grid-cols-1 lg:gap-12 lg:[grid-template-columns:var(--salon-grid)] xl:gap-16"
+            className="grid grid-cols-1 items-start gap-8 lg:gap-10 lg:[grid-template-columns:var(--salon-grid)] xl:gap-14"
             style={goldenGridStyle}
           >
-            {/* φ — frame column (61.8%) */}
-            <div className="flex min-w-0 flex-col">
-              <div className="relative min-w-0">
-                <div
-                  className="pointer-events-none absolute -inset-3 rounded-sm bg-[#dccb7b]/[0.06] blur-2xl sm:-inset-4"
-                  aria-hidden
-                />
-                <div className="relative">
-                  <CollectionPhotoFrame
-                    key={activePiece.id}
-                    fluid
-                    imageWellColor="#faf8f5"
-                    src={activePiece.src}
-                    video={
-                      activePiece.kind === "video" ? activePiece.src : undefined
-                    }
-                    videoObjectFit="contain"
-                    alt={activePiece.alt}
-                    data-name={activePiece.id}
-                  />
-                  <div
-                    className="pointer-events-none absolute left-5 top-5 z-10 border border-[#766d42]/30 bg-[#1d3c34]/55 px-2.5 py-1 text-[8px] uppercase tracking-[0.22em] text-[#dccb7b] backdrop-blur-[2px] md:left-7 md:top-7"
-                    aria-hidden
-                  >
-                    {activePiece.mediaEyebrow}
-                  </div>
-                </div>
-              </div>
-
+            {/* Frame — first on all breakpoints */}
+            <div className="relative order-1 min-w-0 lg:col-start-1 lg:row-start-1">
               <div
-                className="mx-auto mt-5 grid w-full max-w-[11rem] grid-cols-2 gap-2.5 sm:max-w-[12.5rem] sm:gap-3 lg:mx-0"
-                role="tablist"
-                aria-label="Featured bespoke rings"
-              >
-                {BESPOKE_SALON_PIECES.map((piece, index) => (
-                  <PieceThumbnail
-                    key={piece.id}
-                    piece={piece}
-                    index={index}
-                    isActive={index === activeIndex}
-                    onSelect={() => setActiveIndex(index)}
-                  />
-                ))}
+                className="pointer-events-none absolute -inset-3 rounded-sm bg-[#dccb7b]/[0.06] blur-2xl sm:-inset-4"
+                aria-hidden
+              />
+              <div className="relative mx-auto w-full max-w-[min(100%,28rem)] lg:mx-0 lg:max-w-none">
+                <CollectionPhotoFrame
+                  key={activePiece.id}
+                  fluid
+                  imageWellColor="#faf8f5"
+                  src={activePiece.src}
+                  video={
+                    activePiece.kind === "video" ? activePiece.src : undefined
+                  }
+                  videoObjectFit="contain"
+                  alt={activePiece.alt}
+                  data-name={activePiece.id}
+                />
+                <div
+                  className="pointer-events-none absolute left-5 top-5 z-10 border border-[#766d42]/30 bg-[#1d3c34]/55 px-2.5 py-1 text-[8px] uppercase tracking-[0.22em] text-[#dccb7b] backdrop-blur-[2px] md:left-7 md:top-7"
+                  aria-hidden
+                >
+                  {activePiece.mediaEyebrow}
+                </div>
               </div>
             </div>
 
-            {/* 1 — detail column (38.2%) */}
-            <div className="flex min-w-0 flex-col lg:min-h-0 lg:justify-center">
+            {/* Detail — under frame on mobile; beside frame on desktop */}
+            <div className="order-2 min-w-0 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-center lg:pt-0 xl:pt-2">
               <PieceDetailPanel piece={activePiece} index={activeIndex} />
+            </div>
+
+            {/* Thumbnails — after detail on mobile; under frame on desktop */}
+            <div
+              className="order-3 mx-auto grid w-full max-w-[min(100%,16rem)] grid-cols-2 gap-3 sm:max-w-[17.5rem] lg:col-start-1 lg:row-start-2 lg:mx-0"
+              role="tablist"
+              aria-label="Featured bespoke rings"
+            >
+              {BESPOKE_SALON_PIECES.map((piece, index) => (
+                <PieceThumbnail
+                  key={piece.id}
+                  piece={piece}
+                  index={index}
+                  isActive={index === activeIndex}
+                  onSelect={() => setActiveIndex(index)}
+                />
+              ))}
             </div>
           </div>
         </EditorialReveal>

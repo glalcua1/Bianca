@@ -4,6 +4,7 @@ export type NavActiveItem =
   | "the-house"
   | "fine-jewellery"
   | "bespoke-jewellery"
+  | "butterfly-collection"
   | "cannes-collection"
   | "media";
 

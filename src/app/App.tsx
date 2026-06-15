@@ -9,6 +9,7 @@ import CalculatorPage from "./pages/CalculatorPage";
 import LabGrownDiamondFaqPage from "./pages/LabGrownDiamondFaqPage";
 import ContactPage from "./pages/ContactPage";
 import BespokeJewelleryPage from "./pages/BespokeJewelleryPage";
+import ButterflyCollectionPage from "./pages/ButterflyCollectionPage";
 import GoldenRatioEvaluationPage from "./pages/GoldenRatioEvaluationPage";
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
         />
         <Route path="/fine-jewellery" element={<FineJewelleryPage />} />
         <Route path="/bespoke-jewellery" element={<BespokeJewelleryPage />} />
+        <Route path="/butterfly-collection" element={<ButterflyCollectionPage />} />
         <Route path="/media" element={<MediaPage />} />
         <Route path="/calculator" element={<CalculatorPage />} />
         <Route
