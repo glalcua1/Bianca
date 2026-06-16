@@ -793,6 +793,22 @@
     },
     "sizes": "(max-width: 768px) 100vw, 1280px"
   },
+  "/Rings/Mens1.JPG": {
+    "original": "/Rings/Mens1.JPG",
+    "webp": {
+      "443": "/media/opt/Rings/Mens1-443.webp",
+      "886": "/media/opt/Rings/Mens1-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/Mens2.JPG": {
+    "original": "/Rings/Mens2.JPG",
+    "webp": {
+      "443": "/media/opt/Rings/Mens2-443.webp",
+      "886": "/media/opt/Rings/Mens2-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
   "/Rings/Blue_new.png": {
     "original": "/Rings/Blue_new.png",
     "webp": {
@@ -806,6 +822,14 @@
     "webp": {
       "443": "/media/opt/Rings/IMG_7432-443.webp",
       "886": "/media/opt/Rings/IMG_7432-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/Mens1a.JPG": {
+    "original": "/Rings/Mens1a.JPG",
+    "webp": {
+      "443": "/media/opt/Rings/Mens1a-443.webp",
+      "886": "/media/opt/Rings/Mens1a-886.webp"
     },
     "sizes": "(max-width: 768px) 90vw, 443px"
   },

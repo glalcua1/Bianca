@@ -1,7 +1,7 @@
-import imgRectangle11 from "figma:asset/5ba4358549f78481bb5595ef12a37c5f59d7d33d.png";
+import imgRectangle11 from "figma:asset/Bianca_ring.png";
 import imgPackagingBox from "figma:asset/200f28676d6a2eae898fcdcd9f13ebcd75250299.png";
 import imgPackagingBag from "figma:asset/75d88e2bc003dea111ea5784491167b05e57ecdf.png";
-import imgPackagingPouch from "figma:asset/e5c39fcf4ff37608e7feb29dff2a18144e8108fe.png";
+import imgPackagingPouch from "figma:asset/Bianca_boxes.png";
 import imgImage1 from "figma:asset/ffad195494173b3c37c4aa05d64af9f2620a7643.png";
 import ProtectedImage from "./protection/ProtectedImage";
 

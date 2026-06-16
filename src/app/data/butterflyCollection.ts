@@ -42,7 +42,7 @@ export type ButterflySalonPiece = {
 export const BUTTERFLY_SALON_PIECES: ButterflySalonPiece[] = [
   {
     id: "sapphire-parure",
-    src: "/Butterfly.png",
+    src: "/Butterfly_2.png",
     alt: "Sapphire butterfly brooch and matching earring suite on royal velvet — Bianca Butterfly Collection",
     eyebrow: "Salon parure",
     title: "Sapphire Monarch",

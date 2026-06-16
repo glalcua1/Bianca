@@ -40,6 +40,8 @@ export type AtelierPiece = {
   imageWellColor?: string;
   /** Salon film — loops in catalogue; typically without Excel pricing */
   video?: string;
+  /** Additional still views of the same piece (salon lightbox) */
+  galleryImages?: string[];
   /** Fixed salon guide price when not in Excel catalogue */
   salonPriceInr?: number;
   gemstoneSpec?: string;
@@ -62,6 +64,14 @@ export function atelierPieceUsesDarkWell(piece: AtelierPiece): boolean {
     return piece.imageWellColor.toLowerCase() === "#0a0a0a";
   }
   return piece.category === "necklaces";
+}
+
+/** Primary image plus any extra salon views for the same piece */
+export function atelierPieceViews(piece: AtelierPiece): string[] {
+  if (piece.video) return [];
+  const extra = piece.galleryImages ?? [];
+  if (extra.length === 0) return [piece.image];
+  return [piece.image, ...extra];
 }
 
 /** Beige/cream photography first, black-background pieces after — stable within each group. */
@@ -1230,5 +1240,28 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Signet Line",
     description:
       "A bold band with inset brilliants — masculine restraint meets the house standard of cut, clarity, and craft.",
+  },
+  {
+    id: "for-him-maison-band",
+    category: "for-him",
+    productCode: "BD-K-MN-002",
+    image: "/Rings/Mens1.JPG",
+    galleryImages: ["/Rings/Mens1a.JPG"],
+    imageWellColor: "#faf8f5",
+    alt: "Maison Band — men's diamond band in white gold, salon view",
+    title: "Maison Band",
+    description:
+      "A substantial white-gold band with channel-set brilliants — clean planes and weight on the hand, composed for everyday presence.",
+  },
+  {
+    id: "for-him-architect-band",
+    category: "for-him",
+    productCode: "BD-K-MN-003",
+    image: "/Rings/Mens2.JPG",
+    imageWellColor: "#faf8f5",
+    alt: "Architect Band — men's geometric diamond band",
+    title: "Architect Band",
+    description:
+      "Geometric links and pavé accents in polished gold — architectural rhythm and salon-scale brilliance for the modern gentleman.",
   },
 ];

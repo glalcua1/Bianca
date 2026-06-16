@@ -57,7 +57,7 @@ function renderPieceCard(
         type="button"
         onClick={() => onOpenPiece(piece)}
         className="group relative mx-auto w-full min-w-0 max-w-[443px] cursor-zoom-in text-left outline-none transition duration-300 focus-visible:ring-2 focus-visible:ring-[#766d42]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f5] md:max-w-none"
-        aria-label={`View ${piece.title} — enlarged salon presentation`}
+        aria-label={`View ${piece.title} — enlarged salon presentation${piece.galleryImages?.length ? " — multiple views in salon" : ""}`}
       >
         <CollectionPhotoFrame
           fluid

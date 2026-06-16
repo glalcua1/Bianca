@@ -8,6 +8,7 @@ import ProtectedImage from "./protection/ProtectedImage";
 import { ATELIER_IMAGE_SIZES } from "../lib/optimizedImage";
 import SalonJewelVideo from "./SalonJewelVideo";
 import type { AtelierPiece } from "../data/fineJewelleryCollections";
+import { atelierPieceViews } from "../data/fineJewelleryCollections";
 import { PHI_INV } from "../lib/goldenRatioLayout";
 import { consultationSourcePage } from "../data/siteContact";
 import { openAtelierPiecePriceEnquiry } from "../lib/atelierEnquiry";
@@ -35,12 +36,32 @@ export default function AtelierPieceLightbox({
 }: Props) {
   const location = useLocation();
   const [enquiryLoading, setEnquiryLoading] = useState(false);
+  const [viewIndex, setViewIndex] = useState(0);
   const total = pieces.length;
   const safeIndex =
     total === 0 ? 0 : Math.min(Math.max(activeIndex, 0), total - 1);
   const piece = pieces[safeIndex] ?? null;
+  const views = piece ? atelierPieceViews(piece) : [];
+  const safeViewIndex =
+    views.length === 0 ? 0 : Math.min(Math.max(viewIndex, 0), views.length - 1);
+  const activeImage = views[safeViewIndex] ?? piece?.image ?? "";
+  const hasMultipleViews = views.length > 1;
   const hasPrev = safeIndex > 0;
   const hasNext = safeIndex < total - 1;
+  const hasPrevView = safeViewIndex > 0;
+  const hasNextView = safeViewIndex < views.length - 1;
+
+  useEffect(() => {
+    setViewIndex(0);
+  }, [piece?.id]);
+
+  const goPrevView = useCallback(() => {
+    if (hasPrevView) setViewIndex((index) => index - 1);
+  }, [hasPrevView]);
+
+  const goNextView = useCallback(() => {
+    if (hasNextView) setViewIndex((index) => index + 1);
+  }, [hasNextView]);
 
   const goPrev = useCallback(() => {
     if (hasPrev) onActiveIndexChange(safeIndex - 1);
@@ -69,16 +90,18 @@ export default function AtelierPieceLightbox({
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "ArrowLeft") {
         event.preventDefault();
-        goPrev();
+        if (hasPrevView) goPrevView();
+        else goPrev();
       } else if (event.key === "ArrowRight") {
         event.preventDefault();
-        goNext();
+        if (hasNextView) goNextView();
+        else goNext();
       }
     }
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open, goPrev, goNext]);
+  }, [open, goPrev, goNext, goPrevView, goNextView, hasPrevView, hasNextView]);
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -150,10 +173,14 @@ export default function AtelierPieceLightbox({
                           </div>
                         ) : (
                           <ProtectedImage
-                            key={piece.id}
+                            key={`${piece.id}-${safeViewIndex}`}
                             wrapperClassName="flex h-full min-h-[200px] w-full items-center justify-center"
-                            src={piece.image}
-                            alt={piece.alt}
+                            src={activeImage}
+                            alt={
+                              hasMultipleViews
+                                ? `${piece.alt} — view ${safeViewIndex + 1} of ${views.length}`
+                                : piece.alt
+                            }
                             sizes={ATELIER_IMAGE_SIZES}
                             loading="eager"
                             decoding="async"
@@ -164,6 +191,32 @@ export default function AtelierPieceLightbox({
                       </div>
                     </div>
                   </div>
+
+                  {hasMultipleViews ? (
+                    <div className="relative z-20 flex shrink-0 items-center justify-center gap-2 border-t border-[#766d42]/20 px-3 py-2.5 sm:px-5">
+                      <button
+                        type="button"
+                        onClick={goPrevView}
+                        disabled={!hasPrevView}
+                        className="inline-flex size-8 items-center justify-center border border-[#dccb7b]/35 text-[#f4f0e6] transition duration-150 hover:border-[#dccb7b] hover:text-[#dccb7b] disabled:pointer-events-none disabled:opacity-30 motion-reduce:transition-none"
+                        aria-label="Previous view"
+                      >
+                        <ChevronLeft className="size-4" strokeWidth={1.25} />
+                      </button>
+                      <p className="min-w-[5.5rem] text-center text-[9px] uppercase tracking-[0.2em] text-[#dccb7b]/85 tabular-nums">
+                        View {safeViewIndex + 1} / {views.length}
+                      </p>
+                      <button
+                        type="button"
+                        onClick={goNextView}
+                        disabled={!hasNextView}
+                        className="inline-flex size-8 items-center justify-center border border-[#dccb7b]/35 text-[#f4f0e6] transition duration-150 hover:border-[#dccb7b] hover:text-[#dccb7b] disabled:pointer-events-none disabled:opacity-30 motion-reduce:transition-none"
+                        aria-label="Next view"
+                      >
+                        <ChevronRight className="size-4" strokeWidth={1.25} />
+                      </button>
+                    </div>
+                  ) : null}
 
                   {hasPrev && (
                     <button

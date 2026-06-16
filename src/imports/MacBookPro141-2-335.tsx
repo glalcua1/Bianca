@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import svgPaths from "./svg-w8us36f4bi";
 import imgHorizontalDivider from "figma:asset/8e308339b92f4428d34abe5c3dd0e7df843e4026.png";
-import imgRectangle5 from "figma:asset/519e1d40f496bfb11e0ff406ebc67a130f0aed16.png";
-import imgRectangle11 from "figma:asset/5ba4358549f78481bb5595ef12a37c5f59d7d33d.png";
+import imgRectangle5 from "figma:asset/Bianca_girl2.png";
+import imgRectangle11 from "figma:asset/Bianca_ring.png";
 import imgPackagingBox from "figma:asset/200f28676d6a2eae898fcdcd9f13ebcd75250299.png";
 import imgPackagingBag from "figma:asset/75d88e2bc003dea111ea5784491167b05e57ecdf.png";
-import imgPackagingPouch from "figma:asset/e5c39fcf4ff37608e7feb29dff2a18144e8108fe.png";
+import imgPackagingPouch from "figma:asset/Bianca_boxes.png";
 import imgImage1 from "figma:asset/ffad195494173b3c37c4aa05d64af9f2620a7643.png";
 // imgRectangle8 / imgRectangle10 were only used for ring-mark sprite masks – replaced by RingMark
 import { imgRectangle, imgRectangle1, imgGroup, imgRectangle3, imgRectangle4, imgRectangle7, imgGroup1, imgRectangle9, imgGroup2 } from "./svg-nywou";
