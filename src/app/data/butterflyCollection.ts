@@ -42,12 +42,12 @@ export type ButterflySalonPiece = {
 export const BUTTERFLY_SALON_PIECES: ButterflySalonPiece[] = [
   {
     id: "sapphire-parure",
-    src: "/Butterfly_2.png",
+    src: "/Butterfly_s.png",
     alt: "Sapphire butterfly brooch and matching earring suite on royal velvet — Bianca Butterfly Collection",
     eyebrow: "Salon parure",
     title: "Sapphire Monarch",
     description:
-      "A commanding butterfly brooch and matching earring suite — pavé diamond wings framing pear and marquise brilliants, with an oval sapphire at the heart.",
+      "A commanding butterfly brooch and matching earring suite on royal velvet — pavé diamond wings framing pear and marquise brilliants, with an oval sapphire at the heart.",
     details: [
       "Oval sapphire centre stone",
       "Pavé diamond wings",
@@ -56,16 +56,16 @@ export const BUTTERFLY_SALON_PIECES: ButterflySalonPiece[] = [
   },
   {
     id: "emerald-parure",
-    src: "/Butterfly_s.png",
-    alt: "Emerald and diamond butterfly brooch with matching earrings — Bianca Butterfly Collection",
+    src: "/Butterfly_2.png",
+    alt: "Emerald and diamond butterfly necklace with matching drop earrings — Bianca Butterfly Collection",
     eyebrow: "Salon parure",
     title: "Emerald Flight",
     description:
-      "A butterfly brooch and matching earring suite — iridescent wing inlays, emerald bodies, and pavé diamond wings composed in the house emblem motif.",
+      "A butterfly pendant necklace and drop earring suite — iridescent wing inlays, emerald bodies, and pavé diamond wings composed in the house emblem motif.",
     details: [
       "Emerald centre accents",
       "Pear & princess diamond wings",
-      "Brooch & earring suite",
+      "Necklace & earring suite",
     ],
   },
 ];

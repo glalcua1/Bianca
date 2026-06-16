@@ -36,13 +36,14 @@ function SalonPieceBlock({
       >
         <div className="relative mx-auto w-full max-w-[min(100%,26rem)] lg:mx-0 lg:max-w-none">
           <div
-            className="pointer-events-none absolute -inset-3 rounded-sm bg-[#dccb7b]/[0.07] blur-2xl"
+            className="pointer-events-none absolute -inset-3 rounded-sm bg-[#5c4033]/[0.12] blur-2xl"
             aria-hidden
           />
           <CollectionPhotoFrame
             src={piece.src}
             alt={piece.alt}
             fluid
+            variant="ebony"
             data-name={piece.id}
           />
         </div>

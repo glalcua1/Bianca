@@ -6,12 +6,16 @@ import { ATELIER_IMAGE_SIZES } from "../lib/optimizedImage";
 const FRAME_WIDTH = 443;
 const FRAME_HEIGHT = 508;
 
+type FrameVariant = "gilt" | "ebony";
+
 type Props = {
   src: string;
   alt: string;
   "data-name"?: string;
   /** Scale frame to container width (for grids). Default: fixed atelier size. */
   fluid?: boolean;
+  /** Gilt salon (default) or ebony wood — butterfly collection */
+  variant?: FrameVariant;
   /** Black image well — for dark-background product photography (e.g. necklaces). */
   darkImageWell?: boolean;
   /** Product-shot backdrop — overrides darkImageWell and cream default when set. */
@@ -27,16 +31,20 @@ export default function CollectionPhotoFrame({
   alt,
   "data-name": dataName,
   fluid = false,
+  variant = "gilt",
   darkImageWell = false,
   imageWellColor,
   video,
   videoObjectFit = "cover",
 }: Props) {
+  const isEbony = variant === "ebony";
   const imageWellBg = imageWellColor
     ? ""
     : darkImageWell
       ? "bg-black"
-      : "bg-[#faf8f5]";
+      : isEbony
+        ? ""
+        : "bg-[#faf8f5]";
   return (
     <div
       className={`relative w-full max-w-full min-w-0 ${fluid ? "" : "shrink-0"}`}
@@ -47,11 +55,58 @@ export default function CollectionPhotoFrame({
       }
       data-name={dataName}
     >
-      {/* Gilt outer frame */}
-      <div className="flex h-full w-full flex-col border border-[#766d42]/65 bg-[#f4f0e6] p-[4px] shadow-[0_10px_40px_rgba(29,60,52,0.1)]">
+      {/* Outer frame */}
+      <div
+        className={
+          isEbony
+            ? "flex h-full w-full flex-col border border-[#6b5345] bg-gradient-to-br from-[#2a1e18] via-[#1a120c] to-[#100c09] p-[6px] shadow-[0_16px_48px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(122,99,85,0.35)]"
+            : "flex h-full w-full flex-col border border-[#766d42]/65 bg-[#f4f0e6] p-[4px] shadow-[0_10px_40px_rgba(29,60,52,0.1)]"
+        }
+      >
+        {isEbony ? (
+          <div className="flex min-h-0 flex-1 flex-col bg-[#0a0908] p-[5px] shadow-[inset_0_4px_14px_rgba(0,0,0,0.72),inset_0_1px_0_rgba(92,64,51,0.22),inset_0_-1px_0_rgba(0,0,0,0.85)]">
+            {/* Passe-partout — mat board set into the wood rabbet */}
+            <div className="flex min-h-0 flex-1 flex-col border border-[#5c4a3f]/55 bg-[#2c2826] p-[3px] shadow-[0_1px_0_rgba(122,99,85,0.18)]">
+              {/* Mount */}
+              <div className="flex min-h-0 flex-1 flex-col border border-[#7a6355]/45 bg-[#3d3835] p-4 shadow-[inset_0_2px_6px_rgba(0,0,0,0.35),inset_0_0_0_1px_rgba(122,99,85,0.22)] md:p-[24px]">
+                <div
+                  className={`relative flex min-h-0 flex-1 overflow-hidden ${imageWellBg}`}
+                  style={
+                    imageWellColor
+                      ? { backgroundColor: imageWellColor }
+                      : { backgroundColor: "#141210" }
+                  }
+                >
+                  {video ? (
+                    <div className="absolute inset-0 overflow-hidden">
+                      <SalonJewelVideo
+                        src={video}
+                        ariaLabel={alt}
+                        objectFit={videoObjectFit}
+                        autoPlay={false}
+                      />
+                    </div>
+                  ) : (
+                    <ProtectedImage
+                      wrapperClassName="absolute inset-0 flex items-center justify-center"
+                      src={src}
+                      alt={alt}
+                      sizes={ATELIER_IMAGE_SIZES}
+                      loading="lazy"
+                      decoding="async"
+                      className="max-h-full max-w-full object-contain object-center"
+                    />
+                  )}
+                  <BrandImageWatermark />
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <>
         {/* Passe-partout */}
         <div className="flex min-h-0 flex-1 flex-col border border-[#766d42]/30 bg-[#faf8f5] p-[3px]">
-          {/* White mount — padding creates visible mat on all four sides */}
+          {/* Mount — padding creates visible mat on all four sides */}
           <div className="flex min-h-0 flex-1 flex-col border border-[#1d3c34]/12 bg-white p-4 shadow-[inset_0_0_0_1px_rgba(220,203,123,0.22)] md:p-[24px]">
             <div
               className={`relative flex min-h-0 flex-1 overflow-hidden ${imageWellBg}`}
@@ -81,6 +136,8 @@ export default function CollectionPhotoFrame({
             </div>
           </div>
         </div>
+          </>
+        )}
       </div>
     </div>
   );
