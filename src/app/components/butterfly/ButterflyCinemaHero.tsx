@@ -41,8 +41,8 @@ export default function ButterflyCinemaHero() {
   }, []);
 
   return (
-    <header className="relative overflow-hidden bg-[#0f1f1b]">
-      <div className="relative min-h-[min(50vh,22rem)] w-full sm:min-h-[min(54vh,26rem)] md:min-h-[min(58vh,30rem)]">
+    <header className="relative overflow-hidden bg-[#0f1f1b] md:min-h-screen">
+      <div className="relative min-h-[85svh] w-full sm:min-h-[88svh] md:min-h-screen md:h-full">
         <ProtectedVideo
           ref={videoRef}
           src={BUTTERFLY_MORPH_VIDEO}
@@ -59,7 +59,7 @@ export default function ButterflyCinemaHero() {
               type="button"
               onClick={togglePlayback}
               aria-label={isPlaying ? "Pause film" : "Play film"}
-              className="pointer-events-auto absolute bottom-4 right-4 z-30 inline-flex size-10 items-center justify-center border border-[#f9f9f9]/25 bg-[#1d3c34]/55 text-[#f9f9f9] shadow-[0_8px_28px_rgba(0,0,0,0.35)] backdrop-blur-[2px] transition duration-200 hover:border-[#dccb7b]/50 hover:text-[#dccb7b] sm:bottom-5 sm:right-5"
+              className="pointer-events-auto absolute bottom-6 right-4 z-30 inline-flex size-11 items-center justify-center border border-[#f9f9f9]/25 bg-[#1d3c34]/55 text-[#f9f9f9] shadow-[0_8px_28px_rgba(0,0,0,0.35)] backdrop-blur-[2px] transition duration-200 hover:border-[#dccb7b]/50 hover:text-[#dccb7b] sm:bottom-7 sm:right-6 md:bottom-10 md:right-10"
             >
               {isPlaying ? (
                 <Pause className="size-4" strokeWidth={1.25} fill="currentColor" />
@@ -70,13 +70,25 @@ export default function ButterflyCinemaHero() {
           }
         />
 
+        {/* Legibility scrim under transparent desktop nav */}
         <div
-          className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-px bg-gradient-to-r from-transparent via-[#dccb7b]/35 to-transparent"
+          className="pointer-events-none absolute inset-x-0 top-0 z-[1] hidden h-40 bg-gradient-to-b from-[#0f1f1b]/80 via-[#0f1f1b]/30 to-transparent md:block"
+          aria-hidden
+        />
+
+        {/* Bottom scrim for title copy */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[min(55%,28rem)] bg-gradient-to-t from-[#0f1f1b]/90 via-[#0f1f1b]/45 to-transparent"
+          aria-hidden
+        />
+
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-px bg-gradient-to-r from-transparent via-[#dccb7b]/35 to-transparent"
           aria-hidden
         />
 
         <div className="pointer-events-none absolute inset-0 z-10 flex items-end">
-          <EditorialReveal className="pointer-events-auto w-full px-6 pb-8 pt-14 md:px-10 md:pb-10 md:pt-16 lg:px-14">
+          <EditorialReveal className="pointer-events-auto w-full px-6 pb-10 pt-20 sm:pb-12 md:px-10 md:pb-14 md:pt-28 lg:px-14 lg:pb-16">
             <div className="mx-auto max-w-6xl">
               <BespokeButterflyMark
                 tone="gold"

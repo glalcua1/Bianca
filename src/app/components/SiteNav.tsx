@@ -14,10 +14,13 @@ const NAV_TOP_PADDING = 12;
 
 type Props = {
   activeItem?: NavActiveItem;
+  /** Desktop only — transparent bar that reveals forest green on hover/focus */
+  variant?: "solid" | "overlay";
 };
 
-export default function SiteNav({ activeItem }: Props) {
+export default function SiteNav({ activeItem, variant = "solid" }: Props) {
   const isDesktop = useMediaMinWidth();
+  const isOverlay = variant === "overlay";
   const [scale, setScale] = useState(1);
   const [height, setHeight] = useState(DESIGN_H);
 
@@ -44,7 +47,11 @@ export default function SiteNav({ activeItem }: Props) {
         [class*="Times_New_Roman"] { font-family: 'Times New Roman', Times, serif !important; }
       `}</style>
       <div
-        className="relative z-20 w-full bg-[#1d3c34]"
+        className={`group/nav relative z-20 w-full transition-[background-color,box-shadow] duration-500 ease-out ${
+          isOverlay
+            ? "bg-transparent hover:bg-[#1d3c34] focus-within:bg-[#1d3c34] hover:shadow-[0_12px_40px_rgba(0,0,0,0.22)]"
+            : "bg-[#1d3c34]"
+        }`}
         style={{
           height: `${height + NAV_TOP_PADDING}px`,
           paddingTop: NAV_TOP_PADDING,
@@ -62,7 +69,7 @@ export default function SiteNav({ activeItem }: Props) {
             willChange: "transform",
           }}
         >
-          <HomepageHeaderChrome />
+          <HomepageHeaderChrome transparent={isOverlay} />
         </div>
       </div>
     </NavActiveProvider>

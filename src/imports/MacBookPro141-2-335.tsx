@@ -1972,9 +1972,20 @@ function Group52() {
 }
 
 /** Logo + nav chrome from the homepage Figma artboard (1512px design width). */
-export function HomepageHeaderChrome() {
+export function HomepageHeaderChrome({
+  transparent = false,
+}: {
+  transparent?: boolean;
+}) {
   return (
-    <div className="relative bg-[#1d3c34]" style={{ width: 1512, height: 130 }}>
+    <div
+      className={`relative transition-colors duration-500 ease-out ${
+        transparent
+          ? "bg-transparent group-hover/nav:bg-[#1d3c34] group-focus-within/nav:bg-[#1d3c34]"
+          : "bg-[#1d3c34]"
+      }`}
+      style={{ width: 1512, height: 130 }}
+    >
       <Frame3 />
       <Group53 />
     </div>

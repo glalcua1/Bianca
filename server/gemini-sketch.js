@@ -29,7 +29,6 @@ function buildPrompt(title, productCode, category, analysis, recommendations) {
       : "  • Align silhouette and focal mass to φ (1.618)";
 
   const profile = analysis.profile;
-  const seg = analysis.segmentation;
 
   return `You are the lead designer at Bianca Diamonds, a high-jewellery house.
 

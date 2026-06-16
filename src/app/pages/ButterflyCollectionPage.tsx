@@ -18,11 +18,14 @@ export default function ButterflyCollectionPage() {
 
   return (
     <main className="min-h-screen bg-[#faf8f5]" data-protected-page>
-      <div className="bg-[#1d3c34]">
-        <SiteNav activeItem="butterfly-collection" />
-      </div>
+      <section className="relative bg-[#0f1f1b] md:min-h-screen">
+        <div className="relative z-30 md:absolute md:inset-x-0 md:top-0">
+          <SiteNav activeItem="butterfly-collection" variant="overlay" />
+        </div>
 
-      <ButterflyCinemaHero />
+        <ButterflyCinemaHero />
+      </section>
+
       <ButterflySalonGallery />
 
       <div className="border-t border-[#766d42]/15 bg-[#1d3c34]">
