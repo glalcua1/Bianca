@@ -77,12 +77,12 @@ export default function FineJewelleryNavTrigger({
         )}
       </Link>
 
-      <div onMouseEnter={clearCloseTimer} onMouseLeave={scheduleClose}>
-        <FineJewelleryMegaMenuFloating
-          open={open}
-          onClose={() => setOpen(false)}
-        />
-      </div>
+      <FineJewelleryMegaMenuFloating
+        open={open}
+        onClose={() => setOpen(false)}
+        onPointerEnter={clearCloseTimer}
+        onPointerLeave={scheduleClose}
+      />
     </div>
   );
 }

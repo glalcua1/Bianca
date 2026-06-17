@@ -74,7 +74,7 @@ export function CompactSiteNavBar({
       <header
         ref={headerRef}
         className={`bg-[#1d3c34] px-3 pb-2.5 pt-[max(0.5rem,env(safe-area-inset-top))] sm:px-4 md:px-5 ${
-          fixed ? "fixed inset-x-0 top-0" : "relative z-20"
+          fixed ? "fixed inset-x-0 top-0 z-[100]" : "relative z-20"
         }`}
         style={{
           borderBottomWidth: showChrome ? "1px" : "0px",

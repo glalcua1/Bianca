@@ -24,7 +24,7 @@ export default function MainSiteNavLinks({ compact = false }: Props) {
               key={item.id}
               label={label}
               isActive={isActive}
-              compact={compact}
+              variant={compact ? "compact" : "default"}
             />
           );
         }

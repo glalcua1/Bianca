@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { Link } from "react-router";
 import ProtectedImage from "./protection/ProtectedImage";
 import { ATELIER_IMAGE_SIZES } from "../lib/optimizedImage";
@@ -105,28 +106,38 @@ export function FineJewelleryMegaMenuPanel({
 type FloatingProps = {
   open: boolean;
   onClose: () => void;
+  onPointerEnter?: () => void;
+  onPointerLeave?: () => void;
 };
 
-/** Full-width panel anchored beneath the site header. */
-export function FineJewelleryMegaMenuFloating({ open, onClose }: FloatingProps) {
-  if (!open) return null;
+/** Full-width panel anchored beneath the site header (portaled — escapes scaled nav transforms). */
+export function FineJewelleryMegaMenuFloating({
+  open,
+  onClose,
+  onPointerEnter,
+  onPointerLeave,
+}: FloatingProps) {
+  if (!open || typeof document === "undefined") return null;
 
-  return (
+  return createPortal(
     <>
       <button
         type="button"
-        className="fixed inset-0 z-[54] cursor-default bg-[#0f1f1b]/20 backdrop-blur-[1px]"
+        className="fixed inset-0 z-[90] cursor-default bg-[#0f1f1b]/25 backdrop-blur-[2px]"
         aria-label="Close menu"
         onClick={onClose}
       />
       <div
-        className="fixed inset-x-0 z-[55] border-b border-[#766d42]/20 bg-[#faf8f5] shadow-[0_24px_64px_rgba(13,28,24,0.14)] transition duration-300"
+        className="fixed inset-x-0 z-[95] border-b border-[#766d42]/20 bg-[#faf8f5] shadow-[0_24px_64px_rgba(13,28,24,0.14)]"
         style={{ top: "var(--site-nav-offset, 0px)" }}
+        onMouseEnter={onPointerEnter}
+        onMouseLeave={onPointerLeave}
       >
         <div className="mx-auto max-w-5xl px-6 py-8 md:px-10 md:py-9">
           <FineJewelleryMegaMenuPanel onNavigate={onClose} />
         </div>
       </div>
-    </>
+    </>,
+    document.body,
   );
 }

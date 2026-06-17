@@ -128,9 +128,9 @@ function DesktopNavShell({
 
       <div aria-hidden style={{ height: spacerHeight }} />
 
-      <div className="pointer-events-none fixed inset-x-0 top-0 z-[60]">
+      <div className="pointer-events-none fixed inset-x-0 top-0 z-[100]">
         <div
-          className={`pointer-events-none absolute inset-x-0 top-0 overflow-hidden ${
+          className={`pointer-events-none absolute inset-x-0 top-0 overflow-visible ${
             isOverlay
               ? "bg-transparent group-hover/nav:bg-[#1d3c34] focus-within:bg-[#1d3c34]"
               : "bg-[#1d3c34]"
