@@ -1,0 +1,71 @@
+/* Bespoke Jewellery — salon motion tokens */
+
+@keyframes bespokeHeroFade {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bespokeHeroKenBurns {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @keyframes bespokeHeroFade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes bespokeHeroKenBurns {
+    from {
+      transform: none;
+    }
+    to {
+      transform: none;
+    }
+  }
+}
+
+.bespoke-glass-card {
+  background: rgba(250, 248, 245, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+@supports not (backdrop-filter: blur(18px)) {
+  .bespoke-glass-card {
+    background: rgba(250, 248, 245, 0.96);
+  }
+}
+
+.bespoke-journey-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(118, 109, 66, 0.35) transparent;
+}
+
+.bespoke-journey-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.bespoke-journey-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bespoke-journey-scroll::-webkit-scrollbar-thumb {
+  background: rgba(118, 109, 66, 0.35);
+  border-radius: 9999px;
+}

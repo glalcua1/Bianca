@@ -1,0 +1,96 @@
+/* Desktop-only media protection — mobile is unrestricted for scroll, zoom, and save */
+@media (min-width: 768px) {
+  .content-protection-active [data-protected-page] img:not([data-protection-exempt]),
+  .content-protection-active [data-protected-page] video:not([data-protection-exempt]),
+  .content-protection-active [data-protected-page] picture:not([data-protection-exempt]),
+  .content-protection-active [data-protected-page] canvas:not([data-protection-exempt]),
+  .content-protection-active img:not([data-protection-exempt]),
+  .content-protection-active video:not([data-protection-exempt]),
+  .content-protection-active picture:not([data-protection-exempt]),
+  .content-protection-active canvas:not([data-protection-exempt]) {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
+  }
+
+  .protected-media {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .protected-media__asset {
+    -webkit-user-drag: none;
+    user-drag: none;
+  }
+
+  .protected-media__shield {
+    touch-action: none;
+  }
+}
+
+/* Brief full-screen shield when a capture or save shortcut is detected (desktop only) */
+@media (min-width: 768px) {
+  .content-protection-shield {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    pointer-events: none;
+    opacity: 0;
+    background: #faf8f5;
+    backdrop-filter: blur(48px);
+    -webkit-backdrop-filter: blur(48px);
+    transition: opacity 80ms ease-out;
+  }
+
+  .content-protection-shield--visible {
+    opacity: 1;
+  }
+}
+
+/* iOS — watermark on protected media + full-screen privacy overlay when backgrounded */
+@media (min-width: 768px) {
+  .ios-privacy-active [data-protected-media] .ios-media-watermark {
+    pointer-events: none;
+    touch-action: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='120' viewBox='0 0 220 120'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%231d3c34' fill-opacity='0.16' font-family='SangBleuOGSans-Light,sans-serif' font-size='11' font-weight='400' letter-spacing='0.18em' transform='rotate(-24 110 60)'%3EBIANCA DIAMONDS%3C/text%3E%3C/svg%3E");
+    background-size: 220px 120px;
+  }
+
+  .ios-privacy-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    pointer-events: none;
+    opacity: 0;
+    background: #faf8f5;
+    backdrop-filter: blur(48px);
+    -webkit-backdrop-filter: blur(48px);
+    transition: opacity 40ms linear;
+  }
+
+  .ios-privacy-active.ios-privacy-overlay-visible .ios-privacy-overlay {
+    opacity: 1;
+  }
+
+  .ios-privacy-active.ios-privacy-overlay-visible [data-protected-media],
+  .ios-privacy-active.ios-privacy-overlay-visible [data-protected-page] img,
+  .ios-privacy-active.ios-privacy-overlay-visible [data-protected-page] video,
+  .ios-privacy-active.ios-privacy-overlay-visible [data-protected-page] canvas {
+    visibility: hidden !important;
+  }
+}
+
+@media print {
+  .protected-media,
+  [data-protected-media],
+  .content-protection-active img,
+  .content-protection-active video,
+  .content-protection-active picture,
+  .content-protection-active canvas {
+    visibility: hidden !important;
+  }
+}

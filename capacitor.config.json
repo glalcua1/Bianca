@@ -1,0 +1,8 @@
+{
+  "appId": "com.biancadiamonds.app",
+  "appName": "Bianca Diamonds",
+  "webDir": "dist",
+  "ios": {
+    "contentInset": "automatic"
+  }
+}

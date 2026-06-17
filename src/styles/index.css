@@ -1,0 +1,32 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+@import './typography.css';
+@import './content-protection.css';
+@import './bespoke.css';
+
+@media (max-width: 767px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: auto;
+  }
+
+  html,
+  body {
+    /* clip — not hidden — so position:sticky/fixed work in the atelier showcase */
+    overflow-x: clip;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y pinch-zoom;
+    overscroll-behavior-y: auto;
+  }
+
+  #root {
+    overflow-x: clip;
+  }
+
+  img,
+  video {
+    -webkit-touch-callout: default;
+    touch-action: pan-x pan-y pinch-zoom;
+  }
+}

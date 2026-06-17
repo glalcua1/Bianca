@@ -1,0 +1,16 @@
+node_modules
+.venv-golden-ratio
+dist
+database/*.db
+database/*.db-*
+bianca-deploy.zip
+ftp-upload
+.env
+.env.local
+.env.*.local
+*.log
+.DS_Store
+.vercel
+public/media/opt/
+__pycache__/
+*.pyc
