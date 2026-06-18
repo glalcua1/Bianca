@@ -1408,15 +1408,4 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     description:
       "A substantial 18K white-gold band elevating a princess-cut brilliant in a four-prong setting — clean planes and singular salon light.",
   },
-  {
-    id: "for-him-princess-pave",
-    category: "for-him",
-    productCode: "BD-K-MN-007",
-    image: "/Rings/men6.jpg",
-    imageWellColor: "#3a3738",
-    alt: "Princess Pavé — men's two-tone band with princess solitaire and accent rows",
-    title: "Princess Pavé",
-    description:
-      "A princess-cut centre stone in white-gold prongs, flanked by twin rows of princess accents on a wide yellow-gold shank — dual-tone presence with architectural groove detail.",
-  },
 ];
