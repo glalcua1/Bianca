@@ -117,16 +117,19 @@ const MobileSiteNav = forwardRef<HTMLElement, Props>(function MobileSiteNav(
                   <li key={item.id}>
                     <button
                       type="button"
-                      className={`flex w-full items-center justify-between py-2.5 text-center font-editorial text-[15px] uppercase tracking-[0.12em] transition-colors ${
+                      className={`grid w-full grid-cols-[1fr_auto_1fr] items-center py-2.5 font-editorial text-[15px] uppercase tracking-[0.12em] transition-colors ${
                         isActive || fineMenuOpen
                           ? "font-bold text-white"
-                          : "text-[#f9f9f9]"
+                          : "text-[#f9f9f9] hover:text-white"
                       }`}
                       aria-expanded={fineMenuOpen}
                       onClick={() => setFineMenuOpen((v) => !v)}
                     >
-                      {item.label}
-                      <span className="text-[#dccb7b]">{fineMenuOpen ? "−" : "+"}</span>
+                      <span aria-hidden />
+                      <span className="justify-self-center">{item.label}</span>
+                      <span className="justify-self-end text-[#dccb7b]" aria-hidden>
+                        {fineMenuOpen ? "−" : "+"}
+                      </span>
                     </button>
                     <div
                       className={`overflow-hidden transition-[max-height,opacity] duration-300 ${

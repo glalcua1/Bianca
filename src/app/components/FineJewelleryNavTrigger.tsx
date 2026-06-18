@@ -35,6 +35,10 @@ export default function FineJewelleryNavTrigger({
     setOpen(true);
   }, [clearCloseTimer]);
 
+  const triggerClassName = compact
+    ? "block whitespace-nowrap px-2 py-1 font-editorial text-[10px] uppercase tracking-[0.14em] text-[#f9f9f9] transition-colors hover:text-white sm:px-2.5 sm:text-[11px] md:px-3 md:text-[12px]"
+    : "block whitespace-nowrap px-[12px] py-[5px] font-editorial text-[14px] uppercase tracking-[1.5px] text-[#f9f9f9] transition-colors hover:text-white lg:px-[16px] lg:text-[15px]";
+
   useEffect(() => {
     if (!open) return;
     function onKeyDown(event: KeyboardEvent) {
@@ -59,11 +63,9 @@ export default function FineJewelleryNavTrigger({
         onClick={() => setOpen(false)}
       >
         <span
-          className={`block font-editorial uppercase tracking-[0.14em] text-[#f9f9f9] transition-colors hover:text-white ${
-            compact
-              ? "px-2 py-1 text-[10px] sm:px-2.5 sm:text-[11px] md:px-3 md:text-[12px]"
-              : "px-[12px] py-[5px] text-[14px] tracking-[1.5px] lg:px-[16px] lg:text-[15px]"
-          } ${isActive || open ? "font-bold text-white" : ""}`}
+          className={`${triggerClassName} ${
+            isActive || open ? "font-bold text-white" : ""
+          }`}
         >
           {label}
         </span>
