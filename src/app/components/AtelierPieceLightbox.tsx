@@ -107,11 +107,12 @@ export default function AtelierPieceLightbox({
         <Dialog.Overlay className="fixed inset-0 z-[60] bg-[#0f1f1b]/94 backdrop-blur-[2px] transition-opacity duration-300 data-[state=closed]:opacity-0 data-[state=open]:opacity-100 motion-reduce:transition-none" />
 
         <Dialog.Content
-          className="fixed inset-0 z-[61] flex flex-col outline-none pointer-events-none"
+          className="pointer-events-none fixed inset-x-0 bottom-0 z-[95] flex flex-col outline-none"
+          style={{ top: "var(--site-nav-offset, 0px)" }}
           aria-describedby={piece ? "atelier-lightbox-description" : undefined}
         >
           {piece && total > 0 && (
-            <div className="pointer-events-auto flex h-[100dvh] max-h-[100dvh] min-h-0 flex-col bg-[#1d3c34]">
+            <div className="pointer-events-auto flex h-full max-h-full min-h-0 flex-col bg-[#1d3c34]">
               {/* Slim chrome bar */}
               <header className="flex shrink-0 items-center justify-between gap-3 border-b border-[#766d42]/35 px-3 py-2 sm:px-5">
                 <Dialog.Title className="text-[10px] uppercase tracking-[0.2em] text-[#dccb7b]">

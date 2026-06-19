@@ -128,7 +128,11 @@ function DesktopNavShell({
 
       <div aria-hidden style={{ height: spacerHeight }} />
 
-      <div className="pointer-events-none fixed inset-x-0 top-0 z-[100]">
+      <div
+        data-site-nav-shell
+        className="pointer-events-none fixed inset-x-0 top-0 z-[100]"
+        style={{ height: spacerHeight }}
+      >
         <div
           className={`pointer-events-none absolute inset-x-0 top-0 overflow-visible ${
             isOverlay

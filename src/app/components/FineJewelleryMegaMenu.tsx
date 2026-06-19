@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router";
+import { X } from "lucide-react";
 import ProtectedImage from "./protection/ProtectedImage";
 import { ATELIER_IMAGE_SIZES } from "../lib/optimizedImage";
 import {
@@ -110,6 +111,22 @@ type FloatingProps = {
   onPointerLeave?: () => void;
 };
 
+function readSiteNavBottom(): number {
+  if (typeof document === "undefined") return 0;
+
+  const cssOffset = Number.parseFloat(
+    getComputedStyle(document.documentElement).getPropertyValue(
+      "--site-nav-offset",
+    ),
+  );
+  const shellBottom =
+    document
+      .querySelector<HTMLElement>("[data-site-nav-shell]")
+      ?.getBoundingClientRect().bottom ?? 0;
+
+  return Math.max(0, Number.isFinite(cssOffset) ? cssOffset : 0, shellBottom);
+}
+
 /** Full-width panel anchored beneath the site header (portaled — escapes scaled nav transforms). */
 export function FineJewelleryMegaMenuFloating({
   open,
@@ -117,7 +134,40 @@ export function FineJewelleryMegaMenuFloating({
   onPointerEnter,
   onPointerLeave,
 }: FloatingProps) {
+  const [panelTop, setPanelTop] = useState(0);
+
+  useEffect(() => {
+    if (!open || typeof window === "undefined") return;
+
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      setPanelTop(readSiteNavBottom());
+    };
+    const scheduleUpdate = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("resize", scheduleUpdate, { passive: true });
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    return () => {
+      window.removeEventListener("resize", scheduleUpdate);
+      window.removeEventListener("scroll", scheduleUpdate);
+      if (raf) window.cancelAnimationFrame(raf);
+    };
+  }, [open]);
+
   if (!open || typeof document === "undefined") return null;
+
+  const roundedTop = Math.round(panelTop);
+  const panelTopStyle =
+    roundedTop > 0 ? `${roundedTop}px` : "var(--site-nav-offset, 0px)";
+  const panelMaxHeight =
+    roundedTop > 0
+      ? `calc(100dvh - ${roundedTop}px)`
+      : "calc(100dvh - var(--site-nav-offset, 0px))";
 
   return createPortal(
     <>
@@ -128,12 +178,20 @@ export function FineJewelleryMegaMenuFloating({
         onClick={onClose}
       />
       <div
-        className="fixed inset-x-0 z-[95] border-b border-[#766d42]/20 bg-[#faf8f5] shadow-[0_24px_64px_rgba(13,28,24,0.14)]"
-        style={{ top: "var(--site-nav-offset, 0px)" }}
+        className="fixed inset-x-0 z-[95] overflow-y-auto border-b border-[#766d42]/20 bg-[#faf8f5] shadow-[0_24px_64px_rgba(13,28,24,0.14)]"
+        style={{ top: panelTopStyle, maxHeight: panelMaxHeight }}
         onMouseEnter={onPointerEnter}
         onMouseLeave={onPointerLeave}
       >
-        <div className="mx-auto max-w-5xl px-6 py-8 md:px-10 md:py-9">
+        <div className="relative mx-auto max-w-5xl px-6 py-8 pr-16 md:px-10 md:py-9 md:pr-16">
+          <button
+            type="button"
+            className="absolute right-4 top-4 inline-flex size-9 items-center justify-center border border-[#766d42]/35 text-[#1d3c34] transition duration-150 hover:border-[#766d42] hover:bg-[#f4f0e6] hover:text-[#766d42] motion-reduce:transition-none md:right-6 md:top-6"
+            aria-label="Close fine jewellery menu"
+            onClick={onClose}
+          >
+            <X className="size-4" strokeWidth={1.35} />
+          </button>
           <FineJewelleryMegaMenuPanel onNavigate={onClose} />
         </div>
       </div>

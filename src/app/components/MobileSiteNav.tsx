@@ -50,6 +50,7 @@ const MobileSiteNav = forwardRef<HTMLElement, Props>(function MobileSiteNav(
     <NavActiveProvider value={activeItem}>
       <header
         ref={ref}
+        data-site-nav-shell
         className={`z-[60] bg-[#1d3c34] px-4 pt-[max(0.75rem,env(safe-area-inset-top))] ${
           fixed ? "fixed inset-x-0 top-0" : "relative z-20"
         }`}
