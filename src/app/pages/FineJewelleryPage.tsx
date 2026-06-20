@@ -4,6 +4,7 @@ import InstagramFeedSection from "../components/InstagramFeedSection";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
 import FineJewelleryAtelier from "../components/FineJewelleryAtelier";
+import FineJewelleryEarringsHero from "../components/FineJewelleryEarringsHero";
 import FineJewelleryRingsHero from "../components/FineJewelleryRingsHero";
 import type { JewelleryCategoryId } from "../data/fineJewelleryCollections";
 import { parseFineJewelleryCategoryFromHash } from "../data/fineJewelleryMegaMenu";
@@ -62,6 +63,7 @@ export default function FineJewelleryPage() {
       </div>
 
       {activeCategory === "rings" && <FineJewelleryRingsHero />}
+      {activeCategory === "earrings" && <FineJewelleryEarringsHero />}
 
       <FineJewelleryAtelier activeCategory={activeCategory} />
 
