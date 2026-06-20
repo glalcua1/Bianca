@@ -24,6 +24,9 @@ type Props = {
   video?: string;
   /** Video fit inside the well — contain shows the full piece/card */
   videoObjectFit?: "contain" | "cover";
+  /** Optional still-image tuning for unusually tall or wide product photography. */
+  imageClassName?: string;
+  imageWrapperClassName?: string;
 };
 
 export default function CollectionPhotoFrame({
@@ -36,6 +39,8 @@ export default function CollectionPhotoFrame({
   imageWellColor,
   video,
   videoObjectFit = "cover",
+  imageClassName = "max-h-full max-w-full object-contain object-center",
+  imageWrapperClassName = "absolute inset-0 flex items-center justify-center",
 }: Props) {
   const isEbony = variant === "ebony";
   const imageWellBg = imageWellColor
@@ -88,13 +93,13 @@ export default function CollectionPhotoFrame({
                     </div>
                   ) : (
                     <ProtectedImage
-                      wrapperClassName="absolute inset-0 flex items-center justify-center"
+                      wrapperClassName={imageWrapperClassName}
                       src={src}
                       alt={alt}
                       sizes={ATELIER_IMAGE_SIZES}
                       loading="lazy"
                       decoding="async"
-                      className="max-h-full max-w-full object-contain object-center"
+                      className={imageClassName}
                     />
                   )}
                   <BrandImageWatermark />
@@ -123,13 +128,13 @@ export default function CollectionPhotoFrame({
                 </div>
               ) : (
                 <ProtectedImage
-                  wrapperClassName="absolute inset-0 flex items-center justify-center"
+                  wrapperClassName={imageWrapperClassName}
                   src={src}
                   alt={alt}
                   sizes={ATELIER_IMAGE_SIZES}
                   loading="lazy"
                   decoding="async"
-                  className="max-h-full max-w-full object-contain object-center"
+                  className={imageClassName}
                 />
               )}
               <BrandImageWatermark />

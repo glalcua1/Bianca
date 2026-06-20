@@ -57,6 +57,8 @@ function renderPieceCard(
           darkImageWell={piece.category === "necklaces" && !piece.imageWellColor}
           imageWellColor={piece.imageWellColor}
           video={piece.video}
+          imageClassName={piece.frameImageClassName}
+          imageWrapperClassName={piece.frameImageWrapperClassName}
           src={piece.image}
           alt={piece.alt}
           data-name={piece.id}

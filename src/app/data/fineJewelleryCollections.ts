@@ -38,6 +38,9 @@ export type AtelierPiece = {
   braceletKind?: BraceletKind;
   /** Match product photography backdrop instead of default black/cream well */
   imageWellColor?: string;
+  /** Per-piece frame tuning for tall or unusually cropped product photography. */
+  frameImageClassName?: string;
+  frameImageWrapperClassName?: string;
   /** Salon film — loops in catalogue; typically without Excel pricing */
   video?: string;
   /** Additional still views of the same piece (salon lightbox) */
@@ -292,6 +295,9 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     imageWellColor: "#bfc0bf",
     alt: "Sapphire Chandelier Drop — sapphire and diamond pear chandelier earrings",
     title: "Sapphire Chandelier Drop",
+    frameImageWrapperClassName:
+      "absolute inset-0 flex items-center justify-center p-8 sm:p-10 md:p-12",
+    frameImageClassName: "max-h-full max-w-full object-contain object-center",
     description:
       "Pear diamond halos, brilliant links, and deep blue sapphire drops articulate in white gold — a formal chandelier with regal colour and movement.",
   },
