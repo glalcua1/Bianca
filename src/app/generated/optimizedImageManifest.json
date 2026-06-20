@@ -43,6 +43,132 @@
     },
     "sizes": "(max-width: 768px) 100vw, 1280px"
   },
+  "/Earrings/Earrings10.png": {
+    "original": "/Earrings/Earrings10.png",
+    "webp": {
+      "640": "/media/opt/Earrings/Earrings10-640.webp",
+      "1280": "/media/opt/Earrings/Earrings10-1280.webp",
+      "1920": "/media/opt/Earrings/Earrings10-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/Earrings/Earrings11.png": {
+    "original": "/Earrings/Earrings11.png",
+    "webp": {
+      "640": "/media/opt/Earrings/Earrings11-640.webp",
+      "1280": "/media/opt/Earrings/Earrings11-1280.webp",
+      "1920": "/media/opt/Earrings/Earrings11-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/Earrings/IMG_7662.jpg": {
+    "original": "/Earrings/IMG_7662.jpg",
+    "webp": {
+      "640": "/media/opt/Earrings/IMG_7662-640.webp",
+      "1280": "/media/opt/Earrings/IMG_7662-1280.webp",
+      "1920": "/media/opt/Earrings/IMG_7662-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/Earrings/IMG_7664.jpg": {
+    "original": "/Earrings/IMG_7664.jpg",
+    "webp": {
+      "640": "/media/opt/Earrings/IMG_7664-640.webp",
+      "1280": "/media/opt/Earrings/IMG_7664-1280.webp",
+      "1920": "/media/opt/Earrings/IMG_7664-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/Earrings/IMG_7665.jpg": {
+    "original": "/Earrings/IMG_7665.jpg",
+    "webp": {
+      "640": "/media/opt/Earrings/IMG_7665-640.webp",
+      "1280": "/media/opt/Earrings/IMG_7665-1280.webp",
+      "1920": "/media/opt/Earrings/IMG_7665-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/Earrings/IMG_7668.jpg": {
+    "original": "/Earrings/IMG_7668.jpg",
+    "webp": {
+      "640": "/media/opt/Earrings/IMG_7668-640.webp",
+      "1280": "/media/opt/Earrings/IMG_7668-1280.webp",
+      "1920": "/media/opt/Earrings/IMG_7668-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/Earrings/IMG_7669.jpg": {
+    "original": "/Earrings/IMG_7669.jpg",
+    "webp": {
+      "640": "/media/opt/Earrings/IMG_7669-640.webp",
+      "1280": "/media/opt/Earrings/IMG_7669-1280.webp",
+      "1920": "/media/opt/Earrings/IMG_7669-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/Earrings/IMG_7712.jpg": {
+    "original": "/Earrings/IMG_7712.jpg",
+    "webp": {
+      "640": "/media/opt/Earrings/IMG_7712-640.webp",
+      "1280": "/media/opt/Earrings/IMG_7712-1280.webp",
+      "1920": "/media/opt/Earrings/IMG_7712-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/Earrings/IMG_7715.jpg": {
+    "original": "/Earrings/IMG_7715.jpg",
+    "webp": {
+      "640": "/media/opt/Earrings/IMG_7715-640.webp",
+      "1280": "/media/opt/Earrings/IMG_7715-1280.webp",
+      "1920": "/media/opt/Earrings/IMG_7715-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/Earrings/IMG_7716.jpg": {
+    "original": "/Earrings/IMG_7716.jpg",
+    "webp": {
+      "640": "/media/opt/Earrings/IMG_7716-640.webp",
+      "1280": "/media/opt/Earrings/IMG_7716-1280.webp",
+      "1920": "/media/opt/Earrings/IMG_7716-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/Earrings/IMG_7718.jpg": {
+    "original": "/Earrings/IMG_7718.jpg",
+    "webp": {
+      "640": "/media/opt/Earrings/IMG_7718-640.webp",
+      "1280": "/media/opt/Earrings/IMG_7718-1280.webp",
+      "1920": "/media/opt/Earrings/IMG_7718-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/Earrings/IMG_7719.jpg": {
+    "original": "/Earrings/IMG_7719.jpg",
+    "webp": {
+      "640": "/media/opt/Earrings/IMG_7719-640.webp",
+      "1280": "/media/opt/Earrings/IMG_7719-1280.webp",
+      "1920": "/media/opt/Earrings/IMG_7719-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/Earrings/IMG_7720.jpg": {
+    "original": "/Earrings/IMG_7720.jpg",
+    "webp": {
+      "640": "/media/opt/Earrings/IMG_7720-640.webp",
+      "1280": "/media/opt/Earrings/IMG_7720-1280.webp",
+      "1920": "/media/opt/Earrings/IMG_7720-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/Earrings/IMG_7721.jpg": {
+    "original": "/Earrings/IMG_7721.jpg",
+    "webp": {
+      "640": "/media/opt/Earrings/IMG_7721-640.webp",
+      "1280": "/media/opt/Earrings/IMG_7721-1280.webp",
+      "1920": "/media/opt/Earrings/IMG_7721-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
   "/Rings/Ring3.png": {
     "original": "/Rings/Ring3.png",
     "webp": {
@@ -897,14 +1023,6 @@
     },
     "sizes": "(max-width: 768px) 90vw, 443px"
   },
-  "/Rings/men6.jpg": {
-    "original": "/Rings/men6.jpg",
-    "webp": {
-      "443": "/media/opt/Rings/men6-443.webp",
-      "886": "/media/opt/Rings/men6-886.webp"
-    },
-    "sizes": "(max-width: 768px) 90vw, 443px"
-  },
   "/Rings/Blue_new.png": {
     "original": "/Rings/Blue_new.png",
     "webp": {
@@ -950,6 +1068,14 @@
     "webp": {
       "443": "/media/opt/Rings/Mens1a-443.webp",
       "886": "/media/opt/Rings/Mens1a-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/men6.jpg": {
+    "original": "/Rings/men6.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/men6-443.webp",
+      "886": "/media/opt/Rings/men6-886.webp"
     },
     "sizes": "(max-width: 768px) 90vw, 443px"
   },
