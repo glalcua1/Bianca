@@ -45,19 +45,25 @@ export default function FineJewelleryEarringsHero() {
               </div>
             </div>
 
-            <div className="relative min-h-[420px] overflow-hidden border-t border-[#766d42]/20 bg-[#dedede] p-5 sm:min-h-[520px] sm:p-8 lg:min-h-0 lg:border-l lg:border-t-0 lg:p-10">
+            <div className="relative flex min-h-[440px] items-center justify-center overflow-hidden border-t border-[#766d42]/20 bg-[#e4e2df] p-5 sm:min-h-[540px] sm:p-8 lg:min-h-0 lg:border-l lg:border-t-0 lg:p-10">
               <div
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_34%,rgba(255,255,255,0.58),transparent_42%),linear-gradient(180deg,rgba(255,255,255,0.18),rgba(15,31,27,0.08))]"
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(255,255,255,0.72),transparent_45%),linear-gradient(180deg,rgba(255,255,255,0.22),rgba(15,31,27,0.08))]"
                 aria-hidden
               />
-              <ProtectedImage
-                priority
-                wrapperClassName="relative z-10 flex h-full w-full items-center justify-center"
-                src={EARRINGS_HERO_IMAGE}
-                alt="Bianca Diamonds — ruby, emerald, and diamond earrings collection"
-                sizes="(max-width: 1024px) 100vw, 58vw"
-                className="max-h-full max-w-full object-contain object-center drop-shadow-[0_24px_48px_rgba(15,31,27,0.18)]"
-              />
+              <div className="relative z-10 flex h-[calc(100%-1.5rem)] w-full max-w-[min(42rem,88%)] items-center justify-center border border-white/55 bg-[#f4f1ec]/45 p-7 shadow-[0_28px_70px_rgba(15,31,27,0.16),inset_0_0_0_1px_rgba(118,109,66,0.14)] sm:h-[calc(100%-2rem)] sm:max-w-[min(46rem,82%)] sm:p-10 lg:max-w-[min(48rem,76%)] lg:p-12">
+                <div
+                  className="pointer-events-none absolute inset-3 border border-[#766d42]/18 sm:inset-4"
+                  aria-hidden
+                />
+                <ProtectedImage
+                  priority
+                  wrapperClassName="relative flex h-full w-full items-center justify-center"
+                  src={EARRINGS_HERO_IMAGE}
+                  alt="Bianca Diamonds — ruby, emerald, and diamond earrings collection"
+                  sizes="(max-width: 1024px) 88vw, 44vw"
+                  className="max-h-[84%] max-w-[84%] object-contain object-center drop-shadow-[0_22px_42px_rgba(15,31,27,0.16)] sm:max-h-[80%] sm:max-w-[80%] lg:max-h-[78%] lg:max-w-[78%]"
+                />
+              </div>
 
               <BrandImageWatermark className="bottom-6 right-6 z-10 w-[clamp(48px,10vw,72px)] sm:bottom-8 sm:right-8" />
             </div>
