@@ -178,50 +178,6 @@ export const FINE_JEWELLERY_CATEGORIES: FineJewelleryCategory[] = [
  */
 export const ATELIER_PIECES: AtelierPiece[] = [
   {
-    id: "ear-petale-lumiere",
-    category: "earrings",
-    productCode: "BD-K-ER-001",
-    image: "/Earrings.png",
-    imageWellColor: "#eadac0",
-    alt: "Petal Light — lab-grown diamond drop earrings",
-    title: "Petal Light",
-    description:
-      "Graduated pear and marquise drops trace the jawline in a soft cascade of IGI-certified brilliants — movement, light, and evening poise in perfect proportion.",
-  },
-  {
-    id: "ear-chandelier-maison",
-    category: "earrings",
-    productCode: "BD-K-ER-002",
-    image: "/Earrings_2.png",
-    imageWellColor: "#d7c1a7",
-    alt: "Evening Chandelier — statement diamond earrings",
-    title: "Evening Chandelier",
-    description:
-      "A sculptural chandelier silhouette with layered pavé and baguette accents — high-jewellery presence composed for celebrations, galas, and the house's most luminous moments.",
-  },
-  {
-    id: "ear-aile-saphir",
-    category: "earrings",
-    productCode: "BD-K-ER-003",
-    image: "/Earrings4.png",
-    imageWellColor: "#d4bea9",
-    alt: "Sapphire Wing — cushion sapphire and marquise diamond drop earrings",
-    title: "Sapphire Wing",
-    description:
-      "Cushion-cut sapphires crowned with round brilliants, finished in marquise diamond wings — a mirrored pair composed for evening light and unapologetic colour.",
-  },
-  {
-    id: "ear-emerald-halo-drop",
-    category: "earrings",
-    productCode: "BD-K-ER-004",
-    image: "/Earrings/ER_1.png",
-    imageWellColor: "#d5bd9b",
-    alt: "Emerald Halo Drop — pear emerald and diamond drop earrings",
-    title: "Emerald Halo Drop",
-    description:
-      "Pear-shaped emeralds framed in round-brilliant halos on polished white-gold drops — regal colour and refined silhouette composed for evening and celebration.",
-  },
-  {
     id: "ear-oval-line-drop",
     category: "earrings",
     productCode: "BD-K-ER-005",

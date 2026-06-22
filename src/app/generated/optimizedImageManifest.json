@@ -7,42 +7,6 @@
     },
     "sizes": "(max-width: 768px) 90vw, 443px"
   },
-  "/Earrings.png": {
-    "original": "/Earrings.png",
-    "webp": {
-      "640": "/media/opt/./Earrings-640.webp",
-      "1280": "/media/opt/./Earrings-1280.webp",
-      "1920": "/media/opt/./Earrings-1920.webp"
-    },
-    "sizes": "(max-width: 768px) 100vw, 1280px"
-  },
-  "/Earrings_2.png": {
-    "original": "/Earrings_2.png",
-    "webp": {
-      "640": "/media/opt/./Earrings_2-640.webp",
-      "1280": "/media/opt/./Earrings_2-1280.webp",
-      "1920": "/media/opt/./Earrings_2-1920.webp"
-    },
-    "sizes": "(max-width: 768px) 100vw, 1280px"
-  },
-  "/Earrings4.png": {
-    "original": "/Earrings4.png",
-    "webp": {
-      "640": "/media/opt/./Earrings4-640.webp",
-      "1280": "/media/opt/./Earrings4-1280.webp",
-      "1920": "/media/opt/./Earrings4-1920.webp"
-    },
-    "sizes": "(max-width: 768px) 100vw, 1280px"
-  },
-  "/Earrings/ER_1.png": {
-    "original": "/Earrings/ER_1.png",
-    "webp": {
-      "640": "/media/opt/Earrings/ER_1-640.webp",
-      "1280": "/media/opt/Earrings/ER_1-1280.webp",
-      "1920": "/media/opt/Earrings/ER_1-1920.webp"
-    },
-    "sizes": "(max-width: 768px) 100vw, 1280px"
-  },
   "/Earrings/Earrings10.png": {
     "original": "/Earrings/Earrings10.png",
     "webp": {
