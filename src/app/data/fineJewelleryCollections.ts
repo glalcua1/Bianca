@@ -335,6 +335,89 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "Emerald-cut diamond tops suspend pavé-set interlocking loops in white gold — Art Deco rhythm with refined movement and mirror-bright finish.",
   },
   {
+    id: "ear-marquise-laurel-cascade",
+    category: "earrings",
+    productCode: "BD-K-ER-019",
+    image: "/Earrings/IMG_7731.jpg",
+    imageWellColor: "#dfe2e3",
+    alt: "Marquise Laurel Cascade — marquise and pear diamond statement earrings in white gold",
+    title: "Marquise Laurel Cascade",
+    description:
+      "Marquise and pear brilliants branch into an elongated laurel silhouette in white gold — airy, sculptural, and composed for gala light.",
+  },
+  {
+    id: "ear-round-line-drop",
+    category: "earrings",
+    productCode: "BD-K-ER-020",
+    image: "/Earrings/IMG_7732.jpg",
+    imageWellColor: "#e6e8ea",
+    alt: "Round Line Drop — straight round diamond drop earrings in white gold",
+    title: "Round Line Drop",
+    description:
+      "Round brilliants form a clean vertical line in white gold — modern restraint with uninterrupted fire and a quietly dramatic drop.",
+  },
+  {
+    id: "ear-pear-line-drop",
+    category: "earrings",
+    productCode: "BD-K-ER-021",
+    image: "/Earrings/IMG_7745.jpg",
+    imageWellColor: "#bfc0bf",
+    alt: "Pear Line Drop — graduated pear diamond earrings in yellow gold",
+    title: "Pear Line Drop",
+    frameImageWrapperClassName:
+      "absolute inset-0 flex items-center justify-center p-7 sm:p-9 md:p-10",
+    frameImageClassName: "max-h-full max-w-full object-contain object-center",
+    description:
+      "Five pear brilliants descend in fine yellow-gold links — a fluid line of light with soft movement and bridal poise.",
+  },
+  {
+    id: "ear-floral-pear-chandelier",
+    category: "earrings",
+    productCode: "BD-K-ER-022",
+    image: "/Earrings/IMG_7757.jpg",
+    imageWellColor: "#d9d9d8",
+    alt: "Floral Pear Chandelier — pear diamond floral drop earrings in yellow gold",
+    title: "Floral Pear Chandelier",
+    frameImageWrapperClassName:
+      "absolute inset-0 flex items-center justify-center p-7 sm:p-9 md:p-10",
+    frameImageClassName: "max-h-full max-w-full object-contain object-center",
+    description:
+      "Pear diamonds bloom into a floral crown before falling into articulated drops — yellow-gold warmth with high-jewellery movement.",
+  },
+  {
+    id: "ear-sapphire-octagon-studs",
+    category: "earrings",
+    productCode: "BD-K-ER-023",
+    image: "/Earrings/IMG_7758.jpg",
+    imageWellColor: "#d3d3d4",
+    alt: "Sapphire Octagon Studs — blue sapphire and diamond halo earrings in white gold",
+    title: "Sapphire Octagon Studs",
+    description:
+      "Octagonal blue sapphires sit within diamond halos in polished white gold — saturated colour and architectural clarity for the ear.",
+  },
+  {
+    id: "ear-bypass-solitaire-studs",
+    category: "earrings",
+    productCode: "BD-K-ER-024",
+    image: "/Earrings/IMG_7764.jpg",
+    imageWellColor: "#dedfe2",
+    alt: "Bypass Solitaire Studs — round diamond bypass earrings in yellow gold",
+    title: "Bypass Solitaire Studs",
+    description:
+      "Round brilliants nest inside crossing yellow-gold ribbons, one pavé-set for added fire — a sculptural everyday stud with motion.",
+  },
+  {
+    id: "ear-emerald-openwork-drop",
+    category: "earrings",
+    productCode: "BD-K-ER-025",
+    image: "/Earrings/IMG_7765.jpg",
+    imageWellColor: "#d9dcdd",
+    alt: "Emerald Openwork Drop — pear emerald and diamond openwork earrings in white gold",
+    title: "Emerald Openwork Drop",
+    description:
+      "Pear emerald centres float within diamond halos and polished openwork frames — luminous white-gold drops with regal green depth.",
+  },
+  {
     id: "ring-atelier-portrait",
     category: "rings",
     productCode: "BD-K-RG-003",
