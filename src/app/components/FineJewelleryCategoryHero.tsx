@@ -69,7 +69,7 @@ export default function FineJewelleryCategoryHero({ categoryId }: Props) {
 
   return (
     <section aria-labelledby={`${categoryId}-hero-heading`}>
-      <div className="h-[25px] bg-[#1d3c34]" aria-hidden />
+      <div className="h-[25px] shrink-0 bg-[#1d3c34]" aria-hidden />
 
       <div
         className="relative overflow-hidden bg-[#1d3c34]"
