@@ -4,8 +4,7 @@ import InstagramFeedSection from "../components/InstagramFeedSection";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
 import FineJewelleryAtelier from "../components/FineJewelleryAtelier";
-import FineJewelleryEarringsHero from "../components/FineJewelleryEarringsHero";
-import FineJewelleryRingsHero from "../components/FineJewelleryRingsHero";
+import FineJewelleryCategoryHero from "../components/FineJewelleryCategoryHero";
 import type { JewelleryCategoryId } from "../data/fineJewelleryCollections";
 import { parseFineJewelleryCategoryFromHash } from "../data/fineJewelleryMegaMenu";
 import { BIANCA_INSTAGRAM_URL } from "../data/siteContact";
@@ -62,8 +61,9 @@ export default function FineJewelleryPage() {
         <SiteNav activeItem="fine-jewellery" />
       </div>
 
-      {activeCategory === "rings" && <FineJewelleryRingsHero />}
-      {activeCategory === "earrings" && <FineJewelleryEarringsHero />}
+      {activeCategory !== "all" && (
+        <FineJewelleryCategoryHero categoryId={activeCategory} />
+      )}
 
       <FineJewelleryAtelier activeCategory={activeCategory} />
 
