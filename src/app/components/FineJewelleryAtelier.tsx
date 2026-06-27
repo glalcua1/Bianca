@@ -96,7 +96,11 @@ function renderPieceCard(
           piece.category === "necklaces" ||
           piece.category === "earrings") &&
           pieceHasSalonQuote(piece) && (
-          <AtelierPieceQuote piece={piece} variant="teaser" />
+          <AtelierPieceQuote
+            piece={piece}
+            variant="teaser"
+            priceInr={piece.salonPriceInr}
+          />
         )}
       </div>
     </li>

@@ -524,6 +524,30 @@
     },
     "sizes": "(max-width: 768px) 90vw, 443px"
   },
+  "/Rings/IMG_7775 2.jpg": {
+    "original": "/Rings/IMG_7775 2.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/IMG_7775 2-443.webp",
+      "886": "/media/opt/Rings/IMG_7775 2-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/IMG_7776.jpg": {
+    "original": "/Rings/IMG_7776.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/IMG_7776-443.webp",
+      "886": "/media/opt/Rings/IMG_7776-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/IMG_7772.jpg": {
+    "original": "/Rings/IMG_7772.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/IMG_7772-443.webp",
+      "886": "/media/opt/Rings/IMG_7772-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
   "/Bracelet2.png": {
     "original": "/Bracelet2.png",
     "webp": {
@@ -1090,11 +1114,75 @@
     },
     "sizes": "(max-width: 768px) 90vw, 443px"
   },
+  "/Rings/IMG_7681.jpg": {
+    "original": "/Rings/IMG_7681.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/IMG_7681-443.webp",
+      "886": "/media/opt/Rings/IMG_7681-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/IMG_7768.jpg": {
+    "original": "/Rings/IMG_7768.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/IMG_7768-443.webp",
+      "886": "/media/opt/Rings/IMG_7768-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/IMG_7770.jpg": {
+    "original": "/Rings/IMG_7770.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/IMG_7770-443.webp",
+      "886": "/media/opt/Rings/IMG_7770-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/IMG_7774.jpg": {
+    "original": "/Rings/IMG_7774.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/IMG_7774-443.webp",
+      "886": "/media/opt/Rings/IMG_7774-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/IMG_7775.jpg": {
+    "original": "/Rings/IMG_7775.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/IMG_7775-443.webp",
+      "886": "/media/opt/Rings/IMG_7775-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/IMG_7777.jpg": {
+    "original": "/Rings/IMG_7777.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/IMG_7777-443.webp",
+      "886": "/media/opt/Rings/IMG_7777-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
   "/Rings/Mens1a.JPG": {
     "original": "/Rings/Mens1a.JPG",
     "webp": {
       "443": "/media/opt/Rings/Mens1a-443.webp",
       "886": "/media/opt/Rings/Mens1a-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/Ring21.jpg": {
+    "original": "/Rings/Ring21.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/Ring21-443.webp",
+      "886": "/media/opt/Rings/Ring21-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/Ring_20.jpg": {
+    "original": "/Rings/Ring_20.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/Ring_20-443.webp",
+      "886": "/media/opt/Rings/Ring_20-886.webp"
     },
     "sizes": "(max-width: 768px) 90vw, 443px"
   },

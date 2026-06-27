@@ -69,9 +69,18 @@ export function atelierPieceUsesDarkWell(piece: AtelierPiece): boolean {
   return piece.category === "necklaces";
 }
 
+/** True for salon film assets served from public/ */
+export function isSalonFilmPath(src: string): boolean {
+  return /\.(mov|mp4|webm)$/i.test(src);
+}
+
 /** Primary image plus any extra salon views for the same piece */
 export function atelierPieceViews(piece: AtelierPiece): string[] {
-  if (piece.video) return [];
+  if (piece.video) {
+    const extra = piece.galleryImages ?? [];
+    if (extra.length === 0) return [piece.video];
+    return [piece.video, ...extra];
+  }
   const extra = piece.galleryImages ?? [];
   if (extra.length === 0) return [piece.image];
   return [piece.image, ...extra];
@@ -923,6 +932,58 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Baguette Line",
     description:
       "Vertical baguette diamonds channel-set in continuous line around a polished yellow-gold band — sleek geometry and modern eternity brilliance.",
+  },
+  {
+    id: "ring-golden-solitaire-bridal",
+    category: "rings",
+    productCode: "BD-G-RG-048",
+    image: "/Rings/IMG_7775 2.jpg",
+    imageWellColor: "#c8b8a8",
+    alt: "Golden Solitaire Bridal — round diamond solitaire and eternity band in 18K yellow gold",
+    title: "Golden Solitaire Bridal",
+    galleryImages: ["/Rings/IMG_7774.jpg"],
+    description:
+      "A round brilliant solitaire in four-prong yellow gold beside a shared-prong eternity band — 18K warmth and continuous fire composed for proposal and celebration.",
+  },
+  {
+    id: "ring-platinum-lumiere-bridal",
+    category: "rings",
+    productCode: "BD-G-RG-049",
+    image: "/Rings/IMG_7776.jpg",
+    imageWellColor: "#c8b8a8",
+    alt: "Platinum Lumière Bridal — round diamond solitaire and eternity band in white gold",
+    title: "Platinum Lumière Bridal",
+    galleryImages: ["/Rings/IMG_7770.jpg"],
+    description:
+      "A round brilliant in white-gold prongs with a pavé-set eternity companion — crisp brilliance and salon-refined proportion for the modern bridal hand.",
+  },
+  {
+    id: "ring-oval-maison-bridal",
+    category: "rings",
+    productCode: "BD-G-RG-050",
+    image: "/Rings/IMG_7772.jpg",
+    imageWellColor: "#f8e8d8",
+    alt: "Oval Maison Bridal — oval diamond solitaire and wide band in yellow gold",
+    title: "Oval Maison Bridal",
+    galleryImages: ["/Rings/IMG_7768.jpg"],
+    description:
+      "An oval brilliant in four-prong yellow gold paired with a polished wide band — architectural proportion and warm salon light for everyday and occasion.",
+  },
+  {
+    id: "ring-sapphire-riviere-eternity",
+    category: "rings",
+    productCode: "BD-G-RG-051",
+    image: "/Rings/Ring24.mov",
+    video: "/Rings/Ring24.mov",
+    imageWellColor: "#a89878",
+    alt: "Sapphire Rivière Eternity — princess sapphire and diamond eternity band in yellow gold",
+    title: "Sapphire Rivière Eternity",
+    galleryImages: ["/Rings/Ring21.jpg"],
+    gemstoneSpec: "Princess sapphire and diamond eternity",
+    goldSpec: "18K yellow gold · milgrain channel",
+    salonPriceInr: 260_000,
+    description:
+      "Princess sapphires alternate with round brilliants in a milgrain channel eternity — hand-engraved yellow gold and regal colour captured in salon motion.",
   },
   {
     id: "brace-feuille-douce",

@@ -7,7 +7,10 @@ import BrandImageWatermark from "./BrandImageWatermark";
 import ProtectedImage from "./protection/ProtectedImage";
 import SalonJewelVideo from "./SalonJewelVideo";
 import type { AtelierPiece } from "../data/fineJewelleryCollections";
-import { atelierPieceViews } from "../data/fineJewelleryCollections";
+import {
+  atelierPieceViews,
+  isSalonFilmPath,
+} from "../data/fineJewelleryCollections";
 import { consultationSourcePage } from "../data/siteContact";
 import { openAtelierPiecePriceEnquiry } from "../lib/atelierEnquiry";
 
@@ -42,7 +45,8 @@ export default function AtelierPieceLightbox({
   const views = piece ? atelierPieceViews(piece) : [];
   const safeViewIndex =
     views.length === 0 ? 0 : Math.min(Math.max(viewIndex, 0), views.length - 1);
-  const activeImage = views[safeViewIndex] ?? piece?.image ?? "";
+  const activeView = views[safeViewIndex] ?? piece?.image ?? "";
+  const activeIsVideo = isSalonFilmPath(activeView);
   const hasMultipleViews = views.length > 1;
   const hasPrev = safeIndex > 0;
   const hasNext = safeIndex < total - 1;
@@ -144,11 +148,11 @@ export default function AtelierPieceLightbox({
                   style={{ backgroundColor: pieceBackdrop(piece) }}
                 >
                   <div className="relative flex min-h-0 flex-1 items-center justify-center p-2 sm:p-4 lg:p-6">
-                    {piece.video ? (
+                    {activeIsVideo ? (
                       <div className="relative h-full min-h-[min(38vh,420px)] w-full max-h-full overflow-hidden">
                         <SalonJewelVideo
-                          key={piece.id}
-                          src={piece.video}
+                          key={`${piece.id}-${safeViewIndex}`}
+                          src={activeView}
                           ariaLabel={piece.alt}
                           objectFit="contain"
                           autoPlay={false}
@@ -159,7 +163,7 @@ export default function AtelierPieceLightbox({
                       <ProtectedImage
                         key={`${piece.id}-${safeViewIndex}`}
                         wrapperClassName="flex h-full w-full min-h-[min(38vh,420px)] items-center justify-center"
-                        src={activeImage}
+                        src={activeView}
                         alt={
                           hasMultipleViews
                             ? `${piece.alt} — view ${safeViewIndex + 1} of ${views.length}`
