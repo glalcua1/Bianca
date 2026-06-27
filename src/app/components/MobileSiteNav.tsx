@@ -137,7 +137,7 @@ const MobileSiteNav = forwardRef<HTMLElement, Props>(function MobileSiteNav(
                         fineMenuOpen ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
                       }`}
                     >
-                      <div className="border-t border-[#766d42]/25 bg-[#faf8f5] px-3 py-5">
+                      <div className="border-t border-[#766d42]/25 bg-[#faf8f5] px-3 py-4">
                         <FineJewelleryMegaMenuPanel
                           layout="stacked"
                           onNavigate={closeAll}
