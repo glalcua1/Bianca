@@ -187,6 +187,94 @@ export const FINE_JEWELLERY_CATEGORIES: FineJewelleryCategory[] = [
  */
 export const ATELIER_PIECES: AtelierPiece[] = [
   {
+    id: "ear-golden-pear-riviere",
+    category: "earrings",
+    productCode: "BD-K-ER-026",
+    image: "/Earrings/ER-12.jpg",
+    imageWellColor: "#d8d8d6",
+    alt: "Golden Pear Rivière — graduated pear diamond drop earrings in yellow gold",
+    title: "Golden Pear Rivière",
+    description:
+      "Five pear brilliants descend in graduated yellow-gold links — warm metal, elongated light, and fluid movement composed for evening.",
+  },
+  {
+    id: "ear-canary-huggie-hoops",
+    category: "earrings",
+    productCode: "BD-K-ER-027",
+    image: "/Earrings/ER-13.jpg",
+    imageWellColor: "#d6d6d4",
+    alt: "Canary Huggie Hoops — round diamond huggie earrings in yellow gold",
+    title: "Canary Huggie Hoops",
+    description:
+      "Round brilliants line the front of polished yellow-gold huggies — compact everyday fire with secure click closure.",
+  },
+  {
+    id: "ear-platinum-huggie-hoops",
+    category: "earrings",
+    productCode: "BD-K-ER-028",
+    image: "/Earrings/ER-14.jpg",
+    imageWellColor: "#d4d4d6",
+    alt: "Platinum Huggie Hoops — round diamond eternity huggie earrings in white gold",
+    title: "Platinum Huggie Hoops",
+    description:
+      "A continuous row of round brilliants traces white-gold huggie hoops — shared-prong sparkle with crisp, modern proportion.",
+  },
+  {
+    id: "ear-floral-pear-cascade",
+    category: "earrings",
+    productCode: "BD-K-ER-029",
+    image: "/Earrings/ER-15.jpg",
+    imageWellColor: "#d8d8d6",
+    alt: "Floral Pear Cascade — floral pear and round diamond drop earrings in yellow gold",
+    title: "Floral Pear Cascade",
+    description:
+      "Pear diamond petals crown alternating pear and round drops in yellow gold — botanical rhythm with gala-length movement.",
+  },
+  {
+    id: "ear-yellow-pear-line",
+    category: "earrings",
+    productCode: "BD-K-ER-030",
+    image: "/Earrings/ER-16.jpg",
+    imageWellColor: "#d9d9d7",
+    alt: "Yellow Pear Line — five-stone pear diamond drop earrings in yellow gold",
+    title: "Yellow Pear Line",
+    description:
+      "Five pear brilliants align in a vertical yellow-gold line — clean links, soft elongation, and uninterrupted salon brilliance.",
+  },
+  {
+    id: "ear-maison-gold-hoops",
+    category: "earrings",
+    productCode: "BD-K-ER-031",
+    image: "/Earrings/ER-17.jpg",
+    imageWellColor: "#e8e8e6",
+    alt: "Maison Gold Hoops — polished yellow gold huggie hoop earrings",
+    title: "Maison Gold Hoops",
+    description:
+      "Thick polished yellow-gold hoops with a secure click closure — sculptural minimalism and warm everyday presence.",
+  },
+  {
+    id: "ear-pink-sapphire-huggie-drop",
+    category: "earrings",
+    productCode: "BD-K-ER-032",
+    image: "/Earrings/ER-18.jpg",
+    imageWellColor: "#d6d6d4",
+    alt: "Pink Sapphire Huggie Drop — diamond huggie earrings with pink sapphire drops in yellow gold",
+    title: "Pink Sapphire Huggie Drop",
+    description:
+      "Pavé huggies suspend a round brilliant and a vivid pink sapphire drop in yellow gold — colour, contrast, and refined movement.",
+  },
+  {
+    id: "ear-rose-gold-huggie-hoops",
+    category: "earrings",
+    productCode: "BD-K-ER-033",
+    image: "/Earrings/IMG_7815.jpg",
+    imageWellColor: "#d4d2d0",
+    alt: "Rose Gold Huggie Hoops — round diamond huggie earrings in rose gold",
+    title: "Rose Gold Huggie Hoops",
+    description:
+      "Round brilliants trace the front of polished rose-gold huggies — romantic warmth with shared-prong sparkle at the ear.",
+  },
+  {
     id: "ear-oval-line-drop",
     category: "earrings",
     productCode: "BD-K-ER-005",
