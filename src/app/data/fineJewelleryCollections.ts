@@ -341,20 +341,6 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "Pear-shaped ruby petals bloom around a round brilliant centre — floral studs with crisp white-gold prongs and rich crimson fire.",
   },
   {
-    id: "ear-sapphire-chandelier-drop",
-    category: "earrings",
-    productCode: "BD-K-ER-011",
-    image: "/Earrings/IMG_7669.jpg",
-    imageWellColor: "#bfc0bf",
-    alt: "Sapphire Chandelier Drop — sapphire and diamond pear chandelier earrings",
-    title: "Sapphire Chandelier Drop",
-    frameImageWrapperClassName:
-      "absolute inset-0 flex items-center justify-center p-8 sm:p-10 md:p-12",
-    frameImageClassName: "max-h-full max-w-full object-contain object-center",
-    description:
-      "Pear diamond halos, brilliant links, and deep blue sapphire drops articulate in white gold — a formal chandelier with regal colour and movement.",
-  },
-  {
     id: "ear-emerald-octagon-studs",
     category: "earrings",
     productCode: "BD-K-ER-012",
@@ -452,34 +438,6 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Round Line Drop",
     description:
       "Round brilliants form a clean vertical line in white gold — modern restraint with uninterrupted fire and a quietly dramatic drop.",
-  },
-  {
-    id: "ear-pear-line-drop",
-    category: "earrings",
-    productCode: "BD-K-ER-021",
-    image: "/Earrings/IMG_7745.jpg",
-    imageWellColor: "#bfc0bf",
-    alt: "Pear Line Drop — graduated pear diamond earrings in yellow gold",
-    title: "Pear Line Drop",
-    frameImageWrapperClassName:
-      "absolute inset-0 flex items-center justify-center p-7 sm:p-9 md:p-10",
-    frameImageClassName: "max-h-full max-w-full object-contain object-center",
-    description:
-      "Five pear brilliants descend in fine yellow-gold links — a fluid line of light with soft movement and bridal poise.",
-  },
-  {
-    id: "ear-floral-pear-chandelier",
-    category: "earrings",
-    productCode: "BD-K-ER-022",
-    image: "/Earrings/IMG_7757.jpg",
-    imageWellColor: "#d9d9d8",
-    alt: "Floral Pear Chandelier — pear diamond floral drop earrings in yellow gold",
-    title: "Floral Pear Chandelier",
-    frameImageWrapperClassName:
-      "absolute inset-0 flex items-center justify-center p-7 sm:p-9 md:p-10",
-    frameImageClassName: "max-h-full max-w-full object-contain object-center",
-    description:
-      "Pear diamonds bloom into a floral crown before falling into articulated drops — yellow-gold warmth with high-jewellery movement.",
   },
   {
     id: "ear-sapphire-octagon-studs",
@@ -626,17 +584,6 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "A round brilliant crowned in a diamond halo on an open lattice basket, the split white-gold shank pavé-set to the shoulder — classic fire with architectural depth for the Kira line.",
   },
   {
-    id: "ring-maison-embrace",
-    category: "rings",
-    productCode: "BD-K-RG-004",
-    image: "/Rings/Women_ring.png",
-    imageWellColor: "#767674",
-    alt: "Signature Embrace — women's diamond ring",
-    title: "Signature Embrace",
-    description:
-      "An elegant silhouette with a certified centre brilliant — feminine, assured, and made to be worn without occasion.",
-  },
-  {
     id: "ring-geometric-pear",
     category: "rings",
     productCode: "BD-G-RG-008",
@@ -690,17 +637,6 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Geometric Princess",
     description:
       "A princess-cut centre stone nested in a bevelled octagonal yellow-gold frame — crisp geometry and confident minimalism composed for everyday brilliance.",
-  },
-  {
-    id: "ring-canary-trilogy",
-    category: "rings",
-    productCode: "BD-G-RG-026",
-    image: "/Rings/IMG_7528.jpg",
-    imageWellColor: "#f3f3ef",
-    alt: "Canary Trilogy — yellow radiant and emerald-cut trilogy ring in white gold",
-    title: "Canary Trilogy",
-    description:
-      "A canary radiant centre flanked by emerald-cut brilliants on a polished white-gold band — three-stone poise with colour, fire, and salon-refined proportion.",
   },
   {
     id: "ring-tri-tone-wave",
@@ -866,17 +802,6 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Ruby Floral Sunburst",
     description:
       "An oval ruby anchors a tiered sunburst of pear and marquise brilliants on polished white gold — floral volume and red-carpet scale composed for evening celebration.",
-  },
-  {
-    id: "ring-cushion-pave-classique",
-    category: "rings",
-    productCode: "BD-G-RG-019",
-    image: "/Rings/IMG_7481.jpg",
-    imageWellColor: "#dccdb9",
-    alt: "Cushion Pavé Classic — cushion-cut diamond solitaire with pavé band in white gold",
-    title: "Cushion Pavé Classic",
-    description:
-      "A cushion brilliant in a four-prong white-gold setting with a hidden halo and pavé shoulders — soft geometry and continuous luminosity at the finger.",
   },
   {
     id: "ring-heart-oval-toi-et-moi",
