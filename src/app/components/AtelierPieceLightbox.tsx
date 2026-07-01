@@ -6,10 +6,13 @@ import AtelierSalonPanel from "./AtelierSalonPanel";
 import BrandImageWatermark from "./BrandImageWatermark";
 import ProtectedImage from "./protection/ProtectedImage";
 import SalonJewelVideo from "./SalonJewelVideo";
-import type { AtelierPiece } from "../data/fineJewelleryCollections";
+import type { AtelierPiece, MetalVariantId } from "../data/fineJewelleryCollections";
 import {
+  atelierPieceHasMetalVariants,
+  atelierPieceMetalVariants,
   atelierPieceViews,
   isSalonFilmPath,
+  resolveAtelierMetalVariant,
 } from "../data/fineJewelleryCollections";
 import { consultationSourcePage } from "../data/siteContact";
 import { openAtelierPiecePriceEnquiry } from "../lib/atelierEnquiry";
@@ -21,6 +24,12 @@ type Props = {
   onOpenChange: (open: boolean) => void;
   onActiveIndexChange: (index: number) => void;
 };
+
+const SALON_MEDIA_FRAME =
+  "relative mx-auto flex h-[min(52vh,520px)] w-full max-w-[min(92vw,640px)] items-center justify-center";
+
+const SALON_IMAGE_CLASS =
+  "h-full w-full max-h-[min(52vh,520px)] max-w-[min(92vw,640px)] object-contain object-center transition-opacity duration-300 motion-reduce:transition-none";
 
 function pieceBackdrop(piece: AtelierPiece): string {
   if (piece.imageWellColor) return piece.imageWellColor;
@@ -38,11 +47,17 @@ export default function AtelierPieceLightbox({
   const location = useLocation();
   const [enquiryLoading, setEnquiryLoading] = useState(false);
   const [viewIndex, setViewIndex] = useState(0);
+  const [metalVariantId, setMetalVariantId] = useState<MetalVariantId | undefined>();
   const total = pieces.length;
   const safeIndex =
     total === 0 ? 0 : Math.min(Math.max(activeIndex, 0), total - 1);
   const piece = pieces[safeIndex] ?? null;
-  const views = piece ? atelierPieceViews(piece) : [];
+  const metalVariants = piece ? atelierPieceMetalVariants(piece) : [];
+  const hasMetalVariants = piece ? atelierPieceHasMetalVariants(piece) : false;
+  const activeMetalVariant = piece
+    ? resolveAtelierMetalVariant(piece, metalVariantId)
+    : null;
+  const views = piece ? atelierPieceViews(piece, activeMetalVariant?.id) : [];
   const safeViewIndex =
     views.length === 0 ? 0 : Math.min(Math.max(viewIndex, 0), views.length - 1);
   const activeView = views[safeViewIndex] ?? piece?.image ?? "";
@@ -55,7 +70,12 @@ export default function AtelierPieceLightbox({
 
   useEffect(() => {
     setViewIndex(0);
+    setMetalVariantId(undefined);
   }, [piece?.id]);
+
+  useEffect(() => {
+    setViewIndex(0);
+  }, [activeMetalVariant?.id]);
 
   const goPrevView = useCallback(() => {
     if (hasPrevView) setViewIndex((index) => index - 1);
@@ -117,7 +137,6 @@ export default function AtelierPieceLightbox({
         >
           {piece && total > 0 && (
             <div className="pointer-events-auto flex h-full max-h-full min-h-0 flex-col bg-[#1d3c34]">
-              {/* Slim chrome bar */}
               <header className="flex shrink-0 items-center justify-between gap-3 border-b border-[#766d42]/35 px-3 py-2 sm:px-5">
                 <Dialog.Title className="text-[10px] uppercase tracking-[0.2em] text-[#dccb7b]">
                   Salon view
@@ -137,19 +156,16 @@ export default function AtelierPieceLightbox({
                 </Dialog.Close>
               </header>
 
-              {/*
-                Golden-ratio split: image φ (61.8%) · details 1 (38.2%)
-                Mobile: image top, details below
-              */}
               <div className="grid min-h-0 flex-1 grid-cols-1 grid-rows-[minmax(38vh,1fr)_auto] lg:grid-cols-[minmax(0,1.618fr)_minmax(0,1fr)] lg:grid-rows-1">
-                {/* —— Image well (left / top) —— */}
                 <div
                   className="relative flex min-h-0 flex-1 flex-col border-b border-[#766d42]/30 lg:border-b-0 lg:border-r"
                   style={{ backgroundColor: pieceBackdrop(piece) }}
                 >
-                  <div className="relative flex min-h-0 flex-1 items-center justify-center p-2 sm:p-4 lg:p-6">
+                  <div className="relative flex min-h-0 flex-1 items-center justify-center p-3 sm:p-5 lg:p-6">
                     {activeIsVideo ? (
-                      <div className="relative h-full min-h-[min(38vh,420px)] w-full max-h-full overflow-hidden">
+                      <div
+                        className={`${SALON_MEDIA_FRAME} overflow-hidden`}
+                      >
                         <SalonJewelVideo
                           key={`${piece.id}-${safeViewIndex}`}
                           src={activeView}
@@ -161,8 +177,8 @@ export default function AtelierPieceLightbox({
                       </div>
                     ) : (
                       <ProtectedImage
-                        key={`${piece.id}-${safeViewIndex}`}
-                        wrapperClassName="flex h-full w-full min-h-[min(38vh,420px)] items-center justify-center"
+                        key={`${piece.id}-${activeMetalVariant?.id ?? "default"}-${safeViewIndex}`}
+                        wrapperClassName={SALON_MEDIA_FRAME}
                         src={activeView}
                         alt={
                           hasMultipleViews
@@ -173,36 +189,68 @@ export default function AtelierPieceLightbox({
                         loading="eager"
                         decoding="async"
                         priority
-                        className="max-h-full max-w-full object-contain object-center transition-opacity duration-300 motion-reduce:transition-none"
+                        className={SALON_IMAGE_CLASS}
                       />
                     )}
                   </div>
 
-                  {hasMultipleViews ? (
-                    <div className="relative z-20 flex shrink-0 items-center justify-center gap-2 border-t border-[#766d42]/20 px-3 py-2.5 sm:px-5">
-                      <button
-                        type="button"
-                        onClick={goPrevView}
-                        disabled={!hasPrevView}
-                        className="inline-flex size-8 items-center justify-center border border-[#dccb7b]/35 text-[#f4f0e6] transition duration-150 hover:border-[#dccb7b] hover:text-[#dccb7b] disabled:pointer-events-none disabled:opacity-30 motion-reduce:transition-none"
-                        aria-label="Previous view"
-                      >
-                        <ChevronLeft className="size-4" strokeWidth={1.25} />
-                      </button>
-                      <p className="min-w-[5.5rem] text-center text-[9px] uppercase tracking-[0.2em] text-[#dccb7b]/85 tabular-nums">
-                        View {safeViewIndex + 1} / {views.length}
-                      </p>
-                      <button
-                        type="button"
-                        onClick={goNextView}
-                        disabled={!hasNextView}
-                        className="inline-flex size-8 items-center justify-center border border-[#dccb7b]/35 text-[#f4f0e6] transition duration-150 hover:border-[#dccb7b] hover:text-[#dccb7b] disabled:pointer-events-none disabled:opacity-30 motion-reduce:transition-none"
-                        aria-label="Next view"
-                      >
-                        <ChevronRight className="size-4" strokeWidth={1.25} />
-                      </button>
+                  {(hasMetalVariants || hasMultipleViews) && (
+                    <div className="relative z-20 flex shrink-0 flex-col items-center gap-2.5 border-t border-[#766d42]/20 px-3 py-3 sm:px-5">
+                      {hasMetalVariants ? (
+                        <div
+                          className="flex flex-wrap items-center justify-center gap-1.5"
+                          role="tablist"
+                          aria-label="Metal finish"
+                        >
+                          {metalVariants.map((variant) => {
+                            const isActive = activeMetalVariant?.id === variant.id;
+                            return (
+                              <button
+                                key={variant.id}
+                                type="button"
+                                role="tab"
+                                aria-selected={isActive}
+                                className={`border px-3 py-1.5 text-[9px] uppercase tracking-[0.18em] transition duration-150 motion-reduce:transition-none ${
+                                  isActive
+                                    ? "border-[#dccb7b] bg-[#1d3c34]/70 text-[#faf8f5]"
+                                    : "border-[#766d42]/35 bg-transparent text-[#faf8f5]/72 hover:border-[#dccb7b]/55 hover:text-[#faf8f5]"
+                                }`}
+                                onClick={() => setMetalVariantId(variant.id)}
+                              >
+                                {variant.label}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      ) : null}
+
+                      {hasMultipleViews ? (
+                        <div className="flex items-center justify-center gap-2">
+                          <button
+                            type="button"
+                            onClick={goPrevView}
+                            disabled={!hasPrevView}
+                            className="inline-flex size-8 items-center justify-center border border-[#dccb7b]/35 text-[#f4f0e6] transition duration-150 hover:border-[#dccb7b] hover:text-[#dccb7b] disabled:pointer-events-none disabled:opacity-30 motion-reduce:transition-none"
+                            aria-label="Previous view"
+                          >
+                            <ChevronLeft className="size-4" strokeWidth={1.25} />
+                          </button>
+                          <p className="min-w-[5.5rem] text-center text-[9px] uppercase tracking-[0.2em] text-[#dccb7b]/85 tabular-nums">
+                            View {safeViewIndex + 1} / {views.length}
+                          </p>
+                          <button
+                            type="button"
+                            onClick={goNextView}
+                            disabled={!hasNextView}
+                            className="inline-flex size-8 items-center justify-center border border-[#dccb7b]/35 text-[#f4f0e6] transition duration-150 hover:border-[#dccb7b] hover:text-[#dccb7b] disabled:pointer-events-none disabled:opacity-30 motion-reduce:transition-none"
+                            aria-label="Next view"
+                          >
+                            <ChevronRight className="size-4" strokeWidth={1.25} />
+                          </button>
+                        </div>
+                      ) : null}
                     </div>
-                  ) : null}
+                  )}
 
                   {hasPrev && (
                     <button
@@ -229,10 +277,10 @@ export default function AtelierPieceLightbox({
                   <BrandImageWatermark className="bottom-5 right-5 z-20 sm:bottom-6 sm:right-6" />
                 </div>
 
-                {/* —— Details column (right / bottom) —— */}
                 <div className="flex min-h-0 flex-col overflow-hidden bg-[#f4f0e6] lg:max-h-full">
                   <AtelierSalonPanel
                     piece={piece}
+                    selectedMetalLabel={activeMetalVariant?.label}
                     onEnquire={handlePriceEnquiry}
                     enquiryLoading={enquiryLoading}
                   />

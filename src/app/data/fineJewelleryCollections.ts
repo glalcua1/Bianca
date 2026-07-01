@@ -26,6 +26,15 @@ export type FineJewelleryCategory = {
 
 export type BraceletKind = "tennis" | "bracelet";
 
+export type MetalVariantId = "yellow-gold" | "white-gold" | "rose-gold";
+
+export type MetalVariant = {
+  id: MetalVariantId;
+  label: string;
+  image: string;
+  galleryImages?: string[];
+};
+
 export type AtelierPiece = {
   id: string;
   category: JewelleryCategoryId;
@@ -45,6 +54,8 @@ export type AtelierPiece = {
   video?: string;
   /** Additional still views of the same piece (salon lightbox) */
   galleryImages?: string[];
+  /** Alternate metal finishes — one catalogue card, switchable in salon overlay */
+  metalVariants?: MetalVariant[];
   /** Fixed salon guide price when not in Excel catalogue */
   salonPriceInr?: number;
   gemstoneSpec?: string;
@@ -74,13 +85,42 @@ export function isSalonFilmPath(src: string): boolean {
   return /\.(mov|mp4|webm)$/i.test(src);
 }
 
-/** Primary image plus any extra salon views for the same piece */
-export function atelierPieceViews(piece: AtelierPiece): string[] {
+export function atelierPieceMetalVariants(piece: AtelierPiece): MetalVariant[] {
+  if (piece.metalVariants?.length) return piece.metalVariants;
+  return [];
+}
+
+export function atelierPieceHasMetalVariants(piece: AtelierPiece): boolean {
+  return (piece.metalVariants?.length ?? 0) > 1;
+}
+
+export function resolveAtelierMetalVariant(
+  piece: AtelierPiece,
+  metalVariantId?: MetalVariantId,
+): MetalVariant | null {
+  const variants = piece.metalVariants;
+  if (!variants?.length) return null;
+  return variants.find((variant) => variant.id === metalVariantId) ?? variants[0];
+}
+
+/** Primary image plus salon views for the active metal finish. */
+export function atelierPieceViews(
+  piece: AtelierPiece,
+  metalVariantId?: MetalVariantId,
+): string[] {
   if (piece.video) {
     const extra = piece.galleryImages ?? [];
     if (extra.length === 0) return [piece.video];
     return [piece.video, ...extra];
   }
+
+  const metalVariant = resolveAtelierMetalVariant(piece, metalVariantId);
+  if (metalVariant) {
+    const gallery = metalVariant.galleryImages ?? [];
+    if (gallery.length === 0) return [metalVariant.image];
+    return [metalVariant.image, ...gallery];
+  }
+
   const extra = piece.galleryImages ?? [];
   if (extra.length === 0) return [piece.image];
   return [piece.image, ...extra];
@@ -198,26 +238,27 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "Five pear brilliants descend in graduated yellow-gold links — warm metal, elongated light, and fluid movement composed for evening.",
   },
   {
-    id: "ear-canary-huggie-hoops",
+    id: "ear-diamond-huggie-hoops",
     category: "earrings",
     productCode: "BD-K-ER-027",
     image: "/Earrings/ER-13.jpg",
     imageWellColor: "#d6d6d4",
-    alt: "Canary Huggie Hoops — round diamond huggie earrings in yellow gold",
-    title: "Canary Huggie Hoops",
+    alt: "Diamond Huggie Hoops — round diamond huggie earrings",
+    title: "Diamond Huggie Hoops",
     description:
-      "Round brilliants line the front of polished yellow-gold huggies — compact everyday fire with secure click closure.",
-  },
-  {
-    id: "ear-platinum-huggie-hoops",
-    category: "earrings",
-    productCode: "BD-K-ER-028",
-    image: "/Earrings/ER-14.jpg",
-    imageWellColor: "#d4d4d6",
-    alt: "Platinum Huggie Hoops — round diamond eternity huggie earrings in white gold",
-    title: "Platinum Huggie Hoops",
-    description:
-      "A continuous row of round brilliants traces white-gold huggie hoops — shared-prong sparkle with crisp, modern proportion.",
+      "Round brilliants trace the front of polished huggie hoops — compact everyday fire, available in yellow or white gold.",
+    metalVariants: [
+      {
+        id: "yellow-gold",
+        label: "Yellow Gold",
+        image: "/Earrings/ER-13.jpg",
+      },
+      {
+        id: "white-gold",
+        label: "White Gold",
+        image: "/Earrings/ER-14.jpg",
+      },
+    ],
   },
   {
     id: "ear-floral-pear-cascade",
@@ -352,26 +393,27 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "Octagonal emerald centres sit within round-brilliant halos in white gold — architectural studs with deep green presence.",
   },
   {
-    id: "ear-golden-pear-halo-drop",
+    id: "ear-pear-halo-drop",
     category: "earrings",
     productCode: "BD-K-ER-013",
     image: "/Earrings/IMG_7715.jpg",
     imageWellColor: "#d8d8d6",
-    alt: "Golden Pear Halo Drop — emerald-cut and pear diamond halo earrings in yellow gold",
-    title: "Golden Pear Halo Drop",
+    alt: "Pear Halo Drop — emerald-cut and pear diamond halo earrings",
+    title: "Pear Halo Drop",
     description:
-      "Emerald-cut diamond tops release pear halo drops in yellow gold — classic bridal geometry warmed with polished gold detail.",
-  },
-  {
-    id: "ear-white-pear-halo-drop",
-    category: "earrings",
-    productCode: "BD-K-ER-014",
-    image: "/Earrings/IMG_7716.jpg",
-    imageWellColor: "#d6d6d8",
-    alt: "White Pear Halo Drop — emerald-cut and pear diamond halo earrings in white gold",
-    title: "White Pear Halo Drop",
-    description:
-      "Emerald-cut tops and pear-shaped diamond halos align in white gold — icy brilliance with a graceful, elongated evening profile.",
+      "Emerald-cut diamond tops release pear halo drops — classic bridal geometry in yellow or white gold.",
+    metalVariants: [
+      {
+        id: "yellow-gold",
+        label: "Yellow Gold",
+        image: "/Earrings/IMG_7715.jpg",
+      },
+      {
+        id: "white-gold",
+        label: "White Gold",
+        image: "/Earrings/IMG_7716.jpg",
+      },
+    ],
   },
   {
     id: "ear-round-solitaire-studs",
@@ -473,28 +515,79 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "Pear emerald centres float within diamond halos and polished openwork frames — luminous white-gold drops with regal green depth.",
   },
   {
-    id: "ring-golden-solitaire-bridal",
+    id: "ring-wave-arch-pave",
+    category: "rings",
+    productCode: "BD-G-RG-055",
+    image: "/Rings/Ring30.jpg",
+    imageWellColor: "#d8d8d6",
+    alt: "Wave Arch Pavé — round diamond ring with pavé wave arch",
+    title: "Wave Arch Pavé",
+    description:
+      "A round brilliant rises beneath a pavé-set wave arch — sculptural negative space in yellow, white, or rose gold.",
+    metalVariants: [
+      {
+        id: "yellow-gold",
+        label: "Yellow Gold",
+        image: "/Rings/Ring30.jpg",
+      },
+      {
+        id: "white-gold",
+        label: "White Gold",
+        image: "/Rings/Ring30a.jpg",
+      },
+      {
+        id: "rose-gold",
+        label: "Rose Gold",
+        image: "/Rings/IMG_7822.jpg",
+      },
+    ],
+  },
+  {
+    id: "ring-marquise-pear-collar",
+    category: "rings",
+    productCode: "BD-G-RG-056",
+    image: "/Rings/IMG_7823.jpg",
+    imageWellColor: "#d8c8b0",
+    alt: "Marquise Pear Collar — wide marquise and pear diamond band in yellow gold",
+    title: "Marquise Pear Collar",
+    description:
+      "Marquise, pear, and round brilliants cluster across a wide yellow-gold band — collar-scale brilliance with organic rhythm.",
+  },
+  {
+    id: "ring-canary-trilogy-maison",
+    category: "rings",
+    productCode: "BD-G-RG-057",
+    image: "/Rings/IMG_7588 2.jpg",
+    imageWellColor: "#d8d0c0",
+    alt: "Canary Trilogy Maison — canary emerald-cut trilogy ring in white gold",
+    title: "Canary Trilogy Maison",
+    description:
+      "A canary emerald-cut centre flanked by colourless emerald-cut brilliants on a polished white-gold band — three-stone colour and fire.",
+  },
+  {
+    id: "ring-solitaire-bridal-duo",
     category: "rings",
     productCode: "BD-G-RG-048",
     image: "/Rings/IMG_7775 2.jpg",
     imageWellColor: "#c8b8a8",
-    alt: "Golden Solitaire Bridal — round diamond solitaire and eternity band in 18K yellow gold",
-    title: "Golden Solitaire Bridal",
-    galleryImages: ["/Rings/IMG_7774.jpg"],
+    alt: "Solitaire Bridal Duo — round diamond solitaire and eternity band",
+    title: "Solitaire Bridal Duo",
     description:
-      "A round brilliant solitaire in four-prong yellow gold beside a shared-prong eternity band — 18K warmth and continuous fire composed for proposal and celebration.",
-  },
-  {
-    id: "ring-platinum-lumiere-bridal",
-    category: "rings",
-    productCode: "BD-G-RG-049",
-    image: "/Rings/IMG_7776.jpg",
-    imageWellColor: "#c8b8a8",
-    alt: "Platinum Lumière Bridal — round diamond solitaire and eternity band in white gold",
-    title: "Platinum Lumière Bridal",
-    galleryImages: ["/Rings/IMG_7770.jpg"],
-    description:
-      "A round brilliant in white-gold prongs with a pavé-set eternity companion — crisp brilliance and salon-refined proportion for the modern bridal hand.",
+      "A round brilliant solitaire beside a shared-prong eternity band — proposal-ready brilliance in yellow or white gold.",
+    metalVariants: [
+      {
+        id: "yellow-gold",
+        label: "Yellow Gold",
+        image: "/Rings/IMG_7775 2.jpg",
+        galleryImages: ["/Rings/IMG_7774.jpg"],
+      },
+      {
+        id: "white-gold",
+        label: "White Gold",
+        image: "/Rings/IMG_7776.jpg",
+        galleryImages: ["/Rings/IMG_7770.jpg"],
+      },
+    ],
   },
   {
     id: "ring-oval-maison-bridal",
@@ -1667,12 +1760,23 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "for-him",
     productCode: "BD-K-MN-002",
     image: "/Rings/Mens1.JPG",
-    galleryImages: ["/Rings/Mens1a.JPG"],
     imageWellColor: "#4f4d4e",
-    alt: "Maison Band — men's diamond band in white gold, salon view",
+    alt: "Maison Band — men's diamond band",
     title: "Maison Band",
     description:
-      "A substantial white-gold band with channel-set brilliants — clean planes and weight on the hand, composed for everyday presence.",
+      "A substantial band with channel-set brilliants — clean planes and weight on the hand in white or yellow gold.",
+    metalVariants: [
+      {
+        id: "white-gold",
+        label: "White Gold",
+        image: "/Rings/Mens1.JPG",
+      },
+      {
+        id: "yellow-gold",
+        label: "Yellow Gold",
+        image: "/Rings/Mens1a.JPG",
+      },
+    ],
   },
   {
     id: "for-him-architect-band",

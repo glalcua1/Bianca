@@ -241,6 +241,46 @@
     },
     "sizes": "(max-width: 768px) 100vw, 1280px"
   },
+  "/Rings/Ring30.jpg": {
+    "original": "/Rings/Ring30.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/Ring30-443.webp",
+      "886": "/media/opt/Rings/Ring30-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/Ring30a.jpg": {
+    "original": "/Rings/Ring30a.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/Ring30a-443.webp",
+      "886": "/media/opt/Rings/Ring30a-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/IMG_7822.jpg": {
+    "original": "/Rings/IMG_7822.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/IMG_7822-443.webp",
+      "886": "/media/opt/Rings/IMG_7822-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/IMG_7823.jpg": {
+    "original": "/Rings/IMG_7823.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/IMG_7823-443.webp",
+      "886": "/media/opt/Rings/IMG_7823-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/IMG_7588 2.jpg": {
+    "original": "/Rings/IMG_7588 2.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/IMG_7588 2-443.webp",
+      "886": "/media/opt/Rings/IMG_7588 2-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
   "/Rings/IMG_7775 2.jpg": {
     "original": "/Rings/IMG_7775 2.jpg",
     "webp": {
@@ -1079,6 +1119,14 @@
     },
     "sizes": "(max-width: 768px) 90vw, 443px"
   },
+  "/Rings/Mens1a.JPG": {
+    "original": "/Rings/Mens1a.JPG",
+    "webp": {
+      "443": "/media/opt/Rings/Mens1a-443.webp",
+      "886": "/media/opt/Rings/Mens1a-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
   "/Rings/Mens2.JPG": {
     "original": "/Rings/Mens2.JPG",
     "webp": {
@@ -1196,14 +1244,6 @@
     "webp": {
       "443": "/media/opt/Rings/IMG_7775-443.webp",
       "886": "/media/opt/Rings/IMG_7775-886.webp"
-    },
-    "sizes": "(max-width: 768px) 90vw, 443px"
-  },
-  "/Rings/Mens1a.JPG": {
-    "original": "/Rings/Mens1a.JPG",
-    "webp": {
-      "443": "/media/opt/Rings/Mens1a-443.webp",
-      "886": "/media/opt/Rings/Mens1a-886.webp"
     },
     "sizes": "(max-width: 768px) 90vw, 443px"
   },

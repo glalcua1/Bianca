@@ -15,6 +15,7 @@ import { buildCustomerRingDetails } from "../lib/ringQuoteCopy";
 
 type Props = {
   piece: AtelierPiece;
+  selectedMetalLabel?: string;
   onEnquire: () => void;
   enquiryLoading: boolean;
 };
@@ -244,6 +245,7 @@ function EarringSalonDetails({ details }: { details: CustomerParureDetails }) {
 
 export default function AtelierSalonPanel({
   piece,
+  selectedMetalLabel,
   onEnquire,
   enquiryLoading,
 }: Props) {
@@ -307,6 +309,9 @@ export default function AtelierSalonPanel({
           </h2>
           <p className="mt-3 text-[9px] uppercase tracking-[0.2em] text-[#766d42]/65">
             {piece.productCode}
+            {selectedMetalLabel ? (
+              <span className="text-on-cream-muted"> · {selectedMetalLabel}</span>
+            ) : null}
           </p>
         </div>
 
