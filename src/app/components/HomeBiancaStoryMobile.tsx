@@ -1,171 +1,145 @@
 import imgRectangle11 from "figma:asset/Bianca_ring.png";
 import imgPackagingBox from "figma:asset/200f28676d6a2eae898fcdcd9f13ebcd75250299.png";
 import imgPackagingBag from "figma:asset/75d88e2bc003dea111ea5784491167b05e57ecdf.png";
-import imgPackagingPouch from "figma:asset/Bianca_boxes.png";
 import imgImage1 from "figma:asset/ffad195494173b3c37c4aa05d64af9f2620a7643.png";
 import ProtectedImage from "./protection/ProtectedImage";
+import EditorialReveal from "./editorial/EditorialReveal";
 
-const ORCHID_ACCENT =
-  "/elegant-white-orchid-with-delicate-details-showcasing-beauty-sophistication-perfect-home-decor-floral-arrangements.jpg";
-
-const BRAND_COPY = [
+const GALLERY = [
   {
-    lead: true,
-    text: (
-      <>
-        <span className="font-emphasis not-italic">
-          Bianca Diamonds represents a new era of diamond luxury
-        </span>
-        .
-      </>
-    ),
+    src: imgPackagingBox,
+    alt: "Bianca Diamonds presentation box",
+    className: "object-cover object-center",
   },
   {
-    text: (
-      <>
-        Created for the modern woman, Bianca brings together timeless elegance
-        and conscious innovation through{" "}
-        <span className="font-emphasis not-italic">
-          certified lab-grown diamonds
-        </span>{" "}
-        — real diamonds with the same brilliance and beauty as mined diamonds,
-        created using advanced technology with a more thoughtful impact on the
-        world.
-      </>
-    ),
+    src: imgPackagingBag,
+    alt: "Bianca Diamonds packaging",
+    className: "object-cover object-center",
   },
   {
-    text: (
-      <>
-        Each piece is crafted in{" "}
-        <span className="font-emphasis not-italic">BIS hallmarked gold</span> and
-        certified diamonds, designed to celebrate both everyday elegance and
-        life&apos;s most meaningful moments.
-      </>
-    ),
-  },
-  {
-    text: (
-      <>
-        Behind Bianca stands over 80 years of family jewellery expertise, built
-        on trust, craftsmanship, and a deep understanding of diamonds.
-      </>
-    ),
-  },
-  {
-    text: <>Bianca Diamonds is where modern brilliance meets timeless luxury.</>,
+    src: imgImage1,
+    alt: "Bianca Diamonds atelier atmosphere",
+    className: "object-cover object-[center_40%]",
   },
 ] as const;
 
 export default function HomeBiancaStoryMobile() {
   return (
     <>
-      {/* Brand story — full-width salon card */}
+      {/* Brand story — composed full-width salon editorial */}
       <section
         aria-labelledby="brand-story-heading"
         className="border-t border-[#1d3c34]/10 bg-[#faf8f5] px-4 py-12 md:px-8 md:py-16 lg:px-10 lg:py-20"
       >
-        <div className="relative mx-auto max-w-[1400px] overflow-hidden rounded-[20px] border border-[#1d3c34]/10 bg-white px-6 py-10 shadow-[0_8px_32px_rgba(29,60,52,0.06)] sm:px-10 md:px-14 md:py-14 lg:px-16 lg:py-16">
-          <h2
-            id="brand-story-heading"
-            className="text-center font-editorial text-[clamp(1.65rem,3.5vw,2.35rem)] tracking-[-0.01em] text-[#1d3c34]"
-          >
-            Bianca Diamonds
-          </h2>
+        <div className="relative mx-auto max-w-[1400px] overflow-hidden rounded-[2px] border border-[#1d3c34]/10 bg-white shadow-[0_12px_48px_rgba(29,60,52,0.06)]">
+          {/* Soft parchment wash inside the card */}
+          <div
+            className="pointer-events-none absolute inset-0 opacity-90"
+            aria-hidden
+            style={{
+              background:
+                "radial-gradient(ellipse 60% 50% at 100% 0%, rgba(244,240,230,0.85) 0%, transparent 55%), linear-gradient(180deg, #ffffff 0%, #faf8f5 100%)",
+            }}
+          />
 
-          <div className="mx-auto mt-8 max-w-4xl space-y-6 font-display text-[17px] leading-[27px] text-[#1d3c34] md:mt-10 md:space-y-7 md:text-[18px] md:leading-[28px]">
-            {BRAND_COPY.map((block, index) => (
-              <p
-                key={index}
-                className={
-                  block.lead
-                    ? "text-[20px] leading-[30px] md:text-[24px] md:leading-[34px]"
-                    : undefined
-                }
+          <div className="relative grid lg:grid-cols-12 lg:items-stretch">
+            {/* Editorial copy */}
+            <EditorialReveal className="flex flex-col justify-center px-7 py-12 sm:px-10 md:px-12 lg:col-span-5 lg:px-14 lg:py-16 xl:px-16">
+              <p className="text-house-eyebrow text-gold-on-cream">The House</p>
+              <h2
+                id="brand-story-heading"
+                className="mt-4 font-editorial text-[clamp(1.85rem,3.5vw,2.75rem)] tracking-[0.04em] text-[#1d3c34]"
               >
-                {block.text}
-              </p>
-            ))}
-          </div>
-
-          <div className="relative mx-auto mt-10 aspect-[407/372] w-full max-w-xl overflow-hidden rounded-[8px] md:mt-12 md:max-w-2xl">
-            <ProtectedImage
-              wrapperClassName="absolute inset-0 size-full"
-              src={imgRectangle11}
-              alt="Bianca Diamonds fine jewellery"
-              className="size-full object-cover object-center"
-            />
-          </div>
-
-          <div className="mx-auto mt-8 grid max-w-5xl grid-cols-12 gap-3 md:mt-10 md:gap-4">
-            <div
-              className="relative col-span-7 aspect-[231/247] overflow-hidden rounded-[4px]"
-              data-name="packaging-box"
-            >
-              <ProtectedImage
-                wrapperClassName="absolute inset-0 size-full"
-                src={imgPackagingBox}
-                alt=""
-                className="size-full object-cover object-center"
-              />
-            </div>
-            <div className="col-span-5 flex flex-col gap-3 md:gap-4">
+                Bianca Diamonds
+              </h2>
               <div
-                className="relative aspect-[131/127] overflow-hidden rounded-[4px]"
-                data-name="packaging-bag"
-              >
-                <ProtectedImage
-                  wrapperClassName="absolute inset-0 size-full"
-                  src={imgPackagingBag}
-                  alt=""
-                  className="size-full object-cover object-center"
-                />
-              </div>
-              <div
-                className="relative aspect-[81/78] overflow-hidden rounded-[4px]"
-                data-name="packaging-pouch"
-              >
-                <ProtectedImage
-                  wrapperClassName="absolute inset-0 size-full"
-                  src={imgPackagingPouch}
-                  alt=""
-                  className="size-full object-cover object-center"
-                />
-              </div>
-            </div>
-            <div
-              className="relative col-span-12 aspect-[427/273] overflow-hidden rounded-[4px]"
-              data-name="image 1"
-            >
-              <ProtectedImage
-                wrapperClassName="absolute inset-0 size-full"
-                src={imgImage1}
-                alt=""
-                className="size-full object-cover object-center"
-              />
-              <div
-                className="pointer-events-none absolute inset-y-0 right-0 flex w-[44%] max-w-[220px] items-end justify-end pb-2 pr-2 md:max-w-[280px]"
+                className="mt-6 h-px w-14 bg-gradient-to-r from-[#766d42]/70 to-transparent"
                 aria-hidden
-              >
-                <ProtectedImage
-                  wrapperClassName="block max-h-full w-full"
-                  src={ORCHID_ACCENT}
-                  alt=""
-                  className="max-h-full w-full object-contain object-right-bottom mix-blend-multiply"
-                  style={{
-                    WebkitMaskImage:
-                      "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.85) 22%, black 30%)",
-                    maskImage:
-                      "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.85) 22%, black 30%)",
-                  }}
-                />
+              />
+
+              <p className="mt-8 font-display text-[20px] leading-[1.45] text-[#1d3c34] md:text-[22px] md:leading-[1.5]">
+                <span className="font-emphasis not-italic">
+                  Bianca Diamonds represents a new era of diamond luxury
+                </span>
+                .
+              </p>
+
+              <div className="mt-7 space-y-5 font-display text-[15px] leading-[1.75] text-on-cream-body sm:text-[16px]">
+                <p>
+                  Created for the modern woman, Bianca brings together timeless
+                  elegance and conscious innovation through{" "}
+                  <span className="font-emphasis not-italic text-[#1d3c34]">
+                    certified lab-grown diamonds
+                  </span>{" "}
+                  — real diamonds with the same brilliance and beauty as mined
+                  diamonds, created using advanced technology with a more
+                  thoughtful impact on the world.
+                </p>
+                <p>
+                  Each piece is crafted in{" "}
+                  <span className="font-emphasis not-italic text-[#1d3c34]">
+                    BIS hallmarked gold
+                  </span>{" "}
+                  and certified diamonds, designed to celebrate both everyday
+                  elegance and life&apos;s most meaningful moments.
+                </p>
+                <p>
+                  Behind Bianca stands over 80 years of family jewellery
+                  expertise, built on trust, craftsmanship, and a deep
+                  understanding of diamonds.
+                </p>
+                <p className="font-display text-[#1d3c34]">
+                  Bianca Diamonds is where modern brilliance meets timeless
+                  luxury.
+                </p>
               </div>
-            </div>
+            </EditorialReveal>
+
+            {/* Dominant jewellery hero */}
+            <EditorialReveal
+              delay={120}
+              className="relative min-h-[320px] border-t border-[#1d3c34]/8 bg-[#f4f0e6] sm:min-h-[400px] lg:col-span-7 lg:min-h-[560px] lg:border-l lg:border-t-0"
+            >
+              <ProtectedImage
+                wrapperClassName="absolute inset-0 size-full"
+                src={imgRectangle11}
+                alt="Bianca Diamonds fine jewellery"
+                className="size-full object-cover object-center"
+                sizes="(max-width: 1024px) 100vw, 58vw"
+              />
+              <div
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1d3c34]/20 via-transparent to-transparent lg:bg-gradient-to-l lg:from-transparent lg:via-transparent lg:to-[#1d3c34]/05"
+                aria-hidden
+              />
+            </EditorialReveal>
           </div>
+
+          {/* Composed gallery — one disciplined row, equal plates */}
+          <EditorialReveal
+            delay={180}
+            className="relative border-t border-[#1d3c34]/10 bg-[#faf8f5] px-5 py-5 sm:px-6 sm:py-6 md:px-8 md:py-7"
+          >
+            <ul className="grid list-none grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 md:gap-5">
+              {GALLERY.map((item) => (
+                <li
+                  key={item.alt}
+                  className="relative aspect-[4/3] overflow-hidden bg-[#f4f0e6]"
+                >
+                  <ProtectedImage
+                    wrapperClassName="absolute inset-0 size-full"
+                    src={item.src}
+                    alt={item.alt}
+                    className={`size-full ${item.className}`}
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                  />
+                </li>
+              ))}
+            </ul>
+          </EditorialReveal>
         </div>
       </section>
 
-      {/* Founder's note — portrait left, wide copy right (desktop); stacked on mobile */}
+      {/* Founder's note — portrait left, wide copy right */}
       <section
         aria-labelledby="founder-note-heading"
         className="relative overflow-hidden bg-[#1d3c34] px-4 py-14 md:px-8 md:py-16 lg:px-10 lg:py-20"
@@ -196,7 +170,7 @@ export default function HomeBiancaStoryMobile() {
             />
           </div>
 
-          <div className="min-w-0 flex-1 space-y-5 font-display text-[16px] leading-[1.65] tracking-[0.5px] text-on-forest md:max-w-none md:pt-2 md:text-[16px] lg:text-[17px]">
+          <div className="min-w-0 flex-1 space-y-5 font-display text-[16px] leading-[1.65] tracking-[0.5px] text-on-forest md:pt-2 lg:text-[17px]">
             <p>
               Jewellery has always held a special place in the way a woman
               expresses herself. A thoughtfully chosen piece can elevate not only
