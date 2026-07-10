@@ -5,7 +5,7 @@ import imgImage1 from "figma:asset/ffad195494173b3c37c4aa05d64af9f2620a7643.png"
 import ProtectedImage from "./protection/ProtectedImage";
 import EditorialReveal from "./editorial/EditorialReveal";
 
-const GALLERY = [
+const SUPPORTING = [
   {
     src: imgPackagingBox,
     alt: "Bianca Diamonds presentation box",
@@ -26,24 +26,23 @@ const GALLERY = [
 export default function HomeBiancaStoryMobile() {
   return (
     <>
-      {/* Brand story — composed full-width salon editorial */}
+      {/* Brand story — copy left, all imagery composed in the right column */}
       <section
         aria-labelledby="brand-story-heading"
         className="border-t border-[#1d3c34]/10 bg-[#faf8f5] px-4 py-12 md:px-8 md:py-16 lg:px-10 lg:py-20"
       >
         <div className="relative mx-auto max-w-[1400px] overflow-hidden rounded-[2px] border border-[#1d3c34]/10 bg-white shadow-[0_12px_48px_rgba(29,60,52,0.06)]">
-          {/* Soft parchment wash inside the card */}
           <div
             className="pointer-events-none absolute inset-0 opacity-90"
             aria-hidden
             style={{
               background:
-                "radial-gradient(ellipse 60% 50% at 100% 0%, rgba(244,240,230,0.85) 0%, transparent 55%), linear-gradient(180deg, #ffffff 0%, #faf8f5 100%)",
+                "radial-gradient(ellipse 55% 45% at 0% 0%, rgba(244,240,230,0.9) 0%, transparent 50%), linear-gradient(180deg, #ffffff 0%, #faf8f5 100%)",
             }}
           />
 
           <div className="relative grid lg:grid-cols-12 lg:items-stretch">
-            {/* Editorial copy */}
+            {/* Editorial copy — left */}
             <EditorialReveal className="flex flex-col justify-center px-7 py-12 sm:px-10 md:px-12 lg:col-span-5 lg:px-14 lg:py-16 xl:px-16">
               <p className="text-house-eyebrow text-gold-on-cream">The House</p>
               <h2
@@ -95,47 +94,43 @@ export default function HomeBiancaStoryMobile() {
               </div>
             </EditorialReveal>
 
-            {/* Dominant jewellery hero */}
+            {/* All imagery — right column composition */}
             <EditorialReveal
               delay={120}
-              className="relative min-h-[320px] border-t border-[#1d3c34]/8 bg-[#f4f0e6] sm:min-h-[400px] lg:col-span-7 lg:min-h-[560px] lg:border-l lg:border-t-0"
+              className="border-t border-[#1d3c34]/8 bg-[#f4f0e6] p-3 sm:p-4 lg:col-span-7 lg:border-l lg:border-t-0 lg:p-5"
             >
-              <ProtectedImage
-                wrapperClassName="absolute inset-0 size-full"
-                src={imgRectangle11}
-                alt="Bianca Diamonds fine jewellery"
-                className="size-full object-cover object-center"
-                sizes="(max-width: 1024px) 100vw, 58vw"
-              />
-              <div
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1d3c34]/20 via-transparent to-transparent lg:bg-gradient-to-l lg:from-transparent lg:via-transparent lg:to-[#1d3c34]/05"
-                aria-hidden
-              />
-            </EditorialReveal>
-          </div>
-
-          {/* Composed gallery — one disciplined row, equal plates */}
-          <EditorialReveal
-            delay={180}
-            className="relative border-t border-[#1d3c34]/10 bg-[#faf8f5] px-5 py-5 sm:px-6 sm:py-6 md:px-8 md:py-7"
-          >
-            <ul className="grid list-none grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 md:gap-5">
-              {GALLERY.map((item) => (
-                <li
-                  key={item.alt}
-                  className="relative aspect-[4/3] overflow-hidden bg-[#f4f0e6]"
-                >
+              <div className="flex h-full flex-col gap-3 sm:gap-4">
+                {/* Dominant hero */}
+                <div className="relative min-h-[280px] flex-[1.6] overflow-hidden bg-[#ebe6dc] sm:min-h-[360px] lg:min-h-0">
                   <ProtectedImage
                     wrapperClassName="absolute inset-0 size-full"
-                    src={item.src}
-                    alt={item.alt}
-                    className={`size-full ${item.className}`}
-                    sizes="(max-width: 640px) 100vw, 33vw"
+                    src={imgRectangle11}
+                    alt="Bianca Diamonds fine jewellery"
+                    className="size-full object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 58vw"
                   />
-                </li>
-              ))}
-            </ul>
-          </EditorialReveal>
+                </div>
+
+                {/* Supporting plates — same column, equal rhythm */}
+                <ul className="grid list-none grid-cols-3 gap-3 sm:gap-4">
+                  {SUPPORTING.map((item) => (
+                    <li
+                      key={item.alt}
+                      className="relative aspect-[3/4] overflow-hidden bg-[#ebe6dc] sm:aspect-[4/5]"
+                    >
+                      <ProtectedImage
+                        wrapperClassName="absolute inset-0 size-full"
+                        src={item.src}
+                        alt={item.alt}
+                        className={`size-full ${item.className}`}
+                        sizes="(max-width: 1024px) 33vw, 18vw"
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </EditorialReveal>
+          </div>
         </div>
       </section>
 
