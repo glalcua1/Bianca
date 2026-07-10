@@ -16,6 +16,7 @@ import { RingMark } from "./RingMark";
 import Hw25PromoBridal2H2JpgVideo from "./Hw25PromoBridal2H2Jpg";
 import ProtectedImage from "../app/components/protection/ProtectedImage";
 import CollectionPhotoFrame, { COLLECTION_FRAME_HEIGHT } from "../app/components/CollectionPhotoFrame";
+import HomeDestinationCards from "../app/components/HomeDestinationCards";
 
 /** Hero white card — heights trimmed 20px from bottom of editorial portrait */
 const HERO_CARD_HEIGHT = 673;
@@ -1027,9 +1028,15 @@ function Link2() {
   );
 }
 
+/** Vertical offset inserted for homepage destination cards (below brand poem). */
+const DEST_CARDS_OFFSET = 720;
+
 function Frame5() {
   return (
-    <div className="absolute z-[1] bg-[#1d3c34] h-[619px] left-[81px] top-[3774px] w-[1373px]" />
+    <div
+      className="absolute z-[1] bg-[#1d3c34] h-[619px] left-[81px] w-[1373px]"
+      style={{ top: 3774 + DEST_CARDS_OFFSET }}
+    />
   );
 }
 
@@ -2017,16 +2024,33 @@ export default function MacBookPro() {
       <LinkBlock />
       <Link1 />
       <Link2 />
+      {/* Destination cards — nav snippets below the brand poem */}
       <div
-        className="absolute z-0 flex h-[740.958px] items-center justify-center left-[460.24px] top-[3702.69px] w-[1006.987px]"
-        style={{ "--transform-inner-width": "1200", "--transform-inner-height": "0" } as React.CSSProperties}
+        className="absolute z-[6] left-[58px] w-[1396px]"
+        style={{ top: 3580 }}
+        data-name="home-destination-cards"
+      >
+        <HomeDestinationCards artboard />
+      </div>
+      <div
+        className="absolute z-0 flex h-[740.958px] items-center justify-center left-[460.24px] w-[1006.987px]"
+        style={
+          {
+            top: 3702.69 + DEST_CARDS_OFFSET,
+            "--transform-inner-width": "1200",
+            "--transform-inner-height": "0",
+          } as React.CSSProperties
+        }
       >
         <div className="flex-none rotate-[5.64deg]">
           <div className="h-[650.968px] w-[947.589px]" style={{ backgroundImage: "linear-gradient(104.979deg, rgb(118, 109, 66) 2.7164%, rgb(220, 203, 123) 86.291%)" }} />
         </div>
       </div>
       <Frame5 />
-      <div className="-translate-y-1/2 absolute z-[5] flex flex-col font-display h-[503px] justify-center leading-[0] left-[515px] not-italic text-[#dccb7b] text-[16px] top-[4077.5px] tracking-[0.5px] w-[633px] whitespace-pre-wrap">
+      <div
+        className="-translate-y-1/2 absolute z-[5] flex flex-col font-display h-[503px] justify-center leading-[0] left-[515px] not-italic text-[#dccb7b] text-[16px] tracking-[0.5px] w-[633px] whitespace-pre-wrap"
+        style={{ top: 4077.5 + DEST_CARDS_OFFSET }}
+      >
         <p className="leading-[normal] mb-0 text-[#fffbeb]">Jewellery has always held a special place in the way a woman expresses herself. A thoughtfully chosen piece can elevate not only how she looks, but how she feels — confident, graceful, and unmistakably herself.</p>
         <p className="leading-[normal] mb-0">&nbsp;</p>
         <p className="leading-[normal] mb-0 text-[#fffbeb]">My journey began with a deep interest in fashion styling and personal jewellery curation, where I worked closely with clients to create pieces that reflected their individuality and sense of elegance. Over time, this passion evolved into a vision: to create a brand that celebrates beauty while embracing the changing values of our time.</p>
@@ -2051,7 +2075,10 @@ export default function MacBookPro() {
           Founder, Bianca Diamonds
         </p>
       </div>
-      <div className="absolute z-[1] h-[360px] left-[202px] rounded-[12px] top-[3916px] w-[248px]">
+      <div
+        className="absolute z-[1] h-[360px] left-[202px] rounded-[12px] w-[248px]"
+        style={{ top: 3916 + DEST_CARDS_OFFSET }}
+      >
         <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[12px] shadow-[0_12px_40px_rgba(0,0,0,0.28)]">
           <ProtectedImage
             wrapperClassName="absolute inset-0 size-full"
