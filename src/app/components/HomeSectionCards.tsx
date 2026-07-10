@@ -6,21 +6,31 @@ import {
   type HomeSectionCard,
 } from "../data/homeSectionCards";
 
-function toneClasses(tone: HomeSectionCard["tone"]) {
+function toneClasses(tone: HomeSectionCard["tone"], imageWellColor?: string) {
+  if (imageWellColor) {
+    return {
+      well: "",
+      wellStyle: { backgroundColor: imageWellColor } as const,
+      panel: "bg-[#faf8f5]",
+    };
+  }
   switch (tone) {
     case "forest":
       return {
         well: "bg-[#1d3c34]",
+        wellStyle: undefined,
         panel: "bg-[#faf8f5]",
       };
     case "ink":
       return {
         well: "bg-[#0c0b0a]",
+        wellStyle: undefined,
         panel: "bg-[#faf8f5]",
       };
     default:
       return {
         well: "bg-[#f4f0e6]",
+        wellStyle: undefined,
         panel: "bg-[#faf8f5]",
       };
   }
@@ -33,7 +43,7 @@ function SectionCard({
   card: HomeSectionCard;
   index: number;
 }) {
-  const tones = toneClasses(card.tone);
+  const tones = toneClasses(card.tone, card.imageWellColor);
   const imageOnRight = index % 2 === 0;
 
   return (
@@ -93,6 +103,7 @@ function SectionCard({
           className={`relative min-h-[280px] overflow-hidden sm:min-h-[340px] md:min-h-full ${tones.well} ${
             imageOnRight ? "md:order-2" : "md:order-1"
           }`}
+          style={tones.wellStyle}
         >
           <ProtectedImage
             wrapperClassName="absolute inset-0 size-full"

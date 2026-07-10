@@ -2,7 +2,6 @@ import MobileSiteNav from "../components/MobileSiteNav";
 import ProtectedImage from "../components/protection/ProtectedImage";
 import { BiancaHouseLogo } from "../components/BiancaLogo";
 import HomeSectionCards from "../components/HomeSectionCards";
-import HomeDestinationCards from "../components/HomeDestinationCards";
 import HomeBiancaStoryMobile from "../components/HomeBiancaStoryMobile";
 
 export default function HomePageMobile() {
@@ -35,9 +34,6 @@ export default function HomePageMobile() {
 
       {/* Full-width horizontal section cards — Fine Jewellery → Bespoke → Butterfly → Cannes */}
       <HomeSectionCards />
-
-      {/* Existing compact destination cards — below Cannes */}
-      <HomeDestinationCards />
 
       <HomeBiancaStoryMobile />
     </div>

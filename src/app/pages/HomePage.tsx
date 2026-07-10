@@ -2,7 +2,6 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import SiteFooter from "../components/SiteFooter";
 import InstagramFeedSection from "../components/InstagramFeedSection";
 import HomeSectionCards from "../components/HomeSectionCards";
-import HomeDestinationCards from "../components/HomeDestinationCards";
 import HomeBiancaStoryMobile from "../components/HomeBiancaStoryMobile";
 import { useMediaMinWidth } from "../hooks/useMediaMinWidth";
 import { NavActiveProvider } from "../context/NavActiveContext";
@@ -78,7 +77,6 @@ export default function HomePage() {
         <>
           <DesktopHomeHero />
           <HomeSectionCards />
-          <HomeDestinationCards />
           <HomeBiancaStoryMobile />
         </>
       ) : (
