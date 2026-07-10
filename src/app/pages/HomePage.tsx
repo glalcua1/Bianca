@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import SiteFooter from "../components/SiteFooter";
 import InstagramFeedSection from "../components/InstagramFeedSection";
+import HomeSectionCards from "../components/HomeSectionCards";
+import HomeDestinationCards from "../components/HomeDestinationCards";
+import HomeBiancaStoryMobile from "../components/HomeBiancaStoryMobile";
 import { useMediaMinWidth } from "../hooks/useMediaMinWidth";
 import { NavActiveProvider } from "../context/NavActiveContext";
 import HomePageMobile from "./HomePageMobile";
@@ -8,8 +11,8 @@ import MacBookPro from "../../imports/MacBookPro141-2-335";
 import { BIANCA_INSTAGRAM_URL } from "../data/siteContact";
 
 const DESIGN_W = 1512;
-/** Scaled artboard height — founder forest bottom after destination cards (3774 + 720 + 619). */
-const DESIGN_H = 5113;
+/** Hero + manifesto only — collections replaced by fluid section cards below. */
+const DESIGN_H = 1780;
 
 function useDesignScale() {
   const [scale, setScale] = useState(1);
@@ -31,7 +34,7 @@ function useDesignScale() {
   return { scale, scrollH };
 }
 
-function DesktopHomeArtboard() {
+function DesktopHomeHero() {
   const { scale, scrollH } = useDesignScale();
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -71,7 +74,16 @@ export default function HomePage() {
 
   return (
     <>
-      {isDesktop ? <DesktopHomeArtboard /> : <HomePageMobile />}
+      {isDesktop ? (
+        <>
+          <DesktopHomeHero />
+          <HomeSectionCards />
+          <HomeDestinationCards />
+          <HomeBiancaStoryMobile />
+        </>
+      ) : (
+        <HomePageMobile />
+      )}
       <InstagramFeedSection profileUrl={BIANCA_INSTAGRAM_URL} compactTop />
       <SiteFooter />
     </>

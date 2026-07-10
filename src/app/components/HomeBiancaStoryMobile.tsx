@@ -4,7 +4,6 @@ import imgPackagingBag from "figma:asset/75d88e2bc003dea111ea5784491167b05e57ecd
 import imgPackagingPouch from "figma:asset/Bianca_boxes.png";
 import imgImage1 from "figma:asset/ffad195494173b3c37c4aa05d64af9f2620a7643.png";
 import ProtectedImage from "./protection/ProtectedImage";
-import HomeDestinationCards from "./HomeDestinationCards";
 
 const ORCHID_ACCENT =
   "/elegant-white-orchid-with-delicate-details-showcasing-beauty-sophistication-perfect-home-decor-floral-arrangements.jpg";
@@ -159,8 +158,6 @@ export default function HomeBiancaStoryMobile() {
           </div>
         </div>
       </section>
-
-      <HomeDestinationCards />
 
       {/* Founder&apos;s note — forest panel + portrait (desktop Frame5) */}
       <section

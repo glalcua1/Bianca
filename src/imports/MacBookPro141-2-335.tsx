@@ -16,7 +16,6 @@ import { RingMark } from "./RingMark";
 import Hw25PromoBridal2H2JpgVideo from "./Hw25PromoBridal2H2Jpg";
 import ProtectedImage from "../app/components/protection/ProtectedImage";
 import CollectionPhotoFrame, { COLLECTION_FRAME_HEIGHT } from "../app/components/CollectionPhotoFrame";
-import HomeDestinationCards from "../app/components/HomeDestinationCards";
 
 /** Hero white card — heights trimmed 20px from bottom of editorial portrait */
 const HERO_CARD_HEIGHT = 673;
@@ -2016,147 +2015,11 @@ export default function MacBookPro() {
   return (
     <div className="bg-[#faf8f5] relative size-full" data-name="MacBook Pro 14' - 1">
       <Frame1 />
-      <div className="absolute z-[3] bg-white border-[#1d3c34] border-[0.4px] border-solid h-[971px] left-[58px] rounded-[20px] top-[2596px] w-[1360px]" />
       <Frame2 />
       <Group47 />
       <Group48 />
       <Frame4 />
-      <LinkBlock />
-      <Link1 />
-      <Link2 />
-      {/* Destination cards — nav snippets below the brand poem */}
-      <div
-        className="absolute z-[6] left-[58px] w-[1396px]"
-        style={{ top: 3580 }}
-        data-name="home-destination-cards"
-      >
-        <HomeDestinationCards artboard />
-      </div>
-      <div
-        className="absolute z-0 flex h-[740.958px] items-center justify-center left-[460.24px] w-[1006.987px]"
-        style={
-          {
-            top: 3702.69 + DEST_CARDS_OFFSET,
-            "--transform-inner-width": "1200",
-            "--transform-inner-height": "0",
-          } as React.CSSProperties
-        }
-      >
-        <div className="flex-none rotate-[5.64deg]">
-          <div className="h-[650.968px] w-[947.589px]" style={{ backgroundImage: "linear-gradient(104.979deg, rgb(118, 109, 66) 2.7164%, rgb(220, 203, 123) 86.291%)" }} />
-        </div>
-      </div>
-      <Frame5 />
-      <div
-        className="-translate-y-1/2 absolute z-[5] flex flex-col font-display h-[503px] justify-center leading-[0] left-[515px] not-italic text-[#dccb7b] text-[16px] tracking-[0.5px] w-[633px] whitespace-pre-wrap"
-        style={{ top: 4077.5 + DEST_CARDS_OFFSET }}
-      >
-        <p className="leading-[normal] mb-0 text-[#fffbeb]">Jewellery has always held a special place in the way a woman expresses herself. A thoughtfully chosen piece can elevate not only how she looks, but how she feels — confident, graceful, and unmistakably herself.</p>
-        <p className="leading-[normal] mb-0">&nbsp;</p>
-        <p className="leading-[normal] mb-0 text-[#fffbeb]">My journey began with a deep interest in fashion styling and personal jewellery curation, where I worked closely with clients to create pieces that reflected their individuality and sense of elegance. Over time, this passion evolved into a vision: to create a brand that celebrates beauty while embracing the changing values of our time.</p>
-        <p className="leading-[normal] mb-0">&nbsp;</p>
-        <p className="mb-0">
-          <span className="leading-[normal]">{`This vision became `}</span>
-          <span className="font-emphasis leading-[normal]">Bianca Diamonds</span>
-          <span className="leading-[normal]">.</span>
-        </p>
-        <p className="leading-[normal] mb-0">&nbsp;</p>
-        <p className="leading-[normal] mb-0 text-[#fffbeb]">At Bianca, we believe that luxury should evolve with the modern woman — intelligent, conscious, and confident in her choices. Through certified lab-grown diamonds, we bring the same extraordinary brilliance of traditional diamonds while embracing a more responsible and forward-looking approach to fine jewellery.</p>
-        <p className="leading-[normal] mb-0">&nbsp;</p>
-        <p className="leading-[normal] mb-0">Our goal is to create pieces that women can wear not just for occasions, but as an expression of their identity and style. Bianca is more than jewellery.</p>
-        <p className="leading-[normal] mb-0">
-          <br aria-hidden="true" />
-          {` It is modern brilliance, thoughtfully chosen.`}
-        </p>
-        <p className="leading-[normal] mb-0">&nbsp;</p>
-        <p className="leading-[normal] text-[#fffbeb]">
-          <span className="font-emphasis">Shweta Lal</span>
-          <br aria-hidden="true" />
-          Founder, Bianca Diamonds
-        </p>
-      </div>
-      <div
-        className="absolute z-[1] h-[360px] left-[202px] rounded-[12px] w-[248px]"
-        style={{ top: 3916 + DEST_CARDS_OFFSET }}
-      >
-        <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[12px] shadow-[0_12px_40px_rgba(0,0,0,0.28)]">
-          <ProtectedImage
-            wrapperClassName="absolute inset-0 size-full"
-            alt="Shweta Lal, Founder of Bianca Diamonds"
-            className="absolute inset-0 size-full object-cover object-top"
-            src="/founder.jpg"
-          />
-        </div>
-      </div>
       <Group52 />
-      <div className="-translate-y-1/2 absolute z-[3] flex flex-col font-editorial justify-center leading-[0] left-[calc(50%-637px)] not-italic text-[#1d3c34] text-[33.2px] top-[2692px] tracking-[-0.1px] whitespace-nowrap">
-        <p className="leading-[47.94px]">Bianca Diamonds</p>
-      </div>
-      <div className="-translate-y-1/2 absolute z-[3] left-[calc(50%-143px)] top-[2953px] w-[684px] font-display not-italic text-[#1d3c34]">
-        <div className="flex flex-col gap-7 text-[18px] leading-[27px]">
-          <p className="text-[24px] leading-[30px]">
-            <span className="font-emphasis not-italic">Bianca Diamonds represents a new era of diamond luxury</span>.
-          </p>
-          <p>
-            Created for the modern woman, Bianca brings together timeless elegance and conscious innovation through{" "}
-            <span className="font-emphasis not-italic">certified lab-grown diamonds</span> — real diamonds with the same brilliance and beauty as mined diamonds, created using advanced technology with a more thoughtful impact on the world.
-          </p>
-          <p>
-            Each piece is crafted in <span className="font-emphasis not-italic">BIS hallmarked gold</span> and certified diamonds, designed to celebrate both everyday elegance and life&apos;s most meaningful moments.
-          </p>
-          <p>
-            Behind Bianca stands over 80 years of family jewellery expertise, built on trust, craftsmanship, and a deep understanding of diamonds.
-          </p>
-          <p>Bianca Diamonds is where modern brilliance meets timeless luxury.</p>
-        </div>
-      </div>
-      <div className="absolute z-[3] h-[372px] left-[119px] top-[2744px] w-[407px]">
-        <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgRectangle11} />
-      </div>
-      <div className="absolute z-[3] h-[247px] left-[143px] top-[3236px] w-[231px]" data-name="packaging-box">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[118.56%] left-[-20.52%] max-w-none top-[-11.87%] w-[127.01%]" src={imgPackagingBox} />
-        </div>
-      </div>
-      <div className="absolute z-[3] h-[127px] left-[369px] top-[3236px] w-[131px]" data-name="packaging-bag">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[117.77%] left-[-6.44%] max-w-none top-[-12.23%] w-[113.85%]" src={imgPackagingBag} />
-        </div>
-      </div>
-      <div className="absolute z-[3] h-[78px] left-[394px] top-[3374px] w-[81px]" data-name="packaging-pouch">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-[240.39%] left-[-121.16%] max-w-none top-[-120.11%] w-[232.38%]" src={imgPackagingPouch} />
-        </div>
-      </div>
-      <div className="absolute z-[3] h-[273px] left-[613px] top-[3236px] w-[427px]" data-name="image 1">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <ProtectedImage wrapperClassName="absolute inset-0 size-full" alt="" className="absolute h-full left-[-13.59%] max-w-none top-0 w-[113.59%]" src={imgImage1} />
-        </div>
-      </div>
-      <div
-        className="absolute z-[4] overflow-hidden rounded-[20px] pointer-events-none"
-        style={{ left: 58, top: 2596, width: 1360, height: 971 }}
-        aria-hidden
-        data-name="white-card-orchid-clip"
-      >
-        <div
-          className="absolute bottom-[40px] right-[40px] w-[236px]"
-          data-name="white-orchid-accent"
-        >
-          <ProtectedImage
-            src="/elegant-white-orchid-with-delicate-details-showcasing-beauty-sophistication-perfect-home-decor-floral-arrangements.jpg"
-            alt=""
-            wrapperClassName="block w-full"
-            className="w-full h-auto max-h-[300px] object-contain object-right-bottom mix-blend-multiply"
-            style={{
-              WebkitMaskImage:
-                "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.85) 24%, black 32%)",
-              maskImage:
-                "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.85) 24%, black 32%)",
-            }}
-          />
-        </div>
-      </div>
     </div>
   );
 }
