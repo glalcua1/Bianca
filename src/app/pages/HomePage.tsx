@@ -8,8 +8,8 @@ import MacBookPro from "../../imports/MacBookPro141-2-335";
 import { BIANCA_INSTAGRAM_URL } from "../data/siteContact";
 
 const DESIGN_W = 1512;
-/** Scaled artboard height — matches founder forest block bottom (3774 + 619). */
-const DESIGN_H = 4393;
+/** Scaled artboard height — founder forest bottom after destination cards (3774 + 720 + 619). */
+const DESIGN_H = 5113;
 
 function useDesignScale() {
   const [scale, setScale] = useState(1);
