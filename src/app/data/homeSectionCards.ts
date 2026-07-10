@@ -30,7 +30,7 @@ export const HOME_SECTION_CARDS: HomeSectionCard[] = [
     image: "/Rings/Women7.jpg",
     imageAlt:
       "Sapphire Maison — oval sapphire split-shank ring in yellow gold (BD-G-RG-045)",
-    imageClassName: "object-contain object-center p-6 md:p-10",
+    imageClassName: "object-cover object-center",
     imageWellColor: "#c8ac8d",
     tone: "cream",
   },
