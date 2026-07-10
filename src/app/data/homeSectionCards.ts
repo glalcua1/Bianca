@@ -8,6 +8,8 @@ export type HomeSectionCard = {
   image: string;
   imageAlt: string;
   imageClassName?: string;
+  /** Product-shot backdrop for the image well */
+  imageWellColor?: string;
   /** Alternate image well treatment for dark product photography */
   tone?: "cream" | "forest" | "ink";
 };
@@ -25,9 +27,11 @@ export const HOME_SECTION_CARDS: HomeSectionCard[] = [
       "Certified lab-grown diamonds set in BIS hallmarked gold — composed for everyday brilliance and life’s most luminous occasions.",
     cta: "Enter the salon",
     to: "/fine-jewellery",
-    image: "/Rings/IMG_5302.jpg",
-    imageAlt: "Bianca Diamonds fine jewellery — diamond ring on soft light",
-    imageClassName: "object-cover object-center",
+    image: "/Rings/Women7.jpg",
+    imageAlt:
+      "Sapphire Maison — oval sapphire split-shank ring in yellow gold (BD-G-RG-045)",
+    imageClassName: "object-contain object-center p-6 md:p-10",
+    imageWellColor: "#c8ac8d",
     tone: "cream",
   },
   {

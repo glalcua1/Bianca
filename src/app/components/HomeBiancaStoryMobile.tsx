@@ -25,7 +25,9 @@ const BRAND_COPY = [
       <>
         Created for the modern woman, Bianca brings together timeless elegance
         and conscious innovation through{" "}
-        <span className="font-emphasis not-italic">certified lab-grown diamonds</span>{" "}
+        <span className="font-emphasis not-italic">
+          certified lab-grown diamonds
+        </span>{" "}
         — real diamonds with the same brilliance and beauty as mined diamonds,
         created using advanced technology with a more thoughtful impact on the
         world.
@@ -58,31 +60,35 @@ const BRAND_COPY = [
 export default function HomeBiancaStoryMobile() {
   return (
     <>
-      {/* Brand story — mirrors desktop white card + editorial imagery */}
+      {/* Brand story — full-width salon card */}
       <section
         aria-labelledby="brand-story-heading"
-        className="border-t border-[#1d3c34]/10 bg-[#faf8f5] px-4 py-12"
+        className="border-t border-[#1d3c34]/10 bg-[#faf8f5] px-4 py-12 md:px-8 md:py-16 lg:px-10 lg:py-20"
       >
-        <div className="relative mx-auto max-w-lg overflow-hidden rounded-[20px] border border-[#1d3c34]/10 bg-white px-5 py-10 shadow-[0_8px_32px_rgba(29,60,52,0.06)]">
+        <div className="relative mx-auto max-w-[1400px] overflow-hidden rounded-[20px] border border-[#1d3c34]/10 bg-white px-6 py-10 shadow-[0_8px_32px_rgba(29,60,52,0.06)] sm:px-10 md:px-14 md:py-14 lg:px-16 lg:py-16">
           <h2
             id="brand-story-heading"
-            className="text-center font-editorial text-[clamp(1.65rem,5vw,2.075rem)] tracking-[-0.01em] text-[#1d3c34]"
+            className="text-center font-editorial text-[clamp(1.65rem,3.5vw,2.35rem)] tracking-[-0.01em] text-[#1d3c34]"
           >
             Bianca Diamonds
           </h2>
 
-          <div className="mt-8 space-y-6 font-display text-[17px] leading-[27px] text-[#1d3c34]">
+          <div className="mx-auto mt-8 max-w-4xl space-y-6 font-display text-[17px] leading-[27px] text-[#1d3c34] md:mt-10 md:space-y-7 md:text-[18px] md:leading-[28px]">
             {BRAND_COPY.map((block, index) => (
               <p
                 key={index}
-                className={block.lead ? "text-[20px] leading-[30px]" : undefined}
+                className={
+                  block.lead
+                    ? "text-[20px] leading-[30px] md:text-[24px] md:leading-[34px]"
+                    : undefined
+                }
               >
                 {block.text}
               </p>
             ))}
           </div>
 
-          <div className="relative mt-10 aspect-[407/372] w-full overflow-hidden rounded-[8px]">
+          <div className="relative mx-auto mt-10 aspect-[407/372] w-full max-w-xl overflow-hidden rounded-[8px] md:mt-12 md:max-w-2xl">
             <ProtectedImage
               wrapperClassName="absolute inset-0 size-full"
               src={imgRectangle11}
@@ -91,7 +97,7 @@ export default function HomeBiancaStoryMobile() {
             />
           </div>
 
-          <div className="mt-8 grid grid-cols-12 gap-3">
+          <div className="mx-auto mt-8 grid max-w-5xl grid-cols-12 gap-3 md:mt-10 md:gap-4">
             <div
               className="relative col-span-7 aspect-[231/247] overflow-hidden rounded-[4px]"
               data-name="packaging-box"
@@ -103,7 +109,7 @@ export default function HomeBiancaStoryMobile() {
                 className="size-full object-cover object-center"
               />
             </div>
-            <div className="col-span-5 flex flex-col gap-3">
+            <div className="col-span-5 flex flex-col gap-3 md:gap-4">
               <div
                 className="relative aspect-[131/127] overflow-hidden rounded-[4px]"
                 data-name="packaging-bag"
@@ -138,7 +144,7 @@ export default function HomeBiancaStoryMobile() {
                 className="size-full object-cover object-center"
               />
               <div
-                className="pointer-events-none absolute inset-y-0 right-0 flex w-[44%] max-w-[156px] items-end justify-end pb-2 pr-2"
+                className="pointer-events-none absolute inset-y-0 right-0 flex w-[44%] max-w-[220px] items-end justify-end pb-2 pr-2 md:max-w-[280px]"
                 aria-hidden
               >
                 <ProtectedImage
@@ -159,13 +165,13 @@ export default function HomeBiancaStoryMobile() {
         </div>
       </section>
 
-      {/* Founder&apos;s note — forest panel + portrait (desktop Frame5) */}
+      {/* Founder's note — portrait left, wide copy right (desktop); stacked on mobile */}
       <section
         aria-labelledby="founder-note-heading"
-        className="relative overflow-hidden bg-[#1d3c34] px-4 py-14"
+        className="relative overflow-hidden bg-[#1d3c34] px-4 py-14 md:px-8 md:py-16 lg:px-10 lg:py-20"
       >
         <div
-          className="pointer-events-none absolute -right-16 top-1/3 h-64 w-64 rotate-[5.64deg] opacity-40"
+          className="pointer-events-none absolute -right-16 top-1/3 h-64 w-64 rotate-[5.64deg] opacity-40 md:h-[420px] md:w-[420px]"
           style={{
             backgroundImage:
               "linear-gradient(104.979deg, rgb(118, 109, 66) 2.7164%, rgb(220, 203, 123) 86.291%)",
@@ -173,14 +179,14 @@ export default function HomeBiancaStoryMobile() {
           aria-hidden
         />
 
-        <div className="relative mx-auto max-w-lg">
+        <div className="relative mx-auto flex max-w-[1400px] flex-col gap-10 md:flex-row md:items-start md:gap-14 lg:gap-16">
           <h2 id="founder-note-heading" className="sr-only">
             Founder&apos;s note
           </h2>
 
           <div
-            className="relative mx-auto w-[min(78%,248px)] max-w-[280px] overflow-hidden rounded-[12px] shadow-[0_12px_40px_rgba(0,0,0,0.28)]"
-            style={{ height: 360 }}
+            className="relative mx-auto w-[min(78%,248px)] shrink-0 overflow-hidden rounded-[12px] shadow-[0_12px_40px_rgba(0,0,0,0.28)] md:mx-0 md:w-[280px] lg:w-[320px]"
+            style={{ aspectRatio: "248 / 360" }}
           >
             <ProtectedImage
               wrapperClassName="absolute inset-0 size-full"
@@ -190,7 +196,7 @@ export default function HomeBiancaStoryMobile() {
             />
           </div>
 
-          <div className="mt-10 space-y-5 font-display text-[16px] leading-[1.65] tracking-[0.5px] text-on-forest">
+          <div className="min-w-0 flex-1 space-y-5 font-display text-[16px] leading-[1.65] tracking-[0.5px] text-on-forest md:max-w-none md:pt-2 md:text-[16px] lg:text-[17px]">
             <p>
               Jewellery has always held a special place in the way a woman
               expresses herself. A thoughtfully chosen piece can elevate not only
@@ -212,14 +218,15 @@ export default function HomeBiancaStoryMobile() {
             <p>
               At Bianca, we believe that luxury should evolve with the modern
               woman — intelligent, conscious, and confident in her choices.
-              Through certified lab-grown diamonds, we bring the same extraordinary
-              brilliance of traditional diamonds while embracing a more
-              responsible and forward-looking approach to fine jewellery.
+              Through certified lab-grown diamonds, we bring the same
+              extraordinary brilliance of traditional diamonds while embracing a
+              more responsible and forward-looking approach to fine jewellery.
             </p>
             <p>
               Our goal is to create pieces that women can wear not just for
-              occasions, but as an expression of their identity and style. Bianca is
-              more than jewellery. It is modern brilliance, thoughtfully chosen.
+              occasions, but as an expression of their identity and style. Bianca
+              is more than jewellery. It is modern brilliance, thoughtfully
+              chosen.
             </p>
             <p>
               <span className="font-emphasis">Shweta Lal</span>
