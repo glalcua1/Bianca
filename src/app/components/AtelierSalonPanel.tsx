@@ -300,14 +300,14 @@ export default function AtelierSalonPanel({
         aria-live="polite"
         aria-atomic="true"
       >
-        <div className="shrink-0 px-6 pt-7 pb-5 sm:px-8 sm:pt-8">
+        <div className="shrink-0 px-6 pt-5 pb-3 sm:px-8 sm:pt-8 sm:pb-5">
           <p className="text-[9px] uppercase tracking-[0.28em] text-gold-on-cream">
             {atelierPieceEyebrow(piece)}
           </p>
-          <h2 className="mt-3 font-editorial text-[clamp(1.35rem,3.2vw,1.875rem)] leading-[1.12] tracking-[0.03em] text-bianca-forest">
+          <h2 className="mt-2 font-editorial text-[clamp(1.2rem,3.2vw,1.875rem)] leading-[1.12] tracking-[0.03em] text-bianca-forest sm:mt-3">
             {piece.title}
           </h2>
-          <p className="mt-3 text-[9px] uppercase tracking-[0.2em] text-[#766d42]/65">
+          <p className="mt-2 text-[9px] uppercase tracking-[0.2em] text-[#766d42]/65 sm:mt-3">
             {piece.productCode}
             {selectedMetalLabel ? (
               <span className="text-on-cream-muted"> · {selectedMetalLabel}</span>
@@ -409,7 +409,7 @@ export default function AtelierSalonPanel({
           </div>
         )}
 
-        <div className="shrink-0 border-t border-[#766d42]/15 bg-[#f4f0e6]/90 px-6 py-5 backdrop-blur-[1px] sm:px-8">
+        <div className="shrink-0 border-t border-[#766d42]/15 bg-[#f4f0e6]/95 px-6 pt-4 pb-[max(0.875rem,env(safe-area-inset-bottom))] backdrop-blur-[1px] sm:px-8 sm:pt-5 sm:pb-[max(1.25rem,env(safe-area-inset-bottom))]">
           <button
             type="button"
             onClick={onEnquire}
@@ -422,7 +422,7 @@ export default function AtelierSalonPanel({
             />
             {enquiryLoading ? "Opening WhatsApp…" : "Request salon consultation"}
           </button>
-          <p className="mt-3 text-center text-[9px] uppercase tracking-[0.14em] text-on-cream-muted">
+          <p className="mt-2.5 text-center text-[9px] uppercase tracking-[0.14em] text-on-cream-muted sm:mt-3">
             +91 81304 95257
           </p>
         </div>
