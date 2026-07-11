@@ -227,6 +227,105 @@ export const FINE_JEWELLERY_CATEGORIES: FineJewelleryCategory[] = [
  */
 export const ATELIER_PIECES: AtelierPiece[] = [
   {
+    id: "ear-blush-cushion-studs",
+    category: "earrings",
+    productCode: "BD-K-ER-034",
+    image: "/Earrings/ER1.jpg",
+    imageWellColor: "#cccccc",
+    alt: "Blush Cushion Studs — cushion pink diamond stud earrings in rose gold",
+    title: "Blush Cushion Studs",
+    description:
+      "Cushion pink diamonds in four-prong rose gold with scalloped screw backs — soft colour and warm metal for everyday radiance.",
+  },
+  {
+    id: "ear-pink-radiant-huggie-drop",
+    category: "earrings",
+    productCode: "BD-K-ER-035",
+    image: "/Earrings/ER2.jpg",
+    imageWellColor: "#cccad0",
+    alt: "Pink Radiant Huggie Drop — radiant pink diamond halo drops on pavé huggies",
+    title: "Pink Radiant Huggie Drop",
+    description:
+      "Radiant pink centres in rose-gold prongs sit within white-diamond halos, suspended from pavé huggies — colour, contrast, and refined movement.",
+  },
+  {
+    id: "ear-pink-pear-rosette-studs",
+    category: "earrings",
+    productCode: "BD-K-ER-036",
+    image: "/Earrings/ER3.jpg",
+    imageWellColor: "#898889",
+    alt: "Pink Pear Rosette Studs — oval diamond centres with pear pink petal halos in rose gold",
+    title: "Pink Pear Rosette Studs",
+    description:
+      "Oval brilliants bloom within pear pink petals and a pavé scalloped border in rose gold — floral colour composed for the ear.",
+  },
+  {
+    id: "ear-blush-pear-halo-drop",
+    category: "earrings",
+    productCode: "BD-K-ER-037",
+    image: "/Earrings/ER4.jpg",
+    imageWellColor: "#a09fa5",
+    alt: "Blush Pear Halo Drop — pear pink diamond halo drops with diamond tops",
+    title: "Blush Pear Halo Drop",
+    description:
+      "Pear pink centres in rose-gold prongs hang beneath diamond halo tops and a round brilliant link — elongated colour with leverback poise.",
+  },
+  {
+    id: "ear-pink-floral-cluster-studs",
+    category: "earrings",
+    productCode: "BD-K-ER-038",
+    image: "/Earrings/ER5.jpg",
+    imageWellColor: "#9d9d9d",
+    alt: "Pink Floral Cluster Studs — round diamond centres with pear and round pink petals in rose gold",
+    title: "Pink Floral Cluster Studs",
+    description:
+      "Round brilliant centres bloom within alternating pear and round pink petals in rose gold — starburst colour with layered fire.",
+  },
+  {
+    id: "ear-blue-vine-drop",
+    category: "earrings",
+    productCode: "BD-K-ER-039",
+    image: "/Earrings/ER6.jpg",
+    imageWellColor: "#c7ccd3",
+    alt: "Blue Vine Drop — round and pear blue diamond halo earrings with vine links in rose gold",
+    title: "Blue Vine Drop",
+    description:
+      "Round and pear blue centres in diamond halos connect through rose-gold vine links — botanical movement with icy colour.",
+  },
+  {
+    id: "ear-blue-lattice-hoops",
+    category: "earrings",
+    productCode: "BD-K-ER-040",
+    image: "/Earrings/ER7.jpg",
+    imageWellColor: "#ababab",
+    alt: "Blue Lattice Hoops — princess blue and diamond geometric hoop earrings in white gold",
+    title: "Blue Lattice Hoops",
+    description:
+      "Princess-cut blue stones and round brilliants form a geometric lattice across polished white-gold hoops — saturated colour with architectural sparkle.",
+  },
+  {
+    id: "ear-blue-floral-chandelier",
+    category: "earrings",
+    productCode: "BD-K-ER-041",
+    image: "/Earrings/ER8.jpg",
+    imageWellColor: "#adb3bc",
+    alt: "Blue Floral Chandelier — blue diamond floral chandelier earrings in rose gold",
+    title: "Blue Floral Chandelier",
+    description:
+      "Marquise floral studs release pavé fringe above radiant blue centres in marquise halos — rose-gold high jewellery with cascading light.",
+  },
+  {
+    id: "ear-pink-pear-milgrain-drop",
+    category: "earrings",
+    productCode: "BD-K-ER-042",
+    image: "/Earrings/ER9.jpg",
+    imageWellColor: "#cfd1d5",
+    alt: "Pink Pear Milgrain Drop — pear pink diamond halo drops with milgrain rose-gold rims",
+    title: "Pink Pear Milgrain Drop",
+    description:
+      "Pear pink centres rimmed in milgrain rose gold hang beneath diamond cluster tops — two-tone refinement with romantic colour.",
+  },
+  {
     id: "ear-golden-pear-riviere",
     category: "earrings",
     productCode: "BD-K-ER-026",
