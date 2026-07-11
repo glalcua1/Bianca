@@ -25,11 +25,12 @@ type Props = {
   onActiveIndexChange: (index: number) => void;
 };
 
+/** Shared well — fills the available media cell so every piece is the same size. */
 const SALON_MEDIA_FRAME =
-  "relative mx-auto flex h-[min(52vh,520px)] w-full max-w-[min(92vw,640px)] items-center justify-center";
+  "relative mx-auto flex size-full max-h-full max-w-full items-center justify-center overflow-hidden [&_img]:max-h-full [&_img]:max-w-full [&_img]:object-contain [&_picture]:flex [&_picture]:size-full [&_picture]:items-center [&_picture]:justify-center [&_video]:max-h-full [&_video]:max-w-full [&_video]:object-contain";
 
 const SALON_IMAGE_CLASS =
-  "h-full w-full max-h-[min(52vh,520px)] max-w-[min(92vw,640px)] object-contain object-center transition-opacity duration-300 motion-reduce:transition-none";
+  "max-h-full max-w-full object-contain object-center transition-opacity duration-300 motion-reduce:transition-none";
 
 function pieceBackdrop(piece: AtelierPiece): string {
   if (piece.imageWellColor) return piece.imageWellColor;
@@ -128,15 +129,18 @@ export default function AtelierPieceLightbox({
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-[60] bg-[#0f1f1b]/94 backdrop-blur-[2px] transition-opacity duration-300 data-[state=closed]:opacity-0 data-[state=open]:opacity-100 motion-reduce:transition-none" />
+        <Dialog.Overlay className="fixed inset-0 z-[110] bg-[#0f1f1b]/94 backdrop-blur-[2px] transition-opacity duration-300 data-[state=closed]:opacity-0 data-[state=open]:opacity-100 motion-reduce:transition-none" />
 
         <Dialog.Content
-          className="pointer-events-none fixed inset-x-0 bottom-0 z-[95] flex flex-col outline-none"
-          style={{ top: "var(--site-nav-offset, 0px)" }}
+          className="pointer-events-none fixed inset-0 z-[110] flex flex-col outline-none"
           aria-describedby={piece ? "atelier-lightbox-description" : undefined}
+          onOpenAutoFocus={(event) => {
+            // Keep the overlay pinned to the top; avoid focus scrolling mid-panel.
+            event.preventDefault();
+          }}
         >
           {piece && total > 0 && (
-            <div className="pointer-events-auto flex h-full max-h-full min-h-0 flex-col bg-[#1d3c34]">
+            <div className="pointer-events-auto flex h-[100dvh] max-h-[100dvh] min-h-0 flex-col bg-[#1d3c34] pt-[env(safe-area-inset-top)]">
               <header className="flex shrink-0 items-center justify-between gap-3 border-b border-[#766d42]/35 px-3 py-2 sm:px-5">
                 <Dialog.Title className="text-[10px] uppercase tracking-[0.2em] text-[#dccb7b]">
                   Salon view
@@ -156,16 +160,15 @@ export default function AtelierPieceLightbox({
                 </Dialog.Close>
               </header>
 
-              <div className="grid min-h-0 flex-1 grid-cols-1 grid-rows-[minmax(38vh,1fr)_auto] lg:grid-cols-[minmax(0,1.618fr)_minmax(0,1fr)] lg:grid-rows-1">
+              {/* Mobile: capped image well + remaining space for details/CTA. Desktop: side-by-side. */}
+              <div className="grid min-h-0 flex-1 grid-cols-1 grid-rows-[minmax(0,36dvh)_minmax(0,1fr)] lg:grid-cols-[minmax(0,1.618fr)_minmax(0,1fr)] lg:grid-rows-1">
                 <div
-                  className="relative flex min-h-0 flex-1 flex-col border-b border-[#766d42]/30 lg:border-b-0 lg:border-r"
+                  className="relative flex min-h-0 flex-col overflow-hidden border-b border-[#766d42]/30 lg:border-b-0 lg:border-r"
                   style={{ backgroundColor: pieceBackdrop(piece) }}
                 >
-                  <div className="relative flex min-h-0 flex-1 items-center justify-center p-3 sm:p-5 lg:p-6">
+                  <div className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden p-2 sm:p-5 lg:p-6">
                     {activeIsVideo ? (
-                      <div
-                        className={`${SALON_MEDIA_FRAME} overflow-hidden`}
-                      >
+                      <div className={SALON_MEDIA_FRAME}>
                         <SalonJewelVideo
                           key={`${piece.id}-${safeViewIndex}`}
                           src={activeView}
@@ -195,7 +198,7 @@ export default function AtelierPieceLightbox({
                   </div>
 
                   {(hasMetalVariants || hasMultipleViews) && (
-                    <div className="relative z-20 flex shrink-0 flex-col items-center gap-2.5 border-t border-[#766d42]/20 px-3 py-3 sm:px-5">
+                    <div className="relative z-20 flex shrink-0 flex-col items-center gap-2 border-t border-[#766d42]/20 px-3 py-2 sm:gap-2.5 sm:px-5 sm:py-3">
                       {hasMetalVariants ? (
                         <div
                           className="flex flex-wrap items-center justify-center gap-1.5"
@@ -277,7 +280,7 @@ export default function AtelierPieceLightbox({
                   <BrandImageWatermark className="bottom-5 right-5 z-20 sm:bottom-6 sm:right-6" />
                 </div>
 
-                <div className="flex min-h-0 flex-col overflow-hidden bg-[#f4f0e6] lg:max-h-full">
+                <div className="flex min-h-0 flex-col overflow-hidden bg-[#f4f0e6]">
                   <AtelierSalonPanel
                     piece={piece}
                     selectedMetalLabel={activeMetalVariant?.label}
