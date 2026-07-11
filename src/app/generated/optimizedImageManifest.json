@@ -241,6 +241,134 @@
     },
     "sizes": "(max-width: 768px) 100vw, 1280px"
   },
+  "/Rings/IMG_7983.jpg": {
+    "original": "/Rings/IMG_7983.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/IMG_7983-443.webp",
+      "886": "/media/opt/Rings/IMG_7983-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/IMG_7989.jpg": {
+    "original": "/Rings/IMG_7989.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/IMG_7989-443.webp",
+      "886": "/media/opt/Rings/IMG_7989-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/RB_ring1.jpg": {
+    "original": "/Rings/RB_ring1.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/RB_ring1-443.webp",
+      "886": "/media/opt/Rings/RB_ring1-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/RB_ring2.jpg": {
+    "original": "/Rings/RB_ring2.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/RB_ring2-443.webp",
+      "886": "/media/opt/Rings/RB_ring2-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/RB_ring3.jpg": {
+    "original": "/Rings/RB_ring3.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/RB_ring3-443.webp",
+      "886": "/media/opt/Rings/RB_ring3-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/RB_ring4.jpg": {
+    "original": "/Rings/RB_ring4.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/RB_ring4-443.webp",
+      "886": "/media/opt/Rings/RB_ring4-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/RB_ring5.jpg": {
+    "original": "/Rings/RB_ring5.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/RB_ring5-443.webp",
+      "886": "/media/opt/Rings/RB_ring5-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/RB_ring6.jpg": {
+    "original": "/Rings/RB_ring6.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/RB_ring6-443.webp",
+      "886": "/media/opt/Rings/RB_ring6-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/RP_ring1.jpg": {
+    "original": "/Rings/RP_ring1.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/RP_ring1-443.webp",
+      "886": "/media/opt/Rings/RP_ring1-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/RP_ring2.jpg": {
+    "original": "/Rings/RP_ring2.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/RP_ring2-443.webp",
+      "886": "/media/opt/Rings/RP_ring2-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/RP_ring3.jpg": {
+    "original": "/Rings/RP_ring3.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/RP_ring3-443.webp",
+      "886": "/media/opt/Rings/RP_ring3-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/RP_ring4.jpg": {
+    "original": "/Rings/RP_ring4.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/RP_ring4-443.webp",
+      "886": "/media/opt/Rings/RP_ring4-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/RP_ring5.jpg": {
+    "original": "/Rings/RP_ring5.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/RP_ring5-443.webp",
+      "886": "/media/opt/Rings/RP_ring5-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/RP_ring8.jpg": {
+    "original": "/Rings/RP_ring8.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/RP_ring8-443.webp",
+      "886": "/media/opt/Rings/RP_ring8-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/RP_ring6.jpg": {
+    "original": "/Rings/RP_ring6.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/RP_ring6-443.webp",
+      "886": "/media/opt/Rings/RP_ring6-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
+  "/Rings/RP_ring7.jpg": {
+    "original": "/Rings/RP_ring7.jpg",
+    "webp": {
+      "443": "/media/opt/Rings/RP_ring7-443.webp",
+      "886": "/media/opt/Rings/RP_ring7-886.webp"
+    },
+    "sizes": "(max-width: 768px) 90vw, 443px"
+  },
   "/Rings/Ring30.jpg": {
     "original": "/Rings/Ring30.jpg",
     "webp": {
