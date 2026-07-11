@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import ProtectedImage from "./protection/ProtectedImage";
 import EditorialReveal from "./editorial/EditorialReveal";
 import PdfLookbookDrawer from "./PdfLookbookDrawer";
+import BlueStarCollectionDrawer from "./BlueStarCollectionDrawer";
 import {
   HOME_SECTION_CARDS,
   type HomeSectionCard,
@@ -185,8 +186,43 @@ function SectionCard({
   );
 }
 
+function BlueDiamondCta({
+  label,
+  onClick,
+  expanded,
+}: {
+  label: string;
+  onClick: () => void;
+  expanded: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-haspopup="dialog"
+      aria-expanded={expanded}
+      className="group/cta inline-flex items-center gap-3 font-editorial text-[12px] uppercase tracking-[0.2em] text-gold-on-cream transition-colors hover:text-[#524a28]"
+    >
+      <span className="relative">
+        {label}
+        <span
+          className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-[#766d42]/70 transition-transform duration-500 group-hover/cta:scale-x-100 motion-reduce:scale-x-100"
+          aria-hidden
+        />
+      </span>
+      <span
+        aria-hidden
+        className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/cta:translate-x-2"
+      >
+        →
+      </span>
+    </button>
+  );
+}
+
 function BlueDiamondCard({ index }: { index: number }) {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [storyOpen, setStoryOpen] = useState(false);
+  const [collectionOpen, setCollectionOpen] = useState(false);
   const card = BLUE_DIAMOND_CARD;
   const tones = toneClasses("ink", card.imageWellColor);
   const imageOnRight = index % 2 === 0;
@@ -194,22 +230,48 @@ function BlueDiamondCard({ index }: { index: number }) {
   return (
     <>
       <EditorialReveal delay={index * 80}>
-        <button
-          type="button"
-          onClick={() => setDrawerOpen(true)}
-          className={cardShellClass}
-          aria-label={`${card.title} — ${card.cta}`}
-          aria-haspopup="dialog"
-          aria-expanded={drawerOpen}
-        >
-          <CardChrome
-            eyebrow={card.eyebrow}
-            title={card.title}
-            description={card.description}
-            cta={card.cta}
-            imageOnRight={imageOnRight}
-            panelClass={tones.panel}
-          />
+        <article className={cardShellClass}>
+          <div
+            className={`relative flex flex-col justify-center ${tones.panel} px-7 py-10 sm:px-10 sm:py-12 md:px-12 lg:px-16 lg:py-14 ${
+              imageOnRight ? "md:order-1" : "md:order-2"
+            }`}
+          >
+            <div
+              className="pointer-events-none absolute inset-y-8 left-0 w-px bg-gradient-to-b from-transparent via-[#766d42]/50 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100 md:inset-y-12"
+              aria-hidden
+            />
+
+            <p className="font-editorial text-[11px] uppercase tracking-[0.28em] text-gold-on-cream">
+              {card.eyebrow}
+            </p>
+
+            <h3 className="mt-4 font-editorial text-[clamp(1.85rem,3.5vw,2.75rem)] tracking-[0.04em] text-[#1d3c34] transition-colors duration-500 group-hover:text-[#524a28]">
+              {card.title}
+            </h3>
+
+            <div
+              className="mt-5 h-px w-12 origin-left bg-[#766d42]/55 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-150"
+              aria-hidden
+            />
+
+            <p className="mt-6 max-w-md text-[15px] leading-[1.75] text-on-cream-body sm:text-[16px]">
+              {card.description}
+            </p>
+
+            <div className="mt-8 flex flex-col items-start gap-4 sm:mt-10">
+              <BlueDiamondCta
+                label={card.storyCta}
+                onClick={() => setStoryOpen(true)}
+                expanded={storyOpen}
+              />
+              <BlueDiamondCta
+                label={card.collectionCta}
+                onClick={() => setCollectionOpen(true)}
+                expanded={collectionOpen}
+              />
+            </div>
+          </div>
+
           <CardImage
             image={card.image}
             imageAlt={card.imageAlt}
@@ -218,15 +280,20 @@ function BlueDiamondCard({ index }: { index: number }) {
             wellClass={tones.well}
             wellStyle={tones.wellStyle}
           />
-        </button>
+        </article>
       </EditorialReveal>
 
       <PdfLookbookDrawer
-        open={drawerOpen}
-        onOpenChange={setDrawerOpen}
+        open={storyOpen}
+        onOpenChange={setStoryOpen}
         pdfSrc={card.pdfSrc}
-        title="Blue Star Collection"
+        title="Blue Star Story"
         description="Exclusive lab-grown blue diamonds by Bianca — rarity, colour, and high jewellery."
+      />
+
+      <BlueStarCollectionDrawer
+        open={collectionOpen}
+        onOpenChange={setCollectionOpen}
       />
     </>
   );
