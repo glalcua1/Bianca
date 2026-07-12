@@ -35,10 +35,10 @@ const HERO_CONFIG: Partial<Record<JewelleryCategoryId, HeroConfig>> = {
     imageClassName: "max-h-[74%] max-w-[80%] object-contain object-center",
   },
   pendants: {
-    image: "/Pendant/Necklace1a.jpg",
-    alt: "Classic Emerald Pendant — emerald and diamond halo on gold chain",
-    featureLabel: "Classic Emerald Pendant",
-    detail: "A precise point of colour and light",
+    image: "/Pendant/P1.jpg",
+    alt: "Blue Star Pear Diamond Halo — pear blue diamond pendant with white diamond halo on yellow gold",
+    featureLabel: "Blue Star Pear Diamond Halo",
+    detail: "A precise point of diamond colour and light",
     imageClassName: "max-h-[68%] max-w-[72%] object-contain object-center",
   },
   bracelets: {

@@ -109,6 +109,7 @@ function CardImage({
   imageOnRight,
   wellClass,
   wellStyle,
+  showOverlay = true,
 }: {
   image: string;
   imageAlt: string;
@@ -116,6 +117,8 @@ function CardImage({
   imageOnRight: boolean;
   wellClass: string;
   wellStyle?: { backgroundColor: string };
+  /** Soft vignette — off for product stills that need full clarity */
+  showOverlay?: boolean;
 }) {
   return (
     <div
@@ -131,10 +134,12 @@ function CardImage({
         className={`size-full transition-transform duration-[1.6s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.045] motion-reduce:transition-none motion-reduce:group-hover:scale-100 ${imageClassName ?? "object-cover object-center"}`}
         sizes="(max-width: 768px) 100vw, 50vw"
       />
-      <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-60 md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-black/10"
-        aria-hidden
-      />
+      {showOverlay ? (
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-60 md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-black/10"
+          aria-hidden
+        />
+      ) : null}
       <div
         className={`pointer-events-none absolute inset-y-0 w-[2px] origin-top scale-y-0 bg-gradient-to-b from-[#dccb7b] via-[#766d42] to-[#dccb7b] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-y-100 motion-reduce:scale-y-100 ${
           imageOnRight ? "left-0" : "right-0"
@@ -279,6 +284,7 @@ function BlueDiamondCard({ index }: { index: number }) {
             imageOnRight={imageOnRight}
             wellClass={tones.well}
             wellStyle={tones.wellStyle}
+            showOverlay={false}
           />
         </article>
       </EditorialReveal>

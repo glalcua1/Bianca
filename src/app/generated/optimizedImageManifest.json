@@ -752,42 +752,6 @@
     },
     "sizes": "(max-width: 768px) 100vw, 1280px"
   },
-  "/Pendant/necklace_s.png": {
-    "original": "/Pendant/necklace_s.png",
-    "webp": {
-      "640": "/media/opt/Pendant/necklace_s-640.webp",
-      "1280": "/media/opt/Pendant/necklace_s-1280.webp",
-      "1920": "/media/opt/Pendant/necklace_s-1920.webp"
-    },
-    "sizes": "(max-width: 768px) 100vw, 1280px"
-  },
-  "/Pendant/Necklace1a.jpg": {
-    "original": "/Pendant/Necklace1a.jpg",
-    "webp": {
-      "640": "/media/opt/Pendant/Necklace1a-640.webp",
-      "1280": "/media/opt/Pendant/Necklace1a-1280.webp",
-      "1920": "/media/opt/Pendant/Necklace1a-1920.webp"
-    },
-    "sizes": "(max-width: 768px) 100vw, 1280px"
-  },
-  "/Pendant/Necklace2b.jpg": {
-    "original": "/Pendant/Necklace2b.jpg",
-    "webp": {
-      "640": "/media/opt/Pendant/Necklace2b-640.webp",
-      "1280": "/media/opt/Pendant/Necklace2b-1280.webp",
-      "1920": "/media/opt/Pendant/Necklace2b-1920.webp"
-    },
-    "sizes": "(max-width: 768px) 100vw, 1280px"
-  },
-  "/Pendant/Necklace2c.jpg": {
-    "original": "/Pendant/Necklace2c.jpg",
-    "webp": {
-      "640": "/media/opt/Pendant/Necklace2c-640.webp",
-      "1280": "/media/opt/Pendant/Necklace2c-1280.webp",
-      "1920": "/media/opt/Pendant/Necklace2c-1920.webp"
-    },
-    "sizes": "(max-width: 768px) 100vw, 1280px"
-  },
   "/Mens/Men.png": {
     "original": "/Mens/Men.png",
     "webp": {

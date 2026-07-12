@@ -13,13 +13,13 @@ export default function HomePageMobile() {
         <div className="mx-auto max-w-lg rounded-[16px] border border-[#1d3c34]/40 bg-white p-5 shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
           <BiancaHouseLogo maxWidth={200} className="mx-auto" />
 
-          <div className="relative mt-6 w-full overflow-hidden rounded-[12px] bg-white">
+          <div className="relative -mr-5 mt-6 overflow-hidden bg-[#fafafa]">
             <ProtectedImage
               priority
-              wrapperClassName="relative block w-full overflow-hidden"
-              src="/Bianca_girl2.jpg"
-              alt="Bianca Diamonds — lab-grown diamond fine jewellery"
-              className="mx-auto block h-auto w-full max-h-[min(72vh,500px)] object-contain object-top"
+              wrapperClassName="relative ml-auto block aspect-[4/5] w-[min(100%,420px)] overflow-hidden"
+              src="/Bianca_Girl_Blue.png"
+              alt="Bianca Diamonds — Blue Star editorial portrait with lab-grown blue diamond earrings"
+              className="absolute inset-0 size-full object-cover object-right object-top"
             />
           </div>
 

@@ -26,7 +26,7 @@ const SEARCH_PLACEHOLDERS: Partial<Record<JewelleryCategoryId | "all", string>> 
   earrings: "Search earrings — e.g. emerald drop for gala",
   necklaces: "Search necklaces — e.g. sapphire collar necklace",
   bracelets: "Search bracelets — e.g. emerald tennis line",
-  pendants: "Search pendants — e.g. canary pear for everyday",
+  pendants: "Search pendants — e.g. blue star pear or canary oval",
   "for-him": "Search for him — e.g. white gold band",
 };
 

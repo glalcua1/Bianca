@@ -19,7 +19,11 @@ import CollectionPhotoFrame, { COLLECTION_FRAME_HEIGHT } from "../app/components
 
 /** Hero white card — heights trimmed 20px from bottom of editorial portrait */
 const HERO_CARD_HEIGHT = 673;
-const HERO_IMAGE_HEIGHT = 643;
+const HERO_CARD_WIDTH = 1434;
+const HERO_CARD_LEFT = 39;
+const HERO_CARD_TOP = 203;
+/** Full-bleed right panel — flush to card edge; width keeps logo + copy clear */
+const HERO_IMAGE_WIDTH = 760;
 
 function Group3() {
   return (
@@ -28,19 +32,25 @@ function Group3() {
         className="absolute bg-gradient-to-r border-[#1d3c34] border-[0.4px] border-solid from-[#edefed] left-[39px] rounded-[20px] to-[90.865%] to-white top-[203px] via-[48.077%] via-white w-[1434px]"
         style={{ height: HERO_CARD_HEIGHT }}
       />
+      {/* Editorial portrait — edge-to-edge on the card’s right; soft dissolve into cream */}
       <div
-        className="absolute left-[798px] top-[232px] w-[656px]"
-        style={{ height: HERO_IMAGE_HEIGHT }}
+        className="absolute overflow-hidden rounded-r-[20px]"
+        style={{
+          top: HERO_CARD_TOP,
+          left: HERO_CARD_LEFT + HERO_CARD_WIDTH - HERO_IMAGE_WIDTH,
+          width: HERO_IMAGE_WIDTH,
+          height: HERO_CARD_HEIGHT,
+        }}
         data-name="hero-editorial-image"
       >
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <ProtectedImage
-            wrapperClassName="absolute inset-0 size-full"
-            alt="Bianca Diamonds — lab-grown diamond fine jewellery"
-            className="absolute h-[185.39%] left-[-23.1%] max-w-none top-0 w-[140.41%]"
-            src="/Bianca_girl2.jpg"
-          />
-        </div>
+        <ProtectedImage
+          priority
+          wrapperClassName="absolute inset-0 size-full"
+          alt="Bianca Diamonds — Blue Star editorial portrait with lab-grown blue diamond earrings"
+          className="absolute inset-0 size-full object-cover object-right object-top"
+          src="/Bianca_Girl_Blue.png"
+          sizes="(max-width: 1512px) 50vw, 760px"
+        />
       </div>
       <div className="-translate-y-1/2 absolute flex flex-col font-display h-[109px] justify-center leading-[0] left-[174px] not-italic text-[#1d3c34] text-[40px] top-[651.5px] tracking-[1.5px] uppercase w-[508px]">
         <p className="leading-[normal]">Modern Sparkle. Timeless Impact.</p>

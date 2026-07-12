@@ -14,3 +14,4 @@ ftp-upload
 public/media/opt/
 __pycache__/
 *.pyc
+.env*

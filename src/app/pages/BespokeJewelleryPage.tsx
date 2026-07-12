@@ -66,7 +66,7 @@ export default function BespokeJewelleryPage() {
               </div>
               <div className="absolute -bottom-6 -right-4 w-[55%] max-w-[220px] ring-1 ring-[#766d42]/25 shadow-[0_20px_50px_rgba(29,60,52,0.12)] md:-right-8">
                 <ProtectedImage
-                  src="/Pendant/Necklace2c.jpg"
+                  src="/Pendant/P2.jpg"
                   alt="Bespoke pear diamond pendant necklace — Bianca Diamonds"
                   wrapperClassName="aspect-[4/5] w-full bg-[#faf8f5]"
                   className="size-full object-cover object-center"

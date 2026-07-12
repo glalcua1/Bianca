@@ -1,4 +1,3 @@
-import imgRectangle11 from "figma:asset/Bianca_ring.png";
 import imgPackagingBox from "figma:asset/200f28676d6a2eae898fcdcd9f13ebcd75250299.png";
 import imgPackagingBag from "figma:asset/75d88e2bc003dea111ea5784491167b05e57ecdf.png";
 import imgImage1 from "figma:asset/ffad195494173b3c37c4aa05d64af9f2620a7643.png";
@@ -10,16 +9,19 @@ const SUPPORTING = [
     src: imgPackagingBox,
     alt: "Bianca Diamonds presentation box",
     className: "object-cover object-center",
+    wellClass: "bg-white",
   },
   {
     src: imgPackagingBag,
     alt: "Bianca Diamonds packaging",
     className: "object-cover object-center",
+    wellClass: "bg-white",
   },
   {
     src: imgImage1,
     alt: "Bianca Diamonds atelier atmosphere",
     className: "object-cover object-[center_40%]",
+    wellClass: "bg-[#ebe6dc]",
   },
 ] as const;
 
@@ -100,12 +102,12 @@ export default function HomeBiancaStoryMobile() {
               className="border-t border-[#1d3c34]/8 bg-[#f4f0e6] p-3 sm:p-4 lg:col-span-7 lg:border-l lg:border-t-0 lg:p-5"
             >
               <div className="flex h-full flex-col gap-3 sm:gap-4">
-                {/* Dominant hero */}
-                <div className="relative min-h-[280px] flex-[1.6] overflow-hidden bg-[#ebe6dc] sm:min-h-[360px] lg:min-h-0">
+                {/* Dominant hero — full-bleed product plate, no letterbox pillars */}
+                <div className="relative min-h-[280px] flex-[1.6] overflow-hidden bg-[#c4c4c4] sm:min-h-[360px] lg:min-h-0">
                   <ProtectedImage
                     wrapperClassName="absolute inset-0 size-full"
-                    src={imgRectangle11}
-                    alt="Bianca Diamonds fine jewellery"
+                    src="/Pendant/P11.jpg"
+                    alt="Blue Star Octagon Diamond Lattice — square blue diamond pendant in rose gold"
                     className="size-full object-cover object-center"
                     sizes="(max-width: 1024px) 100vw, 58vw"
                   />
@@ -116,7 +118,7 @@ export default function HomeBiancaStoryMobile() {
                   {SUPPORTING.map((item) => (
                     <li
                       key={item.alt}
-                      className="relative aspect-[3/4] overflow-hidden bg-[#ebe6dc] sm:aspect-[4/5]"
+                      className={`relative aspect-[3/4] overflow-hidden sm:aspect-[4/5] ${item.wellClass}`}
                     >
                       <ProtectedImage
                         wrapperClassName="absolute inset-0 size-full"

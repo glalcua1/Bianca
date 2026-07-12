@@ -25,7 +25,7 @@ const EDITORIAL_PATHS = new Set([
   "media/bespoke/orchid-studio-light.jpg",
   "Beskpoke_necklace.png",
   "butter.png",
-  "Pendant/Necklace2c.jpg",
+  "Pendant/P1.jpg",
 ]);
 
 const WIDTHS = {

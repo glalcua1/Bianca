@@ -7,7 +7,7 @@ export const BLUE_DIAMOND_PDF_PATH =
   "/BlueDiamond/Blue-Star-Collection.pdf";
 
 export const BLUE_DIAMOND_RING_IMAGE =
-  "/BlueDiamond/blue-star-ring.jpg";
+  "/Rings/RB_ring4.jpg";
 
 /** Blue Star atelier rings — resolved from the main catalogue. */
 export const BLUE_STAR_RING_IDS = [
@@ -17,6 +17,8 @@ export const BLUE_STAR_RING_IDS = [
   "ring-blue-emerald-solitaire",
   "ring-blue-radiant-solitaire",
   "ring-blue-oval-solitaire",
+  "ring-blue-cushion-double-halo",
+  "ring-blue-marquise-solitaire",
 ] as const;
 
 /** Blue Star earrings shown in the View collection drawer. */
@@ -55,9 +57,10 @@ export const BLUE_DIAMOND_CARD = {
   collectionCta: "View collection",
   image: BLUE_DIAMOND_RING_IMAGE,
   imageAlt:
-    "Bianca Blue Star — emerald-cut lab-grown blue diamond ring in white gold",
-  imageClassName: "object-contain object-center p-8 md:p-12",
-  imageWellColor: "#0a1628",
+    "Bianca Blue Star — emerald-cut lab-grown blue diamond solitaire ring in white gold",
+  /** Full ring product shot — contain with light inset so the band and stone read clearly */
+  imageClassName: "object-contain object-center p-3 sm:p-4 md:p-5 lg:p-6",
+  imageWellColor: "#a3a3a3",
   pdfSrc: BLUE_DIAMOND_PDF_PATH,
 } as const;
 
