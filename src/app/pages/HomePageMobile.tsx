@@ -17,7 +17,7 @@ export default function HomePageMobile() {
             <ProtectedImage
               priority
               wrapperClassName="relative ml-auto block aspect-[4/5] w-[min(100%,420px)] overflow-hidden"
-              src="/Bianca_Girl_Blue.png"
+              src="/Bianca_Girl_Blue.jpg"
               alt="Bianca Diamonds — Blue Star editorial portrait with lab-grown blue diamond earrings"
               className="absolute inset-0 size-full object-cover object-right object-top"
             />

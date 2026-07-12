@@ -48,7 +48,7 @@ function Group3() {
           wrapperClassName="absolute inset-0 size-full"
           alt="Bianca Diamonds — Blue Star editorial portrait with lab-grown blue diamond earrings"
           className="absolute inset-0 size-full object-cover object-right object-top"
-          src="/Bianca_Girl_Blue.png"
+          src="/Bianca_Girl_Blue.jpg"
           sizes="(max-width: 1512px) 50vw, 760px"
         />
       </div>
