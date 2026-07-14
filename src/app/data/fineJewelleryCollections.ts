@@ -1439,18 +1439,6 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "Twin yellow-gold bangles set with marquise diamonds in a laurel-leaf motif — layered wrist brilliance with sculptural, house-refined proportion.",
   },
   {
-    id: "brace-jardin-floreal",
-    category: "bracelets",
-    braceletKind: "bracelet",
-    productCode: "BD-K-BR-004",
-    image: "/Bracelet/Bracelet3.png",
-    imageWellColor: "#0a0a0a",
-    alt: "Floral Garden — floral cluster diamond bracelet",
-    title: "Floral Garden",
-    description:
-      "Twin rows of marquise and round brilliants bloom in repeating floral clusters — a wide, flexible collar for the wrist with high-jewellery presence and continuous light.",
-  },
-  {
     id: "brace-tennis-brilliant",
     category: "bracelets",
     braceletKind: "tennis",
@@ -1475,30 +1463,6 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "Marquise brilliants set edge to edge in a continuous line — fluid fire around the wrist, composed to stack with the house's bangles and cuffs.",
   },
   {
-    id: "brace-tennis-poire",
-    category: "bracelets",
-    braceletKind: "tennis",
-    productCode: "BD-K-BR-005",
-    image: "/Bracelet/Bracelet4.png",
-    imageWellColor: "#131313",
-    alt: "Tennis Pear — three-row pear and round diamond tennis bracelet",
-    title: "Tennis Pear",
-    description:
-      "Three articulated rows of pear and round brilliants in a scalloped tennis line — wider wrist fire with the same fluid, stackable elegance as the house's classic tennis styles.",
-  },
-  {
-    id: "brace-coeur-lumiere",
-    category: "bracelets",
-    braceletKind: "tennis",
-    productCode: "BD-K-BR-006",
-    image: "/Bracelet/IMG_7375.JPG",
-    imageWellColor: "#000000",
-    alt: "Heartlight — heart-cut diamond tennis bracelet in rose gold",
-    title: "Heartlight",
-    description:
-      "A continuous line of heart-cut IGI-certified brilliants in warm rose gold — romantic geometry and uninterrupted fire around the wrist.",
-  },
-  {
     id: "brace-princesse-rosee",
     category: "bracelets",
     braceletKind: "tennis",
@@ -1509,42 +1473,6 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Rose Princess",
     description:
       "Princess-cut brilliants set edge to edge in warm rose gold — a softer tennis silhouette with the house's signature precision.",
-  },
-  {
-    id: "brace-motif-papillon",
-    category: "bracelets",
-    braceletKind: "bracelet",
-    productCode: "BD-K-BR-009",
-    image: "/Bracelet/IMG_7368-2.jpg",
-    imageWellColor: "#ffffff",
-    alt: "Butterfly Link — pear and princess diamond bracelet in rose gold",
-    title: "Butterfly Link",
-    description:
-      "Alternating pear and princess diamonds in rose gold form a continuous butterfly motif — sculptural links with gala-ready brilliance.",
-  },
-  {
-    id: "brace-rosee-classique",
-    category: "bracelets",
-    braceletKind: "tennis",
-    productCode: "BD-K-BR-011",
-    image: "/Bracelet/IMG_7374.JPG",
-    imageWellColor: "#ffffff",
-    alt: "Classic Rose Tennis — round diamond tennis bracelet in rose gold",
-    title: "Classic Rose Tennis",
-    description:
-      "Round IGI-certified brilliants in a classic four-prong tennis line on rose gold — timeless wrist brilliance with a warm golden glow.",
-  },
-  {
-    id: "brace-emeraude-alternee",
-    category: "bracelets",
-    braceletKind: "tennis",
-    productCode: "BD-K-BR-012",
-    image: "/Bracelet/IMG_7376.JPG",
-    imageWellColor: "#ffffff",
-    alt: "Alternating Emerald — emerald and diamond tennis bracelet",
-    title: "Alternating Emerald",
-    description:
-      "Round emeralds and brilliants alternate in a yellow-gold tennis line — rhythmic colour and light for day-to-evening wear.",
   },
   {
     id: "brace-halo-emeraude-or",
@@ -1641,54 +1569,6 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Emerald Halo Line",
     description:
       "Round emeralds crowned in diamond halos, linked in polished yellow gold — fluid salon elegance with secure box-clasp refinement.",
-  },
-  {
-    id: "brace-cuff-floreal-emeraude",
-    category: "bracelets",
-    braceletKind: "bracelet",
-    productCode: "BD-K-BR-022",
-    image: "/Bracelet/IMG_7385.JPG",
-    imageWellColor: "#5a5758",
-    alt: "Floral Emerald Cuff — three-row emerald and diamond cuff bracelet",
-    title: "Floral Emerald Cuff",
-    description:
-      "Three rows of emerald-cut stones bloom in marquise diamond garlands on white gold — a wide flexible cuff with haute joaillerie depth.",
-  },
-  {
-    id: "brace-rubis-alterne",
-    category: "bracelets",
-    braceletKind: "tennis",
-    productCode: "BD-K-BR-021",
-    image: "/Bracelet/IMG_7386.JPG",
-    imageWellColor: "#ffffff",
-    alt: "Alternating Ruby — ruby and diamond tennis bracelet",
-    title: "Alternating Ruby",
-    description:
-      "Emerald-cut rubies alternate with princess-cut diamond pairs in white gold — vivid colour in a refined tennis silhouette.",
-  },
-  {
-    id: "brace-heart-tennis-platinum",
-    category: "bracelets",
-    braceletKind: "tennis",
-    productCode: "BD-K-BR-023",
-    image: "/Bracelet/IMG_7364.jpg",
-    imageWellColor: "#030507",
-    alt: "Platinum Heart Tennis — heart-cut diamond tennis bracelet",
-    title: "Platinum Heart Tennis",
-    description:
-      "Heart-cut IGI-certified brilliants in a continuous four-prong tennis line on white gold — romantic silhouette with uninterrupted fire around the wrist.",
-  },
-  {
-    id: "brace-rose-gold-tennis-line",
-    category: "bracelets",
-    braceletKind: "tennis",
-    productCode: "BD-K-BR-024",
-    image: "/Bracelet/IMG_7373.JPG",
-    imageWellColor: "#ffffff",
-    alt: "Rose Gold Line Tennis — round diamond tennis bracelet in rose gold",
-    title: "Rose Gold Line Tennis",
-    description:
-      "Round brilliants in a classic four-prong tennis line on warm rose gold — everyday brilliance with the house's signature precision and secure box clasp.",
   },
   {
     id: "brace-sapphire-halo-bloom",
