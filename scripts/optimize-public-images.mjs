@@ -31,6 +31,7 @@ const EDITORIAL_PATHS = new Set([
   "elegant-pattern-white-orchids-intricate-silver-designs-soft-pastel-backdrop.jpg",
   "founder.jpg",
   "Cannes/Cannes_model.png",
+  "Cannes/IMG_7239.jpg",
   "media/bespoke/orchid-studio-light.jpg",
   "Beskpoke_necklace.png",
   "butter.png",
