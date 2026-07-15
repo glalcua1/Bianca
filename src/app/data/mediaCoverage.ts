@@ -36,6 +36,26 @@ export type MediaPressItem = {
 
 export const MEDIA_PRESS_ITEMS: MediaPressItem[] = [
   {
+    id: "dainik-jagran-moradabad",
+    eyebrow: "Dainik Jagran · Moradabad",
+    title: "Shweta’s Bianca Brings Sparkle to the Film Festival",
+    body: "Dainik Jagran Moradabad celebrated Shweta Lal of Madhubani Colony — who took her women-led house, Bianca Diamonds, to the Cannes Film Festival 2026 red carpet within ninety days of launch. Actress Manya Pathak wore the brand’s lab-grown diamond jewellery on the Croisette, framing Indian design, modern luxury, and sustainable craft for a national audience.",
+    images: [
+      {
+        src: "/media/dainik-jagran-moradabad-2026.jpg",
+        alt: "Dainik Jagran Moradabad press clipping — Shweta Lal and Bianca Diamonds at Cannes 2026",
+        caption: "Dainik Jagran — Moradabad edition",
+        frame: "portrait",
+      },
+    ],
+    source: "Dainik Jagran Moradabad",
+    date: "8 June 2026",
+    primaryLink: {
+      href: "https://www.instagram.com/p/DZUcXlwg7Yg/",
+      label: "View on Instagram",
+    },
+  },
+  {
     id: "news-india-11-manya",
     eyebrow: "News India 11 · Instagram",
     title: "Manya on the World Stage",
