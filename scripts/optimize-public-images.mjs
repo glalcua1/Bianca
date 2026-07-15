@@ -3,7 +3,10 @@
  * Outputs to public/media/opt/ and writes src/app/generated/optimizedImageManifest.json
  *
  * Skip logic uses content hashes (not mtimes). Git clones reset mtimes on Vercel,
- * so mtime checks re-encode every image on every deploy and delay production.
+ * so mtime checks re-encoded every image on every deploy and delayed production.
+ *
+ * Encoded bytes are also stored under node_modules/.cache/bianca-image-opt keyed by
+ * source hash so Vercel’s restored build cache can skip Sharp on unchanged assets.
  */
 import crypto from "crypto";
 import fs from "fs";
@@ -14,6 +17,7 @@ import sharp from "sharp";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicDir = path.join(root, "public");
 const outRoot = path.join(publicDir, "media", "opt");
+const hashCacheRoot = path.join(root, "node_modules/.cache/bianca-image-opt");
 const manifestPath = path.join(root, "src/app/generated/optimizedImageManifest.json");
 const dataFile = path.join(root, "src/app/data/fineJewelleryCollections.ts");
 const CONCURRENCY = 4;
@@ -97,64 +101,73 @@ function loadPreviousManifest() {
   }
 }
 
-function variantPaths(relPath, widths) {
+function variantMeta(relPath, widths) {
   const stem = path.basename(relPath, path.extname(relPath));
   return widths.map((width) => {
-    const destRel = `media/opt/${path.dirname(relPath)}/${stem}-${width}.webp`.replace(
-      /^\.\//,
-      "",
-    );
+    const destRel = `media/opt/${path.dirname(relPath)}/${stem}-${width}.webp`
+      .replace(/^\.\//, "")
+      .replace(/\\/g, "/");
     return {
       width,
-      destRel: destRel.replace(/\\/g, "/"),
+      destRel,
       destPath: path.join(publicDir, destRel),
     };
   });
+}
+
+function hashCachePath(sourceHash, width) {
+  return path.join(hashCacheRoot, sourceHash, `${width}.webp`);
+}
+
+function ensureCopied(fromPath, toPath) {
+  fs.mkdirSync(path.dirname(toPath), { recursive: true });
+  fs.copyFileSync(fromPath, toPath);
 }
 
 async function optimizeOne(relPath, previousEntry) {
   const srcPath = path.join(publicDir, relPath);
   const widths = widthsFor(relPath);
   const sourceHash = hashFile(srcPath);
-  const variantsMeta = variantPaths(relPath, widths);
+  const variantsMeta = variantMeta(relPath, widths);
   const original = `/${relPath.replace(/\\/g, "/")}`;
-
-  const allVariantsExist = variantsMeta.every(({ destPath }) =>
-    fs.existsSync(destPath),
-  );
-  if (
-    previousEntry?.sourceHash === sourceHash &&
-    previousEntry?.webp &&
-    allVariantsExist
-  ) {
-    return {
-      original,
-      sourceHash,
-      webp: previousEntry.webp,
-      sizes: sizesFor(relPath),
-      skipped: true,
-    };
-  }
-
-  fs.mkdirSync(path.join(outRoot, path.dirname(relPath)), { recursive: true });
-
   const variants = {};
+  let encoded = 0;
+  let reused = 0;
+
   for (const { width, destRel, destPath } of variantsMeta) {
+    const cachedPath = hashCachePath(sourceHash, width);
+    const publicUrl = `/${destRel}`;
+
+    if (fs.existsSync(cachedPath)) {
+      ensureCopied(cachedPath, destPath);
+      variants[String(width)] = publicUrl;
+      reused += 1;
+      continue;
+    }
+
     if (
       previousEntry?.sourceHash === sourceHash &&
       fs.existsSync(destPath)
     ) {
-      variants[String(width)] = `/${destRel}`;
+      fs.mkdirSync(path.dirname(cachedPath), { recursive: true });
+      fs.copyFileSync(destPath, cachedPath);
+      variants[String(width)] = publicUrl;
+      reused += 1;
       continue;
     }
+
+    fs.mkdirSync(path.dirname(cachedPath), { recursive: true });
+    fs.mkdirSync(path.dirname(destPath), { recursive: true });
 
     await sharp(srcPath)
       .rotate()
       .resize({ width, withoutEnlargement: true })
       .webp({ quality: 82, effort: 4 })
-      .toFile(destPath);
+      .toFile(cachedPath);
 
-    variants[String(width)] = `/${destRel}`;
+    ensureCopied(cachedPath, destPath);
+    variants[String(width)] = publicUrl;
+    encoded += 1;
   }
 
   return {
@@ -162,7 +175,8 @@ async function optimizeOne(relPath, previousEntry) {
     sourceHash,
     webp: variants,
     sizes: sizesFor(relPath),
-    skipped: false,
+    encoded,
+    reused,
   };
 }
 
@@ -186,23 +200,31 @@ async function mapPool(items, concurrency, worker) {
 async function main() {
   const paths = collectPaths();
   const previous = loadPreviousManifest();
-  let skipped = 0;
-  let encoded = 0;
+  let skippedImages = 0;
+  let encodedImages = 0;
+  let encodedVariants = 0;
+  let reusedVariants = 0;
 
-  console.log(`Optimizing ${paths.length} images (hash-cached, concurrency ${CONCURRENCY})…`);
+  fs.mkdirSync(hashCacheRoot, { recursive: true });
+
+  console.log(
+    `Optimizing ${paths.length} images (hash-cached via node_modules/.cache, concurrency ${CONCURRENCY})…`,
+  );
 
   const entries = await mapPool(paths, CONCURRENCY, async (relPath) => {
     const key = `/${relPath.replace(/\\/g, "/")}`;
     try {
       const entry = await optimizeOne(relPath, previous[key]);
-      if (entry.skipped) {
-        skipped += 1;
+      encodedVariants += entry.encoded;
+      reusedVariants += entry.reused;
+      if (entry.encoded === 0) {
+        skippedImages += 1;
         process.stdout.write(".");
       } else {
-        encoded += 1;
+        encodedImages += 1;
         process.stdout.write("+");
       }
-      const { skipped: _skipped, ...manifestEntry } = entry;
+      const { encoded: _e, reused: _r, ...manifestEntry } = entry;
       return [key, manifestEntry];
     } catch (error) {
       console.warn(`\nSkip ${relPath}:`, error.message);
@@ -218,7 +240,7 @@ async function main() {
   fs.mkdirSync(path.dirname(manifestPath), { recursive: true });
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
   console.log(
-    `\nWrote manifest (${Object.keys(manifest).length} entries) — reused ${skipped}, encoded ${encoded}`,
+    `\nWrote manifest (${Object.keys(manifest).length} entries) — images reused ${skippedImages}, images encoded ${encodedImages}; variants reused ${reusedVariants}, encoded ${encodedVariants}`,
   );
 }
 
