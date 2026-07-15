@@ -74,7 +74,6 @@ export default function FineJewelleryCategoryHero({ categoryId }: Props) {
       imageMode={config.imageMode ?? "contain"}
       objectPosition={config.objectPosition}
       feature={{ label: config.featureLabel, detail: config.detail }}
-      cta={{ href: "#showcase", label: "Explore the Salon →" }}
     />
   );
 }
