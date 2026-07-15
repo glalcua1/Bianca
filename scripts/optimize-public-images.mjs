@@ -1,7 +1,11 @@
 /**
  * Build-time WebP derivatives for URL-path images under public/.
  * Outputs to public/media/opt/ and writes src/app/generated/optimizedImageManifest.json
+ *
+ * Skip logic uses content hashes (not mtimes). Git clones reset mtimes on Vercel,
+ * so mtime checks re-encode every image on every deploy and delay production.
  */
+import crypto from "crypto";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -12,6 +16,7 @@ const publicDir = path.join(root, "public");
 const outRoot = path.join(publicDir, "media", "opt");
 const manifestPath = path.join(root, "src/app/generated/optimizedImageManifest.json");
 const dataFile = path.join(root, "src/app/data/fineJewelleryCollections.ts");
+const CONCURRENCY = 4;
 
 const IMAGE_EXT = /\.(jpe?g|png|webp)$/i;
 
@@ -76,28 +81,70 @@ function sizesFor(relPath) {
   return "(max-width: 768px) 100vw, 1280px";
 }
 
-async function optimizeOne(relPath) {
-  const srcPath = path.join(publicDir, relPath);
-  const widths = widthsFor(relPath);
+function hashFile(filePath) {
+  return crypto
+    .createHash("sha1")
+    .update(fs.readFileSync(filePath))
+    .digest("hex")
+    .slice(0, 16);
+}
+
+function loadPreviousManifest() {
+  try {
+    return JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+  } catch {
+    return {};
+  }
+}
+
+function variantPaths(relPath, widths) {
   const stem = path.basename(relPath, path.extname(relPath));
-  const destDir = path.join(outRoot, path.dirname(relPath));
-  fs.mkdirSync(destDir, { recursive: true });
-
-  const srcMtime = fs.statSync(srcPath).mtimeMs;
-  const variants = {};
-
-  for (const width of widths) {
+  return widths.map((width) => {
     const destRel = `media/opt/${path.dirname(relPath)}/${stem}-${width}.webp`.replace(
       /^\.\//,
       "",
     );
-    const destPath = path.join(publicDir, destRel);
+    return {
+      width,
+      destRel: destRel.replace(/\\/g, "/"),
+      destPath: path.join(publicDir, destRel),
+    };
+  });
+}
 
+async function optimizeOne(relPath, previousEntry) {
+  const srcPath = path.join(publicDir, relPath);
+  const widths = widthsFor(relPath);
+  const sourceHash = hashFile(srcPath);
+  const variantsMeta = variantPaths(relPath, widths);
+  const original = `/${relPath.replace(/\\/g, "/")}`;
+
+  const allVariantsExist = variantsMeta.every(({ destPath }) =>
+    fs.existsSync(destPath),
+  );
+  if (
+    previousEntry?.sourceHash === sourceHash &&
+    previousEntry?.webp &&
+    allVariantsExist
+  ) {
+    return {
+      original,
+      sourceHash,
+      webp: previousEntry.webp,
+      sizes: sizesFor(relPath),
+      skipped: true,
+    };
+  }
+
+  fs.mkdirSync(path.join(outRoot, path.dirname(relPath)), { recursive: true });
+
+  const variants = {};
+  for (const { width, destRel, destPath } of variantsMeta) {
     if (
-      fs.existsSync(destPath) &&
-      fs.statSync(destPath).mtimeMs >= srcMtime
+      previousEntry?.sourceHash === sourceHash &&
+      fs.existsSync(destPath)
     ) {
-      variants[String(width)] = `/${destRel.replace(/\\/g, "/")}`;
+      variants[String(width)] = `/${destRel}`;
       continue;
     }
 
@@ -107,34 +154,72 @@ async function optimizeOne(relPath) {
       .webp({ quality: 82, effort: 4 })
       .toFile(destPath);
 
-    variants[String(width)] = `/${destRel.replace(/\\/g, "/")}`;
+    variants[String(width)] = `/${destRel}`;
   }
 
   return {
-    original: `/${relPath.replace(/\\/g, "/")}`,
+    original,
+    sourceHash,
     webp: variants,
     sizes: sizesFor(relPath),
+    skipped: false,
   };
+}
+
+async function mapPool(items, concurrency, worker) {
+  const results = new Array(items.length);
+  let next = 0;
+
+  async function run() {
+    while (next < items.length) {
+      const index = next++;
+      results[index] = await worker(items[index], index);
+    }
+  }
+
+  await Promise.all(
+    Array.from({ length: Math.min(concurrency, items.length) }, () => run()),
+  );
+  return results;
 }
 
 async function main() {
   const paths = collectPaths();
-  const manifest = {};
+  const previous = loadPreviousManifest();
+  let skipped = 0;
+  let encoded = 0;
 
-  console.log(`Optimizing ${paths.length} images…`);
+  console.log(`Optimizing ${paths.length} images (hash-cached, concurrency ${CONCURRENCY})…`);
 
-  for (const relPath of paths) {
+  const entries = await mapPool(paths, CONCURRENCY, async (relPath) => {
+    const key = `/${relPath.replace(/\\/g, "/")}`;
     try {
-      manifest[`/${relPath.replace(/\\/g, "/")}`] = await optimizeOne(relPath);
-      process.stdout.write(".");
+      const entry = await optimizeOne(relPath, previous[key]);
+      if (entry.skipped) {
+        skipped += 1;
+        process.stdout.write(".");
+      } else {
+        encoded += 1;
+        process.stdout.write("+");
+      }
+      const { skipped: _skipped, ...manifestEntry } = entry;
+      return [key, manifestEntry];
     } catch (error) {
       console.warn(`\nSkip ${relPath}:`, error.message);
+      return null;
     }
+  });
+
+  const manifest = {};
+  for (const row of entries) {
+    if (row) manifest[row[0]] = row[1];
   }
 
   fs.mkdirSync(path.dirname(manifestPath), { recursive: true });
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
-  console.log(`\nWrote manifest (${Object.keys(manifest).length} entries)`);
+  console.log(
+    `\nWrote manifest (${Object.keys(manifest).length} entries) — reused ${skipped}, encoded ${encoded}`,
+  );
 }
 
 main().catch((error) => {
