@@ -1,6 +1,5 @@
 import MobileSiteNav from "../components/MobileSiteNav";
-import ProtectedImage from "../components/protection/ProtectedImage";
-import { BiancaHouseLogo } from "../components/BiancaLogo";
+import HomeHeroCard from "../components/HomeHeroCard";
 import HomeSectionCards from "../components/HomeSectionCards";
 import HomeBiancaStoryMobile from "../components/HomeBiancaStoryMobile";
 
@@ -10,26 +9,7 @@ export default function HomePageMobile() {
       <MobileSiteNav activeItem="the-house" />
 
       <section className="bg-[#1d3c34] px-4 pb-10 pt-2">
-        <div className="mx-auto max-w-lg rounded-[16px] border border-[#1d3c34]/40 bg-white p-5 shadow-[0_12px_40px_rgba(0,0,0,0.12)]">
-          <BiancaHouseLogo maxWidth={200} className="mx-auto" />
-
-          <div className="relative -mr-5 mt-6 overflow-hidden bg-[#fafafa]">
-            <ProtectedImage
-              priority
-              wrapperClassName="relative ml-auto block aspect-[4/5] w-[min(100%,420px)] overflow-hidden"
-              src="/Bianca_Girl_Blue.jpg"
-              alt="Bianca Diamonds — Blue Star editorial portrait with lab-grown blue diamond earrings"
-              className="absolute inset-0 size-full object-cover object-right object-top"
-            />
-          </div>
-
-          <h1 className="mt-6 text-center text-house-display text-[clamp(1.35rem,5.5vw,1.75rem)] uppercase leading-snug tracking-[0.08em] text-[#1d3c34]">
-            Modern Sparkle. Timeless Impact.
-          </h1>
-          <p className="mt-3 text-center text-house-tagline text-[clamp(1rem,4vw,1.125rem)] capitalize tracking-[0.06em] text-on-cream-body">
-            100% Certified Lab Grown Diamonds
-          </p>
-        </div>
+        <HomeHeroCard layout="mobile" />
       </section>
 
       {/* Full-width horizontal section cards — Fine Jewellery → Bespoke → Butterfly → Cannes */}

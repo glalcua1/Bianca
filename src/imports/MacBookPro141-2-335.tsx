@@ -11,61 +11,16 @@ import imgImage1 from "figma:asset/ffad195494173b3c37c4aa05d64af9f2620a7643.png"
 import { imgRectangle, imgRectangle1, imgGroup, imgRectangle3, imgRectangle4, imgRectangle7, imgGroup1, imgRectangle9, imgGroup2 } from "./svg-nywou";
 import { Link } from "react-router";
 import MainSiteNavLinks from "../app/components/MainSiteNavLinks";
-import Group6Logo from "./Group6";
 import { RingMark } from "./RingMark";
 import Hw25PromoBridal2H2JpgVideo from "./Hw25PromoBridal2H2Jpg";
 import ProtectedImage from "../app/components/protection/ProtectedImage";
+import HomeHeroCard from "../app/components/HomeHeroCard";
 import CollectionPhotoFrame, { COLLECTION_FRAME_HEIGHT } from "../app/components/CollectionPhotoFrame";
 
-/** Hero white card — heights trimmed 20px from bottom of editorial portrait */
-const HERO_CARD_HEIGHT = 673;
-const HERO_CARD_WIDTH = 1434;
-const HERO_CARD_LEFT = 39;
-const HERO_CARD_TOP = 203;
-/** Full-bleed right panel — flush to card edge; width keeps logo + copy clear */
-const HERO_IMAGE_WIDTH = 760;
-
-function Group3() {
+function Group9() {
   return (
     <div className="absolute contents left-[39px] top-[203px]">
-      <div
-        className="absolute bg-gradient-to-r border-[#1d3c34] border-[0.4px] border-solid from-[#edefed] left-[39px] rounded-[20px] to-[90.865%] to-white top-[203px] via-[48.077%] via-white w-[1434px]"
-        style={{ height: HERO_CARD_HEIGHT }}
-      />
-      {/* Editorial portrait — edge-to-edge on the card’s right; soft dissolve into cream */}
-      <div
-        className="absolute overflow-hidden rounded-r-[20px]"
-        style={{
-          top: HERO_CARD_TOP,
-          left: HERO_CARD_LEFT + HERO_CARD_WIDTH - HERO_IMAGE_WIDTH,
-          width: HERO_IMAGE_WIDTH,
-          height: HERO_CARD_HEIGHT,
-        }}
-        data-name="hero-editorial-image"
-      >
-        <ProtectedImage
-          priority
-          wrapperClassName="absolute inset-0 size-full"
-          alt="Bianca Diamonds — Blue Star editorial portrait with lab-grown blue diamond earrings"
-          className="absolute inset-0 size-full object-cover object-right object-top"
-          src="/Bianca_Girl_Blue.jpg"
-          sizes="(max-width: 1512px) 50vw, 760px"
-        />
-      </div>
-      <div className="-translate-y-1/2 absolute flex flex-col font-display h-[109px] justify-center leading-[0] left-[174px] not-italic text-[#1d3c34] text-[40px] top-[651.5px] tracking-[1.5px] uppercase w-[508px]">
-        <p className="leading-[normal]">Modern Sparkle. Timeless Impact.</p>
-      </div>
-      <div className="-translate-y-1/2 absolute capitalize flex flex-col font-tagline h-[49px] justify-center leading-[0] left-[174px] not-italic text-[24px] text-on-cream-body top-[743.5px] tracking-[1.5px] w-[564px]">
-        <p className="leading-[normal]">100% Certified Lab Grown Diamonds</p>
-      </div>
-    </div>
-  );
-}
-
-function Group1() {
-  return (
-    <div className="absolute contents left-[39px] top-[203px]">
-      <Group3 />
+      <HomeHeroCard layout="desktop" />
     </div>
   );
 }
@@ -518,23 +473,6 @@ function Group() {
   return (
     <div className="absolute contents inset-[31.21%_70.18%_42.77%_11.51%]" data-name="Group">
       <ClipPathGroup />
-    </div>
-  );
-}
-
-function Group6() {
-  return (
-    <div className="absolute left-[174px] top-[294px] w-[304px] h-[245px]">
-      <Group6Logo />
-    </div>
-  );
-}
-
-function Group9() {
-  return (
-    <div className="absolute contents left-[39px] top-[203px]">
-      <Group1 />
-      <Group6 />
     </div>
   );
 }
