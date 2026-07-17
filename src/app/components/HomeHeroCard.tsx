@@ -6,7 +6,7 @@ import {
   type CSSProperties,
   type RefObject,
 } from "react";
-import { Play } from "lucide-react";
+import { Play, Volume2, VolumeX } from "lucide-react";
 import Group6Logo from "../../imports/Group6";
 import { BiancaHouseLogo } from "./BiancaLogo";
 import ProtectedImage from "./protection/ProtectedImage";
@@ -18,6 +18,7 @@ const HERO_MOBILE_POSTER = "/Hero_mobile-poster.jpg";
 /** Safety net if `ended` never fires (autoplay block, decode stall). */
 const VIDEO_FALLBACK_MS = 18_000;
 const CROSSFADE_MS = 1400;
+const DEFAULT_VOLUME = 0.85;
 
 /** Matches MacBookPro artboard hero card geometry */
 export const HERO_CARD_HEIGHT = 673;
@@ -49,10 +50,14 @@ function usePrefersReducedMotion() {
 function useHeroSequence(reduceMotion: boolean) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const fallbackRef = useRef<number | null>(null);
+  const volumeRef = useRef(DEFAULT_VOLUME);
+  const mutedRef = useRef(false);
   const [phase, setPhase] = useState<"video" | "still">(
     reduceMotion ? "still" : "video",
   );
   const [progress, setProgress] = useState(0);
+  const [volume, setVolumeState] = useState(DEFAULT_VOLUME);
+  const [muted, setMutedState] = useState(false);
   const settledRef = useRef(reduceMotion);
   const hasAutoplayedRef = useRef(false);
 
@@ -62,6 +67,45 @@ function useHeroSequence(reduceMotion: boolean) {
       fallbackRef.current = null;
     }
   }, []);
+
+  const applyAudio = useCallback((nextMuted: boolean, nextVolume: number) => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.volume = Math.min(1, Math.max(0, nextVolume));
+    video.muted = nextMuted || nextVolume === 0;
+  }, []);
+
+  const setVolume = useCallback(
+    (next: number) => {
+      const clamped = Math.min(1, Math.max(0, next));
+      volumeRef.current = clamped;
+      setVolumeState(clamped);
+      const nextMuted = clamped === 0;
+      mutedRef.current = nextMuted;
+      setMutedState(nextMuted);
+      applyAudio(nextMuted, clamped);
+    },
+    [applyAudio],
+  );
+
+  const setMuted = useCallback(
+    (next: boolean) => {
+      mutedRef.current = next;
+      setMutedState(next);
+      if (!next && volumeRef.current === 0) {
+        volumeRef.current = DEFAULT_VOLUME;
+        setVolumeState(DEFAULT_VOLUME);
+        applyAudio(false, DEFAULT_VOLUME);
+        return;
+      }
+      applyAudio(next, volumeRef.current);
+    },
+    [applyAudio],
+  );
+
+  const toggleMute = useCallback(() => {
+    setMuted(!mutedRef.current);
+  }, [setMuted]);
 
   const settleToStill = useCallback(() => {
     if (settledRef.current) return;
@@ -73,29 +117,58 @@ function useHeroSequence(reduceMotion: boolean) {
     if (video) video.pause();
   }, [clearFallback]);
 
-  const playFilm = useCallback(async () => {
-    settledRef.current = false;
-    setProgress(0);
-    setPhase("video");
-    clearFallback();
-    fallbackRef.current = window.setTimeout(
-      settleToStill,
-      VIDEO_FALLBACK_MS,
-    );
+  const playFilm = useCallback(
+    async (opts?: { userInitiated?: boolean }) => {
+      settledRef.current = false;
+      setProgress(0);
+      setPhase("video");
+      clearFallback();
+      fallbackRef.current = window.setTimeout(
+        settleToStill,
+        VIDEO_FALLBACK_MS,
+      );
 
-    const video = videoRef.current;
-    if (!video) {
-      settleToStill();
-      return;
-    }
+      const video = videoRef.current;
+      if (!video) {
+        settleToStill();
+        return;
+      }
 
-    try {
-      video.currentTime = 0;
-      await video.play();
-    } catch {
-      settleToStill();
-    }
-  }, [clearFallback, settleToStill]);
+      // Replay / watch is a user gesture — prefer audible playback.
+      if (opts?.userInitiated) {
+        mutedRef.current = false;
+        setMutedState(false);
+        if (volumeRef.current === 0) {
+          volumeRef.current = DEFAULT_VOLUME;
+          setVolumeState(DEFAULT_VOLUME);
+        }
+      }
+
+      applyAudio(mutedRef.current, volumeRef.current);
+
+      try {
+        video.currentTime = 0;
+        await video.play();
+      } catch {
+        // Browsers block unmuted autoplay — fall back to muted, keep UI for unmute.
+        if (!video.muted) {
+          mutedRef.current = true;
+          setMutedState(true);
+          applyAudio(true, volumeRef.current);
+          try {
+            video.currentTime = 0;
+            await video.play();
+            return;
+          } catch {
+            settleToStill();
+            return;
+          }
+        }
+        settleToStill();
+      }
+    },
+    [applyAudio, clearFallback, settleToStill],
+  );
 
   useEffect(() => {
     if (reduceMotion || hasAutoplayedRef.current) {
@@ -115,12 +188,20 @@ function useHeroSequence(reduceMotion: boolean) {
     setProgress(Math.min(1, video.currentTime / video.duration));
   };
 
+  const replayFilm = useCallback(() => {
+    void playFilm({ userInitiated: true });
+  }, [playFilm]);
+
   return {
     videoRef,
     isStill: phase === "still",
     progress,
+    volume,
+    muted,
     settleToStill,
-    playFilm,
+    playFilm: replayFilm,
+    setVolume,
+    toggleMute,
     onTimeUpdate,
   };
 }
@@ -158,6 +239,109 @@ function FilmProgress({
   );
 }
 
+function FilmAudioControl({
+  visible,
+  muted,
+  volume,
+  onToggleMute,
+  onVolumeChange,
+}: {
+  visible: boolean;
+  muted: boolean;
+  volume: number;
+  onToggleMute: () => void;
+  onVolumeChange: (value: number) => void;
+}) {
+  const silent = muted || volume === 0;
+  const sliderValue = silent ? 0 : volume;
+
+  return (
+    <div
+      className="absolute bottom-5 left-4 z-[4] flex items-center gap-2.5 sm:left-5 sm:gap-3"
+      style={{
+        ...fade,
+        opacity: visible ? 1 : 0,
+        pointerEvents: visible ? "auto" : "none",
+      }}
+      role="group"
+      aria-label="Film volume"
+    >
+      <button
+        type="button"
+        onClick={onToggleMute}
+        className="flex size-9 shrink-0 items-center justify-center border border-white/35 bg-black/40 text-[#faf8f5] backdrop-blur-[2px] transition duration-300 hover:border-[#dccb7b]/80 hover:text-[#dccb7b]"
+        aria-label={silent ? "Unmute film" : "Mute film"}
+        aria-pressed={!silent}
+      >
+        {silent ? (
+          <VolumeX className="size-4" strokeWidth={1.6} aria-hidden />
+        ) : (
+          <Volume2 className="size-4" strokeWidth={1.6} aria-hidden />
+        )}
+      </button>
+      <label className="sr-only" htmlFor="hero-film-volume">
+        Volume
+      </label>
+      <input
+        id="hero-film-volume"
+        type="range"
+        min={0}
+        max={1}
+        step={0.01}
+        value={sliderValue}
+        onChange={(event) => onVolumeChange(Number(event.target.value))}
+        className="hero-film-volume h-1 w-[88px] cursor-pointer appearance-none bg-transparent sm:w-[120px]"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={Math.round(sliderValue * 100)}
+        aria-valuetext={`${Math.round(sliderValue * 100)} percent`}
+      />
+      <style>{`
+        .hero-film-volume {
+          --hero-vol: ${sliderValue * 100}%;
+        }
+        .hero-film-volume::-webkit-slider-runnable-track {
+          height: 2px;
+          border-radius: 999px;
+          background: linear-gradient(
+            to right,
+            #dccb7b var(--hero-vol),
+            rgba(255, 255, 255, 0.28) var(--hero-vol)
+          );
+        }
+        .hero-film-volume::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 12px;
+          height: 12px;
+          margin-top: -5px;
+          border-radius: 999px;
+          border: 1px solid rgba(220, 203, 123, 0.85);
+          background: #faf8f5;
+          box-shadow: 0 0 0 1px rgba(29, 60, 52, 0.25);
+        }
+        .hero-film-volume::-moz-range-track {
+          height: 2px;
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.28);
+        }
+        .hero-film-volume::-moz-range-progress {
+          height: 2px;
+          border-radius: 999px;
+          background: #dccb7b;
+        }
+        .hero-film-volume::-moz-range-thumb {
+          width: 12px;
+          height: 12px;
+          border-radius: 999px;
+          border: 1px solid rgba(220, 203, 123, 0.85);
+          background: #faf8f5;
+        }
+      `}</style>
+    </div>
+  );
+}
+
 function ReplayFilmButton({
   onClick,
   label,
@@ -186,7 +370,8 @@ function ReplayFilmButton({
 
 /**
  * Homepage hero card: full-bleed film first, then dissolve into the salon
- * still layout (logo + copy + editorial portrait). Guests can replay the film.
+ * still layout (logo + copy + editorial portrait). Guests can replay the film
+ * with sound and volume control.
  */
 export default function HomeHeroCard({ layout = "desktop" }: Props) {
   const reduceMotion = usePrefersReducedMotion();
@@ -194,8 +379,12 @@ export default function HomeHeroCard({ layout = "desktop" }: Props) {
     videoRef,
     isStill,
     progress,
+    volume,
+    muted,
     settleToStill,
     playFilm,
+    setVolume,
+    toggleMute,
     onTimeUpdate,
   } = useHeroSequence(reduceMotion);
 
@@ -207,8 +396,12 @@ export default function HomeHeroCard({ layout = "desktop" }: Props) {
         videoRef={videoRef}
         isStill={isStill}
         progress={progress}
+        volume={volume}
+        muted={muted}
         settleToStill={settleToStill}
         playFilm={playFilm}
+        setVolume={setVolume}
+        toggleMute={toggleMute}
         onTimeUpdate={onTimeUpdate}
         replayLabel={replayLabel}
       />
@@ -305,7 +498,7 @@ export default function HomeHeroCard({ layout = "desktop" }: Props) {
           ref={videoRef}
           className="absolute inset-0 size-full object-cover object-center"
           src={HERO_VIDEO}
-          muted
+          muted={muted}
           playsInline
           preload="auto"
           controls={false}
@@ -318,6 +511,13 @@ export default function HomeHeroCard({ layout = "desktop" }: Props) {
           className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(29,60,52,0.12)_0%,transparent_28%,transparent_70%,rgba(29,60,52,0.28)_100%)]"
           aria-hidden
         />
+        <FilmAudioControl
+          visible={!isStill}
+          muted={muted}
+          volume={volume}
+          onToggleMute={toggleMute}
+          onVolumeChange={setVolume}
+        />
         <FilmProgress progress={progress} visible={!isStill} />
       </div>
     </div>
@@ -328,8 +528,12 @@ type MobileProps = {
   videoRef: RefObject<HTMLVideoElement | null>;
   isStill: boolean;
   progress: number;
+  volume: number;
+  muted: boolean;
   settleToStill: () => void;
   playFilm: () => void;
+  setVolume: (value: number) => void;
+  toggleMute: () => void;
   onTimeUpdate: () => void;
   replayLabel: string;
 };
@@ -338,8 +542,12 @@ function MobileHeroCard({
   videoRef,
   isStill,
   progress,
+  volume,
+  muted,
   settleToStill,
   playFilm,
+  setVolume,
+  toggleMute,
   onTimeUpdate,
   replayLabel,
 }: MobileProps) {
@@ -369,7 +577,7 @@ function MobileHeroCard({
           className="absolute inset-0 size-full object-cover object-center"
           src={HERO_MOBILE_VIDEO}
           poster={HERO_MOBILE_POSTER}
-          muted
+          muted={muted}
           playsInline
           preload="auto"
           controls={false}
@@ -381,6 +589,13 @@ function MobileHeroCard({
         <div
           className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(29,60,52,0.1)_0%,transparent_30%,transparent_65%,rgba(29,60,52,0.35)_100%)]"
           aria-hidden
+        />
+        <FilmAudioControl
+          visible={!isStill}
+          muted={muted}
+          volume={volume}
+          onToggleMute={toggleMute}
+          onVolumeChange={setVolume}
         />
         <FilmProgress progress={progress} visible={!isStill} />
       </div>
