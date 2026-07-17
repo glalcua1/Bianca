@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router";
+import { Analytics } from "@vercel/analytics/react";
 import ContentProtectionProvider from "./components/protection/ContentProtectionProvider";
 import ScrollToTop from "./components/ScrollToTop";
 import HomePage from "./pages/HomePage";
@@ -17,6 +18,7 @@ export default function App() {
     <ContentProtectionProvider>
     <BrowserRouter>
       <ScrollToTop />
+      <Analytics />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
