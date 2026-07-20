@@ -727,7 +727,7 @@ function Container1() {
 
 function LinkBlock() {
   return (
-    <Link to="/fine-jewellery#showcase" className="absolute content-stretch flex flex-col gap-[40px] items-start left-[58px] right-[1010.67px] top-[1824px]" data-name="Link">
+    <Link to="/fine-jewellery#collections" className="absolute content-stretch flex flex-col gap-[40px] items-start left-[58px] right-[1010.67px] top-[1824px]" data-name="Link">
       <Container />
       <Container1 />
     </Link>
@@ -843,7 +843,7 @@ function Container5() {
 
 function Link1() {
   return (
-    <Link to="/fine-jewellery#showcase" className="absolute content-stretch flex flex-col gap-[40px] items-start left-[516.33px] right-[552.33px] top-[1824px]" data-name="Link">
+    <Link to="/fine-jewellery#collections" className="absolute content-stretch flex flex-col gap-[40px] items-start left-[516.33px] right-[552.33px] top-[1824px]" data-name="Link">
       <Container4 />
       <Container5 />
     </Link>
@@ -968,7 +968,7 @@ function Container9() {
 
 function Link2() {
   return (
-    <Link to="/fine-jewellery#showcase" className="absolute content-stretch flex flex-col gap-[40px] items-start left-[974.67px] right-[94px] top-[1824px]" data-name="Link">
+    <Link to="/fine-jewellery#collections" className="absolute content-stretch flex flex-col gap-[40px] items-start left-[974.67px] right-[94px] top-[1824px]" data-name="Link">
       <Container8 />
       <Container9 />
     </Link>

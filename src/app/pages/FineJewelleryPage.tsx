@@ -1,22 +1,16 @@
 import { useEffect } from "react";
-import { Navigate, useLocation, useParams } from "react-router";
+import { useLocation } from "react-router";
 import InstagramFeedSection from "../components/InstagramFeedSection";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
 import FineJewelleryAtelier from "../components/FineJewelleryAtelier";
 import FineJewelleryCategoryHero from "../components/FineJewelleryCategoryHero";
+import type { JewelleryCategoryId } from "../data/fineJewelleryCollections";
 import {
-  FINE_JEWELLERY_CATEGORIES,
-  type JewelleryCategoryId,
-} from "../data/fineJewelleryCollections";
-import {
-  fineJewelleryCategoryPath,
-  isFineJewelleryCategorySlug,
   parseFineJewelleryCategoryFromHash,
   parseFineJewelleryCategoryFromPath,
 } from "../data/fineJewelleryMegaMenu";
 import { BIANCA_INSTAGRAM_URL } from "../data/siteContact";
-import { usePageMeta } from "../hooks/usePageMeta";
 
 const CRAFT_VALUES = [
   {
@@ -36,78 +30,35 @@ const CRAFT_VALUES = [
   },
 ];
 
-const DEFAULT_DESCRIPTION =
-  "IGI-certified lab-grown diamond fine jewellery — rings, earrings, necklaces, bracelets, and pendants from Bianca Diamonds.";
-
-function categoryMeta(categoryId: JewelleryCategoryId | "all") {
-  if (categoryId === "all") {
-    return {
-      title: "Fine Jewellery | Bianca Diamonds",
-      description: DEFAULT_DESCRIPTION,
-    };
-  }
-
-  const category = FINE_JEWELLERY_CATEGORIES.find((c) => c.id === categoryId);
-  const label = category?.title ?? categoryId;
-  return {
-    title: `${label} | Fine Jewellery | Bianca Diamonds`,
-    description:
-      category?.description ??
-      `Explore ${label.toLowerCase()} in the Bianca Diamonds fine jewellery atelier.`,
-  };
-}
-
 export default function FineJewelleryPage() {
   const location = useLocation();
-  const { category: categorySlug } = useParams<{ category?: string }>();
-
-  const hashCategory = parseFineJewelleryCategoryFromHash(location.hash);
-  const rawHash = location.hash.replace(/^#/, "").trim().toLowerCase();
-
-  const legacyHashRedirect =
-    rawHash &&
-    rawHash !== "showcase" &&
-    hashCategory !== "all"
-      ? fineJewelleryCategoryPath(hashCategory)
-      : rawHash &&
-          hashCategory === "all" &&
-          rawHash !== "all" &&
-          rawHash !== "collections" &&
-          rawHash !== "showcase"
-        ? "/fine-jewellery"
-        : null;
-
-  const unknownCategoryRedirect =
-    categorySlug &&
-    !isFineJewelleryCategorySlug(categorySlug) &&
-    categorySlug.toLowerCase() !== "all"
-      ? "/fine-jewellery"
-      : null;
-
+  const fromPath = parseFineJewelleryCategoryFromPath(location.pathname);
+  const fromHash = parseFineJewelleryCategoryFromHash(location.hash);
   const activeCategory: JewelleryCategoryId | "all" =
-    parseFineJewelleryCategoryFromPath(location.pathname);
-
-  const meta = categoryMeta(activeCategory);
-  usePageMeta(meta.title, meta.description);
+    fromPath !== "all" ? fromPath : fromHash;
 
   useEffect(() => {
-    if (legacyHashRedirect || unknownCategoryRedirect) return;
-    if (rawHash === "collections" || rawHash === "showcase") {
+    document.title = "Fine Jewellery | Bianca Diamonds";
+    return () => {
+      document.title = "Bianca Diamonds | Lab-Grown Diamond Fine Jewellery";
+    };
+  }, []);
+
+  useEffect(() => {
+    const parsed = parseFineJewelleryCategoryFromHash(location.hash);
+    const raw = location.hash.replace(/^#/, "").trim().toLowerCase();
+    if (raw && parsed === "all" && raw !== "all" && raw !== "collections") {
+      window.history.replaceState(null, "", "/fine-jewellery");
+    }
+  }, [location.hash]);
+
+  useEffect(() => {
+    if (location.hash.replace(/^#/, "") === "collections") {
       requestAnimationFrame(() => {
-        document
-          .getElementById("showcase")
-          ?.scrollIntoView({ behavior: "smooth" });
+        document.getElementById("showcase")?.scrollIntoView({ behavior: "smooth" });
       });
     }
-  }, [rawHash, legacyHashRedirect, unknownCategoryRedirect]);
-
-  if (legacyHashRedirect) {
-    return <Navigate to={legacyHashRedirect} replace />;
-  }
-
-  if (unknownCategoryRedirect) {
-    return <Navigate to={unknownCategoryRedirect} replace />;
-  }
+  }, [location.hash]);
 
   return (
     <div className="min-h-screen bg-[#faf8f5]" data-protected-page>

@@ -8,9 +8,6 @@ import {
 
 export type MegaMenuCategoryId = JewelleryCategoryId | "all";
 
-/** Reserved under /fine-jewellery/ — not jewellery categories. */
-export const FINE_JEWELLERY_RESERVED_PATHS = new Set(["cannes-2026"]);
-
 export const FINE_JEWELLERY_EDITORIAL = {
   eyebrow: "Fine Jewelry",
   title: "Certified brilliance, atelier composed",
@@ -34,13 +31,7 @@ export function getFunctionalCategories() {
 }
 
 export function getMegaMenuCategories() {
-  const functional = getFunctionalCategories().map((category) => ({
-    id: category.id,
-    title: category.title,
-    description: category.description,
-    href: fineJewelleryCategoryPath(category.id),
-  }));
-
+  const functional = getFunctionalCategories();
   if (functional.length <= 1) return functional;
 
   return [
@@ -48,9 +39,14 @@ export function getMegaMenuCategories() {
       id: "all" as const,
       title: "All Pieces",
       description: FINE_JEWELLERY_EDITORIAL.description,
-      href: fineJewelleryCategoryPath("all"),
+      href: "/fine-jewellery",
     },
-    ...functional,
+    ...functional.map((category) => ({
+      id: category.id,
+      title: category.title,
+      description: category.description,
+      href: fineJewelleryCategoryPath(category.id),
+    })),
   ];
 }
 
@@ -94,7 +90,7 @@ function resolveCategoryId(id: string): MegaMenuCategoryId {
   if (!normalized || normalized === "collections" || normalized === "all") {
     return "all";
   }
-  if (FINE_JEWELLERY_RESERVED_PATHS.has(normalized)) return "all";
+  if (normalized === "cannes-2026") return "all";
 
   const functional = getFunctionalCategories();
   if (functional.some((category) => category.id === normalized)) {
@@ -103,7 +99,6 @@ function resolveCategoryId(id: string): MegaMenuCategoryId {
   return "all";
 }
 
-/** Prefer path segments (`/fine-jewellery/rings`) for crawlable category URLs. */
 export function parseFineJewelleryCategoryFromPath(
   pathname: string,
 ): MegaMenuCategoryId {
@@ -112,19 +107,8 @@ export function parseFineJewelleryCategoryFromPath(
   return resolveCategoryId(match[1] ?? "");
 }
 
-/** Legacy hash support (`/fine-jewellery#rings`) — redirect to path URLs. */
 export function parseFineJewelleryCategoryFromHash(
   hash: string,
 ): MegaMenuCategoryId {
   return resolveCategoryId(hash.replace(/^#/, ""));
-}
-
-/** True when the path segment is a known jewellery category (not reserved/unknown). */
-export function isFineJewelleryCategorySlug(slug: string | undefined): boolean {
-  if (!slug) return false;
-  const normalized = slug.trim().toLowerCase();
-  if (FINE_JEWELLERY_RESERVED_PATHS.has(normalized)) return false;
-  return getFunctionalCategories().some(
-    (category) => category.id === normalized,
-  );
 }
