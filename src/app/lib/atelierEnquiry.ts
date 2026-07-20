@@ -5,7 +5,7 @@ import {
 import { BIANCA_WHATSAPP_NUMBER } from "../data/siteContact";
 
 /** Canonical origin for image links in WhatsApp (previews when deployed). */
-export const BIANCA_PUBLIC_ORIGIN = "https://biancadiamonds.com";
+export const BIANCA_PUBLIC_ORIGIN = "https://www.biancadiamonds.com";
 
 export function absoluteAtelierImageUrl(
   imagePath: string,

@@ -31,6 +31,8 @@ const ROOT_MEDIA_EXTENSIONS = new Set([
   '.WEBP',
   '.mp4',
   '.webm',
+  '.webmanifest',
+  '.ico',
 ])
 
 /** All root-level media in public/ — avoids manual whitelist drift on Vercel. */
