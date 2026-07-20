@@ -13,8 +13,6 @@ import ProtectedImage from "./protection/ProtectedImage";
 
 const HERO_STILL = "/Bianca_Girl_Blue.jpg";
 const HERO_VIDEO = "/HeroVideo.mp4";
-const HERO_MOBILE_VIDEO = "/Hero_mobile.mp4";
-const HERO_MOBILE_POSTER = "/Hero_mobile-poster.jpg";
 /** Safety net if `ended` never fires (autoplay block, decode stall). */
 const VIDEO_FALLBACK_MS = 18_000;
 const CROSSFADE_MS = 1400;
@@ -562,15 +560,15 @@ function MobileHeroCard({
       }
     >
       {/*
-        Film plane matches the 720×960 (3:4) source. While the film plays it
-        stays in-flow at aspect-[3/4] so object-cover does not crop left/right.
-        After settle, it overlays the taller still layout.
+        Use the full landscape film (16:9) on mobile. The dedicated portrait
+        asset crops the trio's outer edges; matching the card to 16:9 with
+        object-cover keeps the complete frame width visible.
       */}
       <div
         className={
           isStill
             ? "absolute inset-0 z-[1] bg-black"
-            : "relative z-[1] aspect-[3/4] w-full bg-black"
+            : "relative z-[1] aspect-video w-full bg-black"
         }
         style={{
           ...fade,
@@ -582,9 +580,8 @@ function MobileHeroCard({
       >
         <video
           ref={videoRef}
-          className="absolute inset-0 size-full object-cover object-center"
-          src={HERO_MOBILE_VIDEO}
-          poster={HERO_MOBILE_POSTER}
+          className="absolute inset-0 size-full object-contain object-center"
+          src={HERO_VIDEO}
           muted={muted}
           playsInline
           preload="auto"
