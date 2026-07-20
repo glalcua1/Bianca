@@ -561,9 +561,17 @@ function MobileHeroCard({
           : "Bianca Diamonds hero film"
       }
     >
-      {/* Portrait film plane — full card width × height (matches 3:4 source) */}
+      {/*
+        Film plane matches the 720×960 (3:4) source. While the film plays it
+        stays in-flow at aspect-[3/4] so object-cover does not crop left/right.
+        After settle, it overlays the taller still layout.
+      */}
       <div
-        className="absolute inset-0 z-[1] bg-black"
+        className={
+          isStill
+            ? "absolute inset-0 z-[1] bg-black"
+            : "relative z-[1] aspect-[3/4] w-full bg-black"
+        }
         style={{
           ...fade,
           opacity: isStill ? 0 : 1,
@@ -601,7 +609,11 @@ function MobileHeroCard({
       </div>
 
       <div
-        className="relative z-0 min-h-[min(78svh,640px)] p-5"
+        className={
+          isStill
+            ? "relative z-0 min-h-[min(78svh,640px)] p-5"
+            : "absolute inset-0 z-0 overflow-hidden p-5"
+        }
         style={{
           ...fade,
           opacity: isStill ? 1 : 0,
