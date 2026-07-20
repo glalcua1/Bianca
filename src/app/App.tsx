@@ -25,6 +25,10 @@ export default function App() {
           path="/fine-jewellery/cannes-2026"
           element={<CannesShowcase2026Page />}
         />
+        <Route
+          path="/fine-jewellery/:category"
+          element={<FineJewelleryPage />}
+        />
         <Route path="/fine-jewellery" element={<FineJewelleryPage />} />
         <Route path="/bespoke-jewellery" element={<BespokeJewelleryPage />} />
         <Route path="/butterfly-collection" element={<ButterflyCollectionPage />} />

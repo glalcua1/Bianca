@@ -7,6 +7,7 @@ import {
   type AtelierPiece,
 } from "../data/fineJewelleryCollections";
 import { getBlueStarCollectionPieces } from "../data/blueDiamond";
+import { fineJewelleryCategoryPath } from "../data/fineJewelleryMegaMenu";
 
 type Props = {
   open: boolean;
@@ -22,7 +23,7 @@ function CollectionPieceCard({
 }) {
   return (
     <Link
-      to={`/fine-jewellery#${piece.category}`}
+      to={fineJewelleryCategoryPath(piece.category)}
       onClick={onNavigate}
       className="group flex flex-col text-left outline-none transition duration-300 focus-visible:ring-2 focus-visible:ring-[#766d42]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f5]"
     >
@@ -149,7 +150,7 @@ export default function BlueStarCollectionDrawer({
           <div className="border-t border-[#1d3c34]/10 bg-[#f4f0e6]/70 px-5 py-4 sm:px-6">
             <Drawer.Close asChild>
               <Link
-                to="/fine-jewellery#rings"
+                to={fineJewelleryCategoryPath("rings")}
                 className="inline-flex w-full items-center justify-center border border-[#1d3c34] bg-[#1d3c34] px-5 py-3 font-editorial text-[12px] uppercase tracking-[0.16em] text-[#faf8f5] transition-colors duration-500 hover:bg-transparent hover:text-bianca-forest"
               >
                 Explore fine jewellery

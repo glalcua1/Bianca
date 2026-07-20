@@ -5,6 +5,7 @@ import { X } from "lucide-react";
 import ProtectedImage from "./protection/ProtectedImage";
 import { ATELIER_IMAGE_SIZES } from "../lib/optimizedImage";
 import {
+  fineJewelleryCategoryPath,
   getMegaMenuCategories,
   megaMenuPieceWell,
   previewPiecesForCategory,
@@ -68,8 +69,8 @@ export function FineJewelleryMegaMenuPanel({
             <Link
               to={
                 activeCategory === "all"
-                  ? `/fine-jewellery#${piece.category}`
-                  : `/fine-jewellery#${activeCategory}`
+                  ? fineJewelleryCategoryPath(piece.category)
+                  : fineJewelleryCategoryPath(activeCategory)
               }
               onClick={onNavigate}
               className="group block aspect-square overflow-hidden transition duration-300 hover:opacity-95"

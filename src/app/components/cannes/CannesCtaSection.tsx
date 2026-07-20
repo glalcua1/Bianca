@@ -30,7 +30,7 @@ export default function CannesCtaSection() {
 
           <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
             <Link
-              to="/fine-jewellery#collections"
+              to="/fine-jewellery#showcase"
               className="inline-flex min-w-[220px] justify-center border border-[#f9f9f9]/35 px-10 py-3 text-house-cta text-[#f9f9f9] transition-colors duration-500 hover:border-[#f9f9f9] hover:bg-[#f9f9f9] hover:text-bianca-forest"
             >
               Explore Collections

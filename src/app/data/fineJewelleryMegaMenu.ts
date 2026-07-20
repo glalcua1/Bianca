@@ -8,12 +8,23 @@ import {
 
 export type MegaMenuCategoryId = JewelleryCategoryId | "all";
 
+/** Reserved under /fine-jewellery/ — not jewellery categories. */
+export const FINE_JEWELLERY_RESERVED_PATHS = new Set(["cannes-2026"]);
+
 export const FINE_JEWELLERY_EDITORIAL = {
   eyebrow: "Fine Jewelry",
   title: "Certified brilliance, atelier composed",
   description:
     "IGI-graded lab-grown diamonds in BIS hallmarked gold — rings, earrings, necklaces, and wrist pieces crafted for everyday radiance and life's grandest chapters.",
 };
+
+/** Crawlable path for a fine-jewellery category (or the atelier overview). */
+export function fineJewelleryCategoryPath(
+  categoryId: MegaMenuCategoryId,
+): string {
+  if (categoryId === "all") return "/fine-jewellery";
+  return `/fine-jewellery/${categoryId}`;
+}
 
 /** Categories that have at least one piece in the atelier catalogue. */
 export function getFunctionalCategories() {
@@ -23,7 +34,13 @@ export function getFunctionalCategories() {
 }
 
 export function getMegaMenuCategories() {
-  const functional = getFunctionalCategories();
+  const functional = getFunctionalCategories().map((category) => ({
+    id: category.id,
+    title: category.title,
+    description: category.description,
+    href: fineJewelleryCategoryPath(category.id),
+  }));
+
   if (functional.length <= 1) return functional;
 
   return [
@@ -31,14 +48,9 @@ export function getMegaMenuCategories() {
       id: "all" as const,
       title: "All Pieces",
       description: FINE_JEWELLERY_EDITORIAL.description,
-      href: "/fine-jewellery",
+      href: fineJewelleryCategoryPath("all"),
     },
-    ...functional.map((category) => ({
-      id: category.id,
-      title: category.title,
-      description: category.description,
-      href: `/fine-jewellery#${category.id}`,
-    })),
+    ...functional,
   ];
 }
 
@@ -77,16 +89,42 @@ export function megaMenuPieceWell(piece: AtelierPiece): string {
   return "#f4f0e6";
 }
 
+function resolveCategoryId(id: string): MegaMenuCategoryId {
+  const normalized = id.trim().toLowerCase();
+  if (!normalized || normalized === "collections" || normalized === "all") {
+    return "all";
+  }
+  if (FINE_JEWELLERY_RESERVED_PATHS.has(normalized)) return "all";
+
+  const functional = getFunctionalCategories();
+  if (functional.some((category) => category.id === normalized)) {
+    return normalized as JewelleryCategoryId;
+  }
+  return "all";
+}
+
+/** Prefer path segments (`/fine-jewellery/rings`) for crawlable category URLs. */
+export function parseFineJewelleryCategoryFromPath(
+  pathname: string,
+): MegaMenuCategoryId {
+  const match = pathname.match(/^\/fine-jewellery(?:\/([^/]+))?\/?$/i);
+  if (!match) return "all";
+  return resolveCategoryId(match[1] ?? "");
+}
+
+/** Legacy hash support (`/fine-jewellery#rings`) — redirect to path URLs. */
 export function parseFineJewelleryCategoryFromHash(
   hash: string,
 ): MegaMenuCategoryId {
-  const id = hash.replace(/^#/, "").trim().toLowerCase();
-  if (!id || id === "collections") return "all";
-  if (id === "all") return "all";
+  return resolveCategoryId(hash.replace(/^#/, ""));
+}
 
-  const functional = getFunctionalCategories();
-  if (functional.some((category) => category.id === id)) {
-    return id as JewelleryCategoryId;
-  }
-  return "all";
+/** True when the path segment is a known jewellery category (not reserved/unknown). */
+export function isFineJewelleryCategorySlug(slug: string | undefined): boolean {
+  if (!slug) return false;
+  const normalized = slug.trim().toLowerCase();
+  if (FINE_JEWELLERY_RESERVED_PATHS.has(normalized)) return false;
+  return getFunctionalCategories().some(
+    (category) => category.id === normalized,
+  );
 }
