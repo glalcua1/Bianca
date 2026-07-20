@@ -15,6 +15,14 @@ export const FINE_JEWELLERY_EDITORIAL = {
     "IGI-graded lab-grown diamonds in BIS hallmarked gold — rings, earrings, necklaces, and wrist pieces crafted for everyday radiance and life's grandest chapters.",
 };
 
+/** Crawlable path for a fine-jewellery category (or the atelier overview). */
+export function fineJewelleryCategoryPath(
+  categoryId: MegaMenuCategoryId,
+): string {
+  if (categoryId === "all") return "/fine-jewellery";
+  return `/fine-jewellery/${categoryId}`;
+}
+
 /** Categories that have at least one piece in the atelier catalogue. */
 export function getFunctionalCategories() {
   return FINE_JEWELLERY_CATEGORIES.filter((category) =>
@@ -37,7 +45,7 @@ export function getMegaMenuCategories() {
       id: category.id,
       title: category.title,
       description: category.description,
-      href: `/fine-jewellery#${category.id}`,
+      href: fineJewelleryCategoryPath(category.id),
     })),
   ];
 }
@@ -77,16 +85,30 @@ export function megaMenuPieceWell(piece: AtelierPiece): string {
   return "#f4f0e6";
 }
 
+function resolveCategoryId(id: string): MegaMenuCategoryId {
+  const normalized = id.trim().toLowerCase();
+  if (!normalized || normalized === "collections" || normalized === "all") {
+    return "all";
+  }
+  if (normalized === "cannes-2026") return "all";
+
+  const functional = getFunctionalCategories();
+  if (functional.some((category) => category.id === normalized)) {
+    return normalized as JewelleryCategoryId;
+  }
+  return "all";
+}
+
+export function parseFineJewelleryCategoryFromPath(
+  pathname: string,
+): MegaMenuCategoryId {
+  const match = pathname.match(/^\/fine-jewellery(?:\/([^/]+))?\/?$/i);
+  if (!match) return "all";
+  return resolveCategoryId(match[1] ?? "");
+}
+
 export function parseFineJewelleryCategoryFromHash(
   hash: string,
 ): MegaMenuCategoryId {
-  const id = hash.replace(/^#/, "").trim().toLowerCase();
-  if (!id || id === "collections") return "all";
-  if (id === "all") return "all";
-
-  const functional = getFunctionalCategories();
-  if (functional.some((category) => category.id === id)) {
-    return id as JewelleryCategoryId;
-  }
-  return "all";
+  return resolveCategoryId(hash.replace(/^#/, ""));
 }

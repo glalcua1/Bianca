@@ -6,7 +6,10 @@ import SiteNav from "../components/SiteNav";
 import FineJewelleryAtelier from "../components/FineJewelleryAtelier";
 import FineJewelleryCategoryHero from "../components/FineJewelleryCategoryHero";
 import type { JewelleryCategoryId } from "../data/fineJewelleryCollections";
-import { parseFineJewelleryCategoryFromHash } from "../data/fineJewelleryMegaMenu";
+import {
+  parseFineJewelleryCategoryFromHash,
+  parseFineJewelleryCategoryFromPath,
+} from "../data/fineJewelleryMegaMenu";
 import { BIANCA_INSTAGRAM_URL } from "../data/siteContact";
 
 const CRAFT_VALUES = [
@@ -29,8 +32,10 @@ const CRAFT_VALUES = [
 
 export default function FineJewelleryPage() {
   const location = useLocation();
+  const fromPath = parseFineJewelleryCategoryFromPath(location.pathname);
+  const fromHash = parseFineJewelleryCategoryFromHash(location.hash);
   const activeCategory: JewelleryCategoryId | "all" =
-    parseFineJewelleryCategoryFromHash(location.hash);
+    fromPath !== "all" ? fromPath : fromHash;
 
   useEffect(() => {
     document.title = "Fine Jewellery | Bianca Diamonds";
