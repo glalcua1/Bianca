@@ -33,6 +33,9 @@ const ROOT_MEDIA_EXTENSIONS = new Set([
   '.webm',
   '.webmanifest',
   '.ico',
+  // Crawl / discovery files (robots + sitemap must land in dist/)
+  '.txt',
+  '.xml',
 ])
 
 /** All root-level media in public/ — avoids manual whitelist drift on Vercel. */

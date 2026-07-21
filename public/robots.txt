@@ -1,0 +1,11 @@
+# Bianca Diamonds — crawl policy for search & AI agents
+# Canonical host: https://www.biancadiamonds.com
+
+User-agent: *
+Allow: /
+
+# Tool / internal evaluation routes — low value for discovery
+Disallow: /calculator
+Disallow: /golden-ratio-evaluation
+
+Sitemap: https://www.biancadiamonds.com/sitemap.xml
