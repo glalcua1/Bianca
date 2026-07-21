@@ -13,8 +13,6 @@ import ProtectedImage from "./protection/ProtectedImage";
 
 const HERO_STILL = "/Bianca_Girl_Blue.jpg";
 const HERO_VIDEO = "/HeroVideo.mp4";
-const HERO_MOBILE_VIDEO = "/Hero_mobile.mp4";
-const HERO_MOBILE_POSTER = "/Hero_mobile-poster.jpg";
 /** Safety net if `ended` never fires (autoplay block, decode stall). */
 const VIDEO_FALLBACK_MS = 18_000;
 const CROSSFADE_MS = 1400;
@@ -561,9 +559,17 @@ function MobileHeroCard({
           : "Bianca Diamonds hero film"
       }
     >
-      {/* Portrait film plane — full card width × height (matches 3:4 source) */}
+      {/*
+        Use the full landscape film (16:9) on mobile. The dedicated portrait
+        asset crops the trio's outer edges; matching the card to 16:9 with
+        object-cover keeps the complete frame width visible.
+      */}
       <div
-        className="absolute inset-0 z-[1] bg-black"
+        className={
+          isStill
+            ? "absolute inset-0 z-[1] bg-black"
+            : "relative z-[1] aspect-video w-full bg-black"
+        }
         style={{
           ...fade,
           opacity: isStill ? 0 : 1,
@@ -574,9 +580,8 @@ function MobileHeroCard({
       >
         <video
           ref={videoRef}
-          className="absolute inset-0 size-full object-cover object-center"
-          src={HERO_MOBILE_VIDEO}
-          poster={HERO_MOBILE_POSTER}
+          className="absolute inset-0 size-full object-contain object-center"
+          src={HERO_VIDEO}
           muted={muted}
           playsInline
           preload="auto"
@@ -601,7 +606,11 @@ function MobileHeroCard({
       </div>
 
       <div
-        className="relative z-0 min-h-[min(78svh,640px)] p-5"
+        className={
+          isStill
+            ? "relative z-0 min-h-[min(78svh,640px)] p-5"
+            : "absolute inset-0 z-0 overflow-hidden p-5"
+        }
         style={{
           ...fade,
           opacity: isStill ? 1 : 0,
