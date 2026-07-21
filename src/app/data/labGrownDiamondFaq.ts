@@ -172,7 +172,7 @@ export const LAB_GROWN_CERTIFICATION_LINKS = [
 
 export const ORGANIZATION_SCHEMA = {
   name: "Bianca Diamonds",
-  url: "https://biancadiamonds.com",
+  url: "https://www.biancadiamonds.com",
   email: "bianca.labdiamonds@gmail.com",
   description:
     "Ethically crafted lab-grown diamond fine jewellery — IGI-certified brilliance, handcrafted for the modern maison.",

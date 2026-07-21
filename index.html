@@ -42,9 +42,78 @@
     <meta name="theme-color" content="#1d3c34" />
     <meta name="application-name" content="Bianca Diamonds" />
     <meta name="apple-mobile-web-app-title" content="Bianca Diamonds" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.biancadiamonds.com/#organization",
+            "name": "Bianca Diamonds",
+            "url": "https://www.biancadiamonds.com/",
+            "logo": "https://www.biancadiamonds.com/og-image.png",
+            "email": "bianca.labdiamonds@gmail.com",
+            "description": "Ethically crafted lab-grown diamond fine jewellery — IGI-certified rings, earrings, necklaces and bracelets. Custom design, transparent pricing, delivery across India.",
+            "sameAs": []
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.biancadiamonds.com/#website",
+            "url": "https://www.biancadiamonds.com/",
+            "name": "Bianca Diamonds",
+            "publisher": {
+              "@id": "https://www.biancadiamonds.com/#organization"
+            },
+            "inLanguage": "en-IN"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <main>
+        <h1>Bianca Diamonds</h1>
+        <p>
+          Ethically crafted lab-grown diamond fine jewellery — IGI-certified
+          rings, earrings, necklaces and bracelets. Custom design, transparent
+          pricing, and delivery across India.
+        </p>
+        <nav aria-label="Primary">
+          <ul>
+            <li><a href="https://www.biancadiamonds.com/">Home</a></li>
+            <li>
+              <a href="https://www.biancadiamonds.com/fine-jewellery"
+                >Fine Jewellery</a
+              >
+            </li>
+            <li>
+              <a href="https://www.biancadiamonds.com/bespoke-jewellery"
+                >Bespoke Jewellery</a
+              >
+            </li>
+            <li>
+              <a href="https://www.biancadiamonds.com/butterfly-collection"
+                >Butterfly Collection</a
+              >
+            </li>
+            <li>
+              <a href="https://www.biancadiamonds.com/lab-grown-diamond-faq"
+                >Lab-Grown Diamond FAQ</a
+              >
+            </li>
+            <li>
+              <a href="https://www.biancadiamonds.com/media">Media</a>
+            </li>
+            <li>
+              <a href="https://www.biancadiamonds.com/contact">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </main>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
