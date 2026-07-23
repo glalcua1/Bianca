@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { Suspense, lazy, useEffect, useRef, useState, useCallback } from "react";
 import SiteFooter from "../components/SiteFooter";
 import InstagramFeedSection from "../components/InstagramFeedSection";
 import HomeSectionCards from "../components/HomeSectionCards";
@@ -6,8 +6,9 @@ import HomeBiancaStoryMobile from "../components/HomeBiancaStoryMobile";
 import { useMediaMinWidth } from "../hooks/useMediaMinWidth";
 import { NavActiveProvider } from "../context/NavActiveContext";
 import HomePageMobile from "./HomePageMobile";
-import MacBookPro from "../../imports/MacBookPro141-2-335";
 import { BIANCA_INSTAGRAM_URL } from "../data/siteContact";
+
+const MacBookPro = lazy(() => import("../../imports/MacBookPro141-2-335"));
 
 const DESIGN_W = 1512;
 /** Hero + manifesto only — collections replaced by fluid section cards below. */
@@ -61,7 +62,9 @@ function DesktopHomeHero() {
         }}
       >
         <NavActiveProvider value="the-house">
-          <MacBookPro />
+          <Suspense fallback={null}>
+            <MacBookPro />
+          </Suspense>
         </NavActiveProvider>
       </div>
     </div>

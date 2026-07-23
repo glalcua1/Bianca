@@ -1,6 +1,10 @@
 import { useId } from "react";
-// This is the actual diamond ring PNG (golden ring on black background)
-import ringPng from "figma:asset/6b26ef4fc22c5dab0298c677db3a48579b696098.png";
+
+/**
+ * Stable public URL (also preloaded in index.html for mobile LCP).
+ * Prefer this over a hashed Vite import so the preload hint matches the request.
+ */
+const ringPng = "/6b26ef4fc22c5dab0298c677db3a48579b696098.png";
 
 interface RingMarkProps {
   width?: number | string;

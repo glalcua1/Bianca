@@ -12,7 +12,14 @@ import { BiancaHouseLogo } from "./BiancaLogo";
 import ProtectedImage from "./protection/ProtectedImage";
 
 const HERO_STILL = "/Bianca_Girl_Blue.jpg";
-const HERO_VIDEO = "/HeroVideo.mp4";
+/** Full-quality landscape film for desktop. */
+const HERO_VIDEO_DESKTOP = "/HeroVideo.mp4";
+/**
+ * Same 16:9 framing as desktop, compressed for mobile (~1.4MB vs ~10MB).
+ * Avoids the portrait Hero_mobile.mp4 crop that cuts the trio's outer edges.
+ */
+const HERO_VIDEO_MOBILE = "/HeroVideo-mobile.mp4";
+const HERO_VIDEO_POSTER = "/HeroVideo-poster.jpg";
 /** Safety net if `ended` never fires (autoplay block, decode stall). */
 const VIDEO_FALLBACK_MS = 18_000;
 const CROSSFADE_MS = 1400;
@@ -495,10 +502,11 @@ export default function HomeHeroCard({ layout = "desktop" }: Props) {
         <video
           ref={videoRef}
           className="absolute inset-0 size-full object-cover object-center"
-          src={HERO_VIDEO}
+          src={HERO_VIDEO_DESKTOP}
+          poster={HERO_VIDEO_POSTER}
           muted={muted}
           playsInline
-          preload="auto"
+          preload="metadata"
           controls={false}
           disablePictureInPicture
           onTimeUpdate={onTimeUpdate}
@@ -560,9 +568,9 @@ function MobileHeroCard({
       }
     >
       {/*
-        Use the full landscape film (16:9) on mobile. The dedicated portrait
-        asset crops the trio's outer edges; matching the card to 16:9 with
-        object-cover keeps the complete frame width visible.
+        Keep 16:9 framing on mobile (portrait Hero_mobile.mp4 crops the trio).
+        Serve a compressed landscape encode + poster so mobile does not pull
+        the ~10MB desktop master on first paint.
       */}
       <div
         className={
@@ -581,10 +589,11 @@ function MobileHeroCard({
         <video
           ref={videoRef}
           className="absolute inset-0 size-full object-contain object-center"
-          src={HERO_VIDEO}
+          src={HERO_VIDEO_MOBILE}
+          poster={HERO_VIDEO_POSTER}
           muted={muted}
           playsInline
-          preload="auto"
+          preload="metadata"
           controls={false}
           disablePictureInPicture
           onTimeUpdate={onTimeUpdate}

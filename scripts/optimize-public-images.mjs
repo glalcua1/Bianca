@@ -36,6 +36,9 @@ const EDITORIAL_PATHS = new Set([
   "Beskpoke_necklace.png",
   "butter.png",
   "Pendant/P1.jpg",
+  "Bianca_Girl_Blue.jpg",
+  "Butterfly_s.png",
+  "HeroVideo-poster.jpg",
 ]);
 
 const WIDTHS = {
@@ -104,10 +107,10 @@ function loadPreviousManifest() {
 
 function variantMeta(relPath, widths) {
   const stem = path.basename(relPath, path.extname(relPath));
+  const dir = path.dirname(relPath);
+  const optDir = dir === "." ? "media/opt" : `media/opt/${dir}`;
   return widths.map((width) => {
-    const destRel = `media/opt/${path.dirname(relPath)}/${stem}-${width}.webp`
-      .replace(/^\.\//, "")
-      .replace(/\\/g, "/");
+    const destRel = `${optDir}/${stem}-${width}.webp`.replace(/\\/g, "/");
     return {
       width,
       destRel,

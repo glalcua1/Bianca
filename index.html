@@ -43,6 +43,42 @@
     <meta name="application-name" content="Bianca Diamonds" />
     <meta name="apple-mobile-web-app-title" content="Bianca Diamonds" />
 
+    <!-- Fonts: preconnect + async CSS (avoids render-blocking @import) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap"
+      />
+    </noscript>
+
+    <!-- Homepage mobile LCP: hero poster + ring mark used in nav logo -->
+    <link
+      rel="preload"
+      as="image"
+      href="/HeroVideo-poster.jpg"
+      type="image/jpeg"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/6b26ef4fc22c5dab0298c677db3a48579b696098.png"
+      type="image/png"
+    />
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",

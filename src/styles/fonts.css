@@ -1,9 +1,4 @@
-/* ── Google Fonts ─────────────────────────────────────────────────────────── */
-/* Tiro Bangla – regular (wght 400) + italic */
-/* ABeeZee     – regular (wght 400) + italic */
-@import url('https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&family=ABeeZee:ital@0;1&display=swap');
-
-/* SangBleu OG Sans — local (public/Fonts/) */
+/* SangBleu OG Sans — local (bundled from src/assets/fonts/) */
 @font-face {
   font-family: 'SangBleuOGSans-Light';
   src: url('../assets/fonts/SangBleuOGSans-Light.otf') format('opentype');
@@ -19,6 +14,12 @@
   font-style: normal;
   font-display: swap;
 }
+
+/*
+ * Tiro Bangla is loaded asynchronously from Google Fonts via <link> in
+ * index.html (not @import) to avoid render-blocking CSS round-trips.
+ * ABeeZee was unused in product CSS and is intentionally omitted.
+ */
 
 /* ── System font declarations ─────────────────────────────────────────────── */
 /* Explicitly declare Times New Roman and Arial as local system fonts so the
