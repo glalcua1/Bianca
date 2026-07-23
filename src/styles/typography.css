@@ -29,7 +29,8 @@
 }
 
 [class*="ABeeZee"] {
-  font-family: 'ABeeZee', ui-sans-serif, sans-serif !important;
+  /* ABeeZee removed from network load; map legacy Figma class names to house sans. */
+  font-family: 'SangBleuOGSans-Light', ui-sans-serif, sans-serif !important;
 }
 
 @layer base {

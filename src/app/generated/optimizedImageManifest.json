@@ -956,9 +956,9 @@
     "original": "/Bracelet2.png",
     "sourceHash": "a1519ca00edb12e5",
     "webp": {
-      "640": "/media/opt/./Bracelet2-640.webp",
-      "1280": "/media/opt/./Bracelet2-1280.webp",
-      "1920": "/media/opt/./Bracelet2-1920.webp"
+      "640": "/media/opt/Bracelet2-640.webp",
+      "1280": "/media/opt/Bracelet2-1280.webp",
+      "1920": "/media/opt/Bracelet2-1920.webp"
     },
     "sizes": "(max-width: 768px) 100vw, 1280px"
   },
@@ -1186,9 +1186,9 @@
     "original": "/Necklace_s1.png",
     "sourceHash": "345745d107470da9",
     "webp": {
-      "640": "/media/opt/./Necklace_s1-640.webp",
-      "1280": "/media/opt/./Necklace_s1-1280.webp",
-      "1920": "/media/opt/./Necklace_s1-1920.webp"
+      "640": "/media/opt/Necklace_s1-640.webp",
+      "1280": "/media/opt/Necklace_s1-1280.webp",
+      "1920": "/media/opt/Necklace_s1-1920.webp"
     },
     "sizes": "(max-width: 768px) 100vw, 1280px"
   },
@@ -1714,9 +1714,9 @@
     "original": "/vase-with-flowers-vase-with-words-orchid-it.jpg",
     "sourceHash": "e302eee85e2d6cbc",
     "webp": {
-      "640": "/media/opt/./vase-with-flowers-vase-with-words-orchid-it-640.webp",
-      "1280": "/media/opt/./vase-with-flowers-vase-with-words-orchid-it-1280.webp",
-      "1920": "/media/opt/./vase-with-flowers-vase-with-words-orchid-it-1920.webp"
+      "640": "/media/opt/vase-with-flowers-vase-with-words-orchid-it-640.webp",
+      "1280": "/media/opt/vase-with-flowers-vase-with-words-orchid-it-1280.webp",
+      "1920": "/media/opt/vase-with-flowers-vase-with-words-orchid-it-1920.webp"
     },
     "sizes": "(max-width: 1024px) 55vw, 380px"
   },
@@ -1724,9 +1724,9 @@
     "original": "/Sketch.png",
     "sourceHash": "225f6ff175128e0a",
     "webp": {
-      "640": "/media/opt/./Sketch-640.webp",
-      "1280": "/media/opt/./Sketch-1280.webp",
-      "1920": "/media/opt/./Sketch-1920.webp"
+      "640": "/media/opt/Sketch-640.webp",
+      "1280": "/media/opt/Sketch-1280.webp",
+      "1920": "/media/opt/Sketch-1920.webp"
     },
     "sizes": "(max-width: 1024px) 55vw, 380px"
   },
@@ -1734,9 +1734,9 @@
     "original": "/elegant-pattern-white-orchids-intricate-silver-designs-soft-pastel-backdrop.jpg",
     "sourceHash": "0686d054c54650d7",
     "webp": {
-      "640": "/media/opt/./elegant-pattern-white-orchids-intricate-silver-designs-soft-pastel-backdrop-640.webp",
-      "1280": "/media/opt/./elegant-pattern-white-orchids-intricate-silver-designs-soft-pastel-backdrop-1280.webp",
-      "1920": "/media/opt/./elegant-pattern-white-orchids-intricate-silver-designs-soft-pastel-backdrop-1920.webp"
+      "640": "/media/opt/elegant-pattern-white-orchids-intricate-silver-designs-soft-pastel-backdrop-640.webp",
+      "1280": "/media/opt/elegant-pattern-white-orchids-intricate-silver-designs-soft-pastel-backdrop-1280.webp",
+      "1920": "/media/opt/elegant-pattern-white-orchids-intricate-silver-designs-soft-pastel-backdrop-1920.webp"
     },
     "sizes": "(max-width: 768px) 100vw, 1280px"
   },
@@ -1744,9 +1744,9 @@
     "original": "/founder.jpg",
     "sourceHash": "c10e764f8030ef60",
     "webp": {
-      "640": "/media/opt/./founder-640.webp",
-      "1280": "/media/opt/./founder-1280.webp",
-      "1920": "/media/opt/./founder-1920.webp"
+      "640": "/media/opt/founder-640.webp",
+      "1280": "/media/opt/founder-1280.webp",
+      "1920": "/media/opt/founder-1920.webp"
     },
     "sizes": "(max-width: 768px) 100vw, 1280px"
   },
@@ -1757,6 +1757,16 @@
       "640": "/media/opt/Cannes/Cannes_model-640.webp",
       "1280": "/media/opt/Cannes/Cannes_model-1280.webp",
       "1920": "/media/opt/Cannes/Cannes_model-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/Cannes/IMG_7239.jpg": {
+    "original": "/Cannes/IMG_7239.jpg",
+    "sourceHash": "46c9fb4cc2425e38",
+    "webp": {
+      "640": "/media/opt/Cannes/IMG_7239-640.webp",
+      "1280": "/media/opt/Cannes/IMG_7239-1280.webp",
+      "1920": "/media/opt/Cannes/IMG_7239-1920.webp"
     },
     "sizes": "(max-width: 768px) 100vw, 1280px"
   },
@@ -1774,9 +1784,9 @@
     "original": "/Beskpoke_necklace.png",
     "sourceHash": "661221e05d2ef63f",
     "webp": {
-      "640": "/media/opt/./Beskpoke_necklace-640.webp",
-      "1280": "/media/opt/./Beskpoke_necklace-1280.webp",
-      "1920": "/media/opt/./Beskpoke_necklace-1920.webp"
+      "640": "/media/opt/Beskpoke_necklace-640.webp",
+      "1280": "/media/opt/Beskpoke_necklace-1280.webp",
+      "1920": "/media/opt/Beskpoke_necklace-1920.webp"
     },
     "sizes": "(max-width: 768px) 100vw, 1280px"
   },
@@ -1784,9 +1794,39 @@
     "original": "/butter.png",
     "sourceHash": "6a6cba55ecd4065f",
     "webp": {
-      "640": "/media/opt/./butter-640.webp",
-      "1280": "/media/opt/./butter-1280.webp",
-      "1920": "/media/opt/./butter-1920.webp"
+      "640": "/media/opt/butter-640.webp",
+      "1280": "/media/opt/butter-1280.webp",
+      "1920": "/media/opt/butter-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/Bianca_Girl_Blue.jpg": {
+    "original": "/Bianca_Girl_Blue.jpg",
+    "sourceHash": "9b1d178024fb4017",
+    "webp": {
+      "640": "/media/opt/Bianca_Girl_Blue-640.webp",
+      "1280": "/media/opt/Bianca_Girl_Blue-1280.webp",
+      "1920": "/media/opt/Bianca_Girl_Blue-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/Butterfly_s.png": {
+    "original": "/Butterfly_s.png",
+    "sourceHash": "ce534ccdc6181ffe",
+    "webp": {
+      "640": "/media/opt/Butterfly_s-640.webp",
+      "1280": "/media/opt/Butterfly_s-1280.webp",
+      "1920": "/media/opt/Butterfly_s-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/HeroVideo-poster.jpg": {
+    "original": "/HeroVideo-poster.jpg",
+    "sourceHash": "ca2aa186f676e79b",
+    "webp": {
+      "640": "/media/opt/HeroVideo-poster-640.webp",
+      "1280": "/media/opt/HeroVideo-poster-1280.webp",
+      "1920": "/media/opt/HeroVideo-poster-1920.webp"
     },
     "sizes": "(max-width: 768px) 100vw, 1280px"
   }

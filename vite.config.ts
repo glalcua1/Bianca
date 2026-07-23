@@ -143,5 +143,30 @@ export default defineConfig({
   // are copied by copyPublicUrlDirsPlugin — not the full public/ tree (~duplicate figma PNGs).
   build: {
     copyPublicDir: false,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (
+              id.includes('react-dom') ||
+              id.includes('/react/') ||
+              id.includes('react-router') ||
+              id.includes('scheduler')
+            ) {
+              return 'vendor-react'
+            }
+            if (id.includes('framer-motion') || id.includes('motion-dom')) {
+              return 'vendor-motion'
+            }
+            if (id.includes('lucide-react')) {
+              return 'vendor-icons'
+            }
+          }
+          if (id.includes('MacBookPro141-2-335')) {
+            return 'desktop-home-artboard'
+          }
+        },
+      },
+    },
   },
 })
