@@ -56,6 +56,12 @@ jobs:
             --json isDraft,baseRefName,headRefName,state,mergeable)
           echo "$META"
 
+          # Already shipped — treat as success (agent may have merged first).
+          if echo "$META" | jq -e '.state == "MERGED"' >/dev/null; then
+            echo "PR already merged."
+            exit 0
+          fi
+
           echo "$META" | jq -e '
             .baseRefName == "main"
             and (.headRefName | startswith("cursor/"))
@@ -80,4 +86,5 @@ jobs:
             exit 0
           fi
 
-          gh pr merge "$PR" --repo "${{ github.repository }}" --squash --delete-branch
+          gh pr merge "$PR" --repo "${{ github.repository }}" --squash --delete-branch \
+            || gh pr view "$PR" --repo "${{ github.repository }}" --json state -q .state | grep -qx MERGED
