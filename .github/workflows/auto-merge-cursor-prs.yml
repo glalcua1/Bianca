@@ -1,0 +1,83 @@
+name: Auto-merge Cursor agent PRs
+
+# Safety net: keep agent work from stalling as draft/open PRs.
+# Only merges cursor/* → main. Prefer agents merging themselves per AGENTS.md.
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+      - converted_to_draft
+  status:
+
+concurrency:
+  group: auto-merge-cursor-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+  statuses: read
+  checks: read
+
+jobs:
+  merge-cursor-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve PR number
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "number=${{ github.event.pull_request.number }}" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          SHA="${{ github.sha }}"
+          NUM=$(gh pr list --repo "${{ github.repository }}" --state open --base main \
+            --json number,headRefOid,headRefName \
+            --jq "[.[] | select(.headRefOid == \"$SHA\" and (.headRefName | startswith(\"cursor/\")))] | first | .number // empty")
+          echo "number=${NUM}" >> "$GITHUB_OUTPUT"
+
+      - name: Ready and squash-merge into main
+        if: steps.pr.outputs.number != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ steps.pr.outputs.number }}
+        run: |
+          set -euo pipefail
+
+          META=$(gh pr view "$PR" --repo "${{ github.repository }}" \
+            --json isDraft,baseRefName,headRefName,state,mergeable)
+          echo "$META"
+
+          echo "$META" | jq -e '
+            .baseRefName == "main"
+            and (.headRefName | startswith("cursor/"))
+            and .state == "OPEN"
+          ' >/dev/null
+
+          if echo "$META" | jq -e '.isDraft == true' >/dev/null; then
+            gh pr ready "$PR" --repo "${{ github.repository }}"
+          fi
+
+          SHA=$(gh pr view "$PR" --repo "${{ github.repository }}" --json headRefOid -q .headRefOid)
+          STATE=$(gh api "repos/${{ github.repository }}/commits/$SHA/status" --jq .state)
+          echo "Combined commit status: $STATE"
+
+          if [ "$STATE" = "failure" ] || [ "$STATE" = "error" ]; then
+            echo "Checks failed; not merging."
+            exit 0
+          fi
+
+          if [ "$STATE" = "pending" ]; then
+            echo "Checks pending; waiting for a later status event."
+            exit 0
+          fi
+
+          gh pr merge "$PR" --repo "${{ github.repository }}" --squash --delete-branch
