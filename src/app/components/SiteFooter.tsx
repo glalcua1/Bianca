@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router";
-import { Instagram, Mail } from "lucide-react";
+import { Instagram, Mail, Phone } from "lucide-react";
 import { BiancaForestNavLogo } from "./BiancaLogo";
 import SiteCopyright from "./SiteCopyright";
 import ConsultationDrawer from "./consultation/ConsultationDrawer";
@@ -8,6 +8,8 @@ import FaqDrawer from "./faq/FaqDrawer";
 import {
   BIANCA_EMAIL,
   BIANCA_INSTAGRAM_URL,
+  BIANCA_PHONE_DISPLAY,
+  BIANCA_PHONE_TEL,
   SITE_NAV_ITEMS,
   consultationSourcePage,
 } from "../data/siteContact";
@@ -102,6 +104,14 @@ export default function SiteFooter() {
               >
                 <Mail className="size-4 shrink-0 text-[#dccb7b]" aria-hidden />
                 <span className="break-all sm:break-normal">{BIANCA_EMAIL}</span>
+              </a>
+
+              <a
+                href={BIANCA_PHONE_TEL}
+                className="inline-flex items-center justify-center gap-2.5 border border-[#766d42]/40 bg-[#f4f0e6]/5 px-6 py-3.5 font-editorial text-[13px] uppercase tracking-[0.12em] text-[#f9f9f9] transition hover:border-[#dccb7b]/50 hover:bg-[#f4f0e6]/10"
+              >
+                <Phone className="size-4 shrink-0 text-[#dccb7b]" aria-hidden />
+                Contact us {BIANCA_PHONE_DISPLAY}
               </a>
             </div>
           </div>
