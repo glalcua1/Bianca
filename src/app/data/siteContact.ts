@@ -5,6 +5,10 @@ export const BIANCA_INSTAGRAM_URL =
 
 export const BIANCA_EMAIL = "bianca.labdiamonds@gmail.com";
 
+/** Display and tel: link — +918130495257 */
+export const BIANCA_PHONE_DISPLAY = "+918130495257";
+export const BIANCA_PHONE_TEL = "tel:+918130495257";
+
 /** WhatsApp Business (+91 81304 95257) — no + or spaces for wa.me. */
 export const BIANCA_WHATSAPP_NUMBER = "918130495257";
 
