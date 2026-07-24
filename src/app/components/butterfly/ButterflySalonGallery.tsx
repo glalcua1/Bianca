@@ -137,7 +137,7 @@ export default function ButterflySalonGallery() {
                 Companion plate — deliberately smaller than the copy column so
                 typography leads and the lifestyle portrait reads as accent, not hero.
               */}
-              <figure className="relative mx-auto w-[min(100%,13.25rem)] sm:w-[14rem] lg:ml-auto lg:mr-2 lg:w-[15rem] xl:mr-4 xl:w-[15.75rem]">
+              <figure className="relative mx-auto w-[min(100%,15.25rem)] sm:w-[16.1rem] lg:ml-auto lg:mr-2 lg:w-[17.25rem] xl:mr-4 xl:w-[18.125rem]">
                 <div
                   className="pointer-events-none absolute -inset-3 rounded-full bg-[#dccb7b]/[0.06] blur-2xl"
                   aria-hidden
@@ -150,7 +150,7 @@ export default function ButterflySalonGallery() {
                     wrapperClassName="absolute inset-0 size-full [&_picture]:block [&_picture]:size-full"
                     src={BUTTERFLY_EMBLEM_LIFESTYLE.src}
                     alt={BUTTERFLY_EMBLEM_LIFESTYLE.alt}
-                    sizes="(max-width: 640px) 212px, (max-width: 1024px) 224px, 252px"
+                    sizes="(max-width: 640px) 244px, (max-width: 1024px) 258px, 290px"
                     className="size-full object-cover object-[center_16%] transition duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.02] motion-reduce:transition-none motion-reduce:hover:scale-100"
                   />
                   <div
