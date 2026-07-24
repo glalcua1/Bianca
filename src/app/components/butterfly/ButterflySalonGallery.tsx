@@ -3,7 +3,9 @@ import EditorialReveal from "../editorial/EditorialReveal";
 import CollectionPhotoFrame from "../CollectionPhotoFrame";
 import BespokeSectionHeader from "../bespoke/BespokeSectionHeader";
 import BespokeButterflyMark from "../bespoke/BespokeButterflyMark";
+import ProtectedImage from "../protection/ProtectedImage";
 import {
+  BUTTERFLY_EMBLEM_LIFESTYLE,
   BUTTERFLY_PILLARS,
   BUTTERFLY_SALON_PIECES,
 } from "../../data/butterflyCollection";
@@ -11,6 +13,11 @@ import { SALON_GOLDEN_GRID_COLUMNS } from "../../lib/goldenRatioLayout";
 
 const goldenGridStyle = {
   "--salon-grid": SALON_GOLDEN_GRID_COLUMNS,
+} as CSSProperties;
+
+/** Copy : lifestyle portrait — portrait takes the φ share. */
+const emblemGridStyle = {
+  "--salon-grid": "minmax(0, 1fr) minmax(0, 1.618fr)",
 } as CSSProperties;
 
 const reversedGridStyle = {
@@ -92,18 +99,18 @@ export default function ButterflySalonGallery() {
     <>
       <section
         aria-labelledby="butterfly-emblem-heading"
-        className="relative border-t border-[#766d42]/20 bg-[#1d3c34] px-6 py-20 md:px-10 md:py-28"
+        className="relative overflow-hidden border-t border-[#766d42]/20 bg-[#1d3c34] px-6 py-20 md:px-10 md:py-28"
       >
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_0%,rgba(220,203,123,0.1),transparent_58%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_78%_35%,rgba(220,203,123,0.14),transparent_58%),radial-gradient(ellipse_55%_40%_at_12%_90%,rgba(0,0,0,0.22),transparent_55%)]"
           aria-hidden
         />
         <div className="relative mx-auto max-w-6xl">
           <div
-            className="grid grid-cols-1 items-start gap-12 lg:gap-14 lg:[grid-template-columns:var(--salon-grid)]"
-            style={goldenGridStyle}
+            className="grid grid-cols-1 items-center gap-12 lg:gap-14 lg:[grid-template-columns:var(--salon-grid)] xl:gap-16"
+            style={emblemGridStyle}
           >
-            <EditorialReveal className="min-w-0">
+            <EditorialReveal className="order-2 min-w-0 lg:order-1">
               <BespokeButterflyMark tone="gold" className="mb-5 size-8 opacity-80" />
               <BespokeSectionHeader
                 id="butterfly-emblem-heading"
@@ -122,24 +129,52 @@ export default function ButterflySalonGallery() {
               </blockquote>
             </EditorialReveal>
 
-            <ul className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 lg:gap-5">
-              {BUTTERFLY_PILLARS.map((pillar, index) => (
-                <li key={pillar.id}>
-                  <EditorialReveal delay={index * 70}>
-                    <div className="border border-[#766d42]/30 bg-[#243f38]/40 p-5 transition duration-300 hover:border-[#dccb7b]/45 md:p-6">
-                      <div className="mb-3 h-px w-8 bg-[#dccb7b]/60" />
-                      <h3 className="font-editorial text-[1rem] tracking-[0.05em] text-[#f9f9f9]">
-                        {pillar.title}
-                      </h3>
-                      <p className="mt-2.5 text-[13px] leading-relaxed text-on-forest-body">
-                        {pillar.description}
-                      </p>
-                    </div>
-                  </EditorialReveal>
-                </li>
-              ))}
-            </ul>
+            <EditorialReveal delay={90} className="order-1 min-w-0 lg:order-2">
+              <figure className="relative mx-auto w-full max-w-[min(100%,22rem)] lg:mx-0 lg:max-w-none">
+                <div
+                  className="pointer-events-none absolute -inset-6 rounded-full bg-[#dccb7b]/[0.08] blur-3xl"
+                  aria-hidden
+                />
+                <div
+                  className="relative overflow-hidden border border-[#dccb7b]/35 shadow-[0_28px_80px_rgba(0,0,0,0.45)]"
+                  style={{ aspectRatio: BUTTERFLY_EMBLEM_LIFESTYLE.aspectRatio }}
+                >
+                  <ProtectedImage
+                    wrapperClassName="absolute inset-0 size-full [&_picture]:block [&_picture]:size-full"
+                    src={BUTTERFLY_EMBLEM_LIFESTYLE.src}
+                    alt={BUTTERFLY_EMBLEM_LIFESTYLE.alt}
+                    sizes="(max-width: 1024px) 88vw, 42vw"
+                    className="size-full object-cover object-[center_18%] transition duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] motion-reduce:transition-none motion-reduce:hover:scale-100"
+                  />
+                  <div
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f1f1b]/45 via-transparent to-transparent"
+                    aria-hidden
+                  />
+                </div>
+                <figcaption className="mt-4 text-center text-[10px] uppercase tracking-[0.22em] text-gold-on-forest lg:text-left">
+                  Emerald butterfly pendant · in wear
+                </figcaption>
+              </figure>
+            </EditorialReveal>
           </div>
+
+          <ul className="mt-16 grid gap-8 border-t border-[#766d42]/25 pt-12 sm:grid-cols-3 sm:gap-6 md:mt-20 md:gap-10 md:pt-14">
+            {BUTTERFLY_PILLARS.map((pillar, index) => (
+              <li key={pillar.id}>
+                <EditorialReveal delay={140 + index * 70}>
+                  <div className="sm:pr-4">
+                    <div className="mb-4 h-px w-8 bg-[#dccb7b]/60" />
+                    <h3 className="font-editorial text-[1.05rem] tracking-[0.05em] text-[#f9f9f9]">
+                      {pillar.title}
+                    </h3>
+                    <p className="mt-3 text-[13px] leading-relaxed text-on-forest-body">
+                      {pillar.description}
+                    </p>
+                  </div>
+                </EditorialReveal>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

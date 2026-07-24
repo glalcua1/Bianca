@@ -38,6 +38,7 @@ const EDITORIAL_PATHS = new Set([
   "Pendant/P1.jpg",
   "bianca-diamonds-blue-diamond-editorial.jpg",
   "bianca-diamonds-butterfly-sapphire-suite.png",
+  "bianca-diamonds-emerald-butterfly-pendant-lifestyle.png",
   "bianca-diamonds-lab-grown-jewellery-hero-poster.jpg",
 ]);
 

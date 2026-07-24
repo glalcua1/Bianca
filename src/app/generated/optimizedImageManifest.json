@@ -1820,6 +1820,16 @@
     },
     "sizes": "(max-width: 768px) 100vw, 1280px"
   },
+  "/bianca-diamonds-emerald-butterfly-pendant-lifestyle.png": {
+    "original": "/bianca-diamonds-emerald-butterfly-pendant-lifestyle.png",
+    "sourceHash": "2fbe0a869c4d6328",
+    "webp": {
+      "640": "/media/opt/bianca-diamonds-emerald-butterfly-pendant-lifestyle-640.webp",
+      "1280": "/media/opt/bianca-diamonds-emerald-butterfly-pendant-lifestyle-1280.webp",
+      "1920": "/media/opt/bianca-diamonds-emerald-butterfly-pendant-lifestyle-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
   "/bianca-diamonds-lab-grown-jewellery-hero-poster.jpg": {
     "original": "/bianca-diamonds-lab-grown-jewellery-hero-poster.jpg",
     "sourceHash": "ca2aa186f676e79b",
