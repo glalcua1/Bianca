@@ -15,9 +15,12 @@ const goldenGridStyle = {
   "--salon-grid": SALON_GOLDEN_GRID_COLUMNS,
 } as CSSProperties;
 
-/** Copy : lifestyle portrait — portrait takes the φ share. */
+/**
+ * House Emblem: copy leads; lifestyle plate is a content-sized companion
+ * (auto column) so empty grid space does not inflate the portrait.
+ */
 const emblemGridStyle = {
-  "--salon-grid": "minmax(0, 1fr) minmax(0, 1.618fr)",
+  "--salon-grid": "minmax(0, 1fr) max-content",
 } as CSSProperties;
 
 const reversedGridStyle = {
@@ -102,15 +105,15 @@ export default function ButterflySalonGallery() {
         className="relative overflow-hidden border-t border-[#766d42]/20 bg-[#1d3c34] px-6 py-20 md:px-10 md:py-28"
       >
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_78%_35%,rgba(220,203,123,0.14),transparent_58%),radial-gradient(ellipse_55%_40%_at_12%_90%,rgba(0,0,0,0.22),transparent_55%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_45%_40%_at_88%_28%,rgba(220,203,123,0.11),transparent_62%),radial-gradient(ellipse_50%_35%_at_8%_88%,rgba(0,0,0,0.18),transparent_55%)]"
           aria-hidden
         />
         <div className="relative mx-auto max-w-6xl">
           <div
-            className="grid grid-cols-1 items-center gap-12 lg:gap-14 lg:[grid-template-columns:var(--salon-grid)] xl:gap-16"
+            className="grid grid-cols-1 items-start gap-8 lg:gap-10 lg:[grid-template-columns:var(--salon-grid)] xl:gap-12"
             style={emblemGridStyle}
           >
-            <EditorialReveal className="order-2 min-w-0 lg:order-1">
+            <EditorialReveal className="order-2 min-w-0 lg:order-1 lg:pt-1">
               <BespokeButterflyMark tone="gold" className="mb-5 size-8 opacity-80" />
               <BespokeSectionHeader
                 id="butterfly-emblem-heading"
@@ -130,28 +133,32 @@ export default function ButterflySalonGallery() {
             </EditorialReveal>
 
             <EditorialReveal delay={90} className="order-1 min-w-0 lg:order-2">
-              <figure className="relative mx-auto w-full max-w-[min(100%,22rem)] lg:mx-0 lg:max-w-none">
+              {/*
+                Companion plate — deliberately smaller than the copy column so
+                typography leads and the lifestyle portrait reads as accent, not hero.
+              */}
+              <figure className="relative mx-auto w-[min(100%,13.25rem)] sm:w-[14rem] lg:ml-auto lg:mr-2 lg:w-[15rem] xl:mr-4 xl:w-[15.75rem]">
                 <div
-                  className="pointer-events-none absolute -inset-6 rounded-full bg-[#dccb7b]/[0.08] blur-3xl"
+                  className="pointer-events-none absolute -inset-3 rounded-full bg-[#dccb7b]/[0.06] blur-2xl"
                   aria-hidden
                 />
                 <div
-                  className="relative overflow-hidden border border-[#dccb7b]/35 shadow-[0_28px_80px_rgba(0,0,0,0.45)]"
+                  className="relative overflow-hidden border border-[#dccb7b]/28 shadow-[0_14px_40px_rgba(0,0,0,0.36)]"
                   style={{ aspectRatio: BUTTERFLY_EMBLEM_LIFESTYLE.aspectRatio }}
                 >
                   <ProtectedImage
                     wrapperClassName="absolute inset-0 size-full [&_picture]:block [&_picture]:size-full"
                     src={BUTTERFLY_EMBLEM_LIFESTYLE.src}
                     alt={BUTTERFLY_EMBLEM_LIFESTYLE.alt}
-                    sizes="(max-width: 1024px) 88vw, 42vw"
-                    className="size-full object-cover object-[center_18%] transition duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.03] motion-reduce:transition-none motion-reduce:hover:scale-100"
+                    sizes="(max-width: 640px) 212px, (max-width: 1024px) 224px, 252px"
+                    className="size-full object-cover object-[center_16%] transition duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.02] motion-reduce:transition-none motion-reduce:hover:scale-100"
                   />
                   <div
-                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f1f1b]/45 via-transparent to-transparent"
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0f1f1b]/30 via-transparent to-transparent"
                     aria-hidden
                   />
                 </div>
-                <figcaption className="mt-4 text-center text-[10px] uppercase tracking-[0.22em] text-gold-on-forest lg:text-left">
+                <figcaption className="mt-3 text-center text-[9px] uppercase tracking-[0.2em] text-gold-on-forest lg:text-right">
                   Emerald butterfly pendant · in wear
                 </figcaption>
               </figure>
