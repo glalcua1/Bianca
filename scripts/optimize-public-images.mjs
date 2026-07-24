@@ -29,16 +29,16 @@ const EDITORIAL_PATHS = new Set([
   "vase-with-flowers-vase-with-words-orchid-it.jpg",
   "Sketch.png",
   "elegant-pattern-white-orchids-intricate-silver-designs-soft-pastel-backdrop.jpg",
-  "founder.jpg",
-  "Cannes/Cannes_model.png",
+  "shweta-lal-bianca-diamonds-founder.jpg",
+  "Cannes/bianca-diamonds-cannes-2026-red-carpet.png",
   "Cannes/IMG_7239.jpg",
   "media/bespoke/orchid-studio-light.jpg",
-  "Beskpoke_necklace.png",
+  "bianca-diamonds-bespoke-necklace.png",
   "butter.png",
   "Pendant/P1.jpg",
-  "Bianca_Girl_Blue.jpg",
-  "Butterfly_s.png",
-  "HeroVideo-poster.jpg",
+  "bianca-diamonds-blue-diamond-editorial.jpg",
+  "bianca-diamonds-butterfly-sapphire-suite.png",
+  "bianca-diamonds-lab-grown-jewellery-hero-poster.jpg",
 ]);
 
 const WIDTHS = {

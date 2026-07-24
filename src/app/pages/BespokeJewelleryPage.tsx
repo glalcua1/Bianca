@@ -158,7 +158,7 @@ export default function BespokeJewelleryPage() {
           <EditorialReveal>
             <BespokeSalonPlate variant="salon" className="mx-auto w-full max-w-md lg:max-w-none">
               <ProtectedImage
-                src="/founder.jpg"
+                src="/shweta-lal-bianca-diamonds-founder.jpg"
                 alt="Bianca Diamonds design team"
                 wrapperClassName="absolute inset-0"
                 className="size-full object-cover object-center"

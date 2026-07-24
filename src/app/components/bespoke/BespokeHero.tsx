@@ -7,7 +7,7 @@ type Props = {
   onBookConsultation: () => void;
 };
 
-const HERO_IMAGE = "/Beskpoke_necklace.png";
+const HERO_IMAGE = "/bianca-diamonds-bespoke-necklace.png";
 
 export default function BespokeHero({
   onStartJourney,

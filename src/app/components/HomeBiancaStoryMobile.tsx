@@ -1,6 +1,6 @@
-import imgPackagingBox from "figma:asset/200f28676d6a2eae898fcdcd9f13ebcd75250299.png";
-import imgPackagingBag from "figma:asset/75d88e2bc003dea111ea5784491167b05e57ecdf.png";
-import imgImage1 from "figma:asset/ffad195494173b3c37c4aa05d64af9f2620a7643.png";
+import imgPackagingBox from "figma:asset/bianca-diamonds-presentation-box.png";
+import imgPackagingBag from "figma:asset/bianca-diamonds-packaging-bag.png";
+import imgImage1 from "figma:asset/bianca-diamonds-atelier-atmosphere.png";
 import ProtectedImage from "./protection/ProtectedImage";
 import EditorialReveal from "./editorial/EditorialReveal";
 
@@ -106,7 +106,7 @@ export default function HomeBiancaStoryMobile() {
                 <div className="relative min-h-[280px] flex-[1.6] overflow-hidden bg-[#c4c4c4] sm:min-h-[360px] lg:min-h-0">
                   <ProtectedImage
                     wrapperClassName="absolute inset-0 size-full"
-                    src="/Pendant/P11.jpg"
+                    src="/Pendant/bianca-diamonds-blue-star-octagon-lattice-pendant.jpg"
                     alt="Blue Star Octagon Diamond Lattice — square blue diamond pendant in rose gold"
                     className="size-full object-cover object-center"
                     sizes="(max-width: 1024px) 100vw, 58vw"
@@ -161,7 +161,7 @@ export default function HomeBiancaStoryMobile() {
           >
             <ProtectedImage
               wrapperClassName="absolute inset-0 size-full"
-              src="/founder.jpg"
+              src="/shweta-lal-bianca-diamonds-founder.jpg"
               alt="Shweta Lal, Founder of Bianca Diamonds"
               className="size-full object-cover object-top"
             />

@@ -232,7 +232,7 @@ export const BESPOKE_GALLERY_ITEMS: BespokeGalleryItem[] = [
   {
     id: "gallery-earrings-2",
     category: "Diamond Earrings",
-    image: "/Earrings_2.png",
+    image: "/bianca-diamonds-lab-grown-diamond-earrings.png",
     alt: "Bespoke chandelier diamond earrings",
   },
   {

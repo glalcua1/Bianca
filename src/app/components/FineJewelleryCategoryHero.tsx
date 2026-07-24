@@ -16,7 +16,7 @@ type HeroConfig = {
 
 const HERO_CONFIG: Record<JewelleryCategoryId, HeroConfig> = {
   rings: {
-    image: "/Rings/Women7.jpg",
+    image: "/Rings/bianca-diamonds-sapphire-maison-ring.jpg",
     alt: "Bianca Diamonds — women's diamond rings collection",
     featureLabel: "Sapphire Maison",
     detail: "Architectural colour and salon-set brilliance",
