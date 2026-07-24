@@ -44,6 +44,10 @@ function SalonPieceBlock({
             alt={piece.alt}
             fluid
             variant="ebony"
+            mat="flush"
+            aspectRatio={piece.frameAspectRatio}
+            imageClassName="size-full object-cover object-center"
+            imageWrapperClassName="absolute inset-0 size-full [&_picture]:block [&_picture]:size-full"
             data-name={piece.id}
           />
         </div>
