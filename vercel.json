@@ -23,6 +23,121 @@
       ],
       "destination": "https://www.biancadiamonds.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/HeroVideo.mp4",
+      "destination": "/bianca-diamonds-lab-grown-jewellery-hero.mp4",
+      "permanent": true
+    },
+    {
+      "source": "/HeroVideo-mobile.mp4",
+      "destination": "/bianca-diamonds-lab-grown-jewellery-hero-mobile.mp4",
+      "permanent": true
+    },
+    {
+      "source": "/Hero_mobile.mp4",
+      "destination": "/bianca-diamonds-lab-grown-jewellery-hero-portrait.mp4",
+      "permanent": true
+    },
+    {
+      "source": "/HeroVideo-poster.jpg",
+      "destination": "/bianca-diamonds-lab-grown-jewellery-hero-poster.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/HeroVideo-poster.webp",
+      "destination": "/bianca-diamonds-lab-grown-jewellery-hero-poster.webp",
+      "permanent": true
+    },
+    {
+      "source": "/Hero_mobile-poster.jpg",
+      "destination": "/bianca-diamonds-lab-grown-jewellery-hero-portrait-poster.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bianca_Girl_Blue.jpg",
+      "destination": "/bianca-diamonds-blue-diamond-editorial.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Beskpoke_necklace.png",
+      "destination": "/bianca-diamonds-bespoke-necklace.png",
+      "permanent": true
+    },
+    {
+      "source": "/Butterfly_s.png",
+      "destination": "/bianca-diamonds-butterfly-sapphire-suite.png",
+      "permanent": true
+    },
+    {
+      "source": "/Necklace.png",
+      "destination": "/bianca-diamonds-lab-grown-diamond-necklace.png",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings_2.png",
+      "destination": "/bianca-diamonds-lab-grown-diamond-earrings.png",
+      "permanent": true
+    },
+    {
+      "source": "/founder.jpg",
+      "destination": "/shweta-lal-bianca-diamonds-founder.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Cannes/Cannes_model.png",
+      "destination": "/Cannes/bianca-diamonds-cannes-2026-red-carpet.png",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Women7.jpg",
+      "destination": "/Rings/bianca-diamonds-sapphire-maison-ring.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_5302.jpg",
+      "destination": "/Rings/bianca-diamonds-atelier-portrait-diamond-ring.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Pendant/P11.jpg",
+      "destination": "/Pendant/bianca-diamonds-blue-star-octagon-lattice-pendant.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bianca_girl2.png",
+      "destination": "/bianca-diamonds-editorial-portrait.png",
+      "permanent": true
+    },
+    {
+      "source": "/Bianca_girl2.jpg",
+      "destination": "/bianca-diamonds-editorial-portrait.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bianca_ring.png",
+      "destination": "/bianca-diamonds-diamond-ring.png",
+      "permanent": true
+    },
+    {
+      "source": "/Bianca_boxes.png",
+      "destination": "/bianca-diamonds-jewellery-packaging.png",
+      "permanent": true
+    },
+    {
+      "source": "/200f28676d6a2eae898fcdcd9f13ebcd75250299.png",
+      "destination": "/bianca-diamonds-presentation-box.png",
+      "permanent": true
+    },
+    {
+      "source": "/75d88e2bc003dea111ea5784491167b05e57ecdf.png",
+      "destination": "/bianca-diamonds-packaging-bag.png",
+      "permanent": true
+    },
+    {
+      "source": "/ffad195494173b3c37c4aa05d64af9f2620a7643.png",
+      "destination": "/bianca-diamonds-atelier-atmosphere.png",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -117,7 +232,7 @@
       ]
     },
     {
-      "source": "/HeroVideo.mp4",
+      "source": "/bianca-diamonds-lab-grown-jewellery-hero.mp4",
       "headers": [
         {
           "key": "Cache-Control",
@@ -126,7 +241,7 @@
       ]
     },
     {
-      "source": "/HeroVideo-mobile.mp4",
+      "source": "/bianca-diamonds-lab-grown-jewellery-hero-mobile.mp4",
       "headers": [
         {
           "key": "Cache-Control",
@@ -135,7 +250,7 @@
       ]
     },
     {
-      "source": "/Hero_mobile.mp4",
+      "source": "/bianca-diamonds-lab-grown-jewellery-hero-portrait.mp4",
       "headers": [
         {
           "key": "Cache-Control",
@@ -144,7 +259,7 @@
       ]
     },
     {
-      "source": "/HeroVideo-poster.jpg",
+      "source": "/bianca-diamonds-lab-grown-jewellery-hero-poster.jpg",
       "headers": [
         {
           "key": "Cache-Control",
@@ -153,7 +268,7 @@
       ]
     },
     {
-      "source": "/HeroVideo-poster.webp",
+      "source": "/bianca-diamonds-lab-grown-jewellery-hero-poster.webp",
       "headers": [
         {
           "key": "Cache-Control",
@@ -162,7 +277,7 @@
       ]
     },
     {
-      "source": "/Bianca_Girl_Blue.jpg",
+      "source": "/bianca-diamonds-blue-diamond-editorial.jpg",
       "headers": [
         {
           "key": "Cache-Control",
@@ -171,7 +286,7 @@
       ]
     },
     {
-      "source": "/Butterfly_s.png",
+      "source": "/bianca-diamonds-butterfly-sapphire-suite.png",
       "headers": [
         {
           "key": "Cache-Control",

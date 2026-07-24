@@ -11,15 +11,15 @@ import Group6Logo from "../../imports/Group6";
 import { BiancaHouseLogo } from "./BiancaLogo";
 import ProtectedImage from "./protection/ProtectedImage";
 
-const HERO_STILL = "/Bianca_Girl_Blue.jpg";
+const HERO_STILL = "/bianca-diamonds-blue-diamond-editorial.jpg";
 /** Full-quality landscape film for desktop. */
-const HERO_VIDEO_DESKTOP = "/HeroVideo.mp4";
+const HERO_VIDEO_DESKTOP = "/bianca-diamonds-lab-grown-jewellery-hero.mp4";
 /**
  * Same 16:9 framing as desktop, compressed for mobile (~1.4MB vs ~10MB).
- * Avoids the portrait Hero_mobile.mp4 crop that cuts the trio's outer edges.
+ * Avoids the portrait hero crop that cuts the trio's outer edges.
  */
-const HERO_VIDEO_MOBILE = "/HeroVideo-mobile.mp4";
-const HERO_VIDEO_POSTER = "/HeroVideo-poster.jpg";
+const HERO_VIDEO_MOBILE = "/bianca-diamonds-lab-grown-jewellery-hero-mobile.mp4";
+const HERO_VIDEO_POSTER = "/bianca-diamonds-lab-grown-jewellery-hero-poster.jpg";
 /** Safety net if `ended` never fires (autoplay block, decode stall). */
 const VIDEO_FALLBACK_MS = 18_000;
 const CROSSFADE_MS = 1400;
@@ -568,7 +568,7 @@ function MobileHeroCard({
       }
     >
       {/*
-        Keep 16:9 framing on mobile (portrait Hero_mobile.mp4 crops the trio).
+        Keep 16:9 framing on mobile (the portrait hero encode crops the trio).
         Serve a compressed landscape encode + poster so mobile does not pull
         the ~10MB desktop master on first paint.
       */}
