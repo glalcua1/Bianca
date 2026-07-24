@@ -65,12 +65,8 @@ export default function CollectionPhotoFrame({
         ? ""
         : "bg-[#faf8f5]";
   const frameAspect = aspectRatio ?? `${FRAME_WIDTH} / ${FRAME_HEIGHT}`;
-  const ebonyMountPad = isFlush
-    ? "p-[2px] md:p-[3px]"
-    : "p-4 md:p-[24px]";
-  const giltMountPad = isFlush
-    ? "p-[2px] md:p-[3px]"
-    : "p-4 md:p-[24px]";
+  const ebonyMountPad = isFlush ? "p-0" : "p-4 md:p-[24px]";
+  const giltMountPad = isFlush ? "p-[2px] md:p-[3px]" : "p-4 md:p-[24px]";
   return (
     <div
       className={`relative w-full max-w-full min-w-0 ${fluid ? "" : "shrink-0"}`}
@@ -85,12 +81,14 @@ export default function CollectionPhotoFrame({
       <div
         className={
           isEbony
-            ? "flex h-full w-full flex-col border border-[#6b5345] bg-gradient-to-br from-[#2a1e18] via-[#1a120c] to-[#100c09] p-[6px] shadow-[0_16px_48px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(122,99,85,0.35)]"
+            ? `flex h-full w-full flex-col border border-[#6b5345] bg-gradient-to-br from-[#2a1e18] via-[#1a120c] to-[#100c09] shadow-[0_16px_48px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(122,99,85,0.35)] ${isFlush ? "p-[3px]" : "p-[6px]"}`
             : "flex h-full w-full flex-col border border-[#766d42]/65 bg-[#f4f0e6] p-[4px] shadow-[0_10px_40px_rgba(29,60,52,0.1)]"
         }
       >
         {isEbony ? (
-          <div className="flex min-h-0 flex-1 flex-col bg-[#0a0908] p-[5px] shadow-[inset_0_4px_14px_rgba(0,0,0,0.72),inset_0_1px_0_rgba(92,64,51,0.22),inset_0_-1px_0_rgba(0,0,0,0.85)]">
+          <div
+            className={`flex min-h-0 flex-1 flex-col bg-[#0a0908] shadow-[inset_0_4px_14px_rgba(0,0,0,0.72),inset_0_1px_0_rgba(92,64,51,0.22),inset_0_-1px_0_rgba(0,0,0,0.85)] ${isFlush ? "p-[2px]" : "p-[5px]"}`}
+          >
             {/* Passe-partout — mat board set into the wood rabbet */}
             <div
               className={`flex min-h-0 flex-1 flex-col border border-[#5c4a3f]/55 bg-[#2c2826] shadow-[0_1px_0_rgba(122,99,85,0.18)] ${isFlush ? "p-0" : "p-[3px]"}`}
