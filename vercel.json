@@ -65,6 +65,11 @@
       "permanent": true
     },
     {
+      "source": "/Bianca-diamonds-butterfly-pendant.PNG",
+      "destination": "/bianca-diamonds-emerald-butterfly-pendant-lifestyle.png",
+      "permanent": true
+    },
+    {
       "source": "/Butterfly_s.png",
       "destination": "/bianca-diamonds-butterfly-sapphire-suite.png",
       "permanent": true

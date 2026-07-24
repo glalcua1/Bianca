@@ -8,6 +8,13 @@ export const BUTTERFLY_COLLECTION_SEO = {
 
 export const BUTTERFLY_MORPH_VIDEO = "/Butterfly_morph.mp4";
 
+/** Lifestyle portrait for The House Emblem — emerald butterfly pendant in wear. */
+export const BUTTERFLY_EMBLEM_LIFESTYLE = {
+  src: "/bianca-diamonds-emerald-butterfly-pendant-lifestyle.png",
+  alt: "Woman wearing a Bianca Diamonds emerald and diamond butterfly pendant necklace with matching rings at an evening salon",
+  aspectRatio: "914 / 1284",
+} as const;
+
 export const BUTTERFLY_PILLARS = [
   {
     id: "metamorphosis",
