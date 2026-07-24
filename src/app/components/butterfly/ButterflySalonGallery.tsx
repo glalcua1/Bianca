@@ -16,11 +16,11 @@ const goldenGridStyle = {
 } as CSSProperties;
 
 /**
- * House Emblem: copy leads (φ), lifestyle plate is a quieter companion column.
- * Keeps the portrait proportionate to the editorial block rather than dominating it.
+ * House Emblem: copy leads; lifestyle plate is a content-sized companion
+ * (auto column) so empty grid space does not inflate the portrait.
  */
 const emblemGridStyle = {
-  "--salon-grid": "minmax(0, 1.618fr) minmax(0, 1fr)",
+  "--salon-grid": "minmax(0, 1fr) max-content",
 } as CSSProperties;
 
 const reversedGridStyle = {
