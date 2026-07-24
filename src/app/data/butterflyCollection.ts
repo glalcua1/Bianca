@@ -37,6 +37,8 @@ export type ButterflySalonPiece = {
   title: string;
   description: string;
   details: string[];
+  /** CSS aspect-ratio matching the suite plate (landscape editorial shots). */
+  frameAspectRatio: string;
 };
 
 export const BUTTERFLY_SALON_PIECES: ButterflySalonPiece[] = [
@@ -53,6 +55,8 @@ export const BUTTERFLY_SALON_PIECES: ButterflySalonPiece[] = [
       "Pavé diamond wings",
       "Brooch & earring suite",
     ],
+    // Native plate is 1200×896 — keep the frame in suite proportion so cover fills edge-to-edge.
+    frameAspectRatio: "1200 / 896",
   },
   {
     id: "emerald-parure",
@@ -67,5 +71,6 @@ export const BUTTERFLY_SALON_PIECES: ButterflySalonPiece[] = [
       "Pear & princess diamond wings",
       "Necklace & earring suite",
     ],
+    frameAspectRatio: "1011 / 881",
   },
 ];
