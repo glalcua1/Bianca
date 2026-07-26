@@ -62,7 +62,19 @@ function DesktopHomeHero() {
         }}
       >
         <NavActiveProvider value="the-house">
-          <Suspense fallback={null}>
+          <Suspense
+            fallback={
+              <div
+                className="flex h-full min-h-[100svh] w-full items-center justify-center bg-[#faf8f5]"
+                role="status"
+                aria-live="polite"
+              >
+                <span className="font-editorial text-[11px] uppercase tracking-[0.22em] text-[#1d3c34]/70">
+                  Bianca Diamonds
+                </span>
+              </div>
+            }
+          >
             <MacBookPro />
           </Suspense>
         </NavActiveProvider>

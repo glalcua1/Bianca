@@ -16,7 +16,7 @@ export default function ContentProtectionProvider({ children }: Props) {
   }, []);
 
   useContentProtection({ onCaptureAttempt: showShield });
-  useIOSPrivacyScreen(showShield);
+  useIOSPrivacyScreen();
 
   useEffect(() => {
     void enableNativeScreenshotProtection();
