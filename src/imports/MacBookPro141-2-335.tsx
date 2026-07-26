@@ -1925,6 +1925,9 @@ function Group52() {
   );
 }
 
+/** Design-px height of the homepage header chrome (logo + nav band). */
+export const HOMEPAGE_HEADER_DESIGN_H = 130;
+
 /** Logo + nav chrome from the homepage Figma artboard (1512px design width). */
 export function HomepageHeaderChrome({
   transparent = false,
@@ -1938,7 +1941,7 @@ export function HomepageHeaderChrome({
           ? "bg-transparent group-hover/nav:bg-[#1d3c34] group-focus-within/nav:bg-[#1d3c34]"
           : "bg-[#1d3c34]"
       }`}
-      style={{ width: 1512, height: 130 }}
+      style={{ width: 1512, height: HOMEPAGE_HEADER_DESIGN_H }}
     >
       <Frame3 />
       <Group53 />
@@ -1962,6 +1965,17 @@ export function HeaderNavLogo() {
 export default function MacBookPro() {
   return (
     <div className="bg-[#faf8f5] relative size-full" data-name="MacBook Pro 14' - 1">
+      {/*
+        Measure band for Fine Jewellery mega menu / sticky offset.
+        Lives inside the scaled artboard so getBoundingClientRect() yields
+        true viewport bottom even without a fixed SiteNav shell.
+      */}
+      <div
+        data-site-nav-band
+        aria-hidden
+        className="pointer-events-none absolute left-0 top-0 w-[1512px]"
+        style={{ height: HOMEPAGE_HEADER_DESIGN_H }}
+      />
       <Frame1 />
       <Frame2 />
       <Group47 />

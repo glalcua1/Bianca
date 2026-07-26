@@ -4,11 +4,23 @@ import InstagramFeedSection from "../components/InstagramFeedSection";
 import HomeSectionCards from "../components/HomeSectionCards";
 import HomeBiancaStoryMobile from "../components/HomeBiancaStoryMobile";
 import { useMediaMinWidth } from "../hooks/useMediaMinWidth";
+import {
+  clearSiteNavOffset,
+  setSiteNavOffsetPx,
+} from "../hooks/useScrollCompactNav";
 import { NavActiveProvider } from "../context/NavActiveContext";
 import HomePageMobile from "./HomePageMobile";
 import { BIANCA_INSTAGRAM_URL } from "../data/siteContact";
 
-const MacBookPro = lazy(() => import("../../imports/MacBookPro141-2-335"));
+const MacBookPro = lazy(() =>
+  import("../../imports/MacBookPro141-2-335").then((m) => {
+    headerDesignH = m.HOMEPAGE_HEADER_DESIGN_H;
+    return { default: m.default };
+  }),
+);
+
+/** Populated when the desktop artboard chunk loads; 130 matches design until then. */
+let headerDesignH = 130;
 
 const DESIGN_W = 1512;
 /** Hero + manifesto only — collections replaced by fluid section cards below. */
@@ -37,6 +49,13 @@ function useDesignScale() {
 function DesktopHomeHero() {
   const { scale, scrollH } = useDesignScale();
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Publish nav offset so the Fine Jewellery mega menu can sit below the
+  // artboard header even before the lazy MacBookPro measure band mounts.
+  useEffect(() => {
+    setSiteNavOffsetPx(Math.ceil(HEADER_DESIGN_H * scale));
+    return () => clearSiteNavOffset();
+  }, [scale]);
 
   return (
     <div
