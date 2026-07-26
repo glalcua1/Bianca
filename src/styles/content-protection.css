@@ -51,7 +51,7 @@
   }
 }
 
-/* iOS — watermark on protected media + full-screen privacy overlay when backgrounded */
+/* iPad / large iOS only (JS-gated via ios-privacy-active) — watermark + app-switcher overlay */
 @media (min-width: 768px) {
   .ios-privacy-active [data-protected-media] .ios-media-watermark {
     pointer-events: none;
