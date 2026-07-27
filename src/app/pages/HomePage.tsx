@@ -12,19 +12,13 @@ import { NavActiveProvider } from "../context/NavActiveContext";
 import HomePageMobile from "./HomePageMobile";
 import { BIANCA_INSTAGRAM_URL } from "../data/siteContact";
 
-const MacBookPro = lazy(() =>
-  import("../../imports/MacBookPro141-2-335").then((m) => {
-    headerDesignH = m.HOMEPAGE_HEADER_DESIGN_H;
-    return { default: m.default };
-  }),
-);
-
-/** Populated when the desktop artboard chunk loads; 130 matches design until then. */
-let headerDesignH = 130;
+const MacBookPro = lazy(() => import("../../imports/MacBookPro141-2-335"));
 
 const DESIGN_W = 1512;
 /** Hero + manifesto only — collections replaced by fluid section cards below. */
 const DESIGN_H = 1780;
+/** Matches HOMEPAGE_HEADER_DESIGN_H — keep literal to avoid eager-loading the artboard chunk. */
+const HEADER_DESIGN_H = 130;
 
 function useDesignScale() {
   const [scale, setScale] = useState(1);
