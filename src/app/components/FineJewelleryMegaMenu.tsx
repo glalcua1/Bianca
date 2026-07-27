@@ -99,20 +99,35 @@ type FloatingProps = {
   onPointerLeave?: () => void;
 };
 
+/**
+ * Bottom edge of the visible site header in viewport px.
+ * Prefers live geometry so The House artboard nav (CSS-scaled, no fixed
+ * shell) and SiteNav pages share one anchor for the mega menu.
+ */
 function readSiteNavBottom(): number {
   if (typeof document === "undefined") return 0;
+
+  const shellBottom =
+    document
+      .querySelector<HTMLElement>("[data-site-nav-shell]")
+      ?.getBoundingClientRect().bottom ?? 0;
+
+  // Homepage MacBook artboard header band (transform-aware).
+  const bandBottom =
+    document
+      .querySelector<HTMLElement>("[data-site-nav-band]")
+      ?.getBoundingClientRect().bottom ?? 0;
+
+  const liveBottom = Math.max(shellBottom, bandBottom);
+  if (liveBottom > 1) return liveBottom;
 
   const cssOffset = Number.parseFloat(
     getComputedStyle(document.documentElement).getPropertyValue(
       "--site-nav-offset",
     ),
   );
-  const shellBottom =
-    document
-      .querySelector<HTMLElement>("[data-site-nav-shell]")
-      ?.getBoundingClientRect().bottom ?? 0;
 
-  return Math.max(0, Number.isFinite(cssOffset) ? cssOffset : 0, shellBottom);
+  return Math.max(0, Number.isFinite(cssOffset) ? cssOffset : 0);
 }
 
 /** Full-width panel anchored beneath the site header (portaled — escapes scaled nav transforms). */
@@ -159,15 +174,19 @@ export function FineJewelleryMegaMenuFloating({
 
   return createPortal(
     <>
+      {/* Backdrop starts below the header so nav/logo are never dimmed or blurred */}
       <button
         type="button"
-        className="fixed inset-0 z-[90] cursor-default bg-[#0f1f1b]/25 backdrop-blur-[2px]"
+        className="fixed inset-x-0 bottom-0 z-[90] cursor-default bg-[#0f1f1b]/25 backdrop-blur-[2px]"
+        style={{ top: panelTopStyle }}
         aria-label="Close menu"
         onClick={onClose}
       />
       <div
         className="fixed inset-x-0 z-[95] overflow-y-auto border-b border-[#766d42]/20 bg-[#faf8f5] shadow-[0_24px_64px_rgba(13,28,24,0.14)]"
         style={{ top: panelTopStyle, maxHeight: panelMaxHeight }}
+        role="dialog"
+        aria-label="Fine jewellery collections"
         onMouseEnter={onPointerEnter}
         onMouseLeave={onPointerLeave}
       >
