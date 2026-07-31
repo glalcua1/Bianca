@@ -94,8 +94,11 @@ export default function WhyChooseDrawer({ open, onOpenChange }: Props) {
               onClick={openFullStory}
               className="inline-flex w-full justify-center border border-[#1d3c34] bg-[#1d3c34] px-8 py-3 text-house-cta text-[#faf8f5] transition-colors duration-500 hover:bg-transparent hover:text-bianca-forest"
             >
-              Read the full story
+              Open full page
             </button>
+            <p className="mt-3 text-center text-[11px] tracking-[0.04em] text-on-cream-muted">
+              Continues to /why-bianca-diamonds
+            </p>
           </div>
         </Drawer.Content>
       </Drawer.Portal>
