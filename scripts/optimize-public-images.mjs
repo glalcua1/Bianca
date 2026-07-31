@@ -40,6 +40,9 @@ const EDITORIAL_PATHS = new Set([
   "bianca-diamonds-butterfly-sapphire-suite.png",
   "bianca-diamonds-emerald-butterfly-pendant-lifestyle.png",
   "bianca-diamonds-lab-grown-jewellery-hero-poster.jpg",
+  "bianca-diamonds-presentation-box.png",
+  "bianca-diamonds-packaging-bag.png",
+  "bianca-diamonds-atelier-atmosphere.png",
 ]);
 
 const WIDTHS = {

@@ -1,13 +1,24 @@
-import { forwardRef, useCallback, useEffect, useState } from "react";
+import {
+  forwardRef,
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import { Link } from "react-router";
 import { BiancaForestNavLogo } from "./BiancaLogo";
-import { FineJewelleryMegaMenuPanel } from "./FineJewelleryMegaMenu";
 import {
   NavActiveProvider,
   type NavActiveItem,
 } from "../context/NavActiveContext";
 import { SITE_NAV_ITEMS } from "../data/siteContact";
 import { clearSiteNavOffset } from "../hooks/useScrollCompactNav";
+
+const FineJewelleryMegaMenuPanel = lazy(async () => {
+  const mod = await import("./FineJewelleryMegaMenu");
+  return { default: mod.FineJewelleryMegaMenuPanel };
+});
 
 type Props = {
   activeItem?: NavActiveItem;
@@ -138,10 +149,14 @@ const MobileSiteNav = forwardRef<HTMLElement, Props>(function MobileSiteNav(
                       }`}
                     >
                       <div className="border-t border-[#766d42]/25 bg-[#faf8f5] px-3 py-4">
-                        <FineJewelleryMegaMenuPanel
-                          layout="stacked"
-                          onNavigate={closeAll}
-                        />
+                        {fineMenuOpen ? (
+                          <Suspense fallback={null}>
+                            <FineJewelleryMegaMenuPanel
+                              layout="stacked"
+                              onNavigate={closeAll}
+                            />
+                          </Suspense>
+                        ) : null}
                       </div>
                     </div>
                   </li>

@@ -1186,9 +1186,9 @@
     "original": "/Necklace_s1.png",
     "sourceHash": "345745d107470da9",
     "webp": {
-      "640": "/media/opt/bianca-diamonds-lab-grown-diamond-necklace_s1-640.webp",
-      "1280": "/media/opt/bianca-diamonds-lab-grown-diamond-necklace_s1-1280.webp",
-      "1920": "/media/opt/bianca-diamonds-lab-grown-diamond-necklace_s1-1920.webp"
+      "640": "/media/opt/Necklace_s1-640.webp",
+      "1280": "/media/opt/Necklace_s1-1280.webp",
+      "1920": "/media/opt/Necklace_s1-1920.webp"
     },
     "sizes": "(max-width: 768px) 100vw, 1280px"
   },
@@ -1822,7 +1822,7 @@
   },
   "/bianca-diamonds-emerald-butterfly-pendant-lifestyle.png": {
     "original": "/bianca-diamonds-emerald-butterfly-pendant-lifestyle.png",
-    "sourceHash": "2fbe0a869c4d6328",
+    "sourceHash": "9b5c6ba995c6bdf3",
     "webp": {
       "640": "/media/opt/bianca-diamonds-emerald-butterfly-pendant-lifestyle-640.webp",
       "1280": "/media/opt/bianca-diamonds-emerald-butterfly-pendant-lifestyle-1280.webp",
@@ -1837,6 +1837,36 @@
       "640": "/media/opt/bianca-diamonds-lab-grown-jewellery-hero-poster-640.webp",
       "1280": "/media/opt/bianca-diamonds-lab-grown-jewellery-hero-poster-1280.webp",
       "1920": "/media/opt/bianca-diamonds-lab-grown-jewellery-hero-poster-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/bianca-diamonds-presentation-box.png": {
+    "original": "/bianca-diamonds-presentation-box.png",
+    "sourceHash": "200f28676d6a2eae",
+    "webp": {
+      "640": "/media/opt/bianca-diamonds-presentation-box-640.webp",
+      "1280": "/media/opt/bianca-diamonds-presentation-box-1280.webp",
+      "1920": "/media/opt/bianca-diamonds-presentation-box-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/bianca-diamonds-packaging-bag.png": {
+    "original": "/bianca-diamonds-packaging-bag.png",
+    "sourceHash": "75d88e2bc003dea1",
+    "webp": {
+      "640": "/media/opt/bianca-diamonds-packaging-bag-640.webp",
+      "1280": "/media/opt/bianca-diamonds-packaging-bag-1280.webp",
+      "1920": "/media/opt/bianca-diamonds-packaging-bag-1920.webp"
+    },
+    "sizes": "(max-width: 768px) 100vw, 1280px"
+  },
+  "/bianca-diamonds-atelier-atmosphere.png": {
+    "original": "/bianca-diamonds-atelier-atmosphere.png",
+    "sourceHash": "ffad195494173b3c",
+    "webp": {
+      "640": "/media/opt/bianca-diamonds-atelier-atmosphere-640.webp",
+      "1280": "/media/opt/bianca-diamonds-atelier-atmosphere-1280.webp",
+      "1920": "/media/opt/bianca-diamonds-atelier-atmosphere-1920.webp"
     },
     "sizes": "(max-width: 768px) 100vw, 1280px"
   }

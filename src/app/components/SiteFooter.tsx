@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
 import { Instagram, Mail, Phone } from "lucide-react";
 import { BiancaForestNavLogo } from "./BiancaLogo";
 import SiteCopyright from "./SiteCopyright";
-import ConsultationDrawer from "./consultation/ConsultationDrawer";
-import FaqDrawer from "./faq/FaqDrawer";
 import {
   BIANCA_EMAIL,
   BIANCA_INSTAGRAM_URL,
@@ -16,6 +14,11 @@ import {
   consultationSourcePage,
 } from "../data/siteContact";
 import { buildWhatsAppChatUrl } from "../lib/whatsappContact";
+
+const ConsultationDrawer = lazy(
+  () => import("./consultation/ConsultationDrawer"),
+);
+const FaqDrawer = lazy(() => import("./faq/FaqDrawer"));
 
 function WhatsAppGlyph({ className }: { className?: string }) {
   return (
@@ -159,13 +162,16 @@ export default function SiteFooter() {
         </div>
       </footer>
 
-      <ConsultationDrawer
-        open={consultationOpen}
-        onOpenChange={setConsultationOpen}
-        sourcePage={sourcePage}
-      />
-
-      <FaqDrawer open={faqOpen} onOpenChange={setFaqOpen} />
+      {(consultationOpen || faqOpen) && (
+        <Suspense fallback={null}>
+          <ConsultationDrawer
+            open={consultationOpen}
+            onOpenChange={setConsultationOpen}
+            sourcePage={sourcePage}
+          />
+          <FaqDrawer open={faqOpen} onOpenChange={setFaqOpen} />
+        </Suspense>
+      )}
     </>
   );
 }
