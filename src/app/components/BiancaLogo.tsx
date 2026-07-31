@@ -1,5 +1,5 @@
 import Group6Logo from "../../imports/Group6";
-import { HeaderNavLogo } from "../../imports/MacBookPro141-2-335";
+import { HeaderNavLogo } from "../../imports/HeaderNavLogo";
 import ScaledArtboard from "./ScaledArtboard";
 
 /** The House wordmark on cream / white cards (Figma Group6). */

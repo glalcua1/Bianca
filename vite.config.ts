@@ -162,9 +162,9 @@ export default defineConfig({
               return 'vendor-icons'
             }
           }
-          if (id.includes('MacBookPro141-2-335')) {
-            return 'desktop-home-artboard'
-          }
+          // Do NOT force MacBookPro into a manual chunk — that pulls shared
+          // modules (nav, hooks, site contact) into it and modulepreloads the
+          // whole artboard on every mobile visit. Lazy import() already splits it.
         },
       },
     },

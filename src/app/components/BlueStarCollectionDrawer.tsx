@@ -6,7 +6,7 @@ import {
   atelierPieceEyebrow,
   type AtelierPiece,
 } from "../data/fineJewelleryCollections";
-import { getBlueStarCollectionPieces } from "../data/blueDiamond";
+import { getBlueStarCollectionPieces } from "../data/blueStarCollection";
 import { fineJewelleryCategoryPath } from "../data/fineJewelleryMegaMenu";
 
 type Props = {

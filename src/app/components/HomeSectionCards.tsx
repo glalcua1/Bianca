@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Link } from "react-router";
 import ProtectedImage from "./protection/ProtectedImage";
 import EditorialReveal from "./editorial/EditorialReveal";
-import PdfLookbookDrawer from "./PdfLookbookDrawer";
-import BlueStarCollectionDrawer from "./BlueStarCollectionDrawer";
 import {
   HOME_SECTION_CARDS,
   type HomeSectionCard,
 } from "../data/homeSectionCards";
 import { BLUE_DIAMOND_CARD } from "../data/blueDiamond";
+
+const PdfLookbookDrawer = lazy(() => import("./PdfLookbookDrawer"));
+const BlueStarCollectionDrawer = lazy(
+  () => import("./BlueStarCollectionDrawer"),
+);
 
 function toneClasses(tone: HomeSectionCard["tone"], imageWellColor?: string) {
   if (imageWellColor) {
@@ -289,18 +292,21 @@ function BlueDiamondCard({ index }: { index: number }) {
         </article>
       </EditorialReveal>
 
-      <PdfLookbookDrawer
-        open={storyOpen}
-        onOpenChange={setStoryOpen}
-        pdfSrc={card.pdfSrc}
-        title="Blue Star Story"
-        description="Exclusive lab-grown blue diamonds by Bianca — rarity, colour, and high jewellery."
-      />
-
-      <BlueStarCollectionDrawer
-        open={collectionOpen}
-        onOpenChange={setCollectionOpen}
-      />
+      {(storyOpen || collectionOpen) && (
+        <Suspense fallback={null}>
+          <PdfLookbookDrawer
+            open={storyOpen}
+            onOpenChange={setStoryOpen}
+            pdfSrc={card.pdfSrc}
+            title="Blue Star Story"
+            description="Exclusive lab-grown blue diamonds by Bianca — rarity, colour, and high jewellery."
+          />
+          <BlueStarCollectionDrawer
+            open={collectionOpen}
+            onOpenChange={setCollectionOpen}
+          />
+        </Suspense>
+      )}
     </>
   );
 }

@@ -1,7 +1,4 @@
-import {
-  ATELIER_PIECES,
-  type AtelierPiece,
-} from "./fineJewelleryCollections";
+import type { AtelierPiece } from "./fineJewelleryCollections";
 
 export const BLUE_DIAMOND_PDF_PATH =
   "/BlueDiamond/Blue-Star-Collection.pdf";
@@ -63,11 +60,3 @@ export const BLUE_DIAMOND_CARD = {
   imageWellColor: "#a3a3a3",
   pdfSrc: BLUE_DIAMOND_PDF_PATH,
 } as const;
-
-export function getBlueStarCollectionPieces(): AtelierPiece[] {
-  const byId = new Map(ATELIER_PIECES.map((piece) => [piece.id, piece]));
-  const rings = BLUE_STAR_RING_IDS.map((id) => byId.get(id)).filter(
-    (piece): piece is AtelierPiece => Boolean(piece),
-  );
-  return [...rings, ...BLUE_STAR_EARRING_PIECES];
-}

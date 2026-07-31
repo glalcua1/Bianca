@@ -1,26 +1,23 @@
 import { Link } from "react-router";
-import imgPackagingBox from "figma:asset/bianca-diamonds-presentation-box.png";
-import imgPackagingBag from "figma:asset/bianca-diamonds-packaging-bag.png";
-import imgImage1 from "figma:asset/bianca-diamonds-atelier-atmosphere.png";
 import ProtectedImage from "./protection/ProtectedImage";
 import EditorialReveal from "./editorial/EditorialReveal";
 import { WHY_CHOOSE_BIANCA_PATH } from "../data/whyChooseBianca";
 
 const SUPPORTING = [
   {
-    src: imgPackagingBox,
+    src: "/bianca-diamonds-presentation-box.png",
     alt: "Bianca Diamonds presentation box",
     className: "object-cover object-center",
     wellClass: "bg-white",
   },
   {
-    src: imgPackagingBag,
+    src: "/bianca-diamonds-packaging-bag.png",
     alt: "Bianca Diamonds packaging",
     className: "object-cover object-center",
     wellClass: "bg-white",
   },
   {
-    src: imgImage1,
+    src: "/bianca-diamonds-atelier-atmosphere.png",
     alt: "Bianca Diamonds atelier atmosphere",
     className: "object-cover object-[center_40%]",
     wellClass: "bg-[#ebe6dc]",

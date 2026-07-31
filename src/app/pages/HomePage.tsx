@@ -1,18 +1,22 @@
 import { Suspense, lazy, useEffect, useRef, useState, useCallback } from "react";
 import SiteFooter from "../components/SiteFooter";
-import InstagramFeedSection from "../components/InstagramFeedSection";
-import HomeSectionCards from "../components/HomeSectionCards";
-import HomeBiancaStoryMobile from "../components/HomeBiancaStoryMobile";
 import { useMediaMinWidth } from "../hooks/useMediaMinWidth";
 import {
   clearSiteNavOffset,
   setSiteNavOffsetPx,
 } from "../hooks/useScrollCompactNav";
 import { NavActiveProvider } from "../context/NavActiveContext";
-import HomePageMobile from "./HomePageMobile";
 import { BIANCA_INSTAGRAM_URL } from "../data/siteContact";
 
 const MacBookPro = lazy(() => import("../../imports/MacBookPro141-2-335"));
+const HomePageMobile = lazy(() => import("./HomePageMobile"));
+const HomeSectionCards = lazy(() => import("../components/HomeSectionCards"));
+const HomeBiancaStoryMobile = lazy(
+  () => import("../components/HomeBiancaStoryMobile"),
+);
+const InstagramFeedSection = lazy(
+  () => import("../components/InstagramFeedSection"),
+);
 
 const DESIGN_W = 1512;
 /** Hero + manifesto only — collections replaced by fluid section cards below. */
@@ -101,16 +105,32 @@ export default function HomePage() {
 
   return (
     <>
-      {isDesktop ? (
-        <>
-          <DesktopHomeHero />
-          <HomeSectionCards />
-          <HomeBiancaStoryMobile />
-        </>
-      ) : (
-        <HomePageMobile />
-      )}
-      <InstagramFeedSection profileUrl={BIANCA_INSTAGRAM_URL} compactTop />
+      <Suspense
+        fallback={
+          <div
+            className="flex min-h-[70svh] items-center justify-center bg-[#faf8f5]"
+            role="status"
+            aria-live="polite"
+          >
+            <span className="font-editorial text-[11px] uppercase tracking-[0.22em] text-[#1d3c34]/70">
+              Bianca Diamonds
+            </span>
+          </div>
+        }
+      >
+        {isDesktop ? (
+          <>
+            <DesktopHomeHero />
+            <HomeSectionCards />
+            <HomeBiancaStoryMobile />
+          </>
+        ) : (
+          <HomePageMobile />
+        )}
+      </Suspense>
+      <Suspense fallback={null}>
+        <InstagramFeedSection profileUrl={BIANCA_INSTAGRAM_URL} compactTop />
+      </Suspense>
       <SiteFooter />
     </>
   );

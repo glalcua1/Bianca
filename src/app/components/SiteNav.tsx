@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { HomepageHeaderChrome } from "../../imports/MacBookPro141-2-335";
+import { HomepageHeaderChrome } from "../../imports/HomepageHeaderChrome";
 import { useMediaMinWidth } from "../hooks/useMediaMinWidth";
 import {
   clearSiteNavOffset,

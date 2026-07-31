@@ -52,7 +52,7 @@ function usePrefersReducedMotion() {
   return reduced;
 }
 
-function useHeroSequence(reduceMotion: boolean) {
+function useHeroSequence(reduceMotion: boolean, videoUrl: string) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const fallbackRef = useRef<number | null>(null);
   const volumeRef = useRef(DEFAULT_VOLUME);
@@ -139,6 +139,12 @@ function useHeroSequence(reduceMotion: boolean) {
         return;
       }
 
+      // Bind src only when playing so the poster can win LCP on mobile.
+      if (video.dataset.srcBound !== "1") {
+        video.src = videoUrl;
+        video.dataset.srcBound = "1";
+      }
+
       // Replay / watch is a user gesture — prefer audible playback.
       if (opts?.userInitiated) {
         mutedRef.current = false;
@@ -172,7 +178,7 @@ function useHeroSequence(reduceMotion: boolean) {
         settleToStill();
       }
     },
-    [applyAudio, clearFallback, settleToStill],
+    [applyAudio, clearFallback, settleToStill, videoUrl],
   );
 
   useEffect(() => {
@@ -182,9 +188,25 @@ function useHeroSequence(reduceMotion: boolean) {
     }
 
     hasAutoplayedRef.current = true;
-    void playFilm();
+    // Let the poster paint first; start the film when the browser is idle.
+    let idleId: number | undefined;
+    let timeoutId: number | undefined;
+    const start = () => {
+      void playFilm();
+    };
+    if (typeof window.requestIdleCallback === "function") {
+      idleId = window.requestIdleCallback(start, { timeout: 1500 });
+    } else {
+      timeoutId = window.setTimeout(start, 500);
+    }
 
-    return () => clearFallback();
+    return () => {
+      clearFallback();
+      if (idleId != null && typeof window.cancelIdleCallback === "function") {
+        window.cancelIdleCallback(idleId);
+      }
+      if (timeoutId != null) window.clearTimeout(timeoutId);
+    };
   }, [reduceMotion, playFilm, settleToStill, clearFallback]);
 
   const onTimeUpdate = () => {
@@ -380,6 +402,8 @@ function ReplayFilmButton({
  */
 export default function HomeHeroCard({ layout = "desktop" }: Props) {
   const reduceMotion = usePrefersReducedMotion();
+  const videoUrl =
+    layout === "mobile" ? HERO_VIDEO_MOBILE : HERO_VIDEO_DESKTOP;
   const {
     videoRef,
     isStill,
@@ -391,7 +415,7 @@ export default function HomeHeroCard({ layout = "desktop" }: Props) {
     setVolume,
     toggleMute,
     onTimeUpdate,
-  } = useHeroSequence(reduceMotion);
+  } = useHeroSequence(reduceMotion, videoUrl);
 
   const replayLabel = reduceMotion ? "Watch the film" : "Replay film";
 
@@ -445,7 +469,7 @@ export default function HomeHeroCard({ layout = "desktop" }: Props) {
           style={{ width: HERO_IMAGE_WIDTH }}
         >
           <ProtectedImage
-            priority
+            priority={isStill}
             wrapperClassName="absolute inset-0 size-full [&_picture]:absolute [&_picture]:inset-0 [&_picture]:block [&_picture]:h-full [&_picture]:w-full"
             alt="Bianca Diamonds — Blue Star editorial portrait with lab-grown blue diamond earrings"
             className="absolute inset-0 size-full object-cover object-right-top"
@@ -502,11 +526,10 @@ export default function HomeHeroCard({ layout = "desktop" }: Props) {
         <video
           ref={videoRef}
           className="absolute inset-0 size-full object-cover object-center"
-          src={HERO_VIDEO_DESKTOP}
           poster={HERO_VIDEO_POSTER}
           muted={muted}
           playsInline
-          preload="metadata"
+          preload="none"
           controls={false}
           disablePictureInPicture
           onTimeUpdate={onTimeUpdate}
@@ -589,11 +612,10 @@ function MobileHeroCard({
         <video
           ref={videoRef}
           className="absolute inset-0 size-full object-contain object-center"
-          src={HERO_VIDEO_MOBILE}
           poster={HERO_VIDEO_POSTER}
           muted={muted}
           playsInline
-          preload="metadata"
+          preload="none"
           controls={false}
           disablePictureInPicture
           onTimeUpdate={onTimeUpdate}
@@ -631,7 +653,7 @@ function MobileHeroCard({
         <BiancaHouseLogo maxWidth={200} className="mx-auto" />
         <div className="relative -mr-5 mt-6 ml-auto aspect-[4/5] w-[min(100%,420px)] overflow-hidden bg-[#fafafa]">
           <ProtectedImage
-            priority
+            priority={isStill}
             wrapperClassName="absolute inset-0 size-full [&_picture]:absolute [&_picture]:inset-0 [&_picture]:block [&_picture]:h-full [&_picture]:w-full"
             alt="Bianca Diamonds — Blue Star editorial portrait with lab-grown blue diamond earrings"
             className="absolute inset-0 size-full object-cover object-right-top"

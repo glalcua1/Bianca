@@ -55,7 +55,30 @@ export default function InstagramFeedSection({ profileUrl, compactTop = false }:
     [profileUrl]
   );
 
+  const [sectionEl, setSectionEl] = useState<HTMLElement | null>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
   useEffect(() => {
+    if (!sectionEl || shouldLoad) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setShouldLoad(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "240px 0px" },
+    );
+    observer.observe(sectionEl);
+    return () => observer.disconnect();
+  }, [sectionEl, shouldLoad]);
+
+  useEffect(() => {
+    if (!shouldLoad) return;
     let cancelled = false;
     const params = new URLSearchParams({
       username,
@@ -79,7 +102,7 @@ export default function InstagramFeedSection({ profileUrl, compactTop = false }:
     return () => {
       cancelled = true;
     };
-  }, [username]);
+  }, [username, shouldLoad]);
 
   useEffect(() => {
     if (apiMedia === null) return;
@@ -110,6 +133,7 @@ export default function InstagramFeedSection({ profileUrl, compactTop = false }:
 
   return (
     <section
+      ref={setSectionEl}
       className={`relative overflow-hidden px-5 py-16 md:px-10 md:pb-20 ${
         compactTop ? "md:pt-10" : "md:pt-24"
       }`}
@@ -120,13 +144,6 @@ export default function InstagramFeedSection({ profileUrl, compactTop = false }:
           "linear-gradient(180deg, #f4f0e6 0%, #ebe4d4 38%, #e5dcc8 100%)",
       }}
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.35]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E")`,
-        }}
-        aria-hidden
-      />
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#1d3c34]/12 to-transparent"
         aria-hidden
