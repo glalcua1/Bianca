@@ -37,8 +37,6 @@ export const WHY_DIFFERENCE_PILLARS = [
     title: "Exceptional Diamonds",
     description:
       "IGI-certified lab-grown diamonds selected for quality, beauty and value.",
-    image: "/Rings/bianca-diamonds-atelier-portrait-diamond-ring.jpg",
-    imageAlt: "Lab-grown diamond ring portrait — Bianca Diamonds",
   },
   {
     id: "design",
@@ -46,8 +44,6 @@ export const WHY_DIFFERENCE_PILLARS = [
     title: "Personalised Design",
     description:
       "Jewellery created around your vision—not limited to what's already in stock.",
-    image: "/Sketch.png",
-    imageAlt: "Custom jewellery design sketch — Bianca Diamonds",
   },
   {
     id: "aesthetics",
@@ -55,8 +51,6 @@ export const WHY_DIFFERENCE_PILLARS = [
     title: "Modern Aesthetics",
     description:
       "Contemporary designs that feel distinctive, elegant and effortlessly modern.",
-    image: "/bianca-diamonds-bespoke-necklace.png",
-    imageAlt: "Contemporary bespoke diamond necklace — Bianca Diamonds",
   },
   {
     id: "service",
@@ -64,32 +58,6 @@ export const WHY_DIFFERENCE_PILLARS = [
     title: "Personal Service",
     description:
       "A one-to-one experience designed around your needs, preferences and occasion.",
-    image: "/shweta-lal-bianca-diamonds-founder.jpg",
-    imageAlt: "Personal consultation experience — Bianca Diamonds",
-  },
-] as const;
-
-export const WHY_PHILOSOPHY_STEPS = [
-  {
-    id: "idea",
-    label: "Your Idea",
-    description: "Inspiration, a sketch, or simply the feeling you want to capture.",
-    image: "/Sketch.png",
-    imageAlt: "Jewellery design sketch and inspiration",
-  },
-  {
-    id: "expertise",
-    label: "Our Expertise",
-    description: "Diamond selection, design refinement, and atelier craftsmanship.",
-    image: "/bianca-diamonds-presentation-box.png",
-    imageAlt: "Bianca Diamonds presentation and atelier craftsmanship",
-  },
-  {
-    id: "jewellery",
-    label: "Your Jewellery",
-    description: "A finished piece made around you—not chosen from a catalogue.",
-    image: "/Pendant/P2.jpg",
-    imageAlt: "Finished custom diamond pendant — Bianca Diamonds",
   },
 ] as const;
 
@@ -140,122 +108,21 @@ export const WHY_FOUR_CS = [
   {
     id: "clarity",
     title: "Clarity",
-    description: "The level of natural inclusions within the diamond.",
+    description: "The level of inclusions within the diamond.",
   },
 ] as const;
 
 export const WHY_DIAMOND_SHAPES = [
-  {
-    id: "round",
-    title: "Round",
-    image: "/Rings/bianca-diamonds-atelier-portrait-diamond-ring.jpg",
-    imageAlt: "Round brilliant lab-grown diamond ring — Bianca Diamonds",
-  },
-  {
-    id: "oval",
-    title: "Oval",
-    image: "/Rings/IMG_7547.jpg",
-    imageAlt: "Oval lab-grown diamond ring — Bianca Diamonds",
-  },
-  {
-    id: "marquise",
-    title: "Marquise",
-    image: "/Rings/IMG_7551.jpg",
-    imageAlt: "Marquise lab-grown diamond ring — Bianca Diamonds",
-  },
-  {
-    id: "emerald",
-    title: "Emerald",
-    image: "/Rings/IMG_7482.jpg",
-    imageAlt: "Emerald-cut lab-grown diamond ring — Bianca Diamonds",
-  },
+  { id: "round", title: "Round" },
+  { id: "oval", title: "Oval" },
+  { id: "marquise", title: "Marquise" },
+  { id: "emerald", title: "Emerald" },
 ] as const;
 
 export const WHY_FANCY_COLOURS = [
-  {
-    id: "blue",
-    title: "Blue",
-    image: "/bianca-diamonds-blue-diamond-editorial.jpg",
-    imageAlt: "Fancy blue lab-grown diamond jewellery — Bianca Diamonds",
-  },
-  {
-    id: "pink",
-    title: "Pink",
-    image: "/Pendant/P7.jpg",
-    imageAlt: "Pink-toned diamond jewellery — Bianca Diamonds",
-  },
-  {
-    id: "yellow",
-    title: "Yellow",
-    image: "/Earrings/ER4.jpg",
-    imageAlt: "Yellow diamond jewellery accent — Bianca Diamonds",
-  },
-] as const;
-
-export const WHY_GALLERY_PIECES = [
-  {
-    id: "atelier-ring",
-    name: "Atelier Portrait Ring",
-    collection: "Fine Jewellery",
-    to: "/fine-jewellery/rings",
-    image: "/Rings/bianca-diamonds-atelier-portrait-diamond-ring.jpg",
-    imageAlt: "Atelier portrait diamond ring — Bianca Diamonds",
-  },
-  {
-    id: "bespoke-necklace",
-    name: "Bespoke Necklace",
-    collection: "Bespoke",
-    to: "/bespoke-jewellery",
-    image: "/bianca-diamonds-bespoke-necklace.png",
-    imageAlt: "Bespoke diamond necklace — Bianca Diamonds",
-  },
-  {
-    id: "butterfly-suite",
-    name: "Butterfly Sapphire Suite",
-    collection: "Butterfly Collection",
-    to: "/butterfly-collection",
-    image: "/bianca-diamonds-butterfly-sapphire-suite.png",
-    imageAlt: "Butterfly sapphire suite — Bianca Diamonds",
-  },
-  {
-    id: "blue-star",
-    name: "Blue Star Pendant",
-    collection: "Blue Diamonds",
-    to: "/fine-jewellery/pendants",
-    image: "/Pendant/bianca-diamonds-blue-star-octagon-lattice-pendant.jpg",
-    imageAlt: "Blue Star octagon lattice pendant — Bianca Diamonds",
-  },
-  {
-    id: "earrings",
-    name: "Lab-Grown Diamond Earrings",
-    collection: "Fine Jewellery",
-    to: "/fine-jewellery/earrings",
-    image: "/bianca-diamonds-lab-grown-diamond-earrings.png",
-    imageAlt: "Lab-grown diamond earrings — Bianca Diamonds",
-  },
-  {
-    id: "emerald-butterfly",
-    name: "Emerald Butterfly Pendant",
-    collection: "Butterfly Collection",
-    to: "/butterfly-collection",
-    image: "/bianca-diamonds-emerald-butterfly-pendant-lifestyle.png",
-    imageAlt: "Emerald butterfly pendant lifestyle — Bianca Diamonds",
-  },
-] as const;
-
-export const WHY_SERVICE_JOURNEY = [
-  { id: "discover", label: "Discover" },
-  { id: "discuss", label: "Discuss" },
-  { id: "design", label: "Design" },
-  { id: "create", label: "Create" },
-  { id: "receive", label: "Receive" },
-] as const;
-
-export const WHY_EXCHANGE_JOURNEY = [
-  { id: "first", label: "First Diamond" },
-  { id: "milestone", label: "Milestone" },
-  { id: "chapter", label: "New Chapter" },
-  { id: "next", label: "Next Bianca" },
+  { id: "blue", title: "Blue", tone: "#5b7ea6" },
+  { id: "pink", title: "Pink", tone: "#c4879a" },
+  { id: "yellow", title: "Yellow", tone: "#c9b06a" },
 ] as const;
 
 export const WHY_TIMELINE_STEPS = [
@@ -264,13 +131,6 @@ export const WHY_TIMELINE_STEPS = [
   { id: "crafting", label: "Crafting" },
   { id: "qc", label: "Quality Check" },
   { id: "delivery", label: "Delivery" },
-] as const;
-
-export const WHY_SOURCING_FLOW = [
-  { id: "growers", label: "Leading Growers" },
-  { id: "selection", label: "Diamond Selection" },
-  { id: "bianca", label: "Bianca" },
-  { id: "jewellery", label: "Your Jewellery" },
 ] as const;
 
 export const WHY_DRAWER_HIGHLIGHTS = [
