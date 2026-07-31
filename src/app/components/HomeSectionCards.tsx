@@ -4,6 +4,7 @@ import ProtectedImage from "./protection/ProtectedImage";
 import EditorialReveal from "./editorial/EditorialReveal";
 import PdfLookbookDrawer from "./PdfLookbookDrawer";
 import BlueStarCollectionDrawer from "./BlueStarCollectionDrawer";
+import WhyChooseDrawer from "./whyBianca/WhyChooseDrawer";
 import {
   HOME_SECTION_CARDS,
   type HomeSectionCard,
@@ -306,6 +307,8 @@ function BlueDiamondCard({ index }: { index: number }) {
 }
 
 export default function HomeSectionCards() {
+  const [whyChooseOpen, setWhyChooseOpen] = useState(false);
+
   return (
     <section
       aria-labelledby="home-sections-heading"
@@ -321,20 +324,58 @@ export default function HomeSectionCards() {
       />
 
       <div className="relative mx-auto max-w-[1400px] px-4 py-14 sm:px-6 md:px-8 md:py-20 lg:px-10">
-        <EditorialReveal className="mx-auto max-w-2xl text-center">
+        <EditorialReveal className="mx-auto max-w-3xl text-center">
           <p className="text-house-eyebrow text-gold-on-cream">The House</p>
           <h2
             id="home-sections-heading"
             className="mt-3 font-editorial text-[clamp(1.65rem,3.8vw,2.35rem)] tracking-[0.06em] text-[#1d3c34]"
           >
-            Enter Bianca
+            Luxury, made personal.
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-house-body leading-relaxed text-on-cream-body">
-            Five chapters of the house — exclusive blue diamonds, fine jewellery,
-            private commissions, the butterfly emblem, and the Cannes stage.
-          </p>
+          <div className="mx-auto mt-5 max-w-2xl space-y-4 text-house-body leading-relaxed text-on-cream-body">
+            <p>
+              Choosing a diamond is about more than the stone itself. It is
+              about trust, craftsmanship, design—and finding something that
+              feels uniquely yours.
+            </p>
+            <p>
+              At Bianca Diamonds, we believe lab-grown diamonds should not mean
+              compromising on luxury or individuality. We combine exceptional
+              diamonds, contemporary design and personalised craftsmanship to
+              create jewellery that is made around you—not simply selected from
+              what happens to be available.
+            </p>
+            <p>
+              From choosing the right diamond to creating a completely custom
+              piece, our approach is personal, transparent and uncompromising on
+              quality.
+            </p>
+          </div>
+          <div className="mt-8">
+            <button
+              type="button"
+              onClick={() => setWhyChooseOpen(true)}
+              aria-haspopup="dialog"
+              aria-expanded={whyChooseOpen}
+              className="group inline-flex items-center gap-3 font-editorial text-[12px] uppercase tracking-[0.2em] text-gold-on-cream transition-colors hover:text-[#524a28]"
+            >
+              <span className="relative">
+                Why Choose Bianca Diamonds?
+                <span
+                  className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-[#766d42]/70 transition-transform duration-500 group-hover:scale-x-100 motion-reduce:scale-x-100"
+                  aria-hidden
+                />
+              </span>
+              <span
+                aria-hidden
+                className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-2"
+              >
+                →
+              </span>
+            </button>
+          </div>
           <div
-            className="mx-auto mt-6 h-px w-16 bg-gradient-to-r from-transparent via-[#766d42]/70 to-transparent"
+            className="mx-auto mt-8 h-px w-16 bg-gradient-to-r from-transparent via-[#766d42]/70 to-transparent"
             aria-hidden
           />
         </EditorialReveal>
@@ -346,6 +387,8 @@ export default function HomeSectionCards() {
           ))}
         </div>
       </div>
+
+      <WhyChooseDrawer open={whyChooseOpen} onOpenChange={setWhyChooseOpen} />
     </section>
   );
 }

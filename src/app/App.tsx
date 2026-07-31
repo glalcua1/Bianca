@@ -24,6 +24,9 @@ const ButterflyCollectionPage = lazy(
 const GoldenRatioEvaluationPage = lazy(
   () => import("./pages/GoldenRatioEvaluationPage"),
 );
+const WhyChooseBiancaPage = lazy(
+  () => import("./pages/WhyChooseBiancaPage"),
+);
 
 function RouteFallback() {
   return (
@@ -72,6 +75,10 @@ export default function App() {
             <Route
               path="/lab-grown-diamond-faq"
               element={<LabGrownDiamondFaqPage />}
+            />
+            <Route
+              path="/why-bianca-diamonds"
+              element={<WhyChooseBiancaPage />}
             />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
