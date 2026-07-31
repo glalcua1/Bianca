@@ -139,7 +139,17 @@ export default function WhyDiamonds() {
             including Greenlab and Kira—so you can choose across sizes, shapes,
             colours and clarities while we maintain Bianca quality standards.
           </p>
-          <p className="mt-6">
+          <blockquote className="mx-auto mt-10 max-w-xl border-l border-[#dccb7b] pl-6 text-left md:pl-8">
+            <p className="font-editorial text-[15px] italic leading-relaxed tracking-[0.02em] text-[#1d3c34] md:text-[16px]">
+              One of the most notable examples of India&apos;s growing expertise
+              in laboratory-grown diamonds is the 7.50-carat lab-grown diamond
+              gifted by Prime Minister Narendra Modi to Jill Biden in 2023.
+              According to the International Gemological Institute (IGI), the
+              diamond was manufactured by Surat-based Greenlab and graded F
+              colour, VVS2 clarity and Ideal cut.
+            </p>
+          </blockquote>
+          <p className="mt-8">
             <Link
               to="/fine-jewellery"
               className="font-editorial text-[12px] uppercase tracking-[0.18em] text-gold-on-cream transition-colors hover:text-[#524a28]"
