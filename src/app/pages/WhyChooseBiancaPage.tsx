@@ -4,17 +4,10 @@ import SiteFooter from "../components/SiteFooter";
 import ConsultationDrawer from "../components/consultation/ConsultationDrawer";
 import WhyHero from "../components/whyBianca/WhyHero";
 import WhyTrustStrip from "../components/whyBianca/WhyTrustStrip";
-import WhyPhilosophy from "../components/whyBianca/WhyPhilosophy";
-import WhyDifference from "../components/whyBianca/WhyDifference";
-import WhyCertified from "../components/whyBianca/WhyCertified";
-import WhySourcing from "../components/whyBianca/WhySourcing";
+import WhyStory from "../components/whyBianca/WhyStory";
+import WhyDiamonds from "../components/whyBianca/WhyDiamonds";
 import WhyCustom from "../components/whyBianca/WhyCustom";
-import WhyFourCsSection from "../components/whyBianca/WhyFourCsSection";
-import WhyGallery from "../components/whyBianca/WhyGallery";
-import WhyService from "../components/whyBianca/WhyService";
-import WhyValue from "../components/whyBianca/WhyValue";
-import WhyExchange from "../components/whyBianca/WhyExchange";
-import WhyTimeline from "../components/whyBianca/WhyTimeline";
+import WhyPractical from "../components/whyBianca/WhyPractical";
 import WhyFinalCta from "../components/whyBianca/WhyFinalCta";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { WHY_CHOOSE_BIANCA_SEO } from "../data/whyChooseBianca";
@@ -36,17 +29,10 @@ export default function WhyChooseBiancaPage() {
 
       <WhyHero onCustomDesign={openConsultation} />
       <WhyTrustStrip />
-      <WhyPhilosophy />
-      <WhyDifference />
-      <WhyCertified />
-      <WhySourcing />
+      <WhyStory />
+      <WhyDiamonds />
       <WhyCustom onStartCustom={openConsultation} />
-      <WhyFourCsSection />
-      <WhyGallery />
-      <WhyService />
-      <WhyValue />
-      <WhyExchange onSpeakToExpert={openConsultation} />
-      <WhyTimeline />
+      <WhyPractical onSpeakToExpert={openConsultation} />
       <WhyFinalCta
         onCustomDesign={openConsultation}
         onSpeakToExpert={openConsultation}
