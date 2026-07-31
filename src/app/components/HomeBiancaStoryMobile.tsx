@@ -219,7 +219,14 @@ export default function HomeBiancaStoryMobile() {
               chosen.
             </p>
             <p>
-              <span className="font-emphasis">Shweta Lal</span>
+              <a
+                href="https://www.linkedin.com/in/shwetalal-bianca/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-emphasis transition-colors hover:text-[#dccb7b]"
+              >
+                Shweta Lal
+              </a>
               <br />
               Founder, Bianca Diamonds
             </p>
