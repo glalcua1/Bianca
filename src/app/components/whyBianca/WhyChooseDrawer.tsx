@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 import { Drawer } from "vaul";
 import { X } from "lucide-react";
 import {
@@ -12,6 +12,13 @@ type Props = {
 };
 
 export default function WhyChooseDrawer({ open, onOpenChange }: Props) {
+  const navigate = useNavigate();
+
+  function openFullStory() {
+    onOpenChange(false);
+    navigate(WHY_CHOOSE_BIANCA_PATH);
+  }
+
   return (
     <Drawer.Root
       open={open}
@@ -82,14 +89,13 @@ export default function WhyChooseDrawer({ open, onOpenChange }: Props) {
           </div>
 
           <div className="border-t border-[#1d3c34]/10 bg-[#f4f0e6]/60 px-6 py-5">
-            <Drawer.Close asChild>
-              <Link
-                to={WHY_CHOOSE_BIANCA_PATH}
-                className="inline-flex w-full justify-center border border-[#1d3c34] bg-[#1d3c34] px-8 py-3 text-house-cta text-[#faf8f5] transition-colors duration-500 hover:bg-transparent hover:text-bianca-forest"
-              >
-                Read the full story
-              </Link>
-            </Drawer.Close>
+            <button
+              type="button"
+              onClick={openFullStory}
+              className="inline-flex w-full justify-center border border-[#1d3c34] bg-[#1d3c34] px-8 py-3 text-house-cta text-[#faf8f5] transition-colors duration-500 hover:bg-transparent hover:text-bianca-forest"
+            >
+              Read the full story
+            </button>
           </div>
         </Drawer.Content>
       </Drawer.Portal>
