@@ -64,8 +64,8 @@ export const WHY_DIFFERENCE_PILLARS = [
     title: "Personal Service",
     description:
       "A one-to-one experience designed around your needs, preferences and occasion.",
-    image: "/bianca-diamonds-atelier-atmosphere.png",
-    imageAlt: "Bianca Diamonds atelier atmosphere",
+    image: "/shweta-lal-bianca-diamonds-founder.jpg",
+    imageAlt: "Personal consultation experience — Bianca Diamonds",
   },
 ] as const;
 
@@ -81,8 +81,8 @@ export const WHY_PHILOSOPHY_STEPS = [
     id: "expertise",
     label: "Our Expertise",
     description: "Diamond selection, design refinement, and atelier craftsmanship.",
-    image: "/bianca-diamonds-atelier-atmosphere.png",
-    imageAlt: "Craftsmanship and design process in the Bianca atelier",
+    image: "/bianca-diamonds-presentation-box.png",
+    imageAlt: "Bianca Diamonds presentation and atelier craftsmanship",
   },
   {
     id: "jewellery",
@@ -148,26 +148,26 @@ export const WHY_DIAMOND_SHAPES = [
   {
     id: "round",
     title: "Round",
-    image: "/Rings/IMG_7444.jpg",
+    image: "/Rings/bianca-diamonds-atelier-portrait-diamond-ring.jpg",
     imageAlt: "Round brilliant lab-grown diamond ring — Bianca Diamonds",
   },
   {
     id: "oval",
     title: "Oval",
-    image: "/Rings/IMG_7545.jpg",
+    image: "/Rings/IMG_7547.jpg",
     imageAlt: "Oval lab-grown diamond ring — Bianca Diamonds",
   },
   {
     id: "marquise",
     title: "Marquise",
-    image: "/Rings/IMG_7680.jpg",
-    imageAlt: "Marquise lab-grown diamond jewellery — Bianca Diamonds",
+    image: "/Rings/IMG_7551.jpg",
+    imageAlt: "Marquise lab-grown diamond ring — Bianca Diamonds",
   },
   {
     id: "emerald",
     title: "Emerald",
-    image: "/Rings/bianca-diamonds-sapphire-maison-ring.jpg",
-    imageAlt: "Emerald-cut inspired maison ring — Bianca Diamonds",
+    image: "/Rings/IMG_7482.jpg",
+    imageAlt: "Emerald-cut lab-grown diamond ring — Bianca Diamonds",
   },
 ] as const;
 

@@ -14,9 +14,9 @@ export default function WhyTrustStrip() {
               <p className="font-editorial text-[10px] tracking-[0.28em] text-gold-on-cream">
                 {String(index + 1).padStart(2, "0")}
               </p>
-              <h2 className="mt-3 font-editorial text-[15px] tracking-[0.08em] uppercase text-[#1d3c34] md:text-[16px]">
+              <p className="mt-3 font-editorial text-[15px] tracking-[0.08em] uppercase text-[#1d3c34] md:text-[16px]">
                 {pillar.title}
-              </h2>
+              </p>
               <p className="mt-2 text-house-body text-sm text-on-cream-body">
                 {pillar.description}
               </p>

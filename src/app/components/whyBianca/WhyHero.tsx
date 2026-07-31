@@ -18,11 +18,11 @@ export default function WhyHero({ onCustomDesign }: Props) {
         sizes="100vw"
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#1d3c34]/92 via-[#1d3c34]/72 to-[#1d3c34]/35"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#1d3c34]/95 via-[#1d3c34]/78 to-[#1d3c34]/40"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1d3c34]/80 via-transparent to-[#1d3c34]/40"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1d3c34]/88 via-[#1d3c34]/25 to-[#1d3c34]/45"
         aria-hidden
       />
       <div
