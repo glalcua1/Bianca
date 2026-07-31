@@ -225,8 +225,6 @@ export default function HomeBiancaStoryMobile() {
           </div>
         </div>
       </section>
-
-      <WhyChooseDrawer open={whyChooseOpen} onOpenChange={setWhyChooseOpen} />
     </>
   );
 }
