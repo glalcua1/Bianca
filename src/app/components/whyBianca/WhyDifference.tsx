@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import EditorialEyebrow from "../editorial/EditorialEyebrow";
 import EditorialReveal from "../editorial/EditorialReveal";
 import ProtectedImage from "../protection/ProtectedImage";
@@ -6,17 +6,6 @@ import { WHY_DIFFERENCE_PILLARS } from "../../data/whyChooseBianca";
 
 export default function WhyDifference() {
   const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mq.matches) return;
-
-    const id = window.setInterval(() => {
-      setActive((prev) => (prev + 1) % WHY_DIFFERENCE_PILLARS.length);
-    }, 5000);
-    return () => window.clearInterval(id);
-  }, []);
-
   const current = WHY_DIFFERENCE_PILLARS[active];
 
   return (
@@ -35,39 +24,38 @@ export default function WhyDifference() {
           </h2>
         </EditorialReveal>
 
-        {/* Desktop: sticky visual + numbered list */}
-        <div className="hidden gap-12 lg:grid lg:grid-cols-2 lg:items-start">
-          <div className="sticky top-28">
-            <div className="relative aspect-[4/5] overflow-hidden bg-[#1d3c34]">
-              {WHY_DIFFERENCE_PILLARS.map((pillar, index) => (
-                <ProtectedImage
-                  key={pillar.id}
-                  src={pillar.image}
-                  alt={pillar.imageAlt}
-                  wrapperClassName={`absolute inset-0 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                    index === active ? "opacity-100" : "opacity-0"
-                  }`}
-                  className="size-full object-cover object-center"
-                  sizes="50vw"
-                  loading="lazy"
-                />
-              ))}
-              <div
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1d3c34]/50 via-transparent to-transparent"
-                aria-hidden
+        {/* Desktop: image + interactive numbered list */}
+        <div className="hidden items-stretch gap-10 lg:grid lg:grid-cols-2 lg:gap-14">
+          <div className="relative min-h-[560px] overflow-hidden bg-[#1d3c34]">
+            {WHY_DIFFERENCE_PILLARS.map((pillar, index) => (
+              <ProtectedImage
+                key={pillar.id}
+                src={pillar.image}
+                alt={pillar.imageAlt}
+                wrapperClassName={`absolute inset-0 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  index === active ? "opacity-100" : "opacity-0"
+                }`}
+                className="size-full object-cover object-center"
+                sizes="50vw"
+                loading="lazy"
               />
-              <div className="absolute inset-x-0 bottom-0 p-8">
-                <p className="font-editorial text-5xl tracking-[0.08em] text-[#f9f9f9]/30">
-                  {current.number}
-                </p>
-                <p className="mt-2 font-editorial text-2xl tracking-[0.06em] text-[#f9f9f9]">
-                  {current.title}
-                </p>
-              </div>
-            </div>
+            ))}
+            <div
+              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1d3c34]/40 via-transparent to-transparent"
+              aria-hidden
+            />
+            <p
+              className="pointer-events-none absolute bottom-8 left-8 font-editorial text-[11px] uppercase tracking-[0.28em] text-gold-on-forest"
+              aria-hidden
+            >
+              {current.number}
+            </p>
           </div>
 
-          <ul className="space-y-2" aria-label="Bianca difference pillars">
+          <ul
+            className="flex flex-col justify-center space-y-1"
+            aria-label="Bianca difference pillars"
+          >
             {WHY_DIFFERENCE_PILLARS.map((pillar, index) => {
               const isActive = index === active;
               return (
@@ -76,7 +64,7 @@ export default function WhyDifference() {
                     type="button"
                     onClick={() => setActive(index)}
                     onMouseEnter={() => setActive(index)}
-                    className={`w-full border-l-2 px-6 py-7 text-left transition-colors duration-500 ${
+                    className={`w-full border-l-2 px-6 py-6 text-left transition-colors duration-500 ${
                       isActive
                         ? "border-[#766d42] bg-[#faf8f5]"
                         : "border-transparent hover:border-[#766d42]/30 hover:bg-[#faf8f5]/60"
@@ -91,7 +79,7 @@ export default function WhyDifference() {
                     </h3>
                     <p
                       className={`mt-3 max-w-md text-house-body leading-relaxed text-on-cream-body transition-opacity duration-500 ${
-                        isActive ? "opacity-100" : "opacity-70"
+                        isActive ? "opacity-100" : "opacity-65"
                       }`}
                     >
                       {pillar.description}
