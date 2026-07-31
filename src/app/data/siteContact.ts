@@ -9,8 +9,18 @@ export const BIANCA_EMAIL = "bianca.labdiamonds@gmail.com";
 export const BIANCA_PHONE_DISPLAY = "+918130495257";
 export const BIANCA_PHONE_TEL = "tel:+918130495257";
 
-/** WhatsApp Business (+91 81304 95257) — no + or spaces for wa.me. */
+/**
+ * Consultation / enquiry WhatsApp (+91 81304 95257) — no + or spaces for wa.me.
+ * Used by appointment forms and piece enquiries.
+ */
 export const BIANCA_WHATSAPP_NUMBER = "918130495257";
+
+/**
+ * Footer “WhatsApp us” line (+91 88009 95921) — digits only for wa.me /
+ * web.whatsapp.com. Separate from consultation WhatsApp.
+ */
+export const BIANCA_WHATSAPP_CONTACT_DISPLAY = "+918800995921";
+export const BIANCA_WHATSAPP_CONTACT_NUMBER = "918800995921";
 
 export function buildConsultationWhatsAppUrl(lead: {
   clientName: string;

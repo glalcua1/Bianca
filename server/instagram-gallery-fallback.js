@@ -1,39 +1,39 @@
 /** Bundled gallery when Instagram profile API is rate-limited on Vercel. */
 export const INSTAGRAM_GALLERY_FALLBACK = [
   {
-    id: "DY3rsOrA4aL",
+    id: "DbYUdyKszZh",
     media_type: "VIDEO",
-    permalink: "https://www.instagram.com/reel/DY3rsOrA4aL/",
-    localImage: "/media/instagram/DY3rsOrA4aL.jpg",
+    permalink: "https://www.instagram.com/reel/DbYUdyKszZh/",
+    localImage: "/media/instagram/DbYUdyKszZh.jpg",
   },
   {
-    id: "DYkSjZngjVw",
+    id: "DbQnTicgLh8",
     media_type: "VIDEO",
-    permalink: "https://www.instagram.com/reel/DYkSjZngjVw/",
-    localImage: "/media/instagram/DYkSjZngjVw.jpg",
+    permalink: "https://www.instagram.com/reel/DbQnTicgLh8/",
+    localImage: "/media/instagram/DbQnTicgLh8.jpg",
   },
   {
-    id: "DYj6HnxAQ-Y",
-    media_type: "IMAGE",
-    permalink: "https://www.instagram.com/p/DYj6HnxAQ-Y/",
-    localImage: "/media/instagram/DYj6HnxAQ-Y.jpg",
-  },
-  {
-    id: "DY9gmoXAqzZ",
-    media_type: "IMAGE",
-    permalink: "https://www.instagram.com/p/DY9gmoXAqzZ/",
-    localImage: "/media/instagram/DY9gmoXAqzZ.jpg",
-  },
-  {
-    id: "DY9Wi9YkSKq",
-    media_type: "IMAGE",
-    permalink: "https://www.instagram.com/p/DY9Wi9YkSKq/",
-    localImage: "/media/instagram/DY9Wi9YkSKq.jpg",
-  },
-  {
-    id: "DY7DiqqAzb0",
+    id: "DbLHro5ggDo",
     media_type: "VIDEO",
-    permalink: "https://www.instagram.com/reel/DY7DiqqAzb0/",
-    localImage: "/media/instagram/DY7DiqqAzb0.jpg",
+    permalink: "https://www.instagram.com/reel/DbLHro5ggDo/",
+    localImage: "/media/instagram/DbLHro5ggDo.jpg",
+  },
+  {
+    id: "Da5NuFkgOz1",
+    media_type: "VIDEO",
+    permalink: "https://www.instagram.com/reel/Da5NuFkgOz1/",
+    localImage: "/media/instagram/Da5NuFkgOz1.jpg",
+  },
+  {
+    id: "DaxpIkVgdzT",
+    media_type: "VIDEO",
+    permalink: "https://www.instagram.com/reel/DaxpIkVgdzT/",
+    localImage: "/media/instagram/DaxpIkVgdzT.jpg",
+  },
+  {
+    id: "DapwUmWAmXh",
+    media_type: "VIDEO",
+    permalink: "https://www.instagram.com/reel/DapwUmWAmXh/",
+    localImage: "/media/instagram/DapwUmWAmXh.jpg",
   },
 ];
