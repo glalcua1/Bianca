@@ -64,38 +64,29 @@ export default function HomeBiancaStoryMobile() {
 
               <p className="mt-8 font-display text-[20px] leading-[1.45] text-[#1d3c34] md:text-[22px] md:leading-[1.5]">
                 <span className="font-emphasis not-italic">
-                  Bianca Diamonds represents a new era of diamond luxury
+                  Luxury, made personal.
                 </span>
-                .
               </p>
 
               <div className="mt-7 space-y-5 font-display text-[15px] leading-[1.75] text-on-cream-body sm:text-[16px]">
                 <p>
-                  Created for the modern woman, Bianca brings together timeless
-                  elegance and conscious innovation through{" "}
+                  Choosing a diamond is about trust, craftsmanship, and finding
+                  something uniquely yours—not simply selecting from what
+                  happens to be available.
+                </p>
+                <p>
+                  Bianca combines{" "}
                   <span className="font-emphasis not-italic text-[#1d3c34]">
                     certified lab-grown diamonds
-                  </span>{" "}
-                  — real diamonds with the same brilliance and beauty as mined
-                  diamonds, created using advanced technology with a more
-                  thoughtful impact on the world.
-                </p>
-                <p>
-                  Each piece is crafted in{" "}
+                  </span>
+                  , contemporary design and personalised craftsmanship in{" "}
                   <span className="font-emphasis not-italic text-[#1d3c34]">
                     BIS hallmarked gold
-                  </span>{" "}
-                  and certified diamonds, designed to celebrate both everyday
-                  elegance and life&apos;s most meaningful moments.
-                </p>
-                <p>
-                  Behind Bianca stands over 80 years of family jewellery
-                  expertise, built on trust, craftsmanship, and a deep
-                  understanding of diamonds.
+                  </span>
+                  —backed by over 80 years of family jewellery expertise.
                 </p>
                 <p className="font-display text-[#1d3c34]">
-                  Bianca Diamonds is where modern brilliance meets timeless
-                  luxury.
+                  Personal. Transparent. Uncompromising on quality.
                 </p>
               </div>
 
