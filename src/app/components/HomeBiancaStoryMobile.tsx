@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { Link } from "react-router";
 import imgPackagingBox from "figma:asset/bianca-diamonds-presentation-box.png";
 import imgPackagingBag from "figma:asset/bianca-diamonds-packaging-bag.png";
 import imgImage1 from "figma:asset/bianca-diamonds-atelier-atmosphere.png";
 import ProtectedImage from "./protection/ProtectedImage";
 import EditorialReveal from "./editorial/EditorialReveal";
-import WhyChooseDrawer from "./whyBianca/WhyChooseDrawer";
+import { WHY_CHOOSE_BIANCA_PATH } from "../data/whyChooseBianca";
 
 const SUPPORTING = [
   {
@@ -28,8 +28,6 @@ const SUPPORTING = [
 ] as const;
 
 export default function HomeBiancaStoryMobile() {
-  const [whyChooseOpen, setWhyChooseOpen] = useState(false);
-
   return (
     <>
       {/* Brand story — copy left, all imagery composed in the right column */}
@@ -91,11 +89,8 @@ export default function HomeBiancaStoryMobile() {
               </div>
 
               <div className="mt-10">
-                <button
-                  type="button"
-                  onClick={() => setWhyChooseOpen(true)}
-                  aria-haspopup="dialog"
-                  aria-expanded={whyChooseOpen}
+                <Link
+                  to={WHY_CHOOSE_BIANCA_PATH}
                   className="group inline-flex items-center gap-3 font-editorial text-[12px] uppercase tracking-[0.2em] text-gold-on-cream transition-colors hover:text-[#524a28]"
                 >
                   <span className="relative">
@@ -111,7 +106,7 @@ export default function HomeBiancaStoryMobile() {
                   >
                     →
                   </span>
-                </button>
+                </Link>
               </div>
             </EditorialReveal>
 
