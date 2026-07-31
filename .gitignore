@@ -16,3 +16,6 @@ __pycache__/
 .env*
 # Master mobile hero film — ship optimized Hero_mobile.mp4 instead
 public/Hero_mobile.mov
+
+# Local demo artifacts
+artifacts/
