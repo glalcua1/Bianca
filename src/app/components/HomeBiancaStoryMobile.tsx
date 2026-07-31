@@ -1,8 +1,10 @@
+import { useState } from "react";
 import imgPackagingBox from "figma:asset/bianca-diamonds-presentation-box.png";
 import imgPackagingBag from "figma:asset/bianca-diamonds-packaging-bag.png";
 import imgImage1 from "figma:asset/bianca-diamonds-atelier-atmosphere.png";
 import ProtectedImage from "./protection/ProtectedImage";
 import EditorialReveal from "./editorial/EditorialReveal";
+import WhyChooseDrawer from "./whyBianca/WhyChooseDrawer";
 
 const SUPPORTING = [
   {
@@ -26,6 +28,8 @@ const SUPPORTING = [
 ] as const;
 
 export default function HomeBiancaStoryMobile() {
+  const [whyChooseOpen, setWhyChooseOpen] = useState(false);
+
   return (
     <>
       {/* Brand story — copy left, all imagery composed in the right column */}
@@ -93,6 +97,30 @@ export default function HomeBiancaStoryMobile() {
                   Bianca Diamonds is where modern brilliance meets timeless
                   luxury.
                 </p>
+              </div>
+
+              <div className="mt-10">
+                <button
+                  type="button"
+                  onClick={() => setWhyChooseOpen(true)}
+                  aria-haspopup="dialog"
+                  aria-expanded={whyChooseOpen}
+                  className="group inline-flex items-center gap-3 font-editorial text-[12px] uppercase tracking-[0.2em] text-gold-on-cream transition-colors hover:text-[#524a28]"
+                >
+                  <span className="relative">
+                    Why Choose Bianca Diamonds?
+                    <span
+                      className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-[#766d42]/70 transition-transform duration-500 group-hover:scale-x-100 motion-reduce:scale-x-100"
+                      aria-hidden
+                    />
+                  </span>
+                  <span
+                    aria-hidden
+                    className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-2"
+                  >
+                    →
+                  </span>
+                </button>
               </div>
             </EditorialReveal>
 
@@ -207,6 +235,8 @@ export default function HomeBiancaStoryMobile() {
           </div>
         </div>
       </section>
+
+      <WhyChooseDrawer open={whyChooseOpen} onOpenChange={setWhyChooseOpen} />
     </>
   );
 }
