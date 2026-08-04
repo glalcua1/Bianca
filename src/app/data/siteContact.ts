@@ -81,6 +81,9 @@ export function consultationSourcePage(pathname: string): string {
   if (pathname.startsWith("/golden-ratio-evaluation")) return "golden-ratio-evaluation";
   if (pathname.startsWith("/lab-grown-diamond-faq")) return "lab-grown-faq";
   if (pathname.startsWith("/why-bianca-diamonds")) return "why-choose-bianca";
+  if (pathname.startsWith("/jewellery-purchase-plan")) {
+    return "jewellery-purchase-plan";
+  }
   if (pathname.startsWith("/contact")) return "contact";
   return "site";
 }

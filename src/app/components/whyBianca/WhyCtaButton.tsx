@@ -24,6 +24,7 @@ type Props = {
   to?: string;
   onClick?: () => void;
   type?: "button" | "submit";
+  disabled?: boolean;
 };
 
 export default function WhyCtaButton({
@@ -33,6 +34,7 @@ export default function WhyCtaButton({
   to,
   onClick,
   type = "button",
+  disabled = false,
 }: Props) {
   const classes = `${baseClass} ${variants[variant]} ${className}`;
 
@@ -45,7 +47,12 @@ export default function WhyCtaButton({
   }
 
   return (
-    <button type={type} className={classes} onClick={onClick}>
+    <button
+      type={type}
+      className={classes}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {children}
     </button>
   );
