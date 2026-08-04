@@ -421,36 +421,69 @@ function useSupabase() {
   return hasSupabaseConfig();
 }
 
+function onServerlessRuntime() {
+  return Boolean(
+    process.env.VERCEL ||
+      process.env.AWS_LAMBDA_FUNCTION_NAME ||
+      process.env.VERCEL_ENV,
+  );
+}
+
+function allowEphemeralSqlite() {
+  return process.env.JPP_ALLOW_EPHEMERAL_SQLITE === "1";
+}
+
+function assertStorageReady() {
+  if (useSupabase()) return;
+  if (!onServerlessRuntime()) return;
+  if (allowEphemeralSqlite()) return;
+  const error = new Error(
+    "JPP_STORAGE_NOT_CONFIGURED: Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY for durable production storage. Ephemeral SQLite on Vercel can lose data and mint duplicate JPP numbers across instances.",
+  );
+  error.code = "JPP_STORAGE_NOT_CONFIGURED";
+  throw error;
+}
+
 export function getJppStorageMode() {
-  return useSupabase() ? "supabase" : "sqlite";
+  if (useSupabase()) return "supabase";
+  if (onServerlessRuntime() && !allowEphemeralSqlite()) {
+    return "unconfigured";
+  }
+  return "sqlite";
 }
 
 export async function registerJppCustomer(input) {
+  assertStorageReady();
   if (useSupabase()) return supabaseRegisterCustomer(input);
   return sqliteRegisterCustomer(input);
 }
 
 export async function findJppCustomerByMobile(mobile) {
+  assertStorageReady();
   if (useSupabase()) return supabaseFindByMobile(mobile);
   return sqliteFindByMobile(mobile);
 }
 
 export async function listJppCustomers(filters) {
+  assertStorageReady();
   if (useSupabase()) return supabaseListCustomers(filters);
   return sqliteListCustomers(filters);
 }
 
 export async function getJppStats() {
+  assertStorageReady();
   if (useSupabase()) return supabaseGetStats();
   return sqliteGetStats();
 }
 
 export async function updateJppCustomerStatus(id, status) {
+  assertStorageReady();
   if (useSupabase()) return supabaseUpdateStatus(id, status);
   return sqliteUpdateStatus(id, status);
 }
 
 export async function getJppCustomerById(id) {
+  assertStorageReady();
   if (useSupabase()) return supabaseGetById(id);
   return sqliteGetById(id);
 }

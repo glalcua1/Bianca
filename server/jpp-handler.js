@@ -143,6 +143,20 @@ export async function handleJppRegister(body) {
   } catch (error) {
     console.error("[jpp] register failed", error);
     const detail = String(error?.message || error || "");
+    if (
+      error?.code === "JPP_STORAGE_NOT_CONFIGURED" ||
+      detail.includes("JPP_STORAGE_NOT_CONFIGURED")
+    ) {
+      return {
+        status: 503,
+        body: {
+          ok: false,
+          error:
+            "Registration is temporarily unavailable. Bianca is finishing secure storage setup — please try again shortly, or contact Bianca Diamonds directly.",
+          code: "storage_not_configured",
+        },
+      };
+    }
     const needsSupabase =
       /readonly|read-only|EROFS|EACCES|Could not locate the bindings/i.test(
         detail,
