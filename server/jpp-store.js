@@ -11,6 +11,36 @@ import {
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+/** Embedded so Vercel serverless bundles always include the schema. */
+const SQLITE_SCHEMA = `
+CREATE TABLE IF NOT EXISTS jpp_customers (
+  id TEXT PRIMARY KEY,
+  full_name TEXT NOT NULL,
+  mobile_number TEXT NOT NULL UNIQUE,
+  email TEXT,
+  jpp_number TEXT NOT NULL UNIQUE,
+  status TEXT NOT NULL DEFAULT 'activation_pending'
+    CHECK (status IN ('registered', 'activation_pending', 'active', 'completed')),
+  consent INTEGER NOT NULL DEFAULT 0,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+  activated_at TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_jpp_customers_created_at
+  ON jpp_customers (created_at DESC);
+
+CREATE INDEX IF NOT EXISTS idx_jpp_customers_status
+  ON jpp_customers (status);
+
+CREATE TABLE IF NOT EXISTS jpp_number_sequence (
+  id INTEGER PRIMARY KEY CHECK (id = 1),
+  last_value INTEGER NOT NULL DEFAULT 0
+);
+
+INSERT OR IGNORE INTO jpp_number_sequence (id, last_value) VALUES (1, 0);
+`;
+
 /** @typedef {'registered' | 'activation_pending' | 'active' | 'completed'} JppStatus */
 
 /**
@@ -53,18 +83,28 @@ function normalizeCustomer(row) {
 
 let sqliteDb;
 
+function resolveSqliteDbPath() {
+  // Vercel/serverless filesystems are read-only except /tmp.
+  const onServerless = Boolean(
+    process.env.VERCEL ||
+      process.env.AWS_LAMBDA_FUNCTION_NAME ||
+      process.env.VERCEL_ENV,
+  );
+  const dbDir = onServerless
+    ? path.join("/tmp", "bianca-jpp")
+    : path.resolve(__dirname, "../database");
+  return { dbDir, dbPath: path.join(dbDir, "jpp_customers.db") };
+}
+
 function getSqliteDb() {
   if (sqliteDb) return sqliteDb;
 
-  const dbDir = path.resolve(__dirname, "../database");
+  const { dbDir, dbPath } = resolveSqliteDbPath();
   if (!fs.existsSync(dbDir)) fs.mkdirSync(dbDir, { recursive: true });
-
-  const dbPath = path.join(dbDir, "jpp_customers.db");
-  const schemaPath = path.join(dbDir, "jpp-schema.sql");
 
   sqliteDb = new Database(dbPath);
   sqliteDb.pragma("journal_mode = WAL");
-  sqliteDb.exec(fs.readFileSync(schemaPath, "utf8"));
+  sqliteDb.exec(SQLITE_SCHEMA);
   return sqliteDb;
 }
 
