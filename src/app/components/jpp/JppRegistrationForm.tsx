@@ -92,7 +92,10 @@ export default function JppRegistrationForm({
         return;
       }
 
-      setFormError(result.error || "Unable to complete registration.");
+      setFormError(
+        result.error ||
+          "Unable to complete registration. Please call or WhatsApp Bianca Diamonds for assistance.",
+      );
     } catch {
       setFormError("Unable to complete registration. Please try again.");
     } finally {
