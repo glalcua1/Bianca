@@ -27,6 +27,13 @@ const GoldenRatioEvaluationPage = lazy(
 const WhyChooseBiancaPage = lazy(
   () => import("./pages/WhyChooseBiancaPage"),
 );
+const JewelleryPurchasePlanPage = lazy(
+  () => import("./pages/JewelleryPurchasePlanPage"),
+);
+const AdminLoginPage = lazy(() => import("./pages/admin/AdminLoginPage"));
+const AdminDashboardPage = lazy(
+  () => import("./pages/admin/AdminDashboardPage"),
+);
 
 function RouteFallback() {
   return (
@@ -81,6 +88,12 @@ export default function App() {
               element={<WhyChooseBiancaPage />}
             />
             <Route path="/contact" element={<ContactPage />} />
+            <Route
+              path="/jewellery-purchase-plan"
+              element={<JewelleryPurchasePlanPage />}
+            />
+            <Route path="/admin/login" element={<AdminLoginPage />} />
+            <Route path="/admin" element={<AdminDashboardPage />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

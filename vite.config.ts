@@ -7,6 +7,7 @@ import { consultationApiPlugin } from './server/vite-consultation-api-plugin.js'
 import { instagramApiPlugin } from './server/vite-instagram-api-plugin.js'
 import { goldenRatioApiPlugin } from './server/vite-golden-ratio-api-plugin.js'
 import { exchangeRatesApiPlugin } from './server/vite-exchange-rates-api-plugin.js'
+import { jppApiPlugin } from './server/vite-jpp-api-plugin.js'
 
 /** First-level public/ subfolders copied into dist (copyPublicDir is off). */
 function getPublicSubdirectories(publicDir: string): string[] {
@@ -124,6 +125,7 @@ export default defineConfig({
     instagramApiPlugin(),
     goldenRatioApiPlugin(),
     exchangeRatesApiPlugin(),
+    jppApiPlugin(),
     // The React and Tailwind plugins are both required for Make, even if
     // Tailwind is not being actively used – do not remove them
     react(),

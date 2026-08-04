@@ -97,6 +97,18 @@ export default function SiteFooter() {
                   Lab-Grown Diamond FAQs
                 </button>
               </li>
+              <li className="col-span-2 md:col-span-1">
+                <Link
+                  to="/jewellery-purchase-plan"
+                  className={`block font-editorial text-[13px] uppercase tracking-[0.14em] transition-colors md:text-[14px] md:tracking-[0.16em] ${
+                    pathname.startsWith("/jewellery-purchase-plan")
+                      ? "text-gold-on-forest"
+                      : "text-on-forest-body hover:text-on-forest"
+                  }`}
+                >
+                  Jewellery Purchase Plan
+                </Link>
+              </li>
             </ul>
           </nav>
 
