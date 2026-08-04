@@ -1,55 +1,118 @@
+import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
-import EditorialEyebrow from "../editorial/EditorialEyebrow";
-import WhyCtaButton from "../whyBianca/WhyCtaButton";
-import { JPP_COPY } from "../../data/jppConfig";
+import { Phone } from "lucide-react";
+import {
+  JPP_COPY,
+  JPP_HERO_VIDEO,
+  getJppPublicConfig,
+} from "../../data/jppConfig";
+import { trackJppEvent } from "../../lib/jppAnalytics";
 
 type Props = {
-  onRegister: () => void;
-  onHowItWorks: () => void;
+  onExplorePlans: () => void;
 };
 
-export default function JppHero({ onRegister, onHowItWorks }: Props) {
-  return (
-    <header className="relative min-h-[88vh] overflow-hidden bg-[#1d3c34] md:min-h-[92vh]">
-      <img
-        src="/bianca-diamonds-blue-diamond-editorial.jpg"
-        alt="Bianca Diamonds jewellery"
-        className="absolute inset-0 h-full w-full object-cover object-[center_30%] md:object-center"
-        fetchPriority="high"
-      />
-      <div
-        className="absolute inset-0 bg-gradient-to-t from-[#1d3c34] via-[#1d3c34]/72 to-[#1d3c34]/35"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_20%,rgba(220,203,123,0.14),transparent_60%)]"
-        aria-hidden
-      />
+export default function JppHero({ onExplorePlans }: Props) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const config = getJppPublicConfig();
 
-      <div className="relative mx-auto flex min-h-[88vh] max-w-5xl flex-col items-center justify-end px-6 pb-16 pt-28 text-center md:min-h-[92vh] md:justify-center md:pb-24 md:pt-32">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <EditorialEyebrow tone="gold" className="mb-5">
-            {JPP_COPY.eyebrow}
-          </EditorialEyebrow>
-          <h1 className="font-editorial text-[clamp(2.4rem,6vw,4.25rem)] font-normal leading-[1.05] tracking-[0.04em] text-[#f9f9f9]">
-            {JPP_COPY.headline}
-          </h1>
-          <p className="mx-auto mt-6 max-w-xl text-house-body leading-relaxed text-on-forest-body">
-            {JPP_COPY.support}
-          </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <WhyCtaButton variant="primary-light" onClick={onRegister}>
-              {JPP_COPY.primaryCta}
-            </WhyCtaButton>
-            <WhyCtaButton variant="ghost-light" onClick={onHowItWorks}>
-              {JPP_COPY.secondaryCta}
-            </WhyCtaButton>
-          </div>
-        </motion.div>
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    const play = video.play();
+    if (play && typeof play.catch === "function") {
+      play.catch(() => {
+        /* autoplay may be blocked */
+      });
+    }
+  }, []);
+
+  return (
+    <header className="relative overflow-hidden bg-[#f4f0e6]">
+      {/* Desktop: absolute right video = true edge-to-edge, full hero height */}
+      <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 lg:block">
+        <video
+          ref={videoRef}
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          src={JPP_HERO_VIDEO}
+          poster="/bianca-diamonds-lab-grown-jewellery-hero-poster.webp"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden
+        />
+      </div>
+
+      <div className="relative grid min-h-[min(92vh,920px)] lg:grid-cols-2">
+        {/* Mobile video — full bleed, no side padding */}
+        <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#1d3c34] sm:aspect-[16/10] lg:hidden">
+          <video
+            className="absolute inset-0 h-full w-full object-cover object-center"
+            src={JPP_HERO_VIDEO}
+            poster="/bianca-diamonds-lab-grown-jewellery-hero-poster.webp"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label="Bianca Diamonds jewellery film"
+          />
+        </div>
+
+        {/* Left — editorial copy */}
+        <div className="relative z-10 flex flex-col justify-center px-6 py-14 sm:px-10 lg:col-start-1 lg:px-14 xl:px-20">
+          <div
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_20%_40%,rgba(220,203,123,0.16),transparent_55%)]"
+            aria-hidden
+          />
+          <motion.div
+            className="relative max-w-xl"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <p className="text-house-eyebrow text-gold-on-cream">
+              {JPP_COPY.eyebrow}
+            </p>
+            <p className="mt-4 font-editorial text-[12px] uppercase tracking-[0.28em] text-[#1d3c34]/70">
+              Jewellery Purchase Plan
+            </p>
+            <h1 className="mt-5 font-editorial text-[clamp(2.35rem,5.2vw,3.85rem)] font-normal leading-[1.05] tracking-[0.04em] text-[#1d3c34]">
+              {JPP_COPY.headline}
+            </h1>
+            <p className="mt-6 max-w-md text-house-body leading-relaxed text-on-cream-body">
+              {JPP_COPY.support}
+            </p>
+
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href={config.phoneTel}
+                onClick={() => trackJppEvent("jpp_call_bianca_clicked")}
+                className="inline-flex min-w-[220px] items-center justify-center gap-2.5 border border-[#1d3c34] bg-[#1d3c34] px-8 py-3.5 text-house-cta text-[#faf8f5] transition-colors duration-500 hover:bg-transparent hover:text-bianca-forest"
+              >
+                <Phone className="size-4" strokeWidth={1.25} aria-hidden />
+                {JPP_COPY.primaryCta}
+              </a>
+              <button
+                type="button"
+                onClick={onExplorePlans}
+                className="inline-flex min-w-[200px] justify-center border border-[#1d3c34]/30 px-8 py-3.5 text-house-cta text-[#1d3c34] transition-colors duration-500 hover:border-[#1d3c34] hover:bg-[#1d3c34]/5"
+              >
+                {JPP_COPY.secondaryCta}
+              </button>
+            </div>
+
+            <p className="mt-8 font-editorial text-[13px] tracking-[0.04em] text-on-cream-muted">
+              {config.phoneDisplay}
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Desktop spacer column so grid height includes right half */}
+        <div className="relative hidden lg:block" aria-hidden />
       </div>
     </header>
   );
