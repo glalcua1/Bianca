@@ -1,4 +1,3 @@
-import * as XLSX from "xlsx";
 import { authenticateAdmin, requireAdmin } from "./jpp-auth.js";
 import { getJppServerConfig } from "./jpp-config.js";
 import {
@@ -143,11 +142,18 @@ export async function handleJppRegister(body) {
     };
   } catch (error) {
     console.error("[jpp] register failed", error);
+    const detail = String(error?.message || error || "");
+    const needsSupabase =
+      /readonly|read-only|EROFS|EACCES|Could not locate the bindings/i.test(
+        detail,
+      );
     return {
       status: 500,
       body: {
         ok: false,
-        error: "Unable to complete registration. Please try again.",
+        error: needsSupabase
+          ? "Registration storage is unavailable. Configure Supabase (SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY) for production."
+          : "Unable to complete registration. Please try again.",
       },
     };
   }
@@ -277,6 +283,7 @@ export async function handleJppAdminExport(req, query = {}) {
       "Activation Date": c.activated_at || "",
     }));
 
+    const XLSX = await import("xlsx");
     const sheet = XLSX.utils.json_to_sheet(rows);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, sheet, "Customers");
