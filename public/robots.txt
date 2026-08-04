@@ -7,5 +7,7 @@ Allow: /
 # Tool / internal evaluation routes — low value for discovery
 Disallow: /calculator
 Disallow: /golden-ratio-evaluation
+Disallow: /admin
+Disallow: /admin/
 
 Sitemap: https://www.biancadiamonds.com/sitemap.xml
