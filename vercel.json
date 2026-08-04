@@ -151,6 +151,10 @@
       "destination": "/api/$1"
     },
     {
+      "source": "/hf_20260717_034508_b9a6d8dc-5d27-497c-989f-45c42255784d.mp4",
+      "destination": "/bianca-diamonds-lab-grown-jewellery-hero.mp4"
+    },
+    {
       "source": "/((?!.*\\.).*)",
       "destination": "/index.html"
     }

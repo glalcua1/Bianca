@@ -2,30 +2,21 @@ import { useEffect, useState } from "react";
 import SiteNav from "../components/SiteNav";
 import SiteFooter from "../components/SiteFooter";
 import JppHero from "../components/jpp/JppHero";
-import JppPlanOverview from "../components/jpp/JppPlanOverview";
+import JppPlans from "../components/jpp/JppPlans";
+import JppCalculator from "../components/jpp/JppCalculator";
 import JppHowItWorks from "../components/jpp/JppHowItWorks";
-import JppRegistrationForm from "../components/jpp/JppRegistrationForm";
-import JppSuccess from "../components/jpp/JppSuccess";
+import JppTerms from "../components/jpp/JppTerms";
+import JppFinalCta from "../components/jpp/JppFinalCta";
 import JppStickyCta from "../components/jpp/JppStickyCta";
 import { usePageMeta } from "../hooks/usePageMeta";
-import {
-  JPP_SEO,
-  type JppPaymentDetails,
-  type JppPublicCustomer,
-} from "../data/jppConfig";
+import { JPP_SEO } from "../data/jppConfig";
 import { trackJppEvent } from "../lib/jppAnalytics";
 
 function scrollToId(id: string) {
-  const el = document.getElementById(id);
-  el?.scrollIntoView({ behavior: "smooth", block: "start" });
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 export default function JewelleryPurchasePlanPage() {
-  const [result, setResult] = useState<{
-    customer: JppPublicCustomer;
-    payment: JppPaymentDetails;
-    duplicate?: boolean;
-  } | null>(null);
   const [showSticky, setShowSticky] = useState(false);
 
   usePageMeta(JPP_SEO.title, JPP_SEO.description, {
@@ -39,30 +30,17 @@ export default function JewelleryPurchasePlanPage() {
 
   useEffect(() => {
     function onScroll() {
-      const register = document.getElementById("register");
-      const confirmation = document.getElementById("jpp-confirmation");
-      if (!register) {
-        setShowSticky(false);
-        return;
-      }
-      const registerTop = register.getBoundingClientRect().top;
-      const confirmationVisible = Boolean(
-        confirmation && confirmation.getBoundingClientRect().top < window.innerHeight,
+      const finalCta = document.getElementById("terms");
+      const pastHero = window.scrollY > 520;
+      const nearEnd = Boolean(
+        finalCta && finalCta.getBoundingClientRect().top < window.innerHeight * 0.55,
       );
-      setShowSticky(
-        window.scrollY > 420 && registerTop > 120 && !result && !confirmationVisible,
-      );
+      setShowSticky(pastHero && !nearEnd);
     }
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [result]);
-
-  useEffect(() => {
-    if (result) {
-      scrollToId("jpp-confirmation");
-    }
-  }, [result]);
+  }, []);
 
   return (
     <main className="min-h-screen bg-[#faf8f5] pb-20 md:pb-0" data-protected-page>
@@ -70,45 +48,13 @@ export default function JewelleryPurchasePlanPage() {
         <SiteNav />
       </div>
 
-      {!result ? (
-        <>
-          <JppHero
-            onRegister={() => scrollToId("register")}
-            onHowItWorks={() => scrollToId("how-it-works")}
-          />
-          <JppPlanOverview />
-          <JppHowItWorks />
-          <JppRegistrationForm
-            onSuccess={(customer, payment) =>
-              setResult({ customer, payment, duplicate: false })
-            }
-            onDuplicate={(customer) => {
-              if (!customer) return;
-              setResult({
-                customer,
-                payment: {
-                  bankName: "",
-                  accountNumber: "",
-                  ifsc: null,
-                  ifscConfigured: false,
-                  accountType: "",
-                },
-                duplicate: true,
-              });
-            }}
-          />
-          <JppStickyCta
-            visible={showSticky}
-            onRegister={() => scrollToId("register")}
-          />
-        </>
-      ) : (
-        <JppSuccess
-          customer={result.customer}
-          payment={result.payment}
-          duplicate={result.duplicate}
-        />
-      )}
+      <JppHero onExplorePlans={() => scrollToId("plans")} />
+      <JppPlans />
+      <JppCalculator />
+      <JppHowItWorks />
+      <JppTerms />
+      <JppFinalCta />
+      <JppStickyCta visible={showSticky} />
 
       <SiteFooter />
     </main>
