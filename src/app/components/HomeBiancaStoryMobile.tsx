@@ -147,82 +147,103 @@ export default function HomeBiancaStoryMobile() {
         </div>
       </section>
 
-      {/* Founder's note — portrait left, wide copy right */}
+      {/* Founder's message — editorial portrait + voice */}
       <section
         aria-labelledby="founder-note-heading"
-        className="relative overflow-hidden bg-[#1d3c34] px-4 py-14 md:px-8 md:py-16 lg:px-10 lg:py-20"
+        className="relative overflow-hidden bg-[#1d3c34]"
       >
         <div
-          className="pointer-events-none absolute -right-16 top-1/3 h-64 w-64 rotate-[5.64deg] opacity-40 md:h-[420px] md:w-[420px]"
-          style={{
-            backgroundImage:
-              "linear-gradient(104.979deg, rgb(118, 109, 66) 2.7164%, rgb(220, 203, 123) 86.291%)",
-          }}
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_85%_15%,rgba(220,203,123,0.14),transparent_55%),radial-gradient(ellipse_50%_40%_at_10%_90%,rgba(118,109,66,0.12),transparent_50%)]"
           aria-hidden
         />
 
-        <div className="relative mx-auto flex max-w-[1400px] flex-col gap-10 md:flex-row md:items-start md:gap-14 lg:gap-16">
-          <h2 id="founder-note-heading" className="sr-only">
-            Founder&apos;s note
-          </h2>
+        <div className="relative mx-auto grid max-w-[1400px] lg:grid-cols-12 lg:items-stretch">
+          {/* Portrait — full-bleed on mobile; tall editorial plate on desktop */}
+          <EditorialReveal className="relative lg:col-span-5 xl:col-span-4">
+            <div className="relative aspect-[4/5] w-full overflow-hidden sm:aspect-[3/4] lg:aspect-auto lg:h-full lg:min-h-[640px]">
+              <ProtectedImage
+                wrapperClassName="absolute inset-0 size-full"
+                src="/shweta-lal-bianca-diamonds-founder.jpg"
+                alt="Shweta Lal, Founder of Bianca Diamonds"
+                className="size-full object-cover object-[center_18%]"
+                sizes="(max-width: 1024px) 100vw, 42vw"
+              />
+              <div
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1d3c34]/55 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#1d3c34]/35"
+                aria-hidden
+              />
+            </div>
+          </EditorialReveal>
 
-          <div
-            className="relative mx-auto w-[min(78%,248px)] shrink-0 overflow-hidden rounded-[12px] shadow-[0_12px_40px_rgba(0,0,0,0.28)] md:mx-0 md:w-[280px] lg:w-[320px]"
-            style={{ aspectRatio: "248 / 360" }}
+          {/* Message */}
+          <EditorialReveal
+            delay={140}
+            className="flex flex-col justify-center px-6 py-14 sm:px-10 md:px-12 lg:col-span-7 lg:px-14 lg:py-20 xl:col-span-8 xl:px-20 xl:py-24"
           >
-            <ProtectedImage
-              wrapperClassName="absolute inset-0 size-full"
-              src="/shweta-lal-bianca-diamonds-founder.jpg"
-              alt="Shweta Lal, Founder of Bianca Diamonds"
-              className="size-full object-cover object-top"
+            <p className="text-house-eyebrow text-gold-on-forest">
+              A note from the founder
+            </p>
+            <h2
+              id="founder-note-heading"
+              className="mt-5 max-w-xl font-editorial text-[clamp(1.65rem,3.4vw,2.55rem)] leading-[1.2] tracking-[0.04em] text-[#f9f9f9]"
+            >
+              Jewellery should feel like her — confident, graceful, and
+              unmistakably her own.
+            </h2>
+            <div
+              className="mt-7 h-px w-14 bg-gradient-to-r from-[#dccb7b]/80 to-transparent"
+              aria-hidden
             />
-          </div>
 
-          <div className="min-w-0 flex-1 space-y-5 font-display text-[16px] leading-[1.65] tracking-[0.5px] text-on-forest md:pt-2 lg:text-[17px]">
-            <p>
-              Jewellery has always held a special place in the way a woman
-              expresses herself. A thoughtfully chosen piece can elevate not only
-              how she looks, but how she feels — confident, graceful, and
-              unmistakably herself.
-            </p>
-            <p>
-              My journey began with a deep interest in fashion styling and
-              personal jewellery curation, where I worked closely with clients to
-              create pieces that reflected their individuality and sense of
-              elegance. Over time, this passion evolved into a vision: to create a
-              brand that celebrates beauty while embracing the changing values of
-              our time.
-            </p>
-            <p>
-              This vision became{" "}
-              <span className="font-emphasis">Bianca Diamonds</span>.
-            </p>
-            <p>
-              At Bianca, we believe that luxury should evolve with the modern
-              woman — intelligent, conscious, and confident in her choices.
-              Through certified lab-grown diamonds, we bring the same
-              extraordinary brilliance of traditional diamonds while embracing a
-              more responsible and forward-looking approach to fine jewellery.
-            </p>
-            <p>
-              Our goal is to create pieces that women can wear not just for
-              occasions, but as an expression of their identity and style. Bianca
-              is more than jewellery. It is modern brilliance, thoughtfully
-              chosen.
-            </p>
-            <p>
+            <div className="mt-8 max-w-xl space-y-5 font-display text-[15px] leading-[1.8] tracking-[0.02em] text-on-forest-body sm:text-[16px]">
+              <p>
+                Jewellery has always held a special place in the way a woman
+                expresses herself. A thoughtfully chosen piece can elevate not
+                only how she looks, but how she feels.
+              </p>
+              <p>
+                My journey began in fashion styling and personal jewellery
+                curation — working closely with clients to create pieces that
+                reflected their individuality. That passion became a vision: a
+                house that celebrates beauty while embracing the changing values
+                of our time.
+              </p>
+              <p>
+                That vision is{" "}
+                <span className="font-emphasis text-on-forest">
+                  Bianca Diamonds
+                </span>
+                .
+              </p>
+              <p>
+                We believe luxury should evolve with the modern woman —
+                intelligent, conscious, and confident in her choices. Through
+                certified lab-grown diamonds, we offer the brilliance of fine
+                jewellery with a more responsible, forward-looking approach.
+              </p>
+              <p>
+                Bianca is more than jewellery. It is modern brilliance,
+                thoughtfully chosen — pieces meant not only for occasions, but
+                as an expression of identity and style.
+              </p>
+            </div>
+
+            <footer className="mt-10 max-w-xl border-t border-[#dccb7b]/25 pt-7">
               <a
                 href="https://www.linkedin.com/in/shwetalal-bianca/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-emphasis transition-colors hover:text-[#dccb7b]"
+                className="group inline-flex flex-col"
               >
-                Shweta Lal
+                <span className="font-editorial text-[18px] tracking-[0.06em] text-[#f9f9f9] transition-colors group-hover:text-[#dccb7b]">
+                  Shweta Lal
+                </span>
+                <span className="mt-1.5 text-[11px] uppercase tracking-[0.22em] text-gold-on-forest">
+                  Founder, Bianca Diamonds
+                </span>
               </a>
-              <br />
-              Founder, Bianca Diamonds
-            </p>
-          </div>
+            </footer>
+          </EditorialReveal>
         </div>
       </section>
     </>
