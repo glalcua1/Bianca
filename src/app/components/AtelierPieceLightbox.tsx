@@ -25,12 +25,15 @@ type Props = {
   onActiveIndexChange: (index: number) => void;
 };
 
-/** Shared well — fills the available media cell so every piece is the same size. */
+/**
+ * Shared well — image/video box fills the media cell; object-fit: contain scales
+ * the piece as large as possible without cropping (fit, never cover/fill).
+ */
 const SALON_MEDIA_FRAME =
-  "relative mx-auto flex size-full max-h-full max-w-full items-center justify-center overflow-hidden [&_img]:max-h-full [&_img]:max-w-full [&_img]:object-contain [&_picture]:flex [&_picture]:size-full [&_picture]:items-center [&_picture]:justify-center [&_video]:max-h-full [&_video]:max-w-full [&_video]:object-contain";
+  "relative mx-auto flex size-full max-h-full max-w-full items-center justify-center overflow-hidden [&_picture]:block [&_picture]:size-full [&_img]:!h-full [&_img]:!w-full [&_img]:!max-h-full [&_img]:!max-w-full [&_img]:object-contain [&_img]:object-center [&_video]:h-full [&_video]:w-full [&_video]:max-h-full [&_video]:max-w-full [&_video]:object-contain [&_video]:object-center";
 
 const SALON_IMAGE_CLASS =
-  "max-h-full max-w-full object-contain object-center transition-opacity duration-300 motion-reduce:transition-none";
+  "h-full w-full max-h-full max-w-full object-contain object-center transition-opacity duration-300 motion-reduce:transition-none";
 
 function pieceBackdrop(piece: AtelierPiece): string {
   if (piece.imageWellColor) return piece.imageWellColor;
@@ -160,13 +163,13 @@ export default function AtelierPieceLightbox({
                 </Dialog.Close>
               </header>
 
-              {/* Mobile: capped image well + remaining space for details/CTA. Desktop: side-by-side. */}
-              <div className="grid min-h-0 flex-1 grid-cols-1 grid-rows-[minmax(0,36dvh)_minmax(0,1fr)] lg:grid-cols-[minmax(0,1.618fr)_minmax(0,1fr)] lg:grid-rows-1">
+              {/* Mobile: larger image well so jewellery reads big; desktop: side-by-side. */}
+              <div className="grid min-h-0 flex-1 grid-cols-1 grid-rows-[minmax(0,52dvh)_minmax(0,1fr)] lg:grid-cols-[minmax(0,1.618fr)_minmax(0,1fr)] lg:grid-rows-1">
                 <div
                   className="relative flex min-h-0 flex-col overflow-hidden border-b border-[#766d42]/30 lg:border-b-0 lg:border-r"
                   style={{ backgroundColor: pieceBackdrop(piece) }}
                 >
-                  <div className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden p-2 sm:p-5 lg:p-6">
+                  <div className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden p-1 sm:p-2 lg:p-3">
                     {activeIsVideo ? (
                       <div className={SALON_MEDIA_FRAME}>
                         <SalonJewelVideo
@@ -188,7 +191,7 @@ export default function AtelierPieceLightbox({
                             ? `${piece.alt} — view ${safeViewIndex + 1} of ${views.length}`
                             : piece.alt
                         }
-                        sizes="(max-width: 1024px) 95vw, 62vw"
+                        sizes="(max-width: 1024px) 100vw, 65vw"
                         loading="eager"
                         decoding="async"
                         priority

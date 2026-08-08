@@ -58,8 +58,8 @@ export default function CollectionPhotoFrame({
   imageWellColor,
   video,
   videoObjectFit = "cover",
-  imageClassName = "max-h-full max-w-full object-contain object-center",
-  imageWrapperClassName = "absolute inset-0 flex items-center justify-center",
+  imageClassName = "h-full w-full object-contain object-center",
+  imageWrapperClassName = "absolute inset-0 size-full",
   aspectRatio,
 }: Props) {
   const isEbony = variant === "ebony";
