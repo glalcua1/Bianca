@@ -1,17 +1,20 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import AtelierPieceLightbox from "./AtelierPieceLightbox";
 import AtelierPieceQuote from "./AtelierPieceQuote";
+import AtelierSalonFilters from "./AtelierSalonFilters";
 import AtelierSalonHint from "./AtelierSalonHint";
 import CollectionPhotoFrame from "./CollectionPhotoFrame";
 import {
   ATELIER_PIECES,
   FINE_JEWELLERY_CATEGORIES,
   atelierPieceEyebrow,
+  resolveAtelierMetalVariant,
   sortAllAtelierPiecesByWellPerCategory,
   sortAtelierPiecesByWell,
   type AtelierPiece,
   type BraceletKind,
   type JewelleryCategoryId,
+  type MetalVariantId,
 } from "../data/fineJewelleryCollections";
 import {
   FINE_JEWELLERY_EDITORIAL,
@@ -22,6 +25,19 @@ import {
   getEarringQuote,
   getParureQuotesForNecklace,
 } from "../data/necklaceQuotes";
+import {
+  buildCatalogEntry,
+  clearSelectedFilters,
+  getFilterGroups,
+  pieceMatchesFilters,
+  scoreNaturalLanguageSearch,
+  type SelectedAtelierFilters,
+} from "../lib/atelierCatalog";
+
+const ATELIER_CATALOG = ATELIER_PIECES.map(buildCatalogEntry);
+const CATALOG_BY_ID = new Map(
+  ATELIER_CATALOG.map((entry) => [entry.piece.id, entry]),
+);
 
 function pieceHasSalonQuote(piece: AtelierPiece): boolean {
   if (piece.salonPriceInr) return true;
@@ -40,9 +56,31 @@ const BRACELET_SECTIONS: { kind: BraceletKind; title: string }[] = [
   { kind: "tennis", title: "Tennis Bracelets" },
 ];
 
+function preferredMetalFromFilters(
+  selectedFilters: SelectedAtelierFilters,
+): MetalVariantId | undefined {
+  const metals = selectedFilters.metal ?? [];
+  if (metals.length !== 1) return undefined;
+  const id = metals[0];
+  if (id === "yellow-gold" || id === "white-gold" || id === "rose-gold") {
+    return id;
+  }
+  return undefined;
+}
+
+function displayImageForPiece(
+  piece: AtelierPiece,
+  selectedFilters: SelectedAtelierFilters,
+): string {
+  const metalId = preferredMetalFromFilters(selectedFilters);
+  if (!metalId) return piece.image;
+  return resolveAtelierMetalVariant(piece, metalId)?.image ?? piece.image;
+}
+
 function renderPieceCard(
   piece: AtelierPiece,
   onOpenPiece: (piece: AtelierPiece) => void,
+  imageSrc: string,
 ) {
   return (
     <li key={piece.id} className="flex w-full min-w-0 flex-col items-center">
@@ -59,7 +97,7 @@ function renderPieceCard(
           video={piece.video}
           imageClassName={piece.frameImageClassName}
           imageWrapperClassName={piece.frameImageWrapperClassName}
-          src={piece.image}
+          src={imageSrc}
           alt={piece.alt}
           data-name={piece.id}
         />
@@ -114,25 +152,48 @@ type Props = {
 export default function FineJewelleryAtelier({ activeCategory }: Props) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedFilters, setSelectedFilters] = useState<SelectedAtelierFilters>(
+    () => clearSelectedFilters(getFilterGroups("all")),
+  );
 
   useEffect(() => {
     setLightboxOpen(false);
+    setSearchQuery("");
+    setSelectedFilters(clearSelectedFilters(getFilterGroups(activeCategory)));
+  }, [activeCategory]);
+
+  const categoryBasePieces = useMemo(() => {
+    if (activeCategory === "all") return ATELIER_PIECES;
+    return ATELIER_PIECES.filter((piece) => piece.category === activeCategory);
   }, [activeCategory]);
 
   const categoryPieces = useMemo(() => {
-    const base =
-      activeCategory === "all"
-        ? ATELIER_PIECES
-        : ATELIER_PIECES.filter((piece) => piece.category === activeCategory);
+    const query = searchQuery.trim();
+    const matched = categoryBasePieces.filter((piece) => {
+      const entry = CATALOG_BY_ID.get(piece.id);
+      if (!entry) return false;
+      if (!pieceMatchesFilters(entry, selectedFilters)) return false;
+      if (query && scoreNaturalLanguageSearch(entry, query) <= 0) return false;
+      return true;
+    });
+
+    if (query) {
+      return [...matched].sort((a, b) => {
+        const scoreA = scoreNaturalLanguageSearch(CATALOG_BY_ID.get(a.id)!, query);
+        const scoreB = scoreNaturalLanguageSearch(CATALOG_BY_ID.get(b.id)!, query);
+        return scoreB - scoreA;
+      });
+    }
 
     if (activeCategory === "all") {
-      return sortAllAtelierPiecesByWellPerCategory(base);
+      return sortAllAtelierPiecesByWellPerCategory(matched);
     }
     if (activeCategory === "bracelets") {
-      return base;
+      return matched;
     }
-    return sortAtelierPiecesByWell(base);
-  }, [activeCategory]);
+    return sortAtelierPiecesByWell(matched);
+  }, [activeCategory, categoryBasePieces, searchQuery, selectedFilters]);
 
   const lightboxPieces = useMemo(() => {
     if (activeCategory === "bracelets") {
@@ -212,7 +273,19 @@ export default function FineJewelleryAtelier({ activeCategory }: Props) {
           </p>
         </div>
 
-        {categoryPieces.length === 0 ? (
+        <div className="mb-10 md:mb-12">
+          <AtelierSalonFilters
+            category={activeCategory}
+            searchQuery={searchQuery}
+            onSearchQueryChange={setSearchQuery}
+            selectedFilters={selectedFilters}
+            onSelectedFiltersChange={setSelectedFilters}
+            resultCount={categoryPieces.length}
+            totalCount={categoryBasePieces.length}
+          />
+        </div>
+
+        {categoryBasePieces.length === 0 ? (
           <div className="mx-auto max-w-md text-center">
             <p className="font-editorial text-[1.125rem] tracking-[0.04em] text-[#1d3c34]">
               Pieces in this category are being prepared
@@ -220,6 +293,15 @@ export default function FineJewelleryAtelier({ activeCategory }: Props) {
             <p className="mt-3 text-house-body text-on-cream-body">
               Enquire for availability or explore another category from the Fine
               Jewelry menu above.
+            </p>
+          </div>
+        ) : categoryPieces.length === 0 ? (
+          <div className="mx-auto max-w-md text-center">
+            <p className="font-editorial text-[1.125rem] tracking-[0.04em] text-[#1d3c34]">
+              No pieces match these salon filters
+            </p>
+            <p className="mt-3 text-house-body text-on-cream-body">
+              Clear search or filters to see the full selection in this category.
             </p>
           </div>
         ) : activeCategory === "bracelets" ? (
@@ -236,7 +318,11 @@ export default function FineJewelleryAtelier({ activeCategory }: Props) {
                   </h3>
                   <ul className="grid w-full min-w-0 gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
                     {sectionPieces.map((piece) =>
-                      renderPieceCard(piece, openPiece),
+                      renderPieceCard(
+                        piece,
+                        openPiece,
+                        displayImageForPiece(piece, selectedFilters),
+                      ),
                     )}
                   </ul>
                 </div>
@@ -245,7 +331,13 @@ export default function FineJewelleryAtelier({ activeCategory }: Props) {
           </div>
         ) : (
           <ul className="grid w-full min-w-0 gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
-            {categoryPieces.map((piece) => renderPieceCard(piece, openPiece))}
+            {categoryPieces.map((piece) =>
+              renderPieceCard(
+                piece,
+                openPiece,
+                displayImageForPiece(piece, selectedFilters),
+              ),
+            )}
           </ul>
         )}
       </div>

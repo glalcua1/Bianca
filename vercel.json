@@ -143,6 +143,916 @@
       "source": "/ffad195494173b3c37c4aa05d64af9f2620a7643.png",
       "destination": "/bianca-diamonds-atelier-atmosphere.png",
       "permanent": true
+    },
+    {
+      "source": "/Rings/Blue_new.png",
+      "destination": "/Rings/bianca-diamonds-oval-blue-sapphire-milgrain-ring.png",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Women_ring.png",
+      "destination": "/Rings/bianca-diamonds-marquise-pink-white-diamond-toi-et-moi-ring.png",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7680.jpg",
+      "destination": "/Rings/bianca-diamonds-two-tone-bypass-baguette-diamond-ring.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/RP11.jpg",
+      "destination": "/Rings/bianca-diamonds-radiant-pink-diamond-rose-gold-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/men6.jpg",
+      "destination": "/Rings/bianca-diamonds-two-tone-princess-diamond-band.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7588.jpg",
+      "destination": "/Rings/bianca-diamonds-lab-grown-diamond-ring-studio.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7775.jpg",
+      "destination": "/Rings/bianca-diamonds-diamond-ring-atelier-view.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/ER_1.png",
+      "destination": "/Earrings/bianca-diamonds-pear-emerald-halo-drop-earrings.png",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7745.jpg",
+      "destination": "/Earrings/bianca-diamonds-pear-diamond-linear-drop-earrings-yellow-gold.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7757.jpg",
+      "destination": "/Earrings/bianca-diamonds-diamond-drop-earrings-atelier.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7669.jpg",
+      "destination": "/Earrings/bianca-diamonds-diamond-earrings-salon.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/necklace/Neck5.png",
+      "destination": "/necklace/bianca-diamonds-emerald-diamond-chandelier-necklace-set.png",
+      "permanent": true
+    },
+    {
+      "source": "/necklace/Neck2c.jpg",
+      "destination": "/necklace/bianca-diamonds-pear-fringe-diamond-necklace-parure.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/Bracelet3.png",
+      "destination": "/Bracelet/bianca-diamonds-marquise-floral-diamond-bracelet.png",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/Bracelet4.png",
+      "destination": "/Bracelet/bianca-diamonds-pear-diamond-multi-row-bracelet.png",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/necklace11.png",
+      "destination": "/Bracelet/bianca-diamonds-diamond-bracelet-statement.png",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/ddi9foddi9foddi9.jpg",
+      "destination": "/Bracelet/bianca-diamonds-diamond-tennis-bracelet-detail.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/IMG_7364.jpg",
+      "destination": "/Bracelet/bianca-diamonds-diamond-bracelet-atelier.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/ER1.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-blush-cushion-studs.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/ER2.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-pink-radiant-huggie-drop.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/ER3.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-pink-pear-rosette-studs.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/ER4.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-blush-pear-halo-drop.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/ER5.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-pink-floral-cluster-studs.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/ER6.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-blue-vine-drop.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/ER7.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-blue-lattice-hoops.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/ER8.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-blue-floral-chandelier.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/ER9.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-pink-pear-milgrain-drop.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/ER-12.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-golden-pear-riviere.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/ER-13.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-diamond-huggie-hoops.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/ER-15.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-floral-pear-cascade.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/ER-16.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-yellow-pear-line.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/ER-17.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-maison-gold-hoops.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/ER-18.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-pink-sapphire-huggie-drop.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7815.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-rose-gold-huggie-hoops.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/Earrings10.png",
+      "destination": "/Earrings/bianca-diamonds-ear-oval-line-drop.png",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/Earrings11.png",
+      "destination": "/Earrings/bianca-diamonds-ear-graduated-oval-riviere.png",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7662.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-ruby-emerald-trilogy-drop.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7664.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-ruby-emerald-duet-drop.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7665.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-sapphire-hoop-drop.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7668.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-ruby-flower-studs.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7712.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-emerald-octagon-studs.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7715.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-pear-halo-drop.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7718.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-round-solitaire-studs.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7719.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-princess-solitaire-studs.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7720.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-oval-solitaire-studs.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7721.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-deco-link-drop.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7731.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-marquise-laurel-cascade.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7732.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-round-line-drop.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7758.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-sapphire-octagon-studs.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7764.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-bypass-solitaire-studs.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7765.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-emerald-openwork-drop.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7983.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-blush-pave-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7989.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-blush-riviere-eternity.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/RB_ring1.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-blue-pear-pave.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/RB_ring2.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-blue-emerald-horizon.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/RB_ring3.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-blue-emerald-trilogy.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/RB_ring4.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-blue-emerald-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/RB_ring5.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-blue-radiant-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/RB_ring6.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-blue-oval-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/RB10.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-blue-cushion-double-halo.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/RB12.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-blue-marquise-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/RP_ring1.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-pink-marquise-baguette.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/RP_ring2.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-blush-oval-halo.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/RP_ring3.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-pink-cushion-halo.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/RP_ring4.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-blush-oval-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/RP_ring5.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-pink-radiant-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/RP_ring6.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-pink-heart-bezel.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/RP_ring7.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-pink-marquise-halo.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Ring30.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-wave-arch-pave.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7823.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-marquise-pear-collar.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7588 2.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-canary-trilogy-maison.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7775 2.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-solitaire-bridal-duo.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7772.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-oval-maison-bridal.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7681.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-bypass-baguette-duo.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7777.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-toi-et-moi-eclat.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Ring3.png",
+      "destination": "/Rings/bianca-diamonds-ring-halo-split-lumiere.png",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7434.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-geometric-pear.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7416.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-emerald-starburst.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7447.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-pave-shoulder-classique.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Women1.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-ruby-radiance.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7435.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-geometric-princess.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7445.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-tri-tone-wave.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Women3.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-sapphire-sovereign.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7449.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-knot-basket.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7569.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-pink-oval-halo.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7446.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-pave-split-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Women4.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-emerald-petal.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7450.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-bypass-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7551.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-marquise-pave-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7417.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-cabochon-emerald.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7480.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-split-halo-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7572.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-sapphire-marquise-halo.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7418.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-emerald-sunburst.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7546.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-princess-halo-eclat.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7433.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-floral-arc.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7573.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-ruby-floral-sunburst.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7570.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-heart-oval-toi-et-moi.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7482.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-emerald-halo-riviere.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7547.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-oval-riviere-maison.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7451.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-bypass-eclat.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7567.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-emerald-trilogy-halo.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7545.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-marquise-sunburst.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7571.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-red-emerald-split.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7483.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-triple-strand-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7568.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-marquise-halo-maison.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7574.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-ruby-pear-marquise-burst.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7484.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-rose-solitaire-scroll.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Women2.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-eternity-lumiere.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Women5.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-oval-eternity.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Women6.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-golden-circle.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Women8.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-baguette-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Women9.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-baguette-line.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/tennis1.png",
+      "destination": "/Bracelet/bianca-diamonds-brace-tennis-brilliant.png",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/necklace12.png",
+      "destination": "/Bracelet/bianca-diamonds-brace-tennis-marquise.png",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/BR1.png",
+      "destination": "/Bracelet/bianca-diamonds-brace-princesse-rosee.png",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/jcyvoyjcyvoyjcyv.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-halo-emeraude-or.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/iih2ksiih2ksiih2-2.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-jardin-emeraude.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/iih2ksiih2ksiih2-1.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-halo-emeraude-maison.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/iih2ksiih2ksiih2.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-rivage-emeraude.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/iih2ksiih2ksiih2-5.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-floreal-emeraude.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/iih2ksiih2ksiih2-4.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-etoile-emeraude.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/jcyvoyjcyvoyjcyv-1.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-art-deco-emeraude.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/iih2ksiih2ksiih2-3.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-ligne-halo-emeraude.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/IMG_7407.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-sapphire-halo-bloom.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/IMG_7408.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-ruby-marquise-tennis.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/IMG_7409-2.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-sapphire-five-row-cuff.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/IMG_7410.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-ruby-triple-row.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/IMG_7411.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-ruby-marquise-link.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/IMG_7412.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-pear-ruby-three-row.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/IMG_7413.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-ruby-emerald-cut-flex.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/IMG_7414.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-sapphire-art-deco-line.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/IMG_7491.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-emerald-column-bangle.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/IMG_7492.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-grand-emerald-bangle.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/IMG_7493.jpg",
+      "destination": "/Bracelet/bianca-diamonds-brace-rose-woven-line.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/necklace/Neck1.png",
+      "destination": "/necklace/bianca-diamonds-neck-lumiere-cascade.png",
+      "permanent": true
+    },
+    {
+      "source": "/necklace/Neck2.png",
+      "destination": "/necklace/bianca-diamonds-neck-riviere-nocturne.png",
+      "permanent": true
+    },
+    {
+      "source": "/necklace/Neck3.png",
+      "destination": "/necklace/bianca-diamonds-neck-celestial-drop.png",
+      "permanent": true
+    },
+    {
+      "source": "/necklace/Neck4.png",
+      "destination": "/necklace/bianca-diamonds-neck-atelier-classique.png",
+      "permanent": true
+    },
+    {
+      "source": "/necklace/Neck6.png",
+      "destination": "/necklace/bianca-diamonds-neck-grace-eternelle.png",
+      "permanent": true
+    },
+    {
+      "source": "/necklace/Neck7.png",
+      "destination": "/necklace/bianca-diamonds-neck-maison-rubis.png",
+      "permanent": true
+    },
+    {
+      "source": "/necklace/Nacklace9.png",
+      "destination": "/necklace/bianca-diamonds-neck-jardin-serein.png",
+      "permanent": true
+    },
+    {
+      "source": "/necklace/Necklace10.png",
+      "destination": "/necklace/bianca-diamonds-neck-aurora-plume.png",
+      "permanent": true
+    },
+    {
+      "source": "/necklace/Necklace13.png",
+      "destination": "/necklace/bianca-diamonds-neck-tennis-classique.png",
+      "permanent": true
+    },
+    {
+      "source": "/necklace/Necklace14.png",
+      "destination": "/necklace/bianca-diamonds-neck-frange-poire.png",
+      "permanent": true
+    },
+    {
+      "source": "/necklace/Necklace15.png",
+      "destination": "/necklace/bianca-diamonds-neck-double-fil-or.png",
+      "permanent": true
+    },
+    {
+      "source": "/necklace/Necklace16.png",
+      "destination": "/necklace/bianca-diamonds-neck-riviere-ovale.png",
+      "permanent": true
+    },
+    {
+      "source": "/necklace/Necklace17.png",
+      "destination": "/necklace/bianca-diamonds-neck-lariat-etoile.png",
+      "permanent": true
+    },
+    {
+      "source": "/necklace/Necklace18.png",
+      "destination": "/necklace/bianca-diamonds-neck-double-rangee.png",
+      "permanent": true
+    },
+    {
+      "source": "/necklace/Necklace19.png",
+      "destination": "/necklace/bianca-diamonds-neck-maillon-eclat.png",
+      "permanent": true
+    },
+    {
+      "source": "/Pendant/P1.jpg",
+      "destination": "/Pendant/bianca-diamonds-pend-blue-star-pear-halo.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Pendant/P2.jpg",
+      "destination": "/Pendant/bianca-diamonds-pend-canary-pear-halo.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Pendant/p3.jpg",
+      "destination": "/Pendant/bianca-diamonds-pend-soleil-pear-halo.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Pendant/P4.jpg",
+      "destination": "/Pendant/bianca-diamonds-pend-classic-round-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Pendant/P5.jpg",
+      "destination": "/Pendant/bianca-diamonds-pend-canary-pear-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Pendant/P6.jpg",
+      "destination": "/Pendant/bianca-diamonds-pend-emerald-halo-milgrain.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Pendant/P7.jpg",
+      "destination": "/Pendant/bianca-diamonds-pend-canary-oval-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Pendant/P8.jpg",
+      "destination": "/Pendant/bianca-diamonds-pend-marquise-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Pendant/P9.jpg",
+      "destination": "/Pendant/bianca-diamonds-pend-blue-star-radiant.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Pendant/P10.jpg",
+      "destination": "/Pendant/bianca-diamonds-pend-blue-star-pear-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Pendant/P12.jpg",
+      "destination": "/Pendant/bianca-diamonds-pend-toi-et-moi-marquise.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Pendant/P13.jpg",
+      "destination": "/Pendant/bianca-diamonds-pend-pink-cushion-double-halo.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Pendant/P14.jpg",
+      "destination": "/Pendant/bianca-diamonds-pend-pink-marquise-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Pendant/P15.jpg",
+      "destination": "/Pendant/bianca-diamonds-pend-blue-star-pear-pave-bail.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Pendant/P16.jpg",
+      "destination": "/Pendant/bianca-diamonds-pend-blue-star-starburst.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Mens/Men.png",
+      "destination": "/Mens/bianca-diamonds-for-him-signet-line.png",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Mens1.JPG",
+      "destination": "/Rings/bianca-diamonds-for-him-maison-band.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Mens2.JPG",
+      "destination": "/Rings/bianca-diamonds-for-him-architect-band.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/men3.jpg",
+      "destination": "/Rings/bianca-diamonds-for-him-gadroon-emerald.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/men4.jpg",
+      "destination": "/Rings/bianca-diamonds-for-him-eternity-line.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/men5.jpg",
+      "destination": "/Rings/bianca-diamonds-for-him-princess-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/ER-14.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-diamond-huggie-hoops-white-gold.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/IMG_7716.jpg",
+      "destination": "/Earrings/bianca-diamonds-ear-pear-halo-drop-white-gold.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7768.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-oval-maison-bridal-gallery.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7770.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-solitaire-bridal-duo-white-gold.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7774.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-solitaire-bridal-duo-white-gold-2.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7776.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-solitaire-bridal-duo-white-gold-3.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7822.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-wave-arch-pave-rose-gold.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Mens1a.JPG",
+      "destination": "/Rings/bianca-diamonds-for-him-maison-band-yellow-gold.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/RP_ring8.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-pink-radiant-solitaire-rose-gold.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Ring21.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-sapphire-riviere-eternity-gallery.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Ring30a.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-wave-arch-pave-white-gold.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/Ring_20.jpg",
+      "destination": "/Rings/bianca-diamonds-ring-sapphire-pear-halo-gallery.jpg",
+      "permanent": true
     }
   ],
   "rewrites": [
