@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router";
 import { useMediaMinWidth } from "../hooks/useMediaMinWidth";
 import BrandImageWatermark from "./BrandImageWatermark";
 import ProtectedImage from "./protection/ProtectedImage";
@@ -119,16 +120,29 @@ function HeroCopy({
       ) : null}
 
       {showCta && cta ? (
-        <a
-          href={cta.href}
-          className={
-            centered
-              ? "mt-8 block text-center font-editorial text-[15px] uppercase tracking-[0.08em] text-gold-on-forest"
-              : "mt-9 w-fit font-editorial text-[15px] uppercase tracking-[0.8px] text-gold-on-forest transition-colors hover:text-on-forest"
-          }
-        >
-          {cta.label}
-        </a>
+        cta.href.startsWith("/") && !cta.href.startsWith("//") ? (
+          <Link
+            to={cta.href}
+            className={
+              centered
+                ? "mt-8 block text-center font-editorial text-[15px] uppercase tracking-[0.08em] text-gold-on-forest"
+                : "mt-9 w-fit font-editorial text-[15px] uppercase tracking-[0.8px] text-gold-on-forest transition-colors hover:text-on-forest"
+            }
+          >
+            {cta.label}
+          </Link>
+        ) : (
+          <a
+            href={cta.href}
+            className={
+              centered
+                ? "mt-8 block text-center font-editorial text-[15px] uppercase tracking-[0.08em] text-gold-on-forest"
+                : "mt-9 w-fit font-editorial text-[15px] uppercase tracking-[0.8px] text-gold-on-forest transition-colors hover:text-on-forest"
+            }
+          >
+            {cta.label}
+          </a>
+        )
       ) : null}
     </div>
   );
