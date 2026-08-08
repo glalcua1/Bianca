@@ -95,6 +95,44 @@ function addStoneColourTags(
   }
 }
 
+/** White diamonds vs fancy diamonds / coloured gemstones — used by salon filters. */
+function addStoneToneTags(tags: Set<string>, prose: string): void {
+  const hasFancy =
+    tags.has("stone-colour-pink") ||
+    tags.has("stone-colour-canary") ||
+    tags.has("canary") ||
+    tags.has("stone-colour-sapphire") ||
+    tags.has("stone-colour-ruby") ||
+    // Prefer prose over the "emerald" keyword tag — that also matches emerald-cut diamonds.
+    /\bemerald(?!\s*-?\s*cut)\b/i.test(prose) ||
+    /\bsapphire\b/i.test(prose) ||
+    /\bruby\b|\brubies\b/i.test(prose) ||
+    /\bpink\s+(diamond|sapphire)/i.test(prose) ||
+    /\b(yellow|blue|green|fancy)\s+diamond/i.test(prose) ||
+    /\bcanary\b/i.test(prose) ||
+    /\b(coloured|colored)\s+diamond/i.test(prose);
+
+  tags.add(hasFancy ? "stone-tone-fancy" : "stone-tone-white");
+}
+
+function addMetalTags(tags: Set<string>, piece: AtelierPiece, prose: string): void {
+  if (piece.metalVariants?.length) {
+    for (const variant of piece.metalVariants) {
+      tags.add(variant.id);
+    }
+  }
+
+  if (
+    !tags.has("yellow-gold") &&
+    !tags.has("white-gold") &&
+    !tags.has("rose-gold") &&
+    /\bgold\b/i.test(prose)
+  ) {
+    // Maison default when colour is unspecified
+    tags.add("yellow-gold");
+  }
+}
+
 const SEARCH_SYNONYMS: Record<string, string[]> = {
   engagement: ["solitaire", "proposal", "bridal", "wedding", "ring"],
   wedding: ["bridal", "solitaire", "band"],
@@ -104,13 +142,15 @@ const SEARCH_SYNONYMS: Record<string, string[]> = {
   everyday: ["classic", "station", "minimal"],
   minimal: ["geometric", "solitaire", "classic"],
   gold: ["yellow-gold", "white-gold", "rose-gold", "18k", "18kt"],
-  white: ["white-gold", "platinum"],
+  white: ["white-gold", "platinum", "stone-tone-white", "white diamond"],
   yellow: ["yellow-gold", "canary"],
   rose: ["rose-gold"],
-  diamond: ["brilliant", "igi", "lab-grown"],
-  green: ["emerald", "stone-colour-emerald"],
-  blue: ["sapphire", "stone-colour-sapphire"],
-  red: ["ruby", "stone-colour-ruby"],
+  fancy: ["stone-tone-fancy", "canary", "pink", "sapphire", "ruby", "emerald"],
+  gemstone: ["stone-tone-fancy", "emerald", "sapphire", "ruby"],
+  diamond: ["brilliant", "igi", "lab-grown", "stone-tone-white"],
+  green: ["emerald", "stone-colour-emerald", "stone-tone-fancy"],
+  blue: ["sapphire", "stone-colour-sapphire", "stone-tone-fancy"],
+  red: ["ruby", "stone-colour-ruby", "stone-tone-fancy"],
   teardrop: ["pear", "drop"],
   round: ["brilliant", "solitaire"],
   square: ["princess", "emerald cut"],
@@ -190,6 +230,8 @@ export function buildCatalogEntry(piece: AtelierPiece): AtelierCatalogEntry {
   }
 
   addStoneColourTags(tags, prose, ringQuote);
+  addStoneToneTags(tags, prose);
+  addMetalTags(tags, piece, prose);
 
   const searchText = [
     prose,
@@ -215,192 +257,29 @@ export function buildCatalogEntry(piece: AtelierPiece): AtelierCatalogEntry {
   return { piece, tags, searchText, salonPriceInr };
 }
 
+/** Same two groups for every category — stone tone and metal. */
 export function getFilterGroups(
-  category: JewelleryCategoryId | "all",
+  _category: JewelleryCategoryId | "all",
 ): AtelierFilterGroup[] {
-  const stoneColour: AtelierFilterGroup = {
-    id: "stone-colour",
-    label: "Stone colour",
-    options: [
-      { id: "stone-colour-white", label: "White diamond" },
-      { id: "stone-colour-canary", label: "Canary" },
-      { id: "stone-colour-emerald", label: "Emerald" },
-      { id: "stone-colour-sapphire", label: "Sapphire" },
-      { id: "stone-colour-ruby", label: "Ruby" },
-      { id: "stone-colour-pink", label: "Pink" },
-    ],
-  };
-
-  const sharedStone: AtelierFilterGroup = {
-    id: "stone",
-    label: "Stone",
-    options: [
-      { id: "emerald", label: "Emerald" },
-      { id: "sapphire", label: "Sapphire" },
-      { id: "ruby", label: "Ruby" },
-      { id: "marquise", label: "Marquise" },
-      { id: "pear", label: "Pear" },
-      { id: "canary", label: "Canary" },
-    ],
-  };
-
-  switch (category) {
-    case "rings":
-      return [
-        {
-          id: "metal",
-          label: "Metal",
-          options: [
-            { id: "yellow-gold", label: "Yellow gold" },
-            { id: "white-gold", label: "White gold" },
-            { id: "rose-gold", label: "Rose gold" },
-            { id: "tri-tone", label: "Tri-tone" },
-          ],
-        },
-        {
-          id: "style",
-          label: "Silhouette",
-          options: [
-            { id: "solitaire", label: "Solitaire" },
-            { id: "halo", label: "Halo" },
-            { id: "bypass", label: "Bypass" },
-            { id: "trilogy", label: "Trilogy" },
-            { id: "geometric", label: "Geometric" },
-            { id: "cluster", label: "Cluster" },
-            { id: "statement", label: "Statement" },
-          ],
-        },
-        {
-          id: "price",
-          label: "Salon guide",
-          options: [
-            { id: "price-entry", label: "Up to ₹75k" },
-            { id: "price-maison", label: "₹75k – ₹1.25L" },
-            { id: "price-haute", label: "Above ₹1.25L" },
-          ],
-        },
-        {
-          id: "stone",
-          label: "Centre stone",
-          options: [
-            { id: "emerald", label: "Emerald" },
-            { id: "marquise", label: "Marquise" },
-            { id: "pear", label: "Pear" },
-            { id: "princess", label: "Princess" },
-            { id: "oval", label: "Oval" },
-            { id: "cushion", label: "Cushion" },
-            { id: "canary", label: "Canary" },
-          ],
-        },
-        stoneColour,
-      ];
-    case "earrings":
-      return [
-        {
-          id: "silhouette",
-          label: "Silhouette",
-          options: [
-            { id: "drop", label: "Drop" },
-            { id: "chandelier", label: "Chandelier" },
-            { id: "stud", label: "Stud & line" },
-          ],
-        },
-        sharedStone,
-        stoneColour,
-        {
-          id: "moment",
-          label: "Occasion",
-          options: [
-            { id: "evening", label: "Evening" },
-            { id: "bridal", label: "Bridal" },
-            { id: "everyday", label: "Every day" },
-          ],
-        },
-      ];
-    case "necklaces":
-      return [
-        {
-          id: "silhouette",
-          label: "Silhouette",
-          options: [
-            { id: "collar", label: "Collar" },
-            { id: "riviere", label: "Rivière" },
-            { id: "drop", label: "Fringe & drop" },
-            { id: "pendant-line", label: "Pendant" },
-            { id: "stud", label: "Station" },
-          ],
-        },
-        sharedStone,
-        stoneColour,
-        {
-          id: "moment",
-          label: "Occasion",
-          options: [
-            { id: "evening", label: "Evening" },
-            { id: "statement", label: "Statement" },
-            { id: "everyday", label: "Every day" },
-          ],
-        },
-      ];
-    case "bracelets":
-      return [
-        {
-          id: "form",
-          label: "Form",
-          options: [
-            { id: "tennis", label: "Tennis line" },
-            { id: "bracelet", label: "Bangle & cuff" },
-            { id: "bangle", label: "Wide bangle" },
-          ],
-        },
-        {
-          id: "metal",
-          label: "Metal",
-          options: [
-            { id: "yellow-gold", label: "Yellow gold" },
-            { id: "white-gold", label: "White gold" },
-            { id: "rose-gold", label: "Rose gold" },
-          ],
-        },
-        sharedStone,
-        stoneColour,
-      ];
-    case "pendants":
-      return [
-        sharedStone,
-        stoneColour,
-        {
-          id: "moment",
-          label: "Occasion",
-          options: [
-            { id: "everyday", label: "Every day" },
-            { id: "evening", label: "Evening" },
-            { id: "bridal", label: "Bridal" },
-          ],
-        },
-      ];
-    case "for-him":
-      return [
-        {
-          id: "metal",
-          label: "Metal",
-          options: [
-            { id: "yellow-gold", label: "Yellow gold" },
-            { id: "white-gold", label: "White gold" },
-          ],
-        },
-        {
-          id: "moment",
-          label: "Occasion",
-          options: [
-            { id: "everyday", label: "Every day" },
-            { id: "statement", label: "Statement" },
-          ],
-        },
-      ];
-    default:
-      return [];
-  }
+  return [
+    {
+      id: "stone",
+      label: "Stone",
+      options: [
+        { id: "stone-tone-white", label: "White diamonds" },
+        { id: "stone-tone-fancy", label: "Fancy diamonds & gemstones" },
+      ],
+    },
+    {
+      id: "metal",
+      label: "Metal",
+      options: [
+        { id: "yellow-gold", label: "Yellow gold" },
+        { id: "white-gold", label: "White gold" },
+        { id: "rose-gold", label: "Rose gold" },
+      ],
+    },
+  ];
 }
 
 function tokenizeQuery(query: string): string[] {

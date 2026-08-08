@@ -21,12 +21,12 @@ type Props = {
 };
 
 const SEARCH_PLACEHOLDERS: Partial<Record<JewelleryCategoryId | "all", string>> = {
-  all: "Search the atelier — e.g. white gold halo for evening",
-  rings: "Search rings — e.g. marquise solitaire under ₹1 lakh",
-  earrings: "Search earrings — e.g. emerald drop for gala",
-  necklaces: "Search necklaces — e.g. sapphire collar necklace",
-  bracelets: "Search bracelets — e.g. emerald tennis line",
-  pendants: "Search pendants — e.g. blue star pear or canary oval",
+  all: "Search — e.g. white diamond rose gold",
+  rings: "Search rings — e.g. pink sapphire yellow gold",
+  earrings: "Search earrings — e.g. emerald drop white gold",
+  necklaces: "Search necklaces — e.g. pear fringe",
+  bracelets: "Search bracelets — e.g. tennis white diamond",
+  pendants: "Search pendants — e.g. canary oval",
   "for-him": "Search for him — e.g. white gold band",
 };
 
@@ -175,18 +175,12 @@ export default function AtelierSalonFilters({
       </div>
 
       <div className="mt-2.5 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
-        {category === "all" && filterGroups.length === 0 ? (
-          <p className="text-[10px] leading-relaxed tracking-[0.06em] text-on-cream-muted">
-            Select a category above to refine by metal, stone colour, and silhouette.
-          </p>
-        ) : (
-          <p
-            className="text-[9px] uppercase tracking-[0.18em] text-on-cream-muted"
-            aria-live="polite"
-          >
-            <span className="tabular-nums text-[#524a28]">{countLabel}</span>
-          </p>
-        )}
+        <p
+          className="text-[9px] uppercase tracking-[0.18em] text-on-cream-muted"
+          aria-live="polite"
+        >
+          <span className="tabular-nums text-[#524a28]">{countLabel}</span>
+        </p>
         {filtersActive ? (
           <button
             type="button"
