@@ -1,12 +1,17 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Link } from "react-router";
 import ProtectedImage from "./protection/ProtectedImage";
 import EditorialReveal from "./editorial/EditorialReveal";
 import {
+  getHomeBlueStarCarouselSlides,
+  getHomeFineJewelleryCarouselSlides,
   HOME_SECTION_CARDS,
+  type HomeCardCarouselSlide,
   type HomeSectionCard,
 } from "../data/homeSectionCards";
 import { BLUE_DIAMOND_CARD } from "../data/blueDiamond";
+
+const CAROUSEL_INTERVAL_MS = 4200;
 
 const PdfLookbookDrawer = lazy(() => import("./PdfLookbookDrawer"));
 const BlueStarCollectionDrawer = lazy(
@@ -113,6 +118,7 @@ function CardImage({
   wellClass,
   wellStyle,
   showOverlay = true,
+  slides,
 }: {
   image: string;
   imageAlt: string;
@@ -122,26 +128,90 @@ function CardImage({
   wellStyle?: { backgroundColor: string };
   /** Soft vignette — off for product stills that need full clarity */
   showOverlay?: boolean;
+  /** Auto-advancing product plates — preserves the card image well chrome */
+  slides?: HomeCardCarouselSlide[];
 }) {
+  const items: HomeCardCarouselSlide[] =
+    slides && slides.length > 0
+      ? slides
+      : [
+          {
+            image,
+            imageAlt,
+            imageClassName,
+            imageWellColor: wellStyle?.backgroundColor,
+          },
+        ];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const multi = items.length > 1;
+
+  useEffect(() => {
+    if (!multi) return;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (reduceMotion) return;
+
+    const id = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % items.length);
+    }, CAROUSEL_INTERVAL_MS);
+    return () => window.clearInterval(id);
+  }, [items.length, multi]);
+
+  const active = items[activeIndex] ?? items[0];
+  const activeWellStyle = active.imageWellColor
+    ? ({ backgroundColor: active.imageWellColor } as const)
+    : wellStyle;
+
   return (
     <div
-      className={`relative min-h-[280px] overflow-hidden sm:min-h-[340px] md:min-h-full ${wellClass} ${
+      className={`relative min-h-[280px] overflow-hidden transition-[background-color] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:min-h-[340px] md:min-h-full ${wellClass} ${
         imageOnRight ? "md:order-2" : "md:order-1"
       }`}
-      style={wellStyle}
+      style={activeWellStyle}
+      aria-roledescription={multi ? "carousel" : undefined}
+      aria-label={multi ? "Featured pieces" : undefined}
     >
-      <ProtectedImage
-        wrapperClassName="absolute inset-0 size-full"
-        src={image}
-        alt={imageAlt}
-        className={`size-full transition-transform duration-[1.6s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.045] motion-reduce:transition-none motion-reduce:group-hover:scale-100 ${imageClassName ?? "object-cover object-center"}`}
-        sizes="(max-width: 768px) 100vw, 50vw"
-      />
+      {items.map((slide, index) => {
+        const isActive = index === activeIndex;
+        return (
+          <ProtectedImage
+            key={slide.image}
+            wrapperClassName={`absolute inset-0 size-full transition-opacity duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+              isActive ? "opacity-100" : "opacity-0"
+            }`}
+            src={slide.image}
+            alt={isActive ? slide.imageAlt : ""}
+            aria-hidden={!isActive}
+            className={`size-full transition-transform duration-[1.6s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.045] motion-reduce:transition-none motion-reduce:group-hover:scale-100 ${
+              slide.imageClassName ??
+              imageClassName ??
+              "object-cover object-center"
+            }`}
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        );
+      })}
       {showOverlay ? (
         <div
           className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-60 md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-black/10"
           aria-hidden
         />
+      ) : null}
+      {multi ? (
+        <div
+          className="pointer-events-none absolute bottom-4 left-1/2 z-[1] flex -translate-x-1/2 gap-1.5"
+          aria-hidden
+        >
+          {items.map((slide, index) => (
+            <span
+              key={slide.image}
+              className={`h-px w-4 transition-colors duration-500 ${
+                index === activeIndex ? "bg-[#766d42]" : "bg-[#1d3c34]/25"
+              }`}
+            />
+          ))}
+        </div>
       ) : null}
       <div
         className={`pointer-events-none absolute inset-y-0 w-[2px] origin-top scale-y-0 bg-gradient-to-b from-[#dccb7b] via-[#766d42] to-[#dccb7b] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-y-100 motion-reduce:scale-y-100 ${
@@ -159,9 +229,11 @@ const cardShellClass =
 function SectionCard({
   card,
   index,
+  slides,
 }: {
   card: HomeSectionCard;
   index: number;
+  slides?: HomeCardCarouselSlide[];
 }) {
   const tones = toneClasses(card.tone, card.imageWellColor);
   const imageOnRight = index % 2 === 0;
@@ -188,6 +260,8 @@ function SectionCard({
           imageOnRight={imageOnRight}
           wellClass={tones.well}
           wellStyle={tones.wellStyle}
+          slides={slides}
+          showOverlay={!slides?.length}
         />
       </Link>
     </EditorialReveal>
@@ -234,6 +308,7 @@ function BlueDiamondCard({ index }: { index: number }) {
   const card = BLUE_DIAMOND_CARD;
   const tones = toneClasses("ink", card.imageWellColor);
   const imageOnRight = index % 2 === 0;
+  const slides = getHomeBlueStarCarouselSlides(4);
 
   return (
     <>
@@ -288,6 +363,7 @@ function BlueDiamondCard({ index }: { index: number }) {
             wellClass={tones.well}
             wellStyle={tones.wellStyle}
             showOverlay={false}
+            slides={slides}
           />
         </article>
       </EditorialReveal>
@@ -312,6 +388,8 @@ function BlueDiamondCard({ index }: { index: number }) {
 }
 
 export default function HomeSectionCards() {
+  const fineJewellerySlides = getHomeFineJewelleryCarouselSlides(4);
+
   return (
     <section
       aria-labelledby="home-sections-heading"
@@ -333,7 +411,14 @@ export default function HomeSectionCards() {
         <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
           <BlueDiamondCard index={0} />
           {HOME_SECTION_CARDS.map((card, index) => (
-            <SectionCard key={card.id} card={card} index={index + 1} />
+            <SectionCard
+              key={card.id}
+              card={card}
+              index={index + 1}
+              slides={
+                card.id === "fine-jewellery" ? fineJewellerySlides : undefined
+              }
+            />
           ))}
         </div>
       </div>
