@@ -2170,29 +2170,6 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "A substantial 18K white-gold band elevating a princess-cut brilliant in a four-prong setting — clean planes and singular salon light.",
   },
   {
-    id: "ring-oval-blue-sapphire-milgrain",
-    category: "rings",
-    productCode: "BD-K-RG-NEW-001",
-    image: "/Rings/bianca-diamonds-oval-blue-sapphire-milgrain-ring.png",
-    imageWellColor: "#e8e6ea",
-    alt: "Oval blue sapphire milgrain ring in white gold with diamond pavé shoulders",
-    title: "Oval Sapphire Milgrain",
-    description:
-      "A vivid oval blue sapphire in white gold, framed by milgrain and diamond-set shoulders — vintage spirit with modern salon fire.",
-  },
-  {
-    id: "ring-marquise-pink-toi-et-moi",
-    category: "rings",
-    productCode: "BD-K-RG-NEW-002",
-    image:
-      "/Rings/bianca-diamonds-marquise-pink-white-diamond-toi-et-moi-ring.png",
-    imageWellColor: "#575857",
-    alt: "Marquise white and pink diamond toi-et-moi multi-band ring in white gold",
-    title: "Marquise Pink Toi et Moi",
-    description:
-      "Opposed marquise diamonds — white and blush — on interlocking white-gold bands — a contemporary toi-et-moi with editorial presence.",
-  },
-  {
     id: "ring-two-tone-bypass-baguette",
     category: "rings",
     productCode: "BD-K-RG-NEW-003",
@@ -2341,18 +2318,6 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "Rose-gold openwork with black enamel quatrefoils and scattered brilliants — architectural romance for the modern hand.",
   },
   {
-    id: "ring-twisted-basket-split-solitaire",
-    category: "rings",
-    productCode: "BD-K-RG-NEW-009",
-    image:
-      "/Rings/bianca-diamonds-twisted-basket-split-shank-diamond-solitaire.jpg",
-    imageWellColor: "#c8bdb1",
-    alt: "Round diamond solitaire in white gold with twisted basket and split shank",
-    title: "Twisted Basket Solitaire",
-    description:
-      "A round brilliant in a twisted rope basket on a white-gold split shank — quiet craftsmanship, singular centre light.",
-  },
-  {
     id: "ring-cushion-pave-hidden-halo",
     category: "rings",
     productCode: "BD-K-RG-NEW-010",
@@ -2412,19 +2377,6 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Round Tennis Statement",
     description:
       "Round brilliants in a white-gold four-prong tennis line — the maison classic for every wrist and every hour.",
-  },
-  {
-    id: "brace-princess-tennis-white",
-    category: "bracelets",
-    productCode: "BD-K-BR-NEW-005",
-    braceletKind: "tennis",
-    image:
-      "/Bracelet/bianca-diamonds-princess-cut-diamond-tennis-bracelet-white-gold.jpg",
-    imageWellColor: "#b1dada",
-    alt: "Princess-cut diamond tennis bracelet in white gold with box clasp",
-    title: "Princess Tennis Line",
-    description:
-      "Square princess brilliants in white-gold baskets form a precise tennis ribbon — architectural sparkle for day to evening.",
   },
   {
     id: "brace-rose-princess-pear-link",
