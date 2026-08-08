@@ -4,60 +4,58 @@ export const WHY_CHOOSE_BIANCA_SEO = {
   title:
     "Why Choose Bianca Diamonds? | Luxury Lab Grown Diamond Jewellery",
   description:
-    "Discover why Bianca Diamonds is creating a new way to experience luxury lab grown diamond jewellery—with IGI certified diamonds, bespoke design, modern craftsmanship and personalised service.",
+    "IGI-certified lab-grown diamonds, modern design, and personal consultation—discover why clients in India and the USA choose Bianca Diamonds.",
 };
 
+/** Scannable proof — keep short; do not restate these in later section body copy. */
 export const WHY_TRUST_PILLARS = [
   {
     id: "igi",
-    title: "IGI Certified Diamonds",
-    description: "Independent diamond certification",
+    title: "IGI Certified",
+    description: "Independently graded diamonds",
   },
   {
     id: "gold",
     title: "14KT & 18KT Gold",
-    description: "BIS hallmarked gold jewellery",
+    description: "BIS hallmarked",
   },
   {
     id: "custom",
     title: "Made Around You",
-    description: "Custom designs created to your requirements",
+    description: "Salon pieces or fully bespoke",
   },
   {
     id: "timeline",
     title: "15–30 Days",
-    description: "Typical custom jewellery timeline",
+    description: "Typical custom timeline",
   },
 ] as const;
 
+/**
+ * Distinct reasons — not a restatement of the trust strip.
+ * Each pillar should advance a different idea: vision, aesthetic, guidance.
+ */
 export const WHY_DIFFERENCE_PILLARS = [
   {
-    id: "diamonds",
+    id: "vision",
     number: "01",
-    title: "Exceptional Diamonds",
+    title: "We start with your vision",
     description:
-      "IGI-certified lab-grown diamonds selected for quality, beauty and value.",
-  },
-  {
-    id: "design",
-    number: "02",
-    title: "Personalised Design",
-    description:
-      "Jewellery created around your vision—not limited to what's already in stock.",
+      "Bring a reference, a sketch, or simply the occasion. We shape the piece around what you want—not a fixed inventory list.",
   },
   {
     id: "aesthetics",
-    number: "03",
-    title: "Modern Aesthetics",
+    number: "02",
+    title: "Designs that feel current",
     description:
-      "Contemporary designs that feel distinctive, elegant and effortlessly modern.",
+      "Contemporary silhouettes and considered proportions—jewellery that reads as elegant now, and still yours years on.",
   },
   {
-    id: "service",
-    number: "04",
-    title: "Personal Service",
+    id: "guidance",
+    number: "03",
+    title: "Guidance without pressure",
     description:
-      "A one-to-one experience designed around your needs, preferences and occasion.",
+      "One consultant walks you through diamond, design, and finish—clear options, no upselling theatre.",
   },
 ] as const;
 
@@ -92,23 +90,22 @@ export const WHY_FOUR_CS = [
   {
     id: "carat",
     title: "Carat",
-    description: "The size and visual presence you want.",
+    description: "Size and presence",
   },
   {
     id: "cut",
     title: "Cut",
-    description: "The proportions and brilliance of the diamond.",
+    description: "Proportions and fire",
   },
   {
     id: "colour",
     title: "Colour",
-    description:
-      "From classic colourless diamonds to distinctive fancy colours.",
+    description: "Colourless to fancy hues",
   },
   {
     id: "clarity",
     title: "Clarity",
-    description: "The level of inclusions within the diamond.",
+    description: "Purity of the stone",
   },
 ] as const;
 
@@ -131,6 +128,45 @@ export const WHY_TIMELINE_STEPS = [
   { id: "crafting", label: "Crafting" },
   { id: "qc", label: "Quality Check" },
   { id: "delivery", label: "Delivery" },
+] as const;
+
+export type WhyTestimonial = {
+  id: string;
+  quote: string;
+  name: string;
+  locale: string;
+};
+
+/** Client voices — place after proof, before the final ask. */
+export const WHY_TESTIMONIALS: WhyTestimonial[] = [
+  {
+    id: "usa-everyday",
+    quote:
+      "My Bianca piece arrived exactly as we planned—and I wear it every day. It still feels special each morning.",
+    name: "Sarah M.",
+    locale: "New York, USA",
+  },
+  {
+    id: "india-brands",
+    quote:
+      "I looked at several big jewellery brands before deciding. Bianca won for the designs—and for a consultant who actually listened.",
+    name: "Ananya R.",
+    locale: "Mumbai, India",
+  },
+  {
+    id: "usa-gift",
+    quote:
+      "We wanted something beautiful we could gift with confidence. The quality and finish are what she reaches for most days.",
+    name: "Emily T.",
+    locale: "California, USA",
+  },
+  {
+    id: "india-bespoke",
+    quote:
+      "From first call to final piece, the experience felt personal. I never felt rushed—only guided toward something that felt like me.",
+    name: "Priya K.",
+    locale: "Bengaluru, India",
+  },
 ] as const;
 
 export const WHY_DRAWER_HIGHLIGHTS = [

@@ -14,22 +14,21 @@ export default function WhyHero({ onCustomDesign }: Props) {
       />
       <div className="relative mx-auto max-w-3xl text-center">
         <EditorialEyebrow tone="gold" className="mb-5">
-          Why Choose Bianca Diamonds?
+          Why Bianca Diamonds
         </EditorialEyebrow>
         <h1 className="font-editorial text-[clamp(2.25rem,5.5vw,3.75rem)] font-normal leading-[1.08] tracking-[0.05em] text-[#f9f9f9]">
           Luxury, made personal.
         </h1>
-        <p className="mx-auto mt-6 max-w-xl text-house-body leading-relaxed text-on-forest-body">
-          Choosing a diamond is about more than the stone itself. It is about
-          trust, craftsmanship, design—and finding something that feels uniquely
-          yours.
+        <p className="mx-auto mt-6 max-w-lg text-house-body leading-relaxed text-on-forest-body">
+          Certified lab-grown diamonds, modern design, and one-to-one guidance—
+          so the piece you choose feels unmistakably yours.
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <WhyCtaButton variant="primary-light" onClick={onCustomDesign}>
-            Create Your Custom Jewellery
+            Speak with a consultant
           </WhyCtaButton>
           <WhyCtaButton variant="ghost-light" to="/fine-jewellery">
-            Explore Our Diamonds
+            Explore the salon
           </WhyCtaButton>
         </div>
       </div>

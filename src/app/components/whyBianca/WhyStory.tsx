@@ -15,32 +15,26 @@ export default function WhyStory() {
             id="story-heading"
             className="font-editorial text-[clamp(1.65rem,3.8vw,2.5rem)] tracking-[0.05em] text-[#1d3c34]"
           >
-            We don&apos;t believe luxury should be one-size-fits-all.
+            Luxury should feel chosen—not chosen for you.
           </h2>
-          <div className="mx-auto mt-6 max-w-2xl space-y-4 text-house-body leading-relaxed text-on-cream-body">
-            <p>
-              Many jewellery brands start with what they already have and ask
-              you to choose from it. At Bianca, we start with what you want.
-            </p>
-            <p>
-              Bring an idea, a reference, a sketch—or simply the occasion and
-              the feeling you want the jewellery to capture. We work with you to
-              create something that feels personal.
-            </p>
-          </div>
+          <p className="mx-auto mt-6 max-w-xl text-house-body leading-relaxed text-on-cream-body">
+            Many houses ask you to pick from what they already have. We begin
+            with what you want the jewellery to say—then design and craft toward
+            that.
+          </p>
         </EditorialReveal>
 
-        <ol className="mt-14 grid gap-8 sm:grid-cols-2">
+        <ol className="mt-14 grid gap-8 sm:grid-cols-3">
           {WHY_DIFFERENCE_PILLARS.map((pillar, index) => (
             <EditorialReveal key={pillar.id} delay={index * 60}>
               <li className="border-t border-[#766d42]/30 pt-5">
                 <p className="font-editorial text-[12px] tracking-[0.22em] text-gold-on-cream">
                   {pillar.number}
                 </p>
-                <h3 className="mt-2 font-editorial text-xl tracking-[0.04em] text-[#1d3c34]">
+                <h3 className="mt-2 font-editorial text-lg tracking-[0.04em] text-[#1d3c34] md:text-xl">
                   {pillar.title}
                 </h3>
-                <p className="mt-3 text-house-body leading-relaxed text-on-cream-body">
+                <p className="mt-3 text-house-body text-sm leading-relaxed text-on-cream-body md:text-[15px]">
                   {pillar.description}
                 </p>
               </li>

@@ -19,16 +19,16 @@ export default function WhyCustom({ onStartCustom }: Props) {
     >
       <div className="mx-auto max-w-3xl">
         <EditorialReveal className="text-center">
-          <EditorialEyebrow className="mb-4">Custom Jewellery</EditorialEyebrow>
+          <EditorialEyebrow className="mb-4">How it works</EditorialEyebrow>
           <h2
             id="custom-heading"
             className="font-editorial text-[clamp(1.65rem,3.8vw,2.5rem)] tracking-[0.05em] text-[#1d3c34]"
           >
-            Designed Around You.
+            From idea to finished piece.
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-house-body leading-relaxed text-on-cream-body">
-            Tell us what you have in mind—a design, a sketch, a reference, an
-            occasion, or simply an idea. We craft the piece around your vision.
+            A clear path—diamond, design, refinement, craft—so you always know
+            what comes next.
           </p>
         </EditorialReveal>
 
@@ -68,21 +68,19 @@ export default function WhyCustom({ onStartCustom }: Props) {
             ))}
           </ol>
           <p className="mx-auto mt-5 max-w-md text-house-body text-sm text-on-cream-muted">
-            Exact timing depends on design complexity and diamond availability.
+            Timing depends on design complexity and diamond availability.
           </p>
-          <div className="mt-10">
+          <div className="mt-10 flex flex-col items-center gap-4">
             <WhyCtaButton onClick={onStartCustom}>
-              Start Your Custom Design
+              Start a custom design
             </WhyCtaButton>
-          </div>
-          <p className="mt-4">
             <Link
               to="/bespoke-jewellery"
               className="font-editorial text-[12px] uppercase tracking-[0.18em] text-gold-on-cream transition-colors hover:text-[#524a28]"
             >
-              Explore the bespoke journey →
+              Read the bespoke journey →
             </Link>
-          </p>
+          </div>
         </EditorialReveal>
       </div>
     </section>
