@@ -2269,4 +2269,189 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     description:
       "Princess-cut fire on a yellow-gold architectural band with white-gold accents — masculine weight and precise geometry.",
   },
+  {
+    id: "ring-yellow-solitaire-eternity-duo",
+    category: "rings",
+    productCode: "BD-K-RG-NEW-006",
+    image: "/Rings/bianca-diamonds-yellow-gold-solitaire-eternity-bridal-duo.jpg",
+    imageWellColor: "#ebe6dc",
+    alt: "Yellow gold round diamond solitaire with matching eternity band",
+    title: "Yellow Solitaire & Eternity",
+    description:
+      "An 18K yellow-gold round solitaire paired with a full eternity band — classic bridal light for every day and the aisle.",
+  },
+  {
+    id: "ring-canary-emerald-trilogy-studio",
+    category: "rings",
+    productCode: "BD-K-RG-NEW-007",
+    image:
+      "/Rings/bianca-diamonds-emerald-cut-canary-trilogy-ring-white-gold.jpg",
+    imageWellColor: "#f0ebe3",
+    alt: "Emerald-cut fancy yellow diamond trilogy ring with white diamond sides in white gold",
+    title: "Canary Emerald Trilogy",
+    description:
+      "A radiant emerald-cut canary centre flanked by white emerald-cut diamonds in white gold — three-stone fire with haute colour.",
+  },
+  {
+    id: "ring-rose-filigree-enamel-band",
+    category: "rings",
+    productCode: "BD-K-RG-NEW-008",
+    image: "/Rings/bianca-diamonds-rose-gold-filigree-diamond-enamel-band.jpg",
+    imageWellColor: "#ebe6dc",
+    alt: "Rose gold openwork filigree diamond band with black enamel quatrefoils",
+    title: "Rose Filigree Enamel Band",
+    description:
+      "Rose-gold openwork with black enamel quatrefoils and scattered brilliants — architectural romance for the modern hand.",
+  },
+  {
+    id: "ring-twisted-basket-split-solitaire",
+    category: "rings",
+    productCode: "BD-K-RG-NEW-009",
+    image:
+      "/Rings/bianca-diamonds-twisted-basket-split-shank-diamond-solitaire.jpg",
+    imageWellColor: "#ebe6dc",
+    alt: "Round diamond solitaire in white gold with twisted basket and split shank",
+    title: "Twisted Basket Solitaire",
+    description:
+      "A round brilliant in a twisted rope basket on a white-gold split shank — quiet craftsmanship, singular centre light.",
+  },
+  {
+    id: "ring-cushion-pave-hidden-halo",
+    category: "rings",
+    productCode: "BD-K-RG-NEW-010",
+    image:
+      "/Rings/bianca-diamonds-cushion-pave-hidden-halo-diamond-solitaire.jpg",
+    imageWellColor: "#ebe6dc",
+    alt: "Cushion-cut diamond solitaire with pavé shoulders and hidden halo in white gold",
+    title: "Cushion Pavé Hidden Halo",
+    description:
+      "A cushion brilliant with pavé shoulders and a hidden halo in white gold — salon sparkle from every angle.",
+  },
+  {
+    id: "ear-pear-floral-cascade-yellow",
+    category: "earrings",
+    productCode: "BD-K-ER-NEW-003",
+    image:
+      "/Earrings/bianca-diamonds-pear-floral-cascade-drop-earrings-yellow-gold.jpg",
+    imageWellColor: "#d8d8d8",
+    alt: "Yellow gold pear diamond floral cluster drop earrings with cascading pears",
+    title: "Pear Floral Cascade Drops",
+    description:
+      "Yellow-gold floral pear clusters cascade into graduated pear drops — evening movement with brilliant white fire.",
+  },
+  {
+    id: "ear-sapphire-pear-halo-drop",
+    category: "earrings",
+    productCode: "BD-K-ER-NEW-004",
+    image:
+      "/Earrings/bianca-diamonds-pear-sapphire-halo-drop-earrings-white-gold.jpg",
+    imageWellColor: "#d8d8d8",
+    alt: "White gold pear sapphire halo drop earrings with diamond upper tiers",
+    title: "Sapphire Pear Halo Drops",
+    description:
+      "Vivid pear sapphires in diamond halos, suspended beneath white-gold diamond tiers — gala colour with precise light.",
+  },
+  {
+    id: "brace-heart-tennis-white",
+    category: "bracelets",
+    productCode: "BD-K-BR-NEW-003",
+    braceletKind: "tennis",
+    image:
+      "/Bracelet/bianca-diamonds-heart-diamond-tennis-bracelet-white-gold.jpg",
+    imageWellColor: "#0a0a0a",
+    alt: "Heart-shaped diamond tennis bracelet in white gold",
+    title: "Heart Diamond Tennis",
+    description:
+      "A continuous line of heart-shaped brilliants in white gold — romantic geometry with tennis-line flexibility.",
+  },
+  {
+    id: "brace-tennis-round-statement",
+    category: "bracelets",
+    productCode: "BD-K-BR-NEW-004",
+    braceletKind: "tennis",
+    image: "/Bracelet/bianca-diamonds-round-diamond-tennis-bracelet-statement.png",
+    imageWellColor: "#1a1a1a",
+    alt: "Classic round brilliant diamond tennis bracelet in white gold",
+    title: "Round Tennis Statement",
+    description:
+      "Round brilliants in a white-gold four-prong tennis line — the maison classic for every wrist and every hour.",
+  },
+  {
+    id: "brace-princess-tennis-white",
+    category: "bracelets",
+    productCode: "BD-K-BR-NEW-005",
+    braceletKind: "tennis",
+    image:
+      "/Bracelet/bianca-diamonds-princess-cut-diamond-tennis-bracelet-white-gold.jpg",
+    imageWellColor: "#d8ebe8",
+    alt: "Princess-cut diamond tennis bracelet in white gold with box clasp",
+    title: "Princess Tennis Line",
+    description:
+      "Square princess brilliants in white-gold baskets form a precise tennis ribbon — architectural sparkle for day to evening.",
+  },
+  {
+    id: "brace-rose-princess-pear-link",
+    category: "bracelets",
+    productCode: "BD-K-BR-NEW-006",
+    braceletKind: "bracelet",
+    image:
+      "/Bracelet/bianca-diamonds-rose-gold-princess-pear-floral-link-bracelet.jpg",
+    imageWellColor: "#f5f5f5",
+    alt: "Rose gold floral link bracelet with princess and pear diamonds",
+    title: "Rose Princess Pear Link",
+    description:
+      "Princess centres framed by pear petals in rose gold — a floral link bracelet with warm metal and white fire.",
+  },
+  {
+    id: "brace-tennis-rose-round",
+    category: "bracelets",
+    productCode: "BD-K-BR-NEW-007",
+    braceletKind: "tennis",
+    image:
+      "/Bracelet/bianca-diamonds-rose-gold-round-diamond-tennis-bracelet.jpg",
+    imageWellColor: "#ffffff",
+    alt: "Rose gold round diamond tennis bracelet with box clasp",
+    title: "Rose Round Tennis",
+    description:
+      "Round brilliants in rose-gold four-prong settings — a soft-metal tennis line with enduring salon light.",
+  },
+  {
+    id: "brace-four-row-emerald-round",
+    category: "bracelets",
+    productCode: "BD-K-BR-NEW-008",
+    braceletKind: "bracelet",
+    image:
+      "/Bracelet/bianca-diamonds-four-row-emerald-round-diamond-bracelet-white-gold.jpg",
+    imageWellColor: "#1a1a1a",
+    alt: "Four-row white gold bracelet with alternating emerald-cut and round diamonds",
+    title: "Four-Row Emerald Round",
+    description:
+      "Four staggered rows of emerald-cut and round diamonds in white gold — dense brilliance with couture wrist presence.",
+  },
+  {
+    id: "brace-emerald-diamond-tennis-yellow",
+    category: "bracelets",
+    productCode: "BD-K-BR-NEW-009",
+    braceletKind: "tennis",
+    image:
+      "/Bracelet/bianca-diamonds-emerald-diamond-tennis-bracelet-yellow-gold.jpg",
+    imageWellColor: "#ffffff",
+    alt: "Yellow gold tennis bracelet alternating round emeralds and white diamonds",
+    title: "Emerald Diamond Tennis",
+    description:
+      "Round emeralds alternate with white diamonds in yellow gold — a colourful tennis line with jardin light.",
+  },
+  {
+    id: "brace-ruby-diamond-tennis-white",
+    category: "bracelets",
+    productCode: "BD-K-BR-NEW-010",
+    braceletKind: "tennis",
+    image:
+      "/Bracelet/bianca-diamonds-emerald-cut-ruby-diamond-tennis-bracelet-white-gold.jpg",
+    imageWellColor: "#ffffff",
+    alt: "Emerald-cut ruby and diamond tennis bracelet in white gold",
+    title: "Ruby Diamond Tennis",
+    description:
+      "Emerald-cut rubies spaced by diamond bars in white gold — vivid colour and precise tennis rhythm.",
+  },
 ];

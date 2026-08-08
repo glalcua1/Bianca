@@ -182,12 +182,12 @@
     },
     {
       "source": "/Rings/IMG_7588.jpg",
-      "destination": "/Rings/bianca-diamonds-lab-grown-diamond-ring-studio.jpg",
+      "destination": "/Rings/bianca-diamonds-emerald-cut-canary-trilogy-ring-white-gold.jpg",
       "permanent": true
     },
     {
       "source": "/Rings/IMG_7775.jpg",
-      "destination": "/Rings/bianca-diamonds-diamond-ring-atelier-view.jpg",
+      "destination": "/Rings/bianca-diamonds-yellow-gold-solitaire-eternity-bridal-duo.jpg",
       "permanent": true
     },
     {
@@ -202,12 +202,12 @@
     },
     {
       "source": "/Earrings/IMG_7757.jpg",
-      "destination": "/Earrings/bianca-diamonds-diamond-drop-earrings-atelier.jpg",
+      "destination": "/Earrings/bianca-diamonds-pear-floral-cascade-drop-earrings-yellow-gold.jpg",
       "permanent": true
     },
     {
       "source": "/Earrings/IMG_7669.jpg",
-      "destination": "/Earrings/bianca-diamonds-diamond-earrings-salon.jpg",
+      "destination": "/Earrings/bianca-diamonds-pear-sapphire-halo-drop-earrings-white-gold.jpg",
       "permanent": true
     },
     {
@@ -232,17 +232,17 @@
     },
     {
       "source": "/Bracelet/necklace11.png",
-      "destination": "/Bracelet/bianca-diamonds-diamond-bracelet-statement.png",
+      "destination": "/Bracelet/bianca-diamonds-round-diamond-tennis-bracelet-statement.png",
       "permanent": true
     },
     {
       "source": "/Bracelet/ddi9foddi9foddi9.jpg",
-      "destination": "/Bracelet/bianca-diamonds-diamond-tennis-bracelet-detail.jpg",
+      "destination": "/Bracelet/bianca-diamonds-princess-cut-diamond-tennis-bracelet-white-gold.jpg",
       "permanent": true
     },
     {
       "source": "/Bracelet/IMG_7364.jpg",
-      "destination": "/Bracelet/bianca-diamonds-diamond-bracelet-atelier.jpg",
+      "destination": "/Bracelet/bianca-diamonds-heart-diamond-tennis-bracelet-white-gold.jpg",
       "permanent": true
     },
     {
@@ -1063,6 +1063,81 @@
     {
       "source": "/Rings/Ring_20.jpg",
       "destination": "/Rings/bianca-diamonds-ring-sapphire-pear-halo-gallery.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7432.jpg",
+      "destination": "/Rings/bianca-diamonds-rose-gold-filigree-diamond-enamel-band.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7444.jpg",
+      "destination": "/Rings/bianca-diamonds-twisted-basket-split-shank-diamond-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/IMG_7481.jpg",
+      "destination": "/Rings/bianca-diamonds-cushion-pave-hidden-halo-diamond-solitaire.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/IMG_7368-2.jpg",
+      "destination": "/Bracelet/bianca-diamonds-rose-gold-princess-pear-floral-link-bracelet.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/IMG_7373.JPG",
+      "destination": "/Bracelet/bianca-diamonds-rose-gold-round-diamond-tennis-bracelet.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/bianca-diamonds-diamond-ring-atelier-view.jpg",
+      "destination": "/Rings/bianca-diamonds-yellow-gold-solitaire-eternity-bridal-duo.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Rings/bianca-diamonds-lab-grown-diamond-ring-studio.jpg",
+      "destination": "/Rings/bianca-diamonds-emerald-cut-canary-trilogy-ring-white-gold.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/bianca-diamonds-diamond-drop-earrings-atelier.jpg",
+      "destination": "/Earrings/bianca-diamonds-pear-floral-cascade-drop-earrings-yellow-gold.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Earrings/bianca-diamonds-diamond-earrings-salon.jpg",
+      "destination": "/Earrings/bianca-diamonds-pear-sapphire-halo-drop-earrings-white-gold.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/bianca-diamonds-diamond-bracelet-atelier.jpg",
+      "destination": "/Bracelet/bianca-diamonds-heart-diamond-tennis-bracelet-white-gold.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/bianca-diamonds-diamond-bracelet-statement.png",
+      "destination": "/Bracelet/bianca-diamonds-round-diamond-tennis-bracelet-statement.png",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/bianca-diamonds-diamond-tennis-bracelet-detail.jpg",
+      "destination": "/Bracelet/bianca-diamonds-princess-cut-diamond-tennis-bracelet-white-gold.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/IMG_7372.JPG",
+      "destination": "/Bracelet/bianca-diamonds-four-row-emerald-round-diamond-bracelet-white-gold.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/IMG_7376.JPG",
+      "destination": "/Bracelet/bianca-diamonds-emerald-diamond-tennis-bracelet-yellow-gold.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/Bracelet/IMG_7386.JPG",
+      "destination": "/Bracelet/bianca-diamonds-emerald-cut-ruby-diamond-tennis-bracelet-white-gold.jpg",
       "permanent": true
     }
   ],
