@@ -128,7 +128,14 @@ export default function HomePage() {
           <HomePageMobile />
         )}
       </Suspense>
-      <Suspense fallback={null}>
+      <Suspense
+        fallback={
+          <div
+            className="min-h-[8rem] bg-[#faf8f5]"
+            aria-hidden
+          />
+        }
+      >
         <InstagramFeedSection profileUrl={BIANCA_INSTAGRAM_URL} compactTop />
       </Suspense>
       <SiteFooter />

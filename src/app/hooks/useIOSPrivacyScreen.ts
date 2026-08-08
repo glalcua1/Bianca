@@ -27,8 +27,15 @@ export function useIOSPrivacyScreen() {
         document.documentElement.classList.add("ios-privacy-overlay-visible");
       };
 
-      const hidePrivacyOverlay = () => {
+      const hidePrivacyOverlay = (immediate = false) => {
         window.clearTimeout(hideTimer);
+        if (immediate) {
+          document.documentElement.classList.remove(
+            "ios-privacy-overlay-visible",
+          );
+          return;
+        }
+        // Brief delay avoids flicker when iOS briefly toggles visibility.
         hideTimer = window.setTimeout(() => {
           document.documentElement.classList.remove(
             "ios-privacy-overlay-visible",
@@ -40,7 +47,9 @@ export function useIOSPrivacyScreen() {
         if (document.visibilityState === "hidden") {
           showPrivacyOverlay();
         } else {
-          hidePrivacyOverlay();
+          // Clear immediately when the tab is visible again — never leave a
+          // stuck cream blank screen after app-switcher / in-app browsers.
+          hidePrivacyOverlay(true);
         }
       };
 
@@ -49,12 +58,17 @@ export function useIOSPrivacyScreen() {
       };
 
       const handlePageShow = () => {
-        hidePrivacyOverlay();
+        hidePrivacyOverlay(true);
+      };
+
+      const handleFocus = () => {
+        hidePrivacyOverlay(true);
       };
 
       document.addEventListener("visibilitychange", syncToVisibility);
       window.addEventListener("pagehide", handlePageHide);
       window.addEventListener("pageshow", handlePageShow);
+      window.addEventListener("focus", handleFocus);
 
       // Match current state (e.g. tab already backgrounded when effect runs).
       syncToVisibility();
@@ -68,6 +82,7 @@ export function useIOSPrivacyScreen() {
         document.removeEventListener("visibilitychange", syncToVisibility);
         window.removeEventListener("pagehide", handlePageHide);
         window.removeEventListener("pageshow", handlePageShow);
+        window.removeEventListener("focus", handleFocus);
       };
     };
 
