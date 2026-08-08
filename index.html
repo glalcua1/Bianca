@@ -56,6 +56,34 @@
     <meta name="application-name" content="Bianca Diamonds" />
     <meta name="apple-mobile-web-app-title" content="Bianca Diamonds" />
 
+    <!-- Cream shell before CSS/JS — never flash a white blank viewport -->
+    <style>
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: #faf8f5;
+        color: #1d3c34;
+      }
+      #root {
+        min-height: 100svh;
+      }
+      .boot-shell {
+        box-sizing: border-box;
+        display: flex;
+        min-height: 100svh;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        background: #faf8f5;
+        color: #1d3c34;
+        font-family: Georgia, "Times New Roman", serif;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-size: 11px;
+      }
+    </style>
+
     <!-- Fonts: preconnect + async CSS (avoids render-blocking @import) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -115,7 +143,9 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="boot-shell" role="status" aria-live="polite">Bianca Diamonds</div>
+    </div>
     <noscript>
       <main>
         <h1>Bianca Diamonds</h1>
