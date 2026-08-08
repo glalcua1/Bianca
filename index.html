@@ -3,6 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- Apex host serves HTML but assets 308 to www — force canonical host before React boots. -->
+    <script>
+      (function () {
+        if (location.hostname === "biancadiamonds.com") {
+          location.replace(
+            "https://www.biancadiamonds.com" +
+              location.pathname +
+              location.search +
+              location.hash,
+          );
+        }
+      })();
+    </script>
     <title>Bianca Diamonds | Lab-Grown Diamond Fine Jewellery</title>
     <meta
       name="description"
