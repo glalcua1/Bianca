@@ -1,3 +1,10 @@
+import {
+  ATELIER_PIECES,
+  sortAllAtelierPiecesByWellPerCategory,
+  type AtelierPiece,
+} from "./fineJewelleryCollections";
+import { getBlueStarCollectionPieces } from "./blueStarCollection";
+
 export type HomeSectionCard = {
   id: string;
   eyebrow: string;
@@ -14,6 +21,49 @@ export type HomeSectionCard = {
   tone?: "cream" | "forest" | "ink";
 };
 
+export type HomeCardCarouselSlide = {
+  image: string;
+  imageAlt: string;
+  imageClassName?: string;
+  imageWellColor?: string;
+};
+
+function slidesFromPieces(
+  pieces: AtelierPiece[],
+  imageClassName: string,
+): HomeCardCarouselSlide[] {
+  return pieces.map((piece) => ({
+    image: piece.image,
+    imageAlt: piece.alt,
+    imageClassName,
+    imageWellColor: piece.imageWellColor,
+  }));
+}
+
+/** Latest Fine Jewellery pieces for The House Fine Jewellery card carousel. */
+export function getHomeFineJewelleryCarouselSlides(
+  limit = 4,
+): HomeCardCarouselSlide[] {
+  const latest = sortAllAtelierPiecesByWellPerCategory(ATELIER_PIECES).slice(
+    0,
+    limit,
+  );
+  return slidesFromPieces(
+    latest,
+    "object-contain object-center p-3 sm:p-4 md:p-5 lg:p-6",
+  );
+}
+
+/** Blue Star pieces for The House Blue Diamonds card carousel. */
+export function getHomeBlueStarCarouselSlides(
+  limit = 4,
+): HomeCardCarouselSlide[] {
+  return slidesFromPieces(
+    getBlueStarCollectionPieces().slice(0, limit),
+    "object-contain object-center p-3 sm:p-4 md:p-5 lg:p-6",
+  );
+}
+
 /**
  * Primary homepage destinations — full-width horizontal editorial cards.
  * Order: Fine Jewellery → Bespoke → Butterfly → Cannes.
@@ -27,11 +77,10 @@ export const HOME_SECTION_CARDS: HomeSectionCard[] = [
       "Certified lab-grown diamonds set in BIS hallmarked gold — composed for everyday brilliance and life’s most luminous occasions.",
     cta: "Enter the salon",
     to: "/fine-jewellery",
-    image: "/Rings/bianca-diamonds-sapphire-maison-ring.jpg",
-    imageAlt:
-      "Sapphire Maison — oval sapphire split-shank ring in yellow gold (BD-G-RG-045)",
-    imageClassName: "object-cover object-center",
-    imageWellColor: "#c8ac8d",
+    image: "/Rings/bianca-diamonds-oval-diamond-baguette-halo-ring.jpg",
+    imageAlt: "Oval diamond ring with radial baguette halo in white gold",
+    imageClassName: "object-contain object-center p-3 sm:p-4 md:p-5 lg:p-6",
+    imageWellColor: "#abb1b5",
     tone: "cream",
   },
   {
