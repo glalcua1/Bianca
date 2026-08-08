@@ -45,7 +45,12 @@ export type AtelierPiece = {
   description: string;
   /** Tennis line vs bangle, cuff, and statement wrist pieces */
   braceletKind?: BraceletKind;
-  /** Match product photography backdrop instead of default black/cream well */
+  /**
+   * Product photography backdrop — MUST match the image’s real background
+   * (sample corners). CollectionPhotoFrame syncs its mat + well to this colour
+   * so light-grey studio shots never sit in cream/white mats. See frame rule on
+   * CollectionPhotoFrame.
+   */
   imageWellColor?: string;
   /** Per-piece frame tuning for tall or unusually cropped product photography. */
   frameImageClassName?: string;
@@ -72,12 +77,28 @@ export function atelierPieceEyebrow(piece: AtelierPiece): string {
   );
 }
 
-/** Matches CollectionPhotoFrame — cream/beige wells vs black product backdrops. */
+/** True when the photography backdrop is near-black (not light grey / cream). */
 export function atelierPieceUsesDarkWell(piece: AtelierPiece): boolean {
   if (piece.imageWellColor) {
-    return piece.imageWellColor.toLowerCase() === "#0a0a0a";
+    const hex = piece.imageWellColor.replace("#", "").trim();
+    if (hex.length === 6) {
+      const r = Number.parseInt(hex.slice(0, 2), 16);
+      const g = Number.parseInt(hex.slice(2, 4), 16);
+      const b = Number.parseInt(hex.slice(4, 6), 16);
+      if ([r, g, b].every((n) => Number.isFinite(n))) {
+        return (r + g + b) / 3 < 40;
+      }
+    }
+    return false;
   }
   return piece.category === "necklaces";
+}
+
+/** Newer catalogue cohorts first: SEO uploads, then NEW, then the rest. */
+function catalogueRecencyRank(piece: AtelierPiece): number {
+  if (/-SEO-\d+$/i.test(piece.productCode)) return 0;
+  if (/-NEW-\d+$/i.test(piece.productCode)) return 1;
+  return 2;
 }
 
 /** True for salon film assets served from public/ */
@@ -126,34 +147,50 @@ export function atelierPieceViews(
   return [piece.image, ...extra];
 }
 
-/** Beige/cream photography first, black-background pieces after — stable within each group. */
+/**
+ * Latest jewellery first (SEO → NEW → legacy), then light studio wells before
+ * near-black backdrops — stable within each group.
+ */
 export function sortAtelierPiecesByWell(pieces: AtelierPiece[]): AtelierPiece[] {
-  const light: AtelierPiece[] = [];
-  const dark: AtelierPiece[] = [];
-  for (const piece of pieces) {
-    (atelierPieceUsesDarkWell(piece) ? dark : light).push(piece);
-  }
-  return [...light, ...dark];
+  return [...pieces].sort((a, b) => {
+    const recency = catalogueRecencyRank(a) - catalogueRecencyRank(b);
+    if (recency !== 0) return recency;
+    const aDark = atelierPieceUsesDarkWell(a) ? 1 : 0;
+    const bDark = atelierPieceUsesDarkWell(b) ? 1 : 0;
+    return aDark - bDark;
+  });
 }
 
-/** For the All tab — sort by well within each category while preserving category order. */
+/**
+ * All tab — newest jewellery first (SEO → NEW → legacy). Within each cohort,
+ * cluster by category order of first appearance, light wells before dark.
+ */
 export function sortAllAtelierPiecesByWellPerCategory(
   pieces: AtelierPiece[],
 ): AtelierPiece[] {
   const categoryOrder: JewelleryCategoryId[] = [];
-  const groups = new Map<JewelleryCategoryId, AtelierPiece[]>();
-
+  const seen = new Set<JewelleryCategoryId>();
   for (const piece of pieces) {
-    if (!groups.has(piece.category)) {
+    if (!seen.has(piece.category)) {
+      seen.add(piece.category);
       categoryOrder.push(piece.category);
-      groups.set(piece.category, []);
     }
-    groups.get(piece.category)!.push(piece);
   }
-
-  return categoryOrder.flatMap((category) =>
-    sortAtelierPiecesByWell(groups.get(category)!),
+  const categoryIndex = new Map(
+    categoryOrder.map((id, index) => [id, index] as const),
   );
+
+  return [...pieces].sort((a, b) => {
+    const recency = catalogueRecencyRank(a) - catalogueRecencyRank(b);
+    if (recency !== 0) return recency;
+    const cat =
+      (categoryIndex.get(a.category) ?? 0) -
+      (categoryIndex.get(b.category) ?? 0);
+    if (cat !== 0) return cat;
+    const aDark = atelierPieceUsesDarkWell(a) ? 1 : 0;
+    const bDark = atelierPieceUsesDarkWell(b) ? 1 : 0;
+    return aDark - bDark;
+  });
 }
 
 export const FINE_JEWELLERY_COLLECTIONS: FineJewelleryCollection[] = [
@@ -231,7 +268,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "earrings",
     productCode: "BD-K-ER-034",
     image: "/Earrings/bianca-diamonds-ear-blush-cushion-studs.jpg",
-    imageWellColor: "#cccccc",
+    imageWellColor: "#d2cdc6",
     alt: "Blush Cushion Studs — cushion pink diamond stud earrings in rose gold",
     title: "Blush Cushion Studs",
     description:
@@ -2149,7 +2186,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-RG-NEW-002",
     image:
       "/Rings/bianca-diamonds-marquise-pink-white-diamond-toi-et-moi-ring.png",
-    imageWellColor: "#1a1a1a",
+    imageWellColor: "#575857",
     alt: "Marquise white and pink diamond toi-et-moi multi-band ring in white gold",
     title: "Marquise Pink Toi et Moi",
     description:
@@ -2160,7 +2197,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "rings",
     productCode: "BD-K-RG-NEW-003",
     image: "/Rings/bianca-diamonds-two-tone-bypass-baguette-diamond-ring.jpg",
-    imageWellColor: "#ebe6dc",
+    imageWellColor: "#dec3ac",
     alt: "Two-tone yellow and white gold bypass ring with round and baguette diamonds",
     title: "Two-Tone Bypass Baguette",
     description:
@@ -2171,7 +2208,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "rings",
     productCode: "BD-K-RG-NEW-004",
     image: "/Rings/bianca-diamonds-radiant-pink-diamond-rose-gold-solitaire.jpg",
-    imageWellColor: "#cfcfcf",
+    imageWellColor: "#999999",
     alt: "Radiant-cut fancy pink diamond solitaire in rose gold",
     title: "Radiant Pink Rose Solitaire",
     description:
@@ -2182,7 +2219,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "rings",
     productCode: "BD-K-RG-NEW-005",
     image: "/Rings/bianca-diamonds-two-tone-princess-diamond-band.jpg",
-    imageWellColor: "#2a2a2a",
+    imageWellColor: "#373435",
     alt: "Two-tone yellow and white gold princess-cut diamond band",
     title: "Princess Two-Tone Band",
     description:
@@ -2193,7 +2230,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "earrings",
     productCode: "BD-K-ER-NEW-001",
     image: "/Earrings/bianca-diamonds-pear-emerald-halo-drop-earrings.png",
-    imageWellColor: "#f4f0e6",
+    imageWellColor: "#d7bf9c",
     alt: "Pear emerald halo drop earrings in white gold with diamond frames",
     title: "Pear Emerald Halo Drops",
     description:
@@ -2205,7 +2242,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-ER-NEW-002",
     image:
       "/Earrings/bianca-diamonds-pear-diamond-linear-drop-earrings-yellow-gold.jpg",
-    imageWellColor: "#d8d8d8",
+    imageWellColor: "#b2b2b3",
     alt: "Five-stone pear diamond linear drop earrings in yellow gold",
     title: "Pear Linear Yellow Drops",
     description:
@@ -2217,7 +2254,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-NK-NEW-001",
     image:
       "/necklace/bianca-diamonds-emerald-diamond-chandelier-necklace-set.png",
-    imageWellColor: "#0a0a0a",
+    imageWellColor: "#0d0e0f",
     alt: "Emerald and diamond chandelier necklace with matching earrings in white gold",
     title: "Emerald Chandelier Parure",
     description:
@@ -2228,7 +2265,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "necklaces",
     productCode: "BD-K-NK-NEW-002",
     image: "/necklace/bianca-diamonds-pear-fringe-diamond-necklace-parure.jpg",
-    imageWellColor: "#0a0a0a",
+    imageWellColor: "#46454d",
     alt: "Pear fringe diamond necklace with matching chandelier earrings and halo ring in white gold",
     title: "Pear Fringe Parure",
     description:
@@ -2240,7 +2277,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-BR-NEW-001",
     braceletKind: "bracelet",
     image: "/Bracelet/bianca-diamonds-marquise-floral-diamond-bracelet.png",
-    imageWellColor: "#1a1a1a",
+    imageWellColor: "#1b1b1d",
     alt: "Marquise floral diamond link bracelet in white gold",
     title: "Marquise Floral Link",
     description:
@@ -2252,7 +2289,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-BR-NEW-002",
     braceletKind: "bracelet",
     image: "/Bracelet/bianca-diamonds-pear-diamond-multi-row-bracelet.png",
-    imageWellColor: "#1a1a1a",
+    imageWellColor: "#151415",
     alt: "Multi-row pear diamond bracelet in white gold",
     title: "Pear Multi-Row Bracelet",
     description:
@@ -2263,7 +2300,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "for-him",
     productCode: "BD-K-MN-NEW-001",
     image: "/Rings/bianca-diamonds-two-tone-princess-diamond-band.jpg",
-    imageWellColor: "#2a2a2a",
+    imageWellColor: "#373435",
     alt: "Men's two-tone princess-cut diamond band in yellow and white gold",
     title: "Two-Tone Princess",
     description:
@@ -2274,7 +2311,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "rings",
     productCode: "BD-K-RG-NEW-006",
     image: "/Rings/bianca-diamonds-yellow-gold-solitaire-eternity-bridal-duo.jpg",
-    imageWellColor: "#ebe6dc",
+    imageWellColor: "#c3ada0",
     alt: "Yellow gold round diamond solitaire with matching eternity band",
     title: "Yellow Solitaire & Eternity",
     description:
@@ -2286,7 +2323,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-RG-NEW-007",
     image:
       "/Rings/bianca-diamonds-emerald-cut-canary-trilogy-ring-white-gold.jpg",
-    imageWellColor: "#f0ebe3",
+    imageWellColor: "#decab8",
     alt: "Emerald-cut fancy yellow diamond trilogy ring with white diamond sides in white gold",
     title: "Canary Emerald Trilogy",
     description:
@@ -2297,7 +2334,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "rings",
     productCode: "BD-K-RG-NEW-008",
     image: "/Rings/bianca-diamonds-rose-gold-filigree-diamond-enamel-band.jpg",
-    imageWellColor: "#ebe6dc",
+    imageWellColor: "#d9c6b2",
     alt: "Rose gold openwork filigree diamond band with black enamel quatrefoils",
     title: "Rose Filigree Enamel Band",
     description:
@@ -2309,7 +2346,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-RG-NEW-009",
     image:
       "/Rings/bianca-diamonds-twisted-basket-split-shank-diamond-solitaire.jpg",
-    imageWellColor: "#ebe6dc",
+    imageWellColor: "#c8bdb1",
     alt: "Round diamond solitaire in white gold with twisted basket and split shank",
     title: "Twisted Basket Solitaire",
     description:
@@ -2321,7 +2358,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-RG-NEW-010",
     image:
       "/Rings/bianca-diamonds-cushion-pave-hidden-halo-diamond-solitaire.jpg",
-    imageWellColor: "#ebe6dc",
+    imageWellColor: "#e0cdb8",
     alt: "Cushion-cut diamond solitaire with pavé shoulders and hidden halo in white gold",
     title: "Cushion Pavé Hidden Halo",
     description:
@@ -2333,7 +2370,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-ER-NEW-003",
     image:
       "/Earrings/bianca-diamonds-pear-floral-cascade-drop-earrings-yellow-gold.jpg",
-    imageWellColor: "#d8d8d8",
+    imageWellColor: "#c1c3c8",
     alt: "Yellow gold pear diamond floral cluster drop earrings with cascading pears",
     title: "Pear Floral Cascade Drops",
     description:
@@ -2345,7 +2382,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-ER-NEW-004",
     image:
       "/Earrings/bianca-diamonds-pear-sapphire-halo-drop-earrings-white-gold.jpg",
-    imageWellColor: "#d8d8d8",
+    imageWellColor: "#cbcac9",
     alt: "White gold pear sapphire halo drop earrings with diamond upper tiers",
     title: "Sapphire Pear Halo Drops",
     description:
@@ -2358,7 +2395,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     braceletKind: "tennis",
     image:
       "/Bracelet/bianca-diamonds-heart-diamond-tennis-bracelet-white-gold.jpg",
-    imageWellColor: "#0a0a0a",
+    imageWellColor: "#08090d",
     alt: "Heart-shaped diamond tennis bracelet in white gold",
     title: "Heart Diamond Tennis",
     description:
@@ -2370,7 +2407,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-BR-NEW-004",
     braceletKind: "tennis",
     image: "/Bracelet/bianca-diamonds-round-diamond-tennis-bracelet-statement.png",
-    imageWellColor: "#1a1a1a",
+    imageWellColor: "#05070a",
     alt: "Classic round brilliant diamond tennis bracelet in white gold",
     title: "Round Tennis Statement",
     description:
@@ -2383,7 +2420,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     braceletKind: "tennis",
     image:
       "/Bracelet/bianca-diamonds-princess-cut-diamond-tennis-bracelet-white-gold.jpg",
-    imageWellColor: "#d8ebe8",
+    imageWellColor: "#b1dada",
     alt: "Princess-cut diamond tennis bracelet in white gold with box clasp",
     title: "Princess Tennis Line",
     description:
@@ -2396,7 +2433,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     braceletKind: "bracelet",
     image:
       "/Bracelet/bianca-diamonds-rose-gold-princess-pear-floral-link-bracelet.jpg",
-    imageWellColor: "#f5f5f5",
+    imageWellColor: "#ffffff",
     alt: "Rose gold floral link bracelet with princess and pear diamonds",
     title: "Rose Princess Pear Link",
     description:
@@ -2422,7 +2459,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     braceletKind: "bracelet",
     image:
       "/Bracelet/bianca-diamonds-four-row-emerald-round-diamond-bracelet-white-gold.jpg",
-    imageWellColor: "#1a1a1a",
+    imageWellColor: "#5f5f5f",
     alt: "Four-row white gold bracelet with alternating emerald-cut and round diamonds",
     title: "Four-Row Emerald Round",
     description:
@@ -2459,7 +2496,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "rings",
     productCode: "BD-K-RG-SEO-001",
     image: "/Rings/bianca-diamonds-oval-diamond-baguette-halo-ring.jpg",
-    imageWellColor: "#d8d8d8",
+    imageWellColor: "#abb1b5",
     alt: "Oval diamond ring with radial baguette halo in white gold",
     title: "Oval Baguette Halo",
     description:
@@ -2470,7 +2507,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "rings",
     productCode: "BD-K-RG-SEO-002",
     image: "/Rings/bianca-diamonds-yellow-diamond-art-deco-ring.jpg",
-    imageWellColor: "#d8d8d8",
+    imageWellColor: "#e2e2e2",
     alt: "Fancy yellow diamond Art Deco geometric ring in yellow gold",
     title: "Yellow Art Deco Ring",
     description:
@@ -2481,7 +2518,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "rings",
     productCode: "BD-K-RG-SEO-003",
     image: "/Rings/bianca-diamonds-yellow-diamond-three-stone-ring.jpg",
-    imageWellColor: "#ebe6dc",
+    imageWellColor: "#cfccd2",
     alt: "Fancy yellow diamond three-stone ring in yellow gold",
     title: "Yellow Three-Stone",
     description:
@@ -2492,7 +2529,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "earrings",
     productCode: "BD-K-ER-SEO-001",
     image: "/Earrings/bianca-diamonds-art-deco-pear-drop-earrings.jpg",
-    imageWellColor: "#d8d8d8",
+    imageWellColor: "#e3e3e3",
     alt: "Art Deco pear drop earrings with onyx accents and multi-cut diamonds in white gold",
     title: "Art Deco Pear Drops",
     description:
@@ -2503,7 +2540,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "earrings",
     productCode: "BD-K-ER-SEO-002",
     image: "/Earrings/bianca-diamonds-diamond-chandelier-tassel-earrings.jpg",
-    imageWellColor: "#d8d8d8",
+    imageWellColor: "#98a2a5",
     alt: "Diamond chandelier tassel drop earrings in white gold",
     title: "Chandelier Tassel Drops",
     description:
@@ -2514,7 +2551,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "earrings",
     productCode: "BD-K-ER-SEO-003",
     image: "/Earrings/bianca-diamonds-emerald-cut-geometric-drop-earrings.jpg",
-    imageWellColor: "#d8d8d8",
+    imageWellColor: "#97a1a4",
     alt: "Emerald-cut geometric diamond drop earrings in white gold",
     title: "Emerald-Cut Geometric Drops",
     description:
@@ -2525,7 +2562,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "earrings",
     productCode: "BD-K-ER-SEO-004",
     image: "/Earrings/bianca-diamonds-yellow-diamond-cascade-drop-earrings.jpg",
-    imageWellColor: "#ebe6dc",
+    imageWellColor: "#e0e1e0",
     alt: "Fancy yellow diamond cascade drop earrings in yellow gold",
     title: "Yellow Cascade Drops",
     description:
@@ -2537,7 +2574,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-ER-SEO-005",
     image:
       "/Earrings/bianca-diamonds-yellow-diamond-double-halo-stud-earrings.png",
-    imageWellColor: "#f4f0e6",
+    imageWellColor: "#bec0c4",
     alt: "Fancy yellow diamond double-halo stud earrings in yellow gold",
     title: "Yellow Double-Halo Studs",
     description:
@@ -2548,7 +2585,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "earrings",
     productCode: "BD-K-ER-SEO-006",
     image: "/Earrings/bianca-diamonds-yellow-diamond-marquise-drop-earrings.jpg",
-    imageWellColor: "#ebe6dc",
+    imageWellColor: "#bcbcbb",
     alt: "Fancy yellow marquise diamond drop earrings in yellow gold",
     title: "Yellow Marquise Drops",
     description:
@@ -2560,7 +2597,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-ER-SEO-007",
     image:
       "/Earrings/bianca-diamonds-yellow-diamond-sunburst-stud-earrings.jpg",
-    imageWellColor: "#d8d8d8",
+    imageWellColor: "#aab0b3",
     alt: "Fancy yellow diamond sunburst stud earrings in yellow gold",
     title: "Yellow Sunburst Studs",
     description:
@@ -2571,7 +2608,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "necklaces",
     productCode: "BD-K-NK-SEO-001",
     image: "/necklace/bianca-diamonds-art-deco-onyx-pear-drop-necklace.jpg",
-    imageWellColor: "#0a0a0a",
+    imageWellColor: "#e2e2e2",
     alt: "Art Deco onyx and pear diamond drop necklace in white gold",
     title: "Art Deco Onyx Pear",
     description:
@@ -2582,7 +2619,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "necklaces",
     productCode: "BD-K-NK-SEO-002",
     image: "/necklace/bianca-diamonds-emerald-pear-fringe-necklace.jpg",
-    imageWellColor: "#0a0a0a",
+    imageWellColor: "#aab0b4",
     alt: "Emerald and pear diamond fringe necklace in white gold",
     title: "Emerald Pear Fringe",
     description:
@@ -2593,7 +2630,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "necklaces",
     productCode: "BD-K-NK-SEO-003",
     image: "/necklace/bianca-diamonds-oval-diamond-collar-necklace.jpg",
-    imageWellColor: "#0a0a0a",
+    imageWellColor: "#9aa4a7",
     alt: "Oval diamond collar necklace in white gold",
     title: "Oval Diamond Collar",
     description:
@@ -2604,7 +2641,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "necklaces",
     productCode: "BD-K-NK-SEO-004",
     image: "/necklace/bianca-diamonds-yellow-diamond-lattice-bib-necklace.png",
-    imageWellColor: "#f4f0e6",
+    imageWellColor: "#c7c9ca",
     alt: "Fancy yellow diamond lattice bib necklace in yellow gold",
     title: "Yellow Lattice Bib",
     description:
@@ -2615,7 +2652,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "necklaces",
     productCode: "BD-K-NK-SEO-005",
     image: "/necklace/bianca-diamonds-yellow-gold-pyramid-diamond-necklace.jpg",
-    imageWellColor: "#0a0a0a",
+    imageWellColor: "#aab0b4",
     alt: "Yellow gold pyramid diamond station necklace",
     title: "Yellow Pyramid Necklace",
     description:
@@ -2626,7 +2663,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "pendants",
     productCode: "BD-K-PD-SEO-001",
     image: "/Pendant/bianca-diamonds-blue-diamond-onyx-art-deco-pendant.jpg",
-    imageWellColor: "#d8d8d8",
+    imageWellColor: "#aab0b4",
     alt: "Blue diamond and onyx Art Deco pendant in white gold",
     title: "Blue Onyx Art Deco",
     description:
@@ -2637,7 +2674,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "pendants",
     productCode: "BD-K-PD-SEO-002",
     image: "/Pendant/bianca-diamonds-emerald-cut-solitaire-pendant.jpg",
-    imageWellColor: "#ebe6dc",
+    imageWellColor: "#9b9b9b",
     alt: "Emerald-cut diamond solitaire pendant in white gold",
     title: "Emerald-Cut Solitaire Pendant",
     description:
@@ -2648,7 +2685,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "pendants",
     productCode: "BD-K-PD-SEO-003",
     image: "/Pendant/bianca-diamonds-yellow-diamond-double-halo-pendant.jpg",
-    imageWellColor: "#ebe6dc",
+    imageWellColor: "#c4c4c3",
     alt: "Fancy yellow diamond double-halo pendant in yellow gold",
     title: "Yellow Double-Halo Pendant",
     description:
@@ -2661,7 +2698,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     braceletKind: "bracelet",
     image:
       "/Bracelet/bianca-diamonds-floral-diamond-green-gemstone-bracelet.jpg",
-    imageWellColor: "#8a8a8a",
+    imageWellColor: "#aab0b4",
     alt: "Yellow gold floral bracelet with diamonds and green gemstones",
     title: "Floral Green Gemstone",
     description:
@@ -2674,7 +2711,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     braceletKind: "bracelet",
     image:
       "/Bracelet/bianca-diamonds-yellow-gold-mother-of-pearl-diamond-bangle.jpg",
-    imageWellColor: "#d8d8d8",
+    imageWellColor: "#a9afb3",
     alt: "Yellow gold mother-of-pearl and diamond bangle",
     title: "Mother-of-Pearl Bangle",
     description:

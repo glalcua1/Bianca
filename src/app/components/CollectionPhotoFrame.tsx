@@ -24,7 +24,14 @@ type Props = {
   mat?: FrameMat;
   /** Black image well — for dark-background product photography (e.g. necklaces). */
   darkImageWell?: boolean;
-  /** Product-shot backdrop — overrides darkImageWell and cream default when set. */
+  /**
+   * IMPORTANT FRAME RULE — sync the container to the jewellery photograph:
+   * Always set `imageWellColor` to the product image’s actual backdrop colour
+   * (sample corners: light grey, cream, black, white, etc.). When provided, the
+   * gilt passe-partout, mount, AND image well all use that colour so light-grey
+   * studio shots never sit in a cream/white mat, and black backdrops never flash
+   * cream. Never leave a mismatched frame around the piece.
+   */
   imageWellColor?: string;
   /** When set, the well plays a looping salon film instead of a still image. */
   video?: string;
@@ -57,6 +64,8 @@ export default function CollectionPhotoFrame({
 }: Props) {
   const isEbony = variant === "ebony";
   const isFlush = mat === "flush";
+  /** When the photo backdrop is known, the whole inner plate matches it. */
+  const syncedWell = Boolean(imageWellColor);
   const imageWellBg = imageWellColor
     ? ""
     : darkImageWell
@@ -67,6 +76,10 @@ export default function CollectionPhotoFrame({
   const frameAspect = aspectRatio ?? `${FRAME_WIDTH} / ${FRAME_HEIGHT}`;
   const ebonyMountPad = isFlush ? "p-0" : "p-4 md:p-[24px]";
   const giltMountPad = isFlush ? "p-[2px] md:p-[3px]" : "p-4 md:p-[24px]";
+  const wellStyle = imageWellColor
+    ? { backgroundColor: imageWellColor }
+    : undefined;
+
   return (
     <div
       className={`relative w-full max-w-full min-w-0 ${fluid ? "" : "shrink-0"}`}
@@ -132,42 +145,47 @@ export default function CollectionPhotoFrame({
           </div>
         ) : (
           <>
-        {/* Passe-partout */}
-        <div
-          className={`flex min-h-0 flex-1 flex-col border border-[#766d42]/30 bg-[#faf8f5] ${isFlush ? "p-0" : "p-[3px]"}`}
-        >
-          {/* Mount — padding creates visible mat on all four sides */}
-          <div
-            className={`flex min-h-0 flex-1 flex-col border border-[#1d3c34]/12 bg-white shadow-[inset_0_0_0_1px_rgba(220,203,123,0.22)] ${giltMountPad}`}
-          >
+            {/*
+              FRAME RULE: when imageWellColor is set, passe-partout + mount match
+              the jewellery photograph backdrop (e.g. light grey studio) — never
+              leave cream/white mats around a grey or black product shot.
+            */}
             <div
-              className={`relative flex min-h-0 flex-1 overflow-hidden ${imageWellBg}`}
-              style={imageWellColor ? { backgroundColor: imageWellColor } : undefined}
+              className={`flex min-h-0 flex-1 flex-col border border-[#766d42]/30 ${syncedWell ? "" : "bg-[#faf8f5]"} ${isFlush ? "p-0" : "p-[3px]"}`}
+              style={wellStyle}
             >
-              {video ? (
-                <div className="absolute inset-0 overflow-hidden">
-                  <SalonJewelVideo
-                    src={video}
-                    ariaLabel={alt}
-                    objectFit={videoObjectFit}
-                    autoPlay={false}
-                  />
+              <div
+                className={`flex min-h-0 flex-1 flex-col border border-[#1d3c34]/12 shadow-[inset_0_0_0_1px_rgba(220,203,123,0.22)] ${syncedWell ? "" : "bg-white"} ${giltMountPad}`}
+                style={wellStyle}
+              >
+                <div
+                  className={`relative flex min-h-0 flex-1 overflow-hidden ${imageWellBg}`}
+                  style={wellStyle}
+                >
+                  {video ? (
+                    <div className="absolute inset-0 overflow-hidden">
+                      <SalonJewelVideo
+                        src={video}
+                        ariaLabel={alt}
+                        objectFit={videoObjectFit}
+                        autoPlay={false}
+                      />
+                    </div>
+                  ) : (
+                    <ProtectedImage
+                      wrapperClassName={imageWrapperClassName}
+                      src={src}
+                      alt={alt}
+                      sizes={ATELIER_IMAGE_SIZES}
+                      loading="lazy"
+                      decoding="async"
+                      className={imageClassName}
+                    />
+                  )}
+                  <BrandImageWatermark />
                 </div>
-              ) : (
-                <ProtectedImage
-                  wrapperClassName={imageWrapperClassName}
-                  src={src}
-                  alt={alt}
-                  sizes={ATELIER_IMAGE_SIZES}
-                  loading="lazy"
-                  decoding="async"
-                  className={imageClassName}
-                />
-              )}
-              <BrandImageWatermark />
+              </div>
             </div>
-          </div>
-        </div>
           </>
         )}
       </div>

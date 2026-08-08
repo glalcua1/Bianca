@@ -24,6 +24,9 @@ The owner expects completed work **live on production**, not left as draft PRs.
 
 A GitHub Action (`.github/workflows/auto-merge-cursor-prs.yml`) also auto-merges `cursor/*` → `main` PRs once checks pass. Prefer merging yourself at the end of the turn; the workflow is a safety net.
 
+### Fine Jewellery frame rule (mandatory)
+When adding or updating atelier pieces in `fineJewelleryCollections.ts`, **always set `imageWellColor` to the product image’s actual backdrop colour** (sample the photo corners — light grey, cream, white, or near-black). `CollectionPhotoFrame` syncs its passe-partout, mount, and image well to that colour so light-grey studio shots never sit in cream/white mats. Do not leave mismatched frames; do not guess cream for grey photography.
+
 ### Non-obvious caveats
 - `npm run lint` currently reports 3 pre-existing errors in `scripts/optimize-public-images.mjs` (`no-unused-vars`) plus warnings. These are unrelated to environment setup — treat a clean run of your own changes as the bar, not zero total problems.
 - The consultation lead form persists to a local SQLite DB at `database/consultation_leads.db` (auto-created on first API call by `server/db.js`; gitignored). After writing the lead, the UI redirects to WhatsApp — this is expected behaviour, not an error.
