@@ -13,6 +13,12 @@ function env(name: string, fallback = ""): string {
 /** Public Jewellery Purchase Plan campaign configuration (safe for the browser). */
 export const JPP_PATH = "/jewellery-purchase-plan";
 
+/** One-line Fine Jewellery hero invite — keep short; do not expand into a second sentence. */
+export const FINE_JEWELLERY_JPP_CTA = {
+  href: JPP_PATH,
+  label: "Own yours with ease — Jewellery Purchase Plan →",
+} as const;
+
 export const JPP_HERO_VIDEO =
   "/hf_20260717_034508_b9a6d8dc-5d27-497c-989f-45c42255784d.mp4";
 

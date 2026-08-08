@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { Link } from "react-router";
 import AtelierPieceLightbox from "./AtelierPieceLightbox";
 import AtelierPieceQuote from "./AtelierPieceQuote";
 import AtelierSalonFilters from "./AtelierSalonFilters";
 import AtelierSalonHint from "./AtelierSalonHint";
 import CollectionPhotoFrame from "./CollectionPhotoFrame";
+import { FINE_JEWELLERY_JPP_CTA } from "../data/jppConfig";
 import {
   ATELIER_PIECES,
   FINE_JEWELLERY_CATEGORIES,
@@ -260,6 +262,16 @@ export default function FineJewelleryAtelier({ activeCategory }: Props) {
           {activeCategory !== "rings" && (
             <p className="mx-auto mt-4 max-w-xl text-house-body text-on-cream-body">
               {activeDescription}
+            </p>
+          )}
+          {activeCategory === "all" && (
+            <p className="mx-auto mt-4 max-w-xl">
+              <Link
+                to={FINE_JEWELLERY_JPP_CTA.href}
+                className="font-editorial text-[13px] uppercase tracking-[0.08em] text-gold-on-cream transition-colors hover:text-[#1d3c34]"
+              >
+                {FINE_JEWELLERY_JPP_CTA.label}
+              </Link>
             </p>
           )}
           <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-on-cream-muted">

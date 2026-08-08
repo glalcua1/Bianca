@@ -3,6 +3,7 @@ import {
   FINE_JEWELLERY_CATEGORIES,
   type JewelleryCategoryId,
 } from "../data/fineJewelleryCollections";
+import { FINE_JEWELLERY_JPP_CTA } from "../data/jppConfig";
 
 type HeroConfig = {
   image: string;
@@ -74,6 +75,7 @@ export default function FineJewelleryCategoryHero({ categoryId }: Props) {
       imageMode={config.imageMode ?? "contain"}
       objectPosition={config.objectPosition}
       feature={{ label: config.featureLabel, detail: config.detail }}
+      cta={FINE_JEWELLERY_JPP_CTA}
     />
   );
 }
