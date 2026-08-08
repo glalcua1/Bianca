@@ -40,34 +40,27 @@ export default function WhyDiamonds() {
     >
       <div className="mx-auto max-w-5xl">
         <EditorialReveal className="mx-auto max-w-2xl text-center">
-          <EditorialEyebrow className="mb-4">Diamonds</EditorialEyebrow>
+          <EditorialEyebrow className="mb-4">The Diamond</EditorialEyebrow>
           <h2
             id="diamonds-heading"
             className="font-editorial text-[clamp(1.65rem,3.8vw,2.5rem)] tracking-[0.05em] text-[#1d3c34]"
           >
-            Certified Diamonds. Complete Confidence.
+            Clarity you can verify.
           </h2>
           <p className="mt-6 text-house-body leading-relaxed text-on-cream-body">
-            Our diamonds are IGI certified—independent verification of the
-            4Cs. Certification is part of the confidence you should have when
-            investing in jewellery.
-          </p>
-          <p className="mt-4 font-editorial text-[15px] tracking-[0.04em] text-[#1d3c34]">
-            Your diamond. Your certificate. Your confidence.
+            Every Bianca diamond is IGI certified—so cut, colour, clarity, and
+            carat are independently graded before the piece is yours.
           </p>
         </EditorialReveal>
 
         <EditorialReveal className="mt-14">
-          <h3 className="text-center font-editorial text-lg tracking-[0.08em] text-[#1d3c34]">
-            The 4Cs
-          </h3>
-          <ul className="mx-auto mt-8 grid max-w-4xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mx-auto grid max-w-4xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {WHY_FOUR_CS.map((item) => {
               const Icon = FOUR_C_ICONS[item.id as keyof typeof FOUR_C_ICONS];
               return (
                 <li key={item.id} className="text-center">
-                  <div className="mx-auto flex size-16 items-center justify-center text-gold-on-cream">
-                    <Icon className="size-11" />
+                  <div className="mx-auto flex size-14 items-center justify-center text-gold-on-cream">
+                    <Icon className="size-10" />
                   </div>
                   <p className="mt-3 font-editorial text-sm tracking-[0.14em] uppercase text-[#1d3c34]">
                     {item.title}
@@ -79,82 +72,70 @@ export default function WhyDiamonds() {
               );
             })}
           </ul>
-          <p className="mx-auto mt-8 max-w-xl text-center text-house-body text-sm leading-relaxed text-on-cream-muted">
-            For many designs, we recommend E–F colour and VVS2 clarity as an
-            excellent balance of visual quality and value. There is no single
-            perfect diamond—we help you choose what works best for you.
+          <p className="mx-auto mt-8 max-w-lg text-center text-sm leading-relaxed text-on-cream-muted">
+            We often suggest E–F colour and VVS2 clarity as a strong balance of
+            beauty and value—then refine with you.
           </p>
         </EditorialReveal>
 
-        <EditorialReveal className="mt-16">
-          <h3 className="text-center font-editorial text-lg tracking-[0.08em] text-[#1d3c34]">
-            Popular Shapes
-          </h3>
-          <ul className="mx-auto mt-8 grid max-w-3xl grid-cols-2 gap-6 sm:grid-cols-4">
-            {WHY_DIAMOND_SHAPES.map((shape) => {
-              const Icon = SHAPE_ICONS[shape.id as keyof typeof SHAPE_ICONS];
-              return (
-                <li key={shape.id} className="text-center">
-                  <div className="mx-auto flex size-16 items-center justify-center text-[#1d3c34]">
-                    <Icon className="size-12" />
-                  </div>
-                  <p className="mt-3 font-editorial text-[12px] uppercase tracking-[0.16em] text-[#1d3c34]">
-                    {shape.title}
+        <div className="mt-16 grid gap-12 md:grid-cols-2 md:gap-10 lg:gap-16">
+          <EditorialReveal>
+            <h3 className="text-center font-editorial text-lg tracking-[0.08em] text-[#1d3c34] md:text-left">
+              Popular shapes
+            </h3>
+            <ul className="mx-auto mt-6 grid max-w-sm grid-cols-4 gap-4 md:mx-0">
+              {WHY_DIAMOND_SHAPES.map((shape) => {
+                const Icon = SHAPE_ICONS[shape.id as keyof typeof SHAPE_ICONS];
+                return (
+                  <li key={shape.id} className="text-center">
+                    <div className="mx-auto flex size-12 items-center justify-center text-[#1d3c34]">
+                      <Icon className="size-10" />
+                    </div>
+                    <p className="mt-2 font-editorial text-[10px] uppercase tracking-[0.14em] text-[#1d3c34]">
+                      {shape.title}
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
+          </EditorialReveal>
+
+          <EditorialReveal>
+            <h3 className="text-center font-editorial text-lg tracking-[0.08em] text-[#1d3c34] md:text-left">
+              Fancy colours
+            </h3>
+            <p className="mx-auto mt-3 max-w-sm text-center text-sm leading-relaxed text-on-cream-body md:mx-0 md:text-left">
+              Blue, pink, and yellow lab-grown diamonds for pieces with a
+              distinct point of colour.
+            </p>
+            <ul className="mx-auto mt-6 flex max-w-xs items-end justify-center gap-8 md:mx-0 md:justify-start">
+              {WHY_FANCY_COLOURS.map((colour) => (
+                <li key={colour.id} className="text-center">
+                  <IconFancyDiamond
+                    className="mx-auto size-11"
+                    tone={colour.tone}
+                  />
+                  <p className="mt-2 font-editorial text-[10px] uppercase tracking-[0.14em] text-[#1d3c34]">
+                    {colour.title}
                   </p>
                 </li>
-              );
-            })}
-          </ul>
-        </EditorialReveal>
-
-        <EditorialReveal className="mt-16">
-          <p className="text-center font-editorial text-[14px] tracking-[0.06em] text-gold-on-cream">
-            Something a little more extraordinary?
-          </p>
-          <h3 className="mt-2 text-center font-editorial text-[clamp(1.35rem,3vw,1.75rem)] tracking-[0.05em] text-[#1d3c34]">
-            Fancy Colours
-          </h3>
-          <p className="mx-auto mt-3 max-w-lg text-center text-house-body text-sm leading-relaxed text-on-cream-body">
-            Bianca also offers fancy-colour lab-grown diamonds—blue, pink and
-            yellow.
-          </p>
-          <ul className="mx-auto mt-8 flex max-w-md items-end justify-center gap-10">
-            {WHY_FANCY_COLOURS.map((colour) => (
-              <li key={colour.id} className="text-center">
-                <IconFancyDiamond className="mx-auto size-14" tone={colour.tone} />
-                <p className="mt-3 font-editorial text-[12px] uppercase tracking-[0.16em] text-[#1d3c34]">
-                  {colour.title}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </EditorialReveal>
+              ))}
+            </ul>
+          </EditorialReveal>
+        </div>
 
         <EditorialReveal className="mx-auto mt-16 max-w-2xl text-center">
-          <h3 className="font-editorial text-lg tracking-[0.06em] text-[#1d3c34]">
-            Sourced From Leading Growers
-          </h3>
-          <p className="mt-4 text-house-body text-sm leading-relaxed text-on-cream-body">
-            We source from leading laboratory-grown diamond manufacturers,
-            including Greenlab and Kira—so you can choose across sizes, shapes,
-            colours and clarities while we maintain Bianca quality standards.
+          <p className="text-house-body text-sm leading-relaxed text-on-cream-body">
+            We source from leading laboratory growers, including Greenlab and
+            Kira—so you can choose across sizes and colours while we hold Bianca
+            quality standards.
           </p>
-          <blockquote className="mx-auto mt-10 max-w-xl border-l border-[#dccb7b] pl-6 text-left md:pl-8">
-            <p className="font-editorial text-[15px] italic leading-relaxed tracking-[0.02em] text-[#1d3c34] md:text-[16px]">
-              One of the most notable examples of India&apos;s growing expertise
-              in laboratory-grown diamonds is the 7.50-carat lab-grown diamond
-              gifted by Prime Minister Narendra Modi to Jill Biden in 2023.
-              According to the International Gemological Institute (IGI), the
-              diamond was manufactured by Surat-based Greenlab and graded F
-              colour, VVS2 clarity and Ideal cut.
-            </p>
-          </blockquote>
           <p className="mt-8">
             <Link
               to="/fine-jewellery"
               className="font-editorial text-[12px] uppercase tracking-[0.18em] text-gold-on-cream transition-colors hover:text-[#524a28]"
             >
-              Find Your Diamond →
+              Browse Fine Jewellery →
             </Link>
           </p>
         </EditorialReveal>

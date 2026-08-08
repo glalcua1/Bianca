@@ -8,6 +8,7 @@ import WhyStory from "../components/whyBianca/WhyStory";
 import WhyDiamonds from "../components/whyBianca/WhyDiamonds";
 import WhyCustom from "../components/whyBianca/WhyCustom";
 import WhyPractical from "../components/whyBianca/WhyPractical";
+import WhyTestimonials from "../components/whyBianca/WhyTestimonials";
 import WhyFinalCta from "../components/whyBianca/WhyFinalCta";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { WHY_CHOOSE_BIANCA_SEO } from "../data/whyChooseBianca";
@@ -32,11 +33,9 @@ export default function WhyChooseBiancaPage() {
       <WhyStory />
       <WhyDiamonds />
       <WhyCustom onStartCustom={openConsultation} />
-      <WhyPractical onSpeakToExpert={openConsultation} />
-      <WhyFinalCta
-        onCustomDesign={openConsultation}
-        onSpeakToExpert={openConsultation}
-      />
+      <WhyPractical />
+      <WhyTestimonials />
+      <WhyFinalCta onCustomDesign={openConsultation} />
 
       <SiteFooter />
 
