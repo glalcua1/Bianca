@@ -1139,6 +1139,111 @@
       "source": "/Bracelet/IMG_7386.JPG",
       "destination": "/Bracelet/bianca-diamonds-emerald-cut-ruby-diamond-tennis-bracelet-white-gold.jpg",
       "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-oval-diamond-baguette-halo-ring.jpg",
+      "destination": "/Rings/bianca-diamonds-oval-diamond-baguette-halo-ring.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-yellow-diamond-art-deco-ring.jpg",
+      "destination": "/Rings/bianca-diamonds-yellow-diamond-art-deco-ring.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-yellow-diamond-three-stone-ring.jpg",
+      "destination": "/Rings/bianca-diamonds-yellow-diamond-three-stone-ring.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-art-deco-pear-drop-earrings.jpg",
+      "destination": "/Earrings/bianca-diamonds-art-deco-pear-drop-earrings.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-diamond-chandelier-tassel-earrings.jpg",
+      "destination": "/Earrings/bianca-diamonds-diamond-chandelier-tassel-earrings.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-emerald-cut-geometric-drop-earrings.jpg",
+      "destination": "/Earrings/bianca-diamonds-emerald-cut-geometric-drop-earrings.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-yellow-diamond-cascade-drop-earrings.jpg",
+      "destination": "/Earrings/bianca-diamonds-yellow-diamond-cascade-drop-earrings.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-yellow-diamond-cascade-drop-earrings.png",
+      "destination": "/Earrings/bianca-diamonds-yellow-diamond-cascade-drop-earrings.png",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-yellow-diamond-double-halo-stud-earrings.png",
+      "destination": "/Earrings/bianca-diamonds-yellow-diamond-double-halo-stud-earrings.png",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-yellow-diamond-marquise-drop-earrings.jpg",
+      "destination": "/Earrings/bianca-diamonds-yellow-diamond-marquise-drop-earrings.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-yellow-diamond-sunburst-stud-earrings.jpg",
+      "destination": "/Earrings/bianca-diamonds-yellow-diamond-sunburst-stud-earrings.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-art-deco-onyx-pear-drop-necklace.jpg",
+      "destination": "/necklace/bianca-diamonds-art-deco-onyx-pear-drop-necklace.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-emerald-pear-fringe-necklace.jpg",
+      "destination": "/necklace/bianca-diamonds-emerald-pear-fringe-necklace.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-oval-diamond-collar-necklace.jpg",
+      "destination": "/necklace/bianca-diamonds-oval-diamond-collar-necklace.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-yellow-diamond-lattice-bib-necklace.png",
+      "destination": "/necklace/bianca-diamonds-yellow-diamond-lattice-bib-necklace.png",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-yellow-gold-pyramid-diamond-necklace.jpg",
+      "destination": "/necklace/bianca-diamonds-yellow-gold-pyramid-diamond-necklace.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-blue-diamond-onyx-art-deco-pendant.jpg",
+      "destination": "/Pendant/bianca-diamonds-blue-diamond-onyx-art-deco-pendant.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-emerald-cut-solitaire-pendant.jpg",
+      "destination": "/Pendant/bianca-diamonds-emerald-cut-solitaire-pendant.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-yellow-diamond-double-halo-pendant.jpg",
+      "destination": "/Pendant/bianca-diamonds-yellow-diamond-double-halo-pendant.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-floral-diamond-green-gemstone-bracelet.jpg",
+      "destination": "/Bracelet/bianca-diamonds-floral-diamond-green-gemstone-bracelet.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/bianca-diamonds-yellow-gold-mother-of-pearl-diamond-bangle.jpg",
+      "destination": "/Bracelet/bianca-diamonds-yellow-gold-mother-of-pearl-diamond-bangle.jpg",
+      "permanent": true
     }
   ],
   "rewrites": [

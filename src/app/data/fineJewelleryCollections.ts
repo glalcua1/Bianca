@@ -2454,4 +2454,230 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     description:
       "Emerald-cut rubies spaced by diamond bars in white gold — vivid colour and precise tennis rhythm.",
   },
+  {
+    id: "ring-oval-baguette-halo",
+    category: "rings",
+    productCode: "BD-K-RG-SEO-001",
+    image: "/Rings/bianca-diamonds-oval-diamond-baguette-halo-ring.jpg",
+    imageWellColor: "#d8d8d8",
+    alt: "Oval diamond ring with radial baguette halo in white gold",
+    title: "Oval Baguette Halo",
+    description:
+      "An oval brilliant framed by tapered baguettes in a sunburst halo — white-gold precision with sculptural curve.",
+  },
+  {
+    id: "ring-yellow-art-deco",
+    category: "rings",
+    productCode: "BD-K-RG-SEO-002",
+    image: "/Rings/bianca-diamonds-yellow-diamond-art-deco-ring.jpg",
+    imageWellColor: "#d8d8d8",
+    alt: "Fancy yellow diamond Art Deco geometric ring in yellow gold",
+    title: "Yellow Art Deco Ring",
+    description:
+      "A fancy yellow centre in geometric yellow-gold architecture — Deco lines with radiant canary fire.",
+  },
+  {
+    id: "ring-yellow-three-stone",
+    category: "rings",
+    productCode: "BD-K-RG-SEO-003",
+    image: "/Rings/bianca-diamonds-yellow-diamond-three-stone-ring.jpg",
+    imageWellColor: "#ebe6dc",
+    alt: "Fancy yellow diamond three-stone ring in yellow gold",
+    title: "Yellow Three-Stone",
+    description:
+      "A luminous yellow centre flanked by companion stones in yellow gold — trilogy warmth for the modern hand.",
+  },
+  {
+    id: "ear-art-deco-pear-drop",
+    category: "earrings",
+    productCode: "BD-K-ER-SEO-001",
+    image: "/Earrings/bianca-diamonds-art-deco-pear-drop-earrings.jpg",
+    imageWellColor: "#d8d8d8",
+    alt: "Art Deco pear drop earrings with onyx accents and multi-cut diamonds in white gold",
+    title: "Art Deco Pear Drops",
+    description:
+      "Geometric white-gold drops with onyx arches and pear terminals — Deco silhouette for the evening stage.",
+  },
+  {
+    id: "ear-chandelier-tassel",
+    category: "earrings",
+    productCode: "BD-K-ER-SEO-002",
+    image: "/Earrings/bianca-diamonds-diamond-chandelier-tassel-earrings.jpg",
+    imageWellColor: "#d8d8d8",
+    alt: "Diamond chandelier tassel drop earrings in white gold",
+    title: "Chandelier Tassel Drops",
+    description:
+      "Cascading diamond tassels in white gold — chandelier movement with continuous brilliant light.",
+  },
+  {
+    id: "ear-emerald-cut-geometric-drop",
+    category: "earrings",
+    productCode: "BD-K-ER-SEO-003",
+    image: "/Earrings/bianca-diamonds-emerald-cut-geometric-drop-earrings.jpg",
+    imageWellColor: "#d8d8d8",
+    alt: "Emerald-cut geometric diamond drop earrings in white gold",
+    title: "Emerald-Cut Geometric Drops",
+    description:
+      "Step-cut emerald diamonds in architectural white-gold frames — clean geometry and salon clarity.",
+  },
+  {
+    id: "ear-yellow-cascade-drop",
+    category: "earrings",
+    productCode: "BD-K-ER-SEO-004",
+    image: "/Earrings/bianca-diamonds-yellow-diamond-cascade-drop-earrings.jpg",
+    imageWellColor: "#ebe6dc",
+    alt: "Fancy yellow diamond cascade drop earrings in yellow gold",
+    title: "Yellow Cascade Drops",
+    description:
+      "Graduated fancy yellow diamonds cascade in yellow gold — warm colour with articulated evening fire.",
+  },
+  {
+    id: "ear-yellow-double-halo-stud",
+    category: "earrings",
+    productCode: "BD-K-ER-SEO-005",
+    image:
+      "/Earrings/bianca-diamonds-yellow-diamond-double-halo-stud-earrings.png",
+    imageWellColor: "#f4f0e6",
+    alt: "Fancy yellow diamond double-halo stud earrings in yellow gold",
+    title: "Yellow Double-Halo Studs",
+    description:
+      "Canary centres in double diamond halos — compact yellow-gold studs with haute colour.",
+  },
+  {
+    id: "ear-yellow-marquise-drop",
+    category: "earrings",
+    productCode: "BD-K-ER-SEO-006",
+    image: "/Earrings/bianca-diamonds-yellow-diamond-marquise-drop-earrings.jpg",
+    imageWellColor: "#ebe6dc",
+    alt: "Fancy yellow marquise diamond drop earrings in yellow gold",
+    title: "Yellow Marquise Drops",
+    description:
+      "Marquise yellow diamonds suspended in yellow gold — elongated fire with refined drop rhythm.",
+  },
+  {
+    id: "ear-yellow-sunburst-stud",
+    category: "earrings",
+    productCode: "BD-K-ER-SEO-007",
+    image:
+      "/Earrings/bianca-diamonds-yellow-diamond-sunburst-stud-earrings.jpg",
+    imageWellColor: "#d8d8d8",
+    alt: "Fancy yellow diamond sunburst stud earrings in yellow gold",
+    title: "Yellow Sunburst Studs",
+    description:
+      "Radiating yellow diamond sunbursts in yellow gold — everyday colour with statement brilliance.",
+  },
+  {
+    id: "neck-art-deco-onyx-pear",
+    category: "necklaces",
+    productCode: "BD-K-NK-SEO-001",
+    image: "/necklace/bianca-diamonds-art-deco-onyx-pear-drop-necklace.jpg",
+    imageWellColor: "#0a0a0a",
+    alt: "Art Deco onyx and pear diamond drop necklace in white gold",
+    title: "Art Deco Onyx Pear",
+    description:
+      "Onyx geometry and pear diamond drops in white gold — Deco contrast for the gala collar.",
+  },
+  {
+    id: "neck-emerald-pear-fringe",
+    category: "necklaces",
+    productCode: "BD-K-NK-SEO-002",
+    image: "/necklace/bianca-diamonds-emerald-pear-fringe-necklace.jpg",
+    imageWellColor: "#0a0a0a",
+    alt: "Emerald and pear diamond fringe necklace in white gold",
+    title: "Emerald Pear Fringe",
+    description:
+      "Emerald colour and pear fringe in white gold — jardin light cascading along the neckline.",
+  },
+  {
+    id: "neck-oval-diamond-collar",
+    category: "necklaces",
+    productCode: "BD-K-NK-SEO-003",
+    image: "/necklace/bianca-diamonds-oval-diamond-collar-necklace.jpg",
+    imageWellColor: "#0a0a0a",
+    alt: "Oval diamond collar necklace in white gold",
+    title: "Oval Diamond Collar",
+    description:
+      "Graduated oval brilliants form a close collar in white gold — continuous light for day to evening.",
+  },
+  {
+    id: "neck-yellow-lattice-bib",
+    category: "necklaces",
+    productCode: "BD-K-NK-SEO-004",
+    image: "/necklace/bianca-diamonds-yellow-diamond-lattice-bib-necklace.png",
+    imageWellColor: "#f4f0e6",
+    alt: "Fancy yellow diamond lattice bib necklace in yellow gold",
+    title: "Yellow Lattice Bib",
+    description:
+      "A lattice of fancy yellow diamonds in yellow gold — architectural bib scale with warm haute fire.",
+  },
+  {
+    id: "neck-yellow-pyramid",
+    category: "necklaces",
+    productCode: "BD-K-NK-SEO-005",
+    image: "/necklace/bianca-diamonds-yellow-gold-pyramid-diamond-necklace.jpg",
+    imageWellColor: "#0a0a0a",
+    alt: "Yellow gold pyramid diamond station necklace",
+    title: "Yellow Pyramid Necklace",
+    description:
+      "Pyramid diamond stations on yellow gold — graphic rhythm with modern maison geometry.",
+  },
+  {
+    id: "pend-blue-onyx-art-deco",
+    category: "pendants",
+    productCode: "BD-K-PD-SEO-001",
+    image: "/Pendant/bianca-diamonds-blue-diamond-onyx-art-deco-pendant.jpg",
+    imageWellColor: "#d8d8d8",
+    alt: "Blue diamond and onyx Art Deco pendant in white gold",
+    title: "Blue Onyx Art Deco",
+    description:
+      "Blue diamond colour against onyx geometry in white gold — Deco pendant drama on a refined chain.",
+  },
+  {
+    id: "pend-emerald-cut-solitaire",
+    category: "pendants",
+    productCode: "BD-K-PD-SEO-002",
+    image: "/Pendant/bianca-diamonds-emerald-cut-solitaire-pendant.jpg",
+    imageWellColor: "#ebe6dc",
+    alt: "Emerald-cut diamond solitaire pendant in white gold",
+    title: "Emerald-Cut Solitaire Pendant",
+    description:
+      "A step-cut emerald diamond suspended in white gold — pure clarity and quiet architectural light.",
+  },
+  {
+    id: "pend-yellow-double-halo",
+    category: "pendants",
+    productCode: "BD-K-PD-SEO-003",
+    image: "/Pendant/bianca-diamonds-yellow-diamond-double-halo-pendant.jpg",
+    imageWellColor: "#ebe6dc",
+    alt: "Fancy yellow diamond double-halo pendant in yellow gold",
+    title: "Yellow Double-Halo Pendant",
+    description:
+      "A canary centre in a double diamond halo — yellow-gold warmth for everyday colour.",
+  },
+  {
+    id: "brace-floral-green-gemstone",
+    category: "bracelets",
+    productCode: "BD-K-BR-SEO-001",
+    braceletKind: "bracelet",
+    image:
+      "/Bracelet/bianca-diamonds-floral-diamond-green-gemstone-bracelet.jpg",
+    imageWellColor: "#8a8a8a",
+    alt: "Yellow gold floral bracelet with diamonds and green gemstones",
+    title: "Floral Green Gemstone",
+    description:
+      "Yellow-gold florals with diamond petals and green gemstone leaves — jardin colour for the wrist.",
+  },
+  {
+    id: "brace-mop-diamond-bangle",
+    category: "bracelets",
+    productCode: "BD-K-BR-SEO-002",
+    braceletKind: "bracelet",
+    image:
+      "/Bracelet/bianca-diamonds-yellow-gold-mother-of-pearl-diamond-bangle.jpg",
+    imageWellColor: "#d8d8d8",
+    alt: "Yellow gold mother-of-pearl and diamond bangle",
+    title: "Mother-of-Pearl Bangle",
+    description:
+      "Mother-of-pearl panels with diamond accents in yellow gold — soft lustre and maison polish.",
+  },
 ];
