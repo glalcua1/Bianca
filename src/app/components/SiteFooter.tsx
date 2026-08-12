@@ -18,7 +18,6 @@ import { buildWhatsAppChatUrl } from "../lib/whatsappContact";
 const ConsultationDrawer = lazy(
   () => import("./consultation/ConsultationDrawer"),
 );
-const FaqDrawer = lazy(() => import("./faq/FaqDrawer"));
 
 function WhatsAppGlyph({ className }: { className?: string }) {
   return (
@@ -35,7 +34,6 @@ function WhatsAppGlyph({ className }: { className?: string }) {
 
 export default function SiteFooter() {
   const [consultationOpen, setConsultationOpen] = useState(false);
-  const [faqOpen, setFaqOpen] = useState(false);
   const [whatsappHref, setWhatsappHref] = useState(() =>
     buildWhatsAppChatUrl(BIANCA_WHATSAPP_CONTACT_NUMBER, { forceMobile: true }),
   );
@@ -89,13 +87,28 @@ export default function SiteFooter() {
                 );
               })}
               <li className="col-span-2 md:col-span-1">
-                <button
-                  type="button"
-                  onClick={() => setFaqOpen(true)}
-                  className="block w-full font-editorial text-[13px] uppercase tracking-[0.14em] text-on-forest-body transition-colors hover:text-on-forest md:text-[14px] md:tracking-[0.16em]"
+                <Link
+                  to="/lab-grown-diamond-faq"
+                  className={`block font-editorial text-[13px] uppercase tracking-[0.14em] transition-colors md:text-[14px] md:tracking-[0.16em] ${
+                    pathname.startsWith("/lab-grown-diamond-faq")
+                      ? "text-gold-on-forest"
+                      : "text-on-forest-body hover:text-on-forest"
+                  }`}
                 >
                   Lab-Grown Diamond FAQs
-                </button>
+                </Link>
+              </li>
+              <li className="col-span-2 md:col-span-1">
+                <Link
+                  to="/why-bianca-diamonds"
+                  className={`block font-editorial text-[13px] uppercase tracking-[0.14em] transition-colors md:text-[14px] md:tracking-[0.16em] ${
+                    pathname.startsWith("/why-bianca-diamonds")
+                      ? "text-gold-on-forest"
+                      : "text-on-forest-body hover:text-on-forest"
+                  }`}
+                >
+                  Why Choose Bianca
+                </Link>
               </li>
               <li className="col-span-2 md:col-span-1">
                 <Link
@@ -107,6 +120,18 @@ export default function SiteFooter() {
                   }`}
                 >
                   Jewellery Purchase Plan
+                </Link>
+              </li>
+              <li className="col-span-2 md:col-span-1">
+                <Link
+                  to="/contact"
+                  className={`block font-editorial text-[13px] uppercase tracking-[0.14em] transition-colors md:text-[14px] md:tracking-[0.16em] ${
+                    pathname.startsWith("/contact")
+                      ? "text-gold-on-forest"
+                      : "text-on-forest-body hover:text-on-forest"
+                  }`}
+                >
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -174,14 +199,13 @@ export default function SiteFooter() {
         </div>
       </footer>
 
-      {(consultationOpen || faqOpen) && (
+      {consultationOpen && (
         <Suspense fallback={null}>
           <ConsultationDrawer
             open={consultationOpen}
             onOpenChange={setConsultationOpen}
             sourcePage={sourcePage}
           />
-          <FaqDrawer open={faqOpen} onOpenChange={setFaqOpen} />
         </Suspense>
       )}
     </>

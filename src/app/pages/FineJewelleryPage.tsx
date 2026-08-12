@@ -7,10 +7,12 @@ import FineJewelleryAtelier from "../components/FineJewelleryAtelier";
 import FineJewelleryCategoryHero from "../components/FineJewelleryCategoryHero";
 import type { JewelleryCategoryId } from "../data/fineJewelleryCollections";
 import {
+  fineJewelleryPageSeo,
   parseFineJewelleryCategoryFromHash,
   parseFineJewelleryCategoryFromPath,
 } from "../data/fineJewelleryMegaMenu";
 import { BIANCA_INSTAGRAM_URL } from "../data/siteContact";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 const CRAFT_VALUES = [
   {
@@ -37,12 +39,8 @@ export default function FineJewelleryPage() {
   const activeCategory: JewelleryCategoryId | "all" =
     fromPath !== "all" ? fromPath : fromHash;
 
-  useEffect(() => {
-    document.title = "Fine Jewellery | Bianca Diamonds";
-    return () => {
-      document.title = "Bianca Diamonds | Lab-Grown Diamond Fine Jewellery";
-    };
-  }, []);
+  const pageSeo = fineJewelleryPageSeo(activeCategory);
+  usePageMeta(pageSeo.title, pageSeo.description);
 
   useEffect(() => {
     const parsed = parseFineJewelleryCategoryFromHash(location.hash);

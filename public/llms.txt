@@ -1,0 +1,36 @@
+# Bianca Diamonds
+
+> Ethically crafted lab-grown diamond fine jewellery — IGI-certified rings, earrings, necklaces, pendants, and bracelets in BIS-hallmarked gold. Custom design, transparent pricing, and delivery across India.
+
+Bianca Diamonds is a women-led jewellery house specializing in lab-grown diamonds. Pieces are independently graded (IGI) and composed for everyday wear and occasion dressing. Clients may book private consultations or enquire about bespoke commissions.
+
+## Primary pages
+
+- [Home](https://www.biancadiamonds.com/): The House — brand overview and featured collections
+- [Fine Jewellery](https://www.biancadiamonds.com/fine-jewellery): Atelier catalogue of certified lab-grown diamond jewellery
+- [Rings](https://www.biancadiamonds.com/fine-jewellery/rings): Solitaires, bands, and stackable designs
+- [Earrings](https://www.biancadiamonds.com/fine-jewellery/earrings): Studs, hoops, and drops
+- [Necklaces](https://www.biancadiamonds.com/fine-jewellery/necklaces): Collars, rivières, and statement neck pieces
+- [Pendants](https://www.biancadiamonds.com/fine-jewellery/pendants): Pendant and chain designs
+- [Bracelets](https://www.biancadiamonds.com/fine-jewellery/bracelets): Bangles, cuffs, and tennis styles
+- [For Him](https://www.biancadiamonds.com/fine-jewellery/for-him): Refined bands and signet-inspired pieces
+- [Bespoke Jewellery](https://www.biancadiamonds.com/bespoke-jewellery): Custom design from consultation to craftsmanship
+- [Butterfly Collection](https://www.biancadiamonds.com/butterfly-collection): High jewellery suite inspired by the house emblem
+- [Cannes Showcase 2026](https://www.biancadiamonds.com/fine-jewellery/cannes-2026): Exclusive jewellery from Cannes Film Festival 2026
+- [Why Choose Bianca Diamonds](https://www.biancadiamonds.com/why-bianca-diamonds): Certification, craft, and client reasons to choose the house
+- [Jewellery Purchase Plan](https://www.biancadiamonds.com/jewellery-purchase-plan): Savings plan toward Bianca jewellery
+- [Lab-Grown Diamond FAQ](https://www.biancadiamonds.com/lab-grown-diamond-faq): Certification, quality, sustainability, and value
+- [Media](https://www.biancadiamonds.com/media): Press and editorial coverage
+- [Contact](https://www.biancadiamonds.com/contact): Private consultation and atelier enquiries
+
+## Contact
+
+- Email: bianca.labdiamonds@gmail.com
+- Phone: +918130495257
+- Instagram: https://www.instagram.com/bianca.diamonds/
+- Canonical site: https://www.biancadiamonds.com/
+
+## Crawl aids
+
+- Sitemap: https://www.biancadiamonds.com/sitemap.xml
+- Robots: https://www.biancadiamonds.com/robots.txt
