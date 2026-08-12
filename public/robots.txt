@@ -1,5 +1,6 @@
 # Bianca Diamonds — crawl policy for search & AI agents
 # Canonical host: https://www.biancadiamonds.com
+# AI / LLM summary: https://www.biancadiamonds.com/llms.txt
 
 User-agent: *
 Allow: /
@@ -11,3 +12,5 @@ Disallow: /admin
 Disallow: /admin/
 
 Sitemap: https://www.biancadiamonds.com/sitemap.xml
+# llms.txt — structured site summary for AI assistants
+# https://www.biancadiamonds.com/llms.txt

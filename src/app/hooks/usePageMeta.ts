@@ -1,7 +1,10 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router";
+import { BIANCA_PUBLIC_ORIGIN } from "../lib/atelierEnquiry";
 
 type PageMetaOptions = {
   description?: string;
+  /** Absolute URL. Defaults to canonical www origin + current pathname. */
   canonical?: string;
   ogImage?: string;
 };
@@ -22,11 +25,22 @@ function upsertMeta(
   return el;
 }
 
+function defaultCanonical(pathname: string): string {
+  if (!pathname || pathname === "/") {
+    return `${BIANCA_PUBLIC_ORIGIN}/`;
+  }
+  const trimmed = pathname.replace(/\/+$/, "") || "/";
+  return `${BIANCA_PUBLIC_ORIGIN}${trimmed}`;
+}
+
 export function usePageMeta(
   title: string,
   description: string,
   options: PageMetaOptions = {},
 ) {
+  const { pathname } = useLocation();
+  const canonical = options.canonical ?? defaultCanonical(pathname);
+
   useEffect(() => {
     const previousTitle = document.title;
     document.title = title;
@@ -74,17 +88,15 @@ export function usePageMeta(
       content: description,
     });
 
-    if (options.canonical) {
-      upsertMeta(
-        'link[rel="canonical"]',
-        { rel: "canonical", href: options.canonical },
-        "link",
-      );
-      upsertMeta('meta[property="og:url"]', {
-        property: "og:url",
-        content: options.canonical,
-      });
-    }
+    upsertMeta(
+      'link[rel="canonical"]',
+      { rel: "canonical", href: canonical },
+      "link",
+    );
+    upsertMeta('meta[property="og:url"]', {
+      property: "og:url",
+      content: canonical,
+    });
 
     if (options.ogImage) {
       upsertMeta('meta[property="og:image"]', {
@@ -140,5 +152,5 @@ export function usePageMeta(
           ?.setAttribute("content", previousTwitterDescription);
       }
     };
-  }, [title, description, options.canonical, options.ogImage]);
+  }, [title, description, canonical, options.ogImage]);
 }

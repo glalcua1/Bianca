@@ -15,6 +15,30 @@ export const FINE_JEWELLERY_EDITORIAL = {
     "IGI-graded lab-grown diamonds in BIS hallmarked gold — rings, earrings, necklaces, and wrist pieces crafted for everyday radiance and life's grandest chapters.",
 };
 
+/** Title + description for Fine Jewellery routes (overview + category). */
+export function fineJewelleryPageSeo(categoryId: MegaMenuCategoryId): {
+  title: string;
+  description: string;
+} {
+  if (categoryId === "all") {
+    return {
+      title: "Fine Jewellery | Lab-Grown Diamond Jewellery | Bianca Diamonds",
+      description: FINE_JEWELLERY_EDITORIAL.description,
+    };
+  }
+
+  const category = FINE_JEWELLERY_CATEGORIES.find((c) => c.id === categoryId);
+  const label = category?.title ?? "Fine Jewellery";
+  const detail =
+    category?.description ??
+    "IGI-certified lab-grown diamond jewellery from Bianca Diamonds.";
+
+  return {
+    title: `${label} | Fine Jewellery | Bianca Diamonds`,
+    description: `${detail} Ethically crafted lab-grown diamonds — IGI graded, BIS hallmarked gold, atelier composed.`,
+  };
+}
+
 /** Crawlable path for a fine-jewellery category (or the atelier overview). */
 export function fineJewelleryCategoryPath(
   categoryId: MegaMenuCategoryId,
