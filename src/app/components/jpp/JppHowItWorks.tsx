@@ -1,9 +1,9 @@
 import { motion } from "motion/react";
-import { Gem, IdCard, PhoneCall, Waypoints } from "lucide-react";
+import { IdCard, PhoneCall, Sparkles, UserRoundPlus } from "lucide-react";
 import EditorialEyebrow from "../editorial/EditorialEyebrow";
 import { JPP_HOW_IT_WORKS } from "../../data/jppConfig";
 
-const icons = [Waypoints, PhoneCall, IdCard, Gem];
+const icons = [UserRoundPlus, IdCard, PhoneCall, Sparkles];
 
 export default function JppHowItWorks() {
   return (
@@ -15,11 +15,11 @@ export default function JppHowItWorks() {
         <div className="max-w-2xl">
           <EditorialEyebrow>How it works</EditorialEyebrow>
           <h2 className="mt-4 font-editorial text-[clamp(1.85rem,4vw,2.75rem)] tracking-[0.05em] text-[#1d3c34]">
-            From the first call to the piece you love.
+            Four simple steps to begin.
           </h2>
           <p className="mt-4 max-w-xl text-house-body leading-relaxed text-on-cream-body">
-            Enrolment begins with a conversation. We issue your Jewellery
-            Purchase Plan ID and guide every installment personally.
+            Register for your Bianca JPP number, then call us to activate your
+            plan and start monthly installments with personal guidance.
           </p>
         </div>
 

@@ -1,18 +1,17 @@
 import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
-import { Phone } from "lucide-react";
 import {
   JPP_COPY,
   JPP_HERO_VIDEO,
   getJppPublicConfig,
 } from "../../data/jppConfig";
-import { trackJppEvent } from "../../lib/jppAnalytics";
 
 type Props = {
-  onExplorePlans: () => void;
+  onRegister: () => void;
+  onHowItWorks: () => void;
 };
 
-export default function JppHero({ onExplorePlans }: Props) {
+export default function JppHero({ onRegister, onHowItWorks }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const config = getJppPublicConfig();
 
@@ -77,9 +76,6 @@ export default function JppHero({ onExplorePlans }: Props) {
             <p className="text-house-eyebrow text-gold-on-cream">
               {JPP_COPY.eyebrow}
             </p>
-            <p className="mt-4 font-editorial text-[12px] uppercase tracking-[0.28em] text-[#1d3c34]/70">
-              Jewellery Purchase Plan
-            </p>
             <h1 className="mt-5 font-editorial text-[clamp(2.35rem,5.2vw,3.85rem)] font-normal leading-[1.05] tracking-[0.04em] text-[#1d3c34]">
               {JPP_COPY.headline}
             </h1>
@@ -88,17 +84,16 @@ export default function JppHero({ onExplorePlans }: Props) {
             </p>
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a
-                href={config.phoneTel}
-                onClick={() => trackJppEvent("jpp_call_bianca_clicked")}
-                className="inline-flex min-w-[220px] items-center justify-center gap-2.5 border border-[#1d3c34] bg-[#1d3c34] px-8 py-3.5 text-house-cta text-[#faf8f5] transition-colors duration-500 hover:bg-transparent hover:text-bianca-forest"
-              >
-                <Phone className="size-4" strokeWidth={1.25} aria-hidden />
-                {JPP_COPY.primaryCta}
-              </a>
               <button
                 type="button"
-                onClick={onExplorePlans}
+                onClick={onRegister}
+                className="inline-flex min-w-[220px] items-center justify-center border border-[#1d3c34] bg-[#1d3c34] px-8 py-3.5 text-house-cta text-[#faf8f5] transition-colors duration-500 hover:bg-transparent hover:text-bianca-forest"
+              >
+                {JPP_COPY.primaryCta}
+              </button>
+              <button
+                type="button"
+                onClick={onHowItWorks}
                 className="inline-flex min-w-[200px] justify-center border border-[#1d3c34]/30 px-8 py-3.5 text-house-cta text-[#1d3c34] transition-colors duration-500 hover:border-[#1d3c34] hover:bg-[#1d3c34]/5"
               >
                 {JPP_COPY.secondaryCta}
@@ -106,7 +101,7 @@ export default function JppHero({ onExplorePlans }: Props) {
             </div>
 
             <p className="mt-8 font-editorial text-[13px] tracking-[0.04em] text-on-cream-muted">
-              {config.phoneDisplay}
+              Personal guidance · {config.phoneDisplay}
             </p>
           </motion.div>
         </div>
