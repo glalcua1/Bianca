@@ -25,18 +25,18 @@ export const JPP_HERO_VIDEO =
 export const JPP_SEO = {
   title: "Bianca Jewellery Purchase Plan | Bianca Diamonds",
   description:
-    "Enrol in the Bianca Jewellery Purchase Plan. Set a monthly installment from ₹5,000 to ₹3,00,000, receive a personal plan ID, and call Bianca to begin.",
+    "Start your Jewellery Purchase Plan with Bianca Diamonds and take a simple step towards owning your dream jewellery.",
   canonical: "https://www.biancadiamonds.com/jewellery-purchase-plan",
   ogImage: "https://www.biancadiamonds.com/og-image.png",
 };
 
 export const JPP_COPY = {
-  eyebrow: "Bianca Diamonds",
+  eyebrow: "Bianca Jewellery Purchase Plan",
   headline: "Your Dream Jewellery, Made Easier.",
   support:
-    "The Bianca Jewellery Purchase Plan helps you build towards the piece you love — with personal guidance, a dedicated plan ID, and a clear path to ownership.",
-  primaryCta: "Call Now to Enrol",
-  secondaryCta: "Explore the Plans",
+    "Start your Bianca Jewellery Purchase Plan and take a simple step towards owning the jewellery you've always wanted.",
+  primaryCta: "Register for Bianca JPP",
+  secondaryCta: "How It Works",
   calculatorEyebrow: "Plan calculator",
   calculatorTitle: "See what your monthly installment becomes.",
   calculatorSupport:
@@ -79,23 +79,23 @@ export const JPP_PLAN_TWO = {
 export const JPP_HOW_IT_WORKS = [
   {
     step: "01",
-    title: "Choose Your Plan",
-    body: "Select a fixed monthly installment or a flexible contribution journey.",
+    title: "Register",
+    body: "Enter your name and mobile number to create your Bianca JPP account.",
   },
   {
     step: "02",
-    title: "Call Bianca",
-    body: "Speak with our team to enrol. We create your personal Jewellery Purchase Plan ID.",
+    title: "Get Your Bianca JPP Number",
+    body: "Receive a unique JPP number instantly after registration.",
   },
   {
     step: "03",
-    title: "Begin Installments",
-    body: "Transfer each month against your plan ID. Every payment is recorded against your journey.",
+    title: "Call Bianca",
+    body: "Contact the Bianca team to activate your plan and receive guidance on starting your monthly installment.",
   },
   {
     step: "04",
-    title: "Own Your Jewellery",
-    body: "At maturity, choose jewellery or loose diamonds for your plan value — never cash.",
+    title: "Start Your Journey",
+    body: "Transfer your monthly installment to the designated Bianca bank account and keep your JPP number as your reference.",
   },
 ] as const;
 

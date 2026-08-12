@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import SiteNav from "../components/SiteNav";
 import SiteFooter from "../components/SiteFooter";
 import JppHero from "../components/jpp/JppHero";
+import JppHowItWorks from "../components/jpp/JppHowItWorks";
+import JppRegister from "../components/jpp/JppRegister";
 import JppPlans from "../components/jpp/JppPlans";
 import JppCalculator from "../components/jpp/JppCalculator";
-import JppHowItWorks from "../components/jpp/JppHowItWorks";
 import JppTerms from "../components/jpp/JppTerms";
 import JppFinalCta from "../components/jpp/JppFinalCta";
 import JppStickyCta from "../components/jpp/JppStickyCta";
@@ -30,12 +31,14 @@ export default function JewelleryPurchasePlanPage() {
 
   useEffect(() => {
     function onScroll() {
-      const finalCta = document.getElementById("terms");
+      const register = document.getElementById("register");
       const pastHero = window.scrollY > 520;
-      const nearEnd = Boolean(
-        finalCta && finalCta.getBoundingClientRect().top < window.innerHeight * 0.55,
+      const nearRegister = Boolean(
+        register &&
+          register.getBoundingClientRect().top < window.innerHeight * 0.65 &&
+          register.getBoundingClientRect().bottom > window.innerHeight * 0.25,
       );
-      setShowSticky(pastHero && !nearEnd);
+      setShowSticky(pastHero && !nearRegister);
     }
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -48,13 +51,20 @@ export default function JewelleryPurchasePlanPage() {
         <SiteNav />
       </div>
 
-      <JppHero onExplorePlans={() => scrollToId("plans")} />
+      <JppHero
+        onRegister={() => scrollToId("register")}
+        onHowItWorks={() => scrollToId("how-it-works")}
+      />
+      <JppHowItWorks />
+      <JppRegister />
       <JppPlans />
       <JppCalculator />
-      <JppHowItWorks />
       <JppTerms />
       <JppFinalCta />
-      <JppStickyCta visible={showSticky} />
+      <JppStickyCta
+        visible={showSticky}
+        onRegister={() => scrollToId("register")}
+      />
 
       <SiteFooter />
     </main>
