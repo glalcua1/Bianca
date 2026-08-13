@@ -1,15 +1,36 @@
 import type { FaqItem } from "./labGrownDiamondFaq";
 import { BIANCA_IGI_CERTIFICATION_POLICY } from "./labGrownDiamondFaq";
-import type { DiscoveryIntentConfig } from "./discoveryIntentTypes";
 
 export const MODERN_BRIDAL_PATH = "/jewellery-for-modern-bride";
 
 export const MODERN_BRIDAL_SEO = {
   title:
-    "Jewellery for the Modern Bride | Modern Lab-Grown Diamond Collections | Bianca Diamonds",
+    "Jewellery for the Modern Bride | Bridal Edit & Modern Collections | Bianca Diamonds",
   description:
-    "Jewellery for the modern bride and modern lab-grown diamond collections from Bianca Diamonds — Bridal Edit, Modern Essentials, engagement rings, and occasion pieces. Every diamond individually IGI certified.",
+    "Jewellery for the modern bride from Bianca Diamonds — curated bridal rings, earrings, pendants, and tennis lines in IGI-certified lab-grown diamonds. Modern Essentials and The Bridal Edit.",
 };
+
+/** Full-length editorial for the Modern Bride page hero. */
+export const MODERN_BRIDE_EDITORIAL = {
+  src: "/bianca-diamonds-modern-bride-editorial.jpg",
+  alt: "Modern bride in a black velvet gown wearing a delicate lab-grown diamond solitaire pendant and drop earrings — Bianca Diamonds editorial portrait",
+  aspectRatio: "2 / 3",
+} as const;
+
+/**
+ * Curated bridal edit — atelier pieces composed for engagement, aisle, and after.
+ * Keep order intentional: proposal → pairing → ear → throat → line.
+ */
+export const MODERN_BRIDAL_CURATED_IDS = [
+  "ring-solitaire-bridal-duo",
+  "ring-oval-maison-bridal",
+  "ring-yellow-solitaire-eternity-duo",
+  "ring-blush-pave-solitaire",
+  "ear-pear-halo-drop",
+  "ear-round-solitaire-studs",
+  "pend-classic-round-solitaire",
+  "neck-tennis-classique",
+] as const;
 
 export const MODERN_BRIDAL_FAQ_ITEMS: FaqItem[] = [
   {
@@ -36,54 +57,3 @@ export const MODERN_BRIDAL_FAQ_ITEMS: FaqItem[] = [
     answer: `Yes. ${BIANCA_IGI_CERTIFICATION_POLICY}`,
   },
 ];
-
-export const MODERN_BRIDAL_CONFIG: DiscoveryIntentConfig = {
-  path: MODERN_BRIDAL_PATH,
-  seo: MODERN_BRIDAL_SEO,
-  eyebrow: "Bianca Diamonds",
-  h1: "Jewellery for the modern bride",
-  heroLead:
-    "Modern lab-grown diamond collections for engagement, wedding, and everyday brilliance — IGI certified, atelier composed, made around you.",
-  sectionEyebrow: "Collections",
-  sectionTitle: "Modern collections, bridal light",
-  sectionBody:
-    "From Modern Essentials for daily wear to The Bridal Edit for the aisle — Bianca Diamonds designs contemporary lab-grown diamond jewellery for the modern bride and the modern wardrobe.",
-  chips: ["Modern Essentials", "The Bridal Edit", "Occasion Elegance"],
-  pillarsTitle: "Composed for now",
-  pillars: [
-    {
-      id: "bride",
-      title: "Modern bride",
-      description:
-        "Engagement rings, bridal bands, and luminous suites — certified lab-grown diamonds with personal styling guidance.",
-    },
-    {
-      id: "modern",
-      title: "Modern collection",
-      description:
-        "Clean silhouettes and everyday sparkle in the Modern Essentials edit — refined pieces for contemporary living.",
-    },
-    {
-      id: "igi",
-      title: "IGI Certified",
-      description: BIANCA_IGI_CERTIFICATION_POLICY,
-    },
-  ],
-  pathsTitle: "Enter the salon",
-  pathsBody:
-    "Explore rings and Fine Jewellery, commission a bespoke bridal piece, or speak with a consultant about your wedding edit.",
-  pathLinks: [
-    { to: "/fine-jewellery/rings", label: "Rings" },
-    { to: "/fine-jewellery", label: "Fine Jewellery" },
-    { to: "/bespoke-jewellery", label: "Bespoke Bridal" },
-    { to: "/lab-grown-diamond-jewellery-india", label: "India" },
-  ],
-  faqTitle: "Modern bride & collections — FAQs",
-  faqItems: MODERN_BRIDAL_FAQ_ITEMS,
-  jsonLdPrefix: "modern-bridal-jsonld",
-  breadcrumbName: "Jewellery for the Modern Bride",
-  sourcePage: "modern-bride",
-  finalTitle: "Plan your bridal edit",
-  finalBody:
-    "Private consultation for modern brides and modern collections — across Delhi NCR and India.",
-};
