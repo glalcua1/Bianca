@@ -330,7 +330,7 @@ export const BESPOKE_FAQ_ITEMS: FaqItem[] = [
     id: "bespoke-certified",
     question: "Are your diamonds certified?",
     answer:
-      "Every Bianca Diamonds centre stone is IGI-certified for cut, colour, clarity, and carat weight — the same independent grading standards trusted in fine jewellery worldwide.",
+      "Yes. Every Bianca Diamonds lab-grown diamond is individually IGI certified for cut, colour, clarity, and carat — including centre stones and the diamonds set in bespoke commissions.",
   },
   {
     id: "bespoke-shipping",

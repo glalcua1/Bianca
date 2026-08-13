@@ -4,7 +4,7 @@ export const WHY_CHOOSE_BIANCA_SEO = {
   title:
     "Why Choose Bianca Diamonds? | Luxury Lab Grown Diamond Jewellery",
   description:
-    "IGI-certified lab-grown diamonds, modern design, and personal consultation—discover why clients in India and the USA choose Bianca Diamonds.",
+    "Every Bianca Diamonds lab-grown diamond is individually IGI certified. Modern design, personal consultation, and clients across India and the USA.",
 };
 
 /** Scannable proof — keep short; do not restate these in later section body copy. */
@@ -12,7 +12,7 @@ export const WHY_TRUST_PILLARS = [
   {
     id: "igi",
     title: "IGI Certified",
-    description: "Independently graded diamonds",
+    description: "Every diamond individually graded",
   },
   {
     id: "gold",
@@ -174,7 +174,7 @@ export const WHY_DRAWER_HIGHLIGHTS = [
     id: "certified",
     title: "IGI Certified Diamonds",
     description:
-      "Independent verification of cut, colour, clarity and carat—so you buy with confidence.",
+      "Every Bianca Diamonds lab-grown diamond is individually IGI certified for cut, colour, clarity, and carat—so you buy with confidence.",
   },
   {
     id: "personal",
