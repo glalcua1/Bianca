@@ -19,17 +19,21 @@ export const MODERN_BRIDE_EDITORIAL = {
 
 /**
  * Curated bridal edit — atelier pieces composed for engagement, aisle, and after.
- * Keep order intentional: proposal → pairing → ear → throat → line.
+ * Keep order intentional: proposal → blue colour → ear → throat → line.
  */
 export const MODERN_BRIDAL_CURATED_IDS = [
   "ring-solitaire-bridal-duo",
   "ring-oval-maison-bridal",
-  "ring-yellow-solitaire-eternity-duo",
+  "ring-blue-oval-solitaire",
+  "ring-blue-emerald-solitaire",
+  "ring-blue-radiant-solitaire",
   "ring-blush-pave-solitaire",
   "ear-pear-halo-drop",
   "ear-round-solitaire-studs",
   "pend-classic-round-solitaire",
   "neck-tennis-classique",
+  "neck-frange-poire",
+  "neck-riviere-ovale",
 ] as const;
 
 export const MODERN_BRIDAL_FAQ_ITEMS: FaqItem[] = [

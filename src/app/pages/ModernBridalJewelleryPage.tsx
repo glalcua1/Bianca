@@ -126,7 +126,7 @@ export default function ModernBridalJewelleryPage() {
           <ProtectedImage
             src={MODERN_BRIDE_EDITORIAL.src}
             alt={MODERN_BRIDE_EDITORIAL.alt}
-            className="size-full object-cover object-[center_18%] md:object-center"
+            className="size-full object-cover object-[center_top]"
             priority
           />
           <div
@@ -200,9 +200,9 @@ export default function ModernBridalJewelleryPage() {
               Bridal jewellery, chosen with care
             </h2>
             <p className="mt-5 text-house-body leading-relaxed text-on-cream-body">
-              Eight pieces from the Bianca salon — rings for the proposal,
-              earrings for the aisle, a solitaire at the throat, and a tennis
-              line for the reception and every night after.
+              A salon selection — bridal rings and blue diamond colour for the
+              proposal, earrings for the aisle, and necklaces from tennis to
+              fringe for the throat, the reception, and every night after.
             </p>
           </EditorialReveal>
 
