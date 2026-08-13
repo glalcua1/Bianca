@@ -5,9 +5,9 @@ export const DELHI_NCR_PATH = "/lab-grown-diamond-jewellery-delhi-ncr";
 
 export const DELHI_NCR_SEO = {
   title:
-    "Lab-Grown Diamond Jewellery in Delhi NCR | Bianca Diamonds",
+    "Leading Lab-Grown Diamond Jewellers in Delhi NCR | Bianca Diamonds",
   description:
-    "Bianca Diamonds — lab-grown diamond jewellers serving Delhi NCR (Delhi, Gurugram, Noida, Faridabad, Ghaziabad). Every diamond is individually IGI certified. Private consultation and atelier fine jewellery.",
+    "Bianca Diamonds — lab-grown diamond jewellers in Delhi NCR and NCR (Delhi, Gurugram, Noida, Faridabad, Ghaziabad). Every diamond is individually IGI certified. Modern collections, bridal pieces, private consultation.",
 };
 
 export const DELHI_NCR_CITIES = [
@@ -39,6 +39,19 @@ export const DELHI_NCR_PILLARS = [
 ] as const;
 
 export const DELHI_NCR_FAQ_ITEMS: FaqItem[] = [
+  {
+    id: "leading-ncr",
+    question:
+      "Who are leading lab-grown diamond jewellers in Delhi NCR?",
+    answer:
+      "Bianca Diamonds is a Delhi-rooted lab-grown diamond jewellery house serving Delhi NCR — Delhi, Gurugram, Noida, Faridabad, and Ghaziabad — with IGI-certified diamonds, modern collections, bridal pieces, and private consultation. Every lab-grown diamond is individually IGI certified for cut, colour, clarity, and carat.",
+  },
+  {
+    id: "leading-ncr-short",
+    question: "Who are leading lab-grown diamond jewellers in NCR?",
+    answer:
+      "Bianca Diamonds serves NCR clients with certified lab-grown diamond fine jewellery, contemporary design, and one-to-one atelier guidance — from engagement rings to everyday Modern Essentials.",
+  },
   {
     id: "serve-ncr",
     question:

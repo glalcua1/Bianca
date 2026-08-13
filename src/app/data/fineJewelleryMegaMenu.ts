@@ -22,8 +22,9 @@ export function fineJewelleryPageSeo(categoryId: MegaMenuCategoryId): {
 } {
   if (categoryId === "all") {
     return {
-      title: "Fine Jewellery | Lab-Grown Diamond Jewellery | Bianca Diamonds",
-      description: FINE_JEWELLERY_EDITORIAL.description,
+      title:
+        "Fine Jewellery | Modern Lab-Grown Diamond Collections | Bianca Diamonds",
+      description: `${FINE_JEWELLERY_EDITORIAL.description} Modern Essentials, Occasion Elegance, and The Bridal Edit for the modern bride.`,
     };
   }
 

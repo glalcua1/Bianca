@@ -84,6 +84,12 @@ export function consultationSourcePage(pathname: string): string {
   if (pathname.startsWith("/lab-grown-diamond-jewellery-delhi-ncr")) {
     return "delhi-ncr";
   }
+  if (pathname.startsWith("/lab-grown-diamond-jewellery-india")) {
+    return "india-lab-grown";
+  }
+  if (pathname.startsWith("/jewellery-for-modern-bride")) {
+    return "modern-bride";
+  }
   if (pathname.startsWith("/jewellery-purchase-plan")) {
     return "jewellery-purchase-plan";
   }
