@@ -28,6 +28,9 @@ const GoldenRatioEvaluationPage = lazy(
 const WhyChooseBiancaPage = lazy(
   () => import("./pages/WhyChooseBiancaPage"),
 );
+const DelhiNcrJewelleryPage = lazy(
+  () => import("./pages/DelhiNcrJewelleryPage"),
+);
 const JewelleryPurchasePlanPage = lazy(
   () => import("./pages/JewelleryPurchasePlanPage"),
 );
@@ -88,6 +91,10 @@ export default function App() {
               <Route
                 path="/why-bianca-diamonds"
                 element={<WhyChooseBiancaPage />}
+              />
+              <Route
+                path="/lab-grown-diamond-jewellery-delhi-ncr"
+                element={<DelhiNcrJewelleryPage />}
               />
               <Route path="/contact" element={<ContactPage />} />
               <Route

@@ -12,9 +12,9 @@ import {
 } from "../data/siteContact";
 
 const CONTACT_SEO = {
-  title: "Contact Bianca Diamonds | Private Consultation",
+  title: "Contact Bianca Diamonds | Private Consultation Delhi NCR",
   description:
-    "Reach the Bianca Diamonds atelier for private consultations, bespoke enquiries, and certified lab-grown diamond fine jewellery.",
+    "Book a private consultation with Bianca Diamonds — Delhi NCR lab-grown diamond jewellers. IGI-certified fine jewellery, bespoke enquiries, and atelier guidance.",
 };
 
 export default function ContactPage() {
@@ -41,8 +41,8 @@ export default function ContactPage() {
             Contact Bianca Diamonds
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-house-body text-on-forest-body">
-            Arrange a private consultation or connect with our team — we
-            welcome enquiries on certified lab-grown diamond fine jewellery.
+            Arrange a private consultation for Delhi NCR and beyond — we
+            welcome enquiries on IGI-certified lab-grown diamond fine jewellery.
           </p>
         </div>
       </header>
