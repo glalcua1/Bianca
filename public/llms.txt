@@ -73,7 +73,14 @@ Official intent pages:
 - Based in: Delhi, India (serving Delhi NCR and clients nationwide)
 - Canonical site: https://www.biancadiamonds.com/
 
+## Media
+
+- Homepage hero film (MP4): https://www.biancadiamonds.com/bianca-diamonds-lab-grown-jewellery-hero.mp4
+- Hero film poster: https://www.biancadiamonds.com/bianca-diamonds-lab-grown-jewellery-hero-poster.jpg
+- Video sitemap: https://www.biancadiamonds.com/video-sitemap.xml
+
 ## Crawl aids
 
 - Sitemap: https://www.biancadiamonds.com/sitemap.xml
+- Video sitemap: https://www.biancadiamonds.com/video-sitemap.xml
 - Robots: https://www.biancadiamonds.com/robots.txt
