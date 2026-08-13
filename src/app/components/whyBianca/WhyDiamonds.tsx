@@ -48,8 +48,9 @@ export default function WhyDiamonds() {
             Clarity you can verify.
           </h2>
           <p className="mt-6 text-house-body leading-relaxed text-on-cream-body">
-            Every Bianca diamond is IGI certified—so cut, colour, clarity, and
-            carat are independently graded before the piece is yours.
+            Every Bianca Diamonds lab-grown diamond is individually IGI
+            certified—so cut, colour, clarity, and carat are independently
+            graded before the piece is yours.
           </p>
         </EditorialReveal>
 

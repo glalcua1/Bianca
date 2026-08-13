@@ -4,8 +4,12 @@ export const LAB_GROWN_FAQ_SEO = {
   title:
     "Lab-Grown Diamond FAQs | Everything You Need to Know | Bianca Diamonds",
   description:
-    "Explore answers to the most common questions about lab-grown diamonds, certification, quality, sustainability, and value. Learn why modern luxury buyers choose Bianca Diamonds.",
+    "Every Bianca Diamonds lab-grown diamond is individually IGI certified. Answers on certification, quality, sustainability, value, and how to choose lab-grown jewellery.",
 };
+
+/** House policy — keep wording consistent across FAQ, Why Bianca, and llms.txt. */
+export const BIANCA_IGI_CERTIFICATION_POLICY =
+  "Every Bianca Diamonds lab-grown diamond is individually IGI certified for cut, colour, clarity, and carat.";
 
 export type FaqItem = {
   id: string;
@@ -19,7 +23,7 @@ export const LAB_GROWN_FAQ_TRUST_PILLARS = [
   {
     id: "certified",
     title: "Certified",
-    description: "IGI Certified Diamonds",
+    description: "Every diamond IGI certified",
     icon: "award" as const,
   },
   {
@@ -61,10 +65,16 @@ export const LAB_GROWN_FAQ_ITEMS: FaqItem[] = [
     referenceLabel: "IGI — Identification guidance",
   },
   {
+    id: "bianca-igi",
+    question: "Are Bianca Diamonds lab-grown diamonds IGI certified?",
+    answer: `Yes. ${BIANCA_IGI_CERTIFICATION_POLICY} You receive independent grading documentation with your piece.`,
+    referenceUrl: "https://www.igi.org/reports/lab-grown-diamond-report/",
+    referenceLabel: "IGI — Lab-grown diamond reports",
+  },
+  {
     id: "certified",
     question: "Are lab-grown diamonds certified?",
-    answer:
-      "Yes. Reputable lab-grown diamonds should be certified by recognized gemological laboratories such as IGI or GIA.",
+    answer: `Yes. Lab-grown diamonds can be independently graded by laboratories such as IGI. At Bianca Diamonds, ${BIANCA_IGI_CERTIFICATION_POLICY}`,
     referenceUrl: "https://www.igi.org/reports/lab-grown-diamond-report/",
     referenceLabel: "IGI — Lab-grown diamond reports",
   },
@@ -72,7 +82,7 @@ export const LAB_GROWN_FAQ_ITEMS: FaqItem[] = [
     id: "igi-meaning",
     question: "What does IGI certification mean?",
     answer:
-      "An IGI certificate independently verifies a diamond's cut, color, clarity, carat weight, and origin.",
+      "An IGI certificate independently verifies a diamond's cut, colour, clarity, carat weight, and lab-grown origin. Bianca Diamonds uses IGI grading for every lab-grown diamond we set.",
     referenceUrl: "https://www.igi.org/reports/verify-your-report/",
     referenceLabel: "IGI — Verify your report",
   },
@@ -125,8 +135,7 @@ export const LAB_GROWN_FAQ_ITEMS: FaqItem[] = [
   {
     id: "bianca-certification",
     question: "Do Bianca Diamonds pieces come with certification?",
-    answer:
-      "Yes. Every Bianca Diamonds certified piece includes independent diamond certification where applicable and complete transparency regarding quality specifications.",
+    answer: `Yes. ${BIANCA_IGI_CERTIFICATION_POLICY} Each piece is delivered with clear quality specifications and the corresponding IGI documentation.`,
   },
 ];
 
@@ -175,5 +184,5 @@ export const ORGANIZATION_SCHEMA = {
   url: "https://www.biancadiamonds.com",
   email: "bianca.labdiamonds@gmail.com",
   description:
-    "Ethically crafted lab-grown diamond fine jewellery — IGI-certified brilliance, handcrafted for the modern maison.",
+    "Ethically crafted lab-grown diamond fine jewellery. Every Bianca Diamonds lab-grown diamond is individually IGI certified for cut, colour, clarity, and carat.",
 };

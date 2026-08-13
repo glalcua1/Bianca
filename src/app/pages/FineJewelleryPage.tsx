@@ -18,7 +18,7 @@ const CRAFT_VALUES = [
   {
     title: "IGI Certified",
     description:
-      "Every stone is independently graded for cut, colour, clarity, and carat weight.",
+      "Every Bianca Diamonds lab-grown diamond is individually IGI certified for cut, colour, clarity, and carat.",
   },
   {
     title: "Lab-Grown Brilliance",
