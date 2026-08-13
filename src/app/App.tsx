@@ -31,6 +31,12 @@ const WhyChooseBiancaPage = lazy(
 const DelhiNcrJewelleryPage = lazy(
   () => import("./pages/DelhiNcrJewelleryPage"),
 );
+const IndiaLabGrownJewelleryPage = lazy(
+  () => import("./pages/IndiaLabGrownJewelleryPage"),
+);
+const ModernBridalJewelleryPage = lazy(
+  () => import("./pages/ModernBridalJewelleryPage"),
+);
 const JewelleryPurchasePlanPage = lazy(
   () => import("./pages/JewelleryPurchasePlanPage"),
 );
@@ -95,6 +101,14 @@ export default function App() {
               <Route
                 path="/lab-grown-diamond-jewellery-delhi-ncr"
                 element={<DelhiNcrJewelleryPage />}
+              />
+              <Route
+                path="/lab-grown-diamond-jewellery-india"
+                element={<IndiaLabGrownJewelleryPage />}
+              />
+              <Route
+                path="/jewellery-for-modern-bride"
+                element={<ModernBridalJewelleryPage />}
               />
               <Route path="/contact" element={<ContactPage />} />
               <Route

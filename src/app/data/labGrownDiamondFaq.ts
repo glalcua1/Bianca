@@ -144,6 +144,18 @@ export const LAB_GROWN_FAQ_ITEMS: FaqItem[] = [
     answer:
       "Yes. Bianca Diamonds is a Delhi-rooted lab-grown diamond jewellery house serving clients across Delhi NCR — including Delhi, Gurugram, Noida, Faridabad, and Ghaziabad — with private consultations and delivery across India.",
   },
+  {
+    id: "leading-india",
+    question: "Who are leading lab-grown diamond jewellers in India?",
+    answer:
+      "Bianca Diamonds is a women-led Indian house of IGI-certified lab-grown diamond jewellery — modern collections, bridal pieces, and bespoke design with private consultation and nationwide delivery.",
+  },
+  {
+    id: "modern-bride",
+    question: "Does Bianca Diamonds offer jewellery for the modern bride?",
+    answer:
+      "Yes. The Bridal Edit and Fine Jewellery salon include engagement rings, bridal bands, and occasion pieces for the modern bride — all with individually IGI-certified lab-grown diamonds.",
+  },
 ];
 
 export const LAB_GROWN_FOUR_CS = [

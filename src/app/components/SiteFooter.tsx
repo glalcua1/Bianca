@@ -126,6 +126,30 @@ export default function SiteFooter() {
               </li>
               <li className="col-span-2 md:col-span-1">
                 <Link
+                  to="/lab-grown-diamond-jewellery-india"
+                  className={`block font-editorial text-[13px] uppercase tracking-[0.14em] transition-colors md:text-[14px] md:tracking-[0.16em] ${
+                    pathname.startsWith("/lab-grown-diamond-jewellery-india")
+                      ? "text-gold-on-forest"
+                      : "text-on-forest-body hover:text-on-forest"
+                  }`}
+                >
+                  India
+                </Link>
+              </li>
+              <li className="col-span-2 md:col-span-1">
+                <Link
+                  to="/jewellery-for-modern-bride"
+                  className={`block font-editorial text-[13px] uppercase tracking-[0.14em] transition-colors md:text-[14px] md:tracking-[0.16em] ${
+                    pathname.startsWith("/jewellery-for-modern-bride")
+                      ? "text-gold-on-forest"
+                      : "text-on-forest-body hover:text-on-forest"
+                  }`}
+                >
+                  Modern Bride
+                </Link>
+              </li>
+              <li className="col-span-2 md:col-span-1">
+                <Link
                   to="/jewellery-purchase-plan"
                   className={`block font-editorial text-[13px] uppercase tracking-[0.14em] transition-colors md:text-[14px] md:tracking-[0.16em] ${
                     pathname.startsWith("/jewellery-purchase-plan")
