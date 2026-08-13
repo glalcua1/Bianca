@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://www.biancadiamonds.com/</loc>
+    <video:video>
+      <video:thumbnail_loc>https://www.biancadiamonds.com/bianca-diamonds-lab-grown-jewellery-hero-poster.jpg</video:thumbnail_loc>
+      <video:title>Bianca Diamonds — Lab-Grown Diamond Fine Jewellery Hero Film</video:title>
+      <video:description>Homepage hero film for Bianca Diamonds: IGI-certified lab-grown diamond fine jewellery composed for modern living, bridal moments, and occasion dressing.</video:description>
+      <video:content_loc>https://www.biancadiamonds.com/bianca-diamonds-lab-grown-jewellery-hero.mp4</video:content_loc>
+      <video:duration>15</video:duration>
+      <video:publication_date>2026-07-17T00:00:00+05:30</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+  </url>
+</urlset>

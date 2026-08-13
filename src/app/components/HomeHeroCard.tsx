@@ -8,18 +8,20 @@ import {
 } from "react";
 import { Play, Volume2, VolumeX } from "lucide-react";
 import Group6Logo from "../../imports/Group6";
+import {
+  HOME_HERO_STILL,
+  HOME_HERO_VIDEO_DESKTOP,
+  HOME_HERO_VIDEO_MOBILE,
+  HOME_HERO_VIDEO_POSTER,
+  HOME_HERO_VIDEO_SEO,
+} from "../data/homeHeroVideo";
 import { BiancaHouseLogo } from "./BiancaLogo";
 import ProtectedImage from "./protection/ProtectedImage";
 
-const HERO_STILL = "/bianca-diamonds-blue-diamond-editorial.jpg";
-/** Full-quality landscape film for desktop. */
-const HERO_VIDEO_DESKTOP = "/bianca-diamonds-lab-grown-jewellery-hero.mp4";
-/**
- * Same 16:9 framing as desktop, compressed for mobile (~1.4MB vs ~10MB).
- * Avoids the portrait hero crop that cuts the trio's outer edges.
- */
-const HERO_VIDEO_MOBILE = "/bianca-diamonds-lab-grown-jewellery-hero-mobile.mp4";
-const HERO_VIDEO_POSTER = "/bianca-diamonds-lab-grown-jewellery-hero-poster.jpg";
+const HERO_STILL = HOME_HERO_STILL;
+const HERO_VIDEO_DESKTOP = HOME_HERO_VIDEO_DESKTOP;
+const HERO_VIDEO_MOBILE = HOME_HERO_VIDEO_MOBILE;
+const HERO_VIDEO_POSTER = HOME_HERO_VIDEO_POSTER;
 /** Safety net if `ended` never fires (autoplay block, decode stall). */
 const VIDEO_FALLBACK_MS = 18_000;
 const CROSSFADE_MS = 1400;
@@ -527,9 +529,11 @@ export default function HomeHeroCard({ layout = "desktop" }: Props) {
           ref={videoRef}
           className="absolute inset-0 size-full object-cover object-center"
           poster={HERO_VIDEO_POSTER}
+          title={HOME_HERO_VIDEO_SEO.name}
+          aria-label={HOME_HERO_VIDEO_SEO.name}
           muted={muted}
           playsInline
-          preload="none"
+          preload="metadata"
           controls={false}
           disablePictureInPicture
           onTimeUpdate={onTimeUpdate}
@@ -549,6 +553,10 @@ export default function HomeHeroCard({ layout = "desktop" }: Props) {
         />
         <FilmProgress progress={progress} visible={!isStill} />
       </div>
+      {/* Crawlable absolute URL — src is bound after idle for LCP, so keep a static link for indexers. */}
+      <a href={HOME_HERO_VIDEO_SEO.contentUrl} className="sr-only">
+        {HOME_HERO_VIDEO_SEO.name}
+      </a>
     </div>
   );
 }
@@ -613,9 +621,11 @@ function MobileHeroCard({
           ref={videoRef}
           className="absolute inset-0 size-full object-contain object-center"
           poster={HERO_VIDEO_POSTER}
+          title={HOME_HERO_VIDEO_SEO.name}
+          aria-label={HOME_HERO_VIDEO_SEO.name}
           muted={muted}
           playsInline
-          preload="none"
+          preload="metadata"
           controls={false}
           disablePictureInPicture
           onTimeUpdate={onTimeUpdate}
@@ -635,6 +645,9 @@ function MobileHeroCard({
         />
         <FilmProgress progress={progress} visible={!isStill} />
       </div>
+      <a href={HOME_HERO_VIDEO_SEO.contentUrlMobile} className="sr-only">
+        {HOME_HERO_VIDEO_SEO.name}
+      </a>
 
       <div
         className={

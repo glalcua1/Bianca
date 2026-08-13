@@ -12,5 +12,6 @@ Disallow: /admin
 Disallow: /admin/
 
 Sitemap: https://www.biancadiamonds.com/sitemap.xml
+Sitemap: https://www.biancadiamonds.com/video-sitemap.xml
 # llms.txt — structured site summary for AI assistants
 # https://www.biancadiamonds.com/llms.txt
