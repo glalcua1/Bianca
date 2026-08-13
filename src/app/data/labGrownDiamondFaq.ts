@@ -137,6 +137,13 @@ export const LAB_GROWN_FAQ_ITEMS: FaqItem[] = [
     question: "Do Bianca Diamonds pieces come with certification?",
     answer: `Yes. ${BIANCA_IGI_CERTIFICATION_POLICY} Each piece is delivered with clear quality specifications and the corresponding IGI documentation.`,
   },
+  {
+    id: "delhi-ncr",
+    question:
+      "Does Bianca Diamonds serve Delhi NCR for lab-grown diamond jewellery?",
+    answer:
+      "Yes. Bianca Diamonds is a Delhi-rooted lab-grown diamond jewellery house serving clients across Delhi NCR — including Delhi, Gurugram, Noida, Faridabad, and Ghaziabad — with private consultations and delivery across India.",
+  },
 ];
 
 export const LAB_GROWN_FOUR_CS = [
@@ -184,5 +191,5 @@ export const ORGANIZATION_SCHEMA = {
   url: "https://www.biancadiamonds.com",
   email: "bianca.labdiamonds@gmail.com",
   description:
-    "Ethically crafted lab-grown diamond fine jewellery. Every Bianca Diamonds lab-grown diamond is individually IGI certified for cut, colour, clarity, and carat.",
+    "Delhi-rooted lab-grown diamond jewellers serving Delhi NCR. Every Bianca Diamonds lab-grown diamond is individually IGI certified for cut, colour, clarity, and carat.",
 };
