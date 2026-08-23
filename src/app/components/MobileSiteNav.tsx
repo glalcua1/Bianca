@@ -8,6 +8,7 @@ import {
 } from "react";
 import { Link } from "react-router";
 import { BiancaForestNavLogo } from "./BiancaLogo";
+import SiteNavSearch from "./SiteNavSearch";
 import {
   NavActiveProvider,
   type NavActiveItem,
@@ -77,40 +78,46 @@ const MobileSiteNav = forwardRef<HTMLElement, Props>(function MobileSiteNav(
           WebkitBackdropFilter: progress > 0.35 ? "blur(4px)" : "none",
         }}
       >
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-3">
           <Link
             to="/"
-            className="relative block shrink-0 transition-opacity duration-300 hover:opacity-90"
+            className={`relative block shrink-0 transition-opacity duration-300 hover:opacity-90 ${
+              open ? "opacity-100" : ""
+            }`}
             aria-label="Bianca Diamonds — home"
             onClick={closeAll}
           >
             <BiancaForestNavLogo maxWidth={logoWidth} />
           </Link>
-          <button
-            type="button"
-            className="flex shrink-0 items-center justify-center rounded border text-[#f9f9f9] transition-colors duration-300 hover:border-[#dccb7b]/55 hover:bg-[#766d42]/10"
-            style={{
-              width: menuButtonSize,
-              height: menuButtonSize,
-              borderColor: `rgba(220, 203, 123, ${0.35 + progress * 0.2})`,
-            }}
-            aria-expanded={open}
-            aria-controls="mobile-site-nav-menu"
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
-            <span className="flex flex-col gap-1.5" aria-hidden>
-              <span
-                className={`block h-px w-5 bg-[#f9f9f9] transition ${open ? "translate-y-[3.5px] rotate-45" : ""}`}
-              />
-              <span
-                className={`block h-px w-5 bg-[#f9f9f9] transition ${open ? "opacity-0" : ""}`}
-              />
-              <span
-                className={`block h-px w-5 bg-[#f9f9f9] transition ${open ? "-translate-y-[3.5px] -rotate-45" : ""}`}
-              />
-            </span>
-          </button>
+
+          <div className="flex min-w-0 flex-1 items-center justify-end gap-2">
+            <SiteNavSearch variant="mobile" onNavigate={closeAll} />
+            <button
+              type="button"
+              className="flex shrink-0 items-center justify-center rounded border text-[#f9f9f9] transition-colors duration-300 hover:border-[#dccb7b]/55 hover:bg-[#766d42]/10"
+              style={{
+                width: menuButtonSize,
+                height: menuButtonSize,
+                borderColor: `rgba(220, 203, 123, ${0.35 + progress * 0.2})`,
+              }}
+              aria-expanded={open}
+              aria-controls="mobile-site-nav-menu"
+              onClick={() => setOpen((v) => !v)}
+            >
+              <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
+              <span className="flex flex-col gap-1.5" aria-hidden>
+                <span
+                  className={`block h-px w-5 bg-[#f9f9f9] transition ${open ? "translate-y-[3.5px] rotate-45" : ""}`}
+                />
+                <span
+                  className={`block h-px w-5 bg-[#f9f9f9] transition ${open ? "opacity-0" : ""}`}
+                />
+                <span
+                  className={`block h-px w-5 bg-[#f9f9f9] transition ${open ? "-translate-y-[3.5px] -rotate-45" : ""}`}
+                />
+              </span>
+            </button>
+          </div>
         </div>
 
         <nav

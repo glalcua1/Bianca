@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import AtelierPieceLightbox from "./AtelierPieceLightbox";
 import AtelierPieceQuote from "./AtelierPieceQuote";
 import AtelierSalonFilters from "./AtelierSalonFilters";
@@ -154,18 +154,50 @@ type Props = {
 };
 
 export default function FineJewelleryAtelier({ activeCategory }: Props) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const queryFromUrl = searchParams.get("q") ?? "";
+  const pieceFromUrl = searchParams.get("piece");
+
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(queryFromUrl);
   const [selectedFilters, setSelectedFilters] = useState<SelectedAtelierFilters>(
     () => clearSelectedFilters(getFilterGroups("all")),
   );
 
   useEffect(() => {
     setLightboxOpen(false);
-    setSearchQuery("");
     setSelectedFilters(clearSelectedFilters(getFilterGroups(activeCategory)));
   }, [activeCategory]);
+
+  useEffect(() => {
+    setSearchQuery(queryFromUrl);
+  }, [queryFromUrl]);
+
+  useEffect(() => {
+    if (!queryFromUrl && !pieceFromUrl) return;
+    requestAnimationFrame(() => {
+      document.getElementById("showcase")?.scrollIntoView({ behavior: "smooth" });
+    });
+  }, [queryFromUrl, pieceFromUrl, activeCategory]);
+
+  const handleSearchQueryChange = useCallback(
+    (value: string) => {
+      setSearchQuery(value);
+      setSearchParams(
+        (prev) => {
+          const next = new URLSearchParams(prev);
+          const trimmed = value.trim();
+          if (trimmed) next.set("q", trimmed);
+          else next.delete("q");
+          next.delete("piece");
+          return next;
+        },
+        { replace: true },
+      );
+    },
+    [setSearchParams],
+  );
 
   const categoryBasePieces = useMemo(() => {
     if (activeCategory === "all") return ATELIER_PIECES;
@@ -219,9 +251,30 @@ export default function FineJewelleryAtelier({ activeCategory }: Props) {
     [lightboxPieces],
   );
 
-  const handleLightboxOpenChange = useCallback((open: boolean) => {
-    setLightboxOpen(open);
-  }, []);
+  useEffect(() => {
+    if (!pieceFromUrl || lightboxPieces.length === 0) return;
+    const index = lightboxPieces.findIndex((piece) => piece.id === pieceFromUrl);
+    if (index < 0) return;
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  }, [pieceFromUrl, lightboxPieces]);
+
+  const handleLightboxOpenChange = useCallback(
+    (open: boolean) => {
+      setLightboxOpen(open);
+      if (!open && pieceFromUrl) {
+        setSearchParams(
+          (prev) => {
+            const next = new URLSearchParams(prev);
+            next.delete("piece");
+            return next;
+          },
+          { replace: true },
+        );
+      }
+    },
+    [pieceFromUrl, setSearchParams],
+  );
 
   const activeLabel =
     activeCategory === "all"
@@ -295,7 +348,7 @@ export default function FineJewelleryAtelier({ activeCategory }: Props) {
           <AtelierSalonFilters
             category={activeCategory}
             searchQuery={searchQuery}
-            onSearchQueryChange={setSearchQuery}
+            onSearchQueryChange={handleSearchQueryChange}
             selectedFilters={selectedFilters}
             onSelectedFiltersChange={setSelectedFilters}
             resultCount={categoryPieces.length}
