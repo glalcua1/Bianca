@@ -1,19 +1,42 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
-import { Instagram, Mail, Phone } from "lucide-react";
+import { Instagram, Linkedin, Mail, Phone, Youtube } from "lucide-react";
 import { BiancaForestNavLogo } from "./BiancaLogo";
 import SiteCopyright from "./SiteCopyright";
 import {
   BIANCA_EMAIL,
   BIANCA_INSTAGRAM_URL,
+  BIANCA_LINKEDIN_URL,
   BIANCA_PHONE_DISPLAY,
   BIANCA_PHONE_TEL,
   BIANCA_WHATSAPP_CONTACT_DISPLAY,
   BIANCA_WHATSAPP_CONTACT_NUMBER,
+  BIANCA_YOUTUBE_URL,
   SITE_NAV_ITEMS,
   consultationSourcePage,
 } from "../data/siteContact";
 import { buildWhatsAppChatUrl } from "../lib/whatsappContact";
+
+const SOCIAL_CHANNELS = [
+  {
+    id: "instagram",
+    label: "Instagram",
+    href: BIANCA_INSTAGRAM_URL,
+    Icon: Instagram,
+  },
+  {
+    id: "youtube",
+    label: "YouTube",
+    href: BIANCA_YOUTUBE_URL,
+    Icon: Youtube,
+  },
+  {
+    id: "linkedin",
+    label: "LinkedIn",
+    href: BIANCA_LINKEDIN_URL,
+    Icon: Linkedin,
+  },
+] as const;
 
 const ConsultationDrawer = lazy(
   () => import("./consultation/ConsultationDrawer"),
@@ -180,17 +203,26 @@ export default function SiteFooter() {
               Connect with the house
             </p>
 
-            <div className="flex w-full max-w-xl flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4">
-              <a
-                href={BIANCA_INSTAGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 border border-[#766d42]/40 bg-[#f4f0e6]/5 px-6 py-3.5 font-editorial text-[13px] uppercase tracking-[0.12em] text-[#f9f9f9] transition hover:border-[#dccb7b]/50 hover:bg-[#f4f0e6]/10"
-              >
-                <Instagram className="size-4 shrink-0 text-[#dccb7b]" aria-hidden />
-                Instagram
-              </a>
+            <ul
+              className="flex items-center justify-center gap-3 sm:gap-4"
+              aria-label="Social channels"
+            >
+              {SOCIAL_CHANNELS.map(({ id, label, href, Icon }) => (
+                <li key={id}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${label} — Bianca Diamonds`}
+                    className="inline-flex size-11 items-center justify-center border border-[#766d42]/40 bg-[#f4f0e6]/5 text-[#dccb7b] transition hover:border-[#dccb7b]/55 hover:bg-[#f4f0e6]/10 hover:text-[#f0e2a8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#dccb7b]"
+                  >
+                    <Icon className="size-5" aria-hidden />
+                  </a>
+                </li>
+              ))}
+            </ul>
 
+            <div className="flex w-full max-w-xl flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4">
               <button
                 type="button"
                 onClick={() => setConsultationOpen(true)}

@@ -3,6 +3,11 @@ import type { NavActiveItem } from "../context/NavActiveContext";
 export const BIANCA_INSTAGRAM_URL =
   "https://www.instagram.com/bianca.diamonds?igsh=M3didm9lb2pidXBi";
 
+export const BIANCA_YOUTUBE_URL = "https://www.youtube.com/@BiancaDiamonds";
+
+export const BIANCA_LINKEDIN_URL =
+  "https://www.linkedin.com/in/shwetalal-bianca/";
+
 export const BIANCA_EMAIL = "bianca.labdiamonds@gmail.com";
 
 /** Display and tel: link — +918130495257 */
