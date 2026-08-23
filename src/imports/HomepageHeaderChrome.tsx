@@ -1,5 +1,6 @@
 import { HeaderNavLogo } from "./HeaderNavLogo";
 import MainSiteNavLinks from "../app/components/MainSiteNavLinks";
+import SiteNavSearch from "../app/components/SiteNavSearch";
 
 /** Design-px height of the homepage header chrome (logo + nav band). */
 export const HOMEPAGE_HEADER_DESIGN_H = 130;
@@ -27,7 +28,7 @@ function NavList() {
   return (
     <nav
       aria-label="Main navigation"
-      className="absolute left-[180px] right-[100px] top-[76px] flex h-[23px] items-start justify-center"
+      className="absolute left-[180px] right-[140px] top-[76px] flex h-[23px] items-start justify-center"
       data-name="Nav → List"
     >
       <MainSiteNavLinks compact />
@@ -59,6 +60,9 @@ export function HomepageHeaderChrome({
       <div className="absolute contents left-[238px] top-[76px]">
         <NavDividerBand />
         <NavList />
+      </div>
+      <div className="absolute right-[36px] top-[72px] z-10">
+        <SiteNavSearch variant="desktop" />
       </div>
     </div>
   );

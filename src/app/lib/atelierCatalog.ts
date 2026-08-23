@@ -301,9 +301,20 @@ function tokenizeQuery(query: string): string[] {
     if (token.endsWith("s") && token.length > 3) {
       expanded.add(token.slice(0, -1));
     }
+    // Product codes typed with spaces/hyphens: "BD G RG 054" → also match compact forms
+    const compact = token.replace(/-/g, "");
+    if (compact !== token && compact.length > 2) expanded.add(compact);
   }
 
+  // Whole-query compact product code (e.g. "bd-g-rg-054" / "BDGRG054")
+  const codeCompact = normalized.replace(/[\s-]/g, "");
+  if (codeCompact.length >= 4) expanded.add(codeCompact);
+
   return [...expanded];
+}
+
+function normalizeProductCode(value: string): string {
+  return value.toLowerCase().replace(/[^a-z0-9]/g, "");
 }
 
 export function scoreNaturalLanguageSearch(
@@ -314,18 +325,43 @@ export function scoreNaturalLanguageSearch(
   if (tokens.length === 0) return 1;
 
   const title = entry.piece.title.toLowerCase();
+  const code = entry.piece.productCode.toLowerCase();
+  const codeCompact = normalizeProductCode(entry.piece.productCode);
+  const queryCompact = normalizeProductCode(query);
   let score = 0;
+
+  if (queryCompact.length >= 4 && codeCompact.includes(queryCompact)) {
+    score += 24;
+  }
+  if (queryCompact.length >= 6 && codeCompact === queryCompact) {
+    score += 40;
+  }
 
   for (const token of tokens) {
     if (title.includes(token)) score += 6;
     if (entry.searchText.includes(token)) score += 3;
     if (entry.tags.has(token)) score += 4;
-    if (entry.piece.productCode.toLowerCase().includes(token)) score += 8;
+    if (code.includes(token) || codeCompact.includes(token.replace(/-/g, ""))) {
+      score += 8;
+    }
   }
 
   const phrase = query.toLowerCase().trim();
   if (phrase.length > 2 && entry.searchText.includes(phrase)) {
     score += 10;
+  }
+
+  // Multi-word queries: boost when every raw word hits (more precise ranking)
+  const rawWords = phrase.split(/\s+/).filter((word) => word.length > 1);
+  if (rawWords.length > 1) {
+    const allHit = rawWords.every(
+      (word) =>
+        title.includes(word) ||
+        entry.searchText.includes(word) ||
+        code.includes(word) ||
+        codeCompact.includes(word.replace(/-/g, "")),
+    );
+    if (allHit) score += 16;
   }
 
   return score;

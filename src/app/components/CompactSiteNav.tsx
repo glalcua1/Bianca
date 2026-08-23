@@ -2,6 +2,7 @@ import type { RefObject } from "react";
 import { Link } from "react-router";
 import { BiancaForestNavLogo } from "./BiancaLogo";
 import FineJewelleryNavTrigger from "./FineJewelleryNavTrigger";
+import SiteNavSearch from "./SiteNavSearch";
 import {
   NavActiveProvider,
   type NavActiveItem,
@@ -108,6 +109,8 @@ export function CompactSiteNavBar({
           >
             <CompactNavLinks activeItem={activeItem} />
           </nav>
+
+          <SiteNavSearch variant="compact" />
         </div>
       </header>
     </NavActiveProvider>
