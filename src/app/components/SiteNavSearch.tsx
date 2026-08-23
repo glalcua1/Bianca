@@ -2,11 +2,13 @@ import {
   useCallback,
   useEffect,
   useId,
+  useLayoutEffect,
   useRef,
   useState,
   type FormEvent,
   type KeyboardEvent,
 } from "react";
+import { createPortal } from "react-dom";
 import { Link, useNavigate } from "react-router";
 import { Search, X } from "lucide-react";
 import {
@@ -26,24 +28,33 @@ type Props = {
 
 const PLACEHOLDER = "Search jewellery, codes, pages…";
 
+type PanelBox = {
+  top: number;
+  left: number;
+  width: number;
+};
+
 export default function SiteNavSearch({
   variant = "compact",
   onNavigate,
 }: Props) {
   const navigate = useNavigate();
   const rootRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const listId = useId();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(-1);
   const [results, setResults] = useState<SiteSearchResult[]>([]);
+  const [panelBox, setPanelBox] = useState<PanelBox | null>(null);
 
   const close = useCallback(() => {
     setOpen(false);
     setQuery("");
     setResults([]);
     setActiveIndex(-1);
+    setPanelBox(null);
   }, []);
 
   const expand = useCallback(() => {
@@ -51,13 +62,41 @@ export default function SiteNavSearch({
     requestAnimationFrame(() => inputRef.current?.focus());
   }, []);
 
+  const updatePanelBox = useCallback(() => {
+    const root = rootRef.current;
+    if (!root) return;
+    const rect = root.getBoundingClientRect();
+    const width =
+      variant === "mobile"
+        ? Math.min(window.innerWidth - 16, Math.max(rect.width, 280))
+        : Math.min(352, Math.max(rect.width, 280));
+    const left =
+      variant === "mobile"
+        ? 8
+        : Math.min(
+            Math.max(8, rect.right - width),
+            window.innerWidth - width - 8,
+          );
+    setPanelBox({
+      top: rect.bottom + 8,
+      left,
+      width,
+    });
+  }, [variant]);
+
+  useLayoutEffect(() => {
+    if (!open) return;
+    updatePanelBox();
+  }, [open, query, updatePanelBox]);
+
   useEffect(() => {
     if (!open) return;
 
     function onPointerDown(event: MouseEvent) {
-      if (!rootRef.current?.contains(event.target as Node)) {
-        close();
-      }
+      const target = event.target as Node;
+      if (rootRef.current?.contains(target)) return;
+      if (panelRef.current?.contains(target)) return;
+      close();
     }
 
     function onKeyDown(event: globalThis.KeyboardEvent) {
@@ -67,13 +106,21 @@ export default function SiteNavSearch({
       }
     }
 
+    function onReposition() {
+      updatePanelBox();
+    }
+
     document.addEventListener("mousedown", onPointerDown);
     document.addEventListener("keydown", onKeyDown);
+    window.addEventListener("resize", onReposition);
+    window.addEventListener("scroll", onReposition, true);
     return () => {
       document.removeEventListener("mousedown", onPointerDown);
       document.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("resize", onReposition);
+      window.removeEventListener("scroll", onReposition, true);
     };
-  }, [open, close]);
+  }, [open, close, updatePanelBox]);
 
   useEffect(() => {
     const trimmed = query.trim();
@@ -137,7 +184,7 @@ export default function SiteNavSearch({
   };
 
   const matchCount = query.trim() ? countAtelierMatches(query) : 0;
-  const showPanel = open && query.trim().length > 0;
+  const showPanel = open && query.trim().length > 0 && panelBox !== null;
 
   const iconButtonClass =
     variant === "mobile"
@@ -149,9 +196,7 @@ export default function SiteNavSearch({
   const fieldShellClass =
     variant === "mobile"
       ? "flex min-w-0 flex-1 items-center gap-1.5"
-      : variant === "desktop"
-        ? "flex items-center"
-        : "flex items-center";
+      : "flex items-center";
 
   const inputClass =
     variant === "mobile"
@@ -159,6 +204,78 @@ export default function SiteNavSearch({
       : variant === "desktop"
         ? "h-9 w-[min(16rem,28vw)] border border-[#dccb7b]/45 bg-[#162e28]/95 px-3 font-editorial text-[12px] uppercase tracking-[0.12em] text-[#f9f9f9] outline-none placeholder:normal-case placeholder:tracking-[0.04em] placeholder:text-[#f9f9f9]/45 focus:border-[#dccb7b]/75"
         : "h-9 w-[min(14rem,42vw)] border border-[#dccb7b]/45 bg-[#162e28] px-3 font-editorial text-[12px] tracking-[0.04em] text-[#f9f9f9] outline-none placeholder:text-[#f9f9f9]/45 focus:border-[#dccb7b]/75 sm:w-[16rem]";
+
+  const resultsPanel =
+    showPanel && panelBox
+      ? createPortal(
+          <div
+            ref={panelRef}
+            id={listId}
+            role="listbox"
+            aria-label="Search results"
+            style={{
+              position: "fixed",
+              top: panelBox.top,
+              left: panelBox.left,
+              width: panelBox.width,
+            }}
+            className="z-[200] max-h-[min(70vh,24rem)] overflow-y-auto overscroll-contain border border-[#766d42]/35 bg-[#faf8f5] shadow-[0_16px_48px_rgba(8,20,16,0.35)]"
+          >
+            {results.length === 0 ? (
+              <p className="px-4 py-4 font-editorial text-[13px] tracking-[0.04em] text-[#524a28]">
+                No matches for “{query.trim()}”
+              </p>
+            ) : (
+              <ul className="py-1">
+                {results.map((result, index) => {
+                  const active = index === activeIndex;
+                  return (
+                    <li key={result.id} role="option" aria-selected={active}>
+                      <Link
+                        id={`${listId}-option-${index}`}
+                        to={result.href}
+                        className={`block px-4 py-3 transition ${
+                          active ? "bg-[#1d3c34]/08" : "hover:bg-[#1d3c34]/06"
+                        }`}
+                        onClick={() => {
+                          close();
+                          onNavigate?.();
+                        }}
+                        onMouseEnter={() => setActiveIndex(index)}
+                      >
+                        <span className="block font-editorial text-[14px] tracking-[0.04em] text-[#1d3c34]">
+                          {result.title}
+                        </span>
+                        <span className="mt-0.5 block text-[10px] uppercase tracking-[0.14em] text-[#766d42]">
+                          {result.kind === "piece" ? "Piece" : "Page"}
+                          <span className="mx-1.5 text-[#766d42]/40">·</span>
+                          {result.subtitle}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+
+            {matchCount > 0 ? (
+              <button
+                type="button"
+                className="flex w-full items-center justify-between border-t border-[#766d42]/20 px-4 py-3 text-left transition hover:bg-[#1d3c34]/06"
+                onClick={() => goToAtelier(query)}
+              >
+                <span className="font-editorial text-[12px] uppercase tracking-[0.14em] text-[#1d3c34]">
+                  View all in salon
+                </span>
+                <span className="text-[10px] uppercase tracking-[0.16em] text-[#766d42] tabular-nums">
+                  {matchCount} piece{matchCount === 1 ? "" : "s"}
+                </span>
+              </button>
+            ) : null}
+          </div>,
+          document.body,
+        )
+      : null;
 
   return (
     <div
@@ -218,70 +335,7 @@ export default function SiteNavSearch({
         </form>
       )}
 
-      {showPanel ? (
-        <div
-          id={listId}
-          role="listbox"
-          aria-label="Search results"
-          className={`absolute z-[120] mt-2 max-h-[min(70vh,24rem)] overflow-y-auto overscroll-contain border border-[#766d42]/35 bg-[#faf8f5] shadow-[0_16px_48px_rgba(8,20,16,0.35)] ${
-            variant === "mobile"
-              ? "inset-x-0"
-              : "right-0 w-[min(22rem,calc(100vw-1.5rem))]"
-          }`}
-        >
-          {results.length === 0 ? (
-            <p className="px-4 py-4 font-editorial text-[13px] tracking-[0.04em] text-[#524a28]">
-              No matches for “{query.trim()}”
-            </p>
-          ) : (
-            <ul className="py-1">
-              {results.map((result, index) => {
-                const active = index === activeIndex;
-                return (
-                  <li key={result.id} role="option" aria-selected={active}>
-                    <Link
-                      id={`${listId}-option-${index}`}
-                      to={result.href}
-                      className={`block px-4 py-3 transition ${
-                        active ? "bg-[#1d3c34]/08" : "hover:bg-[#1d3c34]/06"
-                      }`}
-                      onClick={() => {
-                        close();
-                        onNavigate?.();
-                      }}
-                      onMouseEnter={() => setActiveIndex(index)}
-                    >
-                      <span className="block font-editorial text-[14px] tracking-[0.04em] text-[#1d3c34]">
-                        {result.title}
-                      </span>
-                      <span className="mt-0.5 block text-[10px] uppercase tracking-[0.14em] text-[#766d42]">
-                        {result.kind === "piece" ? "Piece" : "Page"}
-                        <span className="mx-1.5 text-[#766d42]/40">·</span>
-                        {result.subtitle}
-                      </span>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-
-          {matchCount > 0 ? (
-            <button
-              type="button"
-              className="flex w-full items-center justify-between border-t border-[#766d42]/20 px-4 py-3 text-left transition hover:bg-[#1d3c34]/06"
-              onClick={() => goToAtelier(query)}
-            >
-              <span className="font-editorial text-[12px] uppercase tracking-[0.14em] text-[#1d3c34]">
-                View all in salon
-              </span>
-              <span className="text-[10px] uppercase tracking-[0.16em] text-[#766d42] tabular-nums">
-                {matchCount} piece{matchCount === 1 ? "" : "s"}
-              </span>
-            </button>
-          ) : null}
-        </div>
-      ) : null}
+      {resultsPanel}
     </div>
   );
 }

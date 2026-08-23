@@ -11,6 +11,7 @@ import imgImage1 from "figma:asset/bianca-diamonds-atelier-atmosphere.png";
 import { imgRectangle, imgRectangle1, imgGroup, imgRectangle3, imgRectangle4, imgRectangle7, imgGroup1, imgRectangle9, imgGroup2 } from "./svg-nywou";
 import { Link } from "react-router";
 import MainSiteNavLinks from "../app/components/MainSiteNavLinks";
+import SiteNavSearch from "../app/components/SiteNavSearch";
 import { RingMark } from "./RingMark";
 import Hw25PromoBridal2H2JpgVideo from "./Hw25PromoBridal2H2Jpg";
 import ProtectedImage from "../app/components/protection/ProtectedImage";
@@ -1005,7 +1006,7 @@ function NavList() {
   return (
     <nav
       aria-label="Main navigation"
-      className="absolute left-[180px] right-[100px] top-[76px] flex h-[23px] items-start justify-center"
+      className="absolute left-[180px] right-[140px] top-[76px] flex h-[23px] items-start justify-center"
       data-name="Nav → List"
     >
       <MainSiteNavLinks compact />
@@ -1921,6 +1922,9 @@ function Group52() {
     <div className="absolute contents left-[39px] top-[38.29px]">
       <Group53 />
       <Frame3 />
+      <div className="absolute right-[36px] top-[72px] z-10">
+        <SiteNavSearch variant="desktop" />
+      </div>
     </div>
   );
 }
@@ -1945,6 +1949,9 @@ export function HomepageHeaderChrome({
     >
       <Frame3 />
       <Group53 />
+      <div className="absolute right-[36px] top-[72px] z-10">
+        <SiteNavSearch variant="desktop" />
+      </div>
     </div>
   );
 }
