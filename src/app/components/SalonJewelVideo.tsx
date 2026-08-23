@@ -6,6 +6,8 @@ type Props = {
   src: string;
   ariaLabel: string;
   className?: string;
+  /** Still frame shown before playback (avoids blank wells while metadata loads) */
+  poster?: string;
   /** Show play/pause control */
   showControl?: boolean;
   autoPlay?: boolean;
@@ -20,6 +22,7 @@ export default function SalonJewelVideo({
   src,
   ariaLabel,
   className,
+  poster,
   showControl = true,
   autoPlay = false,
   loop = true,
@@ -80,12 +83,13 @@ export default function SalonJewelVideo({
     <ProtectedVideo
       ref={videoRef}
       src={src}
+      poster={poster}
       className={videoClassName}
       autoPlay={autoPlay}
       muted={muted}
       loop={loop}
       playsInline
-      preload="metadata"
+      preload={poster ? "none" : "metadata"}
       aria-label={ariaLabel}
       controlsOverlay={
         showControl ? (
