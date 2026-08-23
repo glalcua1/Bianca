@@ -45,6 +45,8 @@ type Props = {
    * suite photography so the plate fills the well without letterboxing.
    */
   aspectRatio?: string;
+  /** Prefer eager decode for above-the-fold / filtered salon results */
+  priority?: boolean;
 };
 
 export default function CollectionPhotoFrame({
@@ -62,6 +64,7 @@ export default function CollectionPhotoFrame({
   imageWrapperClassName =
     "absolute inset-0 size-full [&_picture]:block [&_picture]:size-full",
   aspectRatio,
+  priority = false,
 }: Props) {
   const isEbony = variant === "ebony";
   const isFlush = mat === "flush";
@@ -123,6 +126,7 @@ export default function CollectionPhotoFrame({
                     <div className="absolute inset-0 overflow-hidden">
                       <SalonJewelVideo
                         src={video}
+                        poster={src}
                         ariaLabel={alt}
                         objectFit={videoObjectFit}
                         autoPlay={false}
@@ -134,7 +138,8 @@ export default function CollectionPhotoFrame({
                       src={src}
                       alt={alt}
                       sizes={ATELIER_IMAGE_SIZES}
-                      loading="lazy"
+                      priority={priority}
+                      loading={priority ? "eager" : "lazy"}
                       decoding="async"
                       className={imageClassName}
                     />
@@ -167,6 +172,7 @@ export default function CollectionPhotoFrame({
                     <div className="absolute inset-0 overflow-hidden">
                       <SalonJewelVideo
                         src={video}
+                        poster={src}
                         ariaLabel={alt}
                         objectFit={videoObjectFit}
                         autoPlay={false}
@@ -178,7 +184,8 @@ export default function CollectionPhotoFrame({
                       src={src}
                       alt={alt}
                       sizes={ATELIER_IMAGE_SIZES}
-                      loading="lazy"
+                      priority={priority}
+                      loading={priority ? "eager" : "lazy"}
                       decoding="async"
                       className={imageClassName}
                     />

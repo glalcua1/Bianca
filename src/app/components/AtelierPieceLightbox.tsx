@@ -66,6 +66,10 @@ export default function AtelierPieceLightbox({
     views.length === 0 ? 0 : Math.min(Math.max(viewIndex, 0), views.length - 1);
   const activeView = views[safeViewIndex] ?? piece?.image ?? "";
   const activeIsVideo = isSalonFilmPath(activeView);
+  const filmPoster =
+    piece && !isSalonFilmPath(piece.image)
+      ? piece.image
+      : (piece?.galleryImages?.[0] ?? undefined);
   const hasMultipleViews = views.length > 1;
   const hasPrev = safeIndex > 0;
   const hasNext = safeIndex < total - 1;
@@ -175,6 +179,7 @@ export default function AtelierPieceLightbox({
                         <SalonJewelVideo
                           key={`${piece.id}-${safeViewIndex}`}
                           src={activeView}
+                          poster={filmPoster}
                           ariaLabel={piece.alt}
                           objectFit="contain"
                           autoPlay={false}

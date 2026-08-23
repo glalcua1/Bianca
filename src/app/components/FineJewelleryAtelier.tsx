@@ -83,6 +83,7 @@ function renderPieceCard(
   piece: AtelierPiece,
   onOpenPiece: (piece: AtelierPiece) => void,
   imageSrc: string,
+  priority = false,
 ) {
   return (
     <li key={piece.id} className="flex w-full min-w-0 flex-col items-center">
@@ -102,6 +103,7 @@ function renderPieceCard(
           src={imageSrc}
           alt={piece.alt}
           data-name={piece.id}
+          priority={priority}
         />
         <span className="pointer-events-none absolute inset-x-0 bottom-3 flex justify-center opacity-80 transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 md:bottom-4 md:opacity-0 md:group-hover:opacity-100">
           <span className="border border-[#766d42]/40 bg-[#f4f0e6]/95 px-3 py-1.5 text-[9px] uppercase tracking-[0.2em] text-[#1d3c34] shadow-sm backdrop-blur-[2px]">
@@ -236,6 +238,10 @@ export default function FineJewelleryAtelier({ activeCategory }: Props) {
   const pieceCountLabel =
     categoryPieces.length === 1 ? "1 piece" : `${categoryPieces.length} pieces`;
 
+  /** Filtered searches remount the grid — eager-load so wells are not blank. */
+  const searchActive = searchQuery.trim().length > 0;
+  const eagerCount = searchActive ? categoryPieces.length : 6;
+
   return (
     <section
       id="showcase"
@@ -329,11 +335,12 @@ export default function FineJewelleryAtelier({ activeCategory }: Props) {
                     {title}
                   </h3>
                   <ul className="grid w-full min-w-0 gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
-                    {sectionPieces.map((piece) =>
+                    {sectionPieces.map((piece, index) =>
                       renderPieceCard(
                         piece,
                         openPiece,
                         displayImageForPiece(piece, selectedFilters),
+                        index < eagerCount,
                       ),
                     )}
                   </ul>
@@ -343,11 +350,12 @@ export default function FineJewelleryAtelier({ activeCategory }: Props) {
           </div>
         ) : (
           <ul className="grid w-full min-w-0 gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
-            {categoryPieces.map((piece) =>
+            {categoryPieces.map((piece, index) =>
               renderPieceCard(
                 piece,
                 openPiece,
                 displayImageForPiece(piece, selectedFilters),
+                index < eagerCount,
               ),
             )}
           </ul>
