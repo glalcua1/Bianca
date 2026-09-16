@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import * as Dialog from "@radix-ui/react-dialog";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import AtelierPieceShareControl from "./AtelierPieceShareControl";
 import AtelierSalonPanel from "./AtelierSalonPanel";
 import BrandImageWatermark from "./BrandImageWatermark";
 import ProtectedImage from "./protection/ProtectedImage";
@@ -156,15 +157,18 @@ export default function AtelierPieceLightbox({
                     {safeIndex + 1} / {total}
                   </span>
                 </Dialog.Title>
-                <Dialog.Close asChild>
-                  <button
-                    type="button"
-                    className="inline-flex size-9 items-center justify-center border border-[#dccb7b]/40 text-[#f4f0e6] transition duration-150 hover:border-[#dccb7b] hover:text-[#dccb7b] motion-reduce:transition-none"
-                    aria-label="Close"
-                  >
-                    <X className="size-4" strokeWidth={1.25} />
-                  </button>
-                </Dialog.Close>
+                <div className="flex items-center gap-2">
+                  <AtelierPieceShareControl piece={piece} variant="header" />
+                  <Dialog.Close asChild>
+                    <button
+                      type="button"
+                      className="inline-flex size-9 items-center justify-center border border-[#dccb7b]/40 text-[#f4f0e6] transition duration-150 hover:border-[#dccb7b] hover:text-[#dccb7b] motion-reduce:transition-none"
+                      aria-label="Close"
+                    >
+                      <X className="size-4" strokeWidth={1.25} />
+                    </button>
+                  </Dialog.Close>
+                </div>
               </header>
 
               {/* Mobile: larger image well so jewellery reads big; desktop: side-by-side. */}
