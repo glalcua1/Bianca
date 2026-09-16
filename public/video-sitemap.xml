@@ -14,4 +14,15 @@
       <video:live>no</video:live>
     </video:video>
   </url>
+  <url>
+    <loc>https://www.biancadiamonds.com/media</loc>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/FicU78IRX1M/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Episode 74 | The Old Rules of Jewellery Are Finally Changing | Ft. Shweta Rastogi Lal</video:title>
+      <video:description>The most comprehensive podcast on lab-grown diamonds and the changing jewellery industry — a deep conversation on changing mindsets, consumer behaviour and emerging jewellery trends featuring Shweta Rastogi Lal of Bianca Diamonds. Topics include natural vs lab-grown diamonds, sustainability, luxury without a showroom, and diamond industry trends.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube.com/embed/FicU78IRX1M</video:player_loc>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+    </video:video>
+  </url>
 </urlset>
