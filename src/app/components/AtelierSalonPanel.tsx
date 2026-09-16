@@ -1,5 +1,6 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { MessageCircle } from "lucide-react";
+import AtelierPieceShareControl from "./AtelierPieceShareControl";
 import type { AtelierPiece } from "../data/fineJewelleryCollections";
 import { atelierPieceEyebrow } from "../data/fineJewelleryCollections";
 import {
@@ -67,12 +68,14 @@ function SalonValuationStrip({
   kiraReference,
   priceLabel,
   gstNote,
+  priceNote,
 }: {
   eyebrow: string;
   biancaCode: string | null;
   kiraReference: string;
   priceLabel: string;
   gstNote: string;
+  priceNote?: string;
 }) {
   return (
     <div className="border border-[#766d42]/18 bg-white/50 px-4 py-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] sm:px-5 sm:py-4">
@@ -100,6 +103,11 @@ function SalonValuationStrip({
           <p className="mt-1.5 text-[8px] leading-relaxed tracking-[0.06em] text-on-cream-muted normal-case">
             {gstNote}
           </p>
+          {priceNote ? (
+            <p className="mt-1 text-[8px] leading-relaxed tracking-[0.06em] text-on-cream-muted normal-case">
+              {priceNote}
+            </p>
+          ) : null}
         </div>
       </div>
     </div>
@@ -280,7 +288,9 @@ export default function AtelierSalonPanel({
     earringQuote?.priceInr ??
     piece.salonPriceInr;
   const guidePriceLabel = guidePriceInr ? formatRingPriceInr(guidePriceInr) : null;
-  const hasFilmSpecs = Boolean(piece.gemstoneSpec || piece.goldSpec);
+  const hasFilmSpecs = Boolean(
+    piece.gemstoneSpec || piece.goldSpec || piece.chainSpec,
+  );
 
   const motionProps = reduceMotion
     ? { initial: false, animate: { opacity: 1, x: 0 }, exit: { opacity: 1, x: 0 } }
@@ -373,6 +383,7 @@ export default function AtelierSalonPanel({
                 kiraReference={piece.productCode}
                 priceLabel={guidePriceLabel}
                 gstNote="GST 3% extra · not included in price"
+                priceNote={piece.salonPriceNote}
               />
             </div>
             <div
@@ -388,7 +399,17 @@ export default function AtelierSalonPanel({
                   <SalonSpec label="Centre stone" value={piece.gemstoneSpec} />
                 ) : null}
                 {piece.goldSpec ? (
-                  <SalonSpec label="Gold" value={piece.goldSpec} />
+                  <SalonSpec
+                    label={piece.chainSpec ? "Gold frame / bezel" : "Gold"}
+                    value={piece.goldSpec}
+                  />
+                ) : null}
+                {piece.chainSpec ? (
+                  <SalonSpec
+                    label="Gold chain"
+                    value={piece.chainSpec}
+                    detail={piece.salonPriceNote}
+                  />
                 ) : null}
               </div>
               <OrnamentalRule className="mt-6" />
@@ -422,6 +443,7 @@ export default function AtelierSalonPanel({
             />
             {enquiryLoading ? "Opening WhatsApp…" : "Request salon consultation"}
           </button>
+          <AtelierPieceShareControl piece={piece} variant="panel" />
           <p className="mt-2.5 text-center text-[9px] uppercase tracking-[0.14em] text-on-cream-muted sm:mt-3">
             +91 81304 95257
           </p>

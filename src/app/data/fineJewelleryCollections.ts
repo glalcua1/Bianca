@@ -65,6 +65,10 @@ export type AtelierPiece = {
   salonPriceInr?: number;
   gemstoneSpec?: string;
   goldSpec?: string;
+  /** Optional chain / extra gold line shown in salon composition */
+  chainSpec?: string;
+  /** Extra price footnote (e.g. chain not included) */
+  salonPriceNote?: string;
 };
 
 export function atelierPieceEyebrow(piece: AtelierPiece): string {
@@ -2627,10 +2631,15 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-PD-SEO-002",
     image: "/Pendant/bianca-diamonds-emerald-cut-solitaire-pendant.jpg",
     imageWellColor: "#9b9b9b",
-    alt: "Emerald-cut diamond solitaire pendant in white gold",
-    title: "Emerald-Cut Solitaire Pendant",
+    alt: "Emerald-cut 14 carat diamond solitaire pendant in 18 KT gold",
+    title: "Emerald-Cut 14 carat Solitaire Pendant",
+    gemstoneSpec: "Emerald cut single solitaire 14 carat, E colour, VVS",
+    goldSpec: "2.5 gm, 18 KT",
+    chainSpec: "Optional · 3–5 gms",
+    salonPriceInr: 650_000,
+    salonPriceNote: "Gold chain is extra",
     description:
-      "A step-cut emerald diamond suspended in white gold — pure clarity and quiet architectural light.",
+      "A 14 carat emerald-cut solitaire, E colour and VVS, held in an 18 KT gold bezel — architectural light, gold chain optional.",
   },
   {
     id: "pend-yellow-double-halo",

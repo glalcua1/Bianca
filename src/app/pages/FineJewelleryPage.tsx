@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useSearchParams } from "react-router";
 import InstagramFeedSection from "../components/InstagramFeedSection";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
@@ -13,6 +13,11 @@ import {
 } from "../data/fineJewelleryMegaMenu";
 import { BIANCA_INSTAGRAM_URL } from "../data/siteContact";
 import { usePageMeta } from "../hooks/usePageMeta";
+import { BIANCA_PUBLIC_ORIGIN } from "../lib/atelierEnquiry";
+import {
+  atelierPieceShareUrl,
+  findAtelierPiece,
+} from "../lib/atelierShare";
 
 const CRAFT_VALUES = [
   {
@@ -34,13 +39,28 @@ const CRAFT_VALUES = [
 
 export default function FineJewelleryPage() {
   const location = useLocation();
+  const [searchParams] = useSearchParams();
   const fromPath = parseFineJewelleryCategoryFromPath(location.pathname);
   const fromHash = parseFineJewelleryCategoryFromHash(location.hash);
   const activeCategory: JewelleryCategoryId | "all" =
     fromPath !== "all" ? fromPath : fromHash;
 
-  const pageSeo = fineJewelleryPageSeo(activeCategory);
-  usePageMeta(pageSeo.title, pageSeo.description);
+  const sharedPiece = findAtelierPiece(searchParams.get("piece"));
+  const pageSeo = sharedPiece
+    ? {
+        title: `${sharedPiece.title} | Bianca Diamonds`,
+        description: sharedPiece.description,
+      }
+    : fineJewelleryPageSeo(activeCategory);
+
+  usePageMeta(pageSeo.title, pageSeo.description, {
+    canonical: sharedPiece
+      ? atelierPieceShareUrl(sharedPiece, BIANCA_PUBLIC_ORIGIN)
+      : undefined,
+    ogImage: sharedPiece
+      ? `${BIANCA_PUBLIC_ORIGIN}${sharedPiece.image}`
+      : undefined,
+  });
 
   useEffect(() => {
     const parsed = parseFineJewelleryCategoryFromHash(location.hash);
