@@ -127,7 +127,9 @@ function resolveCategoryId(id: string): MegaMenuCategoryId {
 export function parseFineJewelleryCategoryFromPath(
   pathname: string,
 ): MegaMenuCategoryId {
-  const match = pathname.match(/^\/fine-jewellery(?:\/([^/]+))?\/?$/i);
+  const match = pathname.match(
+    /^\/fine-jewellery(?:\/([^/]+))?(?:\/[^/]+)?\/?$/i,
+  );
   if (!match) return "all";
   return resolveCategoryId(match[1] ?? "");
 }

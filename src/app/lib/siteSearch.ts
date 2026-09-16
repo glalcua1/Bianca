@@ -7,6 +7,7 @@ import {
 import {
   fineJewelleryCategoryPath,
 } from "../data/fineJewelleryMegaMenu";
+import { atelierPieceHref } from "./atelierShare";
 import {
   buildCatalogEntry,
   scoreNaturalLanguageSearch,
@@ -142,12 +143,17 @@ export function buildAtelierSearchHref(
   options?: { category?: JewelleryCategoryId | "all"; pieceId?: string },
 ): string {
   const category = options?.category ?? "all";
-  const path = fineJewelleryCategoryPath(category);
   const params = new URLSearchParams();
   const trimmed = query.trim();
   if (trimmed) params.set("q", trimmed);
-  if (options?.pieceId) params.set("piece", options.pieceId);
   const qs = params.toString();
+  const piece = options?.pieceId
+    ? ATELIER_PIECES.find((item) => item.id === options.pieceId)
+    : undefined;
+  if (piece) {
+    return atelierPieceHref(piece, qs);
+  }
+  const path = fineJewelleryCategoryPath(category);
   return qs ? `${path}?${qs}#showcase` : `${path}#showcase`;
 }
 

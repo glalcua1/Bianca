@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation, useSearchParams } from "react-router";
+import { useLocation } from "react-router";
 import InstagramFeedSection from "../components/InstagramFeedSection";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
@@ -17,6 +17,7 @@ import { BIANCA_PUBLIC_ORIGIN } from "../lib/atelierEnquiry";
 import {
   atelierPieceShareUrl,
   findAtelierPiece,
+  resolveAtelierPieceFromLocation,
 } from "../lib/atelierShare";
 
 const CRAFT_VALUES = [
@@ -39,13 +40,16 @@ const CRAFT_VALUES = [
 
 export default function FineJewelleryPage() {
   const location = useLocation();
-  const [searchParams] = useSearchParams();
   const fromPath = parseFineJewelleryCategoryFromPath(location.pathname);
   const fromHash = parseFineJewelleryCategoryFromHash(location.hash);
   const activeCategory: JewelleryCategoryId | "all" =
     fromPath !== "all" ? fromPath : fromHash;
 
-  const sharedPiece = findAtelierPiece(searchParams.get("piece"));
+  const sharedPiece = resolveAtelierPieceFromLocation(
+    location.pathname,
+    location.search,
+    location.hash,
+  );
   const pageSeo = sharedPiece
     ? {
         title: `${sharedPiece.title} | Bianca Diamonds`,
@@ -63,12 +67,19 @@ export default function FineJewelleryPage() {
   });
 
   useEffect(() => {
-    const parsed = parseFineJewelleryCategoryFromHash(location.hash);
     const raw = location.hash.replace(/^#/, "").trim().toLowerCase();
-    if (raw && parsed === "all" && raw !== "all" && raw !== "collections") {
-      window.history.replaceState(null, "", "/fine-jewellery");
+    if (!raw || raw === "all" || raw === "collections" || raw === "showcase") {
+      return;
     }
-  }, [location.hash]);
+    if (raw.startsWith("piece=")) return;
+    if (findAtelierPiece(raw)) return;
+    if (parseFineJewelleryCategoryFromHash(location.hash) !== "all") return;
+    window.history.replaceState(
+      null,
+      "",
+      `${location.pathname}${location.search}`,
+    );
+  }, [location.hash, location.pathname, location.search]);
 
   useEffect(() => {
     if (location.hash.replace(/^#/, "") === "collections") {

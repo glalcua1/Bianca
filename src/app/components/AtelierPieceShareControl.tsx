@@ -20,7 +20,7 @@ export default function AtelierPieceShareControl({ piece, variant }: Props) {
   const share = useCallback(async () => {
     const url = atelierPieceShareUrl(piece);
     const title = `${piece.title} | Bianca Diamonds`;
-    const text = `${piece.title} — ${piece.productCode}`;
+    const text = `${piece.title} — ${piece.productCode}\n${url}`;
 
     const copiedOk = await copyTextToClipboard(url);
 
