@@ -4,6 +4,10 @@ import { useLocation } from "react-router";
 /** Scroll to top on route change; honour in-page hash targets when present. */
 export default function ScrollToTop() {
   const { pathname, hash } = useLocation();
+  const scrollPath = pathname.replace(
+    /^(\/fine-jewellery\/[^/]+)\/[^/]+\/?$/,
+    "$1",
+  );
 
   useEffect(() => {
     if (hash) {
@@ -15,7 +19,7 @@ export default function ScrollToTop() {
     }
 
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [pathname, hash]);
+  }, [scrollPath, hash]);
 
   return null;
 }

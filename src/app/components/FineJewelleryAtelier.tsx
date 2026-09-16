@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router";
+import { Link, useLocation, useNavigate, useSearchParams } from "react-router";
 import AtelierPieceLightbox from "./AtelierPieceLightbox";
 import AtelierPieceQuote from "./AtelierPieceQuote";
 import AtelierSalonFilters from "./AtelierSalonFilters";
@@ -20,7 +20,6 @@ import {
 } from "../data/fineJewelleryCollections";
 import {
   FINE_JEWELLERY_EDITORIAL,
-  fineJewelleryCategoryPath,
   getFunctionalCategories,
 } from "../data/fineJewelleryMegaMenu";
 import { getRingQuote } from "../data/ringQuotes";
@@ -36,7 +35,12 @@ import {
   scoreNaturalLanguageSearch,
   type SelectedAtelierFilters,
 } from "../lib/atelierCatalog";
-import { findAtelierPiece } from "../lib/atelierShare";
+import {
+  atelierCategoryHref,
+  atelierHrefKey,
+  atelierPieceHref,
+  resolveAtelierPieceFromLocation,
+} from "../lib/atelierShare";
 
 const ATELIER_CATALOG = ATELIER_PIECES.map(buildCatalogEntry);
 const CATALOG_BY_ID = new Map(
@@ -157,21 +161,22 @@ type Props = {
 };
 
 export default function FineJewelleryAtelier({ activeCategory }: Props) {
+  const location = useLocation();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const queryFromUrl = searchParams.get("q") ?? "";
-  const pieceFromUrl = searchParams.get("piece");
-  const requestedPiece = findAtelierPiece(pieceFromUrl);
+  const requestedPiece = resolveAtelierPieceFromLocation(
+    location.pathname,
+    location.search,
+    location.hash,
+  );
 
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [lightboxIndex, setLightboxIndex] = useState(0);
   const [searchQuery, setSearchQuery] = useState(queryFromUrl);
   const [selectedFilters, setSelectedFilters] = useState<SelectedAtelierFilters>(
-    () => clearSelectedFilters(getFilterGroups("all")),
+    () => clearSelectedFilters(getFilterGroups(activeCategory)),
   );
 
   useEffect(() => {
-    setLightboxOpen(false);
     setSelectedFilters(clearSelectedFilters(getFilterGroups(activeCategory)));
   }, [activeCategory]);
 
@@ -180,11 +185,11 @@ export default function FineJewelleryAtelier({ activeCategory }: Props) {
   }, [queryFromUrl]);
 
   useEffect(() => {
-    if (!queryFromUrl && !pieceFromUrl) return;
+    if (!queryFromUrl && !requestedPiece) return;
     requestAnimationFrame(() => {
       document.getElementById("showcase")?.scrollIntoView({ behavior: "smooth" });
     });
-  }, [queryFromUrl, pieceFromUrl, activeCategory]);
+  }, [queryFromUrl, requestedPiece, activeCategory]);
 
   const handleSearchQueryChange = useCallback(
     (value: string) => {
@@ -256,76 +261,46 @@ export default function FineJewelleryAtelier({ activeCategory }: Props) {
     return base;
   }, [activeCategory, categoryPieces, requestedPiece]);
 
-  const syncPieceInUrl = useCallback(
-    (pieceId: string | null) => {
-      setSearchParams(
-        (prev) => {
-          const next = new URLSearchParams(prev);
-          if (pieceId) next.set("piece", pieceId);
-          else next.delete("piece");
-          return next;
-        },
-        { replace: true },
-      );
-    },
-    [setSearchParams],
-  );
+  const requestedIndex = requestedPiece
+    ? lightboxPieces.findIndex((piece) => piece.id === requestedPiece.id)
+    : -1;
+  const lightboxOpen = requestedIndex >= 0;
+  const lightboxIndex = requestedIndex >= 0 ? requestedIndex : 0;
 
   const openPiece = useCallback(
     (piece: AtelierPiece) => {
-      const index = lightboxPieces.findIndex((p) => p.id === piece.id);
-      setLightboxIndex(index >= 0 ? index : 0);
-      setLightboxOpen(true);
-      syncPieceInUrl(piece.id);
+      navigate(atelierPieceHref(piece, location.search), { replace: true });
     },
-    [lightboxPieces, syncPieceInUrl],
+    [navigate, location.search],
   );
 
   const handleLightboxIndexChange = useCallback(
     (index: number) => {
-      setLightboxIndex(index);
       const nextPiece = lightboxPieces[index];
-      if (nextPiece) syncPieceInUrl(nextPiece.id);
+      if (nextPiece) {
+        navigate(atelierPieceHref(nextPiece, location.search), { replace: true });
+      }
     },
-    [lightboxPieces, syncPieceInUrl],
+    [lightboxPieces, navigate, location.search],
   );
 
   useEffect(() => {
-    if (!pieceFromUrl) return;
-    const piece = requestedPiece;
-    if (!piece) return;
-
-    if (activeCategory !== "all" && piece.category !== activeCategory) {
-      navigate(
-        `${fineJewelleryCategoryPath(piece.category)}?piece=${encodeURIComponent(piece.id)}`,
-        { replace: true },
-      );
-      return;
-    }
-
-    if (lightboxPieces.length === 0) return;
-    const index = lightboxPieces.findIndex((item) => item.id === piece.id);
-    if (index < 0) return;
-    setLightboxIndex(index);
-    setLightboxOpen(true);
-    if (pieceFromUrl !== piece.id) {
-      syncPieceInUrl(piece.id);
-    }
-  }, [
-    pieceFromUrl,
-    requestedPiece,
-    lightboxPieces,
-    activeCategory,
-    navigate,
-    syncPieceInUrl,
-  ]);
+    if (!requestedPiece) return;
+    const canonical = atelierPieceHref(requestedPiece, location.search);
+    const currentKey = atelierHrefKey(location.pathname, location.search);
+    const canonicalKey = atelierHrefKey(canonical);
+    if (currentKey === canonicalKey) return;
+    navigate(canonical, { replace: true });
+  }, [requestedPiece, location.pathname, location.search, navigate]);
 
   const handleLightboxOpenChange = useCallback(
     (open: boolean) => {
-      setLightboxOpen(open);
-      if (!open) syncPieceInUrl(null);
+      if (open) return;
+      navigate(atelierCategoryHref(activeCategory, location.search), {
+        replace: true,
+      });
     },
-    [syncPieceInUrl],
+    [activeCategory, location.search, navigate],
   );
 
   const activeLabel =
