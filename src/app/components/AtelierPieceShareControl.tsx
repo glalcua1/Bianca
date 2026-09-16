@@ -22,19 +22,19 @@ export default function AtelierPieceShareControl({ piece, variant }: Props) {
     const title = `${piece.title} | Bianca Diamonds`;
     const text = `${piece.title} — ${piece.productCode}`;
 
+    const copiedOk = await copyTextToClipboard(url);
+
     if (typeof navigator.share === "function") {
       try {
         await navigator.share({ title, text, url });
-        return;
       } catch (error) {
-        if (error instanceof DOMException && error.name === "AbortError") {
-          return;
+        if (!(error instanceof DOMException && error.name === "AbortError")) {
+          /* native share unavailable; clipboard is the fallback */
         }
       }
     }
 
-    const ok = await copyTextToClipboard(url);
-    if (ok) {
+    if (copiedOk) {
       setFailed(false);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2200);
