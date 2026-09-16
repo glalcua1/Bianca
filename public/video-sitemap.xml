@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
-    <loc>https://www.biancadiamonds.com/</loc>
+    <loc>https://www.biancadiamonds.com/film</loc>
     <video:video>
       <video:thumbnail_loc>https://www.biancadiamonds.com/bianca-diamonds-lab-grown-jewellery-hero-poster.jpg</video:thumbnail_loc>
       <video:title>Bianca Diamonds — Lab-Grown Diamond Fine Jewellery Hero Film</video:title>
-      <video:description>Homepage hero film for Bianca Diamonds: IGI-certified lab-grown diamond fine jewellery composed for modern living, bridal moments, and occasion dressing.</video:description>
+      <video:description>Watch the Bianca Diamonds hero film: IGI-certified lab-grown diamond fine jewellery composed for modern living, bridal moments, and occasion dressing.</video:description>
       <video:content_loc>https://www.biancadiamonds.com/bianca-diamonds-lab-grown-jewellery-hero.mp4</video:content_loc>
       <video:duration>15</video:duration>
       <video:publication_date>2026-07-17T00:00:00+05:30</video:publication_date>
@@ -15,7 +15,7 @@
     </video:video>
   </url>
   <url>
-    <loc>https://www.biancadiamonds.com/media</loc>
+    <loc>https://www.biancadiamonds.com/podcast</loc>
     <video:video>
       <video:thumbnail_loc>https://i.ytimg.com/vi/FicU78IRX1M/maxresdefault.jpg</video:thumbnail_loc>
       <video:title>Episode 74 | The Old Rules of Jewellery Are Finally Changing | Ft. Shweta Rastogi Lal</video:title>

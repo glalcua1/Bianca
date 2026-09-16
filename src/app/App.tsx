@@ -11,6 +11,10 @@ const CannesShowcase2026Page = lazy(
   () => import("./pages/CannesShowcase2026Page"),
 );
 const MediaPage = lazy(() => import("./pages/MediaPage"));
+const MediaPodcastWatchPage = lazy(
+  () => import("./pages/MediaPodcastWatchPage"),
+);
+const HeroFilmWatchPage = lazy(() => import("./pages/HeroFilmWatchPage"));
 const CalculatorPage = lazy(() => import("./pages/CalculatorPage"));
 const LabGrownDiamondFaqPage = lazy(
   () => import("./pages/LabGrownDiamondFaqPage"),
@@ -84,6 +88,8 @@ export default function App() {
                 path="/butterfly-collection"
                 element={<ButterflyCollectionPage />}
               />
+              <Route path="/film" element={<HeroFilmWatchPage />} />
+              <Route path="/podcast" element={<MediaPodcastWatchPage />} />
               <Route path="/media" element={<MediaPage />} />
               <Route path="/calculator" element={<CalculatorPage />} />
               <Route

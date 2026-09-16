@@ -2,6 +2,9 @@
 
 export const MEDIA_PODCAST_VIDEO_ID = "FicU78IRX1M";
 
+/** Dedicated watch page — /media is a press archive, not a single-video watch page. */
+export const MEDIA_PODCAST_WATCH_PATH = "/podcast";
+
 export const MEDIA_PODCAST = {
   eyebrow: "Featured Podcast",
   heading: "The Conversation Changing How We Think About Diamonds",
@@ -44,7 +47,13 @@ export const MEDIA_PODCAST_VIDEO_SEO = {
   thumbnailUrlMax: `https://i.ytimg.com/vi/${MEDIA_PODCAST_VIDEO_ID}/maxresdefault.jpg`,
   embedUrl: `https://www.youtube.com/embed/${MEDIA_PODCAST_VIDEO_ID}`,
   watchUrl: `https://www.youtube.com/watch?v=${MEDIA_PODCAST_VIDEO_ID}`,
+  pagePath: MEDIA_PODCAST_WATCH_PATH,
+  pageUrl: `https://www.biancadiamonds.com${MEDIA_PODCAST_WATCH_PATH}`,
   publisherName: "Mic Pe Milenge with Tamanna",
   iframeTitle:
     "Bianca Diamonds podcast on lab-grown diamonds and the changing jewellery industry",
+  pageTitle:
+    "Featured Podcast | The Old Rules of Jewellery Are Finally Changing | Bianca Diamonds",
+  pageDescription:
+    "Watch the Bianca Diamonds featured podcast: Episode 74 of Mic Pe Milenge with Tamanna, featuring Shweta Rastogi Lal on lab-grown diamonds and the changing jewellery industry.",
 } as const;

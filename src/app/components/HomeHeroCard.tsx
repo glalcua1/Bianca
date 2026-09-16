@@ -553,8 +553,8 @@ export default function HomeHeroCard({ layout = "desktop" }: Props) {
         />
         <FilmProgress progress={progress} visible={!isStill} />
       </div>
-      {/* Crawlable absolute URL — src is bound after idle for LCP, so keep a static link for indexers. */}
-      <a href={HOME_HERO_VIDEO_SEO.contentUrl} className="sr-only">
+      {/* Crawlable watch-page URL for Google video indexing. */}
+      <a href={HOME_HERO_VIDEO_SEO.watchPath} className="sr-only">
         {HOME_HERO_VIDEO_SEO.name}
       </a>
     </div>
@@ -645,7 +645,7 @@ function MobileHeroCard({
         />
         <FilmProgress progress={progress} visible={!isStill} />
       </div>
-      <a href={HOME_HERO_VIDEO_SEO.contentUrlMobile} className="sr-only">
+      <a href={HOME_HERO_VIDEO_SEO.watchPath} className="sr-only">
         {HOME_HERO_VIDEO_SEO.name}
       </a>
 
