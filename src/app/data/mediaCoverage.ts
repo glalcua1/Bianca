@@ -1,7 +1,7 @@
 export const MEDIA_SEO = {
   title: "Media | Bianca Diamonds",
   description:
-    "Press and editorial coverage celebrating Bianca Diamonds — India's women-led lab-grown diamond jewellery house on the global stage.",
+    "Press and editorial coverage celebrating Bianca Diamonds — plus the most comprehensive podcast on lab-grown diamonds and the changing jewellery industry: a deep conversation on changing mindsets, consumer behaviour and emerging jewellery trends.",
 };
 
 export type MediaPressImage = {
