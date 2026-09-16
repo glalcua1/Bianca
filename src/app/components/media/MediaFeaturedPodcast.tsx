@@ -1,4 +1,5 @@
 import { ExternalLink } from "lucide-react";
+import { Link } from "react-router";
 import EditorialEyebrow from "../editorial/EditorialEyebrow";
 import EditorialReveal from "../editorial/EditorialReveal";
 import YouTubeClickToPlay from "./YouTubeClickToPlay";
@@ -48,14 +49,20 @@ export default function MediaFeaturedPodcast() {
             <p className="mt-5 max-w-xl text-house-body leading-relaxed text-on-cream-muted">
               {MEDIA_PODCAST.supporting}
             </p>
-            <div className="mt-9">
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Link
+                to={MEDIA_PODCAST_VIDEO_SEO.pagePath}
+                className="inline-flex items-center justify-center border border-[#766d42]/40 bg-[#f4f0e6] px-6 py-3 text-house-cta text-[#1d3c34] transition hover:border-[#766d42]/70 hover:bg-[#f4f0e6]/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#766d42]"
+              >
+                {MEDIA_PODCAST.ctaLabel}
+              </Link>
               <a
                 href={MEDIA_PODCAST.watchUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 border border-[#766d42]/40 bg-[#f4f0e6] px-6 py-3 text-house-cta text-[#1d3c34] transition hover:border-[#766d42]/70 hover:bg-[#f4f0e6]/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#766d42]"
+                className="inline-flex items-center justify-center gap-2 border border-[#1d3c34]/20 px-6 py-3 text-house-cta text-[#1d3c34] transition hover:border-[#1d3c34]/45 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#766d42]"
               >
-                {MEDIA_PODCAST.ctaLabel}
+                Watch on YouTube
                 <ExternalLink
                   className="size-4 shrink-0 text-on-cream-muted"
                   aria-hidden

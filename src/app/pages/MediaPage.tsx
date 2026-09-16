@@ -3,7 +3,6 @@ import SiteFooter from "../components/SiteFooter";
 import EditorialEyebrow from "../components/editorial/EditorialEyebrow";
 import EditorialReveal from "../components/editorial/EditorialReveal";
 import MediaFeaturedPodcast from "../components/media/MediaFeaturedPodcast";
-import MediaPodcastJsonLd from "../components/media/MediaPodcastJsonLd";
 import MediaPressCard from "../components/media/MediaPressCard";
 import InstagramFeedSection from "../components/InstagramFeedSection";
 import { usePageMeta } from "../hooks/usePageMeta";
@@ -19,7 +18,6 @@ export default function MediaPage() {
 
   return (
     <main className="min-h-screen bg-[#faf8f5]" data-protected-page>
-      <MediaPodcastJsonLd />
       <div className="bg-[#1d3c34]">
         <SiteNav activeItem="media" />
       </div>

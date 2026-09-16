@@ -1,6 +1,5 @@
 import { Suspense, lazy, useEffect, useRef, useState, useCallback } from "react";
 import SiteFooter from "../components/SiteFooter";
-import HomeHeroVideoJsonLd from "../components/HomeHeroVideoJsonLd";
 import { useMediaMinWidth } from "../hooks/useMediaMinWidth";
 import {
   clearSiteNavOffset,
@@ -106,7 +105,6 @@ export default function HomePage() {
 
   return (
     <>
-      <HomeHeroVideoJsonLd />
       <Suspense
         fallback={
           <div
