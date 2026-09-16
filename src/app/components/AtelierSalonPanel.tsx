@@ -72,7 +72,7 @@ function SalonValuationStrip({
 }: {
   eyebrow: string;
   biancaCode: string | null;
-  kiraReference: string;
+  kiraReference?: string;
   priceLabel: string;
   gstNote: string;
   priceNote?: string;
@@ -92,8 +92,12 @@ function SalonValuationStrip({
                 Bianca {biancaCode}
               </>
             ) : null}
-            <span className="mx-1.5 text-[#766d42]/35">·</span>
-            Kira {kiraReference}
+            {kiraReference ? (
+              <>
+                <span className="mx-1.5 text-[#766d42]/35">·</span>
+                Kira {kiraReference}
+              </>
+            ) : null}
           </p>
         </div>
         <div className="shrink-0 text-right">
@@ -380,7 +384,6 @@ export default function AtelierSalonPanel({
               <SalonValuationStrip
                 eyebrow="Salon valuation"
                 biancaCode={piece.productCode}
-                kiraReference={piece.productCode}
                 priceLabel={guidePriceLabel}
                 gstNote="GST 3% extra · not included in price"
                 priceNote={piece.salonPriceNote}
