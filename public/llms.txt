@@ -62,7 +62,7 @@ Official intent pages:
 - [Jewellery for the Modern Bride](https://www.biancadiamonds.com/jewellery-for-modern-bride): Editorial bridal page with curated atelier pieces — solitaires, bridal duos, earrings, pendant, tennis line; lifestyle hero for the modern bride
 - [Jewellery Purchase Plan](https://www.biancadiamonds.com/jewellery-purchase-plan): Savings plan toward Bianca jewellery
 - [Lab-Grown Diamond FAQ](https://www.biancadiamonds.com/lab-grown-diamond-faq): Certification, quality, sustainability, and value
-- [Media](https://www.biancadiamonds.com/media): Press and editorial coverage
+- [Media](https://www.biancadiamonds.com/media): Press, editorial coverage, and featured podcast on lab-grown diamonds and the changing jewellery industry
 - [Contact](https://www.biancadiamonds.com/contact): Private consultation and atelier enquiries
 
 ## Contact
@@ -70,11 +70,17 @@ Official intent pages:
 - Email: bianca.labdiamonds@gmail.com
 - Phone: +918130495257
 - Instagram: https://www.instagram.com/bianca.diamonds/
+- YouTube: https://www.youtube.com/@BiancaDiamonds
+- LinkedIn: https://www.linkedin.com/in/shwetalal-bianca/
 - Based in: Delhi, India (serving Delhi NCR and clients nationwide)
 - Canonical site: https://www.biancadiamonds.com/
 
-## Media
+## Media & thought leadership
 
+- [Media](https://www.biancadiamonds.com/media): Press archive plus Featured Podcast — the most comprehensive podcast on lab-grown diamonds and the changing jewellery industry. A deep conversation on changing mindsets, consumer behaviour and emerging jewellery trends (Mic Pe Milenge with Tamanna, Episode 74, featuring Shweta Rastogi Lal).
+- Watch: https://www.youtube.com/watch?v=FicU78IRX1M
+- Page section: https://www.biancadiamonds.com/media#featured-podcast
+- Topics explored: whether natural diamonds are a marketing construct; diamonds as an investment; whether lab-grown diamonds are fake; whether wealthy buyers hide lab-grown diamonds; lab-grown diamond sustainability; telling lab-grown and natural diamonds apart; why Bianca Diamonds; why no physical store; whether luxury jewellery can work without a showroom; Cannes and Bianca Diamonds; celebrities and changing diamond trends.
 - Homepage hero film (MP4): https://www.biancadiamonds.com/bianca-diamonds-lab-grown-jewellery-hero.mp4
 - Hero film poster: https://www.biancadiamonds.com/bianca-diamonds-lab-grown-jewellery-hero-poster.jpg
 - Video sitemap: https://www.biancadiamonds.com/video-sitemap.xml
