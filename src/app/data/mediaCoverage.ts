@@ -58,7 +58,7 @@ export const MEDIA_PRESS_ITEMS: MediaPressItem[] = [
   {
     id: "news-india-11-manya",
     eyebrow: "News India 11 · Instagram",
-    title: "Manya on the World Stage",
+    title: "Bianca Diamonds on the World Stage",
     body: "Manya adorned exquisite jewellery by Bianca Diamonds, a woman-led startup just three months old. Her appearance provided the emerging brand with valuable international exposure, highlighting the rise of women-driven entrepreneurship on global platforms.",
     images: [
       {
