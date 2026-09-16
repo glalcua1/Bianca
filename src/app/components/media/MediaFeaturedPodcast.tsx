@@ -96,7 +96,7 @@ export default function MediaFeaturedPodcast() {
               return (
                 <li
                   key={question}
-                  className="border-t border-[#1d3c34]/8 py-5 first:border-t sm:[&:nth-child(1)]:border-t sm:[&:nth-child(2)]:border-t"
+                  className="border-t border-[#1d3c34]/8 py-5"
                 >
                   <div className="flex items-baseline gap-4 md:gap-5">
                     <span
