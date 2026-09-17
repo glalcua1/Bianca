@@ -34,7 +34,7 @@ export const HOME_HERO_VIDEO_SEO = {
   watchPath: HOME_HERO_FILM_PATH,
   watchUrl: `${BIANCA_PUBLIC_ORIGIN}${HOME_HERO_FILM_PATH}`,
   embedUrl: `${BIANCA_PUBLIC_ORIGIN}${HOME_HERO_FILM_PATH}`,
-  uploadDate: "2026-07-17",
+  uploadDate: "2026-07-17T00:00:00+05:30",
   /** ffprobe duration of the desktop hero encode */
   durationIso: "PT15S",
   durationSeconds: 15,
