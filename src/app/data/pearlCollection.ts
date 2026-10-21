@@ -3,7 +3,7 @@ import {
   type AtelierPiece,
 } from "./fineJewelleryCollections";
 
-/** Pearl Collection suites — resolved from the atelier catalogue. */
+/** Pearl Collection suites resolved from the atelier catalogue for homepage + drawer. */
 export const PEARL_COLLECTION_PIECE_IDS = [
   "neck-pearl-four-strand-sapphire-choker",
   "neck-pearl-triple-strand-sapphire",
