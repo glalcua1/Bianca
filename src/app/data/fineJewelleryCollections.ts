@@ -500,6 +500,17 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "A round ruby suspends an oval emerald in polished yellow gold — saturated colour, minimal lines, and an easy day-to-evening silhouette.",
   },
   {
+    id: "ear-cushion-sapphire-emerald-drop",
+    category: "earrings",
+    productCode: "BD-K-ER-043",
+    image: "/Rings/bianca-diamonds-cushion-sapphire-emerald-drop-earrings.jpg",
+    imageWellColor: "#c8c8c8",
+    alt: "Cushion Sapphire Emerald Drop — cushion sapphire drop earrings with emerald and diamond accents in white gold",
+    title: "Cushion Sapphire Emerald Drop",
+    description:
+      "Cushion blue sapphires hang beneath wing-like white-gold frames set with channel sapphires, emeralds, and pavé diamonds — high-jewellery colour with sculptural movement.",
+  },
+  {
     id: "ear-sapphire-hoop-drop",
     category: "earrings",
     productCode: "BD-K-ER-009",
@@ -653,6 +664,94 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Emerald Openwork Drop",
     description:
       "Pear emerald centres float within diamond halos and polished openwork frames — luminous white-gold drops with regal green depth.",
+  },
+  {
+    id: "ring-oval-sapphire-halo-split",
+    category: "rings",
+    productCode: "BD-G-RG-075",
+    image: "/Rings/bianca-diamonds-oval-sapphire-halo-split-shoulder-ring.jpg",
+    imageWellColor: "#b8b8b8",
+    alt: "Oval Sapphire Halo Split — oval blue sapphire diamond halo ring with split shoulders in white gold",
+    title: "Oval Sapphire Halo Split",
+    description:
+      "An oval blue sapphire crowned in a round-brilliant halo on a split-shoulder white-gold band — regal colour with classic salon proportion.",
+  },
+  {
+    id: "ring-cushion-sapphire-emerald-cocktail",
+    category: "rings",
+    productCode: "BD-G-RG-076",
+    image: "/Rings/bianca-diamonds-cushion-sapphire-emerald-pave-cocktail-ring.jpg",
+    imageWellColor: "#c4c4c4",
+    alt: "Cushion Sapphire Emerald Cocktail — cushion blue sapphire ring with emerald swirl and diamond pavé in white gold",
+    title: "Cushion Sapphire Emerald Cocktail",
+    description:
+      "A cushion blue sapphire rises above a pavé white-gold band traced with an emerald swirl — cocktail-scale colour and sculptural fire.",
+  },
+  {
+    id: "ring-oval-sapphire-diamond-halo",
+    category: "rings",
+    productCode: "BD-G-RG-077",
+    image: "/Rings/bianca-diamonds-oval-sapphire-diamond-halo-ring.jpg",
+    imageWellColor: "#d0d0d0",
+    alt: "Oval Sapphire Diamond Halo — oval blue sapphire halo ring in white gold",
+    title: "Oval Sapphire Diamond Halo",
+    description:
+      "An oval blue sapphire framed in a round-brilliant halo on a polished white-gold band — pure colour and enduring bridal clarity.",
+  },
+  {
+    id: "ring-pear-emerald-halo-pave",
+    category: "rings",
+    productCode: "BD-G-RG-078",
+    image: "/Rings/bianca-diamonds-pear-emerald-halo-pave-ring.jpg",
+    imageWellColor: "#d4d4d4",
+    alt: "Pear Emerald Halo Pavé — pear emerald diamond halo ring with pavé band in white gold",
+    title: "Pear Emerald Halo Pavé",
+    description:
+      "A pear-cut emerald crowned in a diamond halo on a pavé white-gold shank — elongated green fire with continuous brilliance.",
+  },
+  {
+    id: "ring-pear-sapphire-halo-pave",
+    category: "rings",
+    productCode: "BD-G-RG-079",
+    image: "/Rings/bianca-diamonds-pear-sapphire-halo-pave-ring.jpg",
+    imageWellColor: "#d2d2d2",
+    alt: "Pear Sapphire Halo Pavé — pear blue sapphire diamond halo ring with pavé band in white gold",
+    title: "Pear Sapphire Halo Pavé",
+    description:
+      "A pear-cut blue sapphire framed in a diamond halo on a pavé white-gold band — teardrop colour with luminous bridal presence.",
+  },
+  {
+    id: "ring-oval-sapphire-halo-pave",
+    category: "rings",
+    productCode: "BD-G-RG-080",
+    image: "/Rings/bianca-diamonds-oval-sapphire-halo-pave-ring.jpg",
+    imageWellColor: "#d0d0d0",
+    alt: "Oval Sapphire Halo Pavé — oval blue sapphire halo ring with pavé shoulders in white gold",
+    title: "Oval Sapphire Halo Pavé",
+    description:
+      "An oval blue sapphire in a diamond halo, the white-gold shoulders pavé-set to the band — saturated colour with continuous fire.",
+  },
+  {
+    id: "ring-oval-emerald-halo-pave",
+    category: "rings",
+    productCode: "BD-G-RG-081",
+    image: "/Rings/bianca-diamonds-oval-emerald-halo-pave-ring.png",
+    imageWellColor: "#d0d0d0",
+    alt: "Oval Emerald Halo Pavé — oval emerald diamond halo ring with pavé band in white gold",
+    title: "Oval Emerald Halo Pavé",
+    description:
+      "An oval emerald crowned in a round-brilliant halo on a pavé white-gold shank — deep green presence with salon-scale luminosity.",
+  },
+  {
+    id: "ring-cushion-sapphire-double-halo",
+    category: "rings",
+    productCode: "BD-G-RG-082",
+    image: "/Rings/bianca-diamonds-cushion-sapphire-double-halo-ring.jpg",
+    imageWellColor: "#cecece",
+    alt: "Cushion Sapphire Double Halo — cushion blue sapphire double diamond halo ring in white gold",
+    title: "Cushion Sapphire Double Halo",
+    description:
+      "A cushion blue sapphire framed in twin diamond halos on a pavé white-gold band — architectural colour and double-rim fire.",
   },
   {
     id: "ring-blush-pave-solitaire",
@@ -1468,6 +1567,19 @@ export const ATELIER_PIECES: AtelierPiece[] = [
       "Vertical baguette diamonds channel-set in continuous line around a polished yellow-gold band — sleek geometry and modern eternity brilliance.",
   },
   {
+    id: "brace-pearl-sapphire-double-strand",
+    category: "bracelets",
+    braceletKind: "bracelet",
+    productCode: "BD-K-BR-037",
+    image:
+      "/bianca-pearl-collection/bianca-diamonds-double-strand-pearl-sapphire-bracelet.png",
+    imageWellColor: "#c8c8c8",
+    alt: "Pearl Sapphire Double Strand — double-strand pearl bracelet with cushion sapphire diamond halos",
+    title: "Pearl Sapphire Double Strand",
+    description:
+      "Twin strands of lustrous pearls punctuated by cushion blue sapphires in diamond halos — serene colour and wrist-scale luminosity from the Pearl Collection.",
+  },
+  {
     id: "brace-feuille-douce",
     category: "bracelets",
     braceletKind: "bracelet",
@@ -1742,6 +1854,65 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     title: "Rose Woven Line",
     description:
       "Interlocking baguette diamonds in a woven rose-gold line, bordered by round brilliants — fluid texture and warm luminosity composed for evening wear.",
+  },
+  {
+    id: "neck-pearl-four-strand-sapphire-choker",
+    category: "necklaces",
+    productCode: "BD-K-NK-021",
+    image:
+      "/bianca-pearl-collection/bianca-diamonds-four-strand-pearl-sapphire-choker-earrings.png",
+    imageWellColor: "#c8c8c8",
+    alt: "Pearl Sapphire Choker Suite — four-strand pearl choker with oval sapphire diamond halo and matching pearl drop earrings",
+    title: "Pearl Sapphire Choker Suite",
+    description:
+      "Four pearl strands meet an oval sapphire in a diamond halo, paired with pear-diamond and pearl drop earrings — a Pearl Collection suite composed for the collarbone.",
+  },
+  {
+    id: "neck-pearl-triple-strand-sapphire",
+    category: "necklaces",
+    productCode: "BD-K-NK-022",
+    image:
+      "/bianca-pearl-collection/bianca-diamonds-triple-strand-pearl-sapphire-necklace-earrings.png",
+    imageWellColor: "#c8c8c8",
+    alt: "Pearl Sapphire Triple Strand — three-strand pearl necklace with cushion sapphire diamond halo and matching earrings",
+    title: "Pearl Sapphire Triple Strand",
+    description:
+      "Three pearl strands centred on a cushion sapphire in a diamond halo, with matching sapphire-and-pearl drop earrings — luminous colour from the Pearl Collection.",
+  },
+  {
+    id: "neck-pearl-emerald-cut-sapphire",
+    category: "necklaces",
+    productCode: "BD-K-NK-023",
+    image:
+      "/bianca-pearl-collection/bianca-diamonds-pearl-emerald-cut-sapphire-necklace-earrings.png",
+    imageWellColor: "#c8c8c8",
+    alt: "Pearl Emerald-Cut Sapphire Suite — single-strand pearl necklace with emerald-cut sapphire diamond halo and matching earrings",
+    title: "Pearl Emerald-Cut Sapphire Suite",
+    description:
+      "A single pearl strand suspends an emerald-cut sapphire in a diamond halo, mirrored in drop earrings — classic Pearl Collection poise with step-cut colour.",
+  },
+  {
+    id: "neck-pearl-triple-strand-stud-set",
+    category: "necklaces",
+    productCode: "BD-K-NK-024",
+    image:
+      "/bianca-pearl-collection/bianca-diamonds-triple-strand-pearl-sapphire-stud-set.png",
+    imageWellColor: "#c8c8c8",
+    alt: "Pearl Sapphire Stud Set — three-strand pearl necklace with cushion sapphire centre and matching pearl stud earrings",
+    title: "Pearl Sapphire Stud Set",
+    description:
+      "Three pearl strands meet a cushion sapphire centre, paired with matching pearl studs — understated Pearl Collection elegance for day-to-evening wear.",
+  },
+  {
+    id: "neck-black-opal-pear-halo",
+    category: "necklaces",
+    productCode: "BD-K-NK-025",
+    image: "/Rings/bianca-diamonds-black-opal-pear-diamond-halo-necklace.jpg",
+    imageWellColor: "#d0d0d0",
+    alt: "Black Opal Pear Halo — pear black opal diamond halo pendant on a diamond tennis chain",
+    title: "Black Opal Pear Halo",
+    description:
+      "A pear black opal in a diamond halo hangs from a diamond tennis line, crowned by a heart-shaped pavé bail — play-of-colour and continuous fire at the throat.",
   },
   {
     id: "neck-saphir-majeste",
