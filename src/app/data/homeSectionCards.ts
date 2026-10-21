@@ -4,6 +4,7 @@ import {
   type AtelierPiece,
 } from "./fineJewelleryCollections";
 import { getBlueStarCollectionPieces } from "./blueStarCollection";
+import { getPearlCollectionPieces } from "./pearlCollection";
 
 export type HomeSectionCard = {
   id: string;
@@ -60,6 +61,16 @@ export function getHomeBlueStarCarouselSlides(
 ): HomeCardCarouselSlide[] {
   return slidesFromPieces(
     getBlueStarCollectionPieces().slice(0, limit),
+    "object-contain object-center p-3 sm:p-4 md:p-5 lg:p-6",
+  );
+}
+
+/** Pearl Collection suites for The House Pearl Collection card carousel. */
+export function getHomePearlCarouselSlides(
+  limit = 4,
+): HomeCardCarouselSlide[] {
+  return slidesFromPieces(
+    getPearlCollectionPieces().slice(0, limit),
     "object-contain object-center p-3 sm:p-4 md:p-5 lg:p-6",
   );
 }
