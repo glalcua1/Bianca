@@ -5,11 +5,13 @@ import EditorialReveal from "./editorial/EditorialReveal";
 import {
   getHomeBlueStarCarouselSlides,
   getHomeFineJewelleryCarouselSlides,
+  getHomePearlCarouselSlides,
   HOME_SECTION_CARDS,
   type HomeCardCarouselSlide,
   type HomeSectionCard,
 } from "../data/homeSectionCards";
 import { BLUE_DIAMOND_CARD } from "../data/blueDiamond";
+import { PEARL_COLLECTION_CARD } from "../data/pearlCollection";
 
 const CAROUSEL_INTERVAL_MS = 4200;
 
@@ -17,6 +19,7 @@ const PdfLookbookDrawer = lazy(() => import("./PdfLookbookDrawer"));
 const BlueStarCollectionDrawer = lazy(
   () => import("./BlueStarCollectionDrawer"),
 );
+const PearlCollectionDrawer = lazy(() => import("./PearlCollectionDrawer"));
 
 function toneClasses(tone: HomeSectionCard["tone"], imageWellColor?: string) {
   if (imageWellColor) {
@@ -387,6 +390,96 @@ function BlueDiamondCard({ index }: { index: number }) {
   );
 }
 
+function PearlCollectionCard({ index }: { index: number }) {
+  const [collectionOpen, setCollectionOpen] = useState(false);
+  const card = PEARL_COLLECTION_CARD;
+  const tones = toneClasses("cream", card.imageWellColor);
+  const imageOnRight = index % 2 === 0;
+  const slides = getHomePearlCarouselSlides(4);
+
+  return (
+    <>
+      <EditorialReveal delay={index * 80}>
+        <article className={cardShellClass}>
+          <div
+            className={`relative flex flex-col justify-center ${tones.panel} px-7 py-10 sm:px-10 sm:py-12 md:px-12 lg:px-16 lg:py-14 ${
+              imageOnRight ? "md:order-1" : "md:order-2"
+            }`}
+          >
+            <div
+              className="pointer-events-none absolute inset-y-8 left-0 w-px bg-gradient-to-b from-transparent via-[#766d42]/50 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100 md:inset-y-12"
+              aria-hidden
+            />
+
+            <p className="font-editorial text-[11px] uppercase tracking-[0.28em] text-gold-on-cream">
+              {card.eyebrow}
+            </p>
+
+            <h3 className="mt-4 font-editorial text-[clamp(1.85rem,3.5vw,2.75rem)] tracking-[0.04em] text-[#1d3c34] transition-colors duration-500 group-hover:text-[#524a28]">
+              {card.title}
+            </h3>
+
+            <div
+              className="mt-5 h-px w-12 origin-left bg-[#766d42]/55 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-150"
+              aria-hidden
+            />
+
+            <p className="mt-6 max-w-md text-[15px] leading-[1.75] text-on-cream-body sm:text-[16px]">
+              {card.description}
+            </p>
+
+            <div className="mt-8 flex flex-col items-start gap-4 sm:mt-10">
+              <BlueDiamondCta
+                label={card.collectionCta}
+                onClick={() => setCollectionOpen(true)}
+                expanded={collectionOpen}
+              />
+              <Link
+                to={card.atelierTo}
+                className="group/cta inline-flex items-center gap-3 font-editorial text-[12px] uppercase tracking-[0.2em] text-gold-on-cream transition-colors hover:text-[#524a28]"
+              >
+                <span className="relative">
+                  {card.atelierCta}
+                  <span
+                    className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-[#766d42]/70 transition-transform duration-500 group-hover/cta:scale-x-100 motion-reduce:scale-x-100"
+                    aria-hidden
+                  />
+                </span>
+                <span
+                  aria-hidden
+                  className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/cta:translate-x-2"
+                >
+                  →
+                </span>
+              </Link>
+            </div>
+          </div>
+
+          <CardImage
+            image={card.image}
+            imageAlt={card.imageAlt}
+            imageClassName={card.imageClassName}
+            imageOnRight={imageOnRight}
+            wellClass={tones.well}
+            wellStyle={tones.wellStyle}
+            showOverlay={false}
+            slides={slides}
+          />
+        </article>
+      </EditorialReveal>
+
+      {collectionOpen && (
+        <Suspense fallback={null}>
+          <PearlCollectionDrawer
+            open={collectionOpen}
+            onOpenChange={setCollectionOpen}
+          />
+        </Suspense>
+      )}
+    </>
+  );
+}
+
 export default function HomeSectionCards() {
   const fineJewellerySlides = getHomeFineJewelleryCarouselSlides(4);
 
@@ -410,11 +503,12 @@ export default function HomeSectionCards() {
       <div className="relative mx-auto max-w-[1400px] px-4 py-14 sm:px-6 md:px-8 md:py-20 lg:px-10">
         <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
           <BlueDiamondCard index={0} />
+          <PearlCollectionCard index={1} />
           {HOME_SECTION_CARDS.map((card, index) => (
             <SectionCard
               key={card.id}
               card={card}
-              index={index + 1}
+              index={index + 2}
               slides={
                 card.id === "fine-jewellery" ? fineJewellerySlides : undefined
               }

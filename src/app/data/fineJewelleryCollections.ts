@@ -504,7 +504,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "earrings",
     productCode: "BD-K-ER-043",
     image: "/Rings/bianca-diamonds-cushion-sapphire-emerald-drop-earrings.jpg",
-    imageWellColor: "#c8c8c8",
+    imageWellColor: "#d5d4d2",
     alt: "Cushion Sapphire Emerald Drop — cushion sapphire drop earrings with emerald and diamond accents in white gold",
     title: "Cushion Sapphire Emerald Drop",
     description:
@@ -670,7 +670,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "rings",
     productCode: "BD-G-RG-075",
     image: "/Rings/bianca-diamonds-oval-sapphire-halo-split-shoulder-ring.jpg",
-    imageWellColor: "#b8b8b8",
+    imageWellColor: "#949496",
     alt: "Oval Sapphire Halo Split — oval blue sapphire diamond halo ring with split shoulders in white gold",
     title: "Oval Sapphire Halo Split",
     description:
@@ -681,7 +681,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "rings",
     productCode: "BD-G-RG-076",
     image: "/Rings/bianca-diamonds-cushion-sapphire-emerald-pave-cocktail-ring.jpg",
-    imageWellColor: "#c4c4c4",
+    imageWellColor: "#d4d3ce",
     alt: "Cushion Sapphire Emerald Cocktail — cushion blue sapphire ring with emerald swirl and diamond pavé in white gold",
     title: "Cushion Sapphire Emerald Cocktail",
     description:
@@ -692,7 +692,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "rings",
     productCode: "BD-G-RG-077",
     image: "/Rings/bianca-diamonds-oval-sapphire-diamond-halo-ring.jpg",
-    imageWellColor: "#d0d0d0",
+    imageWellColor: "#c7c4c2",
     alt: "Oval Sapphire Diamond Halo — oval blue sapphire halo ring in white gold",
     title: "Oval Sapphire Diamond Halo",
     description:
@@ -703,7 +703,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "rings",
     productCode: "BD-G-RG-078",
     image: "/Rings/bianca-diamonds-pear-emerald-halo-pave-ring.jpg",
-    imageWellColor: "#d4d4d4",
+    imageWellColor: "#cfcdd3",
     alt: "Pear Emerald Halo Pavé — pear emerald diamond halo ring with pavé band in white gold",
     title: "Pear Emerald Halo Pavé",
     description:
@@ -714,7 +714,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "rings",
     productCode: "BD-G-RG-079",
     image: "/Rings/bianca-diamonds-pear-sapphire-halo-pave-ring.jpg",
-    imageWellColor: "#d2d2d2",
+    imageWellColor: "#dddae1",
     alt: "Pear Sapphire Halo Pavé — pear blue sapphire diamond halo ring with pavé band in white gold",
     title: "Pear Sapphire Halo Pavé",
     description:
@@ -725,7 +725,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "rings",
     productCode: "BD-G-RG-080",
     image: "/Rings/bianca-diamonds-oval-sapphire-halo-pave-ring.jpg",
-    imageWellColor: "#d0d0d0",
+    imageWellColor: "#cfccd1",
     alt: "Oval Sapphire Halo Pavé — oval blue sapphire halo ring with pavé shoulders in white gold",
     title: "Oval Sapphire Halo Pavé",
     description:
@@ -736,7 +736,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "rings",
     productCode: "BD-G-RG-081",
     image: "/Rings/bianca-diamonds-oval-emerald-halo-pave-ring.png",
-    imageWellColor: "#d0d0d0",
+    imageWellColor: "#d2cdd4",
     alt: "Oval Emerald Halo Pavé — oval emerald diamond halo ring with pavé band in white gold",
     title: "Oval Emerald Halo Pavé",
     description:
@@ -747,7 +747,7 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     category: "rings",
     productCode: "BD-G-RG-082",
     image: "/Rings/bianca-diamonds-cushion-sapphire-double-halo-ring.jpg",
-    imageWellColor: "#cecece",
+    imageWellColor: "#cfcfd3",
     alt: "Cushion Sapphire Double Halo — cushion blue sapphire double diamond halo ring in white gold",
     title: "Cushion Sapphire Double Halo",
     description:
@@ -1573,11 +1573,11 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-BR-037",
     image:
       "/bianca-pearl-collection/bianca-diamonds-double-strand-pearl-sapphire-bracelet.png",
-    imageWellColor: "#c8c8c8",
+    imageWellColor: "#b59590",
     alt: "Pearl Sapphire Double Strand — double-strand pearl bracelet with cushion sapphire diamond halos",
     title: "Pearl Sapphire Double Strand",
     description:
-      "Twin strands of lustrous pearls punctuated by cushion blue sapphires in diamond halos — serene colour and wrist-scale luminosity from the Pearl Collection.",
+      "Twin strands of lustrous certified pearls punctuated by cushion blue sapphires in diamond halos — serene colour and wrist-scale luminosity from the Pearl Collection. Available in gemstones or certified lab-grown diamonds.",
   },
   {
     id: "brace-feuille-douce",
@@ -1861,11 +1861,11 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-NK-021",
     image:
       "/bianca-pearl-collection/bianca-diamonds-four-strand-pearl-sapphire-choker-earrings.png",
-    imageWellColor: "#c8c8c8",
+    imageWellColor: "#cdcdd3",
     alt: "Pearl Sapphire Choker Suite — four-strand pearl choker with oval sapphire diamond halo and matching pearl drop earrings",
     title: "Pearl Sapphire Choker Suite",
     description:
-      "Four pearl strands meet an oval sapphire in a diamond halo, paired with pear-diamond and pearl drop earrings — a Pearl Collection suite composed for the collarbone.",
+      "Four certified pearl strands meet an oval sapphire in a diamond halo, paired with pear-diamond and pearl drop earrings — a Pearl Collection suite composed for the collarbone. Available in gemstones or certified lab-grown diamonds.",
   },
   {
     id: "neck-pearl-triple-strand-sapphire",
@@ -1873,11 +1873,11 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-NK-022",
     image:
       "/bianca-pearl-collection/bianca-diamonds-triple-strand-pearl-sapphire-necklace-earrings.png",
-    imageWellColor: "#c8c8c8",
+    imageWellColor: "#c1bec5",
     alt: "Pearl Sapphire Triple Strand — three-strand pearl necklace with cushion sapphire diamond halo and matching earrings",
     title: "Pearl Sapphire Triple Strand",
     description:
-      "Three pearl strands centred on a cushion sapphire in a diamond halo, with matching sapphire-and-pearl drop earrings — luminous colour from the Pearl Collection.",
+      "Three certified pearl strands centred on a cushion sapphire in a diamond halo, with matching sapphire-and-pearl drop earrings — luminous colour from the Pearl Collection. Available in gemstones or certified lab-grown diamonds.",
   },
   {
     id: "neck-pearl-emerald-cut-sapphire",
@@ -1885,11 +1885,11 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-NK-023",
     image:
       "/bianca-pearl-collection/bianca-diamonds-pearl-emerald-cut-sapphire-necklace-earrings.png",
-    imageWellColor: "#c8c8c8",
+    imageWellColor: "#c0c3cb",
     alt: "Pearl Emerald-Cut Sapphire Suite — single-strand pearl necklace with emerald-cut sapphire diamond halo and matching earrings",
     title: "Pearl Emerald-Cut Sapphire Suite",
     description:
-      "A single pearl strand suspends an emerald-cut sapphire in a diamond halo, mirrored in drop earrings — classic Pearl Collection poise with step-cut colour.",
+      "A single certified pearl strand suspends an emerald-cut sapphire in a diamond halo, mirrored in drop earrings — classic Pearl Collection poise with step-cut colour. Available in gemstones or certified lab-grown diamonds.",
   },
   {
     id: "neck-pearl-triple-strand-stud-set",
@@ -1897,18 +1897,18 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     productCode: "BD-K-NK-024",
     image:
       "/bianca-pearl-collection/bianca-diamonds-triple-strand-pearl-sapphire-stud-set.png",
-    imageWellColor: "#c8c8c8",
+    imageWellColor: "#bcbbc3",
     alt: "Pearl Sapphire Stud Set — three-strand pearl necklace with cushion sapphire centre and matching pearl stud earrings",
     title: "Pearl Sapphire Stud Set",
     description:
-      "Three pearl strands meet a cushion sapphire centre, paired with matching pearl studs — understated Pearl Collection elegance for day-to-evening wear.",
+      "Three certified pearl strands meet a cushion sapphire centre, paired with matching pearl studs — understated Pearl Collection elegance for day-to-evening wear. Available in gemstones or certified lab-grown diamonds.",
   },
   {
     id: "neck-black-opal-pear-halo",
     category: "necklaces",
     productCode: "BD-K-NK-025",
     image: "/Rings/bianca-diamonds-black-opal-pear-diamond-halo-necklace.jpg",
-    imageWellColor: "#d0d0d0",
+    imageWellColor: "#cfcfd0",
     alt: "Black Opal Pear Halo — pear black opal diamond halo pendant on a diamond tennis chain",
     title: "Black Opal Pear Halo",
     description:
