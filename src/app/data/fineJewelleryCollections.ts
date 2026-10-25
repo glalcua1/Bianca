@@ -2637,6 +2637,8 @@ export const ATELIER_PIECES: AtelierPiece[] = [
     imageWellColor: "#e2e2e2",
     alt: "Fancy yellow diamond Art Deco geometric ring in yellow gold",
     title: "Yellow Art Deco Ring",
+    goldSpec: "18 KT yellow gold",
+    salonPriceInr: 271_500,
     description:
       "A fancy yellow centre in geometric yellow-gold architecture — Deco lines with radiant canary fire.",
   },
