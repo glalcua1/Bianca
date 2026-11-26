@@ -36,6 +36,39 @@ export type MediaPressItem = {
 
 export const MEDIA_PRESS_ITEMS: MediaPressItem[] = [
   {
+    id: "parag-human-foundation-inspiring-women-2026",
+    eyebrow: "Live Hindustan · Press",
+    title:
+      "Shweta Lal Honoured with the Inspiring Women Award 2026",
+    body: "Shweta Lal, Founder of Bianca Diamonds, was honoured with the Inspiring Women Award 2026 by Parag Human Foundation Trust at the Constitution Club of India — among forty women recognised for outstanding contributions across fields. Live Hindustan covered the ceremony, where personality development coaches Dr Rita Gangwani and Dr Swarnalata Sharma were chief guests. Foundation founder Dr Garima Singh noted that the Trust has celebrated this honour for women for nine consecutive years, recognising excellence and inspiring change.",
+    images: [
+      {
+        src: "/media/parag-human-foundation-inspiring-women-award-2026.jpg",
+        alt: "Shweta Lal, Founder of Bianca Diamonds, receiving the Inspiring Women Award 2026 from Parag Human Foundation Trust",
+        caption: "Inspiring Women Award 2026 — stage honour",
+        frame: "square",
+      },
+      {
+        src: "/media/parag-human-foundation-live-hindustan-2026.jpg",
+        alt: "Live Hindustan coverage — Parag Human Foundation Trust Inspiring Women Award 2026",
+        caption: "Live Hindustan article",
+        frame: "wide",
+        centerInCard: true,
+      },
+    ],
+    centerCarousel: true,
+    source: "Live Hindustan",
+    date: "22 November 2026",
+    primaryLink: {
+      href: "https://www.livehindustan.com/blog/editorial-news/parag-human-foundation-trust-honored-women-201795371385542.html",
+      label: "Read full article on Live Hindustan",
+    },
+    secondaryLink: {
+      href: "https://www.instagram.com/p/DgFAFxIGLKq/?img_index=1",
+      label: "View on Instagram",
+    },
+  },
+  {
     id: "dainik-jagran-moradabad",
     eyebrow: "Dainik Jagran · Moradabad",
     title: "Shweta’s Bianca Brings Sparkle to the Film Festival",
