@@ -1,5 +1,6 @@
 import {
   HOME_HERO_VIDEO_DESKTOP,
+  HOME_HERO_VIDEO_MOBILE,
   HOME_HERO_VIDEO_POSTER,
   HOME_HERO_VIDEO_SEO,
 } from "../../data/homeHeroVideo";
@@ -25,6 +26,12 @@ export default function IndexableHeroFilmPlayer({ className = "" }: Props) {
         aria-label={HOME_HERO_VIDEO_SEO.name}
         className="absolute inset-0 size-full bg-black object-contain object-center"
       >
+        {/* Prefer the compressed landscape encode on phones; desktop gets the master. */}
+        <source
+          src={HOME_HERO_VIDEO_MOBILE}
+          type="video/mp4"
+          media="(max-width: 768px)"
+        />
         <source src={HOME_HERO_VIDEO_DESKTOP} type="video/mp4" />
       </video>
     </div>
