@@ -36,8 +36,9 @@ export const MEDIA_PODCAST = {
 } as const;
 
 /**
- * VideoObject fields grounded in YouTube oEmbed / public page data.
- * uploadDate omitted — not reliably available without inventing metadata.
+ * VideoObject fields grounded in YouTube public page data.
+ * uploadDate from YouTube dateText "Sep 13, 2026" as ISO 8601 with India offset
+ * (Asia/Calcutta) — required by Google video indexing.
  */
 export const MEDIA_PODCAST_VIDEO_SEO = {
   name: "Episode 74 | The Old Rules of Jewellery Are Finally Changing | Ft. Shweta Rastogi Lal",
@@ -49,6 +50,8 @@ export const MEDIA_PODCAST_VIDEO_SEO = {
   watchUrl: `https://www.youtube.com/watch?v=${MEDIA_PODCAST_VIDEO_ID}`,
   pagePath: MEDIA_PODCAST_WATCH_PATH,
   pageUrl: `https://www.biancadiamonds.com${MEDIA_PODCAST_WATCH_PATH}`,
+  /** YouTube publish day (dateText Sep 13, 2026) — ISO 8601 with timezone */
+  uploadDate: "2026-09-13T00:00:00+05:30",
   publisherName: "Mic Pe Milenge with Tamanna",
   iframeTitle:
     "Bianca Diamonds podcast on lab-grown diamonds and the changing jewellery industry",

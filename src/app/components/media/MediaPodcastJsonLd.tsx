@@ -19,6 +19,7 @@ export default function MediaPodcastJsonLd() {
           MEDIA_PODCAST_VIDEO_SEO.thumbnailUrlMax,
           MEDIA_PODCAST_VIDEO_SEO.thumbnailUrl,
         ],
+        uploadDate: MEDIA_PODCAST_VIDEO_SEO.uploadDate,
         embedUrl: MEDIA_PODCAST_VIDEO_SEO.embedUrl,
         url: watchUrl,
         publisher: {
